@@ -1,0 +1,17 @@
+site:
+  title: BRL-CAD Documentation
+  start_page: books::index.adoc
+  #url: https://brlcad.org/docs
+content:
+  sources:
+  - url: ./
+    branches: HEAD
+    start_paths:
+    - books
+    - book-it
+ui:
+  bundle:
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/master/raw/build/ui-bundle.zip?job=bundle-stable
+    snapshot: true
+urls:
+  html_extension_style: indexify
