@@ -1,0 +1,94 @@
+
+:sectnums!:
+
+[appendix]
+= Doc Template: New MGED Command
+
+The following DocBook XML template illustrates the general structure that is used when defining a man page for MGED commands, along with examples of how elements such as paragraphs, lists, and examples are included.
+If you haven't worked with DocBook before, refer to the section What is DocBook? in the chapter Working with our Documentation. 
+
+[source]
+----
+
+<refentry   xml:id="">
+
+<refmeta>
+  <refentrytitle> <refentrytitle/>
+  <manvolnum>nged</manvolnum>
+  <refmiscinfo class="source">BRL-CAD</refmiscinfo>
+  <refmiscinfo class="manual">BRL-CAD User Commands</refmiscinfo>
+</refmeta>
+
+<refnamediv xml:id="name">
+  <refname><refname/>
+  <refpurpose>
+
+  </refpurpose>
+</refnamediv>
+
+<!-- body begins here -->
+<refsynopsisdiv xml:id="synopsis">
+  <cmdsynopsis sepchar=" ">
+    <command/>
+    <arg choice="opt" rep="norepeat"/>
+  </cmdsynopsis>
+</refsynopsisdiv>
+
+<refsection xml:id="description"><info><title>DESCRIPTION</title></info>
+  <para>
+
+  </para>
+</refsection>
+
+<refsection xml:id="examples"><info><title>EXAMPLES</title></info>
+
+  <para>
+
+  </para>
+  <example><info><title/></info>
+
+    <variablelist>
+      <varlistentry>
+           <term><prompt/> <userinput/></term>
+           <listitem>
+             <para>
+
+             </para>
+           </listitem>
+      </varlistentry>
+      <varlistentry>
+           <term><prompt/> <userinput/></term>
+           <listitem>
+             <para>
+
+             </para>
+           </listitem>
+      </varlistentry>
+    </variablelist>
+  </example>
+
+  <example><info><title/></info>
+
+    <para>
+      <prompt/><userinput/>
+    </para>
+    <para>
+
+    </para>
+  </example>
+
+</refsection>
+
+<info><corpauthor>BRL-CAD Team</corpauthor></info>
+
+<refsection xml:id="bug_reports"><info><title>BUG REPORTS</title></info>
+
+  <para>
+    Reports of bugs or problems should be submitted via electronic
+    mail to <email>devs@brlcad.org</email>
+  </para>
+</refsection>
+</refentry>
+----
+
+:sectnums:

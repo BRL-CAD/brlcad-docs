@@ -1,0 +1,85 @@
+= Contributing Code
+:doctype: book
+:sectnums:
+:toc: left
+:icons: font
+:experimental:
+:sourcedir: .
+
+Developing code for BRL-CAD becomes easier when you understand how to obtain and modify the code. 
+
+== Obtaining the Code
+
+You can get the development code for BRL-CAD from our Git code repository using the following command: 
+
+`git clone https://github.com/BRL-CAD/brlcad`
+
+The code will be saved in your [path]_/home_ directory, and you can compile it by following the instructions [path]_HACKING_ file located in top-level code directory.
+That said, the following are a few useful tips to help get you going. 
+
+=== Obtaining the Development Tools
+
+BRL-CAD uses the CMake build system and will compile with most compilers.
+Download CMake and install it.
+If necessary, compile it from the source code. 
+
+=== Configuring the Environment
+
+Next, set up the build directory and configure the compilation.
+At compilation time, BRL-CAD considers most warnings to be errors, so it's best if you lower the level of error logging to debug.
+To do that, run the following command: 
+
+`cmake ../brlcad_build -DBRLCAD_BUILD_TYPE=Debug`
+
+=== Compiling BRL-CAD
+
+It will take anywhere from a few minutes to one hour to compile BRL-CAD, depending on your hardware.
+Run the following command to compile the software: 
+
+`make`
+
+If the build fails, run `make` again and capture the output to a log file (so you can report it and/or get help) by running the following command: 
+
+`make > build.log 2>&1`
+
+[NOTE]
+====
+If you have a multiple cores, you can request parallel compilation with the -j option, e.g., `make -j4` on a 4-core system. 
+====
+
+=== Installing BRL-CAD
+
+Depending on the version of the source code that you started with, BRL-CAD should install into the following folder: 
+
+[path]_/usr/brlcad/SUBDIR_
+
+Where [replaceable]``SUBDIR`` is either [path]_rel-VERSION_ or [path]_dev-VERSION_. 
+
+=== Performing a Quick Test
+
+You don't have to install BRL-CAD.
+Instead, you can just run the binaries that are found in the brlcad_build/bin directory by running the following commands: 
+
+`bin/benchmark; bin/mged;`
+
+That's it! If you have a Release compile, you can submit your benchmark results to mailto:benchmark@brlcad.org[]. 
+
+== Discussing Code
+
+After obtaining the source code, you should to join the BRL-CAD developer mailing list (http://lists.sourceforge.net/lists/listinfo/brlcad-devel) and the #brlcad IRC channel at irc.freenode.net. 
+
+Joining both lists helps introduce yourself to the BRL-CAD community and gives you the opportunity to regularly communicate with other experienced contributors.
+You can also ask questions on the mailing list or the IRC channel. 
+
+Note that BRL-CAD contributors have a set of rules that they try to respect and follow to enable collaboration and communication.
+We strongly encourage new contributors to be creative and to be specific when asking questions on the mailing list or on the IRC channel.
+We also strongly advise you to use interleaved posting when replying on any communication channels.
+And __never be afraid to ask questions__. 
+
+Finally, when modifying code, it's advisable to regularly consult with experienced developers and to follow these rules of thumb when adding changes: 
+
+* Test your code to ensure that the change is correct.
+* Document your changes clearly and succinctly to ensure that others understand the change.
+* Write tests for your change so others can use them when testing subsequent changes.
+* Make a handful of patches and submit them to SourceForge for review.
+* Obtain commit access.

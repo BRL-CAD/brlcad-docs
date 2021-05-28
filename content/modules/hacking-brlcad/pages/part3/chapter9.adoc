@@ -1,0 +1,78 @@
+= Contributing Documentation
+:doctype: book
+:sectnums:
+:toc: left
+:icons: font
+:experimental:
+:sourcedir: .
+
+Writing and updating BRL-CAD's documentation becomes easier when you understand how to obtain and modify the source files for the documentation. 
+
+[NOTE]
+====
+For more information about creating and modifying documentation, refer to the chapter Working with Our Documentation earlier in this book. 
+====
+
+== Obtaining the Documentation
+
+The documentation and the toolchain required to generate the documentation is part of the software's development code.
+You should download the source code from the Git version control system using the following command: 
+
+`git clone https://github.com/BRL-CAD/brlcad`
+
+The directory [path]_brlcad_ should be within your [path]_/home_ directory so that BRL-CAD's build directory commands don't interfere with your system's commands. 
+
+=== Obtaining FOP
+
+While BRL-CAD comes with the tools for generating HTML files and UNIX man pages, you will need additional software to generate PDF files.
+That software is called Apache FOP, and you can download it from the http://xmlgraphics.apache.org/fop/[FOP project's website] (http://xmlgraphics.apache.org/fop/). The FOP website also has instructions for installing and configuring FOP to run on your system. 
+
+=== Configure
+
+Next, you must set up the build directory and configure the compilation.
+This will also set up the tools that you need to generate the documentation.
+Do that by running the following command. 
+
+`cmake ../brlcad_build -DBRLCAD_BUILD_TYPE=Debug`
+
+=== Generate the Documentation
+
+Once you've configured the compilation, you'll need to run the following build targets to generate the documentation: 
+
+* doc (to generate the HTML version of the documentation and the UNIX man pages)
+* html (to generate the HTML version of the documentation)
+* man (to generate the UNIX man pages)
+* pdf (to generate PDF versions of the documentation. Running this target is optional, and you must have FOP installed on the system on which you're working).
+
+
+== Where to Find the Documentation
+
+You can find the source files for the documentation in the following directories in the BRL-CAD source code repository: 
+
+[path]_doc/_::
+Project documentation
+
+[path]_doc/docbook_::
+User documentation in XML format
++
+See the file [path]_doc/docbook/README_ for more details
+
+You can find more information about editing the documentation in the chapter Working with Our Documentation earlier in this book. 
+
+Remember to: 
+
+* Get in touch with experienced contributors if you have any questions.
+* Compile your changes before committing them.
+
+
+== Discussing the Documentation
+
+Before undertaking a documentation task, you should join the BRL-CAD http://lists.sourceforge.net/lists/listinfo/brlcad-devel[developer mailing list] (http://lists.sourceforge.net/lists/listinfo/brlcad-devel) and the #brlcad IRC channel irc.freenode.net. 
+
+Joining both lists helps introduce you the the BRL-CAD community and gives you the opportunity to regularly communicate with other experienced contributors.
+You can also ask questions on the mailing list or the IRC channel. 
+
+BRL-CAD contributors have a set of rules that they try to respect and follow to enable collaboration and communication.
+We strongly encourage new contributors to be creative and to be specific when asking questions on the mailing list or on the IRC channel.
+We also strongly advise you to use interleaved posting when replying on any communication channels.
+And once again, __don't be afraid to ask questions__. 
