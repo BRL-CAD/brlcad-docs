@@ -1,6 +1,7 @@
 site:
   title: BRL-CAD Documentation
   url: https://brlcad.org
+
 content:
   edit_url: '{web_url}/edit/{refname}/{path}'
   sources:
@@ -9,11 +10,15 @@ content:
     start_paths:
     - docs
     - docs-it
+
 ui:
   bundle:
     url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/master/raw/build/ui-bundle.zip?job=bundle-stable
     snapshot: true
+
 runtime:
+  fetch: true
   cache_dir: ./.cache/antora
+
 output:
   dir: /var/www/html
