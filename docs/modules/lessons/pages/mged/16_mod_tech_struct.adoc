@@ -14,7 +14,7 @@ Now that we have successfully modeled a few simple objects, let's return to the 
 When finished, our radio should look as follows: 
 
 .Walkie-Talkie Radio
-image::mged16_radio_new_design.png[]
+image::mged/16_radio_new_design.png[]
 
 
 [[_radio_shapes_to_regions]]
@@ -66,7 +66,7 @@ Our body is now finished.
 Note that an experienced modeler would probably have combined the preceding three Boolean functions into a single command as follows: `r case.r u body.s - cavity.s - ant.s - knob.s - btn.s u spkr.s[Enter]`	If we were to raytrace case.r at this point, we would see the following:
 
 .Radio with Component Cutouts and Default Material Properties
-image::mged16_radio_default_components_props.png[]
+image::mged/16_radio_default_components_props.png[]
 
 Note the hole for the antenna in the top of the case and the hole for the talk button on the side of the case.
 We will now fill these holes with their respective components. 
@@ -158,7 +158,7 @@ For the talk button (button.r), let's keep it gray by leaving the default values
 The design should appear similar to the following when raytraced in Underlay mode:
 
 .Radio with Material Properties Assigned
-image::mged16_radio_with_mater_props.png[]
+image::mged/16_radio_with_mater_props.png[]
 
 As we look at our radio now, we can see that the antenna looks a little bit like a straw.
 In reality, it should have a small cap on the end so that we can raise and lower the antenna.
@@ -194,7 +194,7 @@ Type: `mater board.r "plastic sh=4" 0 198 0 1[Enter]`	Diagrammed, this command s
 Finally, we'll include the board with the rest of the components in radio.c as follows: `g radio.c board.r[Enter]`	Our radio should now look like the following:
 
 .Wireframe Radio with Circuit Board Added
-image::mged16_radio_wireframe_circ_board.png[]
+image::mged/16_radio_wireframe_circ_board.png[]
 
 In addition, the tree for radio.c should now look as follows: 
 
@@ -283,7 +283,7 @@ Now raytrace your design to view the resulting effect.
 The new transparent case should appear similar to the following:
 
 .Transparent View of the Radio
-image::mged16_radio_transparent.png[]
+image::mged/16_radio_transparent.png[]
 
 As shown in the following tree diagram, the structure of this specialty radio_clear.c is not much different than that of the regular radio.c.
 The only difference is that case.c has been replaced with case_clear.c. 
@@ -350,13 +350,13 @@ The only concern is that cutaway.s be as tall as the case so that it completely 
 Use the Shift Grips and multiple views (especially the Top view) to align cutaway.s so that it angles diagonally across the top of the radio (as shown in the following wireframe representation). When you've aligned the shape the way you want it, create the following radio_cutaway.c combination that unions in radio.c and subtracts out the shape (cutaway.s) that is covering what you want to see (board.r): `comb radio_cutaway.c u radio.c - cutaway.s[Enter]`
 
 .Multipane View of Cutting Primitive
-image::mged16_radio_cut_wireframe.png[]
+image::mged/16_radio_cut_wireframe.png[]
 
 Blast the radio_cutaway.c combination onto the display and raytrace.
 Depending on how your arb8 intersected the radio, the cutaway should look similar to the following: 
 
 .Cutaway View of Radio with Circuit Board Cut Off
-image::mged16_radio_cut_raytrace.png[]
+image::mged/16_radio_cut_raytrace.png[]
 
 Notice in the preceding figures that cutaway.s removes everything it overlaps (including part of the circuit board). This is okay if we just want to see inside the case.
 However, if we want to see all of the circuit board and any other component overlapped by cutaway.s (e.g., button.r), we would have to adjust our Boolean operations a little so that the cutaway is subtracted only from our case. 
@@ -373,7 +373,7 @@ So, we must change the name of any region or combination that contains any modif
 If we don't, the master model will also be changed. 
 
 .Cutaway Subtractions.
-image::mged16_radio_cutaways.png[]
+image::mged/16_radio_cutaways.png[]
 
 
 [[_radio_structure_redefinition]]
@@ -385,12 +385,12 @@ While there are many ways to structure a model, two common modeling categories a
 For our radio, we have so far grouped everything together under the general category of Radio, as shown in the following: 
 
 .Current Radio Structure
-image::mged16_radio_structure_1.png[]
+image::mged/16_radio_structure_1.png[]
 
 If we wanted to categorize our components according to location, however, we might structure the model as follows: 
 
 .Location-Based Structure of Radio
-image::mged16_radio_structure_2.png[]
+image::mged/16_radio_structure_2.png[]
 
 If we wanted to define our components according to functionality, we might structure the model another way.
 For instance, to repair an actual radio, we would open the case, take out the circuit board, fix it, and put it back in.
@@ -398,7 +398,7 @@ When taking out the board, however, the knob and button would probably be attach
 Accordingly, our structure should be changed as shown in the following diagram to associate the knob and button with the circuit board. 
 
 .Function-Based Structure of Radio
-image::mged16_radio_structure_3.png[]
+image::mged/16_radio_structure_3.png[]
 
 To accomplish this restructuring according to functionality, create an assembly called electronics.c to hold these components together.
 Type: `g electronics.c board.r knob.r button.r[Enter]`	 Of course, we now need to remove board.r, knob.r, and button.r from the radio.c assembly so that when electronics.c is added to the radio.c assembly, we won't have the knob and button included twice in the model.
@@ -454,7 +454,7 @@ First, we need to get rid of the old radio_cutaway.c, which was based on our pre
 To do this, type `kill radio_cutaway.c[Enter]`	 and then remake the combination by typing `comb radio_cutaway.c u case.r - cutaway.s u electronics.c u ant.r[Enter]`	 Now when we Blast the display and raytrace radio_cutaway.c, we should see the following: 
 
 .View of Radio with Just the Case Cut Away
-image::mged16_radio_casecut_raytrace.png[]
+image::mged/16_radio_casecut_raytrace.png[]
 
 
 [[_modeling_techniques_and_structures_review]]
