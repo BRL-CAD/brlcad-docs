@@ -1,25 +1,28 @@
 = 11. Refining a Mug Model
 :sectnums:
 
-In this lesson, you will: 
+In this lesson, you will:
 
 * Assign material properties to the mug using the mater command.
 * Refine the mug.
 * Combine the shapes.
 
-In this lesson, you will refine the mug you made in the previous lesson.
-If you stopped at the end of that lesson, open the database mug.g before continuing. 
+In this lesson, you will refine the mug you made in the previous
+lesson.  If you stopped at the end of that lesson, open the database
+mug.g before continuing.
 
 [[_mug_mater_prop_mater_cmd]]
 == Assigning Material Properties to the Mug Using the `mater` Command
 
-Assigning material properties to a region can be done with either the mater or shader command.
-The program will respond with a series of questions.
-These concern the various parameters of the shader you select to use in rendering the object. 
+Assigning material properties to a region can be done with either the
+mater or shader command.  The program will respond with a series of
+questions.  These concern the various parameters of the shader you
+select to use in rendering the object.
 
-The most commonly used shader is the plastic shader, which uses a Phong lighting model.
-Select the plastic shader and set the color to a medium shade of green.
-The dialog in the Command Window should appear as follows: ` mater mug.r[Enter]`
+The most commonly used shader is the plastic shader, which uses a
+Phong lighting model.  Select the plastic shader and set the color to
+a medium shade of green.  The dialog in the Command Window should
+appear as follows: ` mater mug.r[Enter]`
 
 ....
 
@@ -32,8 +35,9 @@ The dialog in the Command Window should appear as follows: ` mater mug.r[Enter]`
    Should this object's shader override lower nodes? ('.' to skip) 0[Enter]
 ....
 
-Enter the appropriate information that is shown in bold font.
-If you want to use the streamlined version, type: `mater mug.r plastic 32 128 32 0[Enter]`
+Enter the appropriate information that is shown in bold font.  If you
+want to use the streamlined version, type: `mater mug.r plastic 32 128
+32 0[Enter]`
 
 Diagrammed, this command says: 
 
@@ -55,14 +59,17 @@ Diagrammed, this command says:
 
 [NOTE]
 ====
-Inheritance is an advanced topic beyond the scope of the present discussion. 
+Inheritance is an advanced topic beyond the scope of the present
+discussion.
 ====
 
 [[_mug_raytrace1]]
 == Raytracing the Mug
 
-Open the Raytrace Control Panel and select Raytrace.
-You should get an image of a green mug on a dark background (we use a white background here to save printing ink). If your mug is not green, you probably need to redraw your wireframe before raytracing. 
+Open the Raytrace Control Panel and select Raytrace.  You should get
+an image of a green mug on a dark background (we use a white
+background here to save printing ink). If your mug is not green, you
+probably need to redraw your wireframe before raytracing.
 
 .Raytraced Mug Without Rim
 image::mged/11_mug_raytraced_norim.png[]
@@ -71,13 +78,14 @@ image::mged/11_mug_raytraced_norim.png[]
 [[_mug_refining]]
 == Refining the Mug
 
-Now let's improve the cup.
-Notice that the lip of the cup looks a little too squared off.
-To fix this, you will need to add a rounded top to the lip.
-You can do this by positioning a circular torus shape exactly at the top of the cup.
-Then you can add it to the combination body.c. 
+Now let's improve the cup.  Notice that the lip of the cup looks a
+little too squared off.  To fix this, you will need to add a rounded
+top to the lip.  You can do this by positioning a circular torus shape
+exactly at the top of the cup.  Then you can add it to the combination
+body.c.
 
-At the [app]``MGED`` prompt, type: `in  rim.s tor 0 0 3.5 0 0 1 1.625 0.125[Enter]`
+At the [app]``MGED`` prompt, type: `in rim.s tor 0 0 3.5 0 0 1 1.625
+0.125[Enter]`
 
 [cols="1,1,1,1,1,1,1"]
 |===
@@ -102,29 +110,31 @@ At the [app]``MGED`` prompt, type: `in  rim.s tor 0 0 3.5 0 0 1 1.625 0.125[Ente
 [[_mug_torus_cup_combine]]
 == Combining the Shapes
 
-To combine the torus with the cup, you will need to type at the prompt: `comb body.c u rim.s[Enter]`
+To combine the torus with the cup, you will need to type at the
+prompt: `comb body.c u rim.s[Enter]`
 
-Now you are faced with a unique situation.
-The shape rim.s was added to the list of objects being displayed when it was created.
-However, now it is also a part of mug.r (via body.c). If you raytrace the current view, you will have two copies of this shape.
-The raytracer will complain that they overlap. 
+Now you are faced with a unique situation.  The shape rim.s was added
+to the list of objects being displayed when it was created.  However,
+now it is also a part of mug.r (via body.c). If you raytrace the
+current view, you will have two copies of this shape.  The raytracer
+will complain that they overlap.
 
-One way to fix this is to clear the display, redisplay the new, complete object, and then raytrace.
-As discussed previously, the fbclear  command in the Raytrace Control Panel clears the framebuffer display, and the Z command in the Command Window clears all wireframed objects.
-You can redisplay the objects you want to raytrace with the draw command.
-Type at the prompt: `Z[Enter]```draw mug.r[Enter]``
+One way to fix this is to clear the display, redisplay the new,
+complete object, and then raytrace.  As discussed previously, the
+fbclear command in the Raytrace Control Panel clears the framebuffer
+display, and the Z command in the Command Window clears all wireframed
+objects.  You can redisplay the objects you want to raytrace with the
+draw command.  Type at the prompt: `Z[Enter]```draw mug.r[Enter]``
 
-Raytrace your mug.
-It should now look similar to the following. 
+Raytrace your mug.  It should now look similar to the following.
 
 .The Mug Made Through the Command Line
 image::mged/11_mug_raytraced_rim.png[]
 
-
 [[_refining_mug_review]]
 == Review
 
-In this chapter, you: 
+In this chapter, you:
 
 * Assigned material properties to the mug using the mater command.
 * Refined the mug by smoothing the lip.
