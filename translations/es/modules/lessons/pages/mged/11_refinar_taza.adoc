@@ -1,23 +1,30 @@
 = 11. Refinando el modelo de la taza
 :sectnums:
 
-En este tutorial usted aprenderá a: 
+En este tutorial usted aprenderá a:
 
-* Asignar propiedades de los materiales a la taza utilizando el comando mater.
+* Asignar propiedades de los materiales a la taza utilizando el
+  comando mater.
 * Refinar la taza.
 * Combinar las figuras.
 
-En este capítulo, vamos a refinar la taza que usted hizo en el tutorial anterior.
+En este capítulo, vamos a refinar la taza que usted hizo en el
+tutorial anterior.
 Abra la base de datos creada anteriormente llamada mug.g. 
 
 [[_mug_mater_prop_mater_cmd]]
 == Asignando propiedades de los materiales a la taza utilizando elcomando `mater`
 
-La asignación de propiedades de los materiales a una región se puede hacer ya sea con el comando mater (materia) o con el comando shader (sombreado). El programa responderá con una serie de preguntas referidas a los distintos parámetros del sombreado. 
+La asignación de propiedades de los materiales a una región se puede
+hacer ya sea con el comando mater (materia) o con el comando shader
+(sombreado). El programa responderá con una serie de preguntas
+referidas a los distintos parámetros del sombreado.
 
-El sombreado más comunmente utilizado es el de plástico, que utiliza el modelo de sombreado de Phong.
-Seleccione el sombreado de plástico y establezca el color en un tono medio de sombreado verde.
-El diálogo en la ventana de comandos debería similar al siguiente: ` mater mug.r[Enter]`
+El sombreado más comunmente utilizado es el de plástico, que utiliza
+el modelo de sombreado de Phong.  Seleccione el sombreado de plástico
+y establezca el color en un tono medio de sombreado verde.  El diálogo
+en la ventana de comandos debería similar al siguiente: ` mater
+mug.r[Enter]`
 
 ....
 
@@ -36,10 +43,14 @@ El diálogo en la ventana de comandos debería similar al siguiente: ` mater mug
 	   Inheritance (0|1)? (CR to skip) 0[Enter]
 ....
 
-Nota: El sombreado de Phong es una técnica de sombreado para imágenes 3D generadas por ordenador en el que el brillo general de las superficies se divide en tres componentes: luz ambiente (constante), luz difusa y reflejos especulares. 
+Nota: El sombreado de Phong es una técnica de sombreado para imágenes
+3D generadas por ordenador en el que el brillo general de las
+superficies se divide en tres componentes: luz ambiente (constante),
+luz difusa y reflejos especulares.
 
-Ingrese la información apropiada que se muestra en negrita.
-Si desea utilizar el comando de una sola línea, tipee: `mater mug.r plastic 32 128 32 0[Enter]`
+Ingrese la información apropiada que se muestra en negrita.  Si desea
+utilizar el comando de una sola línea, tipee: `mater mug.r plastic 32
+128 32 0[Enter]`
 
 El diagrama de este comando es: 
 
@@ -61,14 +72,18 @@ El diagrama de este comando es:
 
 [NOTE]
 ====
-Herencia (Inheritance) es un tema más avanzado que no se verá en este tutorial. 
+Herencia (Inheritance) es un tema más avanzado que no se verá en este
+tutorial.
 ====
 
 [[_mug_raytrace1]]
 == Realizando el trazado de rayos de su taza (Raytrace)
 
-Abra el Panel de control de Raytrace y seleccione Raytrace.
-Usted debe obtener una imagen de una taza verde sobre un fondo oscuro (se utiliza un fondo blanco aquí para ahorrar tinta de impresión). Si su taza no es verde, probablemente necesite redibujarla en modo de malla de alambre (wireframe) antes de aplicar el Raytrace. 
+Abra el Panel de control de Raytrace y seleccione Raytrace.  Usted
+debe obtener una imagen de una taza verde sobre un fondo oscuro (se
+utiliza un fondo blanco aquí para ahorrar tinta de impresión). Si su
+taza no es verde, probablemente necesite redibujarla en modo de malla
+de alambre (wireframe) antes de aplicar el Raytrace.
 
 .Realizando el trazado de rayos (Raytrace) de su taza de boca
 image::mged/11_mug_raytraced_norim.png[]
@@ -77,12 +92,14 @@ image::mged/11_mug_raytraced_norim.png[]
 [[_mug_refining]]
 == Refinando la taza
 
-Ahora vamos a mejorar la taza.
-Observe que el borde de la taza se ve un poco angulado.
-Para solucionar este problema, tendrá que añadir un borde redondeado arriba del filo de la boca.
-Usted puede hacer esto colocando una forma de toro circular exactamente en la parte superior de la taza y añadirlo a la combinación body.c. 
+Ahora vamos a mejorar la taza.  Observe que el borde de la taza se ve
+un poco angulado.  Para solucionar este problema, tendrá que añadir un
+borde redondeado arriba del filo de la boca.  Usted puede hacer esto
+colocando una forma de toro circular exactamente en la parte superior
+de la taza y añadirlo a la combinación body.c.
 
-En el prompt de [app]``MGED`` tipee: `in  rim.s tor 0 0 3.5 0 0 1 1.625 0.125[Enter]`
+En el prompt de [app]``MGED`` tipee: `in rim.s tor 0 0 3.5 0 0 1 1.625
+0.125[Enter]`
 
 [cols="1,1,1,1,1,1,1"]
 |===
@@ -107,19 +124,26 @@ En el prompt de [app]``MGED`` tipee: `in  rim.s tor 0 0 3.5 0 0 1 1.625 0.125[En
 [[_mug_torus_cup_combine]]
 == Combinando las figuras
 
-Para combinar el toro con la taza, necesitará tipear en el prompt: `comb body.c u rim.s[Enter]`
+Para combinar el toro con la taza, necesitará tipear en el prompt:
+`comb body.c u rim.s[Enter]`
 
-Ahora se enfrenta a una situación única.
-La forma rim.s ha sido añadida a la lista de objetos que se muestra cuando fue creada.
-Sin embargo, ahora es también una parte de mug.r (a través de body.c). Si realiza el Raytrace de la vista actual tendrá dos copias de esta forma y el trazador de rayos se quejará de que se solapan. 
+Ahora se enfrenta a una situación única.  La forma rim.s ha sido
+añadida a la lista de objetos que se muestra cuando fue creada.  Sin
+embargo, ahora es también una parte de mug.r (a través de body.c). Si
+realiza el Raytrace de la vista actual tendrá dos copias de esta forma
+y el trazador de rayos se quejará de que se solapan.
 
-Una forma de solucionar esto es limpiar la pantalla, volver a mostrar de nuevo el objeto completo y, a continuación, realizar el trazado de rayos.
-Como se ha dicho previamente, el comando fbclear en el panel de control de Raytrace limpia la pantalla de framebuffer, y el comando Z de la ventana de comandos borra todos los objetos mostrados en modo framebuffer.
-Usted puede volver a mostrar los objetos como trazado de rayos con el comando draw.
-Tipee en el prompt: `Z[Enter]```draw mug.r[Enter]``
+Una forma de solucionar esto es limpiar la pantalla, volver a mostrar
+de nuevo el objeto completo y, a continuación, realizar el trazado de
+rayos.  Como se ha dicho previamente, el comando fbclear en el panel
+de control de Raytrace limpia la pantalla de framebuffer, y el comando
+Z de la ventana de comandos borra todos los objetos mostrados en modo
+framebuffer.  Usted puede volver a mostrar los objetos como trazado de
+rayos con el comando draw.  Tipee en el prompt: `Z[Enter]```draw
+mug.r[Enter]``
 
-Realiza el Raytrace de su taza.
-Ésta podría verse similar a la siguiente imagen: 
+Realiza el Raytrace de su taza.  Ésta podría verse similar a la
+siguiente imagen:
 
 .La taza hecha mediante l&#xED;nea de comandos.
 image::mged/11_mug_raytraced_rim.png[]
@@ -128,8 +152,9 @@ image::mged/11_mug_raytraced_rim.png[]
 [[_refining_mug_review]]
 == Repasemos...
 
-En este tutorial usted aprendió a: 
+En este tutorial usted aprendió a:
 
-* Asignar propiedades de los materiales a la taza utilizando el comando mater.
+* Asignar propiedades de los materiales a la taza utilizando el
+  comando mater.
 * Refinar la taza.
 * Combinar las figuras.
