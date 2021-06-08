@@ -6,150 +6,213 @@
 :experimental:
 :sourcedir: .
 
-BRL-CAD has thousands of distinct features that have been developed over a number of decades.
-One strength of a solid modeling system with integrated high-performance rendering is the ability to showcase some of those features graphically. 
+BRL-CAD has thousands of distinct features that have been developed
+over a number of decades.  One strength of a solid modeling system
+with integrated high-performance rendering is the ability to showcase
+some of those features graphically.
 
-Let's take a quick look at just some of the high-level features provided by BRL-CAD. 
+Let's take a quick look at just some of the high-level features
+provided by BRL-CAD.
 
 == Solid Geometry
 
-
 image::hacking_brlcad_tracked_mine.png[]
 
-BRL-CAD focuses on solid modeling CAD.
-Solid modeling is distinguished from other forms of geometric modeling by an emphasis on being physically accurate, fully describing 3D space.
-Shown is a 3D model of a Goliath tracked mine, a German-engineered remote controlled vehicle used during World War II.
-This model was created by students new to BRL-CAD in the span of about 2 weeks, starting from actual measurements in a museum. 
+BRL-CAD focuses on solid modeling CAD.  Solid modeling is
+distinguished from other forms of geometric modeling by an emphasis on
+being physically accurate, fully describing 3D space.  Shown is a 3D
+model of a Goliath tracked mine, a German-engineered remote controlled
+vehicle used during World War II.  This model was created by students
+new to BRL-CAD in the span of about 2 weeks, starting from actual
+measurements in a museum.
 
 == Raytracing
 
-
 image::hacking_brlcad_bearing_cc.png[]
 
-Raytracing is central to BRL-CAD as a means for performing geometric analysis (e.g., calculating weights and moments of inertia) and for rendering images for visualization purposes.
-The image shown is a BRL-CAD 2D framebuffer screenshot displaying the rendering of a ball bearing.
-The bearing is modeled with a material appearance resembling acrylic glass, and this raytracing result shows reflection, refraction, shadowing, and some caustic effects. 
+Raytracing is central to BRL-CAD as a means for performing geometric
+analysis (e.g., calculating weights and moments of inertia) and for
+rendering images for visualization purposes.  The image shown is a
+BRL-CAD 2D framebuffer screenshot displaying the rendering of a ball
+bearing.  The bearing is modeled with a material appearance resembling
+acrylic glass, and this raytracing result shows reflection,
+refraction, shadowing, and some caustic effects.
 
 == Geometry Conversion
 
-
 image::hacking_brlcad_cubit.png[]
 
-As shown, a BRL-CAD target description can be converted to a finite element mesh (FEM) using the BRL-CAD g-sat exporter and Cubit from Sandia National Laboratories. 
+As shown, a BRL-CAD target description can be converted to a finite
+element mesh (FEM) using the BRL-CAD g-sat exporter and Cubit from
+Sandia National Laboratories.
 
-This screenshot shows a model imported from the Rhino3D 3DM file format into BRL-CAD as NURBS boundary representation geometry, visualized via OpenGL. 
+This screenshot shows a model imported from the Rhino3D 3DM file
+format into BRL-CAD as NURBS boundary representation geometry,
+visualized via OpenGL.
 
 == Procedural Geometry
 
-
 image::hacking_brlcad_sflake2_cc.png[]
 
-BRL-CAD provides a comprehensive procedural geometry interface as a means for creating models algorithmically instead of manually.
-This screenshot shows a classic "Sphere Flake" model with five levels of recursion, specular reflections, multiple light sources, environment mapping, checkered texture synthesis, ambient occlusion, and soft shadows. 
+BRL-CAD provides a comprehensive procedural geometry interface as a
+means for creating models algorithmically instead of manually.  This
+screenshot shows a classic "Sphere Flake" model with five levels of
+recursion, specular reflections, multiple light sources, environment
+mapping, checkered texture synthesis, ambient occlusion, and soft
+shadows.
 
 == Boundary Representation
 
-
 image::hacking_brlcad_teapot.png[]
 
-Boundary representation NURBS surface geometry is one of the dominant geometric representation formats in CAD.
-BRL-CAD is one of the few 3D solid modeling systems that not only support geometry in boundary representation NURBS format but also provide extensive support for robust solid ray tracing of NURBS geometry.
-The image shown is the classic computer graphics Utah teapot model prepared for 3D printing and rendered via BRL-CAD ray tracing. 
+Boundary representation NURBS surface geometry is one of the dominant
+geometric representation formats in CAD.  BRL-CAD is one of the few 3D
+solid modeling systems that not only support geometry in boundary
+representation NURBS format but also provide extensive support for
+robust solid ray tracing of NURBS geometry.  The image shown is the
+classic computer graphics Utah teapot model prepared for 3D printing
+and rendered via BRL-CAD ray tracing.
 
 == Path Tracing
 
-
 image::hacking_brlcad_stryker_slat.png[]
 
-Representing more than 8 trillion rays fired at this 11-million-polygon scene (amounting to more than 20 million rays per second on 2004 hardware), this figure signifies the path tracing capability of BRL-CAD.
-A full light simulation was computed to generate the image with all exterior and interior vehicle detail, including every nut, bolt, wire, and component inside the vehicle and every leaf and blade of grass modeled as actual geometry (with no textures and no procedural geometry). 
+Representing more than 8 trillion rays fired at this
+11-million-polygon scene (amounting to more than 20 million rays per
+second on 2004 hardware), this figure signifies the path tracing
+capability of BRL-CAD.  A full light simulation was computed to
+generate the image with all exterior and interior vehicle detail,
+including every nut, bolt, wire, and component inside the vehicle and
+every leaf and blade of grass modeled as actual geometry (with no
+textures and no procedural geometry).
 
 == Constructive Solid Geometry (CSG)
 
-
 image::hacking_brlcad_M1A1_9x10_300dpi_cc.png[]
 
-While now a fully hybrid modeling system, BRL-CAD has its roots in CSG modeling with implicit primitives.
-This image, provided courtesy of GSI Solutions, Inc., depicts a detailed M1A1 tank on a pedestal in a mirrored showcase room.
-The model is entirely constructed from implicit primitives and CSG boolean operations. 
-
+While now a fully hybrid modeling system, BRL-CAD has its roots in CSG
+modeling with implicit primitives.  This image, provided courtesy of
+GSI Solutions, Inc., depicts a detailed M1A1 tank on a pedestal in a
+mirrored showcase room.  The model is entirely constructed from
+implicit primitives and CSG boolean operations.
 
 image::hacking_brlcad_csg.png[]
 
-
 == Hidden Line Rendering
-
 
 image::hacking_brlcad_havoc_c.png[]
 
-
-
 image::hacking_brlcad_havoc_views_c.png[]
 
-This raytrace image is a multiple-view hidden line rendering of an Mi28 Havoc Russian attack helicopter using BRL-CAD's rtedge utility.
-The model is entirely composed of implicit primitives combined together with CSG boolean operations. 
+This raytrace image is a multiple-view hidden line rendering of an
+Mi28 Havoc Russian attack helicopter using BRL-CAD's rtedge utility.
+The model is entirely composed of implicit primitives combined
+together with CSG boolean operations.
 
 == Scripting Interface
 
-
 image::hacking_brlcad_Sgi_cube_cc.png[]
 
-BRL-CAD can run series of commands piped in or redirected to it via standard input, and it is considerably more efficient to batch multiple BRL-CAD commands together via standard input instead of re-invoking BRL-CAD for each command.
-The image demonstrates the output of a shell script that uses BRL-CAD tools to procedurally create and render the SGI Cube.
-For more information, go to http://brlcad.org/wiki/SGI_Cube. 
+BRL-CAD can run series of commands piped in or redirected to it via
+standard input, and it is considerably more efficient to batch
+multiple BRL-CAD commands together via standard input instead of
+re-invoking BRL-CAD for each command.  The image demonstrates the
+output of a shell script that uses BRL-CAD tools to procedurally
+create and render the SGI Cube.  For more information, go to
+http://brlcad.org/wiki/SGI_Cube.
 
 == More Cowbell
 
-Not all of BRL-CAD's capabilities lend themselves well to pretty pictures, but some are definitely worth mentioning.
-Among the thousands of features in BRL-CAD, here are some additional capabilities that are central to our project ethos. 
+Not all of BRL-CAD's capabilities lend themselves well to pretty
+pictures, but some are definitely worth mentioning.  Among the
+thousands of features in BRL-CAD, here are some additional
+capabilities that are central to our project ethos.
 
 === Geometric Analysis
 
-A particular strength of the BRL-CAD software lies in its ability to build and analyze realistic models of complex objects.
-There are a number of features aimed at inspecting, preparing, verifying, and validating geometry models.
-Single-ray sampling can be used for measuring thicknesses or distances, and certain 3D analyses are possible (such as calculating volume, centroids, and moments of inertia). BRL-CAD also has numerous facilities for detecting and resolving assembly or part interferences where two objects spatially overlap each other. 
+A particular strength of the BRL-CAD software lies in its ability to
+build and analyze realistic models of complex objects.  There are a
+number of features aimed at inspecting, preparing, verifying, and
+validating geometry models.  Single-ray sampling can be used for
+measuring thicknesses or distances, and certain 3D analyses are
+possible (such as calculating volume, centroids, and moments of
+inertia). BRL-CAD also has numerous facilities for detecting and
+resolving assembly or part interferences where two objects spatially
+overlap each other.
 
 === High-Performance Design
 
 BRL-CAD is designed from the ground up with performance in mind.
-Considerable attention has been put into in-memory and on-disk data storage efficiency.
-BRL-CAD is capable of handling complex geometry models that are often impossible to open with other systems without changing hardware requirements.
-BRL-CAD's ray tracing infrastructure is one of the fastest in the world for implicit geometry representations and is continually seeking performance advancements for other explicit representation types, such as polygonal mesh geometry and NURBS surface models.
-BRL-CAD's distributed ray tracing support is recognized as the world's first "real-time" ray tracing implementation, achieving several frames per second in the 1980s. 
+Considerable attention has been put into in-memory and on-disk data
+storage efficiency.  BRL-CAD is capable of handling complex geometry
+models that are often impossible to open with other systems without
+changing hardware requirements.  BRL-CAD's ray tracing infrastructure
+is one of the fastest in the world for implicit geometry
+representations and is continually seeking performance advancements
+for other explicit representation types, such as polygonal mesh
+geometry and NURBS surface models.  BRL-CAD's distributed ray tracing
+support is recognized as the world's first "real-time" ray tracing
+implementation, achieving several frames per second in the 1980s.
 
 === Symmetric Multi-Processing
 
-BRL-CAD efficiently leverages symmetric multi-processing (SMP) capabilities of desktop, server, and supercomputing systems, where an arbitrary number of processing cores can be put to work on a computational task.
-BRL-CAD's ray tracing library is commonly leveraged for performing highly detailed geometric analysis, driving third-party simulations, and producing animations. 
+BRL-CAD efficiently leverages symmetric multi-processing (SMP)
+capabilities of desktop, server, and supercomputing systems, where an
+arbitrary number of processing cores can be put to work on a
+computational task.  BRL-CAD's ray tracing library is commonly
+leveraged for performing highly detailed geometric analysis, driving
+third-party simulations, and producing animations.
 
 === Modular Architecture
 
-As a large software package developed over a relatively long period of time, BRL-CAD has necessarily been designed and evolved with modularity in mind.
-Functionality is implemented across hundreds of application modules, commands, and libraries designed to work together.
-Hundreds of application binaries work together supporting efficient customizable workflows.
-Core geometry editing capabilities are implemented as commands that can be easily extended, replaced, or improved upon.
-All functionality and features are built on top of a core set of libraries that encapsulate common capabilities.
-One of the best ways to get involved is to add a new module or improve an existing one. 
+As a large software package developed over a relatively long period of
+time, BRL-CAD has necessarily been designed and evolved with
+modularity in mind.  Functionality is implemented across hundreds of
+application modules, commands, and libraries designed to work
+together.  Hundreds of application binaries work together supporting
+efficient customizable workflows.  Core geometry editing capabilities
+are implemented as commands that can be easily extended, replaced, or
+improved upon.  All functionality and features are built on top of a
+core set of libraries that encapsulate common capabilities.  One of
+the best ways to get involved is to add a new module or improve an
+existing one.
 
 === Cross-Platform Portability
 
-BRL-CAD has an extensive history of investment in and attention toward cross-platform portability.
-This heritage includes systems such as a DEC VAX-11/780 running 4.3 BSD, DECStations running ULTRIX, Silicon Graphics machines running IRIX, Cray supercomputers running UNICOS, and so much more.
-Today, BRL-CAD's hardware support includes everything from minimal laptops and desktops to gigantic distributed supercomputers.
-And it is commonly run on Linux, Windows, Mac OS X, BSD, Haiku, Solaris, and other desktop operating systems.
-We aim to be "embarrassingly portable." 
+BRL-CAD has an extensive history of investment in and attention toward
+cross-platform portability.  This heritage includes systems such as a
+DEC VAX-11/780 running 4.3 BSD, DECStations running ULTRIX, Silicon
+Graphics machines running IRIX, Cray supercomputers running UNICOS,
+and so much more.  Today, BRL-CAD's hardware support includes
+everything from minimal laptops and desktops to gigantic distributed
+supercomputers.  And it is commonly run on Linux, Windows, Mac OS X,
+BSD, Haiku, Solaris, and other desktop operating systems.  We aim to
+be "embarrassingly portable."
 
 === ISO STEP 10303
 
-STandard for the Exchange of Product Model Data (STEP) is an ISO standard describing a product's full life cycle.
-One small portion of that gigantic standard describes a complex geometry file format that fortunately has been adopted by most commercial CAD systems.
-BRL-CAD is proud to be one of the few open source software systems that is able to read and write STEP geometry files. 
+STandard for the Exchange of Product Model Data (STEP) is an ISO
+standard describing a product's full life cycle.  One small portion of
+that gigantic standard describes a complex geometry file format that
+fortunately has been adopted by most commercial CAD systems.  BRL-CAD
+is proud to be one of the few open source software systems that is
+able to read and write STEP geometry files.
 
 === Performance Benchmark
 
-The BRL-CAD Benchmark provides a practical metric of real-world performance.
-Correlated with a longstanding heritage of providing verifiable and repeatable behavior throughout the package, the Benchmark compares a given compilation's ray tracing performance against the results from one of the very first systems to support BRL-CAD: a VAX 11/780 running BSD.
-The mathematically intensive computations exercise the processing unit, system memory, various levels of data and instruction cache, the operating system, thread concurrency efficiency, data coherency, and compiler optimization capabilities.
-The performance results let you weigh the relative computational strength of a given platform.
-With the right controls in place, the Benchmark can tell you whether a given operating system is more efficient than another, whether a particular compiler really makes a difference, or just how much of an improvement a particular piece of hardware provides.
-We have results tracing back several decades of computing. 
+The BRL-CAD Benchmark provides a practical metric of real-world
+performance.  Correlated with a longstanding heritage of providing
+verifiable and repeatable behavior throughout the package, the
+Benchmark compares a given compilation's ray tracing performance
+against the results from one of the very first systems to support
+BRL-CAD: a VAX 11/780 running BSD.  The mathematically intensive
+computations exercise the processing unit, system memory, various
+levels of data and instruction cache, the operating system, thread
+concurrency efficiency, data coherency, and compiler optimization
+capabilities.  The performance results let you weigh the relative
+computational strength of a given platform.  With the right controls
+in place, the Benchmark can tell you whether a given operating system
+is more efficient than another, whether a particular compiler really
+makes a difference, or just how much of an improvement a particular
+piece of hardware provides.  We have results tracing back several
+decades of computing.

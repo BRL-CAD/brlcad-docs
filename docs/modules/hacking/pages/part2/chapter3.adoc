@@ -6,165 +6,202 @@
 :experimental:
 :sourcedir: .
 
-BRL-CAD consists of more than 1 million lines of source code spanning more than 20 foundation libraries and 400 application modules. 
+BRL-CAD consists of more than 1 million lines of source code spanning
+more than 20 foundation libraries and 400 application modules.
 
-The majority of BRL-CAD is written in highly portable C and C++, with some GUI and scripting components written in Tcl/Tkfootnote:[].
-There is also some support for, and bindings to, other languages available.
-POSIXfootnote:[] shell scripts are used for deployment integration testing.
-BRL-CAD uses the CMakefootnote:[] build system for compilation and unit testing. 
+The majority of BRL-CAD is written in highly portable C and C++, with
+some GUI and scripting components written in Tcl/Tkfootnote:[].  There
+is also some support for, and bindings to, other languages available.
+POSIXfootnote:[] shell scripts are used for deployment integration
+testing.  BRL-CAD uses the CMakefootnote:[] build system for
+compilation and unit testing.
 
 == The Big Picture
 
-The source code and most project data are stored in a Gitfootnote:[] version control system for change tracking and collaborative development.
-Primary development in the "main" branch is generally stable, but cross-platform compilation is not guaranteed.
-A separate branch (named STABLE) provides a higher level of quality assurance.
-Every released version of BRL-CAD is tested and tagged. 
+The source code and most project data are stored in a Gitfootnote:[]
+version control system for change tracking and collaborative
+development.  Primary development in the "main" branch is generally
+stable, but cross-platform compilation is not guaranteed.  A separate
+branch (named STABLE) provides a higher level of quality assurance.
+Every released version of BRL-CAD is tested and tagged.
 
-The project aims for an _It Just Works_ approach to compilation whereby a functional build of BRL-CAD is possible without needing to install more than a compiler, CMake, and a build environment--for example, GNU Make or Microsoft Visual Studio.
-BRL-CAD provides all of the necessary third-party dependencies for download and compilation convenience within source distributions but by default will build using system versions of those dependencies if available. 
+The project aims for an _It Just Works_ approach to compilation
+whereby a functional build of BRL-CAD is possible without needing to
+install more than a compiler, CMake, and a build environment--for
+example, GNU Make or Microsoft Visual Studio.  BRL-CAD provides all of
+the necessary third-party dependencies for download and compilation
+convenience within source distributions but by default will build
+using system versions of those dependencies if available.
 
-As with any large system that has been under development for a number of years, there are vast sections of code that may be unfamiliar, uninteresting, or even daunting.
-Don't panic.
-BRL-CAD has been intentionally designed with layering and modularity in mind. 
+As with any large system that has been under development for a number
+of years, there are vast sections of code that may be unfamiliar,
+uninteresting, or even daunting.  Don't panic.  BRL-CAD has been
+intentionally designed with layering and modularity in mind.
 
-You can generally focus in on the enhancement or change that interests you without being too concerned with other portions of the code.
-You should, however, do some basic research to make sure what you plan to contribute isn't already in the BRL-CAD code base. 
+You can generally focus in on the enhancement or change that interests
+you without being too concerned with other portions of the code.  You
+should, however, do some basic research to make sure what you plan to
+contribute isn't already in the BRL-CAD code base.
 
 === History of the Code
 
-As mentioned previously, the initial architecture and design of BRL-CAD began in 1979.
-Development as a unified package began in 1983.
-The first public release was in 1984.
-And on December 21, 2004, BRL-CAD became an open source projectfootnote:[]. 
+As mentioned previously, the initial architecture and design of
+BRL-CAD began in 1979.  Development as a unified package began in
+1983.  The first public release was in 1984.  And on December 21,
+2004, BRL-CAD became an open source projectfootnote:[].
 
-BRL-CAD is a mature code base that has remained active over decades due to continual attention on design and maintainability.
-Since the project's inception, more than 200 people have directly contributed to BRL-CAD.
-The project has historically received support from numerous organizations within academia, commercial industry, various government agencies, and from various independent contributors.
-We credit all contributors in BRL-CAD's authorship documentationfootnote:[See the AUTHORS file in a source distribution.]. 
+BRL-CAD is a mature code base that has remained active over decades
+due to continual attention on design and maintainability.  Since the
+project's inception, more than 200 people have directly contributed to
+BRL-CAD.  The project has historically received support from numerous
+organizations within academia, commercial industry, various government
+agencies, and from various independent contributors.  We credit all
+contributors in BRL-CAD's authorship documentationfootnote:[See the
+AUTHORS file in a source distribution.].
 
-The following diagram illustrates how the number of lines of code in BRL-CAD has changed over time: 
+The following diagram illustrates how the number of lines of code in
+BRL-CAD has changed over time:
 
 === System Architecture
 
-BRL-CAD is designed based on a UNIXfootnote:[] methodology of the command-line services, providing many tools that work in harmony to complete a specific task.
-These tools include geometry and image converters, signal and image processing tools, various raytrace applications, geometry manipulators, and much more. 
+BRL-CAD is designed based on a UNIXfootnote:[] methodology of the
+command-line services, providing many tools that work in harmony to
+complete a specific task.  These tools include geometry and image
+converters, signal and image processing tools, various raytrace
+applications, geometry manipulators, and much more.
 
-To support what has grown into a relatively large software system, BRL-CAD takes advantage of a variety of support libraries that encapsulate and simplify application development.
-At the heart of BRL-CAD is a multi-representation ray tracing library named LIBRT.
-BRL-CAD specifies its own file format (files with the extension .g or .asc) for storing information on disk.
-The ray tracing library uses a suite of other libraries for other basic application functionality. 
+To support what has grown into a relatively large software system,
+BRL-CAD takes advantage of a variety of support libraries that
+encapsulate and simplify application development.  At the heart of
+BRL-CAD is a multi-representation ray tracing library named LIBRT.
+BRL-CAD specifies its own file format (files with the extension .g
+or .asc) for storing information on disk.  The ray tracing library
+uses a suite of other libraries for other basic application
+functionality.
 
 === Tenets of Good Software
 
-BRL-CAD's architecture is designed to be as cross-platform and portable as is realistically and reasonably possible.
-As such, BRL-CAD maintains support for many legacy systems and devices provided that maintaining such support is not a significant burden on new development. 
+BRL-CAD's architecture is designed to be as cross-platform and
+portable as is realistically and reasonably possible.  As such,
+BRL-CAD maintains support for many legacy systems and devices provided
+that maintaining such support is not a significant burden on new
+development.
 
-The code adheres to a published change deprecation and obsolescence policyfootnote:[See the CHANGES file in a source distribution.] whereby features that have been made publicly available are not removed without appropriate notification.
-Generally there should be a compelling motivation to remove any existing functionality, but improvements are encouraged. 
+The code adheres to a published change deprecation and obsolescence
+policy footnote:[See the CHANGES file in a source distribution.]
+whereby features that have been made publicly available are not
+removed without appropriate notification.  Generally there should be a
+compelling motivation to remove any existing functionality, but
+improvements are encouraged.
 
-BRL-CAD has a longstanding heritage of maintaining verifiable, validated, and repeatable results in critical portions of the package, particularly in the ray tracing library.
-BRL-CAD includes regression tests that will compare runtime behavior against known results and report any deviations from previous results as failures.
-Considerable attention is put into verification and validation throughout BRL-CAD.
-Incorrect behavior does not need to be preserved simply to maintain consistency, but it is rare to find genuine errors in the baseline testing results.
-So, anyone proposing such a behavior change will have to conclusively demonstrate that the previous result is incorrect. 
+BRL-CAD has a longstanding heritage of maintaining verifiable,
+validated, and repeatable results in critical portions of the package,
+particularly in the ray tracing library.  BRL-CAD includes regression
+tests that will compare runtime behavior against known results and
+report any deviations from previous results as failures.  Considerable
+attention is put into verification and validation throughout BRL-CAD.
+Incorrect behavior does not need to be preserved simply to maintain
+consistency, but it is rare to find genuine errors in the baseline
+testing results.  So, anyone proposing such a behavior change will
+have to conclusively demonstrate that the previous result is
+incorrect.
 
 == Code Layout
 
-The basic layout of BRL-CAD's source code places public API headers in the top-level include directory and source code for both applications and libraries in the src directory.
-The following is a partial listing of how the code is organized in a checkout or source distribution.
-Note that some subdirectories contain a README file with more details on the content in that directory. 
+The basic layout of BRL-CAD's source code places public API headers in
+the top-level include directory and source code for both applications
+and libraries in the src directory.  The following is a partial
+listing of how the code is organized in a checkout or source
+distribution.  Note that some subdirectories contain a README file
+with more details on the content in that directory.
 
 .Applications & Resources
-[path]_db/_::
-Example geometry
 
-[path]_doc/_::
-Project documentation
+[path]_db/_:: Example geometry
 
-[path]_doc/docbook_::
-User documentation in XML format
+[path]_doc/_:: Project documentation
+
+[path]_doc/docbook_:: User documentation in XML format
 +
 See doc/docbook/README for more details
 
-[path]_include/_::
-Public API headers
+[path]_include/_:: Public API headers
 
-[path]_regress/_::
-Scripts and resources for regression testing
+[path]_regress/_:: Scripts and resources for regression testing
 
-[path]_src/_::
-Application and library source code
+[path]_src/_:: Application and library source code
 +
 See src/README for more details
 
-[path]_src/conv/_::
-Geometry converters
+[path]_src/conv/_:: Geometry converters
 
-[path]_src/fb/_::
-Tools for displaying data in windows
+[path]_src/fb/_:: Tools for displaying data in windows
 
-[path]_src/mged/_::
-Main GUI application: Multi-device Geometry EDitor
+[path]_src/mged/_:: Main GUI application: Multi-device Geometry EDitor
 
-[path]_src/other/_::
-3rd party frameworks (Tcl/Tk, libpng, zlib, etc.)
+[path]_src/other/_:: 3rd party frameworks (Tcl/Tk, libpng, zlib, etc.)
 
-[path]_src/proc-db/_::
-Examples on creating models programmatically
+[path]_src/proc-db/_:: Examples on creating models programmatically
 
-[path]_src/rt*/_::
-Ray tracing applications
+[path]_src/rt*/_:: Ray tracing applications
 
-[path]_src/util/_::
-Image processing utilities
+[path]_src/util/_:: Image processing utilities
 
 .Libraries
-[path]_src/libbn/_::
-Numerics library: vector/matrix math, random number generators, polynomial math, root solving, noise functions, and more
 
-[path]_src/libbu_::
-Utility library: string handling, logging, threading, memory management, argument processing, container data structures, and more
+[path]_src/libbn/_:: Numerics library: vector/matrix math, random
+number generators, polynomial math, root solving, noise functions, and
+more
 
-[path]_src/libgcv/_::
-Geometry conversion library for importing or exporting geometry in various formats
+[path]_src/libbu_:: Utility library: string handling, logging,
+threading, memory management, argument processing, container data
+structures, and more
 
-[path]_src/libged/_::
-Geometry editing library containing the majority of our command API
+[path]_src/libgcv/_:: Geometry conversion library for importing or
+exporting geometry in various formats
 
-[path]_src/libicv/_::
-Image conversion library for importing, processing, and exporting image data
+[path]_src/libged/_:: Geometry editing library containing the majority
+of our command API
 
-[path]_src/libpkg/_::
-Network "package" library for basic client-server communication
+[path]_src/libicv/_:: Image conversion library for importing,
+processing, and exporting image data
 
-[path]_src/librt/_::
-Ray tracing library including routines for reading, processing, and writing geometry
+[path]_src/libpkg/_:: Network "package" library for basic
+client-server communication
 
-[path]_src/libwdb/_::
-Simple (write-only) library for creating geometry
+[path]_src/librt/_:: Ray tracing library including routines for
+reading, processing, and writing geometry
 
-[path]_src/lib*/tests/_::
-API Unit tests
+[path]_src/libwdb/_:: Simple (write-only) library for creating
+geometry
+
+[path]_src/lib*/tests/_:: API Unit tests
 
 == Code Conventions
 
-BRL-CAD has a STABLE branch in Git that should always compile and run on all supported platforms.
-The primary development branch trunk, unlike STABLE, is generally expected to compile but may occasionally fail to do so during active development. 
+BRL-CAD has a STABLE branch in Git that should always compile and run
+on all supported platforms.  The primary development branch trunk,
+unlike STABLE, is generally expected to compile but may occasionally
+fail to do so during active development.
 
 === Languages
 
-The majority of BRL-CAD is written in ANSI/POSIX C with the intent of strictly conforming with the C standard.
-The core libraries are all C API, though several--such as the LIBBU and LIBRT libraries--use C++ for implementation details.
-Our C libraries can use C++ for implementation detail, but they cannot expose C++ in the public API. 
+The majority of BRL-CAD is written in ANSI/POSIX C with the intent of
+strictly conforming with the C standard.  The core libraries are all C
+API, though several--such as the LIBBU and LIBRT libraries--use C++
+for implementation details.  Our C libraries can use C\+\+ for
+implementation detail, but they cannot expose C++ in the public API.
 
 Major components of the system are written in the following languages: 
 
 * STEP and NURBS boundary representation support: C++
-* The MGED geometry editor: a combination of C, Tcl/Tk, and Incr Tcl/Tk
-* The BRL-CAD Benchmark, build system, and utility scripts: POSIX-compliant Bourne Shell Script
+* The MGED geometry editor: a combination of C, Tcl/Tk, and Incr
+  Tcl/Tk
+* The BRL-CAD Benchmark, build system, and utility scripts:
+  POSIX-compliant Bourne Shell Script
 * Initial implementation of a BRL-CAD Geometry Server: PHP
 
-Source code files use the following extensions: 
+Source code files use the following extensions:
 
 * C files: .c
 * Header files: .h
@@ -174,37 +211,70 @@ Source code files use the following extensions:
 * POSIX Bourne-style shell scripts: .sh
 * Perl files: .pl (program) or .pm (module)
 
-With release 7.0, BRL-CAD has moved forward and worked toward making all of the software's C code conform strictly with the ANSI/ISO standard for C language compilation (ISO/IEC 9899:1990, or c89). Support for older compilers and older K&R-based system facilities is being migrated to build system declarations or preprocessor defines, or is being removed outright.
-You can, however, make modifications that assume compiler conformance with the ANSI C standard (c89). 
+With release 7.0, BRL-CAD has moved forward and worked toward making
+all of the software's C code conform strictly with the ANSI/ISO
+standard for C language compilation (ISO/IEC 9899:1990, or
+c89). Support for older compilers and older K&R-based system
+facilities is being migrated to build system declarations or
+preprocessor defines, or is being removed outright.  You can, however,
+make modifications that assume compiler conformance with the ANSI C
+standard (c89).
 
 === Coding Style
 
-To ensure consistency, the coherence of the project, and the long-term maintainability of BRL-CAD, we use a defined coding style and conventions that contributors are expected to follow.
-Our coding style is documented in the HACKING file of any source distribution. 
+To ensure consistency, the coherence of the project, and the long-term
+maintainability of BRL-CAD, we use a defined coding style and
+conventions that contributors are expected to follow.  Our coding
+style is documented in the HACKING file of any source distribution.
 
-Our style may not be your preferred style.
-While we welcome discussion, we will always prefer consistency over any personal preference.
-Contributions that do not follow our style will generally be rejected until they do. 
+Our style may not be your preferred style.  While we welcome
+discussion, we will always prefer consistency over any personal
+preference.  Contributions that do not follow our style will generally
+be rejected until they do.
 
 Here are some highlights of our style: 
 
-* Global variables, structures, classes, and other public data containers are discouraged within application code. Do not add any new global variables to existing libraries. Global variables are often a quick solution to some deeper coding problem. However, they carry significant maintenance costs, introduce complexity to the code, make multi-threading support more costly, pollute the public API (symbol-wise at a minimum), increase security risks, are error-prone to use, and usually complicate future efforts to refactor and restructure the code. Using static variables (whether function- or static/file-scoped) is a viable alternative. Restructuring the logic to not be stateful is even better. 
-* Exact floating point comparisons are unreliable without requiring IEEE-compliant floating point math, but BRL-CAD does not require such math for portability and for performance reasons. When floating point comparisons are necessary, use the NEAR_EQUAL and NEAR_ZERO macros with a specified tolerance or the EQUAL and ZERO macros where a tolerance is indeterminate. All the macros are available by including bn.h, part of libbn. 
-* The code should strive to achieve conformance with the GNU coding standard with a few exceptions. One such exception is not using the GNU indentation style, but instead using the BSD KNF indentation style, which is basically the K&R indentation style with character indentation consistent with the file that you're editing. If this is confusing, use spaces to indent and run the sh/ws.sh script to convert spaces to tabs. We value consistency to preserve maintainability. 
+* Global variables, structures, classes, and other public data
+  containers are discouraged within application code. Do not add any
+  new global variables to existing libraries. Global variables are
+  often a quick solution to some deeper coding problem. However, they
+  carry significant maintenance costs, introduce complexity to the
+  code, make multi-threading support more costly, pollute the public
+  API (symbol-wise at a minimum), increase security risks, are
+  error-prone to use, and usually complicate future efforts to
+  refactor and restructure the code. Using static variables (whether
+  function- or static/file-scoped) is a viable
+  alternative. Restructuring the logic to not be stateful is even
+  better.
+* Exact floating point comparisons are unreliable without requiring
+  IEEE-compliant floating point math, but BRL-CAD does not require
+  such math for portability and for performance reasons. When floating
+  point comparisons are necessary, use the NEAR_EQUAL and NEAR_ZERO
+  macros with a specified tolerance or the EQUAL and ZERO macros where
+  a tolerance is indeterminate. All the macros are available by
+  including bn.h, part of libbn.
+* The code should strive to achieve conformance with the GNU coding
+  standard with a few exceptions. One such exception is not using the
+  GNU indentation style, but instead using the BSD KNF indentation
+  style, which is basically the K&R indentation style with character
+  indentation consistent with the file that you're editing. If this is
+  confusing, use spaces to indent and run the sh/ws.sh script to
+  convert spaces to tabs. We value consistency to preserve
+  maintainability.
 * Stylistic whitespace 
 +
-** No space immediately inside parentheses. 
+** No space immediately inside parentheses.
 +
-[source]
+[source,c]
 ----
 
 while (1) { ...                   /* ok */
 for (i = 0; i &lt; max; i++) { ...   /* ok */
 while ( max ) { ...               /* discouraged */
 ----
-** Commas and semicolons are followed by whitespace. 
+** Commas and semicolons are followed by whitespace.
 +
-[source]
+[source,c]
 ----
 
 int main(int argc, char *argv[]); /* ok */
@@ -212,15 +282,16 @@ for (i = 0; i &lt; max; i++) { ...   /* ok */
 ----
 ** No space on arrow operators. 
 +
-[source]
+[source,c]
 ----
 
 structure->member = 5;            /* ok */
 structure -> member = 5;          /* bad */
 ----
-** Native language statements (if, while, for, switch, and return) have a separating space; functions do not. 
+** Native language statements (if, while, for, switch, and return)
+   have a separating space; functions do not.
 +
-[source]
+[source,c]
 ----
 
 int my_function(int i);           /* ok, no space */
@@ -228,9 +299,9 @@ while (argc--) ...                /* ok, has space */
 if( var == val )                  /* discouraged */
 switch(foo) ...                   /* discouraged */
 ----
-** Comments should have an interior space and be without tabs. 
+** Comments should have an interior space and be without tabs.
 +
-[source]
+[source,c]
 ----
 
 /** good single-line doxygen */
@@ -245,18 +316,23 @@ switch(foo) ...                   /* discouraged */
 ----
 * Naming symbols 
 +
-** Variable and public API function names should almost always begin with a lowercase letter. 
+** Variable and public API function names should almost always begin
+   with a lowercase letter.
 +
-[source]
+[source,c]
 ----
 
 double localVariable; /* ok */
 double LocalVariable; /* bad (looks like class or    constructor) */
 double _localVar;     /* bad (looks like member variable)      */
 ----
-** Do not use Hungarian notation or its variations to show the type of a variable. An exception can be made for pointers on occasion. The name should be concise and meaningful--typing a descriptive name is preferred to someone spending time trying to learn what the name of the variable means. 
+** Do not use Hungarian notation or its variations to show the type of
+   a variable. An exception can be made for pointers on occasion. The
+   name should be concise and meaningful--typing a descriptive name is
+   preferred to someone spending time trying to learn what the name of
+   the variable means.
 +
-[source]
+[source,c]
 ----
 
 char *name;    /* ok  */
@@ -264,26 +340,37 @@ char *pName;   /* discouraged for new code, but okay */
 char *fooPtr;  /* bad */
 char *lpszFoo; /* bad */
 ----
-** Constants should be all upper-case with word boundaries optionally separated by underscores. 
+** Constants should be all upper-case with word boundaries optionally
+   separated by underscores.
 +
-[source]
+[source,c]
 ----
 
 static const int MAX_READ = 2;  /* ok  */
 static const int arraySize = 8; /* bad */
 ----
-** Public API (global) function names should be in lowercase with underscores to separate words. Most functions within the core libraries are named with the following convention: [library]_[group]_[action] 
+** Public API (global) function names should be in lowercase with
+   underscores to separate words. Most functions within the core
+   libraries are named with the following convention:
+   [library]_[group]_[action]
 +
-[source]
+[source,c]
 ----
 
 bu_vls_strcat()
 bn_mat_transpose()
 ----
-** Naming exceptions are allowed where the API intentionally mirrors some other familiar programming construct--for example, bu_malloc()+bu_free())--but be as consistent as possible within a file and across a library's API. 
-* BRL-CAD uses The One True Brace Style from BSD KNF and K&Rfootnote:[]. Opening braces should be on the same line as their statement; closing braces should line up with that same statement. Functions, however, are treated specially, and we place their opening braces on separate lines. 
+** Naming exceptions are allowed where the API intentionally mirrors
+   some other familiar programming construct--for example,
+   bu_malloc()+bu_free())--but be as consistent as possible within a
+   file and across a library's API.
+* BRL-CAD uses The One True Brace Style from BSD KNF and
+  K&Rfootnote:[]. Opening braces should be on the same line as their
+  statement; closing braces should line up with that same
+  statement. Functions, however, are treated specially, and we place
+  their opening braces on separate lines.
 +
-[source]
+[source,c]
 ----
 
 static int

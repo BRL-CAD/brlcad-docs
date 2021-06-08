@@ -6,42 +6,59 @@
 :experimental:
 :sourcedir: .
 
-BRL-CAD provides documentation in the following formats: 
+BRL-CAD provides documentation in the following formats:
 
 * UNIX man pages.
 * HyperText Markup Language (HTML) for the web.
 * PDF for documents needing a well-defined, consistent appearance.
 
-Our challenge is to maintain BRL-CAD's documentation in multiple formats.
-It is difficult enough to keep software documentation up to date without needing to update multiple documents using different formats that contain the same information.
-As well, it is not possible to supply documentation in a single format that works optimally on all platforms.
-For example, while UNIX man pages are standard across all UNIX and UNIX-like systems, most Windows systems will not understand that format and will require HTML versions of those documents. 
+Our challenge is to maintain BRL-CAD's documentation in multiple
+formats.  It is difficult enough to keep software documentation up to
+date without needing to update multiple documents using different
+formats that contain the same information.  As well, it is not
+possible to supply documentation in a single format that works
+optimally on all platforms.  For example, while UNIX man pages are
+standard across all UNIX and UNIX-like systems, most Windows systems
+will not understand that format and will require HTML versions of
+those documents.
 
-Instead of using a mix of formats and tools, BRL-CAD uses the DocBook documentation format and toolchain to produce documentation in the range of required formats. 
+Instead of using a mix of formats and tools, BRL-CAD uses the DocBook
+documentation format and toolchain to produce documentation in the
+range of required formats.
 
 == What is DocBook?
 
-DocBook is a schema (a structured approach to organization of information) that uses the eXtensible Markup Language standard (XML) as its fundamental framework and builds atop that framework a vocabulary for describing the content and structure of technical documentation.
-BRL-CAD uses the DocBook 5.0 documentation format to describe its documentation.
-For detailed documentation for DocBook 5.0, see http://www.docbook.org/tdg5/en/html/docbook.html. 
+DocBook is a schema (a structured approach to organization of
+information) that uses the eXtensible Markup Language standard (XML)
+as its fundamental framework and builds atop that framework a
+vocabulary for describing the content and structure of technical
+documentation.  BRL-CAD uses the DocBook 5.0 documentation format to
+describe its documentation.  For detailed documentation for DocBook
+5.0, see http://www.docbook.org/tdg5/en/html/docbook.html.
 
 == Tools for Working with DocBook
 
-While you can write documentation in DocBook using WYSIWYG (What You See Is What You Get) editors, we require that a document saved to DocBook from an editing tool should be inspected for human readability and, if necessary, reformatted for simplicity. 
+While you can write documentation in DocBook using WYSIWYG (What You
+See Is What You Get) editors, we require that a document saved to
+DocBook from an editing tool should be inspected for human readability
+and, if necessary, reformatted for simplicity.
 
-If you are comfortable with working with DocBook XML directly, we recommend that you use the Emacs editor and its nXML module.
-nXML can automatically recognize and highlight mistakes in the structure of a document while you are editing.
-The following image illustrates nXML identifying an incorrect closing tag for an informal figure object: 
-
+If you are comfortable with working with DocBook XML directly, we
+recommend that you use the Emacs editor and its nXML module.  nXML can
+automatically recognize and highlight mistakes in the structure of a
+document while you are editing.  The following image illustrates nXML
+identifying an incorrect closing tag for an informal figure object:
 
 image::hacking_brlcad_emacs-nxml.png[]
 
-Aside from error checking tools like nXML, the ability to pinpoint errors in a document's formatting is built into the BRL-CAD compilation process.
-That process uses a tool called xmllint to report incorrect formatting.
-When, for example, the error illustrated in the image above is encountered during BRL-CAD's build, xmllint produces the following error: 
+Aside from error checking tools like nXML, the ability to pinpoint
+errors in a document's formatting is built into the BRL-CAD
+compilation process.  That process uses a tool called xmllint to
+report incorrect formatting.  When, for example, the error illustrated
+in the image above is encountered during BRL-CAD's build, xmllint
+produces the following error:
 
 ----
-
 [40%] Validating DocBook source with xmllint:
 /home/user/brlcad/doc/docbook/articles/en/tire.xml:65: parser error : Opening and ending tag mismatch: informalfigure line 54 and informafigure
 </informafigure>
@@ -50,51 +67,77 @@ CMake Error at tire_validate.cmake:39 (message):
 xmllint failure: 1
 ----
 
-In this case, the error is reasonably informative.
-However, xmllint is not the only tool available for this sort of error checking.
-You can specify the following validation tools when you configure your environment: 
+In this case, the error is reasonably informative.  However, xmllint
+is not the only tool available for this sort of error checking.  You
+can specify the following validation tools when you configure your
+environment:
 
-* Oracle Multi-Schema XML Validator (https://msv.java.net)  - specified as `msv` on the command line.
-* oNVDL (http://sourceforge.net/projects/onvdl) - specified as `nvld` on the command line.
-* Relax NG Validator (rnv) (http://sourceforge.net/projects/rnv) - specified as `rsv` on the command line.
+* Oracle Multi-Schema XML Validator (https://msv.java.net) - specified
+  as `msv` on the command line.
+* oNVDL (http://sourceforge.net/projects/onvdl) - specified as `nvld`
+  on the command line.
+* Relax NG Validator (rnv) (http://sourceforge.net/projects/rnv) -
+  specified as `rsv` on the command line.
 
-Note that these alternative validation tools must be installed on the system on which you are working; they are not provided with BRL-CAD.
+Note that these alternative validation tools must be installed on the
+system on which you are working; they are not provided with BRL-CAD.
 To specify an alternative tool, use the VALIDATE_EXECUTABLE option.
-For example, run the following command to use the Oracle Multi-Schema XML Validator: 
+For example, run the following command to use the Oracle Multi-Schema
+XML Validator:
 
-`cmake -DVALIDATE_EXECUTABLE=msv ...`
+[source,bash]
+cmake -DVALIDATE_EXECUTABLE=msv ...
 
-While BRL-CAD provides enough DocBook support to guarantee that HTML files and UNIX man pages are generated, you can only generate PDF documents if the http://xmlgraphics.apache.org/fop[Apache Formatting Objects Processor (FOP)] (http://xmlgraphics.apache.org/fop") is installed on your system.
-When FOP is available, BRL-CAD can automatically produce PDF outputs. 
+While BRL-CAD provides enough DocBook support to guarantee that HTML
+files and UNIX man pages are generated, you can only generate PDF
+documents if the http://xmlgraphics.apache.org/fop[Apache Formatting
+Objects Processor (FOP)] (http://xmlgraphics.apache.org/fop") is
+installed on your system.  When FOP is available, BRL-CAD can
+automatically produce PDF outputs.
 
-For more information, including how to use alternative tools for other DocBook processing steps besides validation, see the file [path]_doc/docbook/README_ in the BRL-CAD source code archive. 
+For more information, including how to use alternative tools for other
+DocBook processing steps besides validation, see the file
+[path]_doc/docbook/README_ in the BRL-CAD source code archive.
 
 == Adding a New Document to BRL-CAD
 
-Because creating and editing DocBook documentation is greatly simplified by BRL-CAD's management of the conversion process, it is usually a good idea to add a new document to the build system at the beginning of the document creation and editing process.
-To do this, copy a template file from the source directories to the file name to be used for the new document. 
+Because creating and editing DocBook documentation is greatly
+simplified by BRL-CAD's management of the conversion process, it is
+usually a good idea to add a new document to the build system at the
+beginning of the document creation and editing process.  To do this,
+copy a template file from the source directories to the file name to
+be used for the new document.
 
-For example, if you are writing a new DocBook article in English about the ellipsoid, use the following command to copy the article template to the filename [path]_ellipsoid.xml_ in the English articles directory: 
+For example, if you are writing a new DocBook article in English about
+the ellipsoid, use the following command to copy the article template
+to the filename [path]_ellipsoid.xml_ in the English articles
+directory:
 
-`cp doc/docbook/articles/en/TEMPLATE.xml doc/docbook/articles/en/ellipsoid.xml`
+[source,bash]
+cp doc/docbook/articles/en/TEMPLATE.xml \
+   doc/docbook/articles/en/ellipsoid.xml
 
-Next, open the file [path]_doc/docbook/articles/en/CMakeLists.txt_ in a text editor.
-Then, add the name of the new document to the file to alert the build system of its existence: 
-
+Next, open the file [path]_doc/docbook/articles/en/CMakeLists.txt_ in
+a text editor.  Then, add the name of the new document to the file to
+alert the build system of its existence:
 
 image::hacking_brlcad_docbook_CMakeLists.png[]
 
-BRL-CAD now knows about the new file and can generate output for it. 
+BRL-CAD now knows about the new file and can generate output for it.
 
-You will generally only want to rebuild a specific output (say, HTML) to confirm that output renders properly.
-To set up the specific targets for the new file, run the command below to refresh the build targets (in this example, the build output directory is called [path]_build_): 
+You will generally only want to rebuild a specific output (say, HTML)
+to confirm that output renders properly.  To set up the specific
+targets for the new file, run the command below to refresh the build
+targets (in this example, the build output directory is called
+[path]_build_):
 
-`cmake ..`
+[source,bash]
+cmake ..
 
-This creates a new build target, ellipsoid_article_html, which will build only the HTML output of the document and its dependencies: 
+This creates a new build target, ellipsoid_article_html, which will
+build only the HTML output of the document and its dependencies:
 
 ----
-
 ~/brlcad/build $ make ellipsoid_article_html
 
 [  0%] Built target printtimestamp
@@ -124,47 +167,66 @@ Scanning dependencies of target ellipsoid_article_html
 ~/brlcad/build $
 ----
 
-This generates a file named [path]_brlcad/build/share/doc/html/articles/en/ellipsoid.html._ Open this document in a web browser to view the HTML output: 
-
+This generates a file named
+[path]_brlcad/build/share/doc/html/articles/en/ellipsoid.html._ Open
+this document in a web browser to view the HTML output:
 
 image::hacking_brlcad_example_docbook_default_output.png[]
 
-Now that all the pieces are in place, you can begin the documentation cycle: 
+Now that all the pieces are in place, you can begin the documentation
+cycle:
 
 . Modify the DocBook XML sources.
-. Build the HTML output. As long as the DocBook file is the only file being changed, you can use the target ellipsoid_article_html/fast to avoid checking the target's dependencies and to speed up the compilation process.
-. Once you have generated the updated HTML file, refresh the page in your web browser to view the changes.
+. Build the HTML output. As long as the DocBook file is the only file
+  being changed, you can use the target ellipsoid_article_html/fast to
+  avoid checking the target's dependencies and to speed up the
+  compilation process.
+. Once you have generated the updated HTML file, refresh the page in
+  your web browser to view the changes.
 
-In the following example, all of the previous elements are combined into a DocBook editing workflow.
-The title of the article was changed from the default (Article Title) to the article's actual title (A Guide to Modeling with the Ellipsoid Primitive), the build target was remade, and the results are seen in a web browser. 
-
+In the following example, all of the previous elements are combined
+into a DocBook editing workflow.  The title of the article was changed
+from the default (Article Title) to the article's actual title (A
+Guide to Modeling with the Ellipsoid Primitive), the build target was
+remade, and the results are seen in a web browser.
 
 image::hacking_brlcad_docbook_working_session.png[]
 
 
 == Adding a Translated Document to BRL-CAD
 
-By and large, adding translations of BRL-CAD documents follows the same process as adding English documents.
-However, you must select the correct subdirectory for the language of the translation. 
+By and large, adding translations of BRL-CAD documents follows the
+same process as adding English documents.  However, you must select
+the correct subdirectory for the language of the translation.
 
-BRL-CAD uses the http://www-01.sil.org/iso639-3/codes.asp[ISO 639-1 language codes] (http://www-01.sil.org/iso639-3/codes.asp) as language-specific subdirectories within the higher-level categories.
-These are two-letter codes that represent the names of languages (for example, `pt` for Portuguese). If a language is not listed in ISO 639-1, use that's language's three-letter code from ISO 639-2 or (if necessary) ISO 639-3 instead. 
+BRL-CAD uses the http://www-01.sil.org/iso639-3/codes.asp[ISO 639-1
+language codes] (http://www-01.sil.org/iso639-3/codes.asp) as
+language-specific subdirectories within the higher-level categories.
+These are two-letter codes that represent the names of languages (for
+example, `pt` for Portuguese). If a language is not listed in ISO
+639-1, use that's language's three-letter code from ISO 639-2 or (if
+necessary) ISO 639-3 instead.
 
-Currently, all translations are manually created and manually maintained.
-If you are working with translated documents, you are not limited to the ASCII character set; you can use Unicode characters in a document.
-The following example is the Armenian translation of the BRL-CAD introduction documentation: 
-
+Currently, all translations are manually created and manually
+maintained.  If you are working with translated documents, you are not
+limited to the ASCII character set; you can use Unicode characters in
+a document.  The following example is the Armenian translation of the
+BRL-CAD introduction documentation:
 
 image::hacking_brlcad_brlcad_intro_hy.png[]
 
 
 == Selecting Output Formats
 
-Although you can produce HTML, UNIX man pages, and PDF files from the DocBook sources, you don't have to produce all of them.
-By default, PDF output is not produced because it takes longer to generate than other formats.
-UNIX man pages are not generated by default for Windows (where they generally are of little use) to avoid wasting configuration and compilation time. 
+Although you can produce HTML, UNIX man pages, and PDF files from the
+DocBook sources, you don't have to produce all of them.  By default,
+PDF output is not produced because it takes longer to generate than
+other formats.  UNIX man pages are not generated by default for
+Windows (where they generally are of little use) to avoid wasting
+configuration and compilation time.
 
-You can use the following configuration options to turn the compilation of various formats on and off: 
+You can use the following configuration options to turn the
+compilation of various formats on and off:
 
 .BRL-CAD DocBook Configuration Options
 [cols="1,1,1", options="header"]
@@ -194,52 +256,87 @@ You can use the following configuration options to turn the compilation of vario
 |Defaults to setting of BRLCAD_EXTRADOCS_PDF
 |===
 
-The option to disable the PDF man page output exists to support situations where someone wants the article and tutorial PDFs, without the overhead of generating hundreds of PDFs for the various manual pages.
-If you do not specifically want PDF versions of the individual manual pages, set the BRLCAD_EXTRADOCS_PDF_MAN option to OFF. 
+The option to disable the PDF man page output exists to support
+situations where someone wants the article and tutorial PDFs, without
+the overhead of generating hundreds of PDFs for the various manual
+pages.  If you do not specifically want PDF versions of the individual
+manual pages, set the BRLCAD_EXTRADOCS_PDF_MAN option to OFF.
 
 == Sharing Content Between Documents
 
-Just as different documentation formats are needed to display the same content in different software environments, different documents that serve different needs will often need to share common content.
-DocBook provides a mechanism, called XInclude, which allows one document to directly reference content from another document. 
+Just as different documentation formats are needed to display the same
+content in different software environments, different documents that
+serve different needs will often need to share common content.
+DocBook provides a mechanism, called XInclude, which allows one
+document to directly reference content from another document.
 
-For example, volume II of the BRL-CAD Tutorial Series makes extensive use of the XInclude mechanism.
-The majority of the original content in that tutorial was split up into individual lessons, each which exist as separate documents.
-To provide those individual documents and at the same time preserve the original Volume II, without duplicating content, the file [path]_BRL-CAD_Tutorial_Series-VolumeII.xml_ pulls in the content of the lessons using XInclude: 
+For example, volume II of the BRL-CAD Tutorial Series makes extensive
+use of the XInclude mechanism.  The majority of the original content
+in that tutorial was split up into individual lessons, each which
+exist as separate documents.  To provide those individual documents
+and at the same time preserve the original Volume II, without
+duplicating content, the file
+[path]_BRL-CAD_Tutorial_Series-VolumeII.xml_ pulls in the content of
+the lessons using XInclude:
 
-`<xi:include href="/lessons/en/mged01_creating_primitive_shapes.xml" xpointer="creating_primitive_shapes_overviewlist"/>`
+[source,xml]
+<xi:include href="/lessons/en/mged01_creating_primitive_shapes.xml" xpointer="creating_primitive_shapes_overviewlist"/>
 
-For this reference to work, the lesson [path]_mged01_creating_primitive_shapes.xml_ must provide matching identifying labels.
-The matching label for the reference above is: 
+For this reference to work, the lesson
+[path]_mged01_creating_primitive_shapes.xml_ must provide matching
+identifying labels.  The matching label for the reference above is:
 
-`<para xml:id="creating_primitive_shapes_overviewlist">`
+[source,xml]
+<para xml:id="creating_primitive_shapes_overviewlist">
 
 The drawbacks to this mechanism are that: 
 
-* You can't read a source document as a single, coherent whole. Most of the time, content pulled into a document using XInclude should be a fairly small subset of that document unless the specific purpose of the document is to aggregate other documents.
-* Content changed in one document introduces changes in other documents the author is not currently editing. Only share content with XInclude when the content is not expected to change based on the context.
+* You can't read a source document as a single, coherent whole. Most
+  of the time, content pulled into a document using XInclude should be
+  a fairly small subset of that document unless the specific purpose
+  of the document is to aggregate other documents.
+* Content changed in one document introduces changes in other
+  documents the author is not currently editing. Only share content
+  with XInclude when the content is not expected to change based on
+  the context.
 
 
 == Customizing DocBook Output
 
-DocBook does not allow you to specify the formatting details of a document.
-This is a deliberate design decision, since avoiding the encoding of formatting information in the original document offers greater consistency and uniformity across documents. 
+DocBook does not allow you to specify the formatting details of a
+document.  This is a deliberate design decision, since avoiding the
+encoding of formatting information in the original document offers
+greater consistency and uniformity across documents.
 
 However, some documents have unique formatting requirements.
-DocBook's toolchain allows you to do this type of customization, but it is the most complex aspect of working with DocBook.
-You should only customize the output when there is a compelling need to do so. 
+DocBook's toolchain allows you to do this type of customization, but
+it is the most complex aspect of working with DocBook.  You should
+only customize the output when there is a compelling need to do so.
 
-One of the best examples of DocBook output customization in BRL-CAD is work done by Tom Browder to format the PDF covers of the BRL-CAD Tutorial Series volumes, as shown below: 
-
+One of the best examples of DocBook output customization in BRL-CAD is
+work done by Tom Browder to format the PDF covers of the BRL-CAD
+Tutorial Series volumes, as shown below:
 
 image::hacking_brlcad_tutorial_1_pdf.png[]
 
-A number of elements are needed to achieve this result: 
+A number of elements are needed to achieve this result:
 
-* A custom XML Stylesheet Language (XSL) file (named [path]_doc/docbook/resources/brlcad/tutorial-template.xsl.in_) that defines the layout of the document.
-* A custom CMake build logic file (named [path]_doc/docbook/books/en/CMakeLists.txt_) that further customizes the template file for each individual book.
-* The Deja-Vu and STIX fonts (located in [path]_doc/docbook/resources/other/fonts_) to ensure uniform, high-quality text rendering.
+* A custom XML Stylesheet Language (XSL) file (named
+  [path]_doc/docbook/resources/brlcad/tutorial-template.xsl.in_) that
+  defines the layout of the document.
+* A custom CMake build logic file (named
+  [path]_doc/docbook/books/en/CMakeLists.txt_) that further customizes
+  the template file for each individual book.
+* The Deja-Vu and STIX fonts (located in
+  [path]_doc/docbook/resources/other/fonts_) to ensure uniform,
+  high-quality text rendering.
 
-Although each case of special formatting is likely to be unique, the preceding example can serve as a starting point.
-Another useful resource for information about customizing DocBook output is the book http://www.sagehill.net/docbookxsl[DocBook XSL: The Complete Guide] (http://www.sagehill.net/docbookxsl). 
+Although each case of special formatting is likely to be unique, the
+preceding example can serve as a starting point.  Another useful
+resource for information about customizing DocBook output is the book
+http://www.sagehill.net/docbookxsl[DocBook XSL: The Complete Guide]
+(http://www.sagehill.net/docbookxsl).
 
-Now that you have an idea about how to format documentation for the BRL-CAD project, let's take a look at the types of documentation that the project maintains. 
+Now that you have an idea about how to format documentation for the
+BRL-CAD project, let's take a look at the types of documentation that
+the project maintains.
