@@ -6,26 +6,35 @@
 :experimental:
 :sourcedir: .
 
+:Tcl/Tk: http://www.tcl.tk/[Tcl/Tk]
+:POSIX: http://en.wikipedia.org/wiki/POSIX[POSIX]
+:CMake: http://www.cmake.org/[CMake]
+:Git: http://git-scm.com/[Git]
+:UNIX: http://en.wikipedia.org/wiki/UNIX[UNIX]
+
+:fn-1: footnote:[http://developers.slashdot.org/story/05/01/08/1823248/us-army-research-lab-opens-brl-cad-source]
+:fn-2: footnote:[See the AUTHORS file in a source distribution.]
+:fn-3: footnote:[See the CHANGES file in a source distribution.]
+:fn-4: footnote:[http://en.wikipedia.org/wiki/Indent_style]
+
 BRL-CAD consists of more than 1 million lines of source code spanning
 more than 20 foundation libraries and 400 application modules.
 
 The majority of BRL-CAD is written in highly portable C and C{pp},
-with some GUI and scripting components written in
-http://www.tcl.tk/[Tcl/Tk].  There is also some support for, and
-bindings to, other languages available.
-http://en.wikipedia.org/wiki/POSIX[POSIX] shell scripts are used for
-deployment integration testing.  BRL-CAD uses the
-http://www.cmake.org/[CMake] build system for compilation and unit
+with some GUI and scripting components written in {Tcl/Tk}.  There is
+also some support for, and bindings to, other languages available.
+{POSIX} shell scripts are used for deployment integration testing.
+BRL-CAD uses the {CMake} build system for compilation and unit
 testing.
 
 == The Big Picture
 
-The source code and most project data are stored in a http://git-scm.com/[Git]
-version control system for change tracking and collaborative
-development.  Primary development in the "main" branch is generally
-stable, but cross-platform compilation is not guaranteed.  A separate
-branch (named STABLE) provides a higher level of quality assurance.
-Every released version of BRL-CAD is tested and tagged.
+The source code and most project data are stored in a {Git} version
+control system for change tracking and collaborative development.
+Primary development in the "main" branch is generally stable, but
+cross-platform compilation is not guaranteed.  A separate branch
+(named STABLE) provides a higher level of quality assurance.  Every
+released version of BRL-CAD is tested and tagged.
 
 The project aims for an _It Just Works_ approach to compilation
 whereby a functional build of BRL-CAD is possible without needing to
@@ -50,8 +59,7 @@ contribute isn't already in the BRL-CAD code base.
 As mentioned previously, the initial architecture and design of
 BRL-CAD began in 1979.  Development as a unified package began in
 1983.  The first public release was in 1984.  And on December 21,
-2004, BRL-CAD became an open source project
-footnote:[http://developers.slashdot.org/story/05/01/08/1823248/us-army-research-lab-opens-brl-cad-source].
+2004, BRL-CAD became an open source project {fn-1}.
 
 BRL-CAD is a mature code base that has remained active over decades
 due to continual attention on design and maintainability.  Since the
@@ -59,19 +67,18 @@ project's inception, more than 200 people have directly contributed to
 BRL-CAD.  The project has historically received support from numerous
 organizations within academia, commercial industry, various government
 agencies, and from various independent contributors.  We credit all
-contributors in BRL-CAD's authorship documentation footnote:[See the
-AUTHORS file in a source distribution.].
+contributors in BRL-CAD's authorship documentation {fn-2}.
 
 The following diagram illustrates how the number of lines of code in
 BRL-CAD has changed over time:
 
 === System Architecture
 
-BRL-CAD is designed based on a http://en.wikipedia.org/wiki/UNIX[UNIX]
-methodology of the command-line services, providing many tools that
-work in harmony to complete a specific task.  These tools include
-geometry and image converters, signal and image processing tools,
-various raytrace applications, geometry manipulators, and much more.
+BRL-CAD is designed based on a {UNIX} methodology of the command-line
+services, providing many tools that work in harmony to complete a
+specific task.  These tools include geometry and image converters,
+signal and image processing tools, various raytrace applications,
+geometry manipulators, and much more.
 
 To support what has grown into a relatively large software system,
 BRL-CAD takes advantage of a variety of support libraries that
@@ -91,11 +98,10 @@ that maintaining such support is not a significant burden on new
 development.
 
 The code adheres to a published change deprecation and obsolescence
-policy footnote:[See the CHANGES file in a source distribution.]
-whereby features that have been made publicly available are not
-removed without appropriate notification.  Generally there should be a
-compelling motivation to remove any existing functionality, but
-improvements are encouraged.
+policy {fn-3} whereby features that have been made publicly available
+are not removed without appropriate notification.  Generally there
+should be a compelling motivation to remove any existing
+functionality, but improvements are encouraged.
 
 BRL-CAD has a longstanding heritage of maintaining verifiable,
 validated, and repeatable results in critical portions of the package,
@@ -368,10 +374,10 @@ bn_mat_transpose()
    bu_malloc()+bu_free())--but be as consistent as possible within a
    file and across a library's API.
 * BRL-CAD uses The One True Brace Style from BSD KNF and K&R
-  footnote:[http://en.wikipedia.org/wiki/Indent_style]. Opening braces
-  should be on the same line as their statement; closing braces should
-  line up with that same statement. Functions, however, are treated
-  specially, and we place their opening braces on separate lines.
+  {fn-4}. Opening braces should be on the same line as their
+  statement; closing braces should line up with that same
+  statement. Functions, however, are treated specially, and we place
+  their opening braces on separate lines.
 +
 [source,c]
 ----
