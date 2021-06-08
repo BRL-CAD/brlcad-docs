@@ -9,7 +9,7 @@
 BRL-CAD consists of more than 1 million lines of source code spanning
 more than 20 foundation libraries and 400 application modules.
 
-The majority of BRL-CAD is written in highly portable C and C++, with
+The majority of BRL-CAD is written in highly portable C and C{pp}, with
 some GUI and scripting components written in Tcl/Tkfootnote:[].  There
 is also some support for, and bindings to, other languages available.
 POSIXfootnote:[] shell scripts are used for deployment integration
@@ -188,13 +188,13 @@ fail to do so during active development.
 
 The majority of BRL-CAD is written in ANSI/POSIX C with the intent of
 strictly conforming with the C standard.  The core libraries are all C
-API, though several--such as the LIBBU and LIBRT libraries--use C++
-for implementation details.  Our C libraries can use C\+\+ for
-implementation detail, but they cannot expose C++ in the public API.
+API, though several--such as the LIBBU and LIBRT libraries--use C{pp}
+for implementation details.  Our C libraries can use C{pp} for
+implementation detail, but they cannot expose C{pp} in the public API.
 
 Major components of the system are written in the following languages: 
 
-* STEP and NURBS boundary representation support: C++
+* STEP and NURBS boundary representation support: C{pp}
 * The MGED geometry editor: a combination of C, Tcl/Tk, and Incr
   Tcl/Tk
 * The BRL-CAD Benchmark, build system, and utility scripts:
@@ -205,7 +205,7 @@ Source code files use the following extensions:
 
 * C files: .c
 * Header files: .h
-* C++ files: .cpp
+* C{pp} files: .cpp
 * PHP files: .php
 * Tcl/Tk files: .tcl or .tk
 * POSIX Bourne-style shell scripts: .sh
