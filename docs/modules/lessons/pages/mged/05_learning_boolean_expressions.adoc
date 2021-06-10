@@ -1,5 +1,6 @@
 = 5. Learning About Boolean Expressions
 :sectnums:
+:experimental:
 
 In this lesson, you will: 
 
@@ -13,7 +14,7 @@ In this lesson, you will:
 This is an important lesson because Boolean operations are critical to
 the modeling process.  The order in which shapes are combined and the
 operators used to combine the shapes will determine how the
-[app]``MGED`` program interprets your model.
+[app]`MGED` program interprets your model.
 
 The correct use of Boolean expressions to modify geometric shapes is a
 key skill in constructive solid modeling.  It important to review
@@ -24,11 +25,11 @@ absorb them all now, come back to them later.
 [[_boolean_tools]]
 == Combinations and Regions: Boolean Tools
 
-There are conceptually two objects in [app]``MGED`` that support
-Boolean operations.  One is called a combination, the other is called
-a region.
+There are conceptually two objects in [app]`MGED` that support Boolean
+operations.  One is called a combination, the other is called a
+region.
 
-As mentioned earlier, a typical geometric shape in [app]``MGED`` is
+As mentioned earlier, a typical geometric shape in [app]`MGED` is
 called a primitive.  However, single primitives are often insufficient
 to fully describe the complex shape of the object being modeled.  So,
 combining two or more primitive shapes into other shapes (called
@@ -56,7 +57,7 @@ combination.
 
 == Boolean Operations
 
-The three Boolean operators employed by the [app]``MGED`` program are
+The three Boolean operators employed by the [app]`MGED` program are
 union, subtraction, and intersection.  You can use Boolean operations
 to combine shapes to produce more complex shapes.
 
@@ -125,17 +126,24 @@ the union operator will always be used.
 == Making Regions with Boolean Operations
 
 Begin by opening the database shapes.g that you created in Lesson 3.
-At the Command Window prompt, type: `draw sph2.s rcc2.s[Enter]` This
-lets us see the shapes we will be using to create our regions.  As
-seen earlier, the two shapes should look something like the following:
+At the Command Window prompt, type:
+
+[cmd]`draw sph2.s rcc2.s kbd:[Enter]`
+
+This lets us see the shapes we will be using to create our regions.
+As seen earlier, the two shapes should look something like the
+following:
 
 .Two Primitive Shapes
 image::mged/05_twoprimitivespheres.png[]
 
 In this lesson, we will create different shapes to demonstrate the
 function of Boolean operations.  In the Command Window, type the
-following: `r part1.r u rcc2.s - sph2.s[Enter]` This command tells
-[app]``MGED`` to:
+following:
+
+[cmd]`r part1.r u rcc2.s - sph2.s kbd:[Enter]`
+
+This command tells [app]`MGED` to:
 
 [cols="1,1,1,1,1,1"]
 |===
@@ -184,7 +192,9 @@ At the moment, we have only the primitive shapes displayed, not the
 region.  Before we can raytrace, we must remove the primitive shapes
 from the display, and draw the region.  Otherwise, we will not be able
 to see the region with the color properties we applied.  We can do
-this by typing: `B part1.r`
+this by typing:
+
+[cmd]`B part1.r`
 
 We are now ready to raytrace this object.  From the File menu, bring
 up the Raytrace Control Panel and click the Raytrace button.  The
@@ -206,15 +216,18 @@ You should see that a spherical "bite" has been taken out of the top
 of the cylinder.
 
 Next we will make a blue region using the intersection operator
-instead of subtraction.  Once again, we start by creating a region: `r
-part2.r u rcc2.s + sph2.s[Enter]`
+instead of subtraction.  Once again, we start by creating a region:
+
+[cmd]`r part2.r u rcc2.s + sph2.s kbd:[Enter]`
 
 For comparison to the GUI approach used to make part1.r, let's use the
-Command Line to assign the color to part2.r: `mater part2.r plastic 0
-0 255 0[Enter]`
+Command Line to assign the color to part2.r:
 
-Finally, Blast this new region onto the display as follows: `B
-part2.r[Enter]`
+[cmd]`mater part2.r plastic 0 0 255 0 kbd:[Enter]`
+
+Finally, Blast this new region onto the display as follows:
+
+[cmd]`B part2.r kbd:[Enter]`
 
 Now raytrace the object.  It should look similar to the preceding
 right-hand image.
@@ -233,13 +246,15 @@ combination since the time you made it.
 
 When you use the intersection operator, the order in which you specify
 the shapes doesn't matter.  We would have gotten the same results if
-we had specified the Boolean operation as `r part2.r u sph2.s +
-rcc2.s`
+we had specified the Boolean operation as
+
+[cmd]`r part2.r u sph2.s + rcc2.s`
 
 However, when using the subtraction operator, the order of the two
 shapes is very important.  Let's make a region with the order of the
-shapes reversed from that used for part1.r: `r part3.r u sph2.s -
-rcc2.s`
+shapes reversed from that used for part1.r:
+
+[cmd]`r part3.r u sph2.s - rcc2.s`
 
 This time we won't bother to set a color.  (When no color is set for
 objects, the raytracer (rt) will use a color of white.  However, these
@@ -250,16 +265,18 @@ Blast this design to the display and raytrace it:
 image::mged/05_raytracedpart3.png[]
 
 Now let's raytrace all three objects we have created together.  To
-draw the three regions at once, we could type: `B part1.r part2.r
-part3.r`
+draw the three regions at once, we could type:
+
+[cmd]`B part1.r part2.r part3.r`
 
 Doing this once is no problem.  However, if these were three parts
 that made up some complex object, we might like to be able to draw all
 of them more conveniently.  To make drawing a collection of objects
 together easier, we create an assembly combination to gather them all
 together.  We will create one called dome.c for our three regions.
-This is accomplished by the following command: `comb dome.c u part1.r
-u part2.r u part3.r`
+This is accomplished by the following command:
+
+[cmd]`comb dome.c u part1.r u part2.r u part3.r`
 
 Notice the similarity between this command and the r command we used
 to create the regions.
@@ -274,13 +291,18 @@ such as the one we have just created.
 ====
 Because creating assembly combinations is a very common task, there is
 a shortcut command-the g (for group) command-to help make the task
-easier.  Creating dome.c using this command would look as follows: `g
-dome.c part1.r part2.r part3.r` Notice that you don't have to type the
-u Boolean operators.  The g command unions all of its arguments.
+easier.  Creating dome.c using this command would look as follows:
+
+[cmd]`g dome.c part1.r part2.r part3.r`
+
+Notice that you don't have to type the u Boolean operators.  The g
+command unions all of its arguments.
 ====
 
 All that is necessary to draw all three objects is the much simpler
-command: `B dome.c`
+command:
+
+[cmd]`B dome.c`
 
 Now we can raytrace the collected set and get the following image:
 
@@ -298,10 +320,12 @@ create the shape of objects.  When you want to make such objects, keep
 in mind the precedence of the Boolean operations.  In the Boolean
 notation we are using, the subtraction and intersection operators both
 have higher precedence than the union operator has.  So, for example:
-`comb demo.c u shape1 - shape2 u shape3 - shape4 + shape5`
 
-This would result in the following Boolean expression: `(shape1 -
-shape2) u ( (shape3 - shape4) + shape5)`
+[cmd]`comb demo.c u shape1 - shape2 u shape3 - shape4 + shape5`
+
+This would result in the following Boolean expression:
+
+`(shape1 - shape2) u ( (shape3 - shape4) + shape5)`
 
 [[_learning_boolean_operations_review]]
 == Review

@@ -1,5 +1,6 @@
 = 12. Creating a Mug Model using the MGED Interface
 :sectnums:
+:experimental:
 
 In this lesson, you will:
 
@@ -28,10 +29,8 @@ Go to the Edit menu, where you will be offered the following options:
 [cols="1*l,1*l,1*l,1*l"]
 |===
 
-|
-
+a|
 ....
-
 		    Set H
 		    Set H (Move V)
 		    Set A
@@ -46,26 +45,21 @@ Go to the Edit menu, where you will be offered the following options:
 		    Move End H(rt)
 		    Move End H
 ....
-|
-
+a|
 ....
-
 		    Rotate
 		    Translate
 		    Scale
 		    None of the Above
 ....
-|
-
+a|
 ....
-
 		    Reject
 		    Accept
 		    Apply
 		    Reset
 ....
-|
-
+a|
 ....
 
 		    Primitive Editor
@@ -131,35 +125,27 @@ of the right circular cylinders, as shown in the following list:
 [cols="1*l,1*l,1*l,1*l"]
 |===
 
-|
-
+a|
 ....
-
 		    Set Radius 1
 		    Set Radius 2
 ....
-|
-
+a|
 ....
-
 		    Rotate
 		    Translate
 		    Scale
 		    None of the Above
 ....
-|
-
+a|
 ....
-
 		    Reject
 		    Accept
 		    Apply
 		    Reset
 ....
-|
-
+a|
 ....
-
 		    Primitive Editor
 		    Combination
 		    Editor
@@ -189,11 +175,14 @@ Accept your changes when you are finished.
 == Creating the Rim of the Mug
 
 To make the rim of the mug, go to the Create, select tor, and name it
-rim.s.  Select the Rotate command and type on the Command Line: `p 0
-90 0[Enter]` to rotate the torus on its side (90'0 about the y
-axis). Then, Scale and edit the various parameters of the torus using
-the front and top views until the mug looks similar to the following
-example.  Make sure you Accept your changes when you are finished.
+rim.s.  Select the Rotate command and type on the Command Line:
+
+[cmd]`p 0 90 0 kbd:[Enter]`
+
+to rotate the torus on its side (90'0 about the y axis). Then, Scale
+and edit the various parameters of the torus using the front and top
+views until the mug looks similar to the following example.  Make sure
+you Accept your changes when you are finished.
 
 .Mug with Rim Shown from a Front View
 image::mged/12_mug_rim_frontview.png[]
@@ -203,16 +192,24 @@ image::mged/12_mug_rim_frontview.png[]
 == Creating Combinations of the Various Shapes
 
 To combine the various shapes of the mug, type the following commands
-at the Command Window prompt: `comb mug.c u outside.s -
-inside.s[Enter]```comb handle.c u handle.s - outside.s[Enter]````comb
-mug.c u rim.s[Enter]`` Note: Refer to the previous two lessons to
-recall how each of these commands works.
+at the Command Window prompt:
+
+[cmd]`comb mug.c u outside.s - inside.s kbd:[Enter]`
+
+[cmd]`comb handle.c u handle.s - outside.s kbd:[Enter]`
+
+[cmd]`comb mug.c u rim.s kbd:[Enter]`
+
+Note: Refer to the previous two lessons to recall how each of these
+commands works.
 
 [[_mug_gui_make_region]]
 == Making a Region of the Combinations
 
 To make a region out of the combinations you just created, type at the
-Command Window prompt: `r mug.r u mug.c u handle.c[Enter]`
+Command Window prompt:
+
+[cmd]`r mug.r u mug.c u handle.c kbd:[Enter]`
 
 [[_mug_gui_check_tree]]
 == Checking the Data Tree
@@ -221,32 +218,27 @@ Before continuing, it would be wise to check your data tree and make
 sure it agrees with the following tree:
 
 ....
-
    mug.r/R
-
    u mug.c/
-
    u outside.s
-
    - inside.s
-
    u rim.s
-
    u handle.c/
-
    u handle.s
-
    - outside.s
 ....
 
 If your data tree doesn't look like this example, you will need to go
 back and figure out where you went wrong.  If necessary, you can kill
 off a shape, combination, or region by typing at the Command Window
-prompt: `kill [name of shape, combination, or region][Enter]`
+prompt:
+
+[cmd]`kill [name of shape, combination, or region] kbd:[Enter]`
 
 For example, in this lesson you may have created an extra shape, named
 rim2.s, which you no longer want.  To kill this shape, you would type:
-`kill rim2.s[Enter]`
+
+[cmd]`kill rim2.s kbd:[Enter]`
 
 [[_mug_gui_comb_edit_props]]
 == Assigning Material Properties Using the Combination Editor
@@ -257,14 +249,14 @@ Select a plastic shader.  Check the Boolean Expression box to make
 sure it says:
 
 ....
-
    u mug.c
-
    u handle.c
 ....
 
 When you are finished, click on Apply and then Dismiss.  In the
-Command Window then, type at the prompt: `B mug.r[Enter]`
+Command Window then, type at the prompt:
+
+[cmd]`B mug.r kbd:[Enter]`
 
 [[_mug_gui_raytracing]]
 == Raytracing the Design

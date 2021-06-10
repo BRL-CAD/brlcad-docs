@@ -1,5 +1,6 @@
 = 14. Additional Exercises Placing Shapes in 3-D Space
 :sectnums:
+:experimental:
 
 In this lesson, you will:
 
@@ -111,37 +112,53 @@ image::mged/14_candle_spheres_az35el25.png[]
 
 Now that all your spheres are made and in place, it is time to make a
 region of each sphere.  To do this, type the following in the Command
-Window: `r sph1.r u sph1.s[Enter]```r sph2.r u sph2.s[Enter]````r
-sph3.r u sph3.s[Enter]````r sph4.r u sph4.s[Enter]````r sph5.r u
-sph5.s[Enter]````r sph6.r u sph6.s[Enter]````r sph7.r u
-sph7.s[Enter]````r sph8.r u sph8.s[Enter]``
+Window:
+
+
+[subs="quotes,macros"]
+....
+[cmd]`r sph1.r u sph1.s kbd:[Enter]`
+[cmd]`r sph2.r u sph2.s kbd:[Enter]`
+[cmd]`r sph3.r u sph3.s kbd:[Enter]`
+[cmd]`r sph4.r u sph4.s kbd:[Enter]`
+[cmd]`r sph5.r u sph5.s kbd:[Enter]`
+[cmd]`r sph6.r u sph6.s kbd:[Enter]`
+[cmd]`r sph7.r usph7.s kbd:[Enter]`
+[cmd]`r sph8.r u sph8.s kbd:[Enter]`
+....
 
 [NOTE]
 ====
 There are three easier ways to make all of the regions.  The first
-involves typing the first command: `r sph1.r u sph1.s[Enter]` and then
-using the up arrow to recall this command.  Now use the left arrow to
-move backward in the Command Line to replace both occurrences of the
-number "1" with "2" and press ENTER.  Repeat this for each of the
-numbers 3 through 8.
+involves typing the first command:
+
+[cmd]`r sph1.r u sph1.s kbd:[Enter]`
+
+and then using the up arrow to recall this command.  Now use the left
+arrow to move backward in the Command Line to replace both occurrences
+of the number "1" with "2" and press ENTER.  Repeat this for each of
+the numbers 3 through 8.
 
 The second approach is based upon the fact that the Command Line
-interpreter of [app]``MGED`` uses the Tcl/Tk language.  This gives us
+interpreter of [app]`MGED` uses the Tcl/Tk language.  This gives us
 access to some convenient loop commands.  The following will make all
-of the regions for us in a single command: `foreach i { 1 2 3 4 5 6 7
-8 } { [Enter]```r sph$i.r u sph$i.s [Enter]````}[Enter] ``
+of the regions for us in a single command:
+
+[cmd]`foreach i { 1 2 3 4 5 6 78 } { kbd:[Enter]`
+
+[cmd]`r sph$i.r u sph$i.s kbd:[Enter]`
+
+[cmd]`} kbd:[Enter]`
 
 This is much easier and faster than either of the previous methods.
 However, if there were many more spheres (say 1000 or more), then it
 might be easier to use a third approach, which employs a different
 loop type:
 
+[subs="macros"]
 ....
-
-    for {set i 1} {i `<= 1000} {incr i} {[Enter]
-
-      r sph$i.r u sph$i.s [Enter]
-
+    for {set i 1} {i <= 1000} {incr i} { kbd:[Enter]
+      r sph$i.r u sph$i.s kbd:[Enter]
     }
 ....
 ====
@@ -160,8 +177,13 @@ not applied to another shape.
 [NOTE]
 ====
 Once again, we are performing the same operation multiple times.  This
-is another good opportunity to use a loop. `foreach i { 1 2 3 4 5 6 7
-8 } {[Enter]```mater sph$i.r "plastic" 255 0 0 0[Enter]````}[Enter]``
+is another good opportunity to use a loop.
+
+[cmd]`foreach i { 1 2 3 4 5 6 78 } { kbd:[Enter]`
+
+[cmd]`mater sph$i.r "plastic" 255 0 0 0 kbd:[Enter]`
+
+[cmd]`} kbd:[Enter]`
 
 In general, the graphical interface is good for doing one thing at a
 time or doing highly visual operations.  Repetitive operations are
@@ -187,57 +209,37 @@ Now we are faced with a second decision: how to achieve this result.
 The key is that the space the jewels occupy must be subtracted from
 the correct part (rcc1.s) of the base.
 
-On the Command Line, create rcc1.c by typing: `comb rcc1.c u rcc1.s -
-sph1.r - sph2.r - sph3.r - sph4.r - sph5.r - sph6.r - sph7.r -
-sph8.r[Enter]` Next, bring up the Combination Editor and select
+On the Command Line, create rcc1.c by typing:
+
+[cmd]`comb rcc1.c u rcc1.s - sph1.r - sph2.r - sph3.r - sph4.r - sph5.r - sph6.r - sph7.r - sph8.r kbd:[Enter]`
+
+Next, bring up the Combination Editor and select
 base1.r.  Change the union of rcc1.s in the Boolean Expression window
 to a union of rcc1.c, and click OK.  The tree of base1.r should now
 look like:
 
 ....
-
    u base1.r/R
-
      u eto1.s
-
      u rcc1.c
-
        u rcc1.s
-
        - sph1.r/R
-
          u sph1.s
-
        - sph2.r/R
-
          u sph2.s
-
        - sph3.r/R
-
          u sph3.s
-
        - sph4.r/R
-
          u sph4.s
-
        - sph5.r/R
-
          u sph5.s
-
        - sph6.r/R
-
          u sph6.s
-
        - sph7.r/R
-
          u sph7.s
-
        - sph8.r/R
-
          u sph8.s
-
      u eto2.s
-
      - rcc2.s
 ....
 
@@ -245,55 +247,36 @@ look like:
 ====
 Note that we could have achieved the same results on the Command Line
 by using the rm (remove) command to remove rcc1.s from base1.r and
-then adding rcc1.c: `rm base1.r rcc1.s[Enter] ```r base1.r u
-rcc1.c[Enter] ``
+then adding rcc1.c:
+
+[cmd]`rm base1.r rcc1.s kbd:[Enter]`
+
+[cmd]`r base1.r u rcc1.c kbd:[Enter]`
 
 This would have resulted in a very similar tree as above:
 
 ....
-
     u base1.r/R
-
       u eto1.s
-
       u eto2.s
-
       - rcc2.s
-
       u rcc1.c
-
         u rcc1.s
-
         - sph1.r/R
-
           u sph1.s
-
         - sph2.r/R
-
           u sph2.s
-
         - sph3.r/R
-
           u sph3.s
-
         - sph4.r/R
-
           u sph4.s
-
         - sph5.r/R
-
           u sph5.s
-
         - sph6.r/R
-
           u sph6.s
-
         - sph7.r/R
-
           u sph7.s
-
         - sph8.r/R
-
           u sph8.s
 ....
 
@@ -303,47 +286,26 @@ base1.r and then subtracting each of the jewels from base1.r (hence,
 removing material from rcc1.s). This would have resulted in:
 
 ....
-
     u base1.r/R
-
       u eto1.s
-
       u eto2.s
-
       - rcc2.s
-
       u rcc1.s
-
       - sph1.r/R
-
         u sph1.s
-
       - sph2.r/R
-
         u sph2.s
-
       - sph3.r/R
-
         u sph3.s
-
       - sph4.r/R
-
         u sph4.s
-
       - sph5.r/R
-
         u sph5.s
-
       - sph6.r/R
-
         u sph6.s
-
       - sph7.r/R
-
         u sph7.s
-
       - sph8.r/R
-
         u sph8.s
 ....
 
@@ -351,14 +313,17 @@ It would be good practice to consider the relative merits of each of
 the approaches discussed.
 ====
 
-Now we need to add the jewels to the whole of candle1.c: `comb
-candle1.c u sph1.r u sph2.r u sph3.r u sph4.r u sph5.r u sph6.r u
-sph7.r u sph8.r[Enter]`
+Now we need to add the jewels to the whole of candle1.c:
+
+[cmd]`comb candle1.c u sph1.r u sph2.r u sph3.r u sph4.r u sph5.r u sph6.r u sph7.r u sph8.r kbd:[Enter]`
 
 There are just a couple of things left to do before you raytrace your
 design.  If you have enabled Multipanes or Draw Grid, go back to the
 Modes menu and disable them.  Then, clear your screen and draw your
-new design by typing in the Command Window: `B candle1.c table1.r`
+new design by typing in the Command Window:
+
+[cmd]`B candle1.c table1.r`
+
 Your new design should appear in the Graphics Window.  Open the
 Raytrace Control Panel and select a pale blue color (200 236 242) by
 typing the three values in the Background Color entry box.  When you

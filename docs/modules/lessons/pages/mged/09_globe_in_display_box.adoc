@@ -1,5 +1,6 @@
 = 9. Creating a Globe in a Display Box
 :sectnums:
+:experimental:
 
 In this lesson you will:
 
@@ -64,11 +65,15 @@ should appear similar to the following in the az35, el25 view:
 image::mged/09_globe_wireframe.png[]
 
 To view contents of the database, type at the Command Window prompt:
-`ls[Enter]`
+
+[cmd]`ls kbd:[Enter]`
 
 You should see cube1.s, cube2.s, and globe1.s listed as shapes you
-have created.  To make regions of these shapes, type at the prompt: `r
-cube1.r u cube1.s - cube2.s[Enter]```r globe1.r u globe1.s[Enter]``
+have created.  To make regions of these shapes, type at the prompt:
+
+[cmd]`r cube1.r u cube1.s - cube2.s kbd:[Enter]`
+
+[cmd]`r globe1.r u globe1.s kbd:[Enter]`
 
 [[_globe_assign_mater_prop]]
 == Using the Combination Editor to Assign Material Properties that Makethe Objects Appear More Realistic
@@ -93,7 +98,9 @@ changes.
 Before you can raytrace your design, you need to clear the Graphics
 Window by typing Z at the Command Window prompt because both shapes
 and regions are being displayed at this point.  Next, type in the
-Command Window: `draw cube1.r globe1.r[Enter]`
+Command Window:
+
+[cmd]`draw cube1.r globe1.r kbd:[Enter]`
 
 The display box and globe should reappear in the Graphics Window.  Go
 to the File menu and select Raytrace.  Next, select the white option
@@ -124,14 +131,14 @@ yet, as we have more changes to make.
 [[_globe_move_rotate]]
 == Moving and Rotating an Object
 
-As with other features in [app]``MGED``, moving and rotating objects
-can be accomplished in several ways, according to the amount of
-precision desired.  As previously described, the Shift Grip functions
-can be used as a quick way to change an object when its exact angle
-and location do not necessarily matter.  Alternatively, to achieve
-greater precision, the Translate (move) and Rotate commands under Edit
-can be selected and specific parameter numbers can be entered in the
-Command Window.  In this lesson, we will experiment with both methods.
+As with other features in [app]`MGED`, moving and rotating objects can
+be accomplished in several ways, according to the amount of precision
+desired.  As previously described, the Shift Grip functions can be
+used as a quick way to change an object when its exact angle and
+location do not necessarily matter.  Alternatively, to achieve greater
+precision, the Translate (move) and Rotate commands under Edit can be
+selected and specific parameter numbers can be entered in the Command
+Window.  In this lesson, we will experiment with both methods.
 
 With your trc still in edit mode and still in a Front view, use the
 SHIFT key and the left mouse button to drag your shape (the bottom of
@@ -145,7 +152,9 @@ the globe.  Use Scale and Set H as needed and then Accept your
 changes.
 
 Now we need to make a second trc named base2.s, which we will use for
-the top of the base.  On the Command Line, type: `cp base1.s base2.s`
+the top of the base.  On the Command Line, type:
+
+[cmd]`cp base1.s base2.s`
 
 The second trc will appear directly on top of the first trc, so we
 will have to use Primitive Selection under the edit menu to put
@@ -159,7 +168,9 @@ the mouse button and regrab the object if you need to.) However,
 because we know we want to rotate the shape an exact amount (180'0)
 about the x axis, let's use a more precise method to flip the shape.
 Select Rotate under Edit and then type in the following parameters
-(abbreviated as p) on the Command Line: `p 180 0 0[Enter]`
+(abbreviated as p) on the Command Line:
+
+[cmd]`p 180 0 0 kbd:[Enter]`
 
 Our shape should have flipped upside down and jumped to the bottom of
 the first trc.  (The two zeros you input indicate no rotation along
@@ -176,21 +187,25 @@ select Accept.  Your design should look as follows:
 .Wireframe Representation of Globe and Base in Display Box
 image::mged/09_globe_base_box_wireframe.png[]
 
-To make a region of the base, type in the Command Window: `r base1.r u
-base1.s u base2.s[Enter]`
+To make a region of the base, type in the Command Window:
+
+[cmd]`r base1.r u base1.s u base2.s kbd:[Enter]`
 
 [[_globe_use_color_tool]]
 == Use the Color Tool of the Combination Editor to Produce CustomizedColors.
 
 In the Combination Editor window, click the button to the right of the
 Name entry box and then Select From All.  Choose base1.r.  Assign the
-base a Shader of plastic.  In the Color box, enter the numbers: `217
-217 217`
+base a Shader of plastic.  In the Color box, enter the numbers:
+
+[cmd]`217 217 217`
 
 Apply your changes.  Before you can raytrace your completed design,
 you must first clear the Graphics Window and rebuild your design by
-typing at the Command Window prompt: `Z[Enter]```draw cube1.r globe1.r
-base1.r[Enter]``
+typing at the Command Window prompt:
+
+[cmd]`Z kbd:[Enter]`
+[cmd]`draw cube1.r globe1.r base1.r kbd:[Enter]`
 
 Change your view to az35, el25 and then raytrace your design, which
 should appear similar to the following:

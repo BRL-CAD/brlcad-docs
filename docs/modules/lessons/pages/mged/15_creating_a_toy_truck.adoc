@@ -1,5 +1,6 @@
 = 15. Creating a Toy Truck
 :sectnums:
+:experimental:
 
 In this lesson, you will:
 
@@ -30,9 +31,15 @@ Begin by creating a new database called truck.g.
 
 To make the cab of the truck, you will create a right parallel piped
 using the in (insert) command.  At the Command Window prompt, type:
-`in cab1.s rpp[Enter]`[app]``MGED`` will ask you to enter values for
-XMIN, XMAX, YMIN, YMAX, ZMIN, and ZMAX.  Type at the prompt: `0 1 0 1
-0 1[Enter]` This will tell [app]``MGED`` to:
+
+[cmd]`in cab1.s rpp kbd:[Enter]`
+
+[app]`MGED` will ask you to enter values for XMIN, XMAX, YMIN, YMAX,
+ZMIN, and ZMAX.  Type at the prompt:
+
+[cmd]`0 1 0 1 0 1 kbd:[Enter]`
+
+This will tell [app]`MGED` to:
 
 [cols="1,1,1,1,1,1"]
 |===
@@ -52,9 +59,11 @@ XMIN, XMAX, YMIN, YMAX, ZMIN, and ZMAX.  Type at the prompt: `0 1 0 1
 |Make the value of the rpp's ZMAX 1
 |===
 
-You could also have used the streamlined version of: `in cab1.s rpp 0
-1 0 1 0 1[Enter]` A cube shape should appear in the Graphics Window,
-as follows:
+You could also have used the streamlined version of:
+
+[cmd]`in cab1.s rpp 0 1 0 1 0 1 kbd:[Enter]`
+
+A cube shape should appear in the Graphics Window, as follows:
 
 .Wireframe Representation of Shape cab1.s
 image::mged/15_truck_cab1s.png[]
@@ -70,9 +79,12 @@ however, it can be used to create any new shape that has some
 relationship to a pre-existing shape.  In this lesson, it is used to
 cut away material above the hood and in front of the cab.
 
-If you are using [app]``BRL-CAD`` version 6.0 or later, at the Command
-Window prompt, type: `inside cab1.s caboff1.s -.1 .7 -.1 -.1 .5
--.1[Enter]` The inside command tells [app]``MGED`` to:
+If you are using [app]`BRL-CAD` version 6.0 or later, at the Command
+Window prompt, type:
+
+[cmd]`inside cab1.s caboff1.s -.1 .7 -.1 -.1 .5 -.1 kbd:[Enter]`
+
+The inside command tells [app]`MGED` to:
 
 [cols="1,1,1,1,1,1,1,1,1"]
 |===
@@ -106,7 +118,6 @@ Running the l (list) command, you can see the vertices for the box it
 creates:
 
 ....
-
 caboff1.s:  ARB8
 	  1 (1.1, -0.1, 0.5)
 	  2 (1.1, 1.1, 0.5)
@@ -121,10 +132,11 @@ caboff1.s:  ARB8
 
 [NOTE]
 ====
-Note that in older versions of [app]``BRL-CAD``, the faces of an rpp
+Note that in older versions of [app]`BRL-CAD`, the faces of an rpp
 were numbered in a different order.  So, if your results don't match,
-kill caboff1.s and run this command instead: `inside cab1.s
-caboff1.s .5 -.1 .7 -.1 -.1 -.1[Enter]`
+kill caboff1.s and run this command instead:
+
+[cmd]`inside cab1.s caboff1.s .5 -.1 .7 -.1 -.1 -.1 kbd:[Enter]`
 ====
 
 When in Multipane mode, the design should resemble the following
@@ -138,8 +150,11 @@ image::mged/15_truck_cab_cutoff.png[]
 == Using an rcc to Create a Wheel Well in the Cab
 
 Make a cylinder (rcc) to use for cutting away a space for the first
-wheel of the cab.  At the Command Window prompt, type: `make well1.s
-rcc[Enter]` Go to the Edit menu and click on Primitive Selection, then
+wheel of the cab.  At the Command Window prompt, type:
+
+[cmd]`make well1.s rcc kbd:[Enter]`
+
+Go to the Edit menu and click on Primitive Selection, then
 well1.s.  After selecting a Left view, go back to Edit and select
 Scale.  Reduce the size of the rcc until its diameter is about the
 right size for a wheel well.  Go back to Edit and select Rotate.  As
@@ -147,8 +162,11 @@ discussed previously, one way to easily rotate the rcc is by using the
 CTRL key and the left mouse button to drag the top lip of the rcc down
 (in a straight line) until the A and C edit labels overlap.  However,
 because we know we want to flip the object exactly 90'0 along the x
-axis, a better choice is to use the Command Line and type: `p 90 0
-0[Enter]` After doing so, you may still have to use the Set H and
+axis, a better choice is to use the Command Line and type:
+
+[cmd]`p 90 0 0 kbd:[Enter]`
+
+After doing so, you may still have to use the Set H and
 Scale editing options to resize and the SHIFT key and left mouse
 button to position your wheel well.  When satisfied, select Accept on
 the Edit menu.  Your design should look similar to the following in
@@ -161,25 +179,24 @@ image::mged/15_truck_multipane_1stwheel.png[]
 [[_ok_accept_apply_reset_cancel_dismiss]]
 == The Difference Between OK, Accept, Apply, Reset, Cancel, and Dismiss
 
-The GUI environment of [app]``MGED`` offers users several options for
+The GUI environment of [app]`MGED` offers users several options for
 applying, accepting, or rejecting changes made through buttons at the
 bottom of dialog pop-up windows.  To use any of these options, just
 place the mouse cursor over the desired button and click the left
 mouse button.
 
-Selecting the Accept or OK button will tell [app]``MGED`` to record
-the changes you have made to a shape, region, or
-combination. [app]``MGED`` uses the Accept and OK buttons
-interchangeably.  When you select Accept or OK, the window you are
-using will automatically close.
+Selecting the Accept or OK button will tell [app]`MGED` to record the
+changes you have made to a shape, region, or combination. [app]`MGED`
+uses the Accept and OK buttons interchangeably.  When you select
+Accept or OK, the window you are using will automatically close.
 
-The Apply button tells [app]``MGED`` to apply a change you have made
-and wait for further instructions.  The window does not automatically
+The Apply button tells [app]`MGED` to apply a change you have made and
+wait for further instructions.  The window does not automatically
 close.  This enables you to make changes to several things without
 having to reopen the window for each change.
 
-The Reset button tells [app]``MGED`` to reset values you have changed
-in a dialog box to the last values you applied or accepted.  The Reset
+The Reset button tells [app]`MGED` to reset values you have changed in
+a dialog box to the last values you applied or accepted.  The Reset
 button does not close the dialog box.  The Cancel or Dismiss buttons
 discard any changes made in the dialog box and leave values unchanged
 from their last stored settings.  These two buttons close the
@@ -214,9 +231,11 @@ image::mged/15_truck_2nd_wheel_wheel_place.png[]
 [[_truck_cab_shape_comb]]
 == Making a Combination of the Cab Shapes
 
-It is now time to make a combination of the various cab shapes. `comb
-cab1.c u cab1.s - caboff1.s - well1.s - well2.s[Enter]` This command
-tells [app]``MGED`` to:
+It is now time to make a combination of the various cab shapes.
+
+[cmd]`comb cab1.c u cab1.s - caboff1.s - well1.s - well2.s kbd:[Enter]`
+
+This command tells [app]`MGED` to:
 
 [cols="1,1,1,1,1,1,1,1,1,1"]
 |===
@@ -248,15 +267,10 @@ Before you go any further, you should check your data tree by typing
 tree cab1.c.  The data tree should say:
 
 ....
-
    cab1.c/
-
    u cab1.s
-
    - caboff1.s
-
    - well1.s
-
    - well2.s
 ....
 
@@ -269,10 +283,12 @@ of the database to ensure it is composed of the elements you want.
 [[_truck_body_in_cmd]]
 == Creating an rpp for the Body of the Truck Using the In Command
 
-To make the body of the truck, type at the Command Window prompt: `in
-body1.s rpp 0 2 0 1 0 1.5[Enter]` By now, you should know what this
-command tells [app]``MGED`` to do.  If you have forgotten, refer back
-to making the cab of the truck.
+To make the body of the truck, type at the Command Window prompt:
+
+[cmd]`in body1.s rpp 0 2 0 1 0 1.5 kbd:[Enter]`
+
+By now, you should know what this command tells [app]`MGED` to do.  If
+you have forgotten, refer back to making the cab of the truck.
 
 Edit the body of the truck so that its front face slightly overlaps
 the cab's back face.  Check different views to make sure the body
@@ -303,13 +319,9 @@ Make a combination of the truck body and the two new wheel wells.
 Name it body1.c.  The tree for body1.c should say:
 
 ....
-
    body1.c/
-
    u body1.s
-
    - well3.s
-
    - well4.s
 ....
 
@@ -317,8 +329,9 @@ Name it body1.c.  The tree for body1.c should say:
 == Making a Region of the Cab and Body
 
 Before adding wheels to the truck, you need to make a region of the
-cab and body.  At the Command Window prompt, type: `r truck1.r u
-cab1.c u body1.c[Enter]`
+cab and body.  At the Command Window prompt, type:
+
+[cmd]`r truck1.r u cab1.c u body1.c kbd:[Enter]`
 
 [[_truck_wheels]]
 == Making Wheels for the Truck
@@ -329,9 +342,11 @@ placement for your design without further editing.  However, this
 lesson is designed to give you practice rotating and translating
 shapes.
 
-To make the first wheel, type at the Command Window prompt: `in
-wheel1.s tor 0 0 0 .5774 .5774 .5774 .18 .08[Enter]` This command
-tells [app]``MGED`` to:
+To make the first wheel, type at the Command Window prompt:
+
+[cmd]`in wheel1.s tor 0 0 0 .5774 .5774 .5774 .18 .08 kbd:[Enter]`
+
+This command tells [app]`MGED` to:
 
 [cols="1,1,1,1,1,1,1"]
 |===
@@ -374,15 +389,10 @@ Make a region of the four wheels.  When you are finished, your data
 tree for wheel1.r should say:
 
 ....
-
    wheel1.r/R
-
    u wheel1.s
-
    u wheel2.s
-
    u wheel3.s
-
    u wheel4.s
 ....
 
@@ -410,12 +420,12 @@ click on OK.  Then raytrace your design.
 [[_on_screen_help]]
 == Using the On-Screen Help Option
 
-You have probably noticed that many of the [app]``MGED`` menus offer a
+You have probably noticed that many of the [app]`MGED` menus offer a
 wide variety of options from which to choose.  With so many choices
 available, it is easy to forget what a particular selection does.  To
 help users quickly access basic information about the various
-[app]``MGED`` options, the program offers a context-sensitive,
-on-screen help feature.
+[app]`MGED` options, the program offers a context-sensitive, on-screen
+help feature.
 
 The on-screen help can be accessed from any menu or pop-up window by
 placing the mouse cursor over the name of any option in the menu or
@@ -430,7 +440,7 @@ In previous lessons, you applied color and a shader to an object to
 make it appear realistic.  Sometimes, however, you will need to apply
 two or three shaders to an object to get the design you want.
 
-[app]``MGED`` offers three categories of shaders: paint, plastic, and
+[app]`MGED` offers three categories of shaders: paint, plastic, and
 light.  Any combination of these three types of shaders can be applied
 to the same object using the stacker option of the shader menu.
 
@@ -480,7 +490,7 @@ your selections.
 [CAUTION]
 ====
 When using the stacker option, you need to keep track of the number of
-characters and spaces in the shader text box. [app]``MGED`` versions
+characters and spaces in the shader text box. [app]`MGED` versions
 prior to release 6.0 will only recognize 64 characters/spaces, so be
 careful stacking shaders with complex attributes.
 ====
@@ -489,41 +499,30 @@ careful stacking shaders with complex attributes.
 == Making a Combination of the Truck Regions
 
 To make a combination of the two truck regions, type at the Command
-Window prompt: `comb truck1.c u truck1.r u wheel1.r[Enter]```B
-truck1.c[Enter]`` Your data tree for truck1.c should read:
+Window prompt:
+
+[cmd]`comb truck1.c u truck1.r u wheel1.r kbd:[Enter]`
+
+[cmd]`B truck1.c kbd:[Enter]`
+
+Your data tree for truck1.c should read:
 
 ....
-
    truck1.c/
-
    u truck1.r/R
-
    u cab1.c/
-
    u cab1.s
-
    - caboff1.s
-
    - well1.s
-
    - well2.s
-
    u body1.c
-
    u body1.s
-
    - well3.s
-
    - well4.s
-
    u wheel1.r/R
-
    u wheel1.s
-
    u wheel2.s
-
    u wheel3.s
-
    u wheel4.s
 ....
 
@@ -534,7 +533,7 @@ The last step in creating your truck is to raytrace your design.  When
 the raytracer has finished, notice that the top and one side of the
 truck are very dark.  This is because there is very little light
 falling on them.  Because we have not specified any light sources for
-our scene, [app]``MGED`` provides us with a set of default lights.
+our scene, [app]`MGED` provides us with a set of default lights.
 These defaults consist of a dim light at the location of the viewer
 and a brighter one located to the left and below the viewer.  Since
 the primary light is not really shining on one side of the truck, it

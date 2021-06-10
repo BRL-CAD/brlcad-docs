@@ -1,5 +1,6 @@
 = 16. Learning Modeling Techniques and Structures
 :sectnums:
+:experimental:
 
 In this lesson, you will be:
 
@@ -28,9 +29,7 @@ Command Window, use the ls command to list all the contents of your
 radio.  It should read as follows:
 
 ....
-
    ant.s btn.s knob.s
-
    body.s btn2.s spkr.s
 ....
 
@@ -41,9 +40,9 @@ have material properties, and therefore (2) do not occupy space.
 
 [NOTE]
 ====
-Remember, in [app]``MGED`` no shape truly becomes an object until it
-is included in a region, which, by definition, is an object or
-collection of objects that has a common material type.
+Remember, in [app]`MGED` no shape truly becomes an object until it is
+included in a region, which, by definition, is an object or collection
+of objects that has a common material type.
 ====
 
 So our first order of business is to identify the major parts of the
@@ -67,11 +66,15 @@ the radio-the body.
 If we think about it, the body of a radio is actually a hollow case.
 So, the first thing we need to do is hollow out the case's interior to
 make room for internal components.  To do this, we can use the inside
-command to create a shape, which we'll call cavity.s: `inside body.s
-cavity.s 1 1 1 1 1 1[Enter]` Now, we'll make a region called case.r
-and define it as what's left of body.s after cavity.s has been
-subtracted out.  The command should look like this: `r case.r u
-body.s - cavity.s[Enter]`
+command to create a shape, which we'll call cavity.s:
+
+[cmd]`inside body.s cavity.s 1 1 1 1 1 1 kbd:[Enter]`
+
+Now, we'll make a region called case.r and define it as what's left of
+body.s after cavity.s has been subtracted out.  The command should
+look like this:
+
+[cmd]`r case.r u body.s - cavity.s kbd:[Enter]`
 
 [NOTE]
 ====
@@ -84,15 +87,23 @@ pre-existing shape.
 With our case now made, we can proceed to cut several holes through
 this structure to accommodate the antenna, the volume control knob,
 and the talk button.  To do this, we must subtract the three shapes
-from the case as follows: `r case.r - ant.s - knob.s - btn.s[Enter]`
+from the case as follows:
+
+[cmd]`r case.r - ant.s - knob.s - btn.s kbd:[Enter]`
+
 Finally, we need to "glue" the lip around the speaker to the case's
-front face by typing `r case.r u spkr.s[Enter]`
+front face by typing
+
+[cmd]`r case.r u spkr.s kbd:[Enter]`
 
 Our body is now finished.  Note that an experienced modeler would
 probably have combined the preceding three Boolean functions into a
-single command as follows: `r case.r u body.s - cavity.s - ant.s -
-knob.s - btn.s u spkr.s[Enter]` If we were to raytrace case.r at this
-point, we would see the following:
+single command as follows:
+
+[cmd]`r case.r u body.s - cavity.s - ant.s - knob.s - btn.s u spkr.s kbd:[Enter]`
+
+If we were to raytrace case.r at this point, we would see the
+following:
 
 .Radio with Component Cutouts and Default Material Properties
 image::mged/16_radio_default_components_props.png[]
@@ -111,19 +122,25 @@ would apply to body.s.  The rules of precedence for Boolean operators
 indicate that subtraction and intersection have a higher priority than
 union (meaning that they are performed first).
 
-Although the following operation is not in proper [app]``MGED``
-syntax, it does illustrate the implied parentheses that precede and
-follow the union operators in our last command: `r case.r u (body.s -
-cavity.s - ant.s - knob.s - btn.s) u (spkr.s)[Enter] ` Optionally, we
-could've unioned in spkr.s before body.s as follows: `r case.r u
-spkr.s u body.s - cavity.s - ant.s - knob.s - btn.s[Enter]`
+Although the following operation is not in proper [app]`MGED` syntax,
+it does illustrate the implied parentheses that precede and follow the
+union operators in our last command:
+
+[cmd]`r case.r u (body.s - cavity.s - ant.s - knob.s - btn.s) u (spkr.s) kbd:[Enter]`
+
+Optionally, we could've unioned in spkr.s before body.s as follows:
+
+[cmd]`r case.r u spkr.s u body.s - cavity.s - ant.s - knob.s - btn.s kbd:[Enter]`
 
 Let's consider, however, what would have happened if we had done the
-following: `r case.r u body.s u spkr.s - cavity.s - ant.s - knob.s -
-btn.s[Enter]` In this last case, operator precedence would have caused
-the program to subtract cavity.s, ant.s, knob.s, and btn.s from
-spkr.s.  Nothing would have been subtracted from body.s.  Therefore,
-the holes in the case would not have been created.
+following:
+
+[cmd]`r case.r u body.s u spkr.s - cavity.s - ant.s - knob.s - btn.s kbd:[Enter]`
+
+In this last case, operator precedence would have caused the program
+to subtract cavity.s, ant.s, knob.s, and btn.s from spkr.s.  Nothing
+would have been subtracted from body.s.  Therefore, the holes in the
+case would not have been created.
 
 Subtracting cavity.s, ant.s, knobs, and btn.s from spkr.s would have
 produced no apparent effect because they do not overlap the volume of
@@ -135,11 +152,16 @@ spkr.s.
 
 Making the talk button is simpler than making the case.  The button
 consists of the union of two primitive shapes.  To make them into a
-region, type `r button.r u btn.s u btn2.s[Enter]`
+region, type
+
+[cmd]`r button.r u btn.s u btn2.s kbd:[Enter]`
 
 The volume knob and antenna are even simpler.  They are single
-primitive shapes that can be made into regions by typing `r knob.r u
-knob.s[Enter]```r ant.r u ant.s[Enter]``
+primitive shapes that can be made into regions by typing
+
+[cmd]`r knob.r u knob.s kbd:[Enter]`
+
+[cmd]`r ant.r u ant.s kbd:[Enter]`
 
 [[_radio_assembly_comb]]
 == Gathering the Regions into an Assembly Combination
@@ -148,49 +170,41 @@ Now let's take all of the regions we have made so far and gather them
 into an assembly (or group) combination called radio.c so that we can
 keep all of these parts together.  There are several ways to do this.
 One way would be to use a similar method to the one we used to make
-the regions: `comb radio.c u case.r u button.r u knob.r u
-ant.r[Enter]`
+the regions:
+
+[cmd]`comb radio.c u case.r u button.r u knob.r u ant.r kbd:[Enter]`
 
 A shortcut, however, would be to use the g (group) command as follows:
-`g radio.c case.r button.r knob.r ant.r[Enter]` Unlike the comb
-command, the g command assumes that all of the items specified will be
-unioned together, and so no Boolean operators need to be specified.
+
+[cmd]`g radio.c case.r button.r knob.r ant.r kbd:[Enter]`
+
+Unlike the comb command, the g command assumes that all of the items
+specified will be unioned together, and so no Boolean operators need
+to be specified.
 
 A final improvement would include using the database name wildcard *.r
-to quickly and easily specify all of the regions in the database: `g
-radio.c *.r[Enter]` If we now tree radio.c, we should get the
-following output in the Command Window.
+to quickly and easily specify all of the regions in the database:
+
+[cmd]`g radio.c *.r kbd:[Enter]`
+
+If we now tree radio.c, we should get the following output in the
+Command Window.
 
 ....
-
    radio.c/
-
    u case.r/R
-
    u body.s
-
    - cavity.s
-
    - ant.s
-
    - knob.s
-
    - btn.s
-
    u spkr.s
-
    u button.r/R
-
    u btn.s
-
    u btn2.s
-
    u knob.r/R
-
    u knob.s
-
    u ant.r/R
-
    u ant.s
 ....
 
@@ -198,9 +212,9 @@ following output in the Command Window.
 == Assigning Material Properties to the Regions
 
 Thus far, the objects we have created have no material properties
-other than the gray plastic that [app]``MGED`` assigns by default to
-any object without assigned material values.  Now let's improve our
-design by assigning other material properties to the components.
+other than the gray plastic that [app]`MGED` assigns by default to any
+object without assigned material values.  Now let's improve our design
+by assigning other material properties to the components.
 
 We'll give the antenna a realistic look by opening the Combination
 Editor, choosing ant.r from the drop-down Name menu, selecting mirror
@@ -223,20 +237,29 @@ little bit like a straw.  In reality, it should have a small cap on
 the end so that we can raise and lower the antenna.  We can
 approximate this shape by creating an ellipsoid (which we'll call
 ant2.s) and unioning it in with the rest of the antenna as follows:
-`in ant2.s ell1 2 2 94 0 0 1 3[Enter]```r ant.r u ant2.s[Enter]``
+
+[cmd]`in ant2.s ell1 2 2 94 0 0 1 3 kbd:[Enter]`
+
+[cmd]`r ant.r u ant2.s kbd:[Enter]`
 
 [[_radio_internal_components]]
 == Adding Internal Components
 
 Our radio is looking more and more realistic; however, it is still
 just a hollow shell.  Let's further improve it by making a circuit
-board to go inside the case.  To do this, type: `in board.s rpp 3 4 1
-31 1 47[Enter]```r board.r u board.s[Enter]``
+board to go inside the case.  To do this, type:
+
+[cmd]`in board.s rpp 3 4 1 31 1 47 kbd:[Enter]`
+
+[cmd]`r board.r u board.s kbd:[Enter]`
 
 Let's give the board a green semi-shiny color.  The easiest way to do
 this is via the Combination Editor, but this time let's use the
-Command Line approach.  Type: `mater board.r "plastic sh=4" 0 198 0
-1[Enter]` Diagrammed, this command says to:
+Command Line approach.  Type:
+
+[cmd]`mater board.r "plastic sh=4" 0 198 0 1 kbd:[Enter]`
+
+Diagrammed, this command says to:
 
 [cols="1,1,1,1,1"]
 |===
@@ -255,8 +278,11 @@ Command Line approach.  Type: `mater board.r "plastic sh=4" 0 198 0
 |===
 
 Finally, we'll include the board with the rest of the components in
-radio.c as follows: `g radio.c board.r[Enter]` Our radio should now
-look like the following:
+radio.c as follows:
+
+[cmd]`g radio.c board.r kbd:[Enter]`
+
+Our radio should now look like the following:
 
 .Wireframe Radio with Circuit Board Added
 image::mged/16_radio_wireframe_circ_board.png[]
@@ -264,41 +290,23 @@ image::mged/16_radio_wireframe_circ_board.png[]
 In addition, the tree for radio.c should now look as follows:
 
 ....
-
    radio.c/
-
    u case.r/R
-
    u body.s
-
    - cavity.s
-
    - ant.s
-
    - knob.s
-
    - btn.s
-
    u spkr.s
-
    u button.r/R
-
    u btn.s
-
    u btn2.s
-
    u knob.r/R
-
    u knob.s
-
    u ant.r/R
-
    u ant.s
-
    u ant2.s
-
    u board.r/R
-
    u board.s
 ....
 
@@ -350,12 +358,15 @@ object.
 Making a specialty radio with a transparent case would probably be the
 easiest way to view the circuit board inside.  All we have to do is
 make a copy of our present radio case and modify its material
-properties.  We'll call the specialty case case_clear.r.  Type `cp
-case.r case_clear.r[Enter]` We can now use the Combination Editor to
-set the material properties on this case without affecting the
-"master" design of the radio.  When this has been done, we can combine
-this modified case with the other unchanged radio components and group
-them as a new specialty radio named radio_clear.c.
+properties.  We'll call the specialty case case_clear.r.  Type
+
+[cmd]`cp case.r case_clear.r kbd:[Enter]`
+
+We can now use the Combination Editor to set the material properties
+on this case without affecting the "master" design of the radio.  When
+this has been done, we can combine this modified case with the other
+unchanged radio components and group them as a new specialty radio
+named radio_clear.c.
 
 To set the material properties of case_clear.r, choose plastic from
 the drop-down menu to the right of the Shader entry box in the
@@ -364,9 +375,13 @@ default, we want to explicitly select it in order to change one of its
 values.) Now change the Transparency of the case to a value of .8.
 Apply the change and close the Combination Editor.
 
-Finally, create the specialty radio combination by typing: `g
-radio_clear.c case_clear.r button.r knob.r ant.r board.r[Enter]` and
-then Blast the display with `B radio_clear.c[Enter]`
+Finally, create the specialty radio combination by typing:
+
+[cmd]`g radio_clear.c case_clear.r button.r knob.r ant.r board.r kbd:[Enter]`
+
+and then Blast the display with
+
+[cmd]`B radio_clear.c kbd:[Enter]`
 
 Now raytrace your design to view the resulting effect.  The new
 transparent case should appear similar to the following:
@@ -380,41 +395,23 @@ radio.c.  The only difference is that case.c has been replaced with
 case_clear.c.
 
 ....
-
    radio_clear.c/
-
    u case_clear.r/R
-
    u body.s
-
    - cavity.s
-
    - ant.s
-
    - knob.s
-
    - btn.s
-
    u spkr.s
-
    u button.r/R
-
    u btn.s
-
    u btn2.s
-
    u knob.r/R
-
    u knob.s
-
    u ant.r/R
-
    u ant.s
-
    u ant2.s
-
    u board.r/R
-
    u board.s
 ....
 
@@ -454,7 +451,8 @@ radio (as shown in the following wireframe representation). When
 you've aligned the shape the way you want it, create the following
 radio_cutaway.c combination that unions in radio.c and subtracts out
 the shape (cutaway.s) that is covering what you want to see (board.r):
-`comb radio_cutaway.c u radio.c - cutaway.s[Enter]`
+
+[cmd]`comb radio_cutaway.c u radio.c - cutaway.s kbd:[Enter]`
 
 .Multipane View of Cutting Primitive
 image::mged/16_radio_cut_wireframe.png[]
@@ -531,54 +529,42 @@ image::mged/16_radio_structure_3.png[]
 
 To accomplish this restructuring according to functionality, create an
 assembly called electronics.c to hold these components together.
-Type: `g electronics.c board.r knob.r button.r[Enter]` Of course, we
-now need to remove board.r, knob.r, and button.r from the radio.c
-assembly so that when electronics.c is added to the radio.c assembly,
-we won't have the knob and button included twice in the model.  To do
-this, use the rm (remove) command: `rm radio.c board.r knob.r
-button.r[Enter]` and then union in the electronics assembly: `g
-radio.c electronics.c[Enter]`
+Type:
+
+[cmd]`g electronics.c board.r knob.r button.r kbd:[Enter]`
+
+Of course, we now need to remove board.r, knob.r, and button.r from
+the radio.c assembly so that when electronics.c is added to the
+radio.c assembly, we won't have the knob and button included twice in
+the model.  To do this, use the rm (remove) command:
+
+[cmd]`rm radio.c board.r knob.r button.r kbd:[Enter]`
+
+and then union in the electronics assembly:
+
+[cmd]`g radio.c electronics.c kbd:[Enter]`
 
 Now the tree for radio.c should appear as follows:
 
 ....
-
    radio.c/
-
    u case.r/R
-
    u body.s
-
    - cavity.s
-
    - ant.s
-
    - knob.s
-
    - btn.s
-
    u spkr.s
-
    u ant.r/R
-
    u ant.s
-
    u ant2.s
-
    u electronics.c/
-
    u board.r/R
-
    u board.s
-
    u knob.r/R
-
    u knob.s
-
    u button.r/R
-
    u btn.s
-
    u btn2.s
 ....
 
@@ -587,11 +573,16 @@ discussed earlier and make the cutaway remove material from only the
 case, showing all the other components.
 
 First, we need to get rid of the old radio_cutaway.c, which was based
-on our previous structure.  To do this, type `kill
-radio_cutaway.c[Enter]` and then remake the combination by typing
-`comb radio_cutaway.c u case.r - cutaway.s u electronics.c u
-ant.r[Enter]` Now when we Blast the display and raytrace
-radio_cutaway.c, we should see the following:
+on our previous structure.  To do this, type
+
+[cmd]`kill radio_cutaway.c kbd:[Enter]`
+
+and then remake the combination by typing
+
+[cmd]`comb radio_cutaway.c u case.r - cutaway.s u electronics.c u ant.r kbd:[Enter]`
+
+Now when we Blast the display and raytrace radio_cutaway.c, we should
+see the following:
 
 .View of Radio with Just the Case Cut Away
 image::mged/16_radio_casecut_raytrace.png[]

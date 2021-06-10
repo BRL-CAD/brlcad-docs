@@ -1,5 +1,6 @@
 = 11. Refining a Mug Model
 :sectnums:
+:experimental:
 
 In this lesson, you will:
 
@@ -12,7 +13,7 @@ lesson.  If you stopped at the end of that lesson, open the database
 mug.g before continuing.
 
 [[_mug_mater_prop_mater_cmd]]
-== Assigning Material Properties to the Mug Using the `mater` Command
+== Assigning Material Properties to the Mug Using the [cmd]`mater` Command
 
 Assigning material properties to a region can be done with either the
 mater or shader command.  The program will respond with a series of
@@ -22,22 +23,25 @@ select to use in rendering the object.
 The most commonly used shader is the plastic shader, which uses a
 Phong lighting model.  Select the plastic shader and set the color to
 a medium shade of green.  The dialog in the Command Window should
-appear as follows: ` mater mug.r[Enter]`
+appear as follows:
 
+[userinput]`[prompt]#mged># mater mug.r kbd:[Enter]`
+
+[subs="macros"]
 ....
-
    Current shader string =
    Specify shader.  Enclose spaces within quotes.  E.g., "light invisible=1"
-   Shader? ('del' to delete, '.' to skip) plastic[Enter]
+   Shader? ('del' to delete, '.' to skip) plastic kbd:[Enter]
    Current color = (No color specified)
-   R, G, B color values (0 to 255)? ('del' to delete, '.' to skip) 32 128 32[Enter]
+   R, G, B color values (0 to 255)? ('del' to delete, '.' to skip) 32 128 32 kbd:[Enter]
    Current inheritance = 0: lower nodes (towards leaves) override
-   Should this object's shader override lower nodes? ('.' to skip) 0[Enter]
+   Should this object's shader override lower nodes? ('.' to skip) 0 kbd:[Enter]
 ....
 
 Enter the appropriate information that is shown in bold font.  If you
-want to use the streamlined version, type: `mater mug.r plastic 32 128
-32 0[Enter]`
+want to use the streamlined version, type:
+
+[cmd]`mater mug.r plastic 32 128 32 0 kbd:[Enter]`
 
 Diagrammed, this command says: 
 
@@ -84,8 +88,9 @@ top to the lip.  You can do this by positioning a circular torus shape
 exactly at the top of the cup.  Then you can add it to the combination
 body.c.
 
-At the [app]``MGED`` prompt, type: `in rim.s tor 0 0 3.5 0 0 1 1.625
-0.125[Enter]`
+At the [app]`MGED` prompt, type:
+
+[cmd]`in rim.s tor 0 0 3.5 0 0 1 1.625 0.125 kbd:[Enter]`
 
 [cols="1,1,1,1,1,1,1"]
 |===
@@ -111,7 +116,9 @@ At the [app]``MGED`` prompt, type: `in rim.s tor 0 0 3.5 0 0 1 1.625
 == Combining the Shapes
 
 To combine the torus with the cup, you will need to type at the
-prompt: `comb body.c u rim.s[Enter]`
+prompt:
+
+[cmd]`comb body.c u rim.s kbd:[Enter]`
 
 Now you are faced with a unique situation.  The shape rim.s was added
 to the list of objects being displayed when it was created.  However,
@@ -124,7 +131,11 @@ complete object, and then raytrace.  As discussed previously, the
 fbclear command in the Raytrace Control Panel clears the framebuffer
 display, and the Z command in the Command Window clears all wireframed
 objects.  You can redisplay the objects you want to raytrace with the
-draw command.  Type at the prompt: `Z[Enter]```draw mug.r[Enter]``
+draw command.  Type at the prompt:
+
+[cmd]`Z kbd:[Enter]`
+
+[cmd]`draw mug.r kbd:[Enter]`
 
 Raytrace your mug.  It should now look similar to the following.
 

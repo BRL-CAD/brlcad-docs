@@ -1,5 +1,6 @@
 = 3. Using the Insert Command in MGED to Size and Place Shapes
 :sectnums:
+:experimental:
 
 In this lesson, you will:
 
@@ -13,7 +14,7 @@ In this lesson, you will:
 * Consider conventions for choosing names for your objects.
 * View your shapes from different perspectives using options of the
   View menu.
-* Quit the [app]``MGED`` program.
+* Quit the [app]`MGED` program.
 
 This lesson focuses on creating shapes from the Command Window using
 the make and in commands.  You will create a sphere (sph) and a right
@@ -31,10 +32,12 @@ myShapes.
 == Creating a Sphere Using the Make Command
 
 Begin by making the Command Window active (usually by clicking
-anywhere in the window). Then, at the [app]``MGED`` prompt, type in
-the command: `make sph1.s sph [Enter]`
+anywhere in the window). Then, at the [app]`MGED` prompt, type in the
+command:
 
-As noted in Lesson 1, this command tells [app]``MGED`` to: 
+[cmd]`make sph1.s sph kbd:[Enter]`
+
+As noted in Lesson 1, this command tells [app]`MGED` to:
 
 [cols="1,1,1", frame="all"]
 |===
@@ -54,8 +57,9 @@ image::mged/03_wireframe_sph.png[]
 A sphere shape has now been created, and a wireframe drawing should
 appear in your Graphics Window.
 
-To make the rcc from the Command Window prompt, type: `make rcc1.s
-rcc[Enter]`
+To make the rcc from the Command Window prompt, type:
+
+[cmd]`make rcc1.s rcc kbd:[Enter]`
 
 Your Graphics Window should now display a large rcc that, from the
 default view of az35, el25, looks as if it intersects the sphere you
@@ -75,18 +79,23 @@ create these shapes is to use the in (insert) command.
 Begin by making the Command Window active (usually done by clicking
 anywhere in the window). Then, use the Z (zap) command to clear the
 Graphics Window.  You are now ready to create a sphere using the in
-command.  At the [app]``MGED`` prompt type: `in sph2.s sph[Enter]`
+command.  At the [app]`MGED` prompt type:
 
-[app]``MGED`` will respond with: `Enter X, Y, Z of vertex:`
+[prompt]`in sph2.s sph kbd:[Enter]`
 
-You must tell [app]``MGED`` where to position the vertex (center) of
-your sphere in space.  Type at the [app]``MGED`` prompt: `4 4
-4[Enter]`
+[app]`MGED` will respond with:
+
+`Enter X, Y, Z of vertex:`
+
+You must tell [app]`MGED` where to position the vertex (center) of
+your sphere in space.  Type at the [app]`MGED` prompt:
+
+[cmd]`4 4 4 kbd:[Enter]`
 
 [NOTE]
 ====
-As you work in [app]``MGED``, you will often be asked to enter a value
-for a vector or a vertex.  In [app]``MGED``, a vector represents the
+As you work in [app]`MGED`, you will often be asked to enter a value
+for a vector or a vertex.  In [app]`MGED`, a vector represents the
 distance and direction from one point in space to another, and a
 vertex is one single point in space.  The values entered for a vector
 are typically used to create an object with specific dimensions.  The
@@ -95,50 +104,66 @@ values entered for a vertex place the object in space.
 
 Your sphere will now be placed at (x,y,z)=(4,4,4), as measured in
 millimeters.  Notice that the numbers are separated by spaces followed
-by the ENTER key. [app]``MGED`` will now ask you to:
+by the ENTER key. [app]`MGED` will now ask you to:
 
-....
+[prompt]``Enter radius: ``
 
-      Enter radius:
+Type in:
 
-      Type in:
-
-      3[Enter]
-....
+[cmd]``3 kbd:[Enter]``
 
 The radius of your sphere will be 3 mm.  The following is the dialog
 that should appear in your Command Window (including the appropriate
-responses). ` in sph2.s sph```Enter X, Y, Z of vertex: 4 4 4````Enter
-radius: 3````51 vectors in 0.000543 sec`` The last line of this dialog
-is simply a record of the computer's speed in drawing the shape.  It
-has no real usefulness to the user at this point.
+responses).
+
+[userinput]`[prompt]#mged># in sph2.s sph`
+
+`Enter X, Y, Z of vertex: 4 4 4`
+
+`Enter radius: 3`
+
+`51 vectors in 0.000543 sec`
+
+The last line of this dialog is simply a record of the computer's
+speed in drawing the shape.  It has no real usefulness to the user at
+this point.
 
 A sphere has now been created, and a wireframe drawing similar to the
 one created using the make command should appear in your Graphics
 Window.
 
 To make the right circular cylinder, type at the Command Window
-prompt: `in rcc2.s rcc[Enter]`[app]``MGED`` will ask you to enter
-values for x, y, and z of the vertex (where you want the center of one
-end of the rcc placed in space). Type: `4 4 0[Enter]` Be sure to leave
-spaces between each of these numbers.
+prompt:
 
-[app]``MGED`` will now ask you to enter the x, y, and z values of the
-height (H) vector (i.e., how long you want the rcc to be). Type: `0 0
-4[Enter]` The last value you will need to enter is the radius of
-the rcc.  Type: `3[Enter]` The dialog in the Command Window for the
-creation of the rcc should look like this:
+[cmd]`in rcc2.s rcc kbd:[Enter]`
 
+[app]`MGED` will ask you to enter values for x, y, and z of the vertex
+(where you want the center of one end of the rcc placed in
+space). Type:
+
+[cmd]`4 4 0 kbd:[Enter]`
+
+Be sure to leave spaces between each of these numbers.
+
+[app]`MGED` will now ask you to enter the x, y, and z values of the
+height (H) vector (i.e., how long you want the rcc to be). Type:
+
+[cmd]`0 0 4 kbd:[Enter]`
+
+The last value you will need to enter is the radius of
+the rcc.  Type:
+
+[cmd]`3 kbd:[Enter]`
+
+The dialog in the Command Window for the creation of the rcc should
+look like this:
+
+[subs="quotes"]
 ....
-
-      mged> in rcc2.s rcc
-
+      [prompt]#mged># in rcc2.s rcc
       Enter X, Y, Z of vertex: 4 4 0
-
       Enter X, Y, Z of height (H) vector: 0 0 4
-
       Enter radius: 3
-
       42 vectors in 0.000214 sec
 ....
 
@@ -167,8 +192,9 @@ command, you will probably prefer to use this method as it allows you
 to input all the parameter values more quickly.
 
 Clear the Graphics Window by using the Z command.  Now make another
-sphere by typing after the [app]``MGED`` prompt: `in sph3.s sph 4 4 4
-3[Enter]`
+sphere by typing after the [app]`MGED` prompt:
+
+[cmd]`in sph3.s sph 4 4 4 3 kbd:[Enter]`
 
 The meaning of this longer form of the command is: 
 
@@ -192,8 +218,12 @@ The meaning of this longer form of the command is:
 |Make the radius a value of 3
 |===
 
+--
 To make the right circular cylinder using this method, type after the
-[app]``MGED`` prompt: `in rcc3.s rcc 4 4 0 0 0 4 3[Enter]`
+[app]`MGED` prompt:
+
+[cmd]`in rcc3.s rcc 4 4 0 0 0 4 3 kbd:[Enter]`
+--
 
 The meaning of this command is: 
 
@@ -228,10 +258,10 @@ The meaning of this command is:
 [[_command_combined_in]]
 == Making a Combined-Command Form for the In Command
 
-When you are first starting to use [app]``MGED``, if you want to use
-the Command Window rather than the GUI, you may want to make yourself
-some blank, combined-command forms for each type of primitive shape
-you will be creating.  This can speed up the design process and help
+When you are first starting to use [app]`MGED`, if you want to use the
+Command Window rather than the GUI, you may want to make yourself some
+blank, combined-command forms for each type of primitive shape you
+will be creating.  This can speed up the design process and help
 remind you of which values must be entered for each shape.  A form for
 the sphere might be:
 
@@ -285,14 +315,14 @@ A Combined-Command Form for the rcc might be:
 |===
 
 [[_mged_naming_conventions]]
-== Considering [app]``MGED`` Naming Conventions
+== Considering [app]`MGED` Naming Conventions
 
 You may have noticed that each time you have created a sphere, or rcc,
-you have given it a different name. [app]``MGED`` doesn't care what
-name you give a shape, but you will find as you develop models that it
+you have given it a different name. [app]`MGED` doesn't care what name
+you give a shape, but you will find as you develop models that it
 helps to have some formula, or conventions, when naming shapes.  Note
 also that each name must be unique in the database, and for
-[app]``BRL-CAD`` releases prior to 6.0, names are limited to 16
+[app]`BRL-CAD` releases prior to 6.0, names are limited to 16
 characters in length.
 
 In this lesson, we sometimes assigned names to the shapes based on
@@ -315,12 +345,12 @@ view using the various mouse-key combinations identified in the
 previous lesson.
 
 [[_using_insert_command_quit]]
-== Quitting [app]``MGED``
+== Quitting [app]`MGED`
 
-If you wish to quit [app]``MGED``, at this point, type either the
-letter q or the word quit after the Command Window prompt and then
-press ENTER.  You may also quit the program by selecting Exit from the
-File menu.
+If you wish to quit [app]`MGED`, at this point, type either the letter
+q or the word quit after the Command Window prompt and then press
+ENTER.  You may also quit the program by selecting Exit from the File
+menu.
 
 [[_using_insert_command_review]]
 == Review
@@ -333,7 +363,7 @@ In this lesson, you:
 * Combined commands to streamline the entry of variables.
 * Developed a combined-command form to help manage Command-Line
   variables.
-* Considered [app]``MGED`` naming conventions.
+* Considered [app]`MGED` naming conventions.
 * Viewed your shapes from different perspectives using options of the
   View menu.
-* Quit the [app]``MGED`` program.
+* Quit the [app]`MGED` program.

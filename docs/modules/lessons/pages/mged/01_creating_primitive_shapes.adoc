@@ -1,12 +1,15 @@
 = 1. Creating Primitive Shapes in MGED
 :sectnums:
+:experimental:
+
+:fn-1: footnote:[Note: The command is the lowercase letter l, NOT the number one.]
 
 In this lesson, you will:
 
-* Launch the [app]``MGED`` program.
-* Enter commands at the [app]``MGED`` prompt in the Command Window.
-* Use the [app]``MGED`` Graphical User Interface (GUI).
-* Open or create a new database when launching [app]``MGED``.
+* Launch the [app]`MGED` program.
+* Enter commands at the [app]`MGED` prompt in the Command Window.
+* Use the [app]`MGED` Graphical User Interface (GUI).
+* Open or create a new database when launching [app]`MGED`.
 * Use the GUI to open or create a new database.
 * Title a database.
 * Select a unit of length for your design.
@@ -26,32 +29,33 @@ In this lesson, you will:
 
 
 [[_launching_mged]]
-== Launching the [app]``MGED`` Program
+== Launching the [app]`MGED` Program
 
-To launch the [app]``MGED`` program, type mged at the Terminal (tty)
-prompt and then press the ENTER key.  This brings up two main windows:
-the [app]``MGED`` Command Window and the [app]``MGED`` Graphics Window
-(sometimes called the Geometry Window). Both windows will initially be
-blank, awaiting input from you.  To leave the program at any time, at
-the Command Line type either the letter q or the word quit and then
-press the ENTER key.
+To launch the [app]`MGED` program, type mged at the Terminal (tty)
+prompt and then press the kbd:[ENTER] key.  This brings up two main
+windows: the [app]`MGED` Command Window and the [app]`MGED` Graphics
+Window (sometimes called the Geometry Window). Both windows will
+initially be blank, awaiting input from you.  To leave the program at
+any time, at the Command Line type either the letter q or the word
+quit and then press the kbd:[ENTER] key.
 
 [[_entering_commands]]
 == Entering Commands in the Command Window
 
-You can type in commands at the prompt.  Many experienced UNIX users
-prefer this method because it allows them to quickly create a model
-(which we sometimes refer to as a "design") without having to point
-and click on a lot of options.  The complete listing of editing
-commands and what they do can be found in Appendix A.
+You can type in commands at the [prompt]`mged>` prompt.  Many
+experienced UNIX users prefer this method because it allows them to
+quickly create a model (which we sometimes refer to as a "design")
+without having to point and click on a lot of options.  The complete
+listing of editing commands and what they do can be found in
+Appendix A.
 
 [CAUTION]
 ====
-Check all typed entries before you press the ENTER key.  If you find
-you made a mistake, simply press the BACKSPACE key until you have
-erased over the mistake and then re-type the information.  Later you
-will get more experience editing text using [app]``vi`` and
-[app]``emacs`` command emulation.
+Check all typed entries before you press the kbd:[ENTER] key.  If you
+find you made a mistake, simply press the kbd:[BACKSPACE] key until
+you have erased over the mistake and then re-type the information.
+Later you will get more experience editing text using [app]`vi` and
+[app]`emacs` command emulation.
 ====
 
 [[_using_gui]]
@@ -60,20 +64,22 @@ will get more experience editing text using [app]``vi`` and
 Users who are more familiar with Microsoft Windows may prefer to use
 the GUI pull-down menus at the top of the Command or Graphics Window
 (they are the same in either window). The menus are divided into
-logical groupings to help you navigate through the [app]``MGED``
+logical groupings to help you navigate through the [app]`MGED`
 program.
 
 Before you can create a model, you need to open a new database either
-through the Terminal Window when starting [app]``MGED`` or through the
-GUI after starting [app]``MGED``.
+through the Terminal Window when starting [app]`MGED` or through the
+GUI after starting [app]`MGED`.
 
 [[_open_new_database]]
-== Opening or Creating a New Database when Launching [app]``MGED``
+== Opening or Creating a New Database when Launching [app]`MGED`
 
-When launching [app]``MGED``, you can open or create a database at the
+When launching [app]`MGED`, you can open or create a database at the
 same time.  At the shell prompt (usually a $ or %), in the Terminal
 Window, type mged followed by a new or existing database name with
-a .g extension.  For example: `mged sphere.g[ENTER]`
+a .g extension.  For example:
+
+[cmd]`mged sphere.g kbd:[Enter]`
 
 .Terminal Window
 image::mged/01_terminal.png[]
@@ -81,13 +87,13 @@ image::mged/01_terminal.png[]
 If you are creating a new database, a small dialog box asking if you
 want to create a new database named sphere.g will appear.  Click on
 Yes, and a new database will be created.  If sphere.g already exists,
-[app]``MGED`` will open the sphere.g database as the program is
+[app]`MGED` will open the sphere.g database as the program is
 launched.
 
 [[_create_new_database]]
 == Using the GUI to Open or Create a Database
 
-Alternatively, once you have launched [app]``MGED``, you can open an
+Alternatively, once you have launched [app]`MGED`, you can open an
 existing database or create a new database using the GUI menus (at the
 top of the Command or Graphics Window) by clicking on File and then
 either Open or New.  Both options bring up a small dialog box.  The
@@ -99,11 +105,10 @@ For this lesson, create a new database called sphere.g.  To do this,
 type sphere.g at the end of the path name, as shown in the following
 illustration.  Click on OK to accept the database name.
 
-.[app]``MGED`` Command Window with Database Dialog Box
-image::mged/01_commandwindow.png
+.[app]`MGED` Command Window with Database Dialog Box
+image::mged/01_commandwindow.png[]
 
-.[app]``MGED`` Graphics Window
-image::mged/01_graphicswindow.png[]
+.[app]`MGED` Graphics Window image::mged/01_graphicswindow.png[]
 
 One advantage to using the GUI, if you aren't familiar with UNIX file
 management, is that this will show you your current path name, so you
@@ -118,29 +123,34 @@ You can title your new database to provide an audit trail for you or
 others who might use your database.  After the prompt, in the Command
 Window, type title followed by a space and a name that reflects the
 database you are going to make.  When you are done, press the
-ENTER key.  For example: ` title MySphere[ENTER]` Note that in
-[app]``BRL-CAD`` versions prior to release 6.0, the title is limited
-to 72 characters.
+kbd:[ENTER] key.  For example:
+
+[userinput]`[prompt]#mged># title MySphere kbd:[Enter]`
+
+Note that in [app]`BRL-CAD` versions prior to release 6.0, the title
+is limited to 72 characters.
 
 [[_set_units]]
 == Selecting a Unit of Length
 
-[app]``MGED`` uses millimeters for all internal mathematical
-processes; however, you can create your design using some other unit,
-such as feet.  For this lesson, inches is used.  To select inches,
-move your mouse pointer to the File menu at the top of the Command
-Window.  Click on File and then Preferences.  A new menu will appear.
-Select Units and then Inches.  If you are not a "point-and-click" type
-of person and prefer a Command Line, then just type units in after the
-[app]``MGED`` prompt in the Command Window, followed by the ENTER key.
-The Command Line looks like: ` units in[ENTER]`
+[app]`MGED` uses millimeters for all internal mathematical processes;
+however, you can create your design using some other unit, such as
+feet.  For this lesson, inches is used.  To select inches, move your
+mouse pointer to the File menu at the top of the Command Window.
+Click on File and then Preferences.  A new menu will appear.  Select
+Units and then Inches.  If you are not a "point-and-click" type of
+person and prefer a Command Line, then just type units in after the
+[app]`MGED` prompt in the Command Window, followed by the
+kbd:[ENTER] key.  The Command Line looks like:
+
+[userinput]`[prompt]#mged># units in kbd:[Enter]`
 
 [[_select_primitive]]
 == Selecting a Primitive Shape
 
-[app]``MGED`` provides a variety of primitive shapes (sometimes
-referred to as simply shapes or primitives) that you can use to build
-models.  Each type of shape has parameters that define its position,
+[app]`MGED` provides a variety of primitive shapes (sometimes referred
+to as simply shapes or primitives) that you can use to build models.
+Each type of shape has parameters that define its position,
 orientation, and size.  A listing of these shapes and their respective
 parameters is given in Appendix C.
 
@@ -149,8 +159,8 @@ parameters is given in Appendix C.
 Historically, the word solid was used for what we now refer to as a
 primitive shape.  This older terminology was sometimes difficult for
 new users to understand.  If you see the word solid used in any
-[app]``BRL-CAD`` programs, documentation, or commands (e.g., in
-Appendix A), think primitive shape.
+[app]`BRL-CAD` programs, documentation, or commands (e.g., in Appendix
+A), think primitive shape.
 ====
 
 [[_create_sphere_cmd_line]]
@@ -161,10 +171,13 @@ two ways you can create a primitive shape.  You can create all shapes
 through the Command Window and most shapes through the GUI.
 
 You can easily create a sphere from the prompt in the Command Window
-by typing just a few commands.  At the [app]``MGED`` prompt, type:
-`make sph1.s sph[ENTER] [Note: Use the digit 1, not the letter l] `
+by typing just a few commands.  At the [app]`MGED` prompt, type:
 
-This command tells the [app]``MGED`` program to: 
+[cmd]`make sph1.s sph kbd:[Enter]`
+
+NOTE: Use the digit kbd:[1], not the letter kbd:[l].
+
+This command tells the [app]`MGED` program to:
 
 [cols="1,1,1", frame="all"]
 |===
@@ -189,7 +202,8 @@ This command will draw the primitive shape in the Graphics Window.
 
 To build another object or work on another primitive shape, you can
 easily clear the Graphics Window through the Command Window.  At the
-Command Line prompt, type an uppercase Z (for zap) followed by ENTER.
+Command Line prompt, type an uppercase Z (for zap) followed by
+kbd:[ENTER].
 
 [NOTE]
 ====
@@ -203,7 +217,10 @@ Typing a zero (0) will stop the spin.
 == Drawing a Previously Created Object
 
 To recall the sphere, type the command on the Command Line as follows:
-`draw sph1.s[ENTER]` This command tells the [app]``MGED`` program to:
+
+[cmd]`draw sph1.s kbd:[Enter]`
+
+This command tells the [app]`MGED` program to:
 
 [cols="1,1", frame="all"]
 |===
@@ -222,7 +239,9 @@ You may occasionally want to erase a particular item from the display
 in the Graphics Window.  You can use the erase command to remove the
 item without any file operation being performed; the item remains in
 the database.  To delete the sph1.s object from the display, at the
-Command Window prompt, type: `erase sph1.s[ENTER]`
+Command Window prompt, type:
+
+[cmd]`erase sph1.s kbd:[Enter]`
 
 [[_create_sphere_gui]]
 == Creating a Sphere Using the GUI
@@ -234,11 +253,11 @@ the Graphics Window, select Create, and a drop-down menu will appear
 with the various primitive shape types available.  Select sph (for
 sphere) under the Ellipsoids category.  This will bring up a
 dialog box.  Click in the empty text box and type sph2.s.  Click on
-Apply or press ENTER.  A new sphere will be created and drawn in the
-Graphics Window.  When you create a shape through the GUI, the shape
-will automatically be in edit mode so that you can change it as
-needed, and the shape's parameters-which define its position,
-orientation, and size-will be in view.
+btn:[Apply] or press kbd:[ENTER].  A new sphere will be created and
+drawn in the Graphics Window.  When you create a shape through the
+GUI, the shape will automatically be in edit mode so that you can
+change it as needed, and the shape's parameters-which define its
+position, orientation, and size-will be in view.
 
 [[_view_params]]
 == Viewing a Shape's Parameters
@@ -246,9 +265,9 @@ orientation, and size-will be in view.
 Sometimes when you are making a model, you might want to view a
 shape's parameters, such as height, width, or radius, in the Command
 Window.  You can easily list the attributes of a shape by typing the l
-(for "list") command at the Command Window prompt as follows: `l
-shape_name[ENTER]` footnote:[Note: The command is the lowercase letter
-l, NOT the number one.]
+(for "list") command at the Command Window prompt as follows:
+
+[cmd]`l shape_name kbd:[Enter]` {fn-1}
 
 [NOTE]
 ====
@@ -264,35 +283,24 @@ An example of the dialog that might occur in the Command Window for
 the parameters or attributes of the first sphere you created is as
 follows:
 
+[subs="quotes"]
 ....
-
-mged> l sph1.s
-
-sph1.s: ellipsoid (ELL)
-
+[prompt]#mged># [cmd]#l sph1.s#
+[output]#sph1.s: ellipsoid (ELL)
      V (1, 1, 1)
-
      A (1, 0, 0) mag=1
-
      B (0, 1, 0) mag=1
-
      C (0, 0, 1) mag=1
-
      A direction cosines=(0, 90, 90)
-
      A rotation angle=0, fallback angle=0
-
      B direction cosines=(90, 0, 90)
-
      B rotation angle=90 fallback angle=0
-
      C direction cosines=(90, 90, 0)
-
-     C rotation angle=0, fallback angle=90
+     C rotation angle=0, fallback angle=90#
 ....
 
 Don't be concerned if you notice in the preceding output that
-[app]``MGED`` stores your sphere as an ellipsoid.  In actuality, the
+[app]`MGED` stores your sphere as an ellipsoid.  In actuality, the
 sphere is just a special case of the ellipsoid (see Appendix C). Also,
 note that it is not important if the numbers in your output do not
 match what is shown in this example.
@@ -306,7 +314,8 @@ with this lesson.
 In addition to viewing a shape's contents, you might also want to list
 the contents of the database to see what items have been created.  To
 view the database contents, type at the Command Window prompt:
-`ls[ENTER]`
+
+[cmd]`ls kbd:[Enter]`
 
 [[_kill_object]]
 == Killing a Shape or Object
@@ -314,14 +323,23 @@ view the database contents, type at the Command Window prompt:
 Sometimes when creating a model, you may need to eliminate a shape or
 object from the database.  The kill command is used to do this.  For
 example, if you wanted to kill the sph1.s shape, you would type at the
-Command Window prompt: `kill sph1.s[ENTER]` Make another sphere
-through either the Command Window or the GUI and name it sph3.s.  Once
-the sphere is made, use the kill command to eliminate it from the
-database by typing at the Command Window prompt: `kill sph3.s[ENTER]`
+Command Window prompt:
+
+[cmd]`kill sph1.s kbd:[Enter]`
+
+Make another sphere through either the Command Window or the GUI and
+name it sph3.s.  Once the sphere is made, use the kill command to
+eliminate it from the database by typing at the Command Window prompt:
+
+[cmd]`kill sph3.s kbd:[Enter]`
+
 You can tell the shape has been eliminated by using the ls command in
 the Command Window to list the contents of the database.  At the
-Command Window prompt, type: `ls[ENTER]` You should see two shapes
-listed: sph1.s and sph2.s.
+Command Window prompt, type:
+
+[cmd]`ls kbd:[Enter]`
+
+You should see two shapes listed: sph1.s and sph2.s.
 
 [NOTE]
 ====
@@ -335,38 +353,39 @@ really want to permanently delete data before using the kill command.
 == Editing Commands in the Command Window
 
 Occasionally, when you enter commands in the Command Window, you will
-make a mistake in typing. [app]``MGED`` can emulate either the
-[app]``emacs`` or [app]``vi`` syntax for Command Line editing.  By
-default, the [app]``emacs`` syntax is used.  See Appendix B for a list
+make a mistake in typing. [app]`MGED` can emulate either the
+[app]`emacs` or [app]`vi` syntax for Command Line editing.  By
+default, the [app]`emacs` syntax is used.  See Appendix B for a list
 of keystrokes, effects, and ways to select between the two command
 sets.
 
 You can also use the arrow keys to edit commands.  The left and right
-arrow keys move the cursor in the current Command Line.  Typing ENTER
-at any location on the Command Line executes the command.  Note that
-both the BACKSPACE and DELETE keys will delete one character to the
-left of the cursor.
+arrow keys move the cursor in the current Command Line.  Typing
+kbd:[ENTER] at any location on the Command Line executes the command.
+Note that both the kbd:[BACKSPACE] and kbd:[DELETE] keys will delete
+one character to the left of the cursor.
 
-[app]``MGED`` keeps a history of commands that have been entered.  The
+[app]`MGED` keeps a history of commands that have been entered.  The
 up and down arrow keys allow you to select a previously executed
 command for editing and re-execution.
 
 [[_quitting]]
-== Quitting [app]``MGED``
+== Quitting [app]`MGED`
 
 Remember, to leave the program at any time, type from the Command Line
-either the letter q or the word quit and then press the ENTER key.
-You may also quit the program by selecting Exit from the File menu.
+either the letter q or the word quit and then press the
+kbd:[ENTER] key.  You may also quit the program by selecting Exit from
+the File menu.
 
 [[_creating_primitive_shapes_review]]
 == Review
 
 In this lesson, you: 
 
-* Started the [app]``MGED`` program.
+* Started the [app]`MGED` program.
 * Entered commands in the Command Window.
-* Used the [app]``MGED`` GUI.
-* Created or opened a database using [app]``MGED`` naming conventions.
+* Used the [app]`MGED` GUI.
+* Created or opened a database using [app]`MGED` naming conventions.
 * Used the GUI to create or open a database.
 * Titled a database.
 * Selected a unit of measure for a design.

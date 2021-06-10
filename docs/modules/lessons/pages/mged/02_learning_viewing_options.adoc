@@ -1,21 +1,22 @@
 = 2. Learning Viewing Options in MGED
 :sectnums:
+:experimental:
 
 In this lesson, you will:
 
 * Create a model radio.
 * Locate viewing information in the Command Window.
-* Identify elements of the [app]``MGED`` viewing system.
+* Identify elements of the [app]`MGED` viewing system.
 * View your radio from different angles.
 * Work with Shift Grips.
 
-Models in [app]``BRL-CAD`` are constructed in a single xyz coordinate
+Models in [app]`BRL-CAD` are constructed in a single xyz coordinate
 system, which we sometimes refer to as model space.  The Graphics
-Window of [app]``MGED`` displays a portion of this space.  The xyz
+Window of [app]`MGED` displays a portion of this space.  The xyz
 coordinate system is used for specifying both the geometry and the
 view of the geometry that is presented in the Graphics Window.
 
-[app]``MGED`` offers a default view and a variety of optional views.
+[app]`MGED` offers a default view and a variety of optional views.
 You can switch back and forth between these views during and after
 model creation.  This lesson is designed to help you understand the
 viewing process and options.
@@ -28,9 +29,11 @@ geometric object-a "walkie-talkie" radio.  Note that the commands we
 use to do this are not discussed here because our current concern is
 on applying the principles of viewing.  Later lessons on creating
 geometry address these commands in detail.  Begin by launching
-[app]``MGED`` and creating a new database named radio.g.  Remember
-that one way to do this is to type the following command in a Terminal
-Window: `$ mged radio.g`
+[app]`MGED` and creating a new database named radio.g.  Remember that
+one way to do this is to type the following command in a Terminal
+Window:
+
+[cmd]`$ mged radio.g`
 
 Type the following in the Command Window, carefully checking each line
 before pressing ENTER.  If you make a mistake, use BACKSPACE or the
@@ -43,19 +46,14 @@ Be especially careful to note the difference between the numeral one
 [1] and the letter l [l] in ell1 on the third line.
 ====
 
+[subs="quotes,macros"]
 ....
-
-       in body.s rpp 0 16 0 32 0 48[ENTER]
-
-       in btn.s rec 8 30 36 0 3 0 4 0 0 0 0 2[ENTER]
-
-       in btn2.s ell1 8 33 36 4 0 0 2[ENTER]
-
-       in spkr.s tor 16 16 16 1 0 0 12 1[ENTER]
-
-       in ant.s rcc 2 2 46 0 0 48 1[ENTER]
-
-       in knob.s rcc 4 4 40 8 0 0 5[ENTER]
+       [cmd]#in body.s rpp 0 16 0 32 0 48# kbd:[ENTER]
+       [cmd]#in btn.s rec 8 30 36 0 3 0 4 0 0 0 0 2# kbd:[ENTER]
+       [cmd]#in btn2.s ell1 8 33 36 4 0 0 2# kbd:[ENTER]
+       [cmd]#in spkr.s tor 16 16 16 1 0 0 12 1# kbd:[ENTER]
+       [cmd]#in ant.s rcc 2 2 46 0 0 48 1# kbd:[ENTER]
+       [cmd]#in knob.s rcc 4 4 40 8 0 0 5# kbd:[ENTER]
 ....
 
 [NOTE]
@@ -135,7 +133,7 @@ groups of viewing data about the Graphics Window.
 |===
 
 [[_viewing_system_elements]]
-== Identifying Elements of the [app]``MGED`` Viewing System
+== Identifying Elements of the [app]`MGED` Viewing System
 
 === Center of View
 
@@ -152,9 +150,13 @@ where you want the center to be and clicking the middle mouse button.
 To change the center of view using the Command Window, simply type at
 the prompt the word center followed by three values for x, y, and z
 (which is the 3-D coordinate system mentioned previously). For
-example: `center 0 15 325.735[Enter]` As you change your view of the
-geometry, notice that the numbers in the brackets after the cent=
-title will change to reflect the new center of the view.
+example:
+
+[cmd]`center 0 15 325.735 kbd:[Enter]`
+
+As you change your view of the geometry, notice that the numbers in
+the brackets after the cent= title will change to reflect the new
+center of the view.
 
 === Size of View
 
@@ -193,19 +195,23 @@ once you make a selection.
 If you get lost at any point while creating a model, you can use the
 zap (Z) command to clear the geometry from the Graphics Window and
 then recall the shape with the draw command.  When drawing in an empty
-Graphics Window, [app]``MGED`` automatically sizes the view to fit
-what you draw into the window.
+Graphics Window, [app]`MGED` automatically sizes the view to fit what
+you draw into the window.
 
 You can control the view size of your radio more accurately with the
 Command Window.  To set the size to 100 (of whichever units you have
-selected), type at the prompt: `size 100[Enter]`
+selected), type at the prompt:
+
+[cmd]`size 100 kbd:[Enter]`
 
 You can also zoom in or out on a design by typing zoom on the Command
-Line.  To make your radio appear 50% smaller, you would type: `zoom
-0.5[Enter]`
+Line.  To make your radio appear 50% smaller, you would type:
 
-To make your radio appear twice as large, you would type: `zoom
-2[Enter]`
+[cmd]`zoom 0.5 kbd:[Enter]`
+
+To make your radio appear twice as large, you would type:
+
+[cmd]`zoom 2 kbd:[Enter]`
 
 [NOTE]
 ====
@@ -300,15 +306,15 @@ be at -90'0 elevation.
 |Bottom (az=270, el=-90)
 |===
 
-Finally, twist (which is an optional setting in [app]``MGED``)
-specifies a rotation about the viewing direction.  This rotation is
-applied to the view after azimuth and elevation have been designated.
-So, returning to our truck example, imagine standing in front of the
+Finally, twist (which is an optional setting in [app]`MGED`) specifies
+a rotation about the viewing direction.  This rotation is applied to
+the view after azimuth and elevation have been designated.  So,
+returning to our truck example, imagine standing in front of the
 vehicle (az=0, el=0) and then tilting your camera counterclockwise
 14'0.  This would give your view a 14'0 twist angle, as shown in the
 following figure (on the left). Note again that it is not the truck
 that is tipped up, but simply your view of it.  For more information
-on specifying twist, see the `ae` command in Appendix A.
+on specifying twist, see the [cmd]`ae` command in Appendix A.
 
 [cols="1", frame="none"]
 |===
@@ -321,7 +327,7 @@ on specifying twist, see the `ae` command in Appendix A.
 [[_coord_sys_summary]]
 == Summing up on Azimuth and Elevation and the xyz Coordinate System
 
-As mentioned at the start of this lesson, [app]``MGED`` operates in a
+As mentioned at the start of this lesson, [app]`MGED` operates in a
 three-dimensional coordinate system (determined by the x, y, and z
 axes). Azimuth is measured in the xy plane with the positive x
 direction corresponding to an azimuth of 0'0.  Positive azimuth angles
@@ -339,7 +345,7 @@ corresponding to the negative z direction.  However, if azimuth is not
 [[_view_radio_angles]]
 == Viewing Your Radio from Different Angles
 
-Let's now experiment with different views of your radio. [app]``MGED``
+Let's now experiment with different views of your radio. [app]`MGED`
 has several standard default views, which you've already seen in the
 preceding truck example.  They include Top (az270, el90); Bottom
 (az270, el-90); Right (az270, el0); Left (az90, el0); Front (az0,
@@ -364,12 +370,15 @@ Go to the View menu and try viewing your radio from different angles.
 |===
 
 You can also select any azimuth-elevation combination from the Command
-Line.  For example, at the prompt type `ae 128 17[Enter]` As with many
-of the Command Line options, this method of selecting views provides a
-finer degree of control/precision when you need it.
+Line.  For example, at the prompt type
 
-[app]``MGED`` can also display multiple views simultaneously.  Go to
-the Modes menu and select Multipane.  Four small panes with different
+[cmd]`ae 128 17 kbd:[Enter]`
+
+As with many of the Command Line options, this method of selecting
+views provides a finer degree of control/precision when you need it.
+
+[app]`MGED` can also display multiple views simultaneously.  Go to the
+Modes menu and select Multipane.  Four small panes with different
 views should appear in your Graphics Window, as shown in the following
 illustration.
 
@@ -380,7 +389,7 @@ image::mged/02_multipane.png[]
 [[_shift_grips]]
 == Working with Shift Grips
 
-The Shift Grip options of [app]``MGED`` are handy hot-key and mouse
+The Shift Grip options of [app]`MGED` are handy hot-key and mouse
 button combinations that can be used in two different ways.  With
 regard to our present discussion on viewing, the Shift Grips can, in
 effect, "drag" the world around in front of the viewer (but without
@@ -482,6 +491,6 @@ In this lesson, you:
 
 * Created a model radio.
 * Located viewing information in the Command Window.
-* Identified elements of the [app]``MGED`` viewing system.
+* Identified elements of the [app]`MGED` viewing system.
 * Viewed your radio from different angles.
 * Worked with Shift Grips.

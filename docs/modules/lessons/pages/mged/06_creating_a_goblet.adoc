@@ -1,5 +1,6 @@
 = 6. Creating a Goblet
 :sectnums:
+:experimental:
 
 In this lesson, you will:
 
@@ -21,12 +22,12 @@ image::mged/06_rtgoblet.png[]
 [[_goblet_new_database]]
 == Creating a New Database
 
-First, start [app]``MGED`` from the shell prompt.  Select File from
-the menu bar and then New.  A dialog box will appear, and it will ask
-you for a new database name.  Type in goblet.g at the end of the path
-name and select OK to create the new database.  The program should
-tell you that the database was successfully created and it is using
-millimeters for its unit of measure.
+First, start [app]`MGED` from the shell prompt.  Select File from the
+menu bar and then New.  A dialog box will appear, and it will ask you
+for a new database name.  Type in goblet.g at the end of the path name
+and select OK to create the new database.  The program should tell you
+that the database was successfully created and it is using millimeters
+for its unit of measure.
 
 [[_create_edit_copy_goblet]]
 == Creating, Editing, and Copying the Parts of the Goblet
@@ -94,7 +95,11 @@ for your stem, but you won't be able to see them until you edit them
 because they are in the same place.
 
 An even easier way to make the copies is to use the cp (copy) command
-as follows: `cp ball1.s ball2.s[Enter]```cp ball1.s ball3.s[Enter]``
+as follows:
+
+[cmd]`cp ball1.s ball2.s kbd:[Enter]`
+
+[cmd]`cp ball1.s ball3.s kbd:[Enter]`
 
 [[_editing_the_base_goblet]]
 === Editing the Balls of the Goblet Stem
@@ -144,19 +149,22 @@ image::mged/06_gobletbasestembasin.png[]
 [[_making_goblet_regions]]
 == Making Regions of the Goblet's Base, Stem, and Basin
 
-In order for [app]``MGED`` to know what primitives to raytrace, you
-must first designate these areas through Boolean operations.  In this
+In order for [app]`MGED` to know what primitives to raytrace, you must
+first designate these areas through Boolean operations.  In this
 example, the two Boolean operations used will be the union (u) and the
 subtraction (-).
 
-To make the stem a region, type at the Command Window prompt: `r
-stem1.r u ball1.s u ball2.s u ball3.s[Enter]`
+To make the stem a region, type at the Command Window prompt:
 
-To make the base a region, type at the prompt: `r base1.r u base1.s -
-ball1.s[Enter]`
+[cmd]`r stem1.r u ball1.s u ball2.s u ball3.s kbd:[Enter]`
 
-To make the basin a region, type at the prompt: `r basin1.r u
-basin1.s - stem1.r[Enter]`
+To make the base a region, type at the prompt:
+
+[cmd]`r base1.r u base1.s - ball1.s kbd:[Enter]`
+
+To make the basin a region, type at the prompt:
+
+[cmd]`r basin1.r u basin1.s - stem1.r kbd:[Enter]`
 
 Note that when creating base1.r, we subtracted a primitive shape from
 another primitive shape.  When creating basin1.r, we subtracted an
@@ -167,9 +175,11 @@ entire region from a primitive shape.
 
 To combine all the regions into one object, you will need to perform
 one last Boolean operation.  At the prompt in the Command Window,
-type: `comb goblet1.c u basin1.r u stem1.r u base1.r[Enter]`
+type:
 
-This operation tells the [app]``MGED`` program to: 
+[cmd]`comb goblet1.c u basin1.r u stem1.r u base1.r kbd:[Enter]`
+
+This operation tells the [app]`MGED` program to:
 
 [cols="1,1,1,1,1,1,1,1"]
 |===
@@ -196,46 +206,34 @@ This operation tells the [app]``MGED`` program to:
 [[_goblet_view_data_tree]]
 == Viewing a Data Tree
 
-[app]``MGED`` requires a certain logical order to the model data tree
-so it knows how to raytrace the various elements.  In the goblet, the
+[app]`MGED` requires a certain logical order to the model data tree so
+it knows how to raytrace the various elements.  In the goblet, the
 base and basin consist of regions composed of only one primitive shape
 each.  The stem, in contrast, consists of a region composed of the
 union of three spheres.  The three regions were combined to form a
 complex object.
 
 To view the data tree for this combination, type at the Command Window
-prompt: `tree goblet1.c[Enter]`
+prompt:
 
-[app]``MGED`` will respond with: 
+[cmd]`tree goblet1.c kbd:[Enter]`
+
+[app]`MGED` will respond with:
 
 ....
-
    goblet1.c/
-
    u basin1.r/R
-
    u basin1.s
-
    - stem1.r/R
-
    u ball1.s
-
    u ball2.s
-
    u ball3.s
-
    u stem1.r/R
-
    u ball1.s
-
    u ball2.s
-
    u ball3.s
-
    u base1.r/R
-
    u base1.s
-
    - ball1.s
 ....
 
@@ -247,7 +245,7 @@ named ball1.s, ball2.s, and ball3.s.  The region basin1.r is composed
 of the primitive shape named basin1.s minus the region stem1.r.
 
 Remember that regions define volumes of uniform material.  In the real
-world (and in [app]``BRL-CAD``), no two objects can occupy the same
+world (and in [app]`BRL-CAD`), no two objects can occupy the same
 space.  If two regions occupy the same space, they are said to
 overlap.  To avoid having the base and stem overlap, we subtract
 ball1.s from base1.s when we create base1.r.  We also subtract the
