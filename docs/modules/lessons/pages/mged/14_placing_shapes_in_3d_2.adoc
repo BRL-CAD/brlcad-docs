@@ -117,14 +117,14 @@ Window:
 
 [subs="quotes,macros"]
 ....
-[cmd]`r sph1.r u sph1.s kbd:[Enter]`
-[cmd]`r sph2.r u sph2.s kbd:[Enter]`
-[cmd]`r sph3.r u sph3.s kbd:[Enter]`
-[cmd]`r sph4.r u sph4.s kbd:[Enter]`
-[cmd]`r sph5.r u sph5.s kbd:[Enter]`
-[cmd]`r sph6.r u sph6.s kbd:[Enter]`
-[cmd]`r sph7.r usph7.s kbd:[Enter]`
-[cmd]`r sph8.r u sph8.s kbd:[Enter]`
+[cmd]#r sph1.r u sph1.s# kbd:[Enter]
+[cmd]#r sph2.r u sph2.s# kbd:[Enter]
+[cmd]#r sph3.r u sph3.s# kbd:[Enter]
+[cmd]#r sph4.r u sph4.s# kbd:[Enter]
+[cmd]#r sph5.r u sph5.s# kbd:[Enter]
+[cmd]#r sph6.r u sph6.s# kbd:[Enter]
+[cmd]#r sph7.r u sph7.s# kbd:[Enter]
+[cmd]#r sph8.r u sph8.s# kbd:[Enter]
 ....
 
 [NOTE]
@@ -144,11 +144,12 @@ interpreter of [app]`MGED` uses the Tcl/Tk language.  This gives us
 access to some convenient loop commands.  The following will make all
 of the regions for us in a single command:
 
-[cmd]`foreach i { 1 2 3 4 5 6 78 } { kbd:[Enter]`
-
-[cmd]`r sph$i.r u sph$i.s kbd:[Enter]`
-
-[cmd]`} kbd:[Enter]`
+[subs="macros"]
+....
+    foreach i { 1 2 3 4 5 6 78 } { kbd:[Enter]
+      r sph$i.r u sph$i.s kbd:[Enter]
+    } kbd:[Enter]
+....
 
 This is much easier and faster than either of the previous methods.
 However, if there were many more spheres (say 1000 or more), then it
@@ -179,11 +180,12 @@ not applied to another shape.
 Once again, we are performing the same operation multiple times.  This
 is another good opportunity to use a loop.
 
-[cmd]`foreach i { 1 2 3 4 5 6 78 } { kbd:[Enter]`
-
-[cmd]`mater sph$i.r "plastic" 255 0 0 0 kbd:[Enter]`
-
-[cmd]`} kbd:[Enter]`
+[subs="macros"]
+....
+    foreach i { 1 2 3 4 5 6 78 } { kbd:[Enter]
+      mater sph$i.r "plastic" 255 0 0 0 kbd:[Enter]
+    } kbd:[Enter]
+....
 
 In general, the graphical interface is good for doing one thing at a
 time or doing highly visual operations.  Repetitive operations are
