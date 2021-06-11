@@ -1,5 +1,6 @@
 = 13. Ubicar figuras en espacios 3-D
 :sectnums:
+:experimental:
 
 En este tutorial usted aprenderá a:
 
@@ -15,7 +16,9 @@ ofrece una práctica más avanzada en la creación y edición de formas y
 su colocación en el espacio 3-D.
 
 El diseño que usted hará en este tutorial es una simple vela en un
-candelabro apoyado sobre una mesa (como se muestraen la figura siguiente). En los próximos tutoriales, agregará decoración e iluminación para hacer el diseño más realista. 
+candelabro apoyado sobre una mesa (como se muestraen la figura
+siguiente). En los próximos tutoriales, agregará decoración e
+iluminación para hacer el diseño más realista.
 
 .Dise&#xF1;o de un candelabro
 image::mged/13_candle_design.png[]
@@ -48,19 +51,23 @@ siguiente imagen:
 .Dise&#xF1;o en malla de alambre para la
 image::mged/13_candle_tabletop_wireframe_front.png[]
 
-Hacer una región de la mesa mediante la ventana de comandos `r
-table1.r u arb8.s[Enter]`
+Hacer una región de la mesa mediante la ventana de comandos
+
+[cmd]`r table1.r u arb8.s kbd:[Enter]`
 
 [[_candle_create_base]]
 == Crear la base del candelabro
 
 Cree un eto y nómbrelo eto1.s.  Para crear la parte superior de la
 base del candelabro, necesitará rotar el eto 180'0.  Tipee en la
-ventana de comandos: `rot 0 180 0[Enter]` Esto le dice a [app]``MGED``
-que gire la forma 180'0 a lo largo del eje y.  A continuación,
-seleccione Scale (Escala) y reduzca un poco el tamaño predeterminado
-de su eto.  Coloque el eto sobre la mesa con el botón izquierdo del
-ratón y la tecla SHIFT.
+ventana de comandos:
+
+[cmd]`rot 0 180 0 kbd:[Enter]`
+
+Esto le dice a [app]`MGED` que gire la forma 180'0 a lo largo del
+eje y.  A continuación, seleccione Scale (Escala) y reduzca un poco el
+tamaño predeterminado de su eto.  Coloque el eto sobre la mesa con el
+botón izquierdo del ratón y la tecla SHIFT.
 
 Vea su diseño desde diferentes ángulos para asegurarse de que el eto
 se sitúa en el centro de la mesa.  Haga clic en Aceptar cuando esté
@@ -81,9 +88,7 @@ forma.
 |===
 
 |
-
 ....
-
 Set H
 Set H (Move V)
 Set A
@@ -92,9 +97,7 @@ Set c
 Set d
 ....
 |
-
 ....
-
 Set A,B
 Set C,D
 Set A,B,C,D
@@ -128,13 +131,19 @@ cuando haya terminado.  Su candelabro ya debería tener este aspecto:
 image::mged/13_candle_tabletop_base_front.png[]
 
 Cree una región con las tres figuras de la base.  Nómbrela base1.r.
-La expresión booleana debería ser: `r base1.r u eto1.s u rcc1.s u
-eto2.s` Note que podría haber sido escrita también de la siguiente
-forma: `r base1.r u eto1.s u eto2.s u rcc1.s` pero la primera
-expresión es preferible ya que es más coherente con el orden del
-ejemplo siguiente.  En un momento querremos quitar parte de eto2.s.
-Si colocamos a eto2.s al final de la lista, podemos realizar esta
-eliminación sencillamente.
+La expresión booleana debería ser:
+
+[cmd]`r base1.r u eto1.s u rcc1.s u eto2.s`
+
+Note que podría haber sido escrita también de la siguiente
+forma:
+
+[cmd]`r base1.r u eto1.s u eto2.s u rcc1.s`
+
+pero la primera expresión es preferible ya que es más coherente con el
+orden del ejemplo siguiente.  En un momento querremos quitar parte de
+eto2.s.  Si colocamos a eto2.s al final de la lista, podemos realizar
+esta eliminación sencillamente.
 
 [[_candle_create_candle]]
 == Crear la vela
@@ -149,12 +158,17 @@ vista del diseño.)
 .Dise&#xF1;o en malla de alambre para la representaci&#xF3;n
 image::mged/13_candle_tabletop_base_candle_front.png[]
 
-Cree una región del candelabro.  La expresión booleana debería ser: `r
-candle1.r u rcc2.s` Ahora haremos un corte cilíndrico en la base del
-candelabro.  Para esto utilice el cilindro del candelabro de la
-siguiente manera: `r base1.r - rcc2.s` Anteriormente habíamos dicho
-que íbamos a necesitar remover un poco de material del eto2.s.  Ahora
-ya lo hemos hecho.
+Cree una región del candelabro.  La expresión booleana debería ser:
+
+[cmd]`r candle1.r u rcc2.s`
+
+Ahora haremos un corte cilíndrico en la base del candelabro.  Para
+esto utilice el cilindro del candelabro de la siguiente manera:
+
+[cmd]`r base1.r - rcc2.s`
+
+Anteriormente habíamos dicho que íbamos a necesitar remover un poco de
+material del eto2.s.  Ahora ya lo hemos hecho.
 
 [[_candle_create_flame]]
 == Crear la llama de la vela
@@ -166,14 +180,17 @@ figura hasta que su diseño se vea como el siguiente:
 image::mged/13_candle_complete_front.png[]
 
 Haga de la llama una región tipeando en el prompt de la ventana de
-comandos: `r flame1.r u part1.s[Enter]`
+comandos:
+
+[cmd]`r flame1.r u part1.s kbd:[Enter]`
 
 [[_candle_create_combination]]
 == Hacer una combinación del candelabro, la vela y la llama
 
 Para hacer una combinación con las partes del candelabro, tipee en el
-prompt de la ventana de comandos: `comb candle1.c u base1.r u
-candle1.r u flame1.r[Enter]`
+prompt de la ventana de comandos:
+
+[cmd]`comb candle1.c u base1.r u candle1.r u flame1.r kbd:[Enter]`
 
 [[_candle_check_data_tree]]
 == Controlar el árbol de datos
@@ -183,29 +200,22 @@ sería un buen momento para revisar su árbol de datos y asegurarse de
 que está de acuerdo con el siguiente árbol.  Si detecta algún error en
 cualquiera de las partes del árbol, puede solucionarlo desde la caja
 Boolean Expression (Expression booleana) del editor de combinaciones
-(ver tutorial 5). En la línea de comandos tipee: `tree
-candle1.c[Enter]` Su expresión booleana debería ser:
+(ver tutorial 5). En la línea de comandos tipee:
+
+[cmd]`tree candle1.c kbd:[Enter]`
+
+Su expresión booleana debería ser:
 
 ....
-
    candle1.c/
-
    u base1.r/R
-
    u eto1.s
-
    u rcc1.s
-
    u eto2.s
-
    - rcc2.s
-
    u candle1.r/R
-
    u rcc2.s
-
    u flame1.r/R
-
    u part1.s
 ....
 
@@ -266,7 +276,7 @@ utilizado para hacer el color.  El color 0 0 0 es el negro, y el 255
 de los colores utilizados en la mezcla de pigmentos de pintura, ya que
 en esos casos se tratabaja con la luz.  Si bien puede parecer extraño
 al principio, la mayoría de los usuarios de las aplicaciones de
-[app]``MGED`` usuarios se convierten rápidamente en expertos en la
+[app]`MGED` usuarios se convierten rápidamente en expertos en la
 creación de colores RGB.
 
 [[_candle_raytrace]]
@@ -275,8 +285,11 @@ creación de colores RGB.
 Antes de hacer el Raytrace, cambie la vista a az35, el25 para tener
 una visión mejor del diseño terminado y luego quite el diseño anterior
 con el comando Blast tipeando lo siguiente en el prompt de la ventana
-de comandos: `B table1.r candle1.c[Enter]` Este comando le dice al
-programa [app]``MGED`` que:
+de comandos:
+
+[cmd]`B table1.r candle1.c kbd:[Enter]`
+
+Este comando le dice al programa [app]`MGED` que:
 
 [cols="1,1,1"]
 |===

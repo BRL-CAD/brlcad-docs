@@ -1,5 +1,6 @@
 = 14. Ejercicios adicionales de ubicación de imágenes en espacios 3-D
 :sectnums:
+:experimental:
 
 En este tutorial usted aprenderá a:
 
@@ -119,36 +120,55 @@ image::mged/14_candle_spheres_az35el25.png[]
 
 Ahora que todas las esferas están creadas y en su lugar, debe hacer
 una región de cada una de ellas.  Para hacer esto tipee en la ventana
-de comandos: `r sph1.r u sph1.s[Enter]```r sph2.r u sph2.s[Enter]````r
-sph3.r u sph3.s[Enter]````r sph4.r u sph4.s[Enter]````r sph5.r u
-sph5.s[Enter]````r sph6.r u sph6.s[Enter]````r sph7.r u
-sph7.s[Enter]````r sph8.r u sph8.s[Enter]``
+de comandos:
 
-Nota: Hay tres maneras fáciles de hacer todas las regiones.  La
-primera consiste en tipear el primer comando: `r sph1.r u
-sph1.s[Enter]` y luego usar la flecha hacia arriba para recordar este
-comando.  A continuación sustituya el número 1 por un 2, repitiendo
-estos pasos sucesivamente hasta llegar a la esfera 8.
+[subs="quotes,macros"]
+....
+[cmd]#r sph1.r u sph1.s# kbd:[Enter]
+[cmd]#r sph2.r u sph2.s# kbd:[Enter]
+[cmd]#r sph3.r u sph3.s# kbd:[Enter]
+[cmd]#r sph4.r u sph4.s# kbd:[Enter]
+[cmd]#r sph5.r u sph5.s# kbd:[Enter]
+[cmd]#r sph6.r u sph6.s# kbd:[Enter]
+[cmd]#r sph7.r u sph7.s# kbd:[Enter]
+[cmd]#r sph8.r u sph8.s# kbd:[Enter]
+....
+
+[NOTE]
+====
+Hay tres maneras fáciles de hacer todas las regiones.  La primera
+consiste en tipear el primer comando:
+
+[cmd]`r sph1.r u sph1.s kbd:[Enter]`
+
+y luego usar la flecha hacia arriba para recordar este comando.  A
+continuación sustituya el número 1 por un 2, repitiendo estos pasos
+sucesivamente hasta llegar a la esfera 8.
 
 La segunda opción se basa en el hecho de que el intérprete de la línea
-de comandos de [app]`` MGED `` usa el lenguaje Tcl/Tk.  Esto nos da
-acceso a algunos loops de comandos.  A continuación hará todas las
-regiones con un solo comando: `foreach i { 1 2 3 4 5 6 7 8 } {
-[Enter]```r sph$i.r u sph$i.s [Enter]````}[Enter] ``
+de comandos de [app]`MGED` usa el lenguaje Tcl/Tk.  Esto nos da acceso
+a algunos loops de comandos.  A continuación hará todas las regiones
+con un solo comando:
+
+[subs="macros"]
+....
+    foreach i { 1 2 3 4 5 6 7 8 } {  kbd:[Enter]
+      r sph$i.r u sph$i.s  kbd:[Enter]
+    } kbd:[Enter]
+....
 
 Esto es mucho más fácil y más rápido que cualquiera de los métodos
 anteriores.  Sin embargo, si hubiera muchas más esferas (por ejemplo
 1000 o más), entonces se vuelve más conveniente utilizar una tercera
 forma que emplea diferentes tipos de bucles:
 
+[subs="macros"]
 ....
-
-    for {set i 1} {i `<= 1000} {incr i} {[Enter]
-
-    r sph$i.r u sph$i.s [Enter]
-
+    for {set i 1} {i <= 1000} {incr i} { kbd:[Enter]
+      r sph$i.r u sph$i.s  kbd:[Enter]
     }
 ....
+====
 
 A continuación, del menú Edit (Editar) seleccione Combination Editor
 (Editor de combinaciones). Seleccione sph1.r desde el menú desplegable
@@ -161,14 +181,22 @@ embargo, este método requiere que el usuario recuerde actualizar el
 cuadro de Boolean Expression (por ejemplo, cambiar u sph1.s a u
 sph2.s) de modo que el booleano de una forma, no se aplique a otra.
 
-Nota: Una vez más, mejoraremos la misma operación para las
-repeticiones múltiples.  Esta es otra buena oportunidad para utilizar
-un loop. `foreach i { 1 2 3 4 5 6 7 8 } {[Enter]```mater sph$i.r
-"plastic" 255 0 0 0[Enter]````}[Enter]``
+[NOTE]
+====
+Una vez más, mejoraremos la misma operación para las repeticiones
+múltiples.  Esta es otra buena oportunidad para utilizar un loop.
+
+[subs="macros"]
+....
+    foreach i { 1 2 3 4 5 6 7 8 } { kbd:[Enter]
+      mater sph$i.r "plastic" 255 0 0 0 kbd:[Enter]
+    } kbd:[Enter]
+....
 
 En general, la GUI es buena para hacer una cosa a la vez o para hacer
 operaciones altamente visuales.  La operaciones repetitivas es mejor
 hacerlas utilizando la línea de comandos.
+====
 
 [[_candle_base_spheres_combine]]
 == Combinando las esferas con la base del candelabro
@@ -189,112 +217,73 @@ Ahora enfrentamos otra decisión: como lograr este resultado.  La clave
 es que el espacio que ocupan las piedras debe ser substraído del
 candelabro, pero en la parte que corresponde, el rcc1.s.
 
-En la línea de comandos cree rcc1.c tipeando: ` comb rcc1.c u rcc1.s -
-sph1.r - sph2.r - sph3.r - sph4.r - sph5.r - sph6.r - sph7.r -
-sph8.r[Enter]` Luego abra el Combination Editor y seleccione base1.r.
-Modifique la unión de rcc1.s en el campo de la expresión booleana para
-hacer la unión de rcc1.c (difieren en el tipo, una es la figura, la
-segunda es una combinación), y cliquee OK.  El árbol de base1.r
-debería verse así:
+En la línea de comandos cree rcc1.c tipeando:
+
+[cmd]`comb rcc1.c u rcc1.s - sph1.r - sph2.r - sph3.r - sph4.r - sph5.r - sph6.r - sph7.r - sph8.r kbd:[Enter]`
+
+Luego abra el Combination Editor y seleccione base1.r.  Modifique la
+unión de rcc1.s en el campo de la expresión booleana para hacer la
+unión de rcc1.c (difieren en el tipo, una es la figura, la segunda es
+una combinación), y cliquee OK.  El árbol de base1.r debería verse
+así:
 
 ....
-
    u base1.r/R
-
    u eto1.s
-
    u rcc1.c
-
    u rcc1.s
-
    - sph1.r/R
-
    u sph1.s
-
    - sph2.r/R
-
    u sph2.s
-
    - sph3.r/R
-
    u sph3.s
-
    - sph4.r/R
-
    u sph4.s
-
    - sph5.r/R
-
    u sph5.s
-
    - sph6.r/R
-
    u sph6.s
-
    - sph7.r/R
-
    u sph7.s
-
    - sph8.r/R
-
    u sph8.s
-
    u eto2.s
-
    - rcc2.s
 ....
 
 Note que podríamos haber logrado los mismos resultados en la línea de
 comandos mediante el uso del comando rm (Remove) para quitar el
-espacio de rcc1.s de base1.r y a continuación, añadir rcc1.c: `rm
-base1.r rcc1.s[Enter] ```r base1.r u rcc1.c[Enter] ``
+espacio de rcc1.s de base1.r y a continuación, añadir rcc1.c:
+
+[cmd]`rm base1.r rcc1.s kbd:[Enter]`
+
+[cmd]`r base1.r u rcc1.c kbd:[Enter]`
 
 El resultado de esto sería un árbol como el siguiente:
 
 ....
-
     u base1.r/R
-
     u eto1.s
-
     u eto2.s
-
     - rcc2.s
-
     u rcc1.c
-
     u rcc1.s
-
     - sph1.r/R
-
     u sph1.s
-
     - sph2.r/R
-
     u sph2.s
-
     - sph3.r/R
-
     u sph3.s
-
     - sph4.r/R
-
     u sph4.s
-
     - sph5.r/R
-
     u sph5.s
-
     - sph6.r/R
-
     u sph6.s
-
     - sph7.r/R
-
     u sph7.s
-
     - sph8.r/R
-
     u sph8.s
 ....
 
@@ -304,66 +293,49 @@ base1.r y luego restando cada una de las joyas de base1.r (por lo
 tanto, extrayendo materiales de rcc1.s). Esto tendría como resultado:
 
 ....
-
     u base1.r/R
-
     u eto1.s
-
     u eto2.s
-
     - rcc2.s
-
     u rcc1.s
-
     - sph1.r/R
-
     u sph1.s
-
     - sph2.r/R
-
     u sph2.s
-
     - sph3.r/R
-
     u sph3.s
-
     - sph4.r/R
-
     u sph4.s
-
     - sph5.r/R
-
     u sph5.s
-
     - sph6.r/R
-
     u sph6.s
-
     - sph7.r/R
-
     u sph7.s
-
     - sph8.r/R
-
     u sph8.s
 ....
 
 Puede ser una buena práctica considerando los méritos de cada método
 disponible.
 
-Ahora necesitará combinar las piedras con el candelabro candle1.c: `
-comb candle1.c u sph1.r u sph2.r u sph3.r u sph4.r u sph5.r u sph6.r u
-sph7.r u sph8.r[Enter]`
+Ahora necesitará combinar las piedras con el candelabro candle1.c:
+
+[cmd]`comb candle1.c u sph1.r u sph2.r u sph3.r u sph4.r u sph5.r u sph6.r u sph7.r u sph8.r kbd:[Enter]`
 
 Hay sólo un par de cosas por hacer antes de general el Raytrace del
 diseño.  Si ha habilitado la opción Multipane o la cuadrícula, vuelva
 al menú Modes (Modos) y desactívelos.  A continuación, limpie la
 pantalla y dibuje su nuevo diseño escribiendo en la ventana de
-comandos: `B candle1.c table1.r` Su nuevo diseño debería aparecer en
-la ventana de gráficos.  Abra el Raytrace Control Panel (Panel de
-control de Raytrace) y seleccione un color azul claro (200 236 242)
-escribiendo los tres valores en el cuadro de entrada Background Color
-(Color de fondo). El trazado de rayos debe ser similar al siguiente:
+comandos:
+
+[cmd]`B candle1.c table1.r`
+
+Su nuevo diseño debería aparecer en la ventana de gráficos.  Abra el
+Raytrace Control Panel (Panel de control de Raytrace) y seleccione un
+color azul claro (200 236 242) escribiendo los tres valores en el
+cuadro de entrada Background Color (Color de fondo). El trazado de
+rayos debe ser similar al siguiente:
 
 .Raytrace del candelabro con base adornada con piedras
 image::mged/14_candle_spheres_raytraced.png[]

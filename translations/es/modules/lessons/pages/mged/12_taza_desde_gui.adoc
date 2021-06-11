@@ -1,5 +1,6 @@
 = 12. Crear el modelo de una taza utilizando la interfaz de MGED
 :sectnums:
+:experimental:
 
 En este tutorial usted aprenderá a:
 
@@ -34,7 +35,6 @@ Vaya al menú Edit (Edición), donde encontrará las siguientes opciones:
 |
 
 ....
-
 		    Set H
 		    Set H (Move V)
 		    Set A
@@ -50,34 +50,28 @@ Vaya al menú Edit (Edición), donde encontrará las siguientes opciones:
 		    Move End H
 ....
 |
-
 ....
-
 		    Rotate
 		    Translate
 		    Scale
 		    None of the Above
 ....
 |
-
 ....
-
 		    Reject
 		    Accept
 		    Apply
 		    Reset
 ....
 |
-
 ....
-
 		    Primitive Editor
 		    Combination
 		    Editor
 ....
 |===
 
-Nota: La primera columna incluye funciones específicas de figuras.
+NOTE: La primera columna incluye funciones específicas de figuras.
 Las otras columnas son opciones comunes a cualquier figura.
 
 Seleccione Set H.  Desde una vista frontal, mueva el cursor del ratón
@@ -89,7 +83,7 @@ central del ratón para aumentar el diámetro del cilindro.  Aceptar los
 cambios cuando el objeto aparece similar al que se muestra en la
 siguiente figura.
 
-Nota: Si en algún momento en que edite a través de la GUI no está
+NOTE: Si en algún momento en que edite a través de la GUI no está
 satisfecho con los cambios, puede rechazar los cambios o
 restablecerlos desde las opciones del cuadro de diálogo para devolver
 las variables a su valor original.  Sin embargo, si las rechaza,
@@ -109,7 +103,7 @@ cilindros deben asemejarse a los del ejemplo siguiente:
 .Dos cilindros vistos desde la vista frontal
 image::mged/12_cyls_frontview.png[]
 
-Nota: Recuerde que cuando se cambia la escala de una forma, la
+NOTE: Recuerde que cuando se cambia la escala de una forma, la
 posición del puntero del ratón en la ventana de gráficos determinará
 qué tan grande o pequeño será el cambio.  Cuanto más se acerque el
 puntero del ratón al centro de la línea horizontal de la ventana,
@@ -128,34 +122,26 @@ parámetros detallados en la siguiente lista:
 |===
 
 |
-
 ....
-
 		    Set Radius 1
 		    Set Radius 2
 ....
 |
-
 ....
-
 		    Rotate
 		    Translate
 		    Scale
 		    None of the Above
 ....
 |
-
 ....
-
 		    Reject
 		    Accept
 		    Apply
 		    Reset
 ....
 |
-
 ....
-
 		    Primitive Editor
 		    Combination
 		    Editor
@@ -186,12 +172,14 @@ Acepte los cambios cuando esté terminada.
 
 Para hacer el borde de la taza, seleccione del menú Create (Crear), la
 opción tor (toro) y cree un toro con el nombre rim.s.  Seleccione el
-comando Rotate (Rotación) y tipee en la línea de comandos: `p 0 90
-0[Enter]` para girar el toro sobre sí mismo (90'0 en torno al eje
-y). Luego, escale y edite los distintos parámetros del toro con las
-vistas frontal y superior hasta que la taza se vea similar a la del
-ejemplo siguiente.  Asegúrese de aceptar sus cambios cuando haya
-terminado.
+comando Rotate (Rotación) y tipee en la línea de comandos:
+
+[cmd]`p 0 90 0 kbd:[Enter]`
+
+para girar el toro sobre sí mismo (90'0 en torno al eje y). Luego,
+escale y edite los distintos parámetros del toro con las vistas
+frontal y superior hasta que la taza se vea similar a la del ejemplo
+siguiente.  Asegúrese de aceptar sus cambios cuando haya terminado.
 
 .Taza con borde mostrada desde una vista frontal
 image::mged/12_mug_rim_frontview.png[]
@@ -201,18 +189,24 @@ image::mged/12_mug_rim_frontview.png[]
 == Crear combinaciones de varias figuras
 
 Para combinar las distintas figuras de su taza, tipee los siguientes
-comandos en el prompt de la ventana de comandos: `comb mug.c u
-outside.s - inside.s[Enter]```comb handle.c u handle.s -
-outside.s[Enter]````comb mug.c u rim.s[Enter]`` Nota: Regrese a los
-dos tutoriales anteriores a éste para recordar cómo trabaja cada uno
-de estos comandos.
+comandos en el prompt de la ventana de comandos:
+
+[cmd]`comb mug.c u outside.s - inside.s kbd:[Enter]`
+
+[cmd]`comb handle.c u handle.s - outside.s kbd:[Enter]`
+
+[cmd]`comb mug.c u rim.s kbd:[Enter]`
+
+NOTE: Regrese a los dos tutoriales anteriores a éste para recordar
+cómo trabaja cada uno de estos comandos.
 
 [[_mug_gui_make_region]]
 == Crear una region con las combinaciones
 
 Para crear una región partiendo de las combinaciones que acaba de
-crear, tipee en la línea de comandos: `r mug.r u mug.c u
-handle.c[Enter]`
+crear, tipee en la línea de comandos:
+
+[cmd]`r mug.r u mug.c u handle.c kbd:[Enter]`
 
 [[_mug_gui_check_tree]]
 == Controlando el árbol de datos (Data Tree)
@@ -221,33 +215,27 @@ Antes de continuar, sería recomendable controlar el árbol de datos.
 Asegúrese de que está de acuerdo con el siguiente árbol:
 
 ....
-
    mug.r/R
-
    u mug.c/
-
    u outside.s
-
    - inside.s
-
    u rim.s
-
    u handle.c/
-
    u handle.s
-
    - outside.s
 ....
 
 Si su árbol de datos no se parece a este ejemplo, tendrá que volver y
 averiguar dónde ha ido mal.  De ser necesario, puede eliminar una
 forma, una combinación, o una región escribiendo en el prompt de la
-ventana de comandos: `kill [name of shape, combination, or
-region][Enter]`
+ventana de comandos:
+
+[cmd]`kill [name of shape, combination, or region] kbd:[Enter]`
 
 Por ejemplo, en este tutorial usted ha creado una figura extra llamada
 rim2.s, que ya no utilizará.  Para eiminar esta figura deberá tipear:
-`kill rim2.s[Enter]`
+
+[cmd]`kill rim2.s kbd:[Enter]`
 
 [[_mug_gui_comb_edit_props]]
 == Asignar propiedades de los materiales utilizando el CombinationEditor (Editor de combinaciones) 
@@ -259,15 +247,14 @@ sombreado de plástico.  Marque la casilla Boolean Expression
 (Expresión booleana) para asegurarse de que diga:
 
 ....
-
    u mug.c
-
    u handle.c
 ....
 
 Cuando esté terminado cliquee en Apply (Aplicar) y luego en Dismiss
-(Despedir). En la venana de comandos tipee en el prompt: `B
-mug.r[Enter]`
+(Despedir). En la venana de comandos tipee en el prompt:
+
+[cmd]`B mug.r kbd:[Enter]`
 
 [[_mug_gui_raytracing]]
 == Haciendo el trazado de rayos (Raytracing) del diseño

@@ -1,5 +1,6 @@
 = 6. Crear una copa
 :sectnums:
+:experimental:
 
 En esta lección podrás:
 
@@ -21,13 +22,12 @@ image::mged/06_rtgoblet.png[]
 [[_goblet_new_database]]
 == Crear una nueva base de datos
 
-Primero, inicie [app]``MGED`` desde una consola de comandos.
-Seleccione File (Archivo) desde la barra de menú y luego New
-(Nuevo). Un cuadro de diálogo aparecerá, y preguntará el nombre de la
-nueva base de datos.  Tipee en copa.g al final del nombre y
-presiona OK.  El programa debería decirle que la base de datos fue
-creada exitosamente y que está usando milímetros como unidad de
-medida.
+Primero, inicie [app]`MGED` desde una consola de comandos.  Seleccione
+File (Archivo) desde la barra de menú y luego New (Nuevo). Un cuadro
+de diálogo aparecerá, y preguntará el nombre de la nueva base de
+datos.  Tipee en copa.g al final del nombre y presiona OK.  El
+programa debería decirle que la base de datos fue creada exitosamente
+y que está usando milímetros como unidad de medida.
 
 [[_create_edit_copy_goblet]]
 == Crear, editar, y copiar las partes de la copa
@@ -92,16 +92,19 @@ ingresar el nombre de la primera esfera que creó: ball1.s.  Luego
 cliquee Reset (Resetear) (para resetear los valores de la casilla de
 diálogo a los de ball1.s) o dele retorno en la casilla destinada para
 el nombre.  Cambie el nombre ball1.s por ball2.s usando la tecla
-BACKSPACE y cliquee Apply (Aplicar).
+kbd:[BACKSPACE] y cliquee btn:[Apply] (Aplicar).
 
 Repita este procedimiento con una sph llamada bola3.s.  Cuando lo haya
-hecho, cliquee OK.  Ahora tiene tres bolas para el pie, pero no podrá
-verlas hasta que las edite, porque están en el mismo lugar, una sobre
-la otra.
+hecho, cliquee btn:[OK].  Ahora tiene tres bolas para el pie, pero no
+podrá verlas hasta que las edite, porque están en el mismo lugar, una
+sobre la otra.
 
 Una manera aun más fácil de hacer las copias es desde la línea de
-comandos con el comando cp (copiar) como sigue: `cp ball1.s
-ball2.s[Enter]```cp ball1.s ball3.s[Enter]``
+comandos con el comando cp (copiar) como sigue:
+
+[cmd]`cp ball1.s ball2.s kbd:[Enter]`
+
+[cmd]`cp ball1.s ball3.s kbd:[Enter]`
 
 === Editar las bolas del pie de la copa
 
@@ -155,19 +158,22 @@ image::mged/06_gobletbasestembasin.png[]
 == Haciendo las regiones de la base, pie y cuenca de la copa
 
 Para saber a cuáles de las formas primitivas hacerle el trazado de
-rayos con [app]``MGED``, primero debe definir las áreas con
-operaciones booleanas.  En este ejemplo, las operaciones booleanas a
-utilizar serán la unión (u) y la sustracción (-).
+rayos con [app]`MGED`, primero debe definir las áreas con operaciones
+booleanas.  En este ejemplo, las operaciones booleanas a utilizar
+serán la unión (u) y la sustracción (-).
 
 Para hacer una región que reúna las formas del pie, tipee en el prompt
-de la ventana de comandos: `r stem1.r u ball1.s u ball2.s u ball3.s
-[Enter]`
+de la ventana de comandos:
 
-Para hacer de la base una región, tipee en el prompt: `r base1.r u
-base1.s - ball1.s[Enter]`
+[cmd]`r stem1.r u ball1.s u ball2.s u ball3.s kbd:[Enter]`
 
-Para hacer de la cuenca una región, tipea en el prompt: `r basin1.r u
-basin1.s - stem1.r[Enter]`
+Para hacer de la base una región, tipee en el prompt:
+
+[cmd]`r base1.r u base1.s - ball1.s kbd:[Enter]`
+
+Para hacer de la cuenca una región, tipea en el prompt:
+
+[cmd]`r basin1.r u basin1.s - stem1.r kbd:[Enter]`
 
 Note que cuando se creó base1.r, substrajo una forma primitiva desde
 otra forma primitiva.  Cuando creó basin1.r, substrajo una región
@@ -178,10 +184,11 @@ entera desde una forma primitiva.
 
 Para combinar todas las regiones dentro de un objeto, necesitará
 ejecutar una de las últimas operaciones Booleanas.  En el prompt de la
-Ventana de Comandos, tipee: `comb globet1.c u basin1.r u stem1.r u
-base1.r[Enter]`
+Ventana de Comandos, tipee:
 
-Esta operación le dice al programa [app]``MGED`` que:
+[cmd]`comb globet1.c u basin1.r u stem1.r u base1.r kbd:[Enter]`
+
+Esta operación le dice al programa [app]`MGED` que:
 
 [cols="1,1,1,1,1,1,1,1"]
 |===
@@ -208,7 +215,7 @@ Esta operación le dice al programa [app]``MGED`` que:
 [[_goblet_view_data_tree]]
 == Ver un árbol de datos
 
-[app]``MGED`` requiere una cierta lógica para el árbol de datos, es
+[app]`MGED` requiere una cierta lógica para el árbol de datos, es
 decir, para saber como graficar varios elementos.  La copa, la base y
 la cuenca consisten de regiones compuestas de solamente una forma
 primitiva cada una.  El pie, en contraste, consiste de una región
@@ -216,38 +223,24 @@ compuesta de la unión de tres esferas.  Las tres regiones fueron
 combinadas para formar un objeto complejo.
 
 Para ver el árbol de datos para esta combinación, tipee en el prompt
-de la ventana de comandos: `tree globet1.c[Enter]`
+de la ventana de comandos: `tree globet1.c kbd:[Enter]`
 
-[app]``MGED`` responderá con:
+[app]`MGED` responderá con:
 
 ....
-
    goblet1.c/
-
    u basin1.r/R
-
    u basin1.s
-
    - stem1.r/R
-
    u ball1.s
-
    u ball2.s
-
    u ball3.s
-
    u stem1.r/R
-
    u ball1.s
-
    u ball2.s
-
    u ball3.s
-
    u base1.r/R
-
    u base1.s
-
    - ball1.s
 ....
 

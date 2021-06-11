@@ -1,5 +1,6 @@
 = 3. Usar el comando Insert en MGED para dimensionar y ubicar figuras
 :sectnums:
+:experimental:
 
 En este tutorial usted aprenderá a:
 
@@ -33,10 +34,12 @@ título el nombre myShapes.
 
 Comience por activar la ventana (por lo general, se logra haciendo
 clic en cualquier parte la ventana). Luego, en el prompt de
-[app]``MGED`` tipee el siguiente comando: `make sph1.s sph [Enter]`
+[app]`MGED` tipee el siguiente comando:
+
+[cmd]`make sph1.s sph  kbd:[Enter]`
 
 Como pudo apreciar en el tutorial #1, este comando le dice a
-[app]``MGED`` que:
+[app]`MGED` que:
 
 [cols="1,1,1", frame="all"]
 |===
@@ -57,7 +60,8 @@ La figura de una esfera fue creada y en su ventana gráfica aparecerá
 un dibujo de la misma en forma de wireframe.
 
 Para crear el rcc desde la ventana de comandos tipee en el prompt:
-`make rcc1.s rcc [Enter]`
+
+[cmd]`make rcc1.s rcc  kbd:[Enter]`
 
 Su ventana gráfica deberá mostrar un rcc grande, con la vista por
 defecto de az35, el25, viéndose como si entersectara con la esfera
@@ -78,26 +82,32 @@ manera más precisa de crear estas figuras es utilizando el comando in
 Una vez que la ventana de comandos esté activa al cliquear sobre ella,
 use el comando Z (zap) para despejar la ventana gráfica.  Ya está
 listo para crear una esfera utilizando el comando in.  En el prompt de
-[app]``MGED`` tipee: `in sph2.s sph[Enter]`
+[app]`MGED` tipee:
 
-[app]``MGED`` responderá con: `Enter X, Y, Z of vertex:```(Ingrese X,
-Y, Z del vértice:)``
+[cmd]`in sph2.s sph kbd:[Enter]`
 
-Debe responderle a [app]``MGED`` con la posición del vértice (centro)
-de la esfera en el espacio.  Tipee entonces en el prompt de
-[app]``MGED``: `4 4 4[Enter]`
+[app]`MGED` responderá con:
 
-NOTA: Al trabajar con [app]``MGED``, recibirá algunas preguntas sobre
-el valor de vectores o vértices.  En [app]``MGED``, un vector
-representa la distancia y dirección desde un punto del espacio a otro,
-y el vértice es sólo un punto en el espacio.  Los valores ingresados
-para un vector, generalmente son utilizados para crear objetos con
-dimensiones específicas.  Los valores ingresador para el vértice
-ubican los objetos en el espacio.
+`Enter X, Y, Z of vertex:`
+
+`(Ingrese X, Y, Z del vértice:)`
+
+Debe responderle a [app]`MGED` con la posición del vértice (centro) de
+la esfera en el espacio.  Tipee entonces en el prompt de [app]`MGED`:
+
+[cmd]`4 4 4 kbd:[Enter]`
+
+NOTE: Al trabajar con [app]`MGED`, recibirá algunas preguntas sobre el
+valor de vectores o vértices.  En [app]`MGED`, un vector representa la
+distancia y dirección desde un punto del espacio a otro, y el vértice
+es sólo un punto en el espacio.  Los valores ingresados para un
+vector, generalmente son utilizados para crear objetos con dimensiones
+específicas.  Los valores ingresador para el vértice ubican los
+objetos en el espacio.
 
 Su esfera estará ahora ubicada en(x,y,z)=(4,4,4), medido en
 milímetros.  Recuerde que los valores se ingresan separados por un
-espacio y se presiona la tecla ENTER luego. [app]``MGED`` le
+espacio y se presiona la tecla kbd:[ENTER] luego. [app]`MGED` le
 preguntará entonces.
 
 ....
@@ -106,44 +116,62 @@ preguntará entonces.
       (Ingrese radio:)
       Tipee.
 
-      3[Enter]
+      3 kbd:[Enter]
 ....
 
 El radio de la esfera será de 3 mm.  El siguiente cuadro de diálogo
 aparecerá en la ventana de comandos (incluyendo las respuestas
-correspondientes): ` in sph2.s sph```Enter X, Y, Z of vertex: 4 4
-4````Enter radius: 3````51 vectors in 0.000543 sec`` La última línea
-de este diálogo es simplemente un registro de la velocidad de la
-computadora en dibujar la forma.  No tiene ninguna utilidad real para
-el usuario en este punto.
+correspondientes):
+
+[subs="quotes"]
+....
+[prompt]#mged># [cmd]#in sph2.s sph#
+[prompt]#Enter X, Y, Z of vertex:# [cmd]#4 4 4#
+[prompt]#Enter radius:# [cmd]#3#
+[output]#51 vectors in 0.000543 sec#
+....
+
+La última línea de este diálogo es simplemente un registro de la
+velocidad de la computadora en dibujar la forma.  No tiene ninguna
+utilidad real para el usuario en este punto.
 
 La esfera ha sido creada y su wireframe (marco de alambre), similar al
 de la esfera creada con el comando make aparecerá en su ventana
 gráfica.
 
 Para crear el RCC correcto, tipee en el prompt de la línea de
-comandos: `in rcc2.s rcc[Enter]`[app]``MGED`` le pedirá que ingrese
-los valores x, y, z de los vértices (donde quiere que el centro de un
-extremo de la RCC sea colocado en el espacio). Tipee. `4 4 0[Enter]`
+comandos:
+
+[cmd]`in rcc2.s rcc kbd:[Enter]`
+
+[app]`MGED` le pedirá que ingrese los valores x, y, z de los vértices
+(donde quiere que el centro de un extremo de la RCC sea colocado en el
+espacio). Tipee.
+
+[cmd]`4 4 0 kbd:[Enter]`
+
 Asegúrese de dejar espacios entre cada valor.
 
-[app]``MGED`` le pedirá ahora que ingrese los valores x, y, z para la
+[app]`MGED` le pedirá ahora que ingrese los valores x, y, z para la
 altura (H: de height) del vector (que determinará que tal alto desea
-que sea su rcc). Tipee: `0 0 4[Enter]` El último valor requerido será
-el radio del RCC.  Tipee: `3[Enter]` El diálogo en la ventana de
-comandos para la creación de RCC debería verso como el siguiente:
+que sea su rcc). Tipee:
 
+[cmd]`0 0 4 kbd:[Enter]`
+
+El último valor requerido será el radio del RCC.  Tipee:
+
+[cmd]`3 kbd:[Enter]`
+
+El diálogo en la ventana de comandos para la creación de
+RCC debería verso como el siguiente:
+
+[subs="quotes"]
 ....
-
-      mged> in rcc2.s rcc
-
-      Enter X, Y, Z of vertex: 4 4 0
-
-      Enter X, Y, Z of height (H) vector: 0 0 4
-
-      Enter radius: 3
-
-      42 vectors in 0.000214 sec
+      [prompt]#mged># [cmd]#in rcc2.s rcc#
+      [prompt]#Enter X, Y, Z of vertex:# 4 4 0
+      [prompt]#Enter X, Y, Z of height (H) vector:# 0 0 4
+      [prompt]#Enter radius:# 3
+      [output]#42 vectors in 0.000214 sec#
 ....
 
 Deberías tener ahora nuevas versiones de la esfera y del RCC.  Compare
@@ -172,8 +200,9 @@ in, preferirá probablemente este método ya que permite mayor velocidad
 en el ingreso de parámetros.
 
 Despejar la ventana gráfica con el comando Z.  Ahora cree una nueva
-esfera tipeando en el prompt de [app]``MGED``: `in sph3.s sph 4 4 4
-3[Enter]`
+esfera tipeando en el prompt de [app]`MGED`:
+
+[cmd]`in sph3.s sph 4 4 4 3 kbd:[Enter]`
 
 Esta forma larga de ingresar el comando significa:
 
@@ -198,7 +227,9 @@ Esta forma larga de ingresar el comando significa:
 |===
 
 Para hacer un RCC correctamente usando este método, tipee en la línea
-de comandos: `in rcc3.s rcc 4 4 0 0 0 4 3[Enter]`
+de comandos:
+
+[cmd]`in rcc3.s rcc 4 4 0 0 0 4 3 kbd:[Enter]`
 
 Este comando significa: 
 
@@ -235,13 +266,13 @@ Este comando significa:
 [[_command_combined_in]]
 == Desarrollar un formato de comando combinado para el comando in 
 
-Cuando usted comienza a usar [app]`` MGED ``, si desea utilizar la
-ventana de comandos en lugar de la interfaz gráfica de usuario,
-probablemente querrá hacer algunos formularios en blanco de comandos
-combinados para cada tipo de forma primitiva que usted esté creando.
-Esto puede acelerar el proceso de diseño y ayudar a recordar que los
-valores deben ser presentados para cada forma.  Una forma de la esfera
-podría ser:
+Cuando usted comienza a usar [app]`MGED`, si desea utilizar la ventana
+de comandos en lugar de la interfaz gráfica de usuario, probablemente
+querrá hacer algunos formularios en blanco de comandos combinados para
+cada tipo de forma primitiva que usted esté creando.  Esto puede
+acelerar el proceso de diseño y ayudar a recordar que los valores
+deben ser presentados para cada forma.  Una forma de la esfera podría
+ser:
 
 [cols="1,1,1,1,1,1,1,1,1,1"]
 |===
@@ -293,15 +324,15 @@ Un ejemplo para el RCC puede ser:
 |===
 
 [[_mged_naming_conventions]]
-== Considerar los nombres convencionales para las figuras en[app]``MGED``
+== Considerar los nombres convencionales para las figuras en [app]`MGED`
 
 Usted puede haber notado que cada vez que se crea una esfera o CCR, se
-han asignado nombres diferentes.  A [app]`` MGED `` no le afecta en
-nada el nombre que le dé a una forma, pero puede ayudar el uso de
+han asignado nombres diferentes.  A [app]`MGED` no le afecta en nada
+el nombre que le dé a una forma, pero puede ayudar el uso de
 convenciones sobre los nombres de las formas.  Sólo tenga en cuenta
 también que cada nombre debe ser único en la base de datos, y para las
-versiones anteriores a [app]`` BRL-CAD `` 6.0, los nombres están
-limitados a 16 caracteres de longitud.
+versiones anteriores a [app]`BRL-CAD` 6.0, los nombres están limitados
+a 16 caracteres de longitud.
 
 En esta lección le asignamos nombres a las formas en función de su
 tipo de figura y el orden en el que los creó.  Lo hicimos porque las
@@ -325,12 +356,12 @@ Practique ver sus nuevas formas mediante el menú View
 mouse y las teclas identificadas en el tutorial anterior.
 
 [[_using_insert_command_quit]]
-== Salir de [app]`` MGED ``
+== Salir de [app]`MGED`
 
-Si desea salir de [app]`` MGED `` tipee la letra q o la palabra quit
-luego del prompt de la ventana de comandos y luego presione ENTER.
-También puede cerrar el programa seleccionando Exit (Salir) en el menú
-File (Archivo).
+Si desea salir de [app]`MGED` tipee la letra q o la palabra quit luego
+del prompt de la ventana de comandos y luego presione ENTER.  También
+puede cerrar el programa seleccionando Exit (Salir) en el menú File
+(Archivo).
 
 [[_using_insert_command_review]]
 == Repasemos

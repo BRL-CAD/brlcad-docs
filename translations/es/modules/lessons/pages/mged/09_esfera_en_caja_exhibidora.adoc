@@ -1,5 +1,6 @@
 = 9. Crear una esfera en una caja exhibidora transparente
 :sectnums:
+:experimental:
 
 En este tutorial aprenderá a:
 
@@ -69,12 +70,17 @@ imagen, en una vista az35 y el25:
 image::mged/09_globe_wireframe.png[]
 
 Para ver el contenido de la base de datos, tipee en el prompt de la
-línea de comandos: `ls[Enter]`
+línea de comandos:
+
+[cmd]`ls kbd:[Enter]`
 
 Debería ver listados a cube1.s, cube2.s y globe1.s, que son las formas
 que ha creado.  Para hacer regiones con estas formas, tipee en el
-prompt: `r cube1.r u cube1.s - cube2.s[Enter]```r globe1.r u
-globe1.s[Enter]``
+prompt:
+
+[cmd]`r cube1.r u cube1.s - cube2.s kbd:[Enter]`
+
+[cmd]`r globe1.r u globe1.s kbd:[Enter]`
 
 [[_globe_assign_mater_prop]]
 == Utilizar el Combination Editor para asignar propiedades de losmateriales que hacen a los objetos parecer más reales 
@@ -101,7 +107,9 @@ aceptar los cambios.
 Antes que pueda generar el Raytrace de su diseño, necesitará limpiar
 la ventana gráfica tipenado Z en el prompt de la ventana de comandos.
 Ambas formas y regiones son mostradas en este punto.  Luego, tipee en
-la ventana de comandos: `draw cube1.r globe1.r[Enter]`
+la ventana de comandos:
+
+[cmd]`draw cube1.r globe1.r kbd:[Enter]`
 
 La caja y la esfera deberían reaparecer en la ventana gráfica.  En el
 menú File (Archivo) seleccione Raytrace.  Luego, seleccione la opción
@@ -159,7 +167,9 @@ y Set H (Ajuste h) de ser necesario y luego acepte los cambios.
 
 Ahora necesitamos hacer un segundo trc llamado base2.s, el cual
 usaremos para el techo de la base.  En el prompt de la línea de
-comandos, tipee: `cp base1.s base2.s`
+comandos, tipee:
+
+[cmd]`cp base1.s base2.s`
 
 El segundo trc aparecerá directamente encima del primer trc.
 Utilizaremos el Primitive Selection (Selección de primitivos) desde el
@@ -175,7 +185,9 @@ embargo, como sabemos que queremos rotar la forma en un valor exacto
 de 180'0 sobre el eje x, utilizaremos un método más preciso para
 rotarla.  Seleccione Rotate (Rotación) desde el menú Edit (Editar) y
 luego tipee los parámetros (abreviado con la p) en la línea de
-comandos, como se muestra a continuación: `p 180 0 0[Enter]`
+comandos, como se muestra a continuación:
+
+[cmd]`p 180 0 0 kbd:[Enter]`
 
 Nuestra forma debería haberse dado vuelta y pasado a la parte inferior
 de la primera trc.  (Los dos ceros que ingresó indican que no hay
@@ -196,7 +208,9 @@ el siguiente:
 image::mged/09_globe_base_box_wireframe.png[]
 
 Para hacer la región de la base, tipee en el prompt de la línea de
-comandos: `r base1.r u base1.s u base2.s[Enter]`
+comandos:
+
+[cmd]`r base1.r u base1.s u base2.s kbd:[Enter]`
 
 [[_globe_use_color_tool]]
 == Utilizar el Color Tool (Herramientas de color) del CombinationEditor (Editor de combinaciones) para producir colores personalizados. 
@@ -204,12 +218,17 @@ comandos: `r base1.r u base1.s u base2.s[Enter]`
 En la ventana del editor de combinaciones, cliquee sobre la caja de
 texto a la derecha de Nombre y luego desde Select From All elija
 base1.r.  Asigne a la base una textura de plástico.  En la caja de
-color, ingrese los números: `217 217 217`
+color, ingrese los números:
+
+[cmd]`217 217 217`
 
 Aplique sus cambios.  Antes que pueda generar el Raytrace de su diseño
 completo, deberá despejar primero la ventana gráfica y reconstruir su
-diseño tipeando en el prompt de la línea de comandos: `Z[Enter]```draw
-cube1.r globe1.r base1.r[Enter]``
+diseño tipeando en el prompt de la línea de comandos:
+
+[cmd]`Z kbd:[Enter]`
+
+[cmd]`draw cube1.r globe1.r base1.r kbd:[Enter]`
 
 Cambie la vista a az35, el25 y luego genere el Raytrace, el cual
 deberá ser similar al siguiente:

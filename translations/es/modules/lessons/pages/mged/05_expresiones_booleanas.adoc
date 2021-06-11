@@ -1,5 +1,6 @@
 = 5. Expresiones Booleanas
 :sectnums:
+:experimental:
 
 En este tutorial usted aprenderá a:
 
@@ -13,7 +14,7 @@ En este tutorial usted aprenderá a:
 Este tutorial es importante porque las operaciones Booleanas son
 críticas para el modelado de procesos.  El orden en que las formas son
 combinadas y los operadores son usados para combinar esas formas,
-determinará que el programa [app]``MGED`` interprete su modelo.
+determinará que el programa [app]`MGED` interprete su modelo.
 
 El uso correcto de expresiones Booleanas para modificar formas
 geométricas es una técnica clave en el modelado de objetos.  Es
@@ -25,11 +26,11 @@ vuelva a intentar más tarde.
 [[_boolean_tools]]
 == Combinación de Regiones: Herramientas Booleanas
 
-Conceptualmente hay dos objetos en [app]``MGED`` que soportan
+Conceptualmente hay dos objetos en [app]`MGED` que soportan
 operaciones Booleanas.  Uno se llama combinación, el otro, región.
 
-Como se mencionó antes, una forma geométrica típica en [app]``MGED``
-se llama primitiva.  Sin embargo, esas formas individuales resultan a
+Como se mencionó antes, una forma geométrica típica en [app]`MGED` se
+llama primitiva.  Sin embargo, esas formas individuales resultan a
 menudo insuficentes para describir completamente un objeto complejo a
 modelar.  Por eso, empleando operadores Booleanos para combinar dos o
 más formas primitivas en otras formas (combinación), le permitirá
@@ -57,7 +58,7 @@ referirse a un grupo o a una combinación a ensamblar.
 [[_boolean_operations]]
 == Operaciones Booleanas
 
-Los tres operadores Booleanos empleados por el programa [app]``MGED``
+Los tres operadores Booleanos empleados por el programa [app]`MGED`
 son: unión, substracción e intersección.  Puede usar estas operaciones
 para combinar formas y producir otras más complejas.
 
@@ -132,18 +133,23 @@ el de unión.
 == Crear Regiones con Operaciones Booleanas
 
 Comience abriendo la base de datos shapes.g que creó en la Lección 3.
-En el prompt de la Ventana de Comando, tipee: `draw sph2.s
-rcc2.s[Enter]` Este comando dibujará las formas que usará para crear
-nuestras regiones.  Las dos formas lucirán aproximadamente como la
-siguiente imagen:
+En el prompt de la Ventana de Comando, tipee:
+
+[cmd]`draw sph2.s rcc2.s kbd:[Enter]`
+
+Este comando dibujará las formas que usará para crear nuestras
+regiones.  Las dos formas lucirán aproximadamente como la siguiente
+imagen:
 
 .Dos formas primitivas
 image::mged/05_twoprimitivespheres.png[]
 
 Creará entonces formas diferentes para demostrar la función de las
 operaciones Booleanas.  En la ventana de comando, tipee lo siguiente:
-`r part1.r u rcc2.s - sph2.s[Enter]` Este comando le dirá a
-[app]``MGED`` que:
+
+[cmd]`r part1.r u rcc2.s - sph2.s kbd:[Enter]`
+
+Este comando le dirá a [app]`MGED` que:
 
 [cols="1,1,1,1,1,1"]
 |===
@@ -163,7 +169,7 @@ operaciones Booleanas.  En la ventana de comando, tipee lo siguiente:
 |La forma nombrada sph2.s
 |===
 
-Nota: El primer miembro siempre lleva u minúscula para un operador
+NOTE: El primer miembro siempre lleva u minúscula para un operador
 (por eso al llamar al comando con una sola imagen, por defecto el
 operador será la unión). El segundo y subsecuente miembro puede usar
 -, + ó u según lo necesario.  La forma de determinar cuáles operadores
@@ -191,7 +197,9 @@ Hasta el momento, sólo tenemos las formas primitivas visualizadas, no
 la región.  Antes de hacer el trazado, debemos remover las formas
 primitivas de la visualización, y dibujar la región.  De otra manera,
 no podremos ver la región con los colores que hayamos aplicado.
-Podemos hacer esto tipeando: `B part1.r`
+Podemos hacer esto tipeando:
+
+[cmd]`B part1.r`
 
 Ahora está listo para trazar este objeto.  Desde el menú File
 (Archivo), active el Raytrace Control Panel (Panel de Control del
@@ -215,14 +223,20 @@ superior del cilindro.
 
 A continuación haremos una región azul usando el operador
 intersección, en vez del de substracción.  Una vez más, comenzaremos
-creando una región: `r part2.r u rcc2.s + sph2.s[Enter]`
+creando una región:
+
+[cmd]`r part2.r u rcc2.s + sph2.s kbd:[Enter]`
 
 Para comparar la aproximación de la GUI (Interfaz Gráfica de Usuario)
 usada para hacer part1.r, usemos la línea de comandos para asignar el
-color a part2.r: `mater part2.r plastic 0 0 255 0[Enter]`
+color a part2.r:
+
+[cmd]`mater part2.r plastic 0 0 255 0 kbd:[Enter]`
 
 Finalmente, despeje la nueva región en la pantalla como sigue con el
-comando blast: `B part2.r[Enter]`
+comando blast:
+
+[cmd]`B part2.r kbd:[Enter]`
 
 Al realizar el trazado de su objeto, debería verse similar a la imagen
 previa de la derecha.
@@ -238,12 +252,15 @@ el último cambio.
 
 Cuando use el operador intersección, el orden en el cual especifica
 las formas no importa.  Deberíamos haber tenido los mismos resultados
-si hubiéramos especificado la operación Booleana como: `r part2.r u
-sph2.s + rcc2.s`
+si hubiéramos especificado la operación Booleana como:
+
+[cmd]`r part2.r u sph2.s + rcc2.s`
 
 Sin embargo, cuando se usa el operador substracción, el orden de las
 dos formas es muy importante.  Hagamos una región con el orden de las
-formas contrario al usado para part1.r: `r part3.r u sph2.s - rcc2.s`
+formas contrario al usado para part1.r:
+
+[cmd]`r part3.r u sph2.s - rcc2.s`
 
 Esta vez no nos importará fijar un color.  (Cuando ningún color es
 fijado para los objetos, el trazado de rayos (rt) usará el color
@@ -255,7 +272,9 @@ realice el Raytrace nuevamente:
 image::mged/05_raytracedpart3.png[]
 
 Ahora realice el trazado de rayos de los tres objetos que creó.  Para
-dibujar las tres regiones a la vez, tipee: `B part1.r part2.r part3.r`
+dibujar las tres regiones a la vez, tipee:
+
+[cmd]`B part1.r part2.r part3.r`
 
 Hacer esto una vez más no es problemático.  Sin embargo, si éstas
 fueran las tres partes que construyen algún objeto complejo, nos
@@ -277,12 +296,17 @@ ensamble tal como la que acabamos de crear.
 Nota: Ya que la creación de combinaciones de ensamble es una tarea muy
 frecuente, hay un comando de atajo - el comando g (por grupo)- para
 realizar la tarea de manera más sencilla.  Al crear dome.c usando este
-comando quedaría algo como lo siguiente: `g dome.c part1.r part2.r
-part3.r` Note que ud no debe tipear el operador Booleano u.  El
-comando g une todos los argumentos de ese operador.
+comando quedaría algo como lo siguiente:
+
+[cmd]`g dome.c part1.r part2.r part3.r`
+
+Note que ud no debe tipear el operador Booleano u.  El comando g une
+todos los argumentos de ese operador.
 
 Todo lo que se necesita para dibujar los tres objetos es el este
-sencillo comando: `B dome.c`
+sencillo comando:
+
+[cmd]`B dome.c`
 
 Ahora podremos realizar el trazado de la serie reunida y obtener la
 siguiente imagen:
@@ -302,11 +326,13 @@ para crear la forma de los objetos.  Cuando quiera crear los objetos,
 tenga en cuenta la precedencia de las operaciones booleanas.  En la
 notación de Boole que estamos utilizando, la la resta y la
 intersección, tienen prioridar por sobre el operador de unión.
-Entonces, por ejemplo: `comb demo.c u shape1 - shape2 u shape3 -
-shape4 + shape5`
+Entonces, por ejemplo:
 
-Resultará en las siguientes expresiones Booleanas: `(shape1 - shape2)
-u ( (shape3 - shape4) + shape5)`
+[cmd]`comb demo.c u shape1 - shape2 u shape3 - shape4 + shape5`
+
+Resultará en las siguientes expresiones Booleanas:
+
+`(shape1 - shape2) u ( (shape3 - shape4) + shape5)`
 
 [[_learning_boolean_operations_review]]
 == Repasemos...

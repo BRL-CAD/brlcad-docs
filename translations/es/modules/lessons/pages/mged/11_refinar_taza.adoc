@@ -1,5 +1,6 @@
 = 11. Refinando el modelo de la taza
 :sectnums:
+:experimental:
 
 En este tutorial usted aprenderá a:
 
@@ -23,34 +24,29 @@ referidas a los distintos parámetros del sombreado.
 El sombreado más comunmente utilizado es el de plástico, que utiliza
 el modelo de sombreado de Phong.  Seleccione el sombreado de plástico
 y establezca el color en un tono medio de sombreado verde.  El diálogo
-en la ventana de comandos debería similar al siguiente: ` mater
-mug.r[Enter]`
+en la ventana de comandos debería similar al siguiente:
+
+[userinput]`[prompt]#mged># [cmd]#mater mug.r# kbd:[Enter]`
 
 ....
-
 	   Shader =
-
-	   Shader? ('del' to delete, CR to skip) plastic[Enter]
-
+	   Shader? ('del' to delete, CR to skip) plastic kbd:[Enter]
 	   Color = (No color specified)
-
 	   Color R G B (0..255)? ('del' to delete, CR to skip)
-
-	   32 128 32[Enter]
-
+	   32 128 32 kbd:[Enter]
 	   Inherit = 0: lower nodes (towards leaves) override
-
-	   Inheritance (0|1)? (CR to skip) 0[Enter]
+	   Inheritance (0|1)? (CR to skip) 0 kbd:[Enter]
 ....
 
-Nota: El sombreado de Phong es una técnica de sombreado para imágenes
+NOTE: El sombreado de Phong es una técnica de sombreado para imágenes
 3D generadas por ordenador en el que el brillo general de las
 superficies se divide en tres componentes: luz ambiente (constante),
 luz difusa y reflejos especulares.
 
 Ingrese la información apropiada que se muestra en negrita.  Si desea
-utilizar el comando de una sola línea, tipee: `mater mug.r plastic 32
-128 32 0[Enter]`
+utilizar el comando de una sola línea, tipee:
+
+[cmd]`mater mug.r plastic 32 128 32 0 kbd:[Enter]`
 
 El diagrama de este comando es: 
 
@@ -98,8 +94,9 @@ borde redondeado arriba del filo de la boca.  Usted puede hacer esto
 colocando una forma de toro circular exactamente en la parte superior
 de la taza y añadirlo a la combinación body.c.
 
-En el prompt de [app]``MGED`` tipee: `in rim.s tor 0 0 3.5 0 0 1 1.625
-0.125[Enter]`
+En el prompt de [app]`MGED` tipee:
+
+[cmd]`in rim.s tor 0 0 3.5 0 0 1 1.625 0.125 kbd:[Enter]`
 
 [cols="1,1,1,1,1,1,1"]
 |===
@@ -125,7 +122,8 @@ En el prompt de [app]``MGED`` tipee: `in rim.s tor 0 0 3.5 0 0 1 1.625
 == Combinando las figuras
 
 Para combinar el toro con la taza, necesitará tipear en el prompt:
-`comb body.c u rim.s[Enter]`
+
+[cmd]`comb body.c u rim.s kbd:[Enter]`
 
 Ahora se enfrenta a una situación única.  La forma rim.s ha sido
 añadida a la lista de objetos que se muestra cuando fue creada.  Sin
@@ -139,8 +137,11 @@ rayos.  Como se ha dicho previamente, el comando fbclear en el panel
 de control de Raytrace limpia la pantalla de framebuffer, y el comando
 Z de la ventana de comandos borra todos los objetos mostrados en modo
 framebuffer.  Usted puede volver a mostrar los objetos como trazado de
-rayos con el comando draw.  Tipee en el prompt: `Z[Enter]```draw
-mug.r[Enter]``
+rayos con el comando draw.  Tipee en el prompt:
+
+[cmd]`Z kbd:[Enter]`
+
+[cmd]`draw mug.r kbd:[Enter]`
 
 Realiza el Raytrace de su taza.  Ésta podría verse similar a la
 siguiente imagen:

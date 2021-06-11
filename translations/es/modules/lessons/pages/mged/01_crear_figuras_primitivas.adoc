@@ -1,5 +1,6 @@
 = 1. Crear Figuras Primitivas with MGED
 :sectnums:
+:experimental:
 
 Este tutorial le ayudará a:
 
@@ -27,15 +28,15 @@ Este tutorial le ayudará a:
 
 
 [[_launching_mged]]
-== Utilizar el programa [app]``MGED``
+== Utilizar el programa [app]`MGED`
 
-Para abrir el programa [app]``MGED``, tipee "mged" en una terminal
-(tty) y luego presione [ENTER]. Esto trae dos ventanas principales: la
-ventana de comandos de [app]``MGED`` y la ventana gráfica
-de[app]``MGED``.  Ambas ventanas estarán inicialmente en blanco,
+Para abrir el programa [app]`MGED`, tipee "mged" en una terminal (tty)
+y luego presione kbd:[Enter]. Esto trae dos ventanas principales: la
+ventana de comandos de [app]`MGED` y la ventana gráfica de
+[app]``MGED``.  Ambas ventanas estarán inicialmente en blanco,
 esperando a que ingrese algo.  Para abandonar el programa en cualquier
 momento, en la línea de comandos tipee la letra "q" o la palabra
-"quit" y presione luego [ENTER].
+"quit" y presione luego kbd:[Enter].
 
 [[_entering_commands]]
 == Ingresar comandos en una ventana de comandos.
@@ -49,11 +50,11 @@ Apéndice A.
 
 [CAUTION]
 ====
-Chequee todo lo tipeado antes de presionar [ENTER]. Si advierte que ha
-cometido un error, simplemente presione el BACKSPACE hasta que haya
-borrado lo necesario y tipee nuevamente la información.  Luego irá
-obteniendo mayor experiencia usando el editor de texto [app]``vi`` y
-el comando de emulación de [app]``emacs``.
+Chequee todo lo tipeado antes de presionar kbd:[Enter]. Si advierte
+que ha cometido un error, simplemente presione el kbd:[BACKSPACE]
+hasta que haya borrado lo necesario y tipee nuevamente la información.
+Luego irá obteniendo mayor experiencia usando el editor de texto
+[app]`vi` y el comando de emulación de [app]``emacs``.
 ====
 
 [[_using_gui]]
@@ -66,30 +67,32 @@ están divididos en grupos lógicos para ayudarle a navegarlos a través
 del programa [app]``MGED``.
 
 Antes de crear un modelo, necesita abrir una base de datos, así sea
-por comandos o iniciando el entorno gráfico de [app]``MGED``, luego de
+por comandos o iniciando el entorno gráfico de [app]`MGED`, luego de
 iniciar el [app]``MGED``.
 
 [[_open_new_database]]
-== Abrir o crear una nueva base de datos con [app]``MGED``
+== Abrir o crear una nueva base de datos con [app]`MGED`
 
 Usted puede abrir una base de datos o crear una nueva al mismo tiempo
 que abre [app]``MGED``.  En la línea de comando, tipee "mged" seguido
 por una nueva o por una ya existente base de datos sin olvidar ponerle
-la extensión .g, por ejemplo: ``mged sphere.g [ENTER]``.
+la extensión .g, por ejemplo:
+
+[cmd]`mged sphere.g kbd:[Enter]`
 
 .Desde la Terminal
 image::mged/01_terminal.png[]
 
 Si estuviera creando una nueva base de datos, un pequeño cuadro de
 diálogo le preguntará si desea crear la nueva base de datos llamada
-sphere.g.  Seleccione Si, y entonces [app]``MGED`` abrirá la nueva
-base de datos.  En el caso de que sphere.g existiera, se abrirá la
+sphere.g.  Seleccione Si, y entonces [app]`MGED` abrirá la nueva base
+de datos.  En el caso de que sphere.g existiera, se abrirá la
 existente.
 
 [[_create_new_database]]
 == Usar el entorno gráfico para crear una nueva base de datos
 
-Al iniciar [app]``MGED`` usted puede crear o abrir una base de datos
+Al iniciar [app]`MGED` usted puede crear o abrir una base de datos
 desde el menú superior Archivo (File), seleccionando luego la opción
 Nuevo (New) o Abrir (Open). Ambas opciones abren el mismo cuadro de
 diálogo preguntando por el nombre de la base de datos a crear o el de
@@ -119,27 +122,32 @@ Puede ponerle un título a su nueva base de datos para proporcionarle a
 usted y a otros usuarios una idea del contenido de la base de datos.
 En la ventana de la línea de comando, tipee "title" seguido de un
 espacio y un nombre que identifique la base de datos que va a crear.
-Cuando haya terminado, pulse la tecla [ENTER]. Por ejemplo: `` title
-MySphere [ENTER]``.  Note que en las versiones de [app]``BRL-CAD``
-anteriores a la 6.0, el título está limitado a 72 caracteres.
+Cuando haya terminado, pulse la tecla  kbd:[Enter]. Por ejemplo:
+
+[cmd]`[prompt]#mged># title MySphere kbd:[Enter]`
+
+Note que en las versiones de [app]`BRL-CAD` anteriores a la 6.0, el
+título está limitado a 72 caracteres.
 
 [[_set_units]]
 == Seleccionar una unidad de medida
 
-[app]``MGED`` utiliza milímetros para todo proceso matemático interno.
+[app]`MGED` utiliza milímetros para todo proceso matemático interno.
 A pesar de eso, usted puede crear un diseño usando cualquier otra
 unidad, como por ejemplo, pies.  Para el siguiente ejemplo usaremos
 pulgadas.  Para seleccionar la medida de pulgadas, ingrese al menú
 Archivo (File) y luego la opción Preferencias (Preferences). Aparecerá
 un nuevo menú donde podrá seleccionar Unidades (Units) y luego
 Pulgadas (Inches). Si prefiere la línea de comandos, tipee en una la
-palabra "units" y luego presione [ENTER]. En la terminal de
-[app]``MGED`` aparecerá una línea que dirá: `` units in [ENTER]``.
+palabra "units" y luego presione  kbd:[Enter]. En la terminal de
+[app]`MGED` aparecerá una línea que dirá:
+
+[cmd]`[prompt]#mged># units in kbd:[Enter]`
 
 [[_select_primitive]]
 == Seleccionar figuras primitivas
 
-[app]``MGED`` provee de una variedad de figuras primitivas que puede
+[app]`MGED` provee de una variedad de figuras primitivas que puede
 usar para construir modelos.  Cada tipo de figura tiene parámetros que
 definen su posición, orientación y tamaño.  La lista de las figuras y
 los parámetros están disponibles en el Apéndice C.
@@ -149,7 +157,7 @@ los parámetros están disponibles en el Apéndice C.
 La palabra "sólido" fue utilizada históricamente para referirse a las
 figuras primitivas.  Esta terminología dificulta a veces el
 entendimiento de los nuevos usuarios.  Cada vez que lea esta palabra
-en la documentación, comandos o programas de [app]``BRL-CAD``
+en la documentación, comandos o programas de [app]`BRL-CAD`
 identifíquela con el término "figura primitiva".
 ====
 
@@ -160,10 +168,13 @@ Para este ejemplo, crearemos una esfera simple.  Hay dos maneras de
 crear una figura primitiva: por comando o por entorno gráfico.
 
 Puede fácilmente crear la esfera desde la terminal con sólo unos pocos
-comandos.  En la terminal de [app]``MGED`` tipee: `make sph1.s sph
-[ENTER] [Nota: Use el dígito 1, no la letra l]. `
+comandos.  En la terminal de [app]`MGED` tipee:
 
-Este comando le dice al programa [app]``MGED``:
+[cmd]`make sph1.s sph kbd:[Enter]`
+
+NOTE: Use el dígito kbd:[1], no la letra kbd:[l]
+
+Este comando le dice al programa [app]`MGED`:
 
 [cols="1,1,1", frame="all"]
 |===
@@ -189,7 +200,7 @@ Este comando creará la figura primitiva en la ventana gráfica.
 Para construir otro objeto o trabajo sobre otra figura primitiva,
 puede fácilmente limpiar la ventana gráfica desde la línea de comandos
 tipeando la letra Z (de zap) en mayúsculas y luego presionando la
-tecla [ENTER].
+tecla kbd:[Enter].
 
 [NOTE]
 ====
@@ -203,8 +214,11 @@ su diseño.  Para detener la rotación, tipee cero (0).
 == Dibujar un objeto prediseñado
 
 Para dibujar una esfera ya guardada, tipee en la linea de comandos lo
-siguiente: `draw sph1.s [ENTER].` Este comando le dice al programa
-[app]``MGED`` que:
+siguiente:
+
+[cmd]`draw sph1.s kbd:[Enter]`
+
+Este comando le dice al programa [app]`MGED` que:
 
 [cols="1,1", frame="all"]
 |===
@@ -222,8 +236,9 @@ siguiente: `draw sph1.s [ENTER].` Este comando le dice al programa
 Cuando desee borrar un objeto concreto de la pantalla de la ventana
 gráfica, usted puede utilizar el comando "erase" para eliminar el
 objeto de la ventana, pero no de la base de datos.  Para eliminar el
-objeto sph1.s de la pantalla, en la línea de comandos tipee: `erase
-sph1.s [ENTER].`
+objeto sph1.s de la pantalla, en la línea de comandos tipee:
+
+[cmd]`erase sph1.s kbd:[Enter]`
 
 [[_create_sphere_gui]]
 == Crear una esfera usando el entorno gráfico
@@ -237,7 +252,7 @@ tipos de forma primitiva disponibles.  Seleccione SPH (por esfera en
 inglés) en la categoría Elipsoides (Ellipsoids). Con ello se abre un
 cuadro de diálogo.  Haga clic en el cuadro de texto vacío y tipee
 sph2.s.  Haga clic en Aplicar (Apply) o presione ENTRAR.  Una nueva
-esfera será creada y dibujada en la ventana de gráficos.  Cuando se
+esfera será creada y dibujada OBen la ventana de gráficos.  Cuando se
 crea una forma a través de la interfaz gráfica de usuario, la forma
 aparecerá automáticamente en modo de edición para que usted pueda
 cambiar los parámetros según sea necesario, definiendo su posición,
@@ -249,8 +264,11 @@ orientación y tamaño a la vista.
 A veces, cuando usted está creando un diseño, desea ver sus parámetros
 (tales como altura, radio, ancho) en la linea de comandos.  Puede
 listar fácilmente estos atributos con el comando l (de lista). El
-siguiente es un ejemplo: `l shape_name [ENTER]. [Nota: El comando es
-la letra l minúscula, no el número 1]`
+siguiente es un ejemplo:
+
+[cmd]`l shape_name kbd:[Enter]`
+
+NOTE: El comando es la letra kbd:[l] minúscula, no el número kbd:[1]
 
 [NOTE]
 ====
@@ -265,38 +283,27 @@ Un ejemplo de diálogo que podría darse en la ventana de comandos para
 mostrar los parámetros o atributos de la primera esfera que ha creado
 es el siguiente:
 
+[subs="quotes"]
 ....
-
-mged> l sph1.s
-
+[prompt]#mged># [cmd]#l sph1.s#
 sph1.s: ellipsoid (ELL)
-
      V (1, 1, 1)
-
      A (1, 0, 0) mag=1
-
      B (0, 1, 0) mag=1
-
      C (0, 0, 1) mag=1
-
      A direction cosines=(0, 90, 90)
-
      A rotation angle=0, fallback angle=0
-
      B direction cosines=(90, 0, 90)
-
      B rotation angle=90 fallback angle=0
-
      C direction cosines=(90, 90, 0)
-
      C rotation angle=0, fallback angle=90
 ....
 
-No se preocupe si usted nota en el resultado anterior que
-[app]``MGED`` determina su esfera como un elipsoide, ya que las
-esferas son un caso especial de elipsoides (ver Apéndice C). También
-tenga en cuenta que no es importante si los números de su salida no
-coinciden con los que se muestran en este ejemplo.
+No se preocupe si usted nota en el resultado anterior que [app]`MGED`
+determina su esfera como un elipsoide, ya que las esferas son un caso
+especial de elipsoides (ver Apéndice C). También tenga en cuenta que
+no es importante si los números de su salida no coinciden con los que
+se muestran en este ejemplo.
 
 Use el comando l para listar sph1.s y sph2.s antes de continuar los
 ejemplos
@@ -307,7 +314,9 @@ ejemplos
 Además de ver los parámetros de una figura, también puede ser que
 desee ver la lista de los contenidos de la base de datos para ver qué
 artículos han sido creados.  Para esto, escriba en la ventana de línea
-de comandos: `ls [ENTER].`
+de comandos:
+
+[cmd]`ls kbd:[Enter]`
 
 [[_kill_object]]
 == Eliminar un objeto de la base de datos
@@ -315,14 +324,23 @@ de comandos: `ls [ENTER].`
 A veces, cuando crea un modelo, puede que tenga que eliminar una forma
 o un objeto de la base de datos.  El comando kill se utiliza para
 hacer esto.  Por ejemplo, si quiere eliminar la forma sph1.s, tendría
-que escribir en la línea de comandos: ``kill sph1.s [ENTER]``.  Haga
-otra esfera, ya sea a través de la ventana de comandos o la interfaz
-gráfica de usuario con el nombre sph3.s.  Una vez hecha la esfera,
-utilice el comando kill para eliminarlo de la base de datos
-escribiendo en la ventana de comandos: ``kill sph3.s [ENTER]``.  Usted
-puede asegurarse de haber eliminado la figura mediante el comando ls,
-verificando que la misma no aparezca en la lista de la base de datos.
-En la ventana de comandos del sistema, escriba: ``ls [ENTER]``.
+que escribir en la línea de comandos:
+
+[cmd]`kill sph1.s kbd:[Enter]`
+
+Haga otra esfera, ya sea a través de la ventana de comandos o la
+interfaz gráfica de usuario con el nombre sph3.s.  Una vez hecha la
+esfera, utilice el comando kill para eliminarlo de la base de datos
+escribiendo en la ventana de comandos:
+
+[cmd]`kill sph3.s kbd:[Enter]`
+
+Usted puede asegurarse de haber eliminado la figura mediante el
+comando ls, verificando que la misma no aparezca en la lista de la
+base de datos.  En la ventana de comandos del sistema, escriba:
+
+[cmd]`ls kbd:[Enter]`
+
 Debería ver listados únicamente: sph1.s y sph2.s.
 
 [NOTE]
@@ -338,31 +356,31 @@ permanentemente los datos antes de utilizar el comando kill.
 == Editar comandos en la ventana de comandos
 
 Ocasionalmente, cuando usted ingresa comandos, puede equivocarse al
-tipear. [app]``MGED`` puede emular el subrayado de sintaxis de
-[app]``emacs`` y de [app]``vi`` . Por defecto, se usa la sintaxis de
+tipear. [app]`MGED` puede emular el subrayado de sintaxis de
+[app]`emacs` y de [app]`vi` . Por defecto, se usa la sintaxis de
 [app]``emacs``.  Vea en el apéndice B la lista de atajos de teclado,
 efectos y formas de selección de ambos editores.
 
 También puede utilizar las teclas de flechas para modificar los
 comandos.  Las flechas izquierda y derecha mueven el cursor en la
-línea actual de comandos.  Pulsando [ENTER] en cualquier ubicación en
-la línea de comandos se ejecuta el comando.  Tenga en cuenta que tanto
-el BACKSPACE como el DELETE borrarán un carácter a la izquierda del
-cursor.
+línea actual de comandos.  Pulsando kbd:[Enter] en cualquier ubicación
+en la línea de comandos se ejecuta el comando.  Tenga en cuenta que
+tanto el kbd:[BACKSPACE] como el kbd:[DELETE] borrarán un carácter a
+la izquierda del cursor.
 
-[app]``MGED`` guarda un historial de los comandos que se han
-ingresado.  Con las flechas arriba y abajo puede seleccionar los
-comandos previamente usados dando la posibilidad de reutilizarlos tal
-cual fueron ejecutados antes, o modificándolos, por ejemplo, en el
-nombre de la figura.
+[app]`MGED` guarda un historial de los comandos que se han ingresado.
+Con las flechas arriba y abajo puede seleccionar los comandos
+previamente usados dando la posibilidad de reutilizarlos tal cual
+fueron ejecutados antes, o modificándolos, por ejemplo, en el nombre
+de la figura.
 
 [[_quitting]]
-== Salir de [app]``MGED``
+== Salir de [app]`MGED`
 
 Recuerde que para salir del programa en cualquier momento, debe tipear
 en la línea de comandos la letra q o el comando quit y luego presionar
-la tecla [ENTER].  También puede ir al menú gráfico File (Archivo) y
-seleccionar la opción Exit (Salir).
+la tecla kbd:[Enter].  También puede ir al menú gráfico File (Archivo)
+y seleccionar la opción Exit (Salir).
 
 [[_creating_primitive_shapes_review]]
 == Repasemos

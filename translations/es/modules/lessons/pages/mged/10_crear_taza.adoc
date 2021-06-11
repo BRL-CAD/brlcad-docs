@@ -1,5 +1,6 @@
 = 10. Crear una taza
 :sectnums:
+:experimental:
 
 En este tutorial usted aprenderá a:
 
@@ -30,7 +31,9 @@ esto escribiendo "units in" en la ventana de comandos del sistema.)
 
 Para comenzar a hacer el cuerpo de la taza, usted necesitará crear el
 cilindro externo.  Para esto tipee lo siguiente en el prompt de
-[app]``MGED``: `in bodyout.s rcc`
+[app]``MGED``:
+
+[cmd]`in bodyout.s rcc`
 
 El diagrama de este comando es:
 
@@ -46,14 +49,21 @@ El diagrama de este comando es:
 |La figura es un cilindro circular
 |===
 
-[app]``MGED`` le pedirá los siguientes datos sobre del cilindro que
+[app]`MGED` le pedirá los siguientes datos sobre del cilindro que
 usted desea crear.  Tipee los valores dados en negrita.  Asegúrese de
-dejar espacios entre los valores de las variables. `Enter X, Y, Z of
-vertex: 0 0 0[Enter]```Enter X, Y, Z of height (H) vector: 0 0
-3.5[Enter]````Enter radius: 1.75[Enter]``
+dejar espacios entre los valores de las variables.
+
+[subs="quotes,macros"]
+....
+[prompt]#Enter X, Y, Z of vertex:# [cmd]#0 0 0# kbd:[Enter]
+[prompt]#Enter X, Y, Z of height (H) vector:# [cmd]#0 0 3.5# kbd:[Enter]
+[prompt]#Enter radius:# [cmd]#1.75# kbd:[Enter]
+....
 
 Note que el formato de una sola línea para darle todos estos datos al
-programa sería: `in bodyout.s rcc 0 0 0 0 0 3.5 1.75[Enter]`
+programa sería:
+
+[cmd]`in bodyout.s rcc 0 0 0 0 0 3.5 1.75 kbd:[Enter]`
 
 El diagrama de este comando es: 
 
@@ -86,8 +96,9 @@ circular interno.  Este cilindro se utiliza para vaciar el exterior
 cilindro.  Siempre que vaya a crear un agujero en la superficie de un
 objeto, asegúrese de que la forma creada para hacer el agujero
 sobresalga de la superficie.  De esta forma estará seguro de no dejar
-una capa delgada de material donde las dos superficies se unen. `in
-bodyin.s rcc 0 0 0.25 0 0 3.5 1.5[Enter]`
+una capa delgada de material donde las dos superficies se unen.
+
+[cmd]`in bodyin.s rcc 0 0 0.25 0 0 3.5 1.5 kbd:[Enter]`
 
 El diagrama de este comando es: 
 
@@ -117,8 +128,9 @@ aparecer ahora en la ventana gráfica.
 
 Ahora tendrá que introducir algunos datos sobre el cuerpo del asa.  El
 tipo de forma para el asa es un toro elíptico.  En la ventana de
-comandos del sistema, escriba: `in handle.s eto 0 2.5 1.75 1 0
-0[Enter]`
+comandos del sistema, escriba:
+
+[cmd]`in handle.s eto 0 2.5 1.75 1 0 0 kbd:[Enter]`
 
 El diagrama de este comando es:
 
@@ -139,9 +151,14 @@ El diagrama de este comando es:
 |===
 
 El programa le pedirá lo siguientes datos de la figura a crear.  Tipee
-los valores mostrados en negrita. `Enter X, Y, Z, of vector C: .6 0
-0[Enter]```Enter radius of revolution, r: 1.45[Enter]````Enter
-elliptical semi-minor axis, d: 0.2[Enter]``
+los valores mostrados en negrita.
+
+[subs="quotes,macros"]
+....
+[prompt]#Enter X, Y, Z, of vector C:# [cmd]#.6 0 0# kbd:[Enter]
+[prompt]#Enter radius of revolution, r:# [cmd]#1.45# kbd:[Enter]
+[prompt]#Enter elliptical semi-minor axis, d:# [cmd]#0.2# kbd:[Enter]
+....
 
 La figura de una rosquilla debe aparecer en el lado derecho del
 cuerpo.  Si usted mira atentamente, podrá ver que alrededor de un
@@ -151,8 +168,9 @@ tercio del toro elíptico corta el cuerpo.
 == Creando la combinación Bodyout.s-Bodyin.s
 
 El próximo paso será combinar los dos cilindros en el cuerpo de la
-taza.  Para hacer esto tipee: `comb body.c u bodyout.s -
-bodyin.s[Enter]`
+taza.  Para hacer esto tipee:
+
+[cmd]`comb body.c u bodyout.s - bodyin.s kbd:[Enter]`
 
 Le ha dicho al programa que cree la combinación body.c a partir de la
 unión de bodyout.s menos bodyin.s.
@@ -178,8 +196,9 @@ unión de bodyout.s menos bodyin.s.
 [[_mug_comb2]]
 == Creando la combinación Handle.s - Bodyout.s
 
-Para combinar el asa con la parte externa del cilindro tipee: `comb
-handle.c u handle.s - bodyout.s[Enter]`
+Para combinar el asa con la parte externa del cilindro tipee:
+
+[cmd]`comb handle.c u handle.s - bodyout.s kbd:[Enter]`
 
 [cols="1,1,1,1,1,1"]
 |===
@@ -203,7 +222,9 @@ handle.c u handle.s - bodyout.s[Enter]`
 == Creando la región Mug.r
 
 El último paso en la creación de la taza es crear una región a partir
-de las combinaciones.  Tipee: `r mug.r u body.c u handle.c[Enter]`
+de las combinaciones.  Tipee:
+
+[cmd]`r mug.r u body.c u handle.c kbd:[Enter]`
 
 [cols="1,1,1,1,1,1"]
 |===
@@ -227,9 +248,7 @@ Si realizó estos pasos correctamente, el programa responderá algo
 similar a:
 
 ....
-
    Defaulting item number to 1002
-
    Creating region id=1001, air=0, GIFTmaterial=1, los=100
 ....
 
