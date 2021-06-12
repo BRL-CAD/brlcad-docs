@@ -81,7 +81,7 @@ Como se detalla en la siguiente tabla, esta información contiene
 cuatro grupos de datos sobre la vista de la ventana gráfica.
 
 .Vista de información en la parte inferior dela ventana de comandos
-[cols="1,1,1,1,1", frame="all", options="header"]
+[cols="5*^.^", frame="all", options="header"]
 |===
 | Designación de pantalla
 | Información de vistas
@@ -102,9 +102,9 @@ cuatro grupos de datos sobre la vista de la ventana gráfica.
 |Dependiente del tamaño seleccionado
 
 |az=
-|Ángulo de vista
-|5to-6to números
-|Grados
+.2+|Ángulo de vista
+.2+|5to-6to números
+.2+|Grados
 |35.00
 
 |el=
@@ -112,8 +112,8 @@ cuatro grupos de datos sobre la vista de la ventana gráfica.
 
 |tw=
 |Giro (Twist)
-|7mo-10mo números
-|Grados
+.2+|7mo-10mo números
+.2+|Grados
 |0.00
 
 |ang=
@@ -159,15 +159,14 @@ la vista para la imagen de la derecha podría representar 100 mm de
 diámetro.  En ambos casos, sin embargo, el tamaño real de la rosa es
 el mismo.
 
-[cols="1,1", frame="none"]
+[cols="2*^.<a", frame="none"]
 |===
-
-|image:mged/02_flower_zoomin.png[]
-|image:mged/02_flower_zoomout.png[]
-
-|Zoom de acercamiento para ver detalles (vista a pequeña escala)
-|Zoom distante para ver el objeto en relación con su entorno (vista a
- gran escala)
+|
+.Zoom de acercamiento para ver detalles (vista a pequeña escala)
+image::mged/02_flower_zoomin.png[width=400]
+|
+.Zoom distante para ver el objeto en relación con su entorno (vista a gran escala)
+image::mged/02_flower_zoomout.png[width=400]
 |===
 
 Para modificar el tamaño de la vista de su radio por medio de la GUI
@@ -232,32 +231,31 @@ Nota: Los términos azimuth, elevation y twist son similares a los
 términos yaw, pitch, and roll, respectivamente, los cuales son
 comúnmente utilizados en la industria aeroespacial.
 
-[cols="1,1", frame="none"]
+[cols="2*^~a", frame="none"]
+|===
+|
+.Front (az=0, el=0)
+image::mged/02_truck_front.png[]
+|
+.az=35, el=0
+image::mged/02_truck_35_0.png[]
 |===
 
-|image:mged/02_truck_front.png[]
-|image:mged/02_truck_35_0.png[]
-
-|Front (az=0, el=0)
-|az=35, el=0
+[cols="2*^~a", frame="none"]
+|===
+|
+.Left (az=90, el=0)
+image::mged/02_truck_left.png[]
+|
+.Rear (az=180, el=0)
+image::mged/02_truck_rear.png[]
 |===
 
-[cols="1,1", frame="none"]
+[cols="^~a", frame="none"]
 |===
-
-|image:mged/02_truck_left.png[]
-|image:mged/02_truck_rear.png[]
-
-|Left (az=90, el=0)
-|Rear (az=180, el=0)
-|===
-
-[cols="1", frame="none"]
-|===
-
-|image:mged/02_truck_right.png[]
-
-|Right (az=270, el=0)
+|
+.Right (az=270, el=0)
+image::mged/02_truck_right.png[]
 |===
 
 Por otro lado, la elevación determina la posición del espectador
@@ -273,25 +271,26 @@ posicionandose exactamente sobre el camión, la elevación sería de
 arriba, su elevación sería de -90'0.
 
 [cols="1,1", frame="none"]
+[cols="2*^a", frame="none"]
 |===
-
-|image:mged/02_truck_35_0.png[]
-|image:mged/02_truck_35_25.png[]
-
-|az=35, el=0
-|az=35, el=25
-
-|image:mged/02_truck_35_60.png[]
-|image:mged/02_truck_35_90.png[]
-
-|az=35, el=60
-|az=35, el=90
-
-|image:mged/02_truck_270_90.png[]
-|image:mged/02_truck_270_-90.png[]
-
-|Top (az=270, el=90)
-|Bottom (az=270, el=-90)
+|
+.az=35, el=0
+image::mged/02_truck_35_0.png[]
+|
+.az=35, el=25
+image::mged/02_truck_35_25.png[]
+|
+.az=35, el=60
+image::mged/02_truck_35_60.png[]
+|
+.az=35, el=90
+image::mged/02_truck_35_90.png[]
+|
+.Top (az=270, el=90)
+image::mged/02_truck_270_90.png[]
+|
+.Bottom (az=270, el=-90)
+image::mged/02_truck_270_-90.png[]
 |===
 
 Finalmente, el giro (que es una configuración opcional en
@@ -305,12 +304,11 @@ de la izquierda.  Note nuevamente que no es el camión el que se mueve,
 sino sólo su vista sobre el mismo.  Para saber más sobre giros, mire
 el comando [cmd]`ae` en el apéndice A.
 
-[cols="1", frame="none"]
+[cols="^~a", frame="none"]
 |===
-
-|image:mged/02_truck_0_0_14.png[]
-
-|Front (az=0, el=0, tw=14)
+|
+.Front (az=0, el=0, tw=14)
+image::mged/02_truck_0_0_14.png[]
 |===
 
 [[_coord_sys_summary]]
@@ -347,20 +345,20 @@ izquierda (Left)(az90, el0); de frente (Front)(az0, el0); y por detrás
 Despliegue el menú View (Vistas) e intente ver su radio desde
 distintos ángulos.
 
-[cols="1,1", frame="none"]
+[cols="2*^a", frame="none"]
 |===
-
-|image:mged/02_radio_top.png[]
-|image:mged/02_radio_35_25.png[]
-
-|Top
-|az35,el25
-
-|image:mged/02_radio_right.png[]
-|image:mged/02_radio_front.png[]
-
-|Right
-|Front
+|
+.Top
+image::mged/02_radio_top.png[]
+|
+.az35,el25
+image::mged/02_radio_35_25.png[]
+|
+.Right
+image::mged/02_radio_right.png[]
+|
+.Front
+image::mged/02_radio_front.png[]
 |===
 
 También puede seleccionar alguna combinación de acimut, elevación y
@@ -403,7 +401,7 @@ cuyo caso la tecla ALT no podrá limitar esta acción.  La siguiente
 tabla muestra las distintas opciones y sus funciones.
 
 .Los atajos de teclado y sus efectos
-[cols="1,1,1,1,1", frame="all", options="header"]
+[cols="4*^.^~", frame="all", options="header"]
 |===
 | Función
 | Combinación de teclas
@@ -420,7 +418,7 @@ tabla muestra las distintas opciones y sus funciones.
 |Rota la vista en cualquier dirección
 |Rota el objeto en cualquier dirección
 
-|Traslación limitada
+.3+|Traslación limitada
 |SHIFT + ALT + botón izquierdo + movimiento del mouse
 |Mueve la vista en la dirección x
 |Mueve el objeto en la dirección x
@@ -433,7 +431,7 @@ tabla muestra las distintas opciones y sus funciones.
 |Mueve la vista en la dirección z
 |Mueve el objeto en la dirección z
 
-|Rotación limitada
+.3+|Rotación limitada
 |CTRL + ALT + botón izquierdo + movimiento del mouse
 |Rota la vista según el eje x
 |Rota el objeto según el eje x
