@@ -19,7 +19,7 @@ modelado.  Cuando haya terminado, su radio deberá verse como la
 siguiente imagen:
 
 .Radio Walkie-Talkie
-image::docs:lessons:image$mged/16_radio_new_design.png[]
+image::mged/16_radio_new_design.png[]
 
 
 [[_radio_shapes_to_regions]]
@@ -106,7 +106,7 @@ Si generara el trazado de rayos en este punto, debería aparecerle en
 la ventana gráfica una imagen similar a esta:
 
 .Radio con orificios para los componentes
-image::docs:lessons:image$mged/16_radio_default_components_props.png[]
+image::mged/16_radio_default_components_props.png[]
 
 La siguiente tarea consiste en completar los orificios con los
 componentes correspondientes.
@@ -234,7 +234,7 @@ predeterminados.  El diseño debería ser similar al siguiente una vez
 que genere el Raytrace en modo Underlay:
 
 .Radio con propiedades de los materiales asignadas
-image::docs:lessons:image$mged/16_radio_with_mater_props.png[]
+image::mged/16_radio_with_mater_props.png[]
 
 Al ver el radio, observará que la antena luce como un tubo.  Falta
 añadirle una pequeña tapa en el extremo para que es pueda subir y
@@ -287,7 +287,7 @@ radio.c de la siguiente manera:
 El radio deberá verse como esta imagen:
 
 .Representaci&#xF3;n en malla de alambre del radio con
-image::docs:lessons:image$mged/16_radio_wireframe_circ_board.png[]
+image::mged/16_radio_wireframe_circ_board.png[]
 
 Además, el árbol de radio.c debería ser:
 
@@ -392,7 +392,7 @@ Genere el Raytrace de su diseño para ver los efectos resultantes.  La
 nueva carcaza traslúcida deberá verse similar a la siguiente:
 
 .Vista transparente de la radio
-image::docs:lessons:image$mged/16_radio_transparent.png[]
+image::mged/16_radio_transparent.png[]
 
 Como se muestra en el siguiente diagrama de árbol, la estructura de
 radio_clear.c no es muy diferente a la de radio.c.  La única
@@ -462,14 +462,14 @@ desea ver (board.r):
 [cmd]`comb radio_cutaway.c u radio.c - cutaway.s kbd:[Enter]`
 
 .Vista multipanel del primitivo de corte
-image::docs:lessons:image$mged/16_radio_cut_wireframe.png[]
+image::mged/16_radio_cut_wireframe.png[]
 
 Utilice el comando Blast sobre la combinación radio_cutaway.c para ver
 el diseño y genere el Raytrace.  Dependiendo de cómo arb8 intersecta
 el radio, el corte debería ser similar al siguiente:
 
 .Vista en corte del radio con la placa de circuitos
-image::docs:lessons:image$mged/16_radio_cut_raytrace.png[]
+image::mged/16_radio_cut_raytrace.png[]
 
 Observe en las figuras anteriores que cutaway.s elimina todo lo que se
 solapa (incluyendo parte de la placa de circuito). Esto está bien si
@@ -499,7 +499,7 @@ cualquier modificación en los componentes o en su estructura.  Si no
 lo hacemos, el modelo original también se modificará.
 
 .Subtractions de cortes
-image::docs:lessons:image$mged/16_radio_cutaways.png[]
+image::mged/16_radio_cutaways.png[]
 
 
 [[_radio_structure_redefinition]]
@@ -514,13 +514,13 @@ funcionalidad.  Para este radio, se ha agrupado todo junto en la
 categoría general de "Radio", como se muestra en la siguiente imagen:
 
 .Estructura de la radio actual
-image::docs:lessons:image$mged/16_radio_structure_1.png[]
+image::mged/16_radio_structure_1.png[]
 
 Si quisiéramos clasificar nuestros componentes de acuerdo a la
 ubicación podemos estructurar el modelo de la siguiente manera:
 
 .Location-Based Structure of Radio
-image::docs:lessons:image$mged/16_radio_structure_2.png[]
+image::mged/16_radio_structure_2.png[]
 
 Si quisiera definir los componentes de acuerdo a la funcionalidad,
 debería estructurarlos de otra manera.  Por ejemplo, para reparar una
@@ -532,7 +532,7 @@ modificada como se muestra en el siguiente gráfico para asociar el
 mando y el botón con la tarjeta de circuitos.
 
 .Estructura del radio basada en la funcionalidad
-image::docs:lessons:image$mged/16_radio_structure_3.png[]
+image::mged/16_radio_structure_3.png[]
 
 Para llevar a cabo esta reestructuración de acuerdo a la
 funcionalidad, cree una combinación de montaje llamada electronics.c
@@ -592,7 +592,7 @@ Ahora, cuando redibuje utilizando el comando Blast y genere el trazado
 de rayos de radio_cutaway.c nuevamente, debería ver lo siguiente:
 
 .Vista del radio con la carcaza seccionada
-image::docs:lessons:image$mged/16_radio_casecut_raytrace.png[]
+image::mged/16_radio_casecut_raytrace.png[]
 
 
 [[_modeling_techniques_and_structures_review]]
