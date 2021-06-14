@@ -10,6 +10,7 @@ echo '@import "custom.css";' >> ui-default/src/css/site.css
 # build the ui bundle
 cd ui-default/
 npm install
+npm install --global gulp-cli
 gulp bundle
 cd ..
 
