@@ -47,7 +47,9 @@ lollipop/
 	u core.r/R
 		u core.s
 		- stick.s
-.... In the "file system" of a BRL-CAD object combinations can hold combinations, regions and primitives.
+....
+
+In the "file system" of a BRL-CAD object combinations can hold combinations, regions and primitives.
 Regions can hold combinations and primitives. footnote:[Regions will accept other regions as constructive arguments
       if given, but this is not good practice - BRL-CAD assumes a
       region is composed of combinations and primitives which share a
@@ -59,7 +61,9 @@ So in the above example the full "path" of the outer-candy-sphere.c combination 
 ....
 
 /lollipop/outer-candy-shell.r/outer-candy-sphere.c
-.... Note that if we wish to operate on this combination it is not enough to specify /lollipop/outer-candy-shell.r for the lhs and outer-candy-sphere.c for the rhs - _combinations and
+....
+
+Note that if we wish to operate on this combination it is not enough to specify /lollipop/outer-candy-shell.r for the lhs and outer-candy-sphere.c for the rhs - _combinations and
     regions do not themselves have default control points._ In other words, if you want to rotate a combination there must be a point around which that rotation occurs - a combination will have no default point assigned.
 This is the reason the rhs must always end with a  primitive - even though the intent is not to edit the primitive, information necessary for most operations on the combination will use information (such as default keypoint settings) that the primitive _does_ have.
 So, 
@@ -155,7 +159,9 @@ cube.s:  ARB8
 	6 (8, 8, 0)
 	7 (8, 8, 3)
 	8 (5, 8, 3)
-.... For the first task the goal is to shift both the sphere and the arb8 5 mm up the z axis.
+....
+
+For the first task the goal is to shift both the sphere and the arb8 5 mm up the z axis.
 First, select the combination for editing: 
 
   oed / object1.c/sphere.s
@@ -310,7 +316,9 @@ cube.s:  ARB8
 	6 (8, -8, 5)
 	7 (8, -8, 8)
 	8 (8, -5, 8)
-.... Now the primitives have changed, and the combination is back to being just a boolean operation on primitives.
+....
+
+Now the primitives have changed, and the combination is back to being just a boolean operation on primitives.
 These operations COULD be undone, but there is no equivalent "pull" command to automatically undo them.
 By design, `push` replaces the stored transformations by their results and removes the transformation information.
 This means reversing a `push` requires additional transformations and another push to return things to their original state.
@@ -528,7 +536,9 @@ mged> l bigobject.r
 bigobject.r:  REGION id=1005  (air=0, los=100, GIFTmater=1) --
    u object1.c
    u object3.c
-.... and examining the `l` readout for all object1.c instances the results are identical, when the bigobject.r's object1.c was intended to change: 
+....
+
+and examining the `l` readout for all object1.c instances the results are identical, when the bigobject.r's object1.c was intended to change: 
 
 ....
 

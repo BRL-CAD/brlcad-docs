@@ -38,7 +38,6 @@ The convention used here will be:
 [app]``NIRT`` provides an _h_ option which prints out a list of available options and command syntax: 
 
 ....
-
 user@machine ~ $ nirt --h
 Usage: 'nirt [options] model.g objects...'
 Options:
@@ -94,14 +93,12 @@ The form of the command is: footnote:[To quickly find out what objects are in a 
 	    to see all objects in the model.]: 
 
 ....
-
 nirt nirt_example.g center_cube.r
 ....
 
 This starts up the [app]``NIRT`` command line interactive environment: 
 
 ....
-
 BRL-CAD Release 7.13.0  Natalie's Interactive Ray Tracer
     Tue, 26 Aug 2008 23:21:32 -0400, Compilation 2
     user@localhost:/usr/brlcad
@@ -114,7 +111,9 @@ Database title: 'Example BRL-CAD Database'
 Database units: 'mm'
 model_min = (-1, -1, -1)    model_max = (1, 1, 1)
 nirt>
-....	The first three lines identify the release number, tool being used, date of compilation or date release was made, and user.
+....
+
+The first three lines identify the release number, tool being used, date of compilation or date release was made, and user.
 The fourth line identifies the database file.
 The next three lines are informational messages relating to model setup.
 The database title and units are then printed.
@@ -125,13 +124,14 @@ The last pieces of information, `model_min` and ``model_max``, are the outer bou
 With the example loaded into [app]``NIRT``, the `s`	interactive command is used to shoot a ray: 
 
 ....
-
 nirt>  s
 Origin (x y z) = (0.00000000 0.00000000 0.00000000)  (h v d) = (0.0000 0.0000 0.0000)
 Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (0.00000000 0.00000000)
     Region Name               Entry (x y z)              LOS  Obliq_in Attrib
 center_cube.r        (   1.0000    0.0000    0.0000)   2.0000   0.0000
-....	What happened and what do these results mean?  The following table breaks down the structure of the report: 
+....
+
+What happened and what do these results mean?  The following table breaks down the structure of the report: 
 
 [cols="1,1"]
 |===
@@ -176,7 +176,6 @@ If we move the origin to some point other than the sphere center, a different ra
 The `xyz` interactive command will print the current origin if given no arguments, and accepts a list of points to change the origin: 
 
 ....
-
 nirt>  xyz
 (x, y, z) = (0.00, 0.00, 0.00)
 nirt>  xyz 0 0 .5
@@ -200,7 +199,6 @@ This ensures that all segments along a given ray path will be reported.
 As an illustration, reload [path]_nirt_example.g_ and this time specify _left_and_right_cubes.r_	(defined as the combination of _left_cube.s_ and __right_cube.s__).  Cast rays before and after backout: 
 
 ....
-
 nirt>  q
 Quitting...
 
@@ -228,7 +226,9 @@ Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (0.00000000 0
     Region Name               Entry (x y z)              LOS  Obliq_in Attrib
 left_and_right_cubes.r (   3.0000    0.0000    0.0000)   2.0000   0.0000
 left_and_right_cubes.r (  -1.0000    0.0000    0.0000)   2.0000   0.0000
-....	Note that in the first raytrace, _left_and_right_cubes.r_ did not backtrack to generate its LOS thickness value, and when the backout option was applied, _left_and_right_cubes.r_ gained an extra entry.
+....
+
+Note that in the first raytrace, _left_and_right_cubes.r_ did not backtrack to generate its LOS thickness value, and when the backout option was applied, _left_and_right_cubes.r_ gained an extra entry.
 The double report for _left_and_right_cubes.r_ is not a mistake; the ray did indeed enter and exit the region twice once the `backout`	interactive command changed the origination point. 
 
 It is important to understand that the `backout` interactive command does not permanently change the origination point of the ray; it requests an automatic adjustment of the origination point based on the model __for the casting of the ray__, and then restores the original specified origination point.
@@ -237,7 +237,6 @@ If the `xyz` interactive command is used to change the origination point while b
 For example: 
 
 ....
-
 nirt>  backout 0
 nirt>  xyz
 (x, y, z) = (0.00, 0.00, 0.00)
@@ -277,7 +276,6 @@ This is achieved with the `dir` interactive command, which either prints out the
 To make interpreting the results easier for this example, the origination point of the ray is first returned to the origin: 
 
 ....
-
 nirt>  xyz 0 0 0
 nirt>  dir
 (x, y, z) = (-1.00, 0.00, 0.00)
@@ -300,7 +298,9 @@ Origin (x y z) = (0.00000000 0.00000000 0.00000000)  (h v d) = (0.0000 0.0000 0.
 Direction (x y z) = (0.00000000 0.00000000 1.00000000)  (az el) = (0.00000000 -90.00000000)
 You missed the target
 nirt>
-....	The first shot, in the default -x direction, intersects one of the sections.
+....
+
+The first shot, in the default -x direction, intersects one of the sections.
 The second shot changes the aim slightly off the -x axis, with different results - the `LOS` thickness is now longer. `Obliq_in` changed as well, because the ray is no longer perpendicular to the tangent at the point of intersection.
 Notice that the direction was not specified using a unit vector, but was reported as one; the conversion to a unit vector is handled automatically by [app]``NIRT``.
 The third shot is a more drastic change of direction, from the -x to positive z.
@@ -312,7 +312,6 @@ In many cases, a geometry will have overlaps:  errors where a model is assigning
 To demonstrate this behavior, [app]``NIRT`` is reloaded with __overlap_example__: 
 
 ....
-
 nirt>  q
 Quitting...
 
@@ -336,11 +335,12 @@ Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (0.00000000 0
 all_cubes.r          (   3.0000    0.0000    0.0000)   6.0000   0.0000
 OVERLAP: 'center_overlap.r' and 'all_cubes.r' xyz_in=(1 0 0) los=2
 nirt>
-....	The last line in the preceding report is reporting that the regions _all_cubes.r_ and _center_overlap.r_	are both claiming the same volume, starting at (1, 0, 0) and continuing to do so for 2 mm per the LOS thickness.
+....
+
+The last line in the preceding report is reporting that the regions _all_cubes.r_ and _center_overlap.r_	are both claiming the same volume, starting at (1, 0, 0) and continuing to do so for 2 mm per the LOS thickness.
 If the direction and origin are changed to shoot along the z axis: 
 
 ....
-
 nirt>  dir 0 0 -1
 nirt>  s
 Origin (x y z) = (0.00000000 0.00000000 7.48331477)  (h v d) = (0.0000 0.0000 0.0000)
@@ -351,7 +351,9 @@ OVERLAP: 'center_overlap.r' and 'all_cubes.r' xyz_in=(0 0 1) los=2
 all_cubes.r          (   0.0000    0.0000    1.0000)   2.0000   0.0000
 center_overlap.r     (   0.0000    0.0000   -1.0000)   1.0000   0.0000
 nirt>
-....	Along that vector, _center_overlap.r_ is encountered first, then _all_cubes.r_ intersecting with __center_overlap.r__. footnote:[The last two lines that appear in the output when the direction vector is
+....
+
+Along that vector, _center_overlap.r_ is encountered first, then _all_cubes.r_ intersecting with __center_overlap.r__. footnote:[The last two lines that appear in the output when the direction vector is
 	    changed are a result of how the raytracing library keeps track of regions
 	    internally.  Even when in an overlap, the ray is considered to be in only
 	    one region at a time. In this particular overlap
@@ -383,7 +385,6 @@ Even if supplied with objects it will not use them - the objects used are those 
 For example, load [path]_nirt_example.g_ in [app]``MGED``, ``draw center_cube.r``, set the view direction to a front view looking down the negative x axis, and run the `nirt`[app]``MGED`` command: 
 
 ....
-
 mged> draw center_cube.r
 mged> ae 0 0
 mged> nirt
@@ -396,6 +397,7 @@ center_cube.r        (    1.000     0.000     0.000)     2.00    0.000
 
 mged>
 ....
+
 // <informalfigure>
 // 	  <mediaobject>
 // 	    <imageobject role="html">
@@ -442,7 +444,6 @@ For comparison purposes, it is more instructive to examine _left_and_right_cubes
 To generate a "no backout" control view, the display is cleared, _left_and_right_cubes.r_ is drawn, the view direction is set, [app]``NIRT`` (no _b_ flag) is run, and the view is switched to view the ray path: 
 
 ....
-
 mged> B left_and_right_cubes.r
 mged> ae 0 0
 mged> nirt
@@ -456,6 +457,7 @@ region1.r            ( -300.000     0.000     0.000)   100.00    0.000
 mged> ae 90 0
 mged>
 ....
+
 // <informalfigure>
 // 	  <mediaobject>
 // 	    <imageobject role="html">
@@ -475,7 +477,6 @@ mged>
 Repeating the steps using the _b_ flag to back the origination point out produces somewhat different results: 
 
 ....
-
 mged> ae 0 0
 mged> nirt -b
 
@@ -488,6 +489,7 @@ left_and_right_cubes.r (   -1.000     0.000     0.000)     2.00    0.000
 
 mged> ae 90 0
 ....
+
 // <informalfigure>
 // 	  <mediaobject>
 // 	    <imageobject role="html">
@@ -531,7 +533,6 @@ The conventions are:
 First, all three are drawn at once, the viewing direction is set to the -x direction, `nirt -b` is run, and the view is changed to see the results: 
 
 ....
-
 mged> B left_cube.r center_cube.r right_cube.r
 mged> ae 0 0
 mged> nirt -b
@@ -546,6 +547,7 @@ left_cube.r          (   -1.000     0.000     0.000)     2.00    0.000
 
 mged> ae 90 0
 ....
+
 // <informalfigure>
 // 	  <mediaobject>
 // 	    <imageobject role="html">
@@ -573,7 +575,6 @@ In that case, there would be only one region, and only one line color would be n
 To illustrate: 
 
 ....
-
 mged> B all_cubes.r
 mged> ae 0 0
 mged> nirt -b
@@ -586,6 +587,7 @@ all_cubes.r          (    3.000     0.000     0.000)     6.00    0.000
 
 mged> ae 90 0
 ....
+
 // <informalfigure>
 // 	  <mediaobject>
 // 	    <imageobject role="html">
@@ -608,7 +610,6 @@ A gap in [app]``NIRT`` is any area along the ray path *after a solid portion of 
 As an illustration, casting the same ray through just _left_cube.r_ and _right_cube.r_ results in a gap where _center_cube.r_ was in the first example in this section: 
 
 ....
-
 mged> B left_cube.r right_cube.r
 mged> ae 0 0
 mged> nirt -b
@@ -622,6 +623,7 @@ left_cube.r          (   -1.000     0.000     0.000)     2.00    0.000
 
 mged> ae 90 0
 ....
+
 // <informalfigure>
 // 	  <mediaobject>
 // 	    <imageobject role="html">
@@ -640,7 +642,6 @@ mged> ae 90 0
 	To illustrate overlaps, both _center_cube.r_ and _all_cubes.r_ are drawn at the same time: 
 
 ....
-
 mged> B all_cubes.r center_cube.r
 mged> ae 0 0
 mged> nirt -b
@@ -654,6 +655,7 @@ OVERLAP: 'center_cube.r' and 'all_cubes.r' xyz_in=(1 0 0) los=2
 
 mged> ae 90 0
 ....
+
 // <informalfigure>
 // 	  <mediaobject>
 // 	    <imageobject role="html">
@@ -681,10 +683,11 @@ Selecting the view window, placing the mouse at some point over the model, and p
 For this example, bring up __left_cube.r__, __center_cube.r__, and __right_cube.r__: 
 
 ....
-
 mged> B left_cube.r center_cube.r right_cube.r
 mged>
-....	To aid with aiming, the grid overlay is enabled from the menu: Settings->Grid->Draw Grid.
+....
+
+To aid with aiming, the grid overlay is enabled from the menu: Settings->Grid->Draw Grid.
 Grid spacing is adjusted with Settings->Grid Spacing->Autosize: 
 // <informalfigure>
 // 	  <mediaobject>
@@ -704,7 +707,6 @@ Grid spacing is adjusted with Settings->Grid Spacing->Autosize:
 	With the mouse behavior set to Query Ray, the following results are from casting rays at (approximately) the (-2 mm, 0 mm), (0 mm, 0 mm), and (2 mm, 0 mm) grid points: 
 
 ....
-
 Firing from (-1.992832, -4.000000, -0.028674)...
 Origin (x y z) = (-1.99 -10.63 -0.03)  (h v d) = (-1.99 -0.03 4.00)
 Direction (x y z) = (-0.0000 1.0000 0.0000)  (az el) = (-90.00 -0.00)
@@ -722,13 +724,14 @@ Origin (x y z) = (2.02 -10.63 -0.03)  (h v d) = (2.02 -0.03 4.00)
 Direction (x y z) = (-0.0000 1.0000 0.0000)  (az el) = (-90.00 -0.00)
     Region Name               Entry (x y z)              LOS  Obliq_in
 right_cube.r         (    2.022    -1.000    -0.029)     2.00    0.000
-....	Notice the entry points are off from the target values by small but significant amounts.
+....
+
+Notice the entry points are off from the target values by small but significant amounts.
 A more precise way to do this analysis is to use the "snap to grid" feature.
 This feature is enabled by selecting	Modes->Snap To Grid.
 Repeating the above ray casts: 
 
 ....
-
 Firing from (-2.000000, -4.000000, -0.000000)...
 Origin (x y z) = (-2.00 -10.63 -0.00)  (h v d) = (-2.00 0.00 4.00)
 Direction (x y z) = (-0.0000 1.0000 0.0000)  (az el) = (-90.00 -0.00)
@@ -746,7 +749,9 @@ Origin (x y z) = (2.00 -10.63 -0.00)  (h v d) = (2.00 0.00 4.00)
 Direction (x y z) = (-0.0000 1.0000 0.0000)  (az el) = (-90.00 -0.00)
     Region Name               Entry (x y z)              LOS  Obliq_in
 right_cube.r         (    2.000    -1.000     0.000)     2.00    0.000
-....	These values are exact thanks to the corrections provided by the snap to grid mode. 
+....
+
+These values are exact thanks to the corrections provided by the snap to grid mode. 
 
 [[_configuring_nirt]]
 === Configuring [app]``NIRT`` with the Query Ray Control Panel
@@ -859,23 +864,26 @@ For example, the pseudo-primitive list after running [app]``NIRT`` on the cube e
 
 
 ....
-
 mged> who p
 query_rayffff00 query_rayffff query_rayff00ff
-....	  This naming convention is used almost completely as an internal mechanism by [app]``MGED`` and [app]``NIRT``.
+....
+
+This naming convention is used almost completely as an internal mechanism by [app]``MGED`` and [app]``NIRT``.
 For example, an `l`	  command on _query_rayffff_ does not work: 
 
 ....
-
 mged> l query_rayffff
 rt_db_get_internal(query_rayffff) failure
-....	  However, it _is_ possible to use these names to erase the [app]``NIRT``	  line segments from the drawing.
+....
+
+However, it _is_ possible to use these names to erase the [app]``NIRT``	  line segments from the drawing.
 For example, to remove the purple line segments from the wireframe, the command: 
 
 ....
-
 mged> erase query_rayff00ff
-....	  will remove _only_ the purple line segment and leave the others: 
+....
+
+will remove _only_ the purple line segment and leave the others: 
 // <informalfigure>
 // 	  <mediaobject>
 // 	    <imageobject role="html">
@@ -896,10 +904,10 @@ The Query Ray Control Panel also offers a way to customize the base name used fo
 Changing the *Base Name* from query_ray to line_segment and rerunning [app]``NIRT`` results in pseudo-primitives named: 
 
 ....
-
 mged> who p
      line_segmentffff00 line_segmentffff line_segmentff00ff
 ....
+
 // <informalfigure>
 // 	  <mediaobject>
 // 	    <imageobject role="html">
@@ -939,7 +947,6 @@ The *Echo Cmd* check box in the *Effects*	  row allows the user to enable/disabl
 	  For example, with *Echo Cmd* selected, casting a ray into the last example in the previous section results in: 
 
 ....
-
 nirt -e fmt r ""; fmt h ""; fmt p ""; fmt m ""; fmt o ""; fmt f ""; fmt g "" -e fmt p
  "%e %e %e %e\n" x_in y_in z_in los -e xyz 4.000000 0.022222 0.011111;dir -1.000000
 -0.000000 0.000000; s -e fmt r "\n" ; fmt p ""; fmt o "%e %e %e %e\n" ov_x_in ov_y_in
@@ -960,7 +967,9 @@ Direction (x y z) = (-1.0000 -0.0000 0.0000)  (az el) = (0.00 -0.00)
 right_cube.r         (    3.000     0.022     0.011)     2.00    0.000
 center_cube.r        (    1.000     0.022     0.011)     2.00    0.000
 left_cube.r          (   -1.000     0.022     0.011)     2.00    0.000
-....	  This feature is primarily useful for debugging or scripting outside of [app]``MGED``. 
+....
+
+This feature is primarily useful for debugging or scripting outside of [app]``MGED``. 
 
 [[_selecting_graphical]]
 ==== Selecting Graphical and Textual Output
@@ -997,7 +1006,6 @@ In addition to the default style used thus far in this report, [app]``NIRT`` has
 Running `nirt -L` prints out a list of available built-in formats, with a description of each: 
 
 ....
-
 user@machine ~ $ nirt -L
 csv-gap   - Comma Separated Value Output Formatting with Gap Reporting
 entryexit - Variation on Standard format that prints Entry and Exit points rather than LOS.
@@ -1005,13 +1013,14 @@ csv       - Comma Separated Value Output Formatting
 gap2      - Reporting with Gap input point, output point and LOS
 gap1      - Reporting with Gap Input Point and LOS
 default   - Standard NIRT Reporting Format
-....	To use a particular format, the name on the left (csv, gap1, etc.) is supplied as an argument to the _f_ flag. 
+....
+
+To use a particular format, the name on the left (csv, gap1, etc.) is supplied as an argument to the _f_ flag. 
 
 For example, cases where data needs to be imported into a spreadsheet can benefit from using comma-separated-variable (csv) output formatting.
 The individual cube regions are loaded and a ray cast: 
 
 ....
-
 user@machine ~ $ nirt -b -f csv nirt_example.g left_cube.r center_cube.r right_cube.r
 BRL-CAD Release 7.13.0  Natalie's Interactive Ray Tracer
     Tue, 26 Aug 2008 23:21:32 -0400, Compilation 2
@@ -1032,9 +1041,11 @@ x_orig,y_orig,z_orig,d_orig,h,v,x_dir,y_dir,z_dir,az,el
 Results:
 reg_name,path_name,reg_id,x_in,y_in,z_in,d_in,x_out,y_out,z_out,d_out,los,scaled_los,o...
 "right_cube.r","/right_cube.r",1002,3.000000,0.000000,0.000000,3.000000,1.000000,0.000...
-"center_cube.r","/center_cube.r",1000,1.000000,0.000000,0.000000,1.000000,-1.000000,0....
+"center_cube.r","/center_cube.r",1000,1.000000,0.000000,0.000000,1.000000,-1.000000,0...
 "left_cube.r","/left_cube.r",1001,-1.000000,0.000000,0.000000,-1.000000,-3.000000,0.00...
-....	The output of the shot command is then copied to a file (for example, test.csv) and imported into a spreadsheet: 
+....
+
+The output of the shot command is then copied to a file (for example, test.csv) and imported into a spreadsheet: 
 
 
 image::../../articles/images/nirt_fig19.png[]
@@ -1043,13 +1054,13 @@ Since copying to a file is impractical in many cases, [app]``NIRT``	provides an 
 In the previous case, the test.csv file is created easily: 
 
 ....
-
 nirt>  dest test.csv
 nirt>  s
-....	The file contents match the previous output: 
-
 ....
 
+The file contents match the previous output: 
+
+....
 Ray:
 x_orig,y_orig,z_orig,d_orig,h,v,x_dir,y_dir,z_dir,az,el
 6.63324958,0.00000000,0.00000000,0.00000000,0.00000000,0.00000000,-1.00000000,0.000000...
@@ -1057,12 +1068,13 @@ x_orig,y_orig,z_orig,d_orig,h,v,x_dir,y_dir,z_dir,az,el
 Results:
 reg_name,path_name,reg_id,x_in,y_in,z_in,d_in,x_out,y_out,z_out,d_out,los,scaled_los,o...
 "right_cube.r","/right_cube.r",1002,3.000000,0.000000,0.000000,3.000000,1.000000,0.000...
-"center_cube.r","/center_cube.r",1000,1.000000,0.000000,0.000000,1.000000,-1.000000,0....
+"center_cube.r","/center_cube.r",1000,1.000000,0.000000,0.000000,1.000000,-1.000000,0...
 "left_cube.r","/left_cube.r",1001,-1.000000,0.000000,0.000000,-1.000000,-3.000000,0.00...
-....	To restore output to the command line, use `dest default` to redirect to standard output: 
-
 ....
 
+To restore output to the command line, use `dest default` to redirect to standard output: 
+
+....
 nirt>  dest default
 ....
 
@@ -1072,7 +1084,6 @@ The _gap1_ and _gap2_ formats will include information about gaps.
 Running [app]``NIRT`` on the _left_and_right_cubes.r_	  object with backout enabled provides an example: 
 
 ....
-
 user@machine ~ $ nirt -b -f gap2 nirt_example.g left_and_right_cubes.r
 BRL-CAD Release 7.13.0  Natalie's Interactive Ray Tracer
     Tue, 26 Aug 2008 23:21:32 -0400, Compilation 2
@@ -1101,7 +1112,6 @@ Including attributes in a [app]``NIRT`` report requires adding attributes in que
 For example, if the user wants the report to identify the *rgb* color being used for each region: 
 
 ....
-
 user@machine ~ $ nirt -b nirt_example.g left_cube_color.r center_cube_color.r right_cube_color.r
 nirt>  attr rgb
 nirt>  attr -p
@@ -1117,19 +1127,21 @@ Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (0.00000000 0
 right_cube_color.r   (   3.0000    0.0000    0.0000)   2.0000   0.0000 rgb=255/0/0
 center_cube_color.r  (   1.0000    0.0000    0.0000)   2.0000   0.0000 rgb=0/255/0
 left_cube_color.r    (  -1.0000    0.0000    0.0000)   2.0000   0.0000 rgb=0/0/255
-....	Notice how the report now includes the *rgb* attribute for each region.
+....
+
+Notice how the report now includes the *rgb* attribute for each region.
 The _p_ flag prints the current list of attributes to include.
 In the previous case it's simply the "rgb" attribute.
 An _f_ option can be supplied to flush all entries and clear the table. 
 
 ....
-
 nirt>  attr -f
 nirt>  attr -p
-....	Multiple attributes can also be specified: 
-
 ....
 
+Multiple attributes can also be specified: 
+
+....
 nirt>  attr rgb region
 nirt>  attr -p
 "rgb"
@@ -1145,12 +1157,13 @@ Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (0.00000000 0
 right_cube_color.r   (   3.0000    0.0000    0.0000)   2.0000   0.0000 rgb=255/0/0 region=R
 center_cube_color.r  (   1.0000    0.0000    0.0000)   2.0000   0.0000 rgb=0/255/0 region=R
 left_cube_color.r    (  -1.0000    0.0000    0.0000)   2.0000   0.0000 rgb=0/0/255 region=R
-....	If the user wishes to add yet another attribute, it could be appended to the current list with another `attr` command. 
+....
+
+If the user wishes to add yet another attribute, it could be appended to the current list with another `attr` command. 
 
 To provide attributes to the list on startup, the _A_	option will add its arguments to the list: 
 
 ....
-
 user@machine ~ $ nirt -b -A rgb nirt_example.g left_cube_color.r center_cube_color.r right_cube_color.r
 BRL-CAD Release 7.13.0  Natalie's Interactive Ray Tracer
     Mon, 25 Aug 2008 15:14:03 -0400, Compilation 1
@@ -1185,7 +1198,6 @@ This is configurable via the `units` command, which will accept mm, cm, m, in, a
 Using _center_cube.r_ as an example: 
 
 ....
-
 nirt>  units
 units = 'mm'
 nirt>  s
@@ -1211,7 +1223,9 @@ Origin (x y z) = (0.01136516 0.00000000 0.00000000)  (h v d) = (0.0000 0.0000 0.
 Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (0.00000000 0.00000000)
     Region Name               Entry (x y z)              LOS  Obliq_in Attrib
 center_cube.r        (   0.0033    0.0000    0.0000)   0.0066   0.0000
-....	When run from within [app]``MGED``[app]``NIRT`` uses the current units set within the [app]``MGED`` environment. 
+....
+
+When run from within [app]``MGED``[app]``NIRT`` uses the current units set within the [app]``MGED`` environment. 
 
 == Other Options
 
@@ -1236,7 +1250,6 @@ If the user _does_ wish to have air regions reported, the _u_ option is supplied
 This is illustrated with a _center_cube_air.r_ object: 
 
 ....
-
 user@machine $ nirt -s -b -u 0 -f gap2 nirt_example.g left_and_right_cubes.r center_cube_air.r
 s
 Origin (x y z) = (6.63324958 0.00000000 0.00000000)  (h v d) = (0.0000 0.0000 0.0000)
@@ -1255,7 +1268,9 @@ Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (0.00000000 0
 left_and_right_cubes.r (   3.0000    0.0000    0.0000)   2.0000   0.0000
 center_cube_air.r    (   1.0000    0.0000    0.0000)   2.0000   0.0000
 left_and_right_cubes.r (  -1.0000    0.0000    0.0000)   2.0000   0.0000
-....	In the first case, area in between the cubes of _left_and_right_cubes.r_ is reported as a gap when gap reporting is enabled.
+....
+
+In the first case, area in between the cubes of _left_and_right_cubes.r_ is reported as a gap when gap reporting is enabled.
 In the second case, _center_cube_air.r_ is treated as a region and a new region report line is generated instead of a gap report. 
 
 The Query Ray Control Panel also offers a way to select the Use Air option: 
@@ -1285,16 +1300,16 @@ By default the `saveview`[app]``MGED`` command generates scripts to run ``rt``, 
 Typically the `saveview`[app]``MGED`` command generates scripts with a few other options included, but the important parts are the orientation matrix and eyepoint: 
 
 ....
-
 #!/bin/sh
 nirt -M  nirt_example.g 'right_cube.r' 'center_cube.r' 'left_cube.r'  <<EOF
 orientation 2.480973490458727e-01 4.765905732660485e-01 7.480973490458729e-01 \
 	    3.894348305183902e-01;
 eye_pt 6.000000000000000e+00 4.201245229258262e+00 3.415539237722919e+00;
-....	When the above script is run, a [app]``NIRT`` report is generated for a ray cast in the same direction as that which would have been cast in the original [app]``MGED`` view where the `saveview` command was run: 
-
 ....
 
+When the above script is run, a [app]``NIRT`` report is generated for a ray cast in the same direction as that which would have been cast in the original [app]``MGED`` view where the `saveview` command was run: 
+
+....
 machine:~ user$ sh tsv.script
 Origin (x y z) = (6.00000000 4.20124523 3.41553924)  (h v d) = (0.0000 0.0000 8.0819)
 Direction (x y z) = (-0.74240388 -0.51983679 -0.42261826)  (az el) = (35.00000000 25.00000000)
@@ -1302,7 +1317,9 @@ Direction (x y z) = (-0.74240388 -0.51983679 -0.42261826)  (az el) = (35.0000000
 right_cube.r         (   1.4281    1.0000    0.8130)   0.5767  58.6787
 center_cube.r        (   1.0000    0.7002    0.5693)   2.6940  42.0634
 left_cube.r          (  -1.0000   -0.7002   -0.5693)   0.5767  42.0634
-....	Notice the `az` and `el` reported are 35 and 25, which correspond to the settings for those values in [app]``MGED`` when `saveview` was run. 
+....
+
+Notice the `az` and `el` reported are 35 and 25, which correspond to the settings for those values in [app]``MGED`` when `saveview` was run. 
 
 [[_scripting_nirt]]
 == Scripting [app]``NIRT``
@@ -1318,7 +1335,6 @@ The format of such a string is ``nirt -e "command1; command2; ... commandn" mode
 For example, to cast a ray in the negative z direction and avoid interactive mode, the following would work: 
 
 ....
-
 user@machine ~ $ nirt -b -s -e "dir 0 0 -1; s; q" nirt_example.g all_cubes.r
 Origin (x y z) = (0.00000000 0.00000000 6.63324958)  (h v d) = (0.0000 0.0000 0.0000)
 Direction (x y z) = (0.00000000 0.00000000 -1.00000000)  (az el) = (0.00000000 90.00000000)
@@ -1331,7 +1347,6 @@ They are read in from left to right and each option is aware of the effects of t
 Using the gap format with the _left_and_right_cubes.r_ object, both orders of the _e_ and _f_ options produce different results: 
 
 ....
-
 user@machine ~ $ nirt -b -s -f gap2 -e "s; q" nirt_example.g left_and_right_cubes.r
 Origin (x y z) = (6.63324958 0.00000000 0.00000000)  (h v d) = (0.0000 0.0000 0.0000)
 Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (0.00000000 0.00000000)
@@ -1346,11 +1361,12 @@ Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (0.00000000 0
     Region Name               Entry (x y z)              LOS  Obliq_in Attrib
 left_and_right_cubes.r (   3.0000    0.0000    0.0000)   2.0000   0.0000
 left_and_right_cubes.r (  -1.0000    0.0000    0.0000)   2.0000   0.0000
-....	In the second case, the arguments to _e_ were executed before the formatting change was reached.
+....
+
+In the second case, the arguments to _e_ were executed before the formatting change was reached.
 A final illustration of this behavior uses multiple instances of the _e_ and _f_	options: 
 
 ....
-
 user@machine ~ $ nirt -b -s -e "s" -f gap2 -e "s; q" nirt_example.g left_and_right_cubes.r
 Origin (x y z) = (6.63324958 0.00000000 0.00000000)  (h v d) = (0.0000 0.0000 0.0000)
 Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (0.00000000 0.00000000)
@@ -1363,7 +1379,9 @@ Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (0.00000000 0
 left_and_right_cubes.r (   3.0000    0.0000    0.0000)   2.0000   0.0000
 GAP: xyz_in=(1 0 0) xyz_out=(-1 0 0) los=2
 left_and_right_cubes.r (  -1.0000    0.0000    0.0000)   2.0000   0.0000
-....	Notice how the commands in the first _e_ option are run without the gap formatting, but the command in the second is run _with_ gap formatting. 
+....
+
+Notice how the commands in the first _e_ option are run without the gap formatting, but the command in the second is run _with_ gap formatting. 
 
 [[_script_files]]
 === Script Files: Other Uses of the _f_ Option
@@ -1376,7 +1394,6 @@ Instead of hand-copying the output to a file as was done in the previous example
 A script file is defined thus: 
 
 ....
-
 # testscript: A Scripted NIRT Example
 backout 1
 dir -1 0 0
@@ -1384,18 +1401,20 @@ s
 dir 1 0 0
 s
 q
-....	Because the intent is to have _only_ the output in the file, the _s_ option is supplied to the `nirt` command.
+....
+
+Because the intent is to have _only_ the output in the file, the _s_ option is supplied to the `nirt` command.
 The output is redirected to a file called [path]_output.txt_footnote:[These examples use a standard
 	POSIX-style output redirect to create the file.  If this doesn't work, the above script can
 	be edited to use the dest command instead.]
 
 ....
-
 nirt -s -f testscript nirt_example.g left_and_right_cubes.r > output.txt
-....	The contents of that file are the text reports of the two rays cast into the model: 
-
 ....
 
+The contents of that file are the text reports of the two rays cast into the model: 
+
+....
 Origin (x y z) = (6.63324958 0.00000000 0.00000000)  (h v d) = (0.0000 0.0000 0.0000)
 Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (-0.00000000 -0.00000000)
     Region Name               Entry (x y z)              LOS  Obliq_in Attrib
@@ -1406,18 +1425,20 @@ Direction (x y z) = (1.00000000 0.00000000 0.00000000)  (az el) = (-180.00000000
     Region Name               Entry (x y z)              LOS  Obliq_in Attrib
 left_and_right_cubes.r (  -3.0000    0.0000    0.0000)   2.0000   0.0000
 left_and_right_cubes.r (   1.0000    0.0000    0.0000)   2.0000   0.0000
-....	This is useful, but more interesting would be the above output in csv format.
+....
+
+This is useful, but more interesting would be the above output in csv format.
 Fortunately, the _f_ option can be used multiple times in a single `nirt` run: 
 
 ....
-
 nirt -s -f csv -f testscript nirt_example.g left_and_right_cubes.r > output.csv
-....	As mentioned in the earlier section when combinations of _e_ and _f_ options were used, using multiple instances of the _f_ option in this fashion requires paying attention to the left-to-right order.
+....
+
+As mentioned in the earlier section when combinations of _e_ and _f_ options were used, using multiple instances of the _f_ option in this fashion requires paying attention to the left-to-right order.
 The csv script in the above case is executed before testscript.
 The result is the csv equivalent of the preceding file: 
 
 ....
-
 Ray:
 x_orig,y_orig,z_orig,d_orig,h,v,x_dir,y_dir,z_dir,az,el
 6.63324958,0.00000000,0.00000000,0.00000000,0.00000000,0.00000000,-1.00000000,0.00000...
@@ -1435,7 +1456,9 @@ Results:
 reg_name,path_name,reg_id,x_in,y_in,z_in,d_in,x_out,y_out,z_out,d_out,los,scaled_los,...
 "left_and_right_cubes.r","/left_and_right_cubes.r",1004,-3.000000,0.000000,0.000000,3...
 "left_and_right_cubes.r","/left_and_right_cubes.r",1004,1.000000,0.000000,0.000000,-1...
-....	As before, this format is trivially imported into a spreadsheet: 
+....
+
+As before, this format is trivially imported into a spreadsheet: 
 
 
 image::../../articles/images/nirt_fig21.png[]
@@ -1451,7 +1474,6 @@ Generally, it is simplest to use one of the predefined files as a starting point
 For example, if the user prefers to have commas between xyz coordinates, but otherwise wishes to use the default format, the [path]_default.nrt_ file from the installed BRL-CAD system is copied to the local directory and renamed [path]_default-commas.nrt_: 
 
 ....
-
 machine:~ user$ cp /usr/brlcad/share/brlcad/7.12.5/nirt/default.nrt default-commas.nrt
 
 machine:~ user$ more default-commas.nrt
@@ -1462,10 +1484,11 @@ fmt h "    Region Name               Entry (x y z)              LOS  Obliq_in At
 fmt p "%-20s (%9.4f %9.4f %9.4f) %8.4f %8.4f %s\n" reg_name x_in y_in z_in los obliq_in...
 fmt m "You missed the target\n"
 fmt o "OVERLAP: '%s' and '%s' xyz_in=(%g %g %g) los=%g\n" ov_reg1_name ov_reg2_name ov_...
-....	Next, the file is edited to replace all of the spaces in the point strings with commas: 
-
 ....
 
+Next, the file is edited to replace all of the spaces in the point strings with commas: 
+
+....
 machine:~ user$ more default-commas.nrt
 fmt r "Origin (x,y,z) = (%.8f,%.8f,%.8f)  (h,v,d) = (%.4f,%.4f,%.4f)\nDirection (x,y,z...
 fmt h "    Region Name               Entry (x,y,z)              LOS  Obliq_in Attrib\n"
@@ -1474,17 +1497,20 @@ fmt f ""
 fmt m "You missed the target\n"
 fmt o "OVERLAP: '%s' and '%s' xyz_in=(%g,%g,%g) los=%g\n" ov_reg1_name ov_reg2_name ov...
 fmt g ""
-....	Running the _center_cube.r_ object: 
-
 ....
 
+Running the _center_cube.r_ object: 
+
+....
 machine:~ user$ nirt -s -b -f default-commas.nrt nirt_example.g center_cube.r
 s
 Origin (x,y,z) = (3.46410162,0.00000000,0.00000000)  (h,v,d) = (0.0000,0.0000,0.0000)
 Direction (x,y,z) = (-1.00000000,0.00000000,0.00000000)  (az,el) = (0.00000000,0.00000000)
     Region Name               Entry (x,y,z)              LOS  Obliq_in Attrib
 center_cube.r        (   1.0000,   0.0000,   0.0000)   2.0000   0.0000
-....	Notice the commas now present between points.
+....
+
+Notice the commas now present between points.
 This file can be saved and reused on any [app]``NIRT`` task. 
 
 [NOTE]
@@ -1872,7 +1898,6 @@ In cases where detailed behavior of the core raytracing routines is of interest,
 	the interactive environment with the libdebug command.]	See the *librt* header files for more detail about the very extensive debugging options provided. 
 
 ....
-
 machine:~ user$ nirt -s -b -x 0x002 -e "s; q" nirt_example.g center_cube.r
 
   **********shootray cpu=0  0,0 lvl=0 a_onehit=0 (NIRT ray)
@@ -1902,17 +1927,17 @@ It is accessed using the _X_ option.footnote:[The nirt level diagnostics can be 
 	the interactive environment with the debug command.][app]``NIRT`` provides five different debug flags, as seen in [path]_nirt.h_: 
 
 ....
-
 /** FLAG VALUES FOR nirt_debug */
 #define DEBUG_INTERACT  0x001
 #define DEBUG_SCRIPTS   0x002
 #define DEBUG_MAT       0x004
 #define DEBUG_BACKOUT   0x008
 #define DEBUG_HITS      0x010
-....	0x001 and 0x002 pertain to interaction and scripts, respectively: 
-
 ....
 
+0x001 and 0x002 pertain to interaction and scripts, respectively: 
+
+....
 machine:~ user$ nirt -s -b -X 0x001 -e "s; q" nirt_example.g center_cube.r
 interact(READING_STRING, 603c10)...
 sgetc((null)) '(null)' '(null)'... initializing
@@ -1963,11 +1988,12 @@ Origin (x y z) = (3.46410162 0.00000000 0.00000000)  (h v d) = (0.0000 0.0000 0.
 Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (0.00000000 0.00000000)
     Region Name               Entry (x y z)              LOS  Obliq_in Attrib
 center_cube.r        (   1.0000    0.0000    0.0000)   2.0000   0.0000
-....	The 0x004 DEBUG_MAT flag pertains to the _M_ option seen earlier in the `saveview`[app]``MGED`` command example that supplies a matrix for [app]``NIRT`` to read.
+....
+
+The 0x004 DEBUG_MAT flag pertains to the _M_ option seen earlier in the `saveview`[app]``MGED`` command example that supplies a matrix for [app]``NIRT`` to read.
 Adding the debug option to the script triggers a printout of the matrix: 
 
 ....
-
 #!/bin/sh
 nirt -M -X 0x004 nirt_example.g center_cube.r <<EOF
 orientation 5.000000000000000e-01 5.000000000000001e-01 5.000000000000000e-01 4.999999999999999e-01;
@@ -1975,7 +2001,6 @@ eye_pt 0.000000000000000e+00 0.000000000000000e+00 0.000000000000000e+00;
 ....
 
 ....
-
 machine:~ user$ sh tsv.script
 MATRIX view matrix:
      -0.000    1.000    0.000    0.000
@@ -1986,11 +2011,11 @@ Origin (x y z) = (0.00000000 0.00000000 0.00000000)  (h v d) = (0.0000 0.0000 0.
 Direction (x y z) = (-1.00000000 -0.00000000 0.00000000)  (az el) = (0.00000000 -0.00000000)
     Region Name               Entry (x y z)              LOS  Obliq_in Attrib
 center_cube.r        (   1.0000    0.0000   -0.0000)   2.0000   0.0000
-....	DEBUG_BACKOUT and DEBUG_HITS pertain to the backout option and geometry hits: 
-
 ....
 
+DEBUG_BACKOUT and DEBUG_HITS pertain to the backout option and geometry hits: 
 
+....
 machine:~ user$ nirt -s -b -X 0x008 -e "s; q" nirt_example.g center_cube.r
 Backing out 3.4641 units to (3.4641 0 0), shooting dir is (-1 0 0)
 Origin (x y z) = (3.46410162 0.00000000 0.00000000)  (h v d) = (0.0000 0.0000 0.0000)
