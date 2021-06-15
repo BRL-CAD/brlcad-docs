@@ -61,23 +61,8 @@ There will be a number of models used to illustrate various [app]``NIRT``	behavi
 The left cube is centered at (-2, 0, 0), the center cube at (0, 0, 0) and the right cube at (2, 0, 0).  One additional arb8 will be defined to overlap the center cube with side lengths in the z direction of 4mm.
 The various models based off of these primitives will be read from a database called [path]_nirt_example.g_. 
 
-
-// <informalfigure>
-// 	  <mediaobject>
-// 	    <imageobject role="html">
-// 	      <imagedata align="center" fileref="nirt_fig01.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <imageobject role="fo">
-// 	      <imagedata align="center" fileref="nirt_fig01.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <caption>
-// 	      <para>
-// 		Wireframe view of the three arb8 cubes which will be used to build example models for illustrating
-// 		<application>NIRT</application> behavior.
-// 	      </para>
-// 	    </caption>
-// 	  </mediaobject>
-// 	</informalfigure>
+.Wireframe view of the three arb8 cubes which will be used to build example models for illustrating [app]`NIRT` behavior.
+image::nirt_fig01.png[]
 
 Although there are many `nirt`	options available, only the database name and objects are essential to get started: 
 // <cmdsynopsis sepchar=" ">
@@ -398,38 +383,15 @@ center_cube.r        (    1.000     0.000     0.000)     2.00    0.000
 mged>
 ....
 
-// <informalfigure>
-// 	  <mediaobject>
-// 	    <imageobject role="html">
-// 	      <imagedata align="center" fileref="nirt_fig02.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <imageobject role="fo">
-// 	      <imagedata align="center" fileref="nirt_fig02.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <caption>
-// 	      <para>
-// 		View of wireframe immediately after running <application>NIRT</application> within <application>MGED</application>.
-// 	      </para>
-// 	    </caption>
-// 	  </mediaobject>
-// 	</informalfigure>
-	Select the [app]``MGED`` view window and press "3" to view the path of the ray: 
-// <informalfigure>
-// 	  <mediaobject>
-// 	    <imageobject role="html">
-// 	      <imagedata align="center" fileref="nirt_fig03.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <imageobject role="fo">
-// 	      <imagedata align="center" fileref="nirt_fig03.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <caption>
-// 	      <para>
-// 		View of wireframe after changing view direction, showing path of <application>NIRT</application> ray.
-// 	      </para>
-// 	    </caption>
-// 	  </mediaobject>
-// 	</informalfigure>
-	Because the ray encountered only a single region, the only visible path drawn is the intersection path of the ray and the region (the light blue line).  The region intersection was backed out to the first intersection with that region, despite the origination point of the ray being at the center of the sphere. 
+.View of wireframe immediately after running <application>NIRT</application> within [app]``MGED``.
+image::nirt_fig02.png[]
+
+Select the [app]``MGED`` view window and press "3" to view the path of the ray: 
+
+.View of wireframe after changing view direction, showing path of [app]``NIRT`` ray.
+image::nirt_fig03.png[]
+
+Because the ray encountered only a single region, the only visible path drawn is the intersection path of the ray and the region (the light blue line).  The region intersection was backed out to the first intersection with that region, despite the origination point of the ray being at the center of the sphere. 
 
 [NOTE]
 ====
@@ -458,22 +420,10 @@ mged> ae 90 0
 mged>
 ....
 
-// <informalfigure>
-// 	  <mediaobject>
-// 	    <imageobject role="html">
-// 	      <imagedata align="center" fileref="nirt_fig04.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <imageobject role="fo">
-// 	      <imagedata align="center" fileref="nirt_fig04.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <caption>
-// 	      <para>
-// 		View of <application>NIRT</application> ray intersecting <emphasis>left_and_right_cubes.r</emphasis> with ray origin at the global origin.
-// 	      </para>
-// 	    </caption>
-// 	  </mediaobject>
-// 	</informalfigure>
-	 The ray did indeed intersect a solid area as indicated in the report, but only in one of the two cubes making up the region.
+.View of [app]``NIRT`` ray intersecting _left_and_right_cubes.r_ with ray origin at the global origin.
+image::nirt_fig04.png[]
+
+The ray did indeed intersect a solid area as indicated in the report, but only in one of the two cubes making up the region.
 Repeating the steps using the _b_ flag to back the origination point out produces somewhat different results: 
 
 ....
@@ -490,22 +440,10 @@ left_and_right_cubes.r (   -1.000     0.000     0.000)     2.00    0.000
 mged> ae 90 0
 ....
 
-// <informalfigure>
-// 	  <mediaobject>
-// 	    <imageobject role="html">
-// 	      <imagedata align="center" fileref="nirt_fig05.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <imageobject role="fo">
-// 	      <imagedata align="center" fileref="nirt_fig05.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <caption>
-// 	      <para>
-// 		View of <application>NIRT</application> ray intersecting <emphasis>left_and_right_cubes.r</emphasis> with ray origin backed out of the region.
-// 	      </para>
-// 	    </caption>
-// 	  </mediaobject>
-// 	</informalfigure>
-	Notice that the ray path is now drawn over a much larger area, and multiple colors are used.
+.View of [app]``NIRT`` ray intersecting _left_and_right_cubes.r_ with ray origin backed out of the region.
+image::nirt_fig05.png[]
+
+Notice that the ray path is now drawn over a much larger area, and multiple colors are used.
 The colors have significance; the purple segment in the [app]``NIRT`` ray path corresponds to the empty area or "gap" between the two solid areas. 
 
 [[_ray_segment_coloring_with_nirt]]
@@ -548,22 +486,10 @@ left_cube.r          (   -1.000     0.000     0.000)     2.00    0.000
 mged> ae 90 0
 ....
 
-// <informalfigure>
-// 	  <mediaobject>
-// 	    <imageobject role="html">
-// 	      <imagedata align="center" fileref="nirt_fig06.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <imageobject role="fo">
-// 	      <imagedata align="center" fileref="nirt_fig06.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <caption>
-// 	      <para>
-// 		Side view of aligned individual arb8 cubes with a single <application>NIRT</application> ray passing through all three cubes.
-// 	      </para>
-// 	    </caption>
-// 	  </mediaobject>
-// 	</informalfigure>
-	There are three regions present, according to the text report.
+.Side view of aligned individual arb8 cubes with a single [app]``NIRT`` ray passing through all three cubes.
+image::nirt_fig06.png[]
+
+There are three regions present, according to the text report.
 The first region encountered is that associated with __right_cube.r__, and the portion of the ray intersection in that region is light blue.
 The second region, __center_cube.r__, has its intersection with the yellow ray.
 Note the color of the intersection in _left_cube.r_ is the same as that shown for __right_cube.r__. *It is important to realize that the
@@ -588,22 +514,10 @@ all_cubes.r          (    3.000     0.000     0.000)     6.00    0.000
 mged> ae 90 0
 ....
 
-// <informalfigure>
-// 	  <mediaobject>
-// 	    <imageobject role="html">
-// 	      <imagedata align="center" fileref="nirt_fig07.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <imageobject role="fo">
-// 	      <imagedata align="center" fileref="nirt_fig07.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <caption>
-// 	      <para>
-// 		View of wireframe of three arb8 cubes combined into a single region with a <application>NIRT</application> ray passing through the region on the same path as that used for the individual arb8 cubes.
-// 	      </para>
-// 	    </caption>
-// 	  </mediaobject>
-// 	</informalfigure>
-	Without the color-changing mechanism, the two previous situations would have been visually identical despite having very different properties. 
+.View of wireframe of three arb8 cubes combined into a single region with a [app]``NIRT`` ray passing through the region on the same path as that used for the individual arb8 cubes.
+image::irt_fig07.png[]
+
+Without the color-changing mechanism, the two previous situations would have been visually identical despite having very different properties. 
 
 The other two situations that result in a color change are gaps and overlaps.
 A gap in [app]``NIRT`` is any area along the ray path *after a solid portion of a region is encountered* and *before the last solid portion of a region is encountered*	that does not intersect a region.
@@ -624,22 +538,10 @@ left_cube.r          (   -1.000     0.000     0.000)     2.00    0.000
 mged> ae 90 0
 ....
 
-// <informalfigure>
-// 	  <mediaobject>
-// 	    <imageobject role="html">
-// 	      <imagedata align="center" fileref="nirt_fig08.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <imageobject role="fo">
-// 	      <imagedata align="center" fileref="nirt_fig08.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <caption>
-// 	      <para>
-// 		View of ray cast through only <emphasis>left_cube.r</emphasis> and <emphasis>right_cube.r</emphasis>.
-// 	      </para>
-// 	    </caption>
-// 	  </mediaobject>
-// 	</informalfigure>
-	To illustrate overlaps, both _center_cube.r_ and _all_cubes.r_ are drawn at the same time: 
+.View of ray cast through only _left_cube.r_ and _right_cube.r_.
+image::nirt_fig08.png[]
+
+To illustrate overlaps, both _center_cube.r_ and _all_cubes.r_ are drawn at the same time: 
 
 ....
 mged> B all_cubes.r center_cube.r
@@ -656,21 +558,8 @@ OVERLAP: 'center_cube.r' and 'all_cubes.r' xyz_in=(1 0 0) los=2
 mged> ae 90 0
 ....
 
-// <informalfigure>
-// 	  <mediaobject>
-// 	    <imageobject role="html">
-// 	      <imagedata align="center" fileref="nirt_fig09.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <imageobject role="fo">
-// 	      <imagedata align="center" fileref="nirt_fig09.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <caption>
-// 	      <para>
-// 		Example of an overlap region in a <application>NIRT</application> ray.
-// 	      </para>
-// 	    </caption>
-// 	  </mediaobject>
-// 	</informalfigure>
+.Example of an overlap region in a [app]``NIRT`` ray.
+image::nirt_fig09.png[]
 
 
 [[_mouse_based]]
@@ -689,22 +578,11 @@ mged>
 
 To aid with aiming, the grid overlay is enabled from the menu: Settings->Grid->Draw Grid.
 Grid spacing is adjusted with Settings->Grid Spacing->Autosize: 
-// <informalfigure>
-// 	  <mediaobject>
-// 	    <imageobject role="html">
-// 	      <imagedata align="center" fileref="nirt_fig10.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <imageobject role="fo">
-// 	      <imagedata align="center" fileref="nirt_fig10.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <caption>
-// 	      <para>
-// 		Grid overlay on <application>MGED</application> wireframe.
-// 	      </para>
-// 	    </caption>
-// 	  </mediaobject>
-// 	</informalfigure>
-	With the mouse behavior set to Query Ray, the following results are from casting rays at (approximately) the (-2 mm, 0 mm), (0 mm, 0 mm), and (2 mm, 0 mm) grid points: 
+
+.Grid overlay on [app]``MGED`` wireframe.
+image::nirt_fig10.png[]
+
+With the mouse behavior set to Query Ray, the following results are from casting rays at (approximately) the (-2 mm, 0 mm), (0 mm, 0 mm), and (2 mm, 0 mm) grid points: 
 
 ....
 Firing from (-1.992832, -4.000000, -0.028674)...
@@ -767,76 +645,29 @@ Earlier, mouse-based [app]``NIRT`` ray casting was enabled via a menu option.
 The Query Ray Control Panel offers a more convenient option for toggling the same behavior via the *Mouse Active* check box in the lower left corner of the dialog box.
 Selecting this check box and clicking *Apply* will activate the mouse as a trigger for a ray cast.
 Clearing the *Mouse Active* check box and clicking *Apply* will restore the default behavior. 
-// <informalfigure>
-// 	  <mediaobject>
-// 	    <imageobject role="html">
-// 	      <imagedata align="center" fileref="nirt_fig11.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <imageobject role="fo">
-// 	      <imagedata align="center" fileref="nirt_fig11.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <caption>
-// 	      <para>
-// 		<application>MGED</application>'s Query Ray Control Panel with the <emphasis role="bold">Mouse Active</emphasis> check box circled.
-// 	      </para>
-// 	    </caption>
-// 	  </mediaobject>
-// 	</informalfigure>
+
+.[app]``MGED``'s Query Ray Control Panel with the <emphasis role="bold">Mouse Active</emphasis> check box circled.
+image::nirt_fig11.png[]
 
 
 [[_customizing_nirt_coloring]]
 ==== Customizing [app]``NIRT`` Coloring in [app]``MGED``
 
 Although the default colors normally work well, it is possible to adjust the colors used for regions, overlaps, and gaps: 
-// <informalfigure>
-// 	  <mediaobject>
-// 	    <imageobject role="html">
-// 	      <imagedata align="center" fileref="nirt_fig12.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <imageobject role="fo">
-// 	      <imagedata align="center" fileref="nirt_fig12.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <caption>
-// 	      <para>
-// 		<application>MGED</application>'s Query Ray Control Panel with the <emphasis role="bold">Query Ray Colors</emphasis> circled.
-// 	      </para>
-// 	    </caption>
-// 	  </mediaobject>
-// 	</informalfigure>
-	  The *odd* and *even* colors correspond to solid areas of regions, *void* is a gap between regions, and *overlap* is the color for overlapping regions.
-Select a color by typing in an RGB color designation directly or using the drop-down menu visible on the right end of each color entry: 
-// <informalfigure>
-// 	  <mediaobject>
-// 	    <imageobject role="html">
-// 	      <imagedata align="center" fileref="nirt_fig13.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <imageobject role="fo">
-// 	      <imagedata align="center" fileref="nirt_fig13.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <caption>
-// 	      <para>
-// 		<application>MGED</application>'s Query Ray Control Panel with an example color list selected.
-// 	      </para>
-// 	    </caption>
-// 	  </mediaobject>
-// 	</informalfigure>
+
+.[app]``MGED``'s Query Ray Control Panel with the *_Query Ray Colors_* circled.
+image::nirt_fig12.png[]
+
+The *odd* and *even* colors correspond to solid areas of regions, *void* is a gap between regions, and *overlap* is the color for overlapping regions.
+Select a color by typing in an RGB color designation directly or using the drop-down menu visible on the right end of each color entry:
+
+.[app]``MGED``'s Query Ray Control Panel with an example color list selected.
+image::nirt_fig13.png[]
 
 If the default color listings are insufficient, the *Color Tool* can be used for more fine-tuned selection: 
-// <informalfigure>
-// 	  <mediaobject>
-// 	    <imageobject role="html">
-// 	      <imagedata align="center" fileref="nirt_fig14.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <imageobject role="fo">
-// 	      <imagedata align="center" fileref="nirt_fig14.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <caption>
-// 	      <para>
-// 		<application>MGED</application>'s Color Tool
-// 	      </para>
-// 	    </caption>
-// 	  </mediaobject>
-// 	</informalfigure>
+
+.[app]``MGED``'s Color Tool
+image::nirt_fig14.png[]
 
 
 [[_customizing_the_pseudo]]
@@ -846,21 +677,9 @@ If the default color listings are insufficient, the *Color Tool* can be used for
 They will not behave like "normal" primitives, but they do need a name.
 By default, these names are the string "query_ray" and the color used for the string.
 For example, the pseudo-primitive list after running [app]``NIRT`` on the cube example with a gap is given below: 
-// <informalfigure>
-// 	  <mediaobject>
-// 	    <imageobject role="html">
-// 	      <imagedata align="center" fileref="nirt_fig08.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <imageobject role="fo">
-// 	      <imagedata align="center" fileref="nirt_fig08.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <caption>
-// 	      <para>
-// 		Wireframe view of a <application>NIRT</application> ray using multiple colors.
-// 	      </para>
-// 	    </caption>
-// 	  </mediaobject>
-// 	</informalfigure>
+
+.Wireframe view of a [app]``NIRT`` ray using multiple colors.
+image::nirt_fig08.png[]
 
 
 ....
@@ -884,21 +703,9 @@ mged> erase query_rayff00ff
 ....
 
 will remove _only_ the purple line segment and leave the others: 
-// <informalfigure>
-// 	  <mediaobject>
-// 	    <imageobject role="html">
-// 	      <imagedata align="center" fileref="nirt_fig15.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <imageobject role="fo">
-// 	      <imagedata align="center" fileref="nirt_fig15.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <caption>
-// 	      <para>
-// 		Wireframe view of the <application>NIRT</application> ray <emphasis>after</emphasis> erasing <emphasis> query_rayff00ff</emphasis>.
-// 	      </para>
-// 	    </caption>
-// 	  </mediaobject>
-// 	</informalfigure>
+
+.Wireframe view of the [app]``NIRT`` ray _after_ erasing _query_rayff00ff_.
+image::nirt_fig15.png[]
 
 The Query Ray Control Panel also offers a way to customize the base name used for these pseudo-primitives.
 Changing the *Base Name* from query_ray to line_segment and rerunning [app]``NIRT`` results in pseudo-primitives named: 
@@ -908,43 +715,19 @@ mged> who p
      line_segmentffff00 line_segmentffff line_segmentff00ff
 ....
 
-// <informalfigure>
-// 	  <mediaobject>
-// 	    <imageobject role="html">
-// 	      <imagedata align="center" fileref="nirt_fig16.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <imageobject role="fo">
-// 	      <imagedata align="center" fileref="nirt_fig16.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <caption>
-// 	      <para>
-// 		<application>MGED</application>'s Query Ray Control Panel showing a new  <emphasis role="bold">Base Name</emphasis>.
-// 	      </para>
-// 	    </caption>
-// 	  </mediaobject>
-// 	</informalfigure>
+.[app]``MGED``'s Query Ray Control Panel showing a new *_Base Name_*.
+image::nirt_fig16.png[]
 
 
 [[_echoing_the_internal]]
 ==== Echoing the Internal `nirt` Command
 
 The *Echo Cmd* check box in the *Effects*	  row allows the user to enable/disable the printing of the internal `nirt` command being run by [app]``MGED``. 
-// <informalfigure>
-// 	  <mediaobject>
-// 	    <imageobject role="html">
-// 	      <imagedata align="center" fileref="nirt_fig17.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <imageobject role="fo">
-// 	      <imagedata align="center" fileref="nirt_fig17.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <caption>
-// 	      <para>
-// 		<application>MGED</application>'s Query Ray Control Panel with the <emphasis role="bold">Echo Cmd</emphasis> check box circled.
-// 	      </para>
-// 	    </caption>
-// 	  </mediaobject>
-// 	</informalfigure>
-	  For example, with *Echo Cmd* selected, casting a ray into the last example in the previous section results in: 
+
+.[app]``MGED``'s Query Ray Control Panel with the <emphasis role="bold">Echo Cmd</emphasis> check box circled.
+image::nirt_fig17.png[]
+
+For example, with *Echo Cmd* selected, casting a ray into the last example in the previous section results in: 
 
 ....
 nirt -e fmt r ""; fmt h ""; fmt p ""; fmt m ""; fmt o ""; fmt f ""; fmt g "" -e fmt p
@@ -977,21 +760,9 @@ This feature is primarily useful for debugging or scripting outside of [app]``MG
 By default, [app]``NIRT`` in [app]``MGED`` outputs both graphical and text-based output.
 This is reflected in the drop-down menu on the right side of the *Effects* row in the Query Ray Control Panel, which is set to **Both**.
 The other options in the drop-down menu allow the user to specify only *Graphics* (no text report is printed) or only *Text* (no ray path is drawn in the wireframe.) 
-// <informalfigure>
-// 	  <mediaobject>
-// 	    <imageobject role="html">
-// 	      <imagedata align="center" fileref="nirt_fig18.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <imageobject role="fo">
-// 	      <imagedata align="center" fileref="nirt_fig18.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <caption>
-// 	      <para>
-// 		<application>MGED</application>'s Query Ray Control Panel with the <emphasis role="bold">Effects</emphasis> drop-down menu shown.
-// 	      </para>
-// 	    </caption>
-// 	  </mediaobject>
-// 	</informalfigure>
+
+.[app]``MGED``'s Query Ray Control Panel with the <emphasis role="bold">Effects</emphasis> drop-down menu shown.
+image::nirt_fig18.png[]
 
 
 == Reporting Options
@@ -1274,21 +1045,9 @@ In the first case, area in between the cubes of _left_and_right_cubes.r_ is repo
 In the second case, _center_cube_air.r_ is treated as a region and a new region report line is generated instead of a gap report. 
 
 The Query Ray Control Panel also offers a way to select the Use Air option: 
-// <informalfigure>
-// 	  <mediaobject>
-// 	    <imageobject role="html">
-// 	      <imagedata align="center" fileref="nirt_fig20.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <imageobject role="fo">
-// 	      <imagedata align="center" fileref="nirt_fig20.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <caption>
-// 	      <para>
-// 		<application>MGED</application>'s Query Ray Control Panel showing the <emphasis role="bold">Use Air</emphasis> check box.
-// 	      </para>
-// 	    </caption>
-// 	  </mediaobject>
-// 	</informalfigure>
+
+.[app]``MGED``'s Query Ray Control Panel showing the *_Use Air_* check box.
+image::nirt_fig20.png[]
 
 
 [[_reading_an_orientation]]
@@ -1527,22 +1286,11 @@ If a user has used in-session commands to alter formatting, but wants to preserv
 The Query Ray Control Panel discussed earlier also provides access to the reporting logic used by [app]``MGED`` when calling [app]``NIRT``, but it does not provide any graphical aid when it comes to laying out the formatting.
 All layout logic must be defined with the same syntax already seen for the script files.
 Customizations of this logic in [app]``MGED`` are done using the *Advanced* option in the lower right corner of the Query Ray Control Panel, which brings up the following window: 
-// <informalfigure>
-// 	  <mediaobject>
-// 	    <imageobject role="html">
-// 	      <imagedata align="center" fileref="nirt_fig22.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <imageobject role="fo">
-// 	      <imagedata align="center" fileref="nirt_fig22.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <caption>
-// 	      <para>
-// 		<application>MGED</application>'s Query Ray Control Panel Advanced Settings dialog box.
-// 	      </para>
-// 	    </caption>
-// 	  </mediaobject>
-// 	</informalfigure>
-	Note also the last line of this dialog box, which provides a place for script commands to be executed before the internal `s` command is run.
+
+.[app]``MGED``'s Query Ray Control Panel Advanced Settings dialog box.
+image::nirt_fig22.png[]
+
+Note also the last line of this dialog box, which provides a place for script commands to be executed before the internal `s` command is run.
 It functions just like the _-e_ option on the normal command line, including the syntax of separating all commands except the last one with semicolons.
 This is useful for setup not possible in normal command line operation, as illustrated in the next section. 
 
@@ -1556,39 +1304,15 @@ Attributes _can_ be reported with [app]``NIRT`` in [app]``MGED``, but it require
 The first step is to open the Query Ray Advanced Settings dialog box shown in the previous section.
 Examining the default [app]``NIRT`` formatting file used on the command line reveals that the partition formatting string needs a *%s* variable added and the *attributes*	variable in position to be supplied to the **%s**.
 Also the *Attrib* column header is added to **Head**. 
-// <informalfigure>
-// 	  <mediaobject>
-// 	    <imageobject role="html">
-// 	      <imagedata align="center" fileref="nirt_fig23.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <imageobject role="fo">
-// 	      <imagedata align="center" fileref="nirt_fig23.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <caption>
-// 	      <para>
-// 		Query Ray Advanced Settings dialog box showing changes to values (white highlight).
-// 	      </para>
-// 	    </caption>
-// 	  </mediaobject>
-// 	</informalfigure>
+
+.Query Ray Advanced Settings dialog box showing changes to values (white highlight).
+image::nirt_fig23.png[]
 
 The second step is to use the *Script* line in this dialog box to add *rgb* to the attributes list.
 Because the script line is run before [app]``MGED`` sends the `s`	command, the attributes list will be updated by the time the ray is cast and the subsequent report is generated. 
-// <informalfigure>
-// 	  <mediaobject>
-// 	    <imageobject role="html">
-// 	      <imagedata align="center" fileref="nirt_fig24.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <imageobject role="fo">
-// 	      <imagedata align="center" fileref="nirt_fig24.png" format="PNG"/>
-// 	    </imageobject>
-// 	    <caption>
-// 	      <para>
-// 		Adding commands to the <emphasis role="bold">Script</emphasis> line in the Advanced Settings dialog.
-// 	      </para>
-// 	    </caption>
-// 	  </mediaobject>
-// 	</informalfigure>
+
+.Adding commands to the *_Script_* line in the Advanced Settings dialog.
+image::nirt_fig24.png[]
 
 Unless graphical visualization is needed, it is probably simpler to work from the [app]``NIRT``	interactive command line in cases where a lot of adjustment of attribute reporting is needed.
 If [app]``MGED``	is needed, however, this technique will allow custom reports inside of [app]``MGED`` that include attributes. 
