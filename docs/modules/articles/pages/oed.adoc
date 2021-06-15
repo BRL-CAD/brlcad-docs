@@ -25,7 +25,7 @@ For example, take a simple model of a lollipop:
 
 
 
-image::../../articles/images/oed_fig01.png[]
+image::oed_fig01.png[]
 
 If we examine the tree structure of this object, we see it resembles a file system - combinations and regions act a bit like "folders" which can hold other folders and files. footnote:[When tree structures are displayed, a "/" suffix denotes
       a combination and a "/R" denotes a combination that is a region.]
@@ -119,7 +119,7 @@ Use the `B` command to reduce the display to just the combination. footnote:[The
 
 
 
-image::../../articles/images/oed_fig02.png[]
+image::oed_fig02.png[]
 
 Before beginning the editing process, the `l` command (a.k.a.
 the "list" command) can be used to view both the combination and its component primitives: 
@@ -177,7 +177,7 @@ The object should turn white, as below:
 
 
 
-image::../../articles/images/oed_fig03.png[]
+image::oed_fig03.png[]
 
 Once selected, use the `translate` command to shift the combination up the z axis. 
 
@@ -186,7 +186,7 @@ Once selected, use the `translate` command to shift the combination up the z axi
 
 
 
-image::../../articles/images/oed_fig04.png[]
+image::oed_fig04.png[]
 
 To accept the edit and end object edit mode type ``accept``: 
 
@@ -195,7 +195,7 @@ To accept the edit and end object edit mode type ``accept``:
 
 
 
-image::../../articles/images/oed_fig05.png[]
+image::oed_fig05.png[]
 
 Now, use `l` to again examine the combination and its component primitives. 
 
@@ -244,7 +244,7 @@ Select object1.c again and apply a rotation as well:
 
 
 
-image::../../articles/images/oed_fig06.png[]
+image::oed_fig06.png[]
 
 Another check with `l` shows still more information stored at the combination level, but the primitives are again unchanged. 
 
@@ -357,7 +357,7 @@ Attempt the same operation, this time with the cube.s primitive selected:
 
 
 
-image::../../articles/images/oed_fig07.png[]
+image::oed_fig07.png[]
 
 Compare the results to the previous section.
 The model is indeed shifted up the z axis, but the distance is somewhat different and the cube now has one edge lined up with the z axis.
@@ -385,7 +385,7 @@ The `l` command provides a look at the final result:
 
 
 
-image::../../articles/images/oed_fig08.png[]
+image::oed_fig08.png[]
 
 
 
@@ -432,7 +432,7 @@ Having set this new keypoint, we can now rotate about it:
   accept
 
 
-image::../../articles/images/oed_fig09.png[]
+image::oed_fig09.png[]
 
 
 ....
@@ -463,7 +463,7 @@ To illustrate such a case, a new shape and additional combination structures are
 
 
 
-image::../../articles/images/oed_fig10.png[]
+image::oed_fig10.png[]
 
 
 
@@ -508,7 +508,7 @@ Assuming it was still present (simulate this by entering `B bigobject.r object1.
 
 
 
-image::../../articles/images/oed_fig11.png[]
+image::oed_fig11.png[]
 
 BRL-CAD is now in object edit mode, and visually it looks like it is highlighting precisely the part of the model targeted for translation.
 However, when translated: 
@@ -522,7 +522,7 @@ However, when translated:
 
 
 
-image::../../articles/images/oed_fig12.png[]
+image::oed_fig12.png[]
 
 BOTH the object1.c present in bigobject.r and the definition of object1.c in object3.c have been translated - only one instance of the sphere and cube combination is visible.
 This is a subtle problem, but remember the original goal was to move ONLY the object1.c inside bigobject.r - this technique moved more than that.
@@ -579,7 +579,7 @@ First, object2.c must be returned to its previous position:
   B bigobject.r
 
 
-image::../../articles/images/oed_fig13.png[]
+image::oed_fig13.png[]
 
 Visually it is already clearer - there are now two offset object1.c combinations in the display.
 Repeating the `l` command also shows the expected results, with the combination showing a transformation matrix and the object1.c reports showing differences: 
