@@ -1,38 +1,35 @@
 = Article Title
-
-        Firstname
-        Middlename
-        Lastname
-       <devs@brlcad.org>
+Firstname Middlename Lastname <devs@brlcad.org>
 
 [[_some_descriptive_tag]]
 == Unknown Title!
 
 First paragraph goes here. 
 
-....
-
-      benchmark TIMEFRAME=1 run
-....
+[cmd]`benchmark TIMEFRAME=1 run`
 
 [NOTE]
 ====
-The preceding [app]``benchmark`` command example can get a lot more complex. 
+The preceding [app]`benchmark` command example can get a lot more
+complex.
 ====
 
-When you run the `benchmark` with the [option]``help`` option, you might see this output: 
+When you run the `benchmark` with the [option]`help` option, you
+might see this output:
 
+[subs="quotes"]
 ....
-sean@gcc1-power7 bin]$benchmark help
-          Usage: ./benchmark [command(s)] [OPTION=value] [RT_OPTIONS]
+[prompt]#sean@gcc1-power7 bin]$# [cmd]#benchmark help#
+[output]##Usage: ./benchmark [command(s)] [OPTION=value] [RT_OPTIONS]
 
-          Available commands:
-          clean
-          ...
+Available commands:
+clean
+...##
 ....
 
-Another paragraph with embedded list is shown here.
-Each paragraph gets its own para and should be wrapped for readability and localized context diff comparisons. 
+Another paragraph with embedded list is shown here.  Each paragraph
+gets its own para and should be wrapped for readability and localized
+context diff comparisons.
 
 * Bullet item 1. 
 * Bullet item 2. 
@@ -41,36 +38,36 @@ Each paragraph gets its own para and should be wrapped for readability and local
 [[_another_tag_for_main_body]]
 == Breaking up the flow into sections
 
-You can use sections to group sections of your document together, but they are not necessary. 
+You can use sections to group sections of your document together, but
+they are not necessary.
 
 .Example embedded image text.
-image::http://brlcad.org/images/logo/BRL-CAD_gear_logo_w_name_256.png[]
+image::http://brlcad.org/images/logo/Attic/BRL-CAD_gear_logo_w_name_256.png[]
 
-Another image, but rendered inline image:http://brlcad.org/images/logo/BRL-CAD_gear_logo_64x64.png[] with the paragraph text. 
+Another image, but rendered inline
+image:http://brlcad.org/images/logo/Attic/BRL-CAD_gear_logo_64x64.png[]
+with the paragraph text.
 
 More paragraphs... 
 
-[cols="1,1", options="header"]
+[cols="2*~", options="header"]
 |===
 | Type
 | Description
 
-
-|ell
+|`ell`
 |Generalized Ellipsoid
 
-|arb8
+|`arb8`
 |Arbitrary Regular Polyhedron with up to 8 vertices
 |===
 
-=== Unknown Title!
-
+.Unknown Title!
 [CAUTION]
 ====
-There's a lot more you can do with Docbook/XML.
-Search the web for references and examples: 
+There's a lot more you can do with AsciiDoc.  Search the web for
+references and examples:
 
-* http://www.docbook.org/tdg5/en/html/article.html[ http://www.docbook.org/tdg5/en/html/article.html ]
-* http://www.openoffice.org/xml/xmerge/docbook/UserGuide.html[ http://www.openoffice.org/xml/xmerge/docbook/UserGuide.html ]
-
+* https://docs.asciidoctor.org/asciidoc/latest/
+* https://www.vogella.com/tutorials/AsciiDoc/article.html
 ====
