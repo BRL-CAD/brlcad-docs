@@ -1,4 +1,5 @@
 = Graphical User Interface
+:experimental:
 
 [[_gettingstarted]]
 == Getting Started
@@ -18,14 +19,14 @@ to specify the debug level of librt and libbu, respectively.  Note
 that if MGED is started by redirecting stdin or stdout, MGED will not
 enter interactive mode.  Similarly, if MGED is started with a command,
 that command will be executed and MGED will exit.  If the user starts
-MGED in "Classic" mode, the new GUI is still available via the
-<<_gui,gui>> command.  There can be many instances of the GUI running
-at the same time.  Each instance of the GUI owns four display manager
-windows (panes) and by default each of these panes has its view
-initialized as follows:
+MGED in "Classic" mode, the new GUI is still available via the `gui`
+command.  There can be many instances of the GUI running at the same
+time.  Each instance of the GUI owns four display manager windows
+(panes) and by default each of these panes has its view initialized as
+follows:
 
 .MGED GUI COMMANDS
-[cols="1,1", options="header"]
+[cols="^,^", options="header"]
 |===
 | Pane
 | Azimuth and Elevation
@@ -81,10 +82,11 @@ displayed geometry.
 == Command Window
 
 The main function of the command window is to allow the user to enter
-commands.  The command window supports <<_cmd_line_ed,command line
-editing>> and command history.  The two supported command line edit
-modes are emacs and vi.  Look under menu:File[Preferences >
-Command_Line_Edit] to change the edit mode.
+commands.  The command window supports
+xref:mged/command-line-editing.adoc[command line editing] and command
+history.  The two supported command line edit modes are emacs and vi.
+Look under menu:File[Preferences > Command_Line_Edit] to change the
+edit mode.
 
 There are also two command interpretation modes.  One is where MGED
 performs object name matching (i.e.  globbing against the database)
@@ -100,7 +102,7 @@ those found in typical X Window applications such as xterm.  For
 example:
 
 .Commands
-[cols="1,1", options="header"]
+[cols="2*^", options="header"]
 |===
 | Key-Button Sequence          
 | Action
@@ -133,7 +135,7 @@ example:
 | scroll text
 |===
 
-Note - If motion was detected while Button2 was being pressed, no text
+NOTE: If motion was detected while Button2 was being pressed, no text
 will be pasted.  In this case, it is assumed that scrolling was the
 intended operation.  Of course, the user can also scroll the window
 using the scrollbar.
@@ -154,56 +156,51 @@ MGED offers the user a unified mouse-based interface for "`grabbing`"
 things and manipulating them.  Since it was built for compatibility on
 top of the older interface:
 
-Mouse Button 
+[cols="2*^", options="header"]
+|===
+|Mouse Button
+|View Operation
 
-View Operation 
+|Button-1
+|Zoom out
 
-Mouse button 
+|Button-2
+|Recenter view at the specified point
 
-View operation 
+|Button-3
+|Zoom in
+|===
 
-Button-1 
+It uses the modifier keys: kbd:[Shift], kbd:[Control], and kbd:[Alt].
+This use of modified mouse clicks to grab things is called the
+"`shift-grip`" interface.  The kbd:[Shift] and kbd:[Control] keys are
+assigned in combinations to the three basic transformation operations
+as follows:
 
-Zoom out 
+[cols="2*^", options="header"]
+|===
+|Modifier Key
+|Transformation Operation
 
-Button-2 
+|kbd:[Shift] 
+|Translate
 
-Recenter view at the specified point 
+|kbd:[Ctrl]
+|Rotate
 
-Button-3 
+|kbd:[Shift + Ctrl]
+|Scale
+|===
 
-Zoom in 
-
-it uses the modifier keys: Shift, Control, and Alt.  This use of
-modified mouse clicks to grab things is called the "`shift-grip`"
-interface.  The Shift and Control keys are assigned in combinations to
-the three basic transformation operations as follows:
-
-Modifier Key 
-
-Transformation Operation 
-
-Shift 
-
-Translate 
-
-Ctrl 
-
-Rotate 
-
-Shift & Ctrl 
-
-Scale 
-
-and the Alt key is assigned the meaning "`constrained
+And the kbd:[Alt] key is assigned the meaning "`constrained
 transformation`", which is described below.  Thus, in general, holding
-the Shift key and a mouse button down and moving the mouse drags
+the kbd:[Shift] key and a mouse button down and moving the mouse drags
 things around on the screen.  The Control key and a mouse button allow
 one to rotate things, and the combination of Shift, Control, and a
 mouse button allow one to expand and contract things.  These general
 functionalities are consistent throughout MGED, providing a unified
-interface.  The precise meanings of "`drag things around,`" "`rotate
-things,`" and "`expand and contract things`" depends on the operating
+interface.  The precise meanings of "`drag things around`", "`rotate
+things`", and "`expand and contract things`" depends on the operating
 context.
 
 When one is merely viewing geometry the shift grips apply by default
@@ -229,13 +226,12 @@ the eye, the model origin, and an object`'s key point.
 [[_constrainedtransformations]]
 ==== CONSTRAINED TRANSFORMATIONS
 
-When the Alt key is held down along with either of the Shift and
-Control keys the transformations are constrained to a particular axis.
-For such constrained transformations the mouse buttons have the
-following meanings:
+When the kbd:[Alt] key is held down along with either of the
+kbd:[Shift] and kbd:[Control] keys the transformations are constrained
+to a particular axis.  For such constrained transformations the mouse
+buttons have the following meanings:
 
-.CONSTRAINED TRANSFORMATIONS
-[cols="1,1", options="header"]
+[cols="2*^", options="header"]
 |===
 | Mouse Button               
 | Axis  
@@ -250,29 +246,29 @@ following meanings:
 | z
 |===
 
-Thus, if the view is being transformed, Alt-Shift-Button-1 allows one
-to drag the objects being viewed left to right along the view-x axis.
-Similarly, if the model parameters are being transformed,
-Alt-Ctrl-Button-2 allows one to rotate the object about a line passing
-through the rotate-about point (as described above) and parallel to a
-y-axis.  The coordinate system to which these transformations are
-constrained may be specified by the "`Constraint Coords`" item in the
-"`Settings`" menu, which allows the selection of any one of the model,
-view, and object coordinate systems.
+Thus, if the view is being transformed, kbd:[Alt + Shift + Button-1]
+allows one to drag the objects being viewed left to right along the
+view-x axis.  Similarly, if the model parameters are being
+transformed, kbd:[Alt + Ctrl + Button-2] allows one to rotate the
+object about a line passing through the rotate-about point (as
+described above) and parallel to a y-axis.  The coordinate system to
+which these transformations are constrained may be specified by the
+"`Constraint Coords`" item in the "`Settings`" menu, which allows the
+selection of any one of the model, view, and object coordinate
+systems.
 
 Besides the default mouse button bindings described above, the user
-can access the "``'Settings`" "`menu with alt-Button1 and the`"
-"`Modes`"`' menu with alt-Button2.
+can access the "Settings" menu with alt-Button1 and the "Modes" menu
+with alt-Button2.
 
 [[_defaultkeybindings]]
 === Default Key Bindings
 
-MGED offers the user "``'short cuts`"`' to much of the functionality
+MGED offers the user _short cuts_ to much of the functionality
 available via the menus as well as the command line interface.  The
 table below lists the default key bindings:
 
-.Short cut
-[cols="1,1", options="header"]
+[cols="^,1", options="header"]
 |===
 | Key Sequence             
 | Behavior
@@ -417,499 +413,597 @@ table below lists the default key bindings:
 |===
 
 Besides the default key bindings listed above, the user can access
-menu items with kbd:[Alt] key sequences.  For example, the File menu
-can be popped up with kbd:[Alt+f]. The raytrace control panel can then
-be popped up by typing kbd:[r] (i.e. `R` is underlined in the
+menu items with kbd:[Alt] key sequences.  For example, the menu:File[]
+menu can be popped up with kbd:[Alt+f]. The raytrace control panel can
+then be popped up by typing kbd:[r] (i.e. `R` is underlined in the
 "Raytrace..." menu item).
 
 [[_controlpanels]]
 == Control Panels
 
-*ADC Control Panel*
+ADC Control Panel :: Tool for setting ADC parameters. 
 
-The _ADC Control Panel_ is a tool for setting ADC parameters. 
+Grid Control Panel :: Tool for setting grid parameters. 
 
-*Grid Control Panel*
+Query Ray Control Panel :: Tool for setting query ray parameters. 
 
-The _Grid Control Panel_ is a tool for setting grid parameters. 
+Raytrace Control Panel :: Tool for setting raytrace parameters. 
 
-*Query Ray Control Panel*
+AnimMate Control Panel ::
 
-The _Query Ray Control Panel_ is a tool for setting query ray parameters. 
+Solid Editor :: Tool for editing solids. 
 
-*Raytrace Control Panel*
+Solid Editor (Internal) :: Tool for editing MGED`'s internal solid
+(i.e.  held in es_int while in solid edit state). The internal solid
+is the in-memory copy of a solid that is being edited.
 
-The _Raytrace Control Panel_ is a tool for setting raytrace parameters. 
+Combination Editor ::
 
-*AnimMate Control Panel*
-
-*Solid Editor*
-
-The _Solid Editor_ is a tool for editing solids. 
-
-*Solid Editor (Internal)*
-
-The _Solid Editor_ is a tool for editing MGED`'s internal solid (i.e.
-held in es_int while in solid edit state). The internal solid is the in-memory copy of a solid that is being edited. 
-
-*Combination Editor*
-
-*Color Editor*
-
-The _Color Editor_ is a tool for specifying colors in either RGB or HSV. 
+Color Editor :: Tool for specifying colors in either RGB or HSV. 
 
 [[_statusbar]]
 == Status Bar
 
-The _status bar_ contains two lines for displaying information about the state of the active pane.
-The first line contains information about the view center, view size, local units, azimuth, elevation, twist, and rate of rotation about the x, y and z axes.
-The second line can contain several different things depending on the state.
-If the angle distance cursor is being drawn, information about its parameters are displayed.
-Specifically, angle 1, angle 2, tick distance, center and delta are displayed.
-Otherwise, if in the _VIEWING_ state, the frames per second is displayed.
-If in _SOL
-      PICK_ or _OBJ PICK_ state, the full path of the illuminated solid is displayed.
-If in _OBJ
-      PATH_ state, the full path of the previously selected solid is displayed along with an indication of which matrix along the path will be edited.
-And finally, if in either _SOL
-      EDIT_ or _OBJ EDIT_ state the keypoint is displayed. 
+The _status bar_ contains two lines for displaying information about
+the state of the active pane.  The first line contains information
+about the view center, view size, local units, azimuth, elevation,
+twist, and rate of rotation about the x, y and z axes.  The second
+line can contain several different things depending on the state.  If
+the angle distance cursor is being drawn, information about its
+parameters are displayed.  Specifically, angle 1, angle 2, tick
+distance, center and delta are displayed.  Otherwise, if in the
+_VIEWING_ state, the frames per second is displayed.  If in _SOL PICK_
+or _OBJ PICK_ state, the full path of the illuminated solid is
+displayed.  If in _OBJ PATH_ state, the full path of the previously
+selected solid is displayed along with an indication of which matrix
+along the path will be edited.  And finally, if in either _SOL EDIT_
+or _OBJ EDIT_ state the keypoint is displayed.
 
 [[_accessmenubar]]
 == Menu Bar
 
 * *File*
-** **New**- open a new database. Note - the database must not already exist. 
-** **Open**- open an existing database. 
-** **Insert**- insert another database into the current database. 
-** **Extract**- a tool for extracting objects out of the current database. This tool consists of an entry for specifying the destination file and an entry for specifying the objects to be extracted. 
-** **g2asc**- converts the current database into an ascii file. 
-** **Raytrace**- pops up the raytrace control panel. 
+** *New* -- open a new database. Note: the database must not already
+    exist.
+** *Open* -- open an existing database. 
+** *Insert* -- insert another database into the current database.
+** *Extract* -- a tool for extracting objects out of the current
+    database. This tool consists of an entry for specifying the
+    destination file and an entry for specifying the objects to be
+    extracted.
+** *g2asc* -- converts the current database into an ascii file.
+** *Raytrace* -- pops up the raytrace control panel. 
 ** *Save View As*
-*** RT script - saves the current view as an RT script file. 
-*** **Plot**- saves the current view as a plot file. 
-*** **PostScript**- saves the current view a postscript file. 
+*** *RT script* -- saves the current view as an RT script file.
+*** *Plot* -- saves the current view as a plot file. 
+*** *PostScript* -- saves the current view a postscript file. 
 ** *Preferences*
-*** Units 
-**** micrometers - set the unit of measure to micrometers. 1 micrometer = 1/1,000,000 meters 
-**** **millimeters**- set the unit of measure to millimeters. 1 millimeter = 1/1000 meters 
-**** **centimeters**- set the unit of measure to centimeters. 1 centimeter = 1/100 meters 
-**** **meters**- set the unit of measure to meters. 
-**** **kilometers**- set the unit of measure to kilometers. 1 kilometer = 1000 meters 
-**** **inches**- set the unit of measure to inches. 1 inch = 25.4 mm 
-**** **feet**- set the unit of measure to feet. 1 foot = 12 inches. 
-**** **yards**- set the unit of measure to yards. 1 yard = 36 inches. 
-**** **miles**- set the unit of measure to miles. 1 mile = 5280 feet. 
-*** <<_cmd_line_ed,Command Line Edit>>
-**** <<_emacs,emacs>>
-**** <<_vi,vi>>
+*** *Units* 
+**** *micrometers* -- set the unit of measure to micrometers. 1 micrometer = 1/1,000,000 meters
+**** *millimeters* -- set the unit of measure to millimeters. 1 millimeter = 1/1000 meters
+**** *centimeters* -- set the unit of measure to centimeters. 1 centimeter = 1/100 meters 
+**** *meters* -- set the unit of measure to meters. 
+**** *kilometers* -- set the unit of measure to kilometers. 1 kilometer = 1000 meters 
+**** *inches* -- set the unit of measure to inches. 1 inch = 25.4 mm 
+**** *feet* -- set the unit of measure to feet. 1 foot = 12 inches. 
+**** *yards* -- set the unit of measure to yards. 1 yard = 36 inches. 
+**** *miles* -- set the unit of measure to miles. 1 mile = 5280 feet. 
+*** xref:mged/command-line-editing.adoc[Command Line Edit]
+**** xref:mged/command-line-editing.adoc#_emacs_bindings[emacs]
+**** xref:mged/command-line-editing.adoc#_vi_bindings[vi]
 *** *Special Characters*
-**** *Tcl Evaluation* - set the command interpretation mode to Tcl mode. In this mode, globbing is *not* performed against MGED database objects. Rather, the command string is passed, unmodified, to the Tcl interpreter. 
-**** *Object Name Matching* - set the command interpretation mode to MGED object name matching. In this mode, globbing is performed against MGED database objects. 
-*** *Color Schemes* - pops up a tool for setting colors used by drawing panes (display managers). 
-** *Close* - close this instance of the MGED GUI. 
-** *Exit* - exits MGED. 
+**** *Tcl Evaluation* -- set the command interpretation mode to Tcl
+      mode. In this mode, globbing is *not* performed against MGED
+      database objects. Rather, the command string is passed,
+      unmodified, to the Tcl interpreter.
+**** *Object Name Matching* -- set the command interpretation mode to
+      MGED object name matching. In this mode, globbing is performed
+      against MGED database objects.
+*** *Color Schemes* -- pops up a tool for setting colors used by
+     drawing panes (display managers).
+** *Close* -- close this instance of the MGED GUI. 
+** *Exit* -- exits MGED. 
 * *Edit*
-** *Solid Selection* - pops up a tool for selecting a solid to edit. 
-** *Matrix Selection* - pops up a tool for selecting a matrix to edit. <<_solideditor,Solid Editor>> - pops up a tool for creating and editing solids. <<_combinationeditor,Combination Editor>> - pops up a tool for creating and editing combinations. 
+** *Solid Selection* -- pops up a tool for selecting a solid to edit. 
+** *Matrix Selection* -- pops up a tool for selecting a matrix to edit.
+** *Solid Editor* -- pops up a tool for creating and editing solids.
+** *Combination Editor* -- pops up a tool for creating and editing combinations. 
 * *Create*
-** *Make Solid* - gives the user a pulldown menu from which to select a solid to create. The following is a list of the available solid types that the <<_make,make>> command can create: arb8, arb7, arb6, arb5, arb4, sph, grip, ell, ellg, tor, tgc, tec, rec, trc, rcc, half, rpc, rhc, epa, ehy, eto, part, nmg, pipe. 
-** <<_solideditor,Solid Editor>> - pops up a tool for creating and editing solids. 
-** <<_combinationeditor,Combination Editor>> - pops up a tool for creating and editing combinations. 
+** *Make Solid* -- gives the user a pulldown menu from which to select
+    a solid to create. The following is a list of the available solid
+    types that the `make` command can create: arb8, arb7, arb6, arb5,
+    arb4, sph, grip, ell, ellg, tor, tgc, tec, rec, trc, rcc, half,
+    rpc, rhc, epa, ehy, eto, part, nmg, pipe.
 * *View*
-** *Top* - view of the top (i.e. azimuth = 270, elevation = 90) 
-** *Bottom* - view of the bottom (i.e. azimuth = 270, elevation = -90) 
-** *Right* - view of the right (i.e. azimuth = 270, elevation = 0) 
-** *Left* - view of the left (i.e. azimuth = 90, elevation = 0) 
-** *Front* - view of the front (i.e. azimuth = 0, elevation = 0) 
-** *Rear* - view of the rear (i.e. azimuth = 180, elevation = 0) 
-** *az35,el25* - an oblique view (i.e. azimuth = 35, elevation = 25) 
-** *az45,el45* - an oblique view (i.e. azimuth = 45, elevation = 45) 
-** *Zoom In* - zoom in by a factor of 2. 
-** *Zoom Out* - zoom out by a factor of 2. 
-** *Default* - same view as top (i.e. azimuth = 270, elevation = 90) 
-** *Multipane Defaults* - sets the view of all four panes to their defaults. 
+** *Top* -- view of the top (i.e. azimuth = 270, elevation = 90) 
+** *Bottom* -- view of the bottom (i.e. azimuth = 270, elevation = -90) 
+** *Right* -- view of the right (i.e. azimuth = 270, elevation = 0) 
+** *Left* -- view of the left (i.e. azimuth = 90, elevation = 0) 
+** *Front* -- view of the front (i.e. azimuth = 0, elevation = 0) 
+** *Rear* -- view of the rear (i.e. azimuth = 180, elevation = 0) 
+** *az35,el25* -- an oblique view (i.e. azimuth = 35, elevation = 25) 
+** *az45,el45* -- an oblique view (i.e. azimuth = 45, elevation = 45) 
+** *Zoom In* -- zoom in by a factor of 2. 
+** *Zoom Out* -- zoom out by a factor of 2. 
+** *Default* -- same view as top (i.e. azimuth = 270, elevation = 90) 
+** *Multipane Defaults* -- sets the view of all four panes to their defaults. 
 +
-
-.Multipane Defaults
-[cols="1,1,1", options="header"]
+[cols="3*^", options="header"]
 |===
-| 
-                      Pane
-                    
-| 
-                      Azimuth
-                    
-| 
-                      Elevation
-                    
+| Pane                   
+| Azimuth                   
+| Elevation
 
-|
-                      upper left 
-|
-                      90 
-|
-                      0 
+| upper left
+| 90
+| 0
 
-|
-                      upper right 
-|
-                      35 
-|
-                      25 
+| upper right
+| 35
+| 25
 
-|
-                      lower left 
-|
-                      0 
-|
-                      0 
+| lower left
+| 0
+| 0
 
-|
-                      lower right 
-|
-                      90 
-|
-                      0 
+| lower right
+| 90
+| 0
 |===
-** *Zero* - stops all rate transformations. 
-* *ViewRing* A view ring is simply a dynamic list of views owned by a pane (display manager). This mechanism supports multiple views within a single pane. A view consists of a position in model space, a view size and an orientation. 
-** *Add View* - Adds a view to the view ring. 
-** *Select View* - a pulldown menu that lists the views in the view ring that can be selected. 
-** *Delete View* - a pulldown menu that lists the views in the view ring that can be deleted. 
-** *Next View* - go to the next view on the view ring. 
-** *Prev View* - go to the previous view on the view ring. 
-** *Last View* - go to the last view. This can be used to toggle between two arbitrary views. 
+** *Zero* -- stops all rate transformations. 
+* *ViewRing* A view ring is simply a dynamic list of views owned by a
+   pane (display manager). This mechanism supports multiple views
+   within a single pane. A view consists of a position in model space,
+   a view size and an orientation.
+** *Add View* -- Adds a view to the view ring. 
+** *Select View* -- a pulldown menu that lists the views in the view ring that can be selected. 
+** *Delete View* -- a pulldown menu that lists the views in the view ring that can be deleted. 
+** *Next View* -- go to the next view on the view ring. 
+** *Prev View* -- go to the previous view on the view ring. 
+** *Last View* -- go to the last view. This can be used to toggle between two arbitrary views. 
 * *Settings*
-** *Mouse Behavior* - a menu for selecting among the available mouse behaviors. 
-*** *Default* - enter the default MGED mouse behavior mode. In this mode, the user gets mouse behavior that is the same as MGED 4.5 and earlier. 
+** *Mouse Behavior* -- a menu for selecting among the available mouse behaviors. 
+*** *Default* -- enter the default MGED mouse behavior mode. In this
+     mode, the user gets mouse behavior that is the same as MGED 4.5
+     and earlier.
 +
-
-.Default
-[cols="1,1", options="header"]
+[cols="^,1", options="header"]
 |===
-| 
-                          Mouse Button
-                        
-| 
-                          Behavior
-                        
+| Mouse Button
+| Behavior
 
-|
-                          1 
-|
-                          zoom out by a factor of 2 
+| 1
+| zoom out by a factor of 2
 
-|
-                          2 
-|
-                          center view, or some edit action if in an edit
-                          state 
+| 2
+| center view, or some edit action if in an edit state
 
-|
-                          3 
-|
-                          zoom in by a factor of 2 
+| 3
+| zoom in by a factor of 2
 |===
-*** *Pick edit-solid* - enter pick edit-solid mode. In this mode, the mouse is used to fire rays for selecting a solid to edit. If more than one solid is hit, a listbox of the hit solids is presented. The user then selects a solid to edit from this listbox. If a single solid is hit, it is selected for editing. If no solids were hit, a dialog is popped up saying that nothing was hit. The user must then fire another ray to continue selecting a solid. When a solid is finally selected, solid edit mode is entered. When this happens, the mouse behavior mode is set to default mode. Note - When selecting items from a listbox, a left buttonpress highlights the solid in question until the button is released. To select a solid, double click with the left mouse button. 
+*** *Pick edit-solid* -- enter pick edit-solid mode. In this mode, the
+     mouse is used to fire rays for selecting a solid to edit. If more
+     than one solid is hit, a listbox of the hit solids is
+     presented. The user then selects a solid to edit from this
+     listbox. If a single solid is hit, it is selected for editing. If
+     no solids were hit, a dialog is popped up saying that nothing
+     was hit. The user must then fire another ray to continue
+     selecting a solid. When a solid is finally selected, solid edit
+     mode is entered. When this happens, the mouse behavior mode is
+     set to default mode. Note - When selecting items from a listbox,
+     a left buttonpress highlights the solid in question until the
+     button is released. To select a solid, double click with the left
+     mouse button.
 +
-
-.Commands
-[cols="1,1", options="header"]
+[cols="^,1", options="header"]
 |===
-| 
-                          Mouse Button
-                        
-| 
-                          Behavior
-                        
+| Mouse Button
+| Behavior
 
-|
-                          1 
-|
-                          Zoom out by a factor of 2 
+| 1
+| Zoom out by a factor of 2
 
-|
-                          2 
-|
-                          Fire edit-solid ray 
+| 2
+| Fire edit-solid ray
 
-|
-                          3 
-|
-                          Zoom in by a factor of 2 
+| 3
+| Zoom in by a factor of 2
 |===
-*** *Pick edit-matrix* - enter pick edit-matrix mode. In this mode, the mouse is used to fire rays for selecting a matrix to edit. If more than one solid is hit, a listbox of the hit solids is presented. The user then selects a solid from this listbox. If a single solid is hit, that solid is selected. If no solids were hit, a dialog is popped up saying that nothing was hit. The user must then fire another ray to continue selecting a matrix to edit. When a solid is finally selected, the user is presented with a listbox consisting of the path components of the selected solid. From this listbox, the user selects a path component. This component determines which matrix will be edited. After selecting the path component, object/matrix edit mode is entered. When this happens, the mouse behavior mode is set to default mode. Note - When selecting items from a listbox, a left buttonpress highlights the solid/matrix in question until the button is released. To select a solid/matrix, double click with the left mouse button. 
+*** *Pick edit-matrix* -- enter pick edit-matrix mode. In this mode,
+     the mouse is used to fire rays for selecting a matrix to edit. If
+     more than one solid is hit, a listbox of the hit solids is
+     presented. The user then selects a solid from this listbox. If a
+     single solid is hit, that solid is selected. If no solids were
+     hit, a dialog is popped up saying that nothing was hit. The user
+     must then fire another ray to continue selecting a matrix to
+     edit. When a solid is finally selected, the user is presented
+     with a listbox consisting of the path components of the selected
+     solid. From this listbox, the user selects a path component. This
+     component determines which matrix will be edited. After selecting
+     the path component, object/matrix edit mode is entered. When this
+     happens, the mouse behavior mode is set to default mode. Note -
+     When selecting items from a listbox, a left buttonpress
+     highlights the solid/matrix in question until the button is
+     released. To select a solid/matrix, double click with the left
+     mouse button.
 +
-
-.Commands
-[cols="1,1", options="header"]
+[cols="^,1", options="header"]
 |===
-| 
-                          Mouse Button
-                        
-| 
-                          Behavior
-                        
+| Mouse Button
+| Behavior
 
-|
-                          1 
-|
-                          Zoom out by a factor of 2 
+| 1
+| Zoom out by a factor of 2
 
-|
-                          2 
-|
-                          Fire edit-matrix ray 
+| 2
+| Fire edit-matrix ray
 
-|
-                          3 
-|
-                          Zoom in by a factor of 2 
+| 3
+| Zoom in by a factor of 2
 |===
-*** *Pick edit-combination* - enter pick edit-combination mode. In this mode, the mouse is used to fire rays for selecting a combination to edit. If more than one combination is hit, a listbox of the hit combinations is presented. The user then selects a combination from this menu. If a single combination is hit, that combination is selected. If no combinations were hit, a dialog is popped up saying that nothing was hit. The user must then fire another ray to continue selecting a combination to edit. When a combination is finally selected, the combination edit tool is presented and initialized with the values of the selected combination. When this happens, the mouse behavior mode is set to default mode. Note - When selecting items from a menu, a left buttonpress highlights the combination in question until the button is released. To select a combination, double click with the left mouse button. 
+*** *Pick edit-combination* -- enter pick edit-combination mode. In
+     this mode, the mouse is used to fire rays for selecting a
+     combination to edit. If more than one combination is hit, a
+     listbox of the hit combinations is presented. The user then
+     selects a combination from this menu. If a single combination is
+     hit, that combination is selected. If no combinations were hit, a
+     dialog is popped up saying that nothing was hit. The user must
+     then fire another ray to continue selecting a combination to
+     edit. When a combination is finally selected, the combination
+     edit tool is presented and initialized with the values of the
+     selected combination. When this happens, the mouse behavior mode
+     is set to default mode. Note - When selecting items from a menu,
+     a left buttonpress highlights the combination in question until
+     the button is released. To select a combination, double click
+     with the left mouse button.
 +
-
-.Commands
-[cols="1,1", options="header"]
+[cols="^,1", options="header"]
 |===
-| 
-                          Mouse Button
-                        
-| 
-                          Behavior
-                        
+| Mouse Button
+| Behavior
 
-|
-                          1 
-|
-                          Zoom out by a factor of 2 
+| 1
+| Zoom out by a factor of 2
 
-|
-                          2 
-|
-                          Fire edit-combination ray 
+| 2
+| Fire edit-combination ray
 
-|
-                          3 
-|
-                          Zoom in by a factor of 2 
+| 3
+| Zoom in by a factor of 2
 |===
-*** *Sweep raytrace-rectangle* - enter sweep raytrace-rectangle mode. If the framebuffer is active, the rectangular area as specified by the user is raytraced. The rectangular area is also painted with the current contents of the framebuffer. Otherwise, only the rectangle is drawn. 
+*** *Sweep raytrace-rectangle* -- enter sweep raytrace-rectangle
+     mode. If the framebuffer is active, the rectangular area as
+     specified by the user is raytraced. The rectangular area is also
+     painted with the current contents of the framebuffer. Otherwise,
+     only the rectangle is drawn.
 +
-
-.Command
-[cols="1,1", options="header"]
+[cols="^,1", options="header"]
 |===
-| 
-                          Mouse Button
-                        
-| 
-                          Behavior
-                        
+| Mouse Button
+| Behavior
 
-|
-                          1 
-|
-                          Zoom out by a factor of 2 
+| 1
+| Zoom out by a factor of 2
 
-|
-                          2 
-|
-                          Draw raytrace-rectangle 
+| 2
+| Draw raytrace-rectangle
 
-|
-                          3 
-|
-                          Zoom in by a factor of 2 
+| 3
+| Zoom in by a factor of 2
 |===
-*** *Pick raytrace-object(s)* - enter pick raytrace-object mode. In this mode, the user can pick an object for raytracing or for adding to the list of objects to be raytraced. 
-*** *Query ray* - enter query ray mode. In this mode, the mouse is used to fire rays. The data from the fired rays can be viewed textually, graphically or both. 
+*** *Pick raytrace-object(s)* -- enter pick raytrace-object mode. In
+     this mode, the user can pick an object for raytracing or for
+     adding to the list of objects to be raytraced.
+*** *Query ray* -- enter query ray mode. In this mode, the mouse is
+     used to fire rays. The data from the fired rays can be viewed
+     textually, graphically or both.
 +
-
-.Commands
-[cols="1,1", options="header"]
+[cols="^,1", options="header"]
 |===
-| 
-                          Mouse Button
-                        
-| 
-                          Behavior
-                        
+| Mouse Button
+| Behavior
 
-|
-                          1 
-|
-                          Zoom out by a factor of 2 
+| 1
+| Zoom out by a factor of 2
 
-|
-                          2 
-|
-                          Fire query ray 
+| 2
+| Fire query ray
 
-|
-                          3 
-|
-                          Zoom in by a factor of 2 
+| 3
+| Zoom in by a factor of 2
 |===
-*** *Sweep paint-rectangle* - enter sweep paint-rectangle mode. If the framebuffer is active, the rectangular area as specified by the user is painted with the current contents of the framebuffer. Otherwise, only the rectangle is drawn. 
+*** *Sweep paint-rectangle* -- enter sweep paint-rectangle mode. If
+     the framebuffer is active, the rectangular area as specified by
+     the user is painted with the current contents of the
+     framebuffer. Otherwise, only the rectangle is drawn.
 +
-
-.commands
-[cols="1,1", options="header"]
+[cols="^,1", options="header"]
 |===
-| 
-                          Mouse Button
-                        
-| 
-                          Behavior
-                        
+| Mouse Button
+| Behavior
 
-|
-                          1 
-|
-                          Zoom out by a factor of 2 
+| 1
+| Zoom out by a factor of 2
 
-|
-                          2 
-|
-                          Draw paint rectangle 
+| 2
+| Draw paint rectangle
 
-|
-                          3 
-|
-                          Zoom in by a factor of 2 
+| 3
+| Zoom in by a factor of 2
 |===
-*** *Sweep zoom-rectangle* - enter sweep zoom-rectangle mode. The rectangular area as specified by the user is used to zoom the view. Note - as the user stretches out the zoom rectangle, the rectangle is constrained to be the same shape as the window. This insures that the user gets what he or she sees. 
+*** *Sweep zoom-rectangle* -- enter sweep zoom-rectangle mode. The
+     rectangular area as specified by the user is used to zoom the
+     view. Note - as the user stretches out the zoom rectangle, the
+     rectangle is constrained to be the same shape as the window. This
+     insures that the user gets what he or she sees.
 +
-
-.Commands
-[cols="1,1", options="header"]
+[cols="^,1", options="header"]
 |===
-| 
-                          Mouse Button
-                        
-| 
-                          Behavior
-                        
+| Mouse Button
+| Behavior
 
-|
-                          1 
-|
-                          Zoom out by a factor of 2 
+| 1
+| Zoom out by a factor of 2
 
-|
-                          2 
-|
-                          Draw zoom-rectangle 
+| 2
+| Draw zoom-rectangle
 
-|
-                          3 
-|
-                          Zoom in by a factor of 2 
+| 3
+| Zoom in by a factor of 2
 |===
-** *Transform* - a menu for selecting a transform mode. The transform mode determines what will be transformed when using the mouse. 
-*** *View* - set the transform mode to VIEW. When in VIEW mode, the mouse can be used to transform the view. This is the default. 
-*** *ADC* - set the transform mode to ADC. When in ADC mode, the mouse can be used to transform the angle distance cursor while the angle distance cursor is being displayed. If the angle distance cursor is not being displayed, the behavior is the same as VIEW mode. 
-*** *Model Params* - set the transform mode to Model Params. When in Model Params mode, the mouse can be used to transform the model parameters. 
-** *Constraint Coords* - a menu for selecting a coordinate system to use while performing constrained transformations with the mouse. 
-*** *Model* - constrained transformations will use model coordinates. 
-*** *View* - constrained transformations will use view coordinates. 
-*** *Object* - constrained transformations will use object coordinates. 
-** *Rotate About* - a menu for selecting the point about which to rotate. 
-*** *View Center* - set the center of rotation to be about the view center. 
-*** *Eye* - set the center of rotation to be about the eye. 
-*** *Model Origin* - set the center of rotation to be about the model origin. 
-*** *Key Point* - set the center of rotation to be about the key point. 
-** *Active Pane* - a menu for selecting the active pane. The active pane is the pane (display manager) that is tied to the GUI, effectively becoming the target of GUI interactions that affect panes. In other words, if the user types the command, "``'ae 35 25`""`in the command window, and the active pane is the upper left pane, then its`" view orientation will become azimuth=35 and elevation=25. Similarly, if the user selects Settings/Grid/Draw_Grid from the pulldown menus the drawing of the grid will be toggled in the active pane. 
-*** *Upper Left* - set the active pane to be the upper left pane. Any interaction with the GUI that affects a pane will be directed at the upper left pane. 
-*** *Upper Right* - set the active pane to be the upper right pane. Any interaction with the GUI that affects a pane will be directed at the upper right pane. 
-*** *Lower Left* - set the active pane to be the lower left pane. Any interaction with the GUI that affects a pane will be directed at the lower left pane. 
-*** *Lower Right* - set the active pane to be the lower right pane. Any interaction with the GUI that affects a pane will be directed at the lower right pane. 
-** *Apply To* - a menu for selecting the "``'Apply To`"`' mode. This further specifies what pane(s) will be affected by actions that affect panes. 
-*** *Active Pane* - set the "``'Apply To`"`' mode such that the user`'s interaction with the GUI is applied to the active pane. 
-*** *Local Panes* - set the "``'Apply To`"`' mode such that the user`'s interaction with the GUI is applied to all panes local to this instance of the GUI. 
-*** *Listed Panes* - set the "``'Apply To`"`' mode such that the user`'s interaction with the GUI is applied to all panes listed in the Tcl variable mged_gui(id,apply_list) (Note - id refers to the GUI`'s id). 
-*** *All Panes* - set the "``'Apply To`"`' mode such that the user`'s interaction with the GUI is applied to all panes. 
-** *Query Ray Effects* - a menu for selecting the effects the user will see as a result of firing a query ray. 
-*** *Text* - set qray effects mode to "``'text`"`'. In this mode, only textual output is used to represent the results of firing a query ray. 
-*** *Graphics* - set qray effects mode to "``'graphics`"`'. In this mode, only graphical output is used to represent the results of firing a query ray. 
-*** *both* - set qray effects mode to "``'both`"`'. In this mode, both textual and graphical output is used to represent the results of firing a query ray. 
-** *Grid* - a menu of grid related settings. A grid is a lattice of points over the pane. The regular spacing between the points gives the user accurate visual cues regarding dimension. After setting the anchor point and grid spacing, the user can use snapping to gain a high degree of accuracy while using the mouse. 
-*** *Anchor* - this pops up an entry dialog for specifying the grid anchor point. The grid anchor point is a point such that when the grid is drawn one of its points must be located exactly at the anchor point. The anchor point is specified using model coordinates and local units. 
-*** <<_gridspacing,Spacing>>
-*** *Draw Grid* - toggles drawing the grid. 
-*** *Snap To Grid* - toggles snapping to grid points. When snapping to grid points is active, the user`'s mouse actions are "``'snapped`"`' to the nearest grid point before being further processed. This gives the user a high degree of accuracy while using the mouse. 
-** *Grid Spacing* - a menu for selecting "``'canned`"`' grid spacings. Note - all of these selections will result in a square grid. 
-** *Autosize* - set the grid spacing according to the current view size. The number of ticks will be between 20 and 200 in user units. The major spacing will be set to 10 ticks per major. ole="par 
-** *Arbitrary* - pops up the grid spacing entry dialog. The user can use this to set both the horizontal and vertical tick spacing. 
-** *micrometer* - set the horizontal and vertical tick spacing to 1 micrometer. 
-** *millimeter* - set the horizontal and vertical tick spacing 
-** *centimeter* - set the horizontal and vertical tick spacing to 1 millimeter. 
-** *decimeter* - set the horizontal and vertical tick spacing to 1 decimeter. 
-** 12 *meter* - set the horizontal and vertical tick spacing to 1 meter. 
-** *kilometer* - set the horizontal and vertical tick spacing to 1 kilometer. 
-** *1/10 inch* - set the horizontal and vertical tick spacing to 1/10 inches. 
-** *1/4 inch* - set the horizontal and vertical tick spacing to 1/4 inches. 
-** *1/2 inch* - set the horizontal and vertical tick spacing to 1/2 inches. 
-** *inch* - set the horizontal and vertical tick spacing to 1 inch. 
-** *foot* - set the horizontal and vertical tick spacing to 1 foot. 
-** *yard* - set the horizontal and vertical tick spacing to 1 yard. 
-** *mile* - set the horizontal and vertical tick spacing to 1 mile. 
-* *Framebuffer* - a menu of framebuffer related settings. 
-** *All* - use the entire pane for the framebuffer. 
-** *Rectangle Area* - use only the specified rectangular area of the framebuffer. 
-** *Overlay* - put the framebuffer in overlay mode. In this mode, the framebuffer data is placed in the pane after the geometry is drawn (i.e. the framebuffer data is is drawn on top of the geometry). 
-** *Underlay* - put the framebuffer in underlay mode. In this mode, the framebuffer data is placed in the pane before the geometry is drawn (i.e. the geometry is drawn on top of the framebuffer data). 
-** *Framebuffer Active* - this toggles the framebuffer. 
-** *Listen For Clients* - this toggles listening for clients. If the framebuffer is listening for clients, new data can be passed into the framebuffer. Otherwise, the framebuffer is write protected. Actually, it is also read protected. In other words, in order for programs outside of MGED to communicate with any of MGED`'s framebuffers, the intended framebuffers must be listening. 
-* *View Axes Position* - a menu of "``'canned`"`' view axes positions. 
-** *Center* - locate the view axes in the center of the active pane. 
-** *Lower Left* - locate the view axes in the lower left corner of the active pane. 
-** *Upper Left* - locate the view axes in the upper left corner of the active pane. 
-** *Upper Right* - locate the view axes in the upper right corner of the active pane. 
-** *Lower Right* - locate the view axes in the lower right corner of the active pane. 
+** *Transform* -- a menu for selecting a transform mode. The transform
+    mode determines what will be transformed when using the mouse.
+*** *View* -- set the transform mode to VIEW. When in VIEW mode, the
+     mouse can be used to transform the view. This is the default.
+*** *ADC* -- set the transform mode to ADC. When in ADC mode, the
+     mouse can be used to transform the angle distance cursor while
+     the angle distance cursor is being displayed. If the angle
+     distance cursor is not being displayed, the behavior is the same
+     as VIEW mode.
+*** *Model Params* -- set the transform mode to Model Params. When in
+     Model Params mode, the mouse can be used to transform the model
+     parameters.
+** *Constraint Coords* -- a menu for selecting a coordinate system to
+    use while performing constrained transformations with the mouse.
+*** *Model* -- constrained transformations will use model coordinates. 
+*** *View* -- constrained transformations will use view coordinates. 
+*** *Object* -- constrained transformations will use object coordinates. 
+** *Rotate About* -- a menu for selecting the point about which to rotate. 
+*** *View Center* -- set the center of rotation to be about the view center. 
+*** *Eye* -- set the center of rotation to be about the eye. 
+*** *Model Origin* -- set the center of rotation to be about the model origin. 
+*** *Key Point* -- set the center of rotation to be about the key point. 
+** *Active Pane* -- a menu for selecting the active pane. The active
+    pane is the pane (display manager) that is tied to the GUI,
+    effectively becoming the target of GUI interactions that affect
+    panes. In other words, if the user types the command, `ae 35 25`
+    in the command window, and the active pane is the upper left pane,
+    then its`" view orientation will become azimuth=35 and
+    elevation=25. Similarly, if the user selects
+    Settings/Grid/Draw_Grid from the pulldown menus the drawing of the
+    grid will be toggled in the active pane.
+*** *Upper Left* -- set the active pane to be the upper left pane. Any
+     interaction with the GUI that affects a pane will be directed at
+     the upper left pane.
+*** *Upper Right* -- set the active pane to be the upper right
+     pane. Any interaction with the GUI that affects a pane will be
+     directed at the upper right pane.
+*** *Lower Left* -- set the active pane to be the lower left pane. Any
+     interaction with the GUI that affects a pane will be directed at
+     the lower left pane.
+*** *Lower Right* -- set the active pane to be the lower right
+     pane. Any interaction with the GUI that affects a pane will be
+     directed at the lower right pane.
+** *Apply To* -- a menu for selecting the "Apply To" mode. This
+    further specifies what pane(s) will be affected by actions that
+    affect panes.
+*** *Active Pane* -- set the "Apply To" mode such that the user`'s
+     interaction with the GUI is applied to the active pane.
+*** *Local Panes* -- set the "Apply To" mode such that the user`'s
+     interaction with the GUI is applied to all panes local to this
+     instance of the GUI.
+*** *Listed Panes* -- set the "Apply To" mode such that the user`'s
+     interaction with the GUI is applied to all panes listed in the
+     Tcl variable mged_gui(id,apply_list) (Note - id refers to the
+     GUI`'s id).
+*** *All Panes* -- set the "Apply To" mode such that the user`'s
+     interaction with the GUI is applied to all panes.
+** *Query Ray Effects* -- a menu for selecting the effects the user
+    will see as a result of firing a query ray.
+*** *Text* -- set qray effects mode to "text". In this mode, only
+     textual output is used to represent the results of firing a
+     query ray.
+*** *Graphics* -- set qray effects mode to "graphics". In this mode,
+     only graphical output is used to represent the results of firing
+     a query ray.
+*** *both* -- set qray effects mode to "both". In this mode, both
+     textual and graphical output is used to represent the results of
+     firing a query ray.
+** *Grid* -- a menu of grid related settings. A grid is a lattice of
+    points over the pane. The regular spacing between the points gives
+    the user accurate visual cues regarding dimension. After setting
+    the anchor point and grid spacing, the user can use snapping to
+    gain a high degree of accuracy while using the mouse.
+*** *Anchor* -- this pops up an entry dialog for specifying the grid
+     anchor point. The grid anchor point is a point such that when the
+     grid is drawn one of its points must be located exactly at the
+     anchor point. The anchor point is specified using model
+     coordinates and local units.
+*** *Spacing*
+*** *Draw Grid* -- toggles drawing the grid. 
+*** *Snap To Grid* -- toggles snapping to grid points. When snapping
+     to grid points is active, the user`'s mouse actions are "snapped"
+     to the nearest grid point before being further processed. This
+     gives the user a high degree of accuracy while using the mouse.
+** *Grid Spacing* -- a menu for selecting "canned" grid
+    spacings. Note - all of these selections will result in a square
+    grid.
+** *Autosize* -- set the grid spacing according to the current view
+    size. The number of ticks will be between 20 and 200 in user
+    units. The major spacing will be set to 10 ticks per
+    major. ole="par
+** *Arbitrary* -- pops up the grid spacing entry dialog. The user can
+    use this to set both the horizontal and vertical tick spacing.
+** *micrometer* -- set the horizontal and vertical tick spacing to 1 micrometer. 
+** *millimeter* -- set the horizontal and vertical tick spacing 
+** *centimeter* -- set the horizontal and vertical tick spacing to 1 millimeter. 
+** *decimeter* -- set the horizontal and vertical tick spacing to 1 decimeter. 
+** 12 *meter* -- set the horizontal and vertical tick spacing to 1 meter. 
+** *kilometer* -- set the horizontal and vertical tick spacing to 1 kilometer. 
+** *1/10 inch* -- set the horizontal and vertical tick spacing to 1/10 inches. 
+** *1/4 inch* -- set the horizontal and vertical tick spacing to 1/4 inches. 
+** *1/2 inch* -- set the horizontal and vertical tick spacing to 1/2 inches. 
+** *inch* -- set the horizontal and vertical tick spacing to 1 inch. 
+** *foot* -- set the horizontal and vertical tick spacing to 1 foot. 
+** *yard* -- set the horizontal and vertical tick spacing to 1 yard. 
+** *mile* -- set the horizontal and vertical tick spacing to 1 mile. 
+* *Framebuffer* -- a menu of framebuffer related settings. 
+** *All* -- use the entire pane for the framebuffer. 
+** *Rectangle Area* -- use only the specified rectangular area of the framebuffer. 
+** *Overlay* -- put the framebuffer in overlay mode. In this mode, the
+    framebuffer data is placed in the pane after the geometry is drawn
+    (i.e. the framebuffer data is is drawn on top of the geometry).
+** *Underlay* -- put the framebuffer in underlay mode. In this mode,
+    the framebuffer data is placed in the pane before the geometry is
+    drawn (i.e. the geometry is drawn on top of the framebuffer data).
+** *Framebuffer Active* -- this toggles the framebuffer. 
+** *Listen For Clients* -- this toggles listening for clients. If the
+    framebuffer is listening for clients, new data can be passed into
+    the framebuffer. Otherwise, the framebuffer is write
+    protected. Actually, it is also read protected. In other words, in
+    order for programs outside of MGED to communicate with any of
+    MGED`'s framebuffers, the intended framebuffers must be listening.
+* *View Axes Position* -- a menu of "canned" view axes positions. 
+** *Center* -- locate the view axes in the center of the active pane. 
+** *Lower Left* -- locate the view axes in the lower left corner of the active pane. 
+** *Upper Left* -- locate the view axes in the upper left corner of the active pane. 
+** *Upper Right* -- locate the view axes in the upper right corner of the active pane. 
+** *Lower Right* -- locate the view axes in the lower right corner of the active pane. 
 ** *Modes*
-*** *Draw Grid* - toggle drawing the grid. The grid is a lattice of points over the pane (display manager). The regular spacing between the points gives the user accurate visual cues regarding dimension. This spacing can be set by the user. 
-*** *Snap To Grid* - toggles snapping to grid points. When snapping to grid points is active, the user`'s mouse actions are "``'snapped`"`' to the nearest grid point before being further processed. This gives the user a high degree of accuracy while using the mouse. 
-*** *Framebuffer Active* - this toggles the framebuffer. 
-*** *Listen For Clients* this toggles listening for clients. If the framebuffer is listening for clients, new data can be passed into the framebuffer. Otherwise, the framebuffer is write protected. Actually, it is also read protected. In other words, in order for programs outside of MGED to communicate with any of MGED`'s framebuffers, the intended framebuffers must be listening. 
-*** *Persistent sweep rectangle* - this toggles drawing the rectangle while idle. For example, if the sweep rectangle is not persistent, the rectangle will not be drawn unless the user is actively sweeping out a rectangle (i.e. for raytracing, zoom etc.). And if the sweep rectangle is persistent, the rectangle will always be drawn. 
-*** *Angle/Dist Cursor* - toggles drawing the angle distance cursor. 
-*** *Faceplate* - toggles drawing the "``'Classic MGED`"`' faceplate. 
-*** *Axes* - a menu of axes 
-**** *View* - toggle display of the view axes. The view axes are used to give the user visual cues indicating the current view of model space. These axes are drawn the same as the model axes, except that the view axes`' position is fixed in view space. This position as well as other characteristics can be set by the user using <<_rset,rset>>. 
-**** *Model* - toggle display of the model axes. The model axes are used to give the user visual cues indicating the current view of model space. The model axes are by default located at the model origin and are fixed in model space. So, if the user transforms the view, the model axes will move with respect to the view. The model axes position as well as other characteristics can be set by the user using <<_rset,rset>>. 
-**** *Edit* - toggle display of the edit axes. The edit axes are used to give the user visual cues indicating how the edit is progressing. They consist of a pair of axes. One remains unmoved, while the other moves to indicate how things have changed. Characteristics of the edit axes can be changed using <<_rset,rset>>. 
-*** *Multipane* - toggle between multipane and single pane mode. In multipane mode there are four panes, each with its own state. 
-*** *Edit Info* - Toggle display of edit information. If in solid edit state, the edit information is displayed in the internal solid editor. This editor, as its name implies, can be used to edit the solid as well as to view its contents. If in object edit state, the object information is displayed in a dialog box. 
-*** <<_statusbar,Status Bar>> - toggle display of the command window`'s status bar. 
-*** *Collaborate* - toggle collaborate mode. When in collaborate mode, the upper right pane`'s view can be shared with other instances of MGED`'s new GUI that are also collaborating. 
-*** *Rateknobs* - toggle rate knob mode. When in rate knob mode, transformation with the mouse becomes rate based. For example, if the user rotates the view about the X axis, the view continues to rotate about the X axis until the rate rotation is stopped. 
-*** *Display Lists* - toggle the use of display lists. This currently affects only Ogl display managers. When using display lists the screen update time is significantly faster. This is especially noticeable when running MGED remotely. Use of display lists is encouraged unless the geometry being viewed is bigger than the Ogl server can handle (i.e. the server runs out of available memory for storing display lists). When this happens the machine will begin to swap (and little else). If huge pieces of geometry need to be viewed, consider toggling off display lists. Note that using display lists while viewing geometry of any significant size will incur noticeable compute time up front to create the display lists. 
-** _Misc_
-*** _Z Clipping_ - toggles zclipping. When zclipping is active, the Z value of each point is checked against the min and max Z values of the viewing cube. If the Z value of the point is found to be outside this range, it is clipped (i.e. not drawn). Zclipping can be used to remove geometric detail that may be occluding geometry of greater interest. 
-*** *Perspective* - toggles perspective_mode. 
-*** *Faceplate* - toggles drawing the "``'Classic MGED`"`' faceplate. 
-*** *Faceplate GUI* - toggles drawing the "``'Classic MGED`"`' user interface (i.e. faceplate menu and scrollbars) 
-*** *Keystroke Forwarding* - toggles keystroke forwarding. When keystroke forwarding is active, any key events get forwarded to the command window for processing as if the user was typing directly into the command window. This behavior can often save the user time by not having to move the mouse out of the geometry window in order to type commands. The effects of any commands apply to the pane wherein the command was entered, regardless of whether or not this pane is the active pane. 
-*** *Depth Cueing* - toggles depth cueing. When depth cueing is active, lines that are farther away appear more faint. 
-*** *Z Buffer* - toggles Z buffer. 
-*** *Lighting* - toggles lighting. 
+*** *Draw Grid* -- toggle drawing the grid. The grid is a lattice of
+     points over the pane (display manager). The regular spacing
+     between the points gives the user accurate visual cues regarding
+     dimension. This spacing can be set by the user.
+*** *Snap To Grid* -- toggles snapping to grid points. When snapping
+     to grid points is active, the user`'s mouse actions are "snapped"
+     to the nearest grid point before being further processed. This
+     gives the user a high degree of accuracy while using the mouse.
+*** *Framebuffer Active* -- this toggles the framebuffer. 
+*** *Listen For Clients* this toggles listening for clients. If the
+     framebuffer is listening for clients, new data can be passed into
+     the framebuffer. Otherwise, the framebuffer is write
+     protected. Actually, it is also read protected. In other words,
+     in order for programs outside of MGED to communicate with any of
+     MGED`'s framebuffers, the intended framebuffers must be
+     listening.
+*** *Persistent sweep rectangle* -- this toggles drawing the rectangle
+     while idle. For example, if the sweep rectangle is not
+     persistent, the rectangle will not be drawn unless the user is
+     actively sweeping out a rectangle (i.e. for raytracing, zoom
+     etc.). And if the sweep rectangle is persistent, the rectangle
+     will always be drawn.
+*** *Angle/Dist Cursor* -- toggles drawing the angle distance cursor. 
+*** *Faceplate* -- toggles drawing the "Classic MGED" faceplate. 
+*** *Axes* -- a menu of axes 
+**** *View* -- toggle display of the view axes. The view axes are used
+      to give the user visual cues indicating the current view of
+      model space. These axes are drawn the same as the model axes,
+      except that the view axes`' position is fixed in view
+      space. This position as well as other characteristics can be set
+      by the user using `rset`.
+**** *Model* -- toggle display of the model axes. The model axes are
+      used to give the user visual cues indicating the current view of
+      model space. The model axes are by default located at the model
+      origin and are fixed in model space. So, if the user transforms
+      the view, the model axes will move with respect to the view. The
+      model axes position as well as other characteristics can be set
+      by the user using `rset`.
+**** *Edit* -- toggle display of the edit axes. The edit axes are used
+      to give the user visual cues indicating how the edit is
+      progressing. They consist of a pair of axes. One remains
+      unmoved, while the other moves to indicate how things have
+      changed. Characteristics of the edit axes can be changed using
+      `rset`.
+*** *Multipane* -- toggle between multipane and single pane mode. In
+     multipane mode there are four panes, each with its own state.
+*** *Edit Info* -- Toggle display of edit information. If in solid
+     edit state, the edit information is displayed in the internal
+     solid editor. This editor, as its name implies, can be used to
+     edit the solid as well as to view its contents. If in object edit
+     state, the object information is displayed in a dialog box.
+*** *Status Bar* -- toggle display of the command window`'s status bar. 
+*** *Collaborate* -- toggle collaborate mode. When in collaborate
+     mode, the upper right pane`'s view can be shared with other
+     instances of MGED`'s new GUI that are also collaborating.
+*** *Rateknobs* -- toggle rate knob mode. When in rate knob mode,
+     transformation with the mouse becomes rate based. For example, if
+     the user rotates the view about the X axis, the view continues to
+     rotate about the X axis until the rate rotation is stopped.
+*** *Display Lists* -- toggle the use of display lists. This currently
+     affects only Ogl display managers. When using display lists the
+     screen update time is significantly faster. This is especially
+     noticeable when running MGED remotely. Use of display lists is
+     encouraged unless the geometry being viewed is bigger than the
+     Ogl server can handle (i.e. the server runs out of available
+     memory for storing display lists). When this happens the machine
+     will begin to swap (and little else). If huge pieces of geometry
+     need to be viewed, consider toggling off display lists. Note that
+     using display lists while viewing geometry of any significant
+     size will incur noticeable compute time up front to create the
+     display lists.
+** *Misc*
+*** *Z Clipping* -- toggles zclipping. When zclipping is active, the Z
+     value of each point is checked against the min and max Z values
+     of the viewing cube. If the Z value of the point is found to be
+     outside this range, it is clipped (i.e. not drawn). Zclipping can
+     be used to remove geometric detail that may be occluding geometry
+     of greater interest.
+*** *Perspective* -- toggles perspective_mode. 
+*** *Faceplate* -- toggles drawing the "Classic MGED" faceplate. 
+*** *Faceplate GUI* -- toggles drawing the "Classic MGED" user
+     interface (i.e. faceplate menu and scrollbars)
+*** *Keystroke Forwarding* -- toggles keystroke forwarding. When
+     keystroke forwarding is active, any key events get forwarded to
+     the command window for processing as if the user was typing
+     directly into the command window. This behavior can often save
+     the user time by not having to move the mouse out of the geometry
+     window in order to type commands. The effects of any commands
+     apply to the pane wherein the command was entered, regardless of
+     whether or not this pane is the active pane.
+*** *Depth Cueing* -- toggles depth cueing. When depth cueing is
+     active, lines that are farther away appear more faint.
+*** *Z Buffer* -- toggles Z buffer. 
+*** *Lighting* -- toggles lighting. 
 ** *Tools*
-*** <<_adccontrolpanel,ADC Control Panel>> - pops up a tool for controlling the angle distance cursor. 
-*** <<_gridcontrolpanel,Grid Control Panel>> - pops up a tool for setting grid parameters. 
-*** <<_queryraycontrolpanel,Query Ray Control Panel>> - pops up a tool for setting query ray parameters. 
-*** <<_raytracecontrolpanel,Raytrace Control Panel>> - pops up a tool for raytracing. 
-*** <<_solideditor,Solid Editor>> - pops up a tool for creating and editing solids. 
-*** <<_combinationeditor,Combination Editor>> - pops up a tool for creating and editing combinations. 
-*** <<_coloreditor,Color Editor>> - pops up a tool for defining a color 
-*** *Command Window* - this is a convenience button that raises the command window. 
-*** *Geometry Window* - this is a convenience button that raises the geometry window. 
+*** *ADC Control Panel* -- pops up a tool for controlling the angle distance cursor. 
+*** *Grid Control Panel* -- pops up a tool for setting grid parameters. 
+*** *Query Ray Control Panel* -- pops up a tool for setting query ray parameters. 
+*** *Raytrace Control Panel* -- pops up a tool for raytracing. 
+*** *Solid Editor* -- pops up a tool for creating and editing solids. 
+*** *Combination Editor* -- pops up a tool for creating and editing combinations. 
+*** *Color Editor* -- pops up a tool for defining a color 
+*** *Command Window* -- this is a convenience button that raises the command window. 
+*** *Geometry Window* -- this is a convenience button that raises the geometry window. 
 ** *Help*
 *** *About MGED*
-*** *Help on context* - The new GUI provides "``'Help on Context`""`$$.$$ This is always available via the right mouse button (i.e. button 3). The user can right mouse click on some feature of the GUI and a message window pops up with information about the feature. This behavior works everywhere except in the drawing panes (i.e. display manager windows) where a right mouse button is bound to`""`zoom 2.0`"`'. 
+*** *Help on context* -- The new GUI provides "Help on Context". This
+     is always available via the right mouse button (i.e. button
+     3). The user can right mouse click on some feature of the GUI and
+     a message window pops up with information about the feature. This
+     behavior works everywhere except in the drawing panes
+     (i.e. display manager windows) where a right mouse button is
+     bound to "zoom 2.0".
 *** <<_gettingstarted,Getting Started>>
 *** <<_shiftgrips,Shift Grips>>
-*** *Commands* - pops up a tool for getting information on MGED`'s commands. 
-*** *Apropos* - pops up a tool for searching for information about MGED`'s commands. 
-*** *Manual* - start a tool for browsing the online MGED manual. The web browser that gets started is dependent, first, on the WEB_BROWSER environment variable. If this variable exists and the browser identified by this variable exists, then that browser is used. Failing that the browser specified by the mged_default(web_browser) Tcl variable is tried. As a last resort, the existence of /usr/bin/netscape, /usr/local/bin/netscape and /usr/X11/bin/netscape is checked. If a browser has still not been located, the built-in Tcl browser is used. 
+*** *Commands* -- pops up a tool for getting information on MGED`'s commands. 
+*** *Apropos* -- pops up a tool for searching for information about MGED`'s commands. 
+*** *Manual* -- start a tool for browsing the online MGED manual. The
+     web browser that gets started is dependent, first, on the
+     WEB_BROWSER environment variable. If this variable exists and the
+     browser identified by this variable exists, then that browser is
+     used. Failing that the browser specified by the
+     mged_default(web_browser) Tcl variable is tried. As a last
+     resort, the existence of /usr/bin/netscape,
+     /usr/local/bin/netscape and /usr/X11/bin/netscape is checked. If
+     a browser has still not been located, the built-in Tcl browser is
+     used.

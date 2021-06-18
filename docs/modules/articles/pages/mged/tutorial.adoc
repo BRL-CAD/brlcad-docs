@@ -183,10 +183,10 @@ applications should display the windows they create.
 
 We use the following conventions for denoting text: 
 
-----
+....
 	Text typed by the user
 	Text output by the program
-----
+....
 
 To edit or create a geometry file, the user starts the mged program
 from the shell by giving the command:
@@ -208,7 +208,7 @@ If the file specified does not exist when mged is started, it will
 stop and ask if the user wishes to create a new database:
 
 [subs="quotes"]
-----
+....
    [prompt]#%# [cmd]#mged -c cup.g#
    [output]#BRL-CAD Release 4.5   Graphics Editor (MGED)
        Mon May 19 16:31:32 EDT 1997, Compilation 5377
@@ -216,14 +216,14 @@ stop and ask if the user wishes to create a new database:
 
    cup.g: No such file or directory#
    [prompt]#Create new database (y|n)[n]?#
-----
+....
 
 At this point pressing the "y" key followed by a return will create
 the new database.  Any other (non-y) keys (followed by a return) will
 cause mged to quit without creating the database.
 
 [subs="quotes"]
-----
+....
    [prompt]#%# [cmd]#mged -c cup.g#
    [output]#BRL-CAD Release 4.5   Graphics Editor (MGED)
        Mon May 19 16:31:32 EDT 1997, Compilation 5377
@@ -234,7 +234,7 @@ cause mged to quit without creating the database.
    [output]#Creating new database "cup.g"
    Untitled MGED Database (units=mm)#
    [prompt]#attach (nu|X|ogl|glx)[nu]?#
-----
+....
 
 At this point, mged is asking what type of geometry display window you
 would like.  The default is always "nu" for Null or "no geometry
@@ -259,7 +259,7 @@ see it.  The common choices are:
 
 Enter one of the names listed followed by a return.
 
-----
+....
    % mged -c cup.g
    BRL-CAD Release 4.5   Graphics Editor (MGED)
        Mon May 19 16:31:32 EDT 1997, Compilation 5377
@@ -271,7 +271,7 @@ Enter one of the names listed followed by a return.
    Untitled MGED Database (units=mm)
    attach (nu|X|ogl|glx)[nu]? ogl
    mged>
-----
+....
 
 At this point you should have a window that looks something like this:
 
@@ -362,7 +362,7 @@ in the first section.  The following MGED editing session contains all
 the commands needed to create the mug.  Each command will be explained
 below.
 
-----
+....
    % newmged Mug.g
    BRL-CAD Release 4.5   Graphics Editor (MGED)
        Tue May 20 10:33:44 EDT 1997, Compilation 5378
@@ -393,7 +393,7 @@ below.
    mged> r mug.r u cup.c u handle.c
    Defaulting item number to 1002
    Creating region id=1001, air=0, los=100, GIFTmaterial=1
-----
+....
 
 The first step in preparing a new database is to provide a title which
 describes the contents of the database.  This is an important
@@ -425,19 +425,19 @@ creating ("outside.s") and the type of solid to create ("rcc"). Then
 mged prompts for the remaining arguments (vertex, height vector, and
 radius):
 
-----
+....
    mged> in outside.s rcc
    Enter X, Y, Z of vertex: 0 0 0
    Enter X, Y, Z of height (H) vector: 0 0 3.5
    Enter radius: 1.75
-----
+....
 
 For the solid "inside.s" we specify all the parameters on the command
 line, so mged does not prompt us for additional arguments.  In the
 case of the solid "ring.s" we specify some, but not all of the
 parameters, and mged prompts us for the missing ones:
 
-----
+....
    mged> in inside.s rcc 0 0 0.25 0 0 3.5 1.5
    42 vectors in 0.006435 sec
    mged> in ring.s eto 0 2.5 1.75 1 0 0
@@ -445,20 +445,20 @@ parameters, and mged prompts us for the missing ones:
    Enter radius of revolution, r: 1.45
    Enter elliptical semi-minor axis, d: 0.2
    2479 vectors in 0.087375 sec
-----
+....
 
 As a minimal example, if we wanted to create a sphere called "ball.s"
 we could simply type the "in" command and let mged prompt us for
 everything else:
 
-----
+....
    mged> in
    Enter name of solid: ball.s
    Enter solid type:  sph
    Enter X, Y, Z of vertex:  0 0 0
    Enter radius:  3
    51 vectors in 0.117187 sec
-----
+....
 
 The three boolean operators supported are union, subtraction and
 intersection.  These operations are denoted by the operators u, - and
@@ -491,7 +491,7 @@ the "plastic" shader which uses a Phong lighting model.  For our mug
 this will be fine.  We specify the plastic shader and set the color to
 a shade of green.
 
-----
+....
    mged> mater mug.r
    Shader =
    Shader?  ('del' to delete, CR to skip) plastic
@@ -499,7 +499,7 @@ a shade of green.
    Color R G B (0..255)? ('del' to delete, CR to skip) 32 128 32
    Inherit = 0:  lower nodes (towards leaves) override
    Inheritance (0|1)? (CR to skip) 0
-----
+....
 
 The Inheritance option should be left 0.  This option will be
 discussed later.  Once we have created our geometry, it would be nice
@@ -521,11 +521,11 @@ regions we've created.  Then we display the region we want to raytrace
 with the "draw" command.  Finally, we'll select a nice viewing angle
 of azimuth 35 elevation 25 with the "ae" command.
 
-----
+....
    mged> Z
    mged> draw mug.r
    mged> ae 35 25
-----
+....
 
 Now we are ready to raytrace an image.  The "rt" command starts the
 raytracer on the geometry.  We must tell it where we want the pixels
@@ -536,7 +536,7 @@ option:
 
 The rt program prints a variety of information when it runs:
 
-----
+....
 rt -F:0 -s 512
 rt -s50 -M -F:0 -s 512 cup.g mug.r
 mged> BRL-CAD Release 4.4   Ray-Tracer
@@ -578,7 +578,7 @@ Frame     0:   262144 pixels in       6.66 sec =   39356.94 pixels/sec
 Frame     0:   262144 rays   in       6.66 sec =   39356.94 rays/sec (RTFM)
 Frame     0:   262144 rays   in       6.66 sec =   39356.94 rays/CPU_sec
 Frame     0:   262144 rays   in       7.33 sec =   35746.50 rays/sec (wallclock)
-----
+....
 
 If all goes well, you will get an image of a green mug on a black
 background.
@@ -591,11 +591,11 @@ the lip.  To do this we create a circular torus solid positioned at
 exactly the top of the cup.  Then we can add it to the combination
 "cup.c".
 
-----
+....
    mged> in rim.s tor 0 0 3.5 0 0 1 1.625 0.125
    214 vectors in 0.001814 sec
    mged> comb cup.c u rim.s
-----
+....
 
 Now we have a unique condition.  The solid rim.s was added to the list
 of objects being displayed when it was created.  However, now it is
@@ -606,22 +606,22 @@ redisplay the new, complete object, and then raytrace.  The "Z"
 command clears all objects from the display.  Then we can redisplay
 the objects we want to raytrace with the "draw" command.
 
-----
+....
    mged> Z
    mged> draw mug.r
-----
+....
 
 Since this is a frequent operation (clear the display list and draw
 something new) there is a shortcut:
 
-----
+....
    mged> B mug.r
-----
+....
 
 The "B" is not very easy to remember (one suggested mnemonic is
 "blast"), but it is quite useful.  Now we are ready to raytrace again.
 
-----
+....
    mged> rt -F:1 -s 512
    rt -s50 -M -F:1 -s 512 mug.g mug.r
    BRL-CAD Release 4.4   Ray-Tracer
@@ -663,7 +663,7 @@ The "B" is not very easy to remember (one suggested mnemonic is
    Frame     0:   262144 rays   in       7.27 sec =   36067.02 rays/sec (RTFM)
    Frame     0:   262144 rays   in       7.27 sec =   36067.02 rays/CPU_sec
    Frame     0:   262144 rays   in       7.95 sec =   32978.18 rays/sec (wallclock)
-----
+....
 
 image::mged/rim.gif[]
 
@@ -683,7 +683,7 @@ The bottom is perfectly flat.  Any imperfection in the table top would
 cause it to wobble.  The inside bottom corner is too sharp.  We need
 to create a "fillet" at the seam between side and bottom.
 
-----
+....
 Fixing the Handle
 
  kill handle.c
@@ -692,7 +692,7 @@ in handle_01.s eto 0 2.25 1.25 1 0 0 .75 0.3 0 0 .15
 in handle_02.s rpp -.5 .5 1 3.5 1.25 2.5
 in handle_03.s rec 0 3 1.25 0 0 1.25 0.3 0 0 0 .15 0
 in handle_04.s eto 0 2.25 2.5 1 0 0 .75 0.3 0 0 .15
-----
+....
 
 `comb handle.c u handle_01.s - handle_02.s - outside.s u handle_04.s - handle_02.s - outside.s u handle_03.s`
 
@@ -702,7 +702,7 @@ image::mged/handle.gif[]
 [[_adding_a_base]]
 == Adding a Base 
 
-----
+....
  mvall outside.s outside_01.s
 in outside_02.s tor 0 0 0 0 0 1 1.6875 .0625
 comb cup.c u outside_02.s
@@ -716,7 +716,7 @@ center 0 0 0
 size 4
 ae 170 -52 120
 rt -s 512 -F :1
-----
+....
 
 image::mged/base.gif[]
 
@@ -724,7 +724,7 @@ image::mged/base.gif[]
 [[_adding_a_fillet]]
 == Adding a fillet 
 
-----
+....
  mvall inside.s inside.c
 mv inside.c inside_01.s
 solid edit bottom of inside_01.s up to 0 0 0.3125
@@ -735,6 +735,6 @@ B mug.r
 ae 35 85
 size 5
 rt -s 512 -F :1
-----
+....
 
 image::mged/fillet.gif[]
