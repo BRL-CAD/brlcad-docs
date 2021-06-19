@@ -1,166 +1,122 @@
 = Tcl Variables
 
-The use of _pathName_ in this document refers to the Tcl/Tk pathname of a display manager window. 
+The use of _pathName_ in this document refers to the Tcl/Tk pathname
+of a display manager window.
 
-*local2base*
+local2base :: specifies the conversion factor that converts local
+units to base units (i.e.  millimeters).
 
-_local2base_ specifies the conversion factor that converts local units to base units (i.e.
-millimeters). 
+base2local :: specifies the conversion factor that converts base units
+(i.e.  millimeters) to local units.
 
-*base2local*
+localunit :: indicates the local units.
 
-_base2local_ specifies the conversion factor that converts base units (i.e.
-millimeters) to local units. 
+edit_class :: specifies the class of edit that is in effect.  For
+example, 0 signifies none, 1 signifies translation, 2 signifies
+rotation and 3 signifies scale.
 
-*localunit*
+edit_solid_flag :: specifies the type of edit to perform on the solid
+being edited. _edit_solid_flag_ is linked to MGED`'s internal variable
+es_edflag.
 
-_localunit_ indicates the local units. 
+edit_object_flag :: specifies the type of edit to perform on the
+object being edited. _edit_object_flag_ is linked to MGED`'s internal
+variable edobj.
 
-*edit_class*
+edit_info :: contains detailed information about the current
+solid/object being edited.
 
-_edit_class_ specifies the class of edit that is in effect.
-For example, 0 signifies none, 1 signifies translation, 2 signifies rotation and 3 signifies scale. 
+glob_compat_mode :: indicates whether or not to perform globbing
+against the database.
 
-*edit_solid_flag*
+mged_display(state) :: specifies the state of MGED.  The state string
+will be one of the six values listed below.
++
+* VIEWING
+* SOL PICK
+* SOL EDIT
+* OBJ PICK
+* OBJ PATH
+* OBJ EDIT
 
-_edit_solid_flag_ specifies the type of edit to perform on the solid being edited. _edit_solid_flag_ is linked to MGED`'s internal variable es_edflag. 
+mged_display(pathName,fps) :: specifies the frames per second that
+MGED is able to display.
 
-*edit_object_flag*
+mged_display(pathName,aet) :: specifies the current azimuth, elevation
+and twist for _pathName_.
 
-_edit_object_flag_ specifies the type of edit to perform on the object being edited. _edit_object_flag_ is linked to MGED`'s internal variable edobj. 
+mged_display(pathName,ang) :: indicates the rates of view rotation.
 
-*edit_info*
+mged_display(pathName,center) :: indicates the view center.
 
-_edit_info_ contains detailed information about the current solid/object being edited. 
+mged_display(pathName,size) :: indicates the view size.
 
-*glob_compat_mode*
+mged_display(pathName,adc) :: specifies information about the angle
+distance cursor.
 
-_glob_compat_mode_ indicates whether or not to perform globbing against the database. 
+mged_display(path_lhs) :: indicates the left hand side path.
 
-*mged_display(state)*
+mged_display(path_rhs) :: indicates the right hand side path.
 
-_mged_display(state)_ specifies the state of MGED.
-The state string will be one of the six values listed below. 
+mged_display(units) :: indicates the local units.
 
-* VIEWING 
-* SOL PICK 
-* SOL EDIT 
-* OBJ PICK 
-* OBJ PATH 
-* OBJ EDIT 
+mged_display(keypoint) :: indicates the point from which edits will
+take place.
 
-*mged_display(pathName,fps)*
+mged_default(geom) :: is used to specify the size and position of the
+command window.
 
-_mged_display(pathName,fps)_ specifies the frames per second that MGED is able to display. 
+mged_default(ggeom) :: is used to specify the size and position of the
+geometry window.
 
-*mged_display(pathName,aet)*
+mged_default(id) :: indicates the base id to use if the user didn`'t
+provide an id to the gui command.  For example, if
+mged_default(id) is set to myId, then the following id`'s will be
+created as needed: myId_0, myId_1, myId_2 etc.
 
-_mged_display(pathName,aet)_ specifies the current azimuth, elevation and twist for __pathName__. 
+mged_default(pane) :: indicates the initial active pane.  The
+keywords, ul, ur, ll, and lr are the only acceptable values.  The
+keywords refer to "upper left", "upper right", "lower left" and "lower
+right" respectively.
 
-*mged_display(pathName,ang)*
+mged_default(multi_pane) :: indicates whether to show four smaller
+geometry windows at the same time or to show one larger geometry
+window.
 
-_mged_display(pathName,ang)_ indicates the rates of view rotation. 
+mged_default(config) :: indicates the initial configuration of the
+MGED GUI.  A value of "g" indicates that only the geometry window is
+shown, "c" indicates that only the command window is shown, and "b"
+indicates that both the geometry and command windows are shown.
+Note - this initial configuration specification only has affect when
+the command window and geometry windows are combined together in a
+single top level window.  See the mged_default(comb) variable.
 
-*mged_display(pathName,center)*
+mged_default(display) :: indicates where to display the command window
+and other tools.
 
-_mged_display(pathName,center)_ indicates the view center. 
+mged_default(gdisplay) :: indicates where to display the geometry
+window if not combined with the command window.  See the
+mged_default(comb) variable.
 
-*mged_display(pathName,size)*
+mged_default(dm_type) :: indicates the default display manager type.
 
-_mged_display(pathName,size)_ indicates the view size. 
+mged_default(comb) :: indicates whether or not to combine the command
+window with the geometry window in a single top level window.
 
-*mged_display(pathName,adc)*
+mged_default(edit_style) :: indicates the initial edit style.  The
+edit style determines the behavior of command line editing.  The two
+possible values are "emacs" and "vi".
 
-_mged_display(pathName,adc)_ specifies information about the angle distance cursor. 
+mged_default(num_lines) :: indicates the number of lines to use in the
+command window.
 
-*mged_display(path_lhs)*
+mged_default(tearoff_menus) :: indicates whether or not to use tearoff
+menus.  A tearoff menu is one that has the ability to become a top
+level window.  That is, it can remain active and be placed anywhere on
+the screen.
 
-_mged_display(path_lhs)_ indicates the left hand side path. 
+mged_default(html_dir) :: indicates the directory wherein to look for
+the MGED manual.
 
-*mged_display(path_rhs)*
-
-_mged_display(path_rhs)_ indicates the right hand side path. 
-
-*mged_display(units)*
-
-_mged_display(units)_ indicates the local units. 
-
-*mged_display(keypoint)*
-
-_mged_display(keypoint)_ indicates the point from which edits will take place. 
-
-*mged_default(geom)*
-
-_mged_default(geom)_ is used to specify the size and position of the command window. 
-
-*mged_default(ggeom)*
-
-_mged_default(ggeom)_ is used to specify the size and position of the geometry window. 
-
-*mged_default(id)*
-
-_mged_default(id)_ indicates the base id to use if the user didn`'t provide an id to the <<_gui,gui>> command.
-For example, if mged_default(id) is set to myId, then the following id`'s will be created as needed: myId_0, myId_1, myId_2 etc. 
-
-*mged_default(pane)*
-
-_mged_default(pane)_ indicates the initial active pane.
-The keywords, ul, ur, ll, and lr are the only acceptable values.
-The keywords refer to "``'upper
-    left`""`,`""`upper
-    right`""`,`""`lower
-    left`""`and`""`lower right`"`' respectively. 
-
-*mged_default(multi_pane)*
-
-_mged_default(multi_pane)_ indicates whether to show four smaller geometry windows at the same time or to show one larger geometry window. 
-
-*mged_default(config)*
-
-_mged_default(config)_ indicates the initial configuration of the MGED GUI.
-A value of "``'g`""`indicates that only the geometry window is
-    shown,`""`c`""`indicates that only the command
-    window is shown, and`""`b`"`' indicates that both the geometry and command windows are shown.
-Note - this initial configuration specification only has affect when the command window and geometry windows are combined together in a single top level window.
-See the <<_mged_default,mged_default(comb)>> variable. 
-
-*mged_default(display)*
-
-_mged_default(display)_ indicates where to display the command window and other tools. 
-
-*mged_default(gdisplay)*
-
-_mged_default(gdisplay)_ indicates where to display the geometry window if not combined with the command window.
-See the <<_mged_default,mged_default(comb)>> variable. 
-
-*mged_default(dm_type)*
-
-_mged_default(dm_type)_ indicates the default display manager type. 
-
-*mged_default(comb)*
-
-_mged_default(comb)_ indicates whether or not to combine the command window with the geometry window in a single top level window. 
-
-*mged_default(edit_style)*
-
-_mged_default(edit_style)_ indicates the initial edit style.
-The edit style determines the behavior of command line editing.
-The two possible values are "``'emacs`""`and`""`vi`"`'. 
-
-*mged_default(num_lines)*
-
-_mged_default(num_lines)_ indicates the number of lines to use in the command window. 
-
-*mged_default(tearoff_menus)*
-
-_mged_default(tearoff_menus)_ indicates whether or not to use tearoff menus.
-A tearoff menu is one that has the ability to become a top level window.
-That is, it can remain active and be placed anywhere on the screen. 
-
-*mged_default(html_dir)*
-
-_mged_default(html_dir)_ indicates the directory wherein to look for the MGED manual. 
-
-*mged_default(web_browser)*
-
-_mged_default(web_browser)_ indicates the web browser to use for viewing documentation. 
+mged_default(web_browser) :: indicates the web browser to use for
+viewing documentation.

@@ -1,232 +1,275 @@
 = Glossary
 
-*acyclic directed graph*
+acyclic directed graph :: In an _acyclic directed graph_, usually
+called a _DAG_, each node may have arcs pointing to multiple objects,
+and each object may be pointed to by multiple objects.  However, no
+node is permitted to refer to any of its ancestors.
 
-In an __acyclic directed graph__, usually called a __DAG__, each node may have arcs pointing to multiple <<_objects,objects>>, and each <<_object,object>> may be pointed to by multiple <<_object,objects>>.
-However, no node is permitted to refer to any of its ancestors. 
+air code :: See _space code_.
 
-*air code*
+azimuth :: Viewing aspects in _mged_ may be specified in terms of
+_azimuth_, elevation, and twist.
++
+image::mged/az_el_sm.gif[]
++
+_Azimuth_ is the angle (in degrees) around the __z__-axis through
+which the viewing direction is rotated from the positive
+__xz__-quarterplane towards the positive __y__-axis.  When _azimuth =
+elevation_ = 0, for instance, viewing is parallel to the __x__-axis in
+the direction of decreasing __x__.  When _azimuth_ = 90 degrees,
+viewing is parallel to the __yz__-plane along some direction of
+decreasing __y__: the precise direction within the __yz__-plane being
+specified by the elevation. _Azimuth_ can take on any real value.
 
-See <<_space,_space code_>>. 
+Boolean :: The _Boolean_ (i.e., set-theoretic) operations of
+__union__, __intersection__, and _subtraction_ are used in
+constructive solid geometry to build complex objects from simpler
+ones.
++
+image::mged/bool.gif[]
 
-*azimuth*
+boundary representation :: _Boundary representation_ (__BREP__) is one
+of the two major types of solid modeling, the other being constructive
+solid geometry. _BREP_ objects are built by describing the entire
+enclosing surface of an object.  This will typically involve a variety
+of surface types including, for example, planar, cylindrical, NURB,
+and spherical surfaces.  While objects in a _BREP_ system may be built
+using Boolean operations, the resulting object is typically stored as
+a set of enclosing surfaces.
 
-Viewing aspects in <<_mged,_mged_>> may be specified in terms of __azimuth__, <<_elevation,elevation>>, and <<_twist,twist>>. 
+combination :: A _combination_ is a formula for combining primitive
+solids and/or other objects into a more complex shape.  Each solid or
+other _combination_ directly in this formula is referred to as a
+member of this _combination_.  The formula may involve _intersection_,
+_subtraction_, and _union_ operations, and the _combination_ may be
+assigned a shader and a color. _Combinations_ are typically built in
+_mged_ using the c, comb, r, or g commands.Regions and groups are
+special types of _combinations_.
 
-image:mged/az_el_sm.gif[]
+constructive solid geometry :: _Constructive solid geometry_ (_CSG_),
+sometimes referred to as _combinatorial solid geometry_, is one of the
+two major types of solid modeling (The other being boundary
+representation). In a _CSG_ system, complex objects are built by
+combining simpler objects, with primitive solids as the basic building
+blocks.  The combinations make use of Boolean operations, and the
+resulting objects are stored as trees. _BRL­CAD_ is actually a hybrid
+of _CSG_ and BREP, but its main emphasis is on the _CSG_ capabilities.
 
-_Azimuth_ is the angle (in degrees) around the __z__-axis through which the viewing direction is rotated from the positive __xz__-quarterplane towards the positive __y__-axis.
-When _azimuth = <<_elevation,elevation>>_ = 0, for instance, viewing is parallel to the __x__-axis in the direction of decreasing __x__.
-When _azimuth_ = 90 degrees, viewing is parallel to the __yz__-plane along some direction of decreasing __y__: the precise direction within the __yz__-plane being specified by the <<_elevation,elevation>>. _Azimuth_ can take on any real value. 
+DAG :: See _acyclic directed graph_.
 
-*Boolean*
+elevation :: Viewing aspects in _mged_ may be specified in terms of
+azimuth, _elevation_, and twist. _Elevation_ is the angle (in degrees)
+through which the viewing direction is rotated out of the __xy__-plane
+towards the positive __z__-axis (see the illustration in the _azimuth_
+entry). When _elevation_ = 90 degrees, for instance, viewing is
+parallel to the __z__-axis in the direction of decreasing
+_z_. _Elevation_ can take on any real value between -90 and +90
+degrees.
 
-The _Boolean_ (i.e., set-theoretic) operations of __union__, __intersection__, and _subtraction_ are used in constructive solid geometry to build complex objects from simpler ones. image:mged/images/bool.gif[]
+group :: A _group_ is a combination with all _union_ operators.
+Typically a _group_ is used to combine components into a subsystem,
+subsystems into a system, or systems into top-level collections.
 
-*boundary representation*
+ident :: An _ident_ (also referred to as _component ID_, _region ID_,
+_item_, or _ID code_) is an integer assigned to a region or regions to
+encode information used by application programs that process _BRL­CAD_
+models. _Idents_ are assigned by the user and are not directly used by
+_BRL­CAD_, but are reported to applications that need them.
 
-_Boundary representation_ (__BREP__) is one of the two major types of solid modeling, the other being constructive solid geometry. _BREP_ objects are built by describing the entire enclosing surface of an object.
-This will typically involve a variety of surface types including, for example, planar, cylindrical, NURB, and spherical surfaces.
-While objects in a _BREP_ system may be built using <<_boolean,Boolean>> operations, the resulting object is typically stored as a set of enclosing surfaces. 
+inheritance :: _Inheritance_ is an attribute of combinations that
+determines how shader attributes are handled when a member of a
+combination is itself a combination.  If the _inheritance_ flag is set
+to 1, then all the shader attributes of combinations lower in the tree
+are overridden by this combination.
 
-*combination*
+key solid :: The _key solid_ is the solid used to provide a reference
+during matrix editing operation.  Rotations, translations, and scaling
+in this mode are performed about a point on the "key solid".
 
-A _combination_ is a formula for combining primitive solids and/or other <<_objects,objects>> into a more complex shape.
-Each <<_solid,solid>> or other _combination_ directly in this formula is referred to as a <<_member,member>> of this __combination__.
-The formula may involve __intersection__, __subtraction__, and _union_ operations, and the _combination_ may be assigned a <<_shader,shader>> and a color. _Combinations_ are typically built in <<_mged,_mged_>> using the <<_c,c>>, <<_comb,comb>>, <<_r,r>>, or <<_g,g>> commands.<<_region,Regions>> and <<_groups,groups>> are special types of __combinations__. 
+LOS :: An _LOS_ is a percentage (0 to 100) assigned to a region
+representing the percentage of the region that consists of material
+substance.  It might be thought of as the region`'s _solidity_, and is
+somewhat analogous to the alpha channel of a computer graphics
+display. _LOS_ is assigned by the user and is not directly used by
+_BRL­CAD_, but is reported to applications that need it.
 
-*constructive solid geometry*
+material code :: A region may be assigned an integer _material code_
+by the user.  This is intended to identify the material used to build
+the part. _Material codes_ are assigned by the user and are not
+directly used by _BRL­CAD_, but are reported to applications that need
+them.
 
-_Constructive solid geometry_ (__CSG__), sometimes referred to as __combinatorial solid geometry__, is one of the two major types of solid modeling (The other being boundary representation). In a _CSG_ system, complex objects are built by combining simpler objects, with primitive solids as the basic building blocks.
-The combinations make use of <<_boolean,Boolean>> operations, and the resulting objects are stored as <<_trees,trees>>. _BRL­CAD_ is actually a hybrid of _CSG_ and <<_brep,BREP>>, but its main emphasis is on the _CSG_ capabilities. 
+matrix edit mode :: This is the mode that _mged_ is in while editing a
+transformation matrix in a combination.  It is characterized by the
+illumination of one object in the graphics window, and the appearance
+of matrix editing selections in the _Edit_ menu.  This mode may be
+entered through the _Matrix Selection.._ entry of the _Edit_ menu, or
+via the _oed_ command.  Editing operations such as rotation,
+translation, and scale may be performed in this mode and will affect
+all objects below the edited matrix in the tree.  These operations
+will be applied in reference to a key solid that is a leaf of that
+tree.
 
-*DAG*
+member :: An object is referred to as a _member_ of a combination if
+it is directly referenced by the combination.
 
-See <<_dag,_acyclic directed
-    graph_>>. 
+MGED :: _Mged_ is the interactive graphical editor for _BRL­CAD_.  It
+may be used to view, modify, and create models.  Normally, the user
+views the model in a wireframe display in _mged_.
 
-*elevation*
+model coordinates :: In a _BRL­CAD_ model, the _model coordinates_ are
+the actual coordinates of points on the model in _real_ units.  The
+user may position a model at any desired location in _model
+coordinates_.  By convention in _BRL­CAD_, a model is oriented so that
+the positive __x__-axis points from the model`'s back to its front,
+the positive __y__-axis points from the model`'s right to its left,
+and, since the coordinate system is right handed, the positive
+__z__-axis points from the model`'s bottom to its top.  All _BRL­CAD_
+models are stored in millimeters, however the user may operate in
+nearly any units by using the _mged_units command.  See also view
+coordinates.
 
-Viewing aspects in <<_mged,_mged_>> may be specified in terms of <<_azimuth,azimuth>>, __elevation__, and <<_twist,twist>>. _Elevation_ is the angle (in degrees) through which the viewing direction is rotated out of the __xy__-plane towards the positive __z__-axis (see the illustration in the _azimuth_ entry). When _elevation_ = 90 degrees, for instance, viewing is parallel to the __z__-axis in the direction of decreasing __z__. _Elevation_ can take on any real value between -90 and +90 degrees. 
+object :: _Objects_ are the fundamental entities constituting a
+_BRL­CAD_ model.  They are the nodes of the DAG into which the
+database is organized.  The terminal nodes, or leaves, of the DAG are
+the solids and the internal nodes are the combinations, of which two
+types are regions and groups.
 
-*group*
+path :: A _path_ to an object in _BRL­CAD_ is a list of combinations
+that ends at the desired object. _Paths_ are specified with a syntax
+similar to the one used in UNIX file systems (with `/` characters as
+separators). Each element of the _path_ must be a member of the
+previous element.  For example, `left_arm/arm/hand/thumb` might be a
+_path_ from `left_arm` to `thumb` in some _BRL­CAD_ database
+indicating that `arm` is a member of `left_arm`, `hand` is a member of
+`arm`, and `thumb` is a member of `hand`. The _path_ information
+implies a set of transformation matrices (each member of a combination
+has a transformation matrix associated with it). As a _path_ is
+traversed, the effects of encountered transformation matrices are
+accumulated, and typically applied to the object at the end of the
+_path_.  This means that the `thumb` referred to by the _path_
+`left_arm/arm/hand/thumb` is likely to be in a different location and
+orientation (and possibly scaled) from the `thumb` referred to by
+`right_arm/arm/hand/thumb`.
 
-A _group_ is a <<_combination,combination>> with all _union_ operators.
-Typically a _group_ is used to combine components into a subsystem, subsystems into a system, or systems into top-level collections. 
-
-*ident*
-
-An _ident_ (also referred to as __component ID__, __region ID__, __item__, or __ID code__) is an integer assigned to a <<_region,region>> or <<_region,regions>> to encode information used by application programs that process _BRL­CAD_ models. _Idents_ are assigned by the user and are not directly used by __BRL­CAD__, but are reported to applications that need them. 
-
-*inheritance*
-
-_Inheritance_ is an attribute of <<_combination,combinations>> that determines how <<_shader,shader>> attributes are handled when a <<_member,member>> of a <<_combination,combination>> is itself a <<_combination,combination>>.
-If the _inheritance_ flag is set to 1, then all the <<_shader,shader>> attributes of <<_combination,combinations>> lower in the <<_tree,tree>> are overridden by this <<_combination,combination>>. 
-
-*key solid*
-
-The _key solid_ is the solid used to provide a reference during matrix editing operation.
-Rotations, translations, and scaling in this mode are performed about a point on the ``key solid`'`'. 
-
-*LOS*
-
-An _LOS_ is a percentage (0 to 100) assigned to a <<_region,region>> representing the percentage of the <<_region,region>> that consists of material substance.
-It might be thought of as the <<_region,region>>`'s __solidity__, and is somewhat analogous to the alpha channel of a computer graphics display. _LOS_ is assigned by the user and is not directly used by __BRL­CAD__, but is reported to applications that need it. 
-
-*material code*
-
-A <<_region,region>> may be assigned an integer _material code_ by the user.
-This is intended to identify the material used to build the part. _Material
-    codes_ are assigned by the user and are not directly used by __BRL­CAD__, but are reported to applications that need them. 
-
-*matrix edit mode*
-
-This is the mode that <<_mged,_mged_>> is in while editing a transformation matrix in a <<_combination,combination>>.
-It is characterized by the illumination of one object in the graphics window, and the appearance of matrix editing selections in the _Edit_ menu.
-This mode may be entered through the _Matrix Selection.._ entry of the _Edit_ menu, or via the <<_oed,_oed_>> command.
-Editing operations such as rotation, translation, and scale may be performed in this mode and will affect all objects below the edited matrix in the <<_tree,tree>>.
-These operations will be applied in reference to a key solid that is a leaf of that tree. 
-
-*member*
-
-An <<_object,object>> is referred to as a _member_ of a <<_combination,combination>> if it is directly referenced by the <<_combination,combination>>. 
-
-*MGED*
-
-_Mged_ is the interactive graphical editor for __BRL­CAD__.
-It may be used to view, modify, and create models.
-Normally, the user views the model in a wireframe display in __mged__. 
-
-*model coordinates*
-
-In a _BRL­CAD_ model, the _model
-    coordinates_ are the actual coordinates of points on the model in _real_ units.
-The user may position a model at any desired location in __model
-    coordinates__.
-By convention in __BRL­CAD__, a model is oriented so that the positive __x__-axis points from the model`'s back to its front, the positive __y__-axis points from the model`'s right to its left, and, since the coordinate system is right handed, the positive __z__-axis points from the model`'s bottom to its top.
-All _BRL­CAD_ models are stored in millimeters, however the user may operate in nearly any units by using the <<_mged,_mged_>><<_units,units>> command.
-See also <<_view,view coordinates>>. 
-
-*object*
-
-_Objects_ are the fundamental entities constituting a _BRL­CAD_ model.
-They are the nodes of the <<_dag,DAG>> into which the database is organized.
-The terminal nodes, or leaves, of the <<_dag,DAG>> are the <<_solid,solids>> and the internal nodes are the <<_combination,combinations>>, of which two types are <<_region,regions>> and <<_groups,groups>>. 
-
-*path*
-
-A _path_ to an <<_object,object>> in _BRL­CAD_ is a list of <<_combination,combinations>> that ends at the desired <<_object,object>>. _Paths_ are specified with a syntax similar to the one used in UNIX file systems (with ``/`'`' characters as separators). Each element of the _path_ must be a <<_member,member>> of the previous element.
-For example, ``left_arm/arm/hand/thumb`'`' might be a _path_ from ``left_arm`'"`to ``thumb`"`' in some _BRL­CAD_ database indicating that ``arm`'`' is a <<_member,member>> of ``left_arm`'"`, ``hand`"`' is a <<_member,member>> of ``arm`'"`, and
-    ``thumb`"`' is a <<_member,member>> of ``hand`'`'. The _path_ information implies a set of transformation matrices (each <<_member,member>> of a <<_combination,combination>> has a transformation matrix associated with it). As a _path_ is traversed, the effects of encountered transformation matrices are accumulated, and typically applied to the <<_object,object>> at the end of the __path__.
-This means that the ``thumb`'`' referred to by the _path_ ``left_arm/arm/hand/thumb`'"`is
-    likely to be in a different location and orientation (and possibly
-    scaled) from the ``thumb`""`referred to by
-    ``right_arm/arm/hand/thumb`"`'. 
-
-*primitive solid*
-
-_Primitive solids_ are the basic building blocks of <<_csg,CSG>>solid modeling systems.
-The _primitive solids_ available in _BRL­CAD_ include: 
-
-* <<_arb,ARB>>
-* <<_arbn,ARBN>>
-* <<_arbitrary_faceted_solid,arbitrary faceted solid>>
-* <<_extruded_bitmap,extruded bitmap>>
-* <<_right_hyperbolic_cylinder,Right Hyperbolic Cylinder>>
-* <<_elliptical_hyperboloid,Elliptical Hyperboloid>>
-* <<_elliptical_paraboloid,Elliptical Paraboloid>>
-* <<_right_parabolic_cylinder,Right Parabolic Cylinder>>
-* <<_elliptical_torus,Elliptical Torus>>
-* <<_ellipsoid,Ellipsoid>>
-* <<_half_space,Half Space>>
-* <<_height_field,Height Field>>
+primitive solid :: _Primitive solids_ are the basic building blocks of
+CSGsolid modeling systems.  The _primitive solids_ available in
+_BRL­CAD_ include:
++
+* ARB
+* ARBN
+* arbitrary faceted solid
+* extruded bitmap
+* Right Hyperbolic Cylinder
+* Elliptical Hyperboloid
+* Elliptical Paraboloid
+* Right Parabolic Cylinder
+* Elliptical Torus
+* Ellipsoid
+* Half Space
+* Height Field
 * Non­Manifold Geometry 
-* <<_particle,Particle>>
-* <<_polysolid,Polysolid>>
-* <<_spline,Spline>>
-* <<_tgc,Truncated General Cone>>
-* <<_torus,Torus>>
-* <<_vol,VOL>>
+* Particle
+* Polysolid
+* Spline
+* Truncated General Cone
+* Torus
+* VOL
 
-image:mged/images/prims.gif[]
+image::mged/prims.gif[]
 
-*solid edit mode*
+solid edit mode :: This is the mode that _mged_ is in while editing an
+individual solid.  It is characterized by the illumination of one
+solid in the graphics window, and the appearance of solid editing
+selections in the _Edit_ menu.  This mode may be entered through the
+_Solid Selection.._ entry of the _Edit_ menu, or via the _sed_
+command.  Solid specific editing may be performed in this mode, as
+well as rotations, translations, and scaling.
 
-This is the mode that <<_mged,_mged_>> is in while editing an individual solid.
-It is characterized by the illumination of one solid in the graphics window, and the appearance of solid editing selections in the _Edit_ menu.
-This mode may be entered through the _Solid Selection.._ entry of the _Edit_ menu, or via the <<_sed,_sed_>> command.
-Solid specific editing may be performed in this mode, as well as rotations, translations, and scaling. 
+quaternion :: Internal to _mged_, the viewing orientation is handled
+in terms of _quaternions_.  A _quaternion_ is a method for
+representing an arbitrary rotation without the ambiguity at the poles
+that accompanies some methods.  A _quaternion_ may be thought of as a
+vector (defining an axis of rotation), and a rotation about that axis.
 
-*quaternion*
+ray trace :: _Ray tracing_ is the main method for interrogating
+_BRL­CAD_ models.  It is performed by selecting a start point and a
+ray direction, then calculating the intersections of the resulting ray
+with all the primitive solids it encounters.  The segments of the ray
+that intersect each primitive solid are then combined according to the
+Boolean expressions for each region that refers to those solids.  The
+result is a series of intervals on the ray, called _partitions_, that
+intersect each region along the ray.  If the objective of the _ray
+tracing_ effort is to produce an image, the calculations will
+typically be stopped after the first region is encountered.  The
+_BRL­CAD_ rt program performs such _ray tracing_.
 
-Internal to <<_mged,_mged_>>, the viewing orientation is handled in terms of __quaternions__.
-A _quaternion_ is a method for representing an arbitrary rotation without the ambiguity at the poles that accompanies some methods.
-A _quaternion_ may be thought of as a vector (defining an axis of rotation), and a rotation about that axis. 
+region :: A _region_ is a combination with special significance for
+application programs that process _BRL­CAD_ models.  It corresponds to
+a physical entity of uniform material properties.  In addition to all
+the attributes of any combination, a _region_ also has an ident
+number, a material code number, an LOS number, and a space code
+number.  No two _regions_ in a model should share any points in space.
+Such _overlaps_ are reported, for instance, by the _BRL­CAD_ ray
+tracer, _rt_.
 
-*ray trace*
+region ID :: See _ident_.
 
-_Ray tracing_ is the main method for interrogating _BRL­CAD_ models.
-It is performed by selecting a start point and a ray direction, then calculating the intersections of the resulting ray with all the primitive solids it encounters.
-The segments of the ray that intersect each primitive solid are then combined according to the <<_boolean,Boolean>> expressions for each <<_region,region>> that refers to those <<_solid,solids>>.
-The result is a series of intervals on the ray, called __partitions__, that intersect each <<_region,region>> along the ray.
-If the objective of the _ray tracing_ effort is to produce an image, the calculations will typically be stopped after the first <<_region,region>> is encountered.
-The _BRL­CAD_<<_rt,rt>> program performs such __ray tracing__. 
+RGB :: _RGB_ is an abbreviation for _Red_, _Green_, and _Blue_.  When
+a color is specified in _BRL­CAD_, it is in terms of its primary color
+components.  Each component may be from 0 to 255.  An _RGB_ of `0 0 0`
+is black, `255 255 255` is white, and `0 255 0` is green.
 
-*region*
+rt :: _Rt_ is one of the programs in the _BRL­CAD_ package.  It is
+used to ray trace a model and produce a color shaded image. _rt_
+supports transparency, reflection, refraction, shadows, texture
+mapping, light sources, and animation.
 
-A _region_ is a <<_combination,combination>> with special significance for application programs that process _BRL­CAD_ models.
-It corresponds to a physical entity of uniform material properties.
-In addition to all the attributes of any <<_combination,combination>>, a _region_ also has an <<_ident,ident>> number, a <<_material_code,material code>> number, an <<_los,LOS>> number, and a <<_space,space code>> number.
-No two _regions_ in a model should share any points in space.
-Such _overlaps_ are reported, for instance, by the _BRL­CAD_ ray tracer, <<_rt,_rt_>>. 
+shader :: A _shader_ is a _BRL­CAD_ module that performs calculations
+to determine the actual pixel color to be displayed when a ray
+intersects an object during rendering by rt. _Shaders_ are assigned to
+combinations by the user, and some allow additional parameters to
+adjust their appearance.  Available _shaders_ include _mirror_,
+_glass_, _plastic_, and _texture_ (for texture mapping). Source code
+modules in the _rt_ directory with names of the form _sh.c_ correspond
+to the available shaders
 
-*region ID*
+solid model :: A _solid model_ is a description of an object or
+objects produced in such a way that any point can be classified
+without ambiguity as lying inside, outside, or on the surface of a
+modeled object.  This means that a true solid model cannot have
+surfaces that do not completely enclose space, and solid objects that
+are defined in the model must not be defined based on irrelevant
+variables such as viewing direction.
 
-See <<_ident,_ident_>>. 
+space code :: A _space code_ (or _air code_) is assigned to regions
+that are intended to represent "empty air" rather than solid parts of
+the model.  The code number may be used to distinguish different air
+spaces from one another.  Regions representing solid parts must have a
+space code of 0. _Space codes_ are assigned by the user and are not
+directly used by _BRL­CAD_, but are reported to applications that need
+them.
 
-*RGB*
+tree :: A tree is a Boolean expression representing some aggregation
+of objects.  Strictly speaking, this is an abuse of the term _tree_:
+such Boolean expressions are not trees in either the computer-science
+or the graph-theoretic sense, but are more correctly referred to as
+acyclic directed graphs, also known as DAGs.
 
-_RGB_ is an abbreviation for __Red__, __Green__, and __Blue__.
-When a color is specified in __BRL­CAD__, it is in terms of its primary color components.
-Each component may be from 0 to 255.
-An _RGB_ of ``0 0 0`'"`is black, ``255 255
-    255`""`is white, and ``0 255 0`"`' is green. 
+twist :: Viewing aspects in _mged_ may be specified in terms of
+azimuth, elevation, and _twist_. _Twist_ is the angle (in degrees)
+around the screen-__z__-axis through which the (model-) __z__-axis is
+rotated from the positive screen-__y__-axis towards the positive
+screen-__x__-axis.  (see the illustration in the _azimuth_
+entry). When _twist_ = 0, for instance, the positive __z__-axis is
+some nonnegative scalar multiple of the positive screen-__y__-axis.
 
-*rt*
-
-_Rt_ is one of the programs in the _BRL­CAD_ package.
-It is used to <<_raytrace,ray trace>> a model and produce a color shaded image. _rt_ supports transparency, reflection, refraction, shadows, texture mapping, light sources, and animation. 
-
-*shader*
-
-A _shader_ is a _BRL­CAD_ module that performs calculations to determine the actual pixel color to be displayed when a ray intersects an <<_object,object>> during rendering by <<_rt,rt>>. _Shaders_ are assigned to <<_combination,combinations>> by the user, and some allow additional parameters to adjust their appearance.
-Available _shaders_ include __mirror__, __glass__, __plastic__, and _texture_ (for texture mapping). Source code modules in the _rt_ directory with names of the form _sh_*.c_ correspond to the available shaders. 
-
-*solid model*
-
-A _solid model_ is a description of an object or objects produced in such a way that any point can be classified without ambiguity as lying inside, outside, or on the surface of a modeled object.
-This means that a true solid model cannot have surfaces that do not completely enclose space, and solid objects that are defined in the model must not be defined based on irrelevant variables such as viewing direction. 
-
-*space code*
-
-A _space code_ (or __air code__) is assigned to <<_region,regions>> that are intended to represent ``empty air`'`' rather than solid parts of the model.
-The code number may be used to distinguish different air spaces from one another.
-Regions representing solid parts must have a space code of 0. _Space codes_ are assigned by the user and are not directly used by __BRL­CAD__, but are reported to applications that need them. 
-
-*tree*
-
-A tree is a <<_boolean,Boolean>> expression representing some aggregation of <<_objects,objects>>.
-Strictly speaking, this is an abuse of the term __tree__: such <<_boolean,Boolean>> expressions are not trees in either the computer-science or the graph-theoretic sense, but are more correctly referred to as <<_dag,acyclic directed
-    graphs>>, also known as <<_dag,DAG>>s. 
-
-*twist*
-
-Viewing aspects in <<_mged,_mged_>> may be specified in terms of <<_azimuth,azimuth>>, <<_elevation,elevation>>, and __twist__. _Twist_ is the angle (in degrees) around the screen-__z__-axis through which the (model-) __z__-axis is rotated from the positive screen-__y__-axis towards the positive screen-__x__-axis.
-(see the illustration in the _azimuth_ entry). When _twist_ = 0, for instance, the positive __z__-axis is some nonnegative scalar multiple of the positive screen-__y__-axis. 
-
-*view coordinates*
-
-When an <<_object,object>> is displayed in the <<_mged,_mged_>> graphics window, it is converted from <<_model,model>> to _view_ coordinates.
-The _view
-    coordinate_ system has its origin at the center of the viewing cube (the center of the <<_mged,_mged_>> display). The _view___x__-axis always points to the right, the _view___y__-axis always points toward the top of the display, and the _view___z__-axis always points out of the screen towards the viewer.
-The visible portion of view space (known as the ``viewing cube`'`') extends from -1.0 to +1.0 along each of the _view_ axes. 
+view coordinates :: When an object is displayed in the _mged_ graphics
+window, it is converted from model to _view_ coordinates.  The _view
+coordinate_ system has its origin at the center of the viewing cube
+(the center of the _mged_ display). The _view___x__-axis always points
+to the right, the _view___y__-axis always points toward the top of the
+display, and the _view___z__-axis always points out of the screen
+towards the viewer.  The visible portion of view space (known as the
+`viewing cube`) extends from -1.0 to +1.0 along each of the _view_
+axes.
