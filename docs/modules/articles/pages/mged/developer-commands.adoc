@@ -9,8 +9,7 @@
 |<<_get_comb,get_comb>>
 |<<_get_dm_list,get_dm_list>>
 
-|
-            get_edit_solid 
+| get_edit_solid 
 |<<_get_more_default,get_more_default>>
 |<<_grid2model_lu,grid2model_lu>>
 |<<_grid2view_lu,grid2view_lu>>
@@ -28,8 +27,7 @@
 |<<_output_hook,output_hook>>
 |<<_put_comb,put_comb>>
 
-|
-           put_edit_solid 
+| put_edit_solid 
 |<<_reset_edit_solid,reset_edit_solid>>
 |<<_rset,rset>>
 |<<_set_more_default,set_more_default>>
@@ -57,78 +55,98 @@
               
 |===
 
-**
+[[_aip]]
+aip [__f|b__] :: The `aip` command advances the <<_ill,illumination>>
+pointer when MGED is in the <<_ill,solid illuminate>> state or the
+<<_ill,object illuminate>> state.  In either of the _illuminate_
+states, a single primitive shape is highlighted at one time, and the
+path to that shape is displayed.  Moving the mouse vertically in the
+MGED display causes different shapes to be highlighted and their paths
+to be displayed.  The _aip_ command causes the next shape in the list
+to be highlighted (if used with no arguments or the _f_ argument), or
+it causes the previous shape in the list to be highlighted (if used
+with the _b_ argument). When the desired shape is highlighted, it is
+selected by clicking the middle mouse button or by using the <<_m,M>>
+command.  If MGED is in the <<_ill,object path>> state, the place
+along the path where the edit is to take place will advance.  Once the
+desired path position is displayed, it is selected by clicking the
+middle mouse button or by using the <<_m,M>> command.
++
+.Examples:
+[subs="+quotes"]
+....
+mged> *press* sill  <1> 
+mged *aip*          <2>
+mged *aip b*        <3>
+mged *M 1 0 0*      <4>
+....
+<1> Enter solid (i.e., primitive) illuminate mode.
+<2> Highlight the next shape.
+<3> Highlight the previous shape.
+<4> Select the highlighted shape. 
 
-aip [__f|b__] 
+[[_cmd_win]]
+cmd_win subcommand :: This command is used to maintain internal
+command window structures.
++
+--
+The _cmd_win_ command accepts the following subcommands:
 
-The "`aip`" command advances the <<_ill,illumination>> pointer when MGED is in the <<_ill,solid illuminate>> state or the <<_ill,object illuminate>> state.
-In either of the _illuminate_ states, a single primitive shape is highlighted at one time, and the path to that shape is displayed.
-Moving the mouse vertically in the MGED display causes different shapes to be highlighted and their paths to be displayed.
-The _aip_ command causes the next shape in the list to be highlighted (if used with no arguments or the _f_ argument), or it causes the previous shape in the list to be highlighted (if used with the _b_ argument). When the desired shape is highlighted, it is selected by clicking the middle mouse button or by using the <<_m,M>> command.
-If MGED is in the <<_ill,object path>> state, the place along the path where the edit is to take place will advance.
-Once the desired path position is displayed, it is selected by clicking the middle mouse button or by using the <<_m,M>> command. 
+open _id_ ::: This subcommand is used to create the internal data
+structures for a new command window.  If _id_ is already in use,
+nothing is changed.
 
-Examples: 
+close _id_ ::: This subcommand releases _id_'s internal data
+structures. If the referenced command window is tied to a display
+manager, then that association is also removed.
 
-mged> <<_press,*press*>> sill 
+set _id_ ::: This subcommand sets the current command window to
+_id_. If this command window is tied to a display manager, that
+display manager becomes the current display manager.
 
-– Enter solid (i.e., primitive) illuminate mode. 
+get ::: This subcommand returns the id of the current command window.
+--
++
+.Examples:
+[subs="+quotes"]
+....
+mged> [cmd]*cmd_win open my_id*   <1>
+mged> [cmd]*cmd_win close my_id*  <2>
+mged> [cmd]*cmd_win set my_id*    <3>
+mged> [cmd]*cmd_win get*          <4>
+....
+<1> Create a command window named _my_id_.
+<2> Closes the command window _my_id_.
+<3> _my_id_ becomes the current command window.
+<4> Gets the current command window.
 
-mged *aip*  – Highlight the next shape. 
-
-mged *aip b*  – Highlight the previous shape. 
-
-mged <<_m,*M*>>**1
-    0 0**  – Select the highlighted shape. 
-
-**
- cmd_win subcommand ::
-This command is used to maintain internal command window structures.
-The _cmd_win_ command accepts the following subcommands: 
-
-**
-
-open __id –__This subcommand is used to create the internal data structures for a new command window.
-If _id_ is already in use, nothing is changed. 
-
-**
- close __id –__This subcommand releases _id_ s internal data structures. If the referenced command window is tied to a display manager, then that association is also removed. et __id –__This subcommand sets the current command window to __id__. If this command window is tied to a display manager, that display manager becomes the current display manager. get –****This subcommand returns the id of the current command window. Examples: ::
-mged> cmd_win open my_id 
-
-– Create a command window named __my_id__. 
-
-mged *cmd_win close
-    my_id*  – Closes the command window _my_id._
-
-mged *cmd_win set
-    my_id*  – _my_id_ becomes the current command window. 
-
-mged *cmd_win get*  – Gets the current command window. 
-
-**
- collaborate subcommand ::
+[[_collaborate]]
+collaborate subcommand ::
 This command is used to maintain the "`collaborative
-session.`" The collaborative session is a list whose members share a view and view ring among the upper right display manager panes.
+session`". The collaborative session is a list whose members share a view and view ring among the upper right display manager panes.
++
+--
 The _collaborate_ command accepts the following subcommands: 
 
-*join*__id
-    –__This causes the GUI associated with _id_ to join the collaborative session. 
+join _id_ ::: This causes the GUI associated with _id_ to join the collaborative session. 
 
-**
- quit __id –__This causes the GUI associated with _id_ to quit the collaborative session. show –****This returns the list of participants (ids) in the collaborative session. Examples: ::
-mged> collaborate join bill 
+quit _id_ ::: This causes the GUI associated with _id_ to quit the collaborative session.
 
-– _bill_ is added to the collaborative session. 
+show ::: This returns the list of participants (ids) in the collaborative session.
+--
++
+.Examples:
+....
+mged> collaborate join bill   <1>
+mged *collaborate quit bill*  <2>
+mged *collaborate show*       <3>
+....
+<1> _bill_ is added to the collaborative session.
+<2> _bill_ is removed from the collaborative session.
+<3> Show list of collaborative participants.
 
-mged *collaborate quit
-    bill*  – __bill__is removed from the collaborative session. 
-
-mged *collaborate
-    show* – Show list of collaborative participants. 
-
-**
-
-get_comb comb_name 
+[[_get_comb]]
+get_comb comb_name ::
 
 The "`get_comb`" command returns a Tcl list of information about __comb_name__.
 If _comb_name_ is a region, the following information is returned: 

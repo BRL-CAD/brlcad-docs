@@ -167,8 +167,7 @@
 |<<_push,push>>
 |<<_putmat,putmat>>
 
-|
-    q 
+| q 
 |<<_qorot,qorot>>
 |<<_qray,qray>>
 |<<_query_ray,query_ray>>
@@ -255,27 +254,29 @@
 
 |****
 |===
- % ::
-Start a "`/bin/sh`" shell process for the user.
-The _mged_ prompt will be replaced by a system prompt for the shell, and the user may perform any legal shell commands.
-The _mged_ process waits for the shell process to finish, which occurs when the user exits the shell.
-This only works in a command window associated with a tty (i.e., the window used to start _mged_ in classic mode). 
- Examples: ::
-mged> % 
 
-– Start a new shell process. 
+[[_percent]]
+% :: Start a `/bin/sh` shell process for the user.  The _mged_ prompt
+will be replaced by a system prompt for the shell, and the user may
+perform any legal shell commands.  The _mged_ process waits for the
+shell process to finish, which occurs when the user exits the shell.
+This only works in a command window associated with a tty (i.e., the
+window used to start _mged_ in classic mode).
++
+.Example:
+....
+mged> %   <1>
+$ ls -al  <2>
+$ exit    <3>
+mged>     <4>
+....
+<1> Start a new shell process.
+<2> Issue any shell commands.
+<3> Exit the shell.
+<4> Continue editing in `mged`.
 
-`$`**ls
-    -al** – Issue any shell commands. 
-
-``
-
-$ *exit* – Exit the shell. 
-
-mged> – Continue editing in __mged__. 
-
-**
- 3ptarb [__arb_name x1 y1 z1 x2 y2 z2 x3 y3 z3 x|y|z coord1 coord2 thickness__] ::
+[[_ptarb]]
+3ptarb [__arb_name x1 y1 z1 x2 y2 z2 x3 y3 z3 x|y|z coord1 coord2 thickness__] ::
 Build an <<_arb,ARB8>> shape by extruding a quadrilateral through a given __thickness__.
 The arguments may be provided on the command line; if they are not, they will be prompted for.
 The _x1,
@@ -285,40 +286,44 @@ Only two coordinates of the fourth point are specified, and the code calculates 
 The _x|y|z_ parameter indicates which coordinate of the fourth point will be calculated by the code.
 The _coord1_ and _coord2_ parameters supply the other two coordinates.
 The direction of extrusion for the quadrilateral is determined from the order of the four resulting points by the right-hand rule; the quadrilateral is extruded toward a viewer for whom the points appear in counter-clockwise order. 
- Examples: ::
-mged> 3ptarb 
++
+.Examples:
+[subs="+quotes"]
+....
+[prompt]#mged># [cmd]#3ptarb#  <1>
+Enter name for this arb: [in]#thing#  <2>
+Enter X, Y, Z for point 1: [in]#0 0 0#  <3>
+Enter X, Y, Z for point 2: [in]#1 0 0#  <4>
+Enter X, Y, Z for point 3: [in]#1 1 0#  <5>
+Enter coordinate to solve for (x, y, or z): [in]#z#  <6>
+Enter the X, Y coordinate values: [in]#0 1#  <7>
+Enter thickness for this arb: [in]#3#  <8>
+[prompt]#mged># [cmd]#3ptarb thing 0 0 0 1 0 0 1 1 0 z 0 1 3#  <9>
+....
+<1> Start the _3ptarb_ command.
+<2> The new <<_arb,ARB8>> will be named _thing_. 
+<3> Point one is at the origin.
+<4> Point two is at (1, 0, 0).
+<5> Point three is at (1, 1, 0).
+<6> The code will calculate the _z_ coordinate of the fourth point.
+<7> The _x_ and _y_ coordinates of the fourth point are 0 and 1. 
+<8> The new <<_arb,ARB8>> will be 3 <<_units,units>> thick.
+<9> Same as above example, but with all arguments supplied on the command line.
 
-– Start the _3ptarb_ command. 
+[[_questionmark]]
+ ? :: Provide a list of available _mged_ commands.  The
+<<_questionmarkdevel,?devel>>, <<_questionmarklib,?lib>>,
+<<_help,help>>, <<_helpdevel,helpdevel>>, and <<_helplib,helplib>>
+commands provide additional information on available commands.
++
+.Example:
+[subs="+quotes"]
+....
+[prompt]#mged># [cmd]#?#  <1>
+....
+<1> Get a list of available commands. 
 
-Enter name for this arb: *thing* – The new <<_arb,ARB8>> will be named __thing__. 
-
-Enter X, Y, Z for point 1: *0 0 0* – Point one is at the origin. 
-
-Enter X, Y, Z for point 2: *1 0 0* – Point two is at (1, 0, 0). 
-
-Enter X, Y, Z for point 3: *1 1 0* – Point three is at (1, 1, 0). 
-
-Enter coordinate to solve for (x, y, or z): *z* – The code will calculate the _z_ coordinate of the fourth point. 
-
-Enter the X, Y coordinate values: *0
-    1* – The _x_ and__y__ coordinates of the fourth point are 0 and 1. 
-
-Enter thickness for this arb: *3* – The new <<_arb,ARB8>> will be 3 <<_units,units>> thick. 
-
-mged> *3ptarb thing 0 0 0 1 0 0 1 1 0 z 0
-    1 3* – Same as above example, but with all arguments supplied on the command line. 
-
-**
- ? ::
-Provide a list of available _mged_ commands.
-The <<_questionmarkdevel,?devel>>, <<_questionmarklib,?lib>>, <<_help,help>>, <<_helpdevel,helpdevel>>, and <<_helplib,helplib>> commands provide additional information on available commands. 
- Examples: ::
-mged> ? 
-
-– Get a list of available commands. 
-
-**
- ?devel ::
+?devel ::
 Provide a list of available _mged
 developer_ commands.
 The <<_questionmark,?>>, <<_questionmarklib,?lib>>, <<_help,help>>, <<_helpdevel,helpdevel>>, and <<_helplib,helplib>> commands provide additional information on available commands. 
