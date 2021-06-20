@@ -1,0 +1,158 @@
+[[_sec_build_new_converter]]
+= Building a New Converter
+:doctype: book
+:sectnums:
+:toc: left
+:icons: font
+:experimental:
+:sourcedir: .
+
+== General Information About Building a New Converter
+
+If the previously mentioned import/export converters do not meet the user's needs, a custom converter can be built.
+The effort required to accomplish this, of course, depends on the user's coding ability, the intended model use, and the available resources.
+If one needs to convert from a simple ASCII format consisting entirely of triangles to BRL-CAD, a few days of effort will probably suffice.
+On the other hand, if one wants to develop a converter from a proprietary commercial CAD system to BRL-CAD, several months of effort and training may be required.
+
+For example, Pro/E, Unigraphics, and similar commercial CAD systems provide libraries and APIs that a developer can use to access their models.
+Typically, training is required in order to understand what these libraries can do and how they work, and training in the use of the CAD system itself may be required as a prerequisite to understand the package environment and terminology.
+The purchase of expensive licenses is also a typical requirement, and, in some cases, the use of the code developed will require the purchase of another license.
+
+But before one begins developing a new converter, one should first consider the possibility of using combinations of existing converters.
+For example, if one needs to convert from a commercial CAD system to BRL-CAD and no converter exists for that system, he might consider importing his model into Pro/E or Unigraphics and converting to BRL-CAD from there.
+
+Understandably, this may result in the loss of some information (and repeated conversions usually mean greater losses), but restoring that information manually may be more cost effective than building a new converter from scratch.
+Another possibility might be to convert the geometry to STL format and then convert the STL to BRL-CAD using stl-g (see <<_sec_converting_from_stl>>).
+
+== Converting From BRL-CAD
+
+Converters from BRL-CAD to another format generally come in one of two varieties.
+The first type converts BRL-CAD objects to their CSG counterparts in the receiving system.
+This type of conversion rarely happens as most commercial CAD systems have extremely limited CSG capabilities.
+If this is the case, however, the converter merely needs to visit every object in the BRL-CAD model and output it in the form required by the receiving system.
+A sample code (named g-xxx.c) to accomplish this is included in the conv directory in the BRL-CAD source distribution.
+The only missing piece of this code is the actual output of the receiving format.
+
+The more common type of conversion is when the desired output format is not CSG.
+Currently, the best choice in this situation is to produce a triangular facetted approximation of the BRL-CAD regions and output that approximation in the receiving format.
+A sample code (named g-xxx_facets.c) for this approach is also included in the conv directory in the BRL-CAD source distribution.
+Again, only the part where the facets are output in the receiving format is missing.
+
+The sample code performs Boolean evaluation of the regions using tessellated versions of the CSG primitives.
+This technique is not always successful, so the sample code catches the failures, notifies the user, and continues when a failure occurs.
+
+== Converting to BRL-CAD
+
+A similar situation exists for converting to BRL-CAD.
+If one is fortunate enough to be converting from a CSG system, then just converting everything to its corresponding BRL-CAD representation is all that is required.
+The libwdb library distributed with BRL-CAD contains all the routines needed to build primitives, regions, and combinations in BRL-CAD.
+
+To create an empty BRL-CAD model, use the following code snippet:
+
+
+[source]
+----
+      struct rt_wdb *wdbp;
+      if( (wdbp=wdb_fopen( new_file_name ) ) == RT_WDB_NULL ) {
+      bu_exit(1, "Failed to open output file (%s)\n", new_file_name);
+      }
+----
+
+Then use the wdbp pointer to pass to all the routines in libwdb.
+
+For example, to build a sphere centered at coordinates (1.0, 2.0, and 3.0) with a radius of 5.0 mm in BRL-CAD, the following call to mk_sphere will suffice:
+
+
+[source]
+----
+char *sphere_name="s1";
+      point_t center;
+      fastf_t radius;
+      /* set the center and radius values */
+      VSET( center, 1, 2, 3 );
+      radius = 5.0;
+
+
+      /* actually build the sphere */
+      if( mk_sph( wdbp, sphere_name, center, radius ) ) {
+      bu_exit(1, "Failed to make a sphere (%s)\n", sphere_name ;
+      }
+----
+
+To build a region or combination in BRL-CAD, a call to mk_comb will do the job.
+This is a bit more complicated as it requires building a list of members prior to the call to mk_comb.
+In the example that follows, a region consisting of primitive ``s2'' subtracted from primitive ``s1'' is constructed:
+
+
+[source]
+----
+struct bu_list head;
+      struct wmember *wmp;
+
+
+      /* initialize the list of members for this combination */
+      BU_LIST_INIT( &head );
+
+
+      /* add the first member (use the UNION operator here) */
+      if( (wmp=mk_addmember( "s1", &headp, NULL, WMOP_UNION) ) ==
+      WMEMBER_NULL ) {
+      bu_exit(1, "Failed to add member(s1)\n");
+      }
+
+
+      /* subtract the second member */
+      if( (wmp=mk_addmember( "s2", &headp, NULL, WMOP_SUBTRACT) ) ==
+      WMEMBER_NULL ) {
+      bu_exit(1, "Failed to add member(s2)\n");
+      }
+
+
+      /* build the actual region */q
+      if( mk_comb( wdbp, "region_name", &head, 1, NULL, NULL, NULL, 1000, 0,
+      1, 100, 0, 0, 0 ) ) {
+      bu_exit(1, "Error building region\n");
+      }
+----
+
+If the system you are converting from is not a CSG system (which is the most likely case), then you will need to do some processing on the originating system to get the data in a form that BRL-CAD can use.
+If you have the API module for the originating system, you may be able to use one of those routines to create a triangulated representation of the model.
+This triangle data can then be used to build BOT primitives in the BRL-CAD model using the mk_bot routine.
+Each BOT primitive can be placed in a region of its own (as shown previously).
+
+A hybrid approach is also possible where simple shapes that can be identified as BRL-CAD primitive shapes are converted as BRL-CAD primitives, and everything else is converted as BOT primitives.
+If the converter requires building BOT primitives, you might want to consider a converter that produces a BRL-CAD ASCII format database.
+The "C" mk_bot routine is a very thin wrapper for the actual internal format of the BOT primitive and requires an intimate knowledge of its structure.
+The ASCII format is considerably simpler and easier to work with in this situation.
+As mentioned previously, the current ASCII format is simply a Tcl script.
+For example, the following is the ASCII form of a BRL-CAD database containing a single BOT:
+
+
+[source]
+----
+title {example of a simple BOT primitive}
+      units mm
+      put {tetra} bot mode volume orient rh flags {} V { { 0 0 1000 } { -500
+      0 -1000 } { -500 -500 -1000 } { 500 -500 -1000 }} F { { 0 1 3 } { 0 1
+      2 } { 0 2 3 } { 1 2 3 }}
+----
+
+The aforementioned example creates a BRL-CAD database with the title of ``example of a simple BOT primitive,'' with preferred units of millimeters and a single tetrahedron-shaped BOT primitive.
+The line that begins with ``put'' creates the BOT primitive (note that there are actually only three lines in this example; the last line is wrapped in this report for clarity). This line is a command to the Tcl interpreter.
+The ``put'' is the command, ``tetra'' is the name of the object to be created, and ``bot'' is the type of object to create.
+The remainder of the line consists of key/value pairs.
+This line creates a BOT primitive named ``tetra,'' using volume mode (meaning this BOT encloses space), with right-hand (rh) rule triangle orientation, and no flags.
+
+The V key introduces the list of vertices for this BOT primitive, and the F key introduces the list of triangle faces (each integer is an index into the list of vertices). Additional put commands build more objects in the database.
+For example, to create a region using the tetra object, the user would append the following line to the aforementioned file:
+
+
+[source]
+----
+put {aregion} comb region yes tree {l tetra}
+----
+
+This line creates a BRL-CAD combination named aregion, which is a region and consists only of the tetra object created earlier.
+The resulting file is converted to BRL-CAD binary format using asc2g.
+
+For an example of code that produces this type of output, see the g2asc.c file in the conv directory of the source distribution.

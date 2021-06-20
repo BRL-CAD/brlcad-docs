@@ -1,0 +1,196 @@
+[[_chapt_pert_char]]
+= Pertinent Characteristics of the BRL-CAD Format
+:doctype: book
+:sectnums:
+:toc: left
+:icons: font
+:experimental:
+:sourcedir: .
+
+[[_csg_vs._brep]]
+== CSG vs. BREP
+
+As mentioned previously, there are two basic approaches to solid modeling: CSG and BREP.
+In CSG modeling, an object is represented as a Boolean combination of simple primitive shapes (e.g., spheres, cylinders, cones, etc.). In BREP modeling, an object is represented by a set of surfaces (e.g., facets, triangles, and splines) that are ``stitched'' together to completely enclose the object.
+
+For example, as shown in <<_fig_die_extrusion>>, to geometrically represent a simple extrusion die used in material manufacturing, a CSG model might subtract a cone from a cylinder to achieve the desired shape.
+Alternatively, a BREP model might achieve the same shape by joining several surfaces (Tanenbaum, 2001).
+
+.CSG and BREP approaches to representing an extrusion die (Tanenbaum, 2001).
+image::foo.eps[]
+
+Most of the major commercial solid modeling packages currently in distribution (e.g., Pro/ENGINEER [commonly known as Pro/E], Unigraphics, etc.) use the BREP approach, although they do have some CSG capability.
+BRL-CAD, on the other hand, is primarily a CSG modeling system with some BREP capability.
+
+Conversions that occur between CSG and BREP typically involve their ``lowest common denominator.''
+
+For BRL-CAD, a simple type of BREP is available in the form of triangles; it is called the Bag of Triangles (BOT) primitive.
+If the BREP object consists of all triangles, the BRL-CAD representation can be an exact duplicate.
+But more often, a BREP object consists of smooth, curved surfaces, meaning the BRL-CAD triangle representation will be an approximation of the object.
+Note that this approximation may be made as close to the true surface as desired, but at the cost of more, smaller triangles (see <<_fig_bot>>) (Tanenbaum, 2001). Thus, the higher degree of smoothness means the greater the impact on file size and performance of any application trying to employ all the triangles.
+
+Because most commercial CAD systems have the capability to produce tessellated approximations of their BREP objects, some converters to BRL-CAD (e.g., those with Pro/E and Unigraphics) take advantage of these capabilities.
+In addition, the previously mentioned STL format, which represents solid objects entirely with triangles, offers the community a universal (albeit crude) way to convert BRL-CAD geometry (via the `g-stl` converter) to nearly any commercial CAD system.
+
+.Approximating a smooth, curved surface (left) with a BOT (right) (Tanenbaum, 2001).
+image::test_img.eps[]
+
+
+.BREP Terminology
+[cols="1,1"]
+|===
+|
+
+
+image::test_img.eps[]
+
+|
+
+BREP Terminology
+
+Boundary representations can take several forms.
+Although the terms for these forms are sometimes used interchangeably, the following list provides some key distinctions:
+
+* _Polygonal (or Facetized) Geometry_ - A type of BREP geometry that represents objects with a collection of regions of the plane bounded by a closed path of line segments (polygons).
+* _ Triangle_ - A special type of polygon that has exactly three sides.
+* _ Non-Uniform Rational B-Spline (NURB) Surface_ - A piecewise polynomial representation of a smooth, curved surface (e.g., an airplane wing).
+* _BOT (Bag of Triangles)_ - A BRL-CAD primitive that consists of a collection of triangles and that gives the package limited BREP capability by approximating solid geometry.
+
+|===
+
+In the end, although there are benefits to using the BREP methodology (e.g., ease of use, software availability/compatibility, etc.), BRL-CAD developers and vulnerability analysts have found CSG modeling to be the best approach in terms of model accuracy, storage efficiency, precision, and analysis speed.
+
+.CSG or BREP?
+[cols="1,1"]
+|===
+|
+
+
+image::test_img.eps[]
+
+|
+
+CSG or BREP?
+
+Depending on one's point of view, there are advantages and disadvantages to using CSG vs.
+BREP.
+Although "the right" approach for a given project ultimately depends on many specifics (e.g., model purpose, hardware/software availability, and compatibility with other users), the following areas should be considered when choosing between CSG and BREP:
+
+* _Realism_ - Does the model need to approximate real material densities, thicknesses, and volumes, or is the realistic appearance of object surfaces more important?
+* _Resolution_ - How geometrically precise must the model be? For example, radar cross-section studies are sensitive to surface detail; ballistic penetration analyses usually are not.
+* _Resources_ - How much disk space and memory will be needed to store the geometry and data structures?
+* _Time_ - How much CPU time is needed to read, write, and process the model, and how much user time will be needed to understand, modify, and conduct analyses with it?
+
+|===
+
+[[_prerelease_6.0_database_vs._current_format]]
+== Prerelease 6.0 Database vs. Current Format
+
+With the release of BRL-CAD 6.0, an entirely new BRL-CAD database format was introduced.
+Additional capabilities provided by the new format include unlimited name lengths, object attributes, machine independence (for IEEE floating point architectures), reduced disk space requirements, opaque binary objects, and the capability to hide objects.
+(For more information on the new database format, see Butler et al.
+[2003]).
+
+Older BRL-CAD databases may be upgraded to the current database (db) format using the `dbupgrade` utility.
+To execute this command, the user types the following command at the command-line prompt:
+
+`dbupgrade`[path]_oldformat.g_[path]_currentformat.g_
+
+This command reads an existing input.g database (in the older format) and writes a new output.g in the latest format.
+Remember that all BRL-CAD geometry files are designated by a ``.g'' suffix.
+Thus, the conversion commands discussed in the following sections use a ``g'' to represent the BRL-CAD file format (e.g., ``asc2g``, ``dxf-g``, ``g-acad``, etc.).
+
+.What About Databases in the Old Format?
+[cols="1,1"]
+|===
+|
+
+
+image::test_img.eps[]
+
+|
+
+What About Databases in the Old Format?
+
+Although databases created with BRL-CAD release 6.0 or later are in the new format by default, BRL-CAD retains the ability to work in the old format.
+Thus, new-database users need not be concerned about losing databases in the old format.
+Also, whenever a new database format is implemented in the future (typically a rare event), the dbupgrade utility will be modified so that it will always be able to upgrade databases to the current format.
+|===
+
+== Converters Currently Available in BRL-CAD
+
+.BRL-CAD conversion capabilities.
+[cols="1,1,1", options="header"]
+|===
+| CAD Format
+| Import Capability?
+| Export Capability?
+
+|ACAD
+|N
+|Y
+
+|ASCII
+|Y
+|Y
+
+|AutoCAD DXF
+|Y
+|Y
+
+|Elysium Neutral Facetted
+|Y
+|N
+
+|EUCLIDfootnote:[Conversion is to/from the ASCII EUCLID decoded format, not native format.]
+|Y
+|Y
+
+|FASGEN
+|Y
+|N
+
+|IGES
+|Y
+|Y
+
+|Jack
+|Y
+|Y
+
+|NASTRAN
+|Y
+|N
+
+|Pro/E
+|Y
+|N
+
+|STL
+|Y
+|Y
+
+|TANKILL
+|Y
+|Y
+
+|Unigraphics
+|Y
+|N
+
+|Viewpoint
+|Y
+|N
+
+|VRML
+|N
+|Y
+
+|Wavefront (.obj)
+|N
+|Y
+
+|X3D
+|N
+|Y
+|===

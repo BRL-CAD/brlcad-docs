@@ -1,0 +1,42 @@
+[[_sec_convert_from_to_ascii]]
+= Converting From/to ASCII
+:doctype: book
+:sectnums:
+:toc: left
+:icons: font
+:experimental:
+:sourcedir: .
+
+With the implementation of BRL-CAD's machine-independent database format, the need for converting to or from ASCII format has rapidly diminished.
+Nonetheless, BRL-CAD still supports ASCII conversions, and release 6.0 introduced a new ASCII format.
+This format is simply a Tclfootnote:[Tcl/Tk is an interpreted programming language that can be used to extend/customize BRL-CAD functionality. Users are encouraged to consult one of the many texts on Tcl/Tk syntax and use, including Practical Programming in Tcl and Tk (Welch, 1999) and TCL/TK in a Nutshell (Raines and Tranter, 1999).] script that (when executed by a properly empowered Tcl interpreter) rebuilds the database from which it was derived.
+In contrast, the old ASCII format consisted of a sequence of one-line records that corresponded to the old database format records.
+
+== Converting From ASCII
+
+The `asc2g` utility is used to convert ASCII format databases into the new binary format.
+This utility will always create the new binary format, but it will accept either of the two ASCII formats.
+
+The usage for this utility is as follows:
+
+`asc2g`[path]_input.asc_[path]_output.g_
+
+In this command, [path]_input.asc_ is a file previously created using `g2asc` and [path]_output.g_ is the name where the resulting binary database should be stored.
+
+== Converting to ASCII
+
+The converse of the `asc2g` utility is the `g2asc` utility, which is used to convert from either the current database format or the prerelease 6.0 database format to an ASCII format.
+Databases in the new format will be converted to the new (Tcl script) ASCII format.
+Databases in the old format will be converted to the old ASCII format.
+
+The command for this utility is as follows:
+
+`g2asc`[path]_input.g_[path]_output.asc_
+
+In this command, the [path]_input.g_ is a BRL-CAD database (old or new format) and [path]_output.asc_ is the name where the ASCII output is placed.
+As mentioned previously, the form of the ASCII output depends on which database format is used by the input database.
+If it is known that the input database is in the older BRL-CAD format, then the g2asc may be executed using redirected input and output, as follows:
+
+`g2asc` < [path]_input.g_ > [path]_output.g_
+
+If this is attempted using the newer database format, however, an error message will be displayed and no conversion will be performed.
