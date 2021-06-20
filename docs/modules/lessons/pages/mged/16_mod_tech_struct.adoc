@@ -18,7 +18,7 @@ realistic and, in so doing, discuss logical techniques and structures
 in modeling.  When finished, our radio should look as follows:
 
 .Walkie-Talkie Radio
-image::mged/16_radio_new_design.png[]
+image::lessons:mged/16_radio_new_design.png[]
 
 
 [[_radio_shapes_to_regions]]
@@ -106,7 +106,7 @@ If we were to raytrace case.r at this point, we would see the
 following:
 
 .Radio with Component Cutouts and Default Material Properties
-image::mged/16_radio_default_components_props.png[]
+image::lessons:mged/16_radio_default_components_props.png[]
 
 Note the hole for the antenna in the top of the case and the hole for
 the talk button on the side of the case.  We will now fill these holes
@@ -230,7 +230,7 @@ default values in place.  The design should appear similar to the
 following when raytraced in Underlay mode:
 
 .Radio with Material Properties Assigned
-image::mged/16_radio_with_mater_props.png[]
+image::lessons:mged/16_radio_with_mater_props.png[]
 
 As we look at our radio now, we can see that the antenna looks a
 little bit like a straw.  In reality, it should have a small cap on
@@ -284,7 +284,7 @@ radio.c as follows:
 Our radio should now look like the following:
 
 .Wireframe Radio with Circuit Board Added
-image::mged/16_radio_wireframe_circ_board.png[]
+image::lessons:mged/16_radio_wireframe_circ_board.png[]
 
 In addition, the tree for radio.c should now look as follows:
 
@@ -386,7 +386,7 @@ Now raytrace your design to view the resulting effect.  The new
 transparent case should appear similar to the following:
 
 .Transparent View of the Radio
-image::mged/16_radio_transparent.png[]
+image::lessons:mged/16_radio_transparent.png[]
 
 As shown in the following tree diagram, the structure of this
 specialty radio_clear.c is not much different than that of the regular
@@ -454,14 +454,14 @@ the shape (cutaway.s) that is covering what you want to see (board.r):
 [cmd]`comb radio_cutaway.c u radio.c - cutaway.s kbd:[Enter]`
 
 .Multipane View of Cutting Primitive
-image::mged/16_radio_cut_wireframe.png[]
+image::lessons:mged/16_radio_cut_wireframe.png[]
 
 Blast the radio_cutaway.c combination onto the display and raytrace.
 Depending on how your arb8 intersected the radio, the cutaway should
 look similar to the following:
 
 .Cutaway View of Radio with Circuit Board Cut Off
-image::mged/16_radio_cut_raytrace.png[]
+image::lessons:mged/16_radio_cut_raytrace.png[]
 
 Notice in the preceding figures that cutaway.s removes everything it
 overlaps (including part of the circuit board). This is okay if we
@@ -491,7 +491,7 @@ any modified components or structures.  If we don't, the master model
 will also be changed.
 
 .Cutaway Subtractions.
-image::mged/16_radio_cutaways.png[]
+image::lessons:mged/16_radio_cutaways.png[]
 
 
 [[_radio_structure_redefinition]]
@@ -506,13 +506,13 @@ far grouped everything together under the general category of Radio,
 as shown in the following:
 
 .Current Radio Structure
-image::mged/16_radio_structure_1.png[]
+image::lessons:mged/16_radio_structure_1.png[]
 
 If we wanted to categorize our components according to location,
 however, we might structure the model as follows:
 
 .Location-Based Structure of Radio
-image::mged/16_radio_structure_2.png[]
+image::lessons:mged/16_radio_structure_2.png[]
 
 If we wanted to define our components according to functionality, we
 might structure the model another way.  For instance, to repair an
@@ -524,7 +524,7 @@ changed as shown in the following diagram to associate the knob and
 button with the circuit board.
 
 .Function-Based Structure of Radio
-image::mged/16_radio_structure_3.png[]
+image::lessons:mged/16_radio_structure_3.png[]
 
 To accomplish this restructuring according to functionality, create an
 assembly called electronics.c to hold these components together.
@@ -584,7 +584,7 @@ Now when we Blast the display and raytrace radio_cutaway.c, we should
 see the following:
 
 .View of Radio with Just the Case Cut Away
-image::mged/16_radio_casecut_raytrace.png[]
+image::lessons:mged/16_radio_casecut_raytrace.png[]
 
 
 [[_modeling_techniques_and_structures_review]]
