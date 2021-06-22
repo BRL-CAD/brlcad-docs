@@ -7,579 +7,703 @@
 :experimental:
 :sourcedir: .
 
+:fn-1: footnote:[Conversion is from the ASCII EUCLID decoded format, not native format.]
+:fn-2: footnote:[Converter is part of the Pro/E GUI.]
+
 == General Information About Converting to BRL-CAD
 
-<<_tbl_import_converters>> contains the primary file formats (other than ASCII) that currently convert to BRL-CAD.
-Note that, as discussed previously, the "-g" designation at the end of each converter name indicates that the converted file will be in BRL-CAD's standard geometry (.g) format.
+<<_tbl_import_converters>> contains the primary file formats (other
+than ASCII) that currently convert to BRL-CAD.  Note that, as
+discussed previously, the "-g" designation at the end of each
+converter name indicates that the converted file will be in BRL-CAD's
+standard geometry (.g) format.
 
+[[_tbl_import_converters]]
 .BRL-CAD import converters
 [cols="1,1", options="header"]
 |===
 | CAD format
 | Import Converter
 
-|
+| AutoCAD DXF
+| dxf-g
 
-AutoCAD DXF
-|
+| Elysium Neutral Facetted
+| enf-g
 
-dxf-g
+| EUCLID {fn-1}
+| euclid-g
 
-|
+| FASTGEN (FASTGEN4 and PATCH)
+| fast4-g/patch-g
 
-Elysium Neutral Facetted
-|
+| IGES
+| iges-g
 
-enf-g
+| Jack
+| jack-g
 
-|
+| NASTRAN
+| nastran-g
 
-EUCLIDfootnote:[Conversion is from the ASCII EUCLID decoded format, not native format.]
-|
+| Pro/E
+| * {fn-2}
 
-euclid-g
+| STL
+| stl-g
 
-|
+| TANKILL
+| tankill-g
 
-FASTGEN (FASTGEN4 and PATCH)
-|
+| Unigraphics
+| ug-g
 
-fast4-g/patch-g
-
-|
-
-IGES
-|
-
-iges-g
-
-|
-
-Jack
-|
-
-jack-g
-
-|
-
-NASTRAN
-|
-
-nastran-g
-
-|
-
-Pro/E
-|
-
-*footnote:[Converter is part of the Pro/E GUI.]
-
-|
-
-STL
-|
-
-stl-g
-
-|
-
-TANKILL
-|
-
-tankill-g
-
-|
-
-Unigraphics
-|
-
-ug-g
-
-|
-
-Viewpoint datalabs
-|
-
-viewpoint-g
+| Viewpoint datalabs
+| viewpoint-g
 |===
 
 == Converting From AutoCAD DXF Format
 
-DXF is Autodesk Inc.'s proprietary data specification that has been developed to support links with AutoCAD, the company's popular CAD software.
-The format, which has been implemented in many CAD systems (particularly those that work on PCs), is simple and relatively limited; however, it has become a well-established means of exchanging engineering drawings.
+DXF is Autodesk Inc.'s proprietary data specification that has been
+developed to support links with AutoCAD, the company's popular CAD
+software.  The format, which has been implemented in many CAD systems
+(particularly those that work on PCs), is simple and relatively
+limited; however, it has become a well-established means of exchanging
+engineering drawings.
 
-The DXF format allows for the specification of the units used in the DXF file; however, not all DXF files include this information.
-Thus, if units information is not found in the DXF file, millimeters (which is also the default and underlying unit of measure in BRL-CAD) is the assumed unit of measure.
-Of course, if millimeters is not the right choice for a particular user or application, the [option]``-s`` (scale) option can be used.
-This option and the other available options for the `dxf-g` converter are discussed in the text that follows.
+The DXF format allows for the specification of the units used in the
+DXF file; however, not all DXF files include this information.  Thus,
+if units information is not found in the DXF file, millimeters (which
+is also the default and underlying unit of measure in BRL-CAD) is the
+assumed unit of measure.  Of course, if millimeters is not the right
+choice for a particular user or application, the [opt]`-s` (scale)
+option can be used.  This option and the other available options for
+the `dxf-g` converter are discussed in the text that follows.
 
-When using this converter, polygons and meshes are converted to BOT primitives.
-Each layer becomes a region.
-Lines, circles, and arcs become n-manifold geometry (NMG) objects, and points become spheres.
+When using this converter, polygons and meshes are converted to BOT
+primitives.  Each layer becomes a region.  Lines, circles, and arcs
+become n-manifold geometry (NMG) objects, and points become spheres.
 
 .NMG Primitive
-[cols="1,1"]
-|===
-|
-
-
-image::test_img.eps[]
-
-|
-
-The NMG primitive represents geometry that is defined by points, lines, polygonal facets, and collections thereof.
-It is the primary BRL-CAD primitive for encoding one- or two-dimensional (2-D) data.
-For more information on the NMG, see Muuss and Butler (1991) and Weiler (1987).
-|===
+****
+The NMG primitive represents geometry that is defined by points,
+lines, polygonal facets, and collections thereof.  It is the primary
+BRL-CAD primitive for encoding one- or two-dimensional (2-D) data.
+For more information on the NMG, see Muuss and Butler (1991) and
+Weiler (1987).
+****
 
 The command for the `dxf-g` converter is as follows:
 
-`dxf-g` [[option]``options``] [path]_input.dxf_[path]_output.g_
+`[cmd]*dxf-g* +++[+++[opt]_options_] [path]_input.dxf_ [path]_output.g_`
 
 The options for the command are as follows:
 
-* [option]``-c`` - specifies that only the first color encountered for a layer in the DXF file is used; additional colors for the same layer are ignored.
-* [option]``-d`` - debug; produces core dump on failure.
-* [option]``-s`` - applies the specified scale factor to the DXF data (takes an argument).
-* [option]``-t`` - sets tolerance distance (in millimeters) (default is 0.005) (takes an argument).
-* [option]``-v`` - verbose; prints out progress information.
+[opt]`-c` :: specifies that only the first color encountered for a
+layer in the DXF file is used; additional colors for the same layer
+are ignored.
+[opt]`-d` :: debug; produces core dump on failure.
 
-For more information on the DXF file format and import possibilities, see the on-line documentation on the Autodesk web site at http://adeskftp.autodesk.com/ prodsupp/downloads/dxf.pdf (Autodesk, 2003).
+[opt]`-s` :: applies the specified scale factor to the DXF data (takes
+an argument).
+[opt]`-t` :: sets tolerance distance (in millimeters) (default is
+0.005) (takes an argument).
+[opt]`-v` :: verbose; prints out progress information.
+
+For more information on the DXF file format and import possibilities,
+see the on-line documentation on the Autodesk web site at
+http://adeskftp.autodesk.com/ prodsupp/downloads/dxf.pdf (Autodesk,
+2003).
 
 == Converting From Elysium Neutral Facetted Format
 
-Elysium Inc.
-was founded in 1984 to provide product structure synchronization and compatibility between different CAD systems.
-The company claims to hold the industry's highest translation success rate and relies on three of its products (CADporter, CADdoctor, and CADserver) to convert geometry between a large number of formats, including Pro/E, Unigraphics, ABAQUS/CAE, ACIS, CATIA, Inventor, I-deas, Metrix Build!IT, One Space Designer, Parasolid, and SolidWorks (Elysium, 2003).
+Elysium Inc.  was founded in 1984 to provide product structure
+synchronization and compatibility between different CAD systems.  The
+company claims to hold the industry's highest translation success rate
+and relies on three of its products (CADporter, CADdoctor, and
+CADserver) to convert geometry between a large number of formats,
+including Pro/E, Unigraphics, ABAQUS/CAE, ACIS, CATIA, Inventor,
+I-deas, Metrix Build!IT, One Space Designer, Parasolid, and SolidWorks
+(Elysium, 2003).
 
-The `enf-g` converter was originally written when BRL-CAD developers needed an intermediate format-the Elysium neutral facetted file format-to allow the conversion of Unigraphics geometry to BRL-CAD.
-The converter converts each part to a BRL-CAD region consisting of one BOT primitive.
-Ident numbers are incremented for each region.
-If a part name mapping file is provided, part names in the input file will be output using the corresponding names from the mapping file.
-The part name mapping file may look similar to the following:
+The `enf-g` converter was originally written when BRL-CAD developers
+needed an intermediate format-the Elysium neutral facetted file
+format-to allow the conversion of Unigraphics geometry to BRL-CAD.
+The converter converts each part to a BRL-CAD region consisting of one
+BOT primitive.  Ident numbers are incremented for each region.  If a
+part name mapping file is provided, part names in the input file will
+be output using the corresponding names from the mapping file.  The
+part name mapping file may look similar to the following:
 
 .Part name mapping
-[cols="1,1", frame="none"]
-|===
-|01a3-011-03
-|washer, flat
-
-|01a2-011-02
-|nut, flex
-
-|.
-|
-
-|.
-|
-
-|.
-|
-|===
+----
+01a3-011-03    washer, flat
+01a2-011-02    nut, flex
+.
+.
+.
+----
 
 The syntax for the `enf-g` command is as follows:
 
-`enf-g`[path]_input_file_[path]_output.g_
+`[cmd]*enf-g* [path]_input_file_ [path]_output.g_`
 
 The options for the command are as follows:
 
-* [option]``-i starting_ident`` - sets the starting ident number (default is 1000).
-* [option]``-n part_name_mapping`` - sets the mapping from input names to output names.
-* [option]``-t tolerance_distance`` - sets distance calculation tolerance (in millimeters) (default is 0.005).
+[opt]`-i starting_ident` :: sets the starting ident number (default is
+1000).
+[opt]`-n part_name_mapping` :: sets the mapping from input names to
+output names.
+[opt]`-t tolerance_distance` :: sets distance calculation tolerance
+(in millimeters) (default is 0.005).
 
-For more information on the Elysium file format and import possibilities, see the Elysium web site at http://www.elysiuminc.com (Elysium, 2003).
+For more information on the Elysium file format and import
+possibilities, see the Elysium web site at http://www.elysiuminc.com
+(Elysium, 2003).
 
 == Converting From EUCLID Format
 
-EUCLID is one of Europe's primary product design, manufacturing, and engineering CAD packages (though it is quickly being superseded by CATIA). Formerly distributed by the European Aeronautic Defence and Space Company's Matra Datavision subsidiary and now a product of the IBM subsidiary MDTVISION, the package was developed for the design and manufacture of complex models and has been used on major systems such as the Airbus, Eurocopter, Ariane, Eurofighter, Astrium, and Euromissile.
+EUCLID is one of Europe's primary product design, manufacturing, and
+engineering CAD packages (though it is quickly being superseded by
+CATIA). Formerly distributed by the European Aeronautic Defence and
+Space Company's Matra Datavision subsidiary and now a product of the
+IBM subsidiary MDTVISION, the package was developed for the design and
+manufacture of complex models and has been used on major systems such
+as the Airbus, Eurocopter, Ariane, Eurofighter, Astrium, and
+Euromissile.
 
-Package features include specialized applications for design, styling, drafting, analysis, machining, and product data management.
-Recent enhancements have focused on automatic creation of 2-D drawings from 3-D models, milling cycles, two- to four-axis wire cutting, sheet metal design, mold design, and standard data exchange format interfaces.
+Package features include specialized applications for design, styling,
+drafting, analysis, machining, and product data management.  Recent
+enhancements have focused on automatic creation of 2-D drawings from
+3-D models, milling cycles, two- to four-axis wire cutting, sheet
+metal design, mold design, and standard data exchange format
+interfaces.
 
-EUCLID offers several data translation interfaces, including those for DXF, IGES, VDA-FS, STL, and SET formats.
-In addition, other modules are available to help refine and customize data transfer, with direct connectivity at two levels available for CATIA (V4/V5) data transfer using BREPs to handle surface data.
-EUCLID geometry can be output to standard graphic (e.g., PostScript, Encapsulated PostScript, and Interleaf) and plotting (e.g., CalComp, HP, HP/GL2, OCE, and Versatec) formats as well as to an STL file.
+EUCLID offers several data translation interfaces, including those for
+DXF, IGES, VDA-FS, STL, and SET formats.  In addition, other modules
+are available to help refine and customize data transfer, with direct
+connectivity at two levels available for CATIA (V4/V5) data transfer
+using BREPs to handle surface data.  EUCLID geometry can be output to
+standard graphic (e.g., PostScript, Encapsulated PostScript, and
+Interleaf) and plotting (e.g., CalComp, HP, HP/GL2, OCE, and Versatec)
+formats as well as to an STL file.
 
-The `euclid-g` converter converts an ASCII EUCLID ``decoded'' format file to BRL-CAD.
-Each part is converted to a BRL-CAD region consisting of a single BOT primitive.
+The `euclid-g` converter converts an ASCII EUCLID ``decoded'' format
+file to BRL-CAD.  Each part is converted to a BRL-CAD region
+consisting of a single BOT primitive.
 
 The syntax for the converter is as follows:
 
-`euclid-g` [[option]``options``]
+`[cmd]*euclid-g* +++[+++[opt]_options_]`
 
 The options for the command are as follows:
 
-* [option]``-v`` - verbose; prints out progress information.
-* [option]``-i [replaceable]``input_euclid_db```` - sets input file name (default is [parameter]``stdin``).
-* [option]``-o [replaceable]``output_brlcad_db```` - sets output file name (default is [parameter]``stdout``).
-* [option]``-d tolerance_distance`` - sets distance calculation tolerance (in millimeters) (default is 0.005).
-* [option]``-n`` - produces NMG primitives (default is BOT primitives).
-* [option]``-x lvl`` - sets librt debug flag (see [parameter]``raytrace.h`` in the binary distribution for definitions of DEBUG_xxx).
-* [option]``-X lvl`` - sets NMG library debug flag (see [parameter]``nmg.h`` in the binary distribution for definitions of DEBUG_xxx).
+[opt]`-v` :: verbose; prints out progress information.
+[opt]`-i [replaceable]_input_euclid_db_` :: sets input file name
+(default is [path]`stdin`).
+[opt]`-o [replaceable]_output_brlcad_db_` :: sets output file name
+(default is [path]`stdout`).
+[opt]`-d tolerance_distance` :: sets distance calculation tolerance
+(in millimeters) (default is 0.005).
+[opt]`-n` :: produces NMG primitives (default is BOT primitives).
+[opt]`-x lvl` :: sets librt debug flag (see [path]`raytrace.h` in the
+binary distribution for definitions of DEBUG_xxx).
+[opt]`-X lvl` :: sets NMG library debug flag (see [path]`nmg.h` in the
+binary distribution for definitions of DEBUG_xxx).
 
-For more information about the EUCLID file format and import possibilities, see the MDTVISION web site at http://support.mdtvision.com (MDTVISION, 2003).
+For more information about the EUCLID file format and import
+possibilities, see the MDTVISION web site at
+http://support.mdtvision.com (MDTVISION, 2003).
 
 .Header file note
-[cols="1,1"]
-|===
-|
-
-
-image::test_img.eps[]
-
-|
-
-Note that all header (.h) files-including [path]_raytrace.h_, [path]_nmg.h_, and [path]_bu.h_ - are accessible in both the source and binary distributions of BRL-CAD.
-In the binary distribution, these files are installed in the [path]_/user/brlcad/include/brlcad_ directory.
-|===
+****
+Note that all header (.h) files-including [path]_raytrace.h_,
+[path]_nmg.h_, and [path]_bu.h_ -- are accessible in both the source
+and binary distributions of BRL-CAD.  In the binary distribution,
+these files are installed in the [path]_/user/brlcad/include/brlcad_
+directory.
+****
 
 == Converting From FASTGEN Format
 
-Developed by the Falcon Research and Development Company over 30 years ago, FASTGEN has been widely used in the Department of Defense air combat system assessment community (e.g., the Air Force Research Laboratory, the Joint Technical Coordinating Group for Munitions Effectiveness, and the Joint Technical Coordinating Group on Aircraft Survivability.
-Now distributed by the Survivability/Vulnerability Information Analysis Center (SURVIAC) as part of the Vulnerability Modeling Tool Set, the FASTGEN format uses geometry BREP based on NASTRAN, with data presented in a generic, open text-based file format.
+Developed by the Falcon Research and Development Company over 30 years
+ago, FASTGEN has been widely used in the Department of Defense air
+combat system assessment community (e.g., the Air Force Research
+Laboratory, the Joint Technical Coordinating Group for Munitions
+Effectiveness, and the Joint Technical Coordinating Group on Aircraft
+Survivability.  Now distributed by the Survivability/Vulnerability
+Information Analysis Center (SURVIAC) as part of the Vulnerability
+Modeling Tool Set, the FASTGEN format uses geometry BREP based on
+NASTRAN, with data presented in a generic, open text-based file
+format.
 
-Components of a target are represented in FASTGEN by triangles, quadrilaterals, cones, cylinders, spheres, and hexahedrons.
-These basic elements are designated as either plate (hollow) or volume (solid) mode and combined using a hierarchical structure for the formation of components and groups (SURVICE Engineering Company, 2002).
+Components of a target are represented in FASTGEN by triangles,
+quadrilaterals, cones, cylinders, spheres, and hexahedrons.  These
+basic elements are designated as either plate (hollow) or volume
+(solid) mode and combined using a hierarchical structure for the
+formation of components and groups (SURVICE Engineering Company,
+2002).
 
-Notable aerospace firms and support organizations that use FASTGEN include 
-// <orgname>Lockheed Martin</orgname>
-, 
-// <orgname>Boeing</orgname>
-, 
-// <orgname>Bell Helicopter</orgname>
-, 
-// <orgname>Northrop Grumman</orgname>
-, 
-// <orgname>Pratt &amp; Whitney</orgname>
-, 
-// <orgname>General Electric</orgname>
-, 
-// <orgname>KETRON</orgname>
-, 
-// <orgname>ITT</orgname>
-, 
-// <orgname>BAH</orgname>
-, 
-// <orgname>SURVICE Engineering</orgname>
-, and 
-// <orgname>ASI</orgname>
-$$.$$
+Notable aerospace firms and support organizations that use FASTGEN
+include [org]_Lockheed Martin_, [org]_Boeing_, [org]_Bell Helicopter_
+, [org]_Northrop Grumman_ , [org]_Pratt &amp; Whitney_ , [org]_General
+Electric_ , [org]_KETRON_ , [org]_ITT_ , [org]_BAH_ , [org]_SURVICE
+Engineering_ , and [org]_ASI_ .
 
-There are several versions of FASTGEN currently in use.
-FASTGEN converters include FASTGEN4 and preprocessed FASTGEN Version 3 (also referred to as PATCH).
+There are several versions of FASTGEN currently in use.  FASTGEN
+converters include FASTGEN4 and preprocessed FASTGEN Version 3 (also
+referred to as PATCH).
 
 === FASTGEN4
 
-The `fast4-g` converter converts FASTGEN4 entities to corresponding BRL-CAD objects.
+The `fast4-g` converter converts FASTGEN4 entities to corresponding
+BRL-CAD objects.
 
 The syntax for the `fast4-g` command is as follows:
 
-`fast4-g` [[option]``options``] [path]_fastgen4_input_[path]_output.g_
+`[cmd]*fast4-g* +++[+++[opt]_options_] [path]_fastgen4_input_ [path]_output.g_`
 
 The options for the command are as follows:
 
-* [option]``-d`` - prints verbose debugging output.
-* [option]``-q`` - prints nothing except errors.
-* [option]``-w`` - prints warnings about creating default names.
-* [option]``-o [replaceable]``plot_file_name```` - creates a UNIX plot file of all CTRI and CQUAD elements processed.
-* [option]``-c component_list`` - processes only the listed region ids; may be a list (e.g., 3001,4082,5347) or a range (e.g., 2314-3527).
-* [option]``-m [replaceable]``muves_file_name```` - creates a MUVES warnings file containing CHGCOMP and CBACKING elements.
-* [option]``-b lvl`` - sets libbu debug flag (see [replaceable]``bu.h`` in the binary distribution for definitions of BU_DEBUG_xxx).
-* [option]``-x lvl`` - sets librt debug flag (see [replaceable]``raytrace.h`` in the binary distribution for definitions of DEBUG_xxx).
+[opt]`-d` :: prints verbose debugging output.
+[opt]`-q` :: prints nothing except errors.
+[opt]`-w` :: prints warnings about creating default names.
+[opt]`-o [replaceable]_plot_file_name_` :: creates a UNIX plot file of
+all CTRI and CQUAD elements processed.
+[opt]`-c component_list` :: processes only the listed region ids; may
+be a list (e.g., 3001,4082,5347) or a range (e.g., 2314-3527).
+[opt]`-m [replaceable]_muves_file_name_` :: creates a MUVES warnings
+file containing CHGCOMP and CBACKING elements.
+[opt]`-b lvl` :: sets libbu debug flag (see [path]`bu.h` in the binary
+distribution for definitions of BU_DEBUG_xxx).
+[opt]`-x lvl` :: sets librt debug flag (see [path]`raytrace.h` in the
+binary distribution for definitions of DEBUG_xxx).
 
 
 === Preprocessed FASTGEN Version 3/PATCH
 
-The `patch-g` converter converts preprocessed FASTGEN version 3 files to BRL-CAD format.
-The syntax for the command is as follows:
+The `patch-g` converter converts preprocessed FASTGEN version 3 files
+to BRL-CAD format.  The syntax for the command is as follows:
 
-`patch-g` [[option]``options``] [path]_output.g_
+`[cmd]*patch-g* +++[+++[opt]_options_] [path]_output.g_`
 
 The options for the command are as follows:
 
-* [option]``-f [replaceable]``fastgen.rp```` - specifies preprocessed FASTGEN file (default is [parameter]``stdin``).
-* [option]``-a`` - processes phantom armor.
-* [option]``-n`` - processes volume mode as plate mode.
-* [option]``-u #`` - specifies the number of union operations per region (default is five).
-* [option]``-c "x y z"`` - specifies the object's center (in inches) (for some surface normal calculations).
-* [option]``-t title`` - specifies optional title (default is ``Untitled MGED database'').
-* [option]``-o object_name`` - specifies optional top-level name (default is "all").
-* [option]``-p`` - writes volume and plate mode components as BOTs.
-* [option]``-6`` - processes plate mode triangles as ARB6 solids (overrides p option for triangles).
-* [option]``-i [replaceable]``group.file```` - specifies group labels source file.
-* [option]``-m [replaceable]``mat.file```` - specifies materials information source file.
-* [option]``-r`` - reverses normals for plate mode triangles.
-* [option]``-d lvl`` - sets debug level.
-* [option]``-x lvl`` - sets librt debug flag (see [parameter]``raytrace.h`` in the binary distribution for definitions of DEBUG_xxx).
-* [option]``-X lvl`` - sets librt NMG debug flag (see [parameter]``nmg.h`` in the binary distribution for definitions of DEBUG_xxx).
-* [option]``-T tolerance_distance`` - sets distance tolerance (in inches).
-* [option]``-A parallel_tolerance`` - sets parallel tolerance (sine).
+[opt]`-f [replaceable]_fastgen.rp_` :: specifies preprocessed FASTGEN
+file (default is [path]`stdin`).
+[opt]`-a` :: processes phantom armor.
+[opt]`-n` :: processes volume mode as plate mode.
+[opt]`-u #` :: specifies the number of union operations per region
+(default is five).
+[opt]`-c "x y z"` :: specifies the object's center (in inches) (for
+some surface normal calculations).
+[opt]`-t title` :: specifies optional title (default is ``Untitled
+MGED database'').
+[opt]`-o object_name` :: specifies optional top-level name (default is
+"all").
+[opt]`-p` :: writes volume and plate mode components as BOTs.
+[opt]`-6` :: processes plate mode triangles as ARB6 solids (overrides
+p option for triangles).
+[opt]`-i [replaceable]_group.file_` :: specifies group labels source
+file.
+[opt]`-m [replaceable]_mat.file_` :: specifies materials information
+source file.
+[opt]`-r` :: reverses normals for plate mode triangles.
+[opt]`-d lvl` :: sets debug level.
+[opt]`-x lvl` :: sets librt debug flag (see [path]`raytrace.h` in the
+binary distribution for definitions of DEBUG_xxx).
+[opt]`-X lvl` :: sets librt NMG debug flag (see [path]`nmg.h` in the
+binary distribution for definitions of DEBUG_xxx).
+[opt]`-T tolerance_distance` :: sets distance tolerance (in inches).
+[opt]`-A parallel_tolerance` :: sets parallel tolerance (sine).
 
-For more information about the FASTGEN file formats and import possibilities, see the SURVIAC web site at http://www.bahdayton.com/surviac/fastgen.htm (SURVIAC, 2003).
+For more information about the FASTGEN file formats and import
+possibilities, see the SURVIAC web site at
+http://www.bahdayton.com/surviac/fastgen.htm (SURVIAC, 2003).
 
 == Converting From IGES Format
 
-IGES was developed in 1979 by a consortium of government, industry, and academia representatives.
-Originally intended to provide a means of exchanging graphics and engineering drawings, IGES was extended to include solid models as well.
-This specification includes so many different implementations within itself that conversion between IGES flavors has become a small industry.
-Thus, conversion to/from IGES is a ``hit-or-miss'' proposition (NIST, 2003).
+IGES was developed in 1979 by a consortium of government, industry,
+and academia representatives.  Originally intended to provide a means
+of exchanging graphics and engineering drawings, IGES was extended to
+include solid models as well.  This specification includes so many
+different implementations within itself that conversion between IGES
+flavors has become a small industry.  Thus, conversion to/from IGES is
+a ``hit-or-miss'' proposition (NIST, 2003).
 
-The Product Data Exchange using STEP specification is intended to replace IGES and correct the aforementioned deficiency by explicitly identifying different types of conversion and requiring converters to conform to those types.
-BRL-CAD supports conversion of two implementations of IGES, entirely facetted BREP and CSG with facetted BREP primitives.
+The Product Data Exchange using STEP specification is intended to
+replace IGES and correct the aforementioned deficiency by explicitly
+identifying different types of conversion and requiring converters to
+conform to those types.  BRL-CAD supports conversion of two
+implementations of IGES, entirely facetted BREP and CSG with facetted
+BREP primitives.
 
 The syntax for the `iges-g` converter is as follows:
 
-`iges-g` [[option]``options``] -o [path]_output.g_[path]_input.iges_
+`[cmd]*iges-g* +++[+++[opt]_options_] -o [path]_output.g_ [path]_input.iges_`
 
 The options available for this command are as follows:
 
-* [option]``-n`` - combines all the rational B-spline surfaces in the file into one BRL-CAD spline primitive.
-* [option]``-d`` - converts drawings in the IGES file to 2-D BRL-CAD NMG primitives.
-* [option]``-3`` - same as the [option]``-d`` option, but the final projection to 2-D is not performed. This can produce 3-D drawings in some cases.
-* [option]``-t`` - converts all trimmed surfaces in the IGES file to a single BRL-CAD NMG primitive.
-* [option]``-N primitive_name`` - specifies a name for single primitive created using the [option]``-t`` or [option]``-n`` options.
-* [option]``-p`` - converts all BREP entities to BRL-CAD NMG primitives rather than the default BOT primitives.
-* [option]``-x lvl`` - sets librt debug flag (see [path]_raytrace.h_ in the binary distribution for definitions of DEBUG_xxx).
-* [option]``-X lvl`` - sets librt NMG debug flag (see [path]_nmg.h_ in the binary distribution for definitions of DEBUG_xxx).
+[opt]`-n` :: combines all the rational B-spline surfaces in the file
+into one BRL-CAD spline primitive.
+[opt]`-d` :: converts drawings in the IGES file to 2-D BRL-CAD NMG
+primitives.
+[opt]`-3` :: same as the [opt]`-d` option, but the final projection to
+2-D is not performed. This can produce 3-D drawings in some cases.
+[opt]`-t` :: converts all trimmed surfaces in the IGES file to a
+single BRL-CAD NMG primitive.
+[opt]`-N primitive_name` :: specifies a name for single primitive
+created using the [opt]`-t` or [opt]`-n` options.
+[opt]`-p` :: converts all BREP entities to BRL-CAD NMG primitives
+rather than the default BOT primitives.
+[opt]`-x lvl` :: sets librt debug flag (see [path]_raytrace.h_ in the
+binary distribution for definitions of DEBUG_xxx).
+[opt]`-X lvl` :: sets librt NMG debug flag (see [path]_nmg.h_ in the
+binary distribution for definitions of DEBUG_xxx).
 
-The [option]``-n``, [option]``-d``, [option]``-t``, and [option]``-3`` options are mutually exclusive.
-If none of these four options is provided, the default action is to convert only IGES solid model entities (CSG and planar face BREP) to BRL-CAD.
+The [opt]`-n`, [opt]`-d`, [opt]`-t`, and [opt]`-3` options are
+mutually exclusive.  If none of these four options is provided, the
+default action is to convert only IGES solid model entities (CSG and
+planar face BREP) to BRL-CAD.
 
-For more information about the IGES file format and import possibilities, see the National Institute of Standards and Technology (NIST) web site at http://www.nist.gov/iges (NIST, 2003).
+For more information about the IGES file format and import
+possibilities, see the National Institute of Standards and Technology
+(NIST) web site at http://www.nist.gov/iges (NIST, 2003).
 
 == Converting From Jack
 
-Jack is a 3-D interactive ergonomics and human factors CAD package developed by the University of Pennsylvania's Center for Human Modeling and Simulation.
-Now maintained and distributed by Electronic Data Systems (EDS) (the company that now also distributes Unigraphics and NASTRAN), the package enables users to study and improve the ergonomics of product design and workplace tasks through the positioning of biomechanically accurate digital humans of various sizes in virtual environments.
-Jack and Jill digital ``humans'' can tell engineers what they can see and reach, how comfortable they are, when and why they're getting hurt, when they're getting tired, and other important ergonomics information.
-The package's principal features include a detailed human model, realistic behavioral controls, anthropometric scaling, task animation and evaluation systems, view analysis, automatic reach and grasp, and collision detection and avoidance (The University of Pennsylvania, 2001; EDS, 2003a).
+Jack is a 3-D interactive ergonomics and human factors CAD package
+developed by the University of Pennsylvania's Center for Human
+Modeling and Simulation.  Now maintained and distributed by Electronic
+Data Systems (EDS) (the company that now also distributes Unigraphics
+and NASTRAN), the package enables users to study and improve the
+ergonomics of product design and workplace tasks through the
+positioning of biomechanically accurate digital humans of various
+sizes in virtual environments.  Jack and Jill digital ``humans'' can
+tell engineers what they can see and reach, how comfortable they are,
+when and why they're getting hurt, when they're getting tired, and
+other important ergonomics information.  The package's principal
+features include a detailed human model, realistic behavioral
+controls, anthropometric scaling, task animation and evaluation
+systems, view analysis, automatic reach and grasp, and collision
+detection and avoidance (The University of Pennsylvania, 2001; EDS,
+2003a).
 
-The `jack-g` converter creates a single region consisting of a single BOT primitive.
-The syntax for the converter is as follows:
+The `jack-g` converter creates a single region consisting of a single
+BOT primitive.  The syntax for the converter is as follows:
 
-`jack-g` [[option]``options``] [path]_input.jack_[path]_output.g_
+`[cmd]*jack-g* +++[+++[opt]_options_] [path]_input.jack_ [path]_output.g_`
 
 The options for this command are:
 
-* [option]``-r region_name`` - specifies a name for the BRL-CAD region created. If this option is not specified, the input file name will be used to construct a region name.
-* [option]``-g group_name`` - specifies the name of a combination to create to hold the BRL-CAD region created. If this option is not specified, the combination will not be created.
+[opt]`-r region_name` :: specifies a name for the BRL-CAD region
+created. If this option is not specified, the input file name will be
+used to construct a region name.
+[opt]`-g group_name` :: specifies the name of a combination to create
+to hold the BRL-CAD region created. If this option is not specified,
+the combination will not be created.
 
-For more information on the Jack file format and import possibilities, see the EDS web page at http://www.eds.com/products/plm/efactory/jack/ (EDS, 2003a).
+For more information on the Jack file format and import possibilities,
+see the EDS web page at http://www.eds.com/products/plm/efactory/jack/
+(EDS, 2003a).
 
 == Converting From NASTRAN Format
 
-Originally developed under 
-// <orgname>National Aeronautics and Space Administration (NASA)</orgname>
- sponsorship in the mid-1960s, the NASA Structural Analysis (NASTRAN) program was one of the first efforts to consolidate structural mechanics into a single computer program.
-It has since been used as a general-purpose software tool in numerous industries, including aerospace, automotive, medical, heavy machinery, electronic devices, and consumer products.
-The program is developed and distributed by the 
-// <orgname>MSC.Software Corporation (MSC)</orgname>
- and (as of June 2003) the 
-// <orgname>EDS Corporation</orgname>
-$$.$$
-It employs advanced finite element analysis computational techniques to analyze material strength/performance and evaluate static structures and the dynamic motion of structures (SURVICE Engineering Company, 2002; MSC.Software Corporation, 2003).
+Originally developed under [org]_National Aeronautics and Space
+Administration (NASA)_ sponsorship in the mid-1960s, the NASA
+Structural Analysis (NASTRAN) program was one of the first efforts to
+consolidate structural mechanics into a single computer program.  It
+has since been used as a general-purpose software tool in numerous
+industries, including aerospace, automotive, medical, heavy machinery,
+electronic devices, and consumer products.  The program is developed
+and distributed by the [org]_MSC.Software Corporation (MSC)_ and (as
+of June 2003) the [org]_EDS Corporation_.  It employs advanced finite
+element analysis computational techniques to analyze material
+strength/performance and evaluate static structures and the dynamic
+motion of structures (SURVICE Engineering Company, 2002; MSC.Software
+Corporation, 2003).
 
-NASTRAN's nonlinear analysis capabilities can address a wide range of static and dynamic problems exhibiting both material and geometric nonlinear behavior.
-Heat transfer problems can also be solved using conduction, convection, and radiation methods under a variety of applied loads and boundary conditions.
+NASTRAN's nonlinear analysis capabilities can address a wide range of
+static and dynamic problems exhibiting both material and geometric
+nonlinear behavior.  Heat transfer problems can also be solved using
+conduction, convection, and radiation methods under a variety of
+applied loads and boundary conditions.
 
-The NASTRAN finite element modeling program is one of the general-purpose structural analysis programs used worldwide.
-Even though it was originally intended for structural analysis problems, its current applications include aeroelasticity, heat transfer, fluid structure interaction, acoustics, electromagnetics, and many other applications.
+The NASTRAN finite element modeling program is one of the
+general-purpose structural analysis programs used worldwide.  Even
+though it was originally intended for structural analysis problems,
+its current applications include aeroelasticity, heat transfer, fluid
+structure interaction, acoustics, electromagnetics, and many other
+applications.
 
 NASTRAN includes a file specification for describing geometric data.
-NASTRAN's wide use and adoption by CAD vendors make it well suited as a file standard.
+NASTRAN's wide use and adoption by CAD vendors make it well suited as
+a file standard.
 
-The `nastran-g` converter currently only converts CBAR, CROD, CTRIA3, and CQUAD4 elements of NASTRAN files to BRL-CAD format.
-CBAR and CROD elements become cylinders in BRL-CAD.
-CTRIA3 and CQUAD4 elements become BOT facets.
+The `nastran-g` converter currently only converts CBAR, CROD, CTRIA3,
+and CQUAD4 elements of NASTRAN files to BRL-CAD format.  CBAR and CROD
+elements become cylinders in BRL-CAD.  CTRIA3 and CQUAD4 elements
+become BOT facets.
 
 The syntax for the converter is as follows:
 
-`nastran-g` [[option]``options``]
+`[cmd]*nastran-g* +++[+++[opt]_options_]`
 
 The options for the command are as follows:
 
-* [option]``-i [replaceable]``NASTRAN_input_file```` - sets input NASTRAN file (default is [path]_stdin_).
-* [option]``-o [replaceable]``output.g```` - sets output file name (default is "nastran.g").
-* [option]``-n`` - produces NMG primitives (default is BOT primitives).
-* [option]``-x lvl`` - sets librt debug flag (see [path]_raytrace.h_ in the binary distribution for definitions of DEBUG_xxx).
-* [option]``-X lvl`` - sets NMG library debug flag (see [path]_nmg.h_ in the binary distribution for definitions of DEBUG_xxx).
-* [option]``-t tolerance_distance`` - sets distance calculation tolerance (in millimeters) (default is 0.005).
-* [option]``-m`` - sets input units to millimeters (default is inches).
+[opt]`-i [replaceable]_NASTRAN_input_file_` :: sets input NASTRAN file
+(default is [path]_stdin_).
+[opt]`-o [replaceable]_output.g_` :: sets output file name (default is
+"nastran.g").
+[opt]`-n` :: produces NMG primitives (default is BOT primitives).
+[opt]`-x lvl` :: sets librt debug flag (see [path]_raytrace.h_ in the
+binary distribution for definitions of DEBUG_xxx).
+[opt]`-X lvl` :: sets NMG library debug flag (see [path]_nmg.h_ in the
+binary distribution for definitions of DEBUG_xxx).
+[opt]`-t tolerance_distance` :: sets distance calculation tolerance
+(in millimeters) (default is 0.005).
+[opt]`-m` :: sets input units to millimeters (default is inches).
 
-For more on the NASTRAN file format and import possibilities, see the 
-// <orgname>MSC</orgname>
- web site at http://www.mscsoftware.com (MSC.Software Corporation, 2003) and the 
-// <orgname>EDS</orgname>
- web site at http://www.eds.com/products/plm/nastran/ (EDS, 2003b).
+For more on the NASTRAN file format and import possibilities, see the
+[org]_MSC_ web site at http://www.mscsoftware.com (MSC.Software
+Corporation, 2003) and the [org]_EDS_ web site at
+http://www.eds.com/products/plm/nastran/ (EDS, 2003b).
 
 == Converting From Pro/E Format
 
-Distributed by the 
-// <orgname>Parametric Technology Corporation (PTC)</orgname>
-, Pro/E is one of the most widely used commercial CAD packages for designing, engineering, and manufacturing products.
-The long list of major corporations that use Pro/E software for Product Lifecycle Management includes 
-// <orgname>Boeing</orgname>
-, 
-// <orgname>Rolex</orgname>
-, 
-// <orgname>Audi</orgname>
-, 
-// <orgname>Dell</orgname>
-, 
-// <orgname>Nike</orgname>
-, 
-// <orgname>Maytag</orgname>
-, 
-// <orgname>Braun</orgname>
-, and 
-// <orgname>Hewlett-Packard</orgname>
- (PTC, 2003).
+Distributed by the [org]_Parametric Technology Corporation (PTC)_ ,
+Pro/E is one of the most widely used commercial CAD packages for
+designing, engineering, and manufacturing products.  The long list of
+major corporations that use Pro/E software for Product Lifecycle
+Management includes [org]_Boeing_ , [org]_Rolex_ , [org]_Audi_ ,
+[org]_Dell_ , [org]_Nike_ , [org]_Maytag_ , [org]_Braun_ , and
+[org]_Hewlett-Packard_ (PTC, 2003).
 
-Because of Pro/E's popularity in the Defense community, the Pro/E-to-BRL- CAD converter is one of the most important conversion utilities that BRL- CAD offers.
-Note that unlike the converters for other formats, the Pro/E converter is no longer command-line activated.
-This converter was written using the Pro/Toolkit module of Pro/E and therefore runs as part of the Pro/E program and GUI.
+Because of Pro/E's popularity in the Defense community, the
+Pro/E-to-BRL- CAD converter is one of the most important conversion
+utilities that BRL- CAD offers.  Note that unlike the converters for
+other formats, the Pro/E converter is no longer command-line
+activated.  This converter was written using the Pro/Toolkit module of
+Pro/E and therefore runs as part of the Pro/E program and GUI.
 
-Accordingly, in order to use the converter, the user must have a seat of Pro/E as well as the BRL-CAD distribution.
-Currently, the converter is only supported on 
-// <orgname>Silicon Graphics (SGI)</orgname>
- machines with MIPS processors running the Irix operating system.
-The source code for this converter is included in the binary distribution, so users can compile it for different platforms if they have the Pro/Toolkit module for that platform.
+Accordingly, in order to use the converter, the user must have a seat
+of Pro/E as well as the BRL-CAD distribution.  Currently, the
+converter is only supported on [org]_Silicon Graphics (SGI)_ machines
+with MIPS processors running the Irix operating system.  The source
+code for this converter is included in the binary distribution, so
+users can compile it for different platforms if they have the
+Pro/Toolkit module for that platform.
 
-Pro/E models are made up of two elements: parts and assemblies.
-Part files (which are designated by a [path]_.prt_ extension) are the basic building blocks of Pro/E geometry.
-Assembly files (which are designated by a [path]_.asm_ extension) are composed of parts and/or other assemblies.
-The converter produces a BRL-CAD region for each Pro/E part that is converted and a BRL- CAD combination for each Pro/E assembly that is converted.
-Each of these regions will consist of a single BOT primitive.
+Pro/E models are made up of two elements: parts and assemblies.  Part
+files (which are designated by a [path]_.prt_ extension) are the basic
+building blocks of Pro/E geometry.  Assembly files (which are
+designated by a [path]_.asm_ extension) are composed of parts and/or
+other assemblies.  The converter produces a BRL-CAD region for each
+Pro/E part that is converted and a BRL- CAD combination for each Pro/E
+assembly that is converted.  Each of these regions will consist of a
+single BOT primitive.
 
-The conversion of geometry from Pro/E to BRL-CAD is a two-stage process.
-This converter first produces the ASCII form of BRL-CAD databases.
-The user then converts these databases to binary form using the `asc2g` utility.
+The conversion of geometry from Pro/E to BRL-CAD is a two-stage
+process.  This converter first produces the ASCII form of BRL-CAD
+databases.  The user then converts these databases to binary form
+using the `asc2g` utility.
 
-In addition, because Pro/E files for most vehicles are so large (often several GBs in size), entire geometries typically cannot be loaded all at once.
-Thus, the BRL-CAD user often has to convert geometry system by system (e.g., engine, transmission, and suspension) and then concatenate (i.e., join) them together in a single BRL-CAD geometry file.
-For more detailed information about this process, see the discussion on dbconcat in Volume III of this tutorial series.
+In addition, because Pro/E files for most vehicles are so large (often
+several GBs in size), entire geometries typically cannot be loaded all
+at once.  Thus, the BRL-CAD user often has to convert geometry system
+by system (e.g., engine, transmission, and suspension) and then
+concatenate (i.e., join) them together in a single BRL-CAD geometry
+file.  For more detailed information about this process, see the
+discussion on dbconcat in Volume III of this tutorial series.
 
-Pro/E makes extensive use of referenced geometry.
-As discussed in the previous volume of this tutorial series (see section 5 of Butler et al.
-[2003]), referencing is the method by which multiple occurrences of objects are created by referring to a single object numerous times with different orientations and locations for each reference.
-These references are duplicated in BRL-CAD using combinations and transformation matrices.
-In some cases-such as when geometry is used with vulnerability codes that require each region to have a unique ident number-users may need to use the `xpush` command in MGED after the conversion is complete to replace the references with real geometry.
-For more information about this procedure, users should consult MGED's on-line help or the `xpush` entry in volume II of this tutorial series (see appendix A of Butler et al.
-[2001]).
+Pro/E makes extensive use of referenced geometry.  As discussed in the
+previous volume of this tutorial series (see section 5 of Butler
+et al.  [2003]), referencing is the method by which multiple
+occurrences of objects are created by referring to a single object
+numerous times with different orientations and locations for each
+reference.  These references are duplicated in BRL-CAD using
+combinations and transformation matrices.  In some cases-such as when
+geometry is used with vulnerability codes that require each region to
+have a unique ident number-users may need to use the `xpush` command
+in MGED after the conversion is complete to replace the references
+with real geometry.  For more information about this procedure, users
+should consult MGED's on-line help or the `xpush` entry in volume II
+of this tutorial series (see appendix A of Butler et al.  [2001]).
 
 .Keys to Converting Pro/E Geometry
-[cols="1,1"]
-|===
-|
-
-
-image::test_img.eps[]
-
-|
-
-To maximize the efficiency and effectiveness of converting Pro/E geometry, the BRL-CAD user should first acquire the following information from the Pro/E designer: A list of top-level assemblies - This information is vital in helping the BRL-CAD user gain an understanding of the overall model structure and know where to begin the conversion process.
-A mapping of part numbers to part names - Although part numbers can be an important aspect of design and manufacturing, they have little meaning for vulnerability analysts, who are more concerned with the descriptive names of the components than the numbers represent.
-|===
+****
+To maximize the efficiency and effectiveness of converting Pro/E
+geometry, the BRL-CAD user should first acquire the following
+information from the Pro/E designer: A list of top-level assemblies --
+This information is vital in helping the BRL-CAD user gain an
+understanding of the overall model structure and know where to begin
+the conversion process.  A mapping of part numbers to part names --
+Although part numbers can be an important aspect of design and
+manufacturing, they have little meaning for vulnerability analysts,
+who are more concerned with the descriptive names of the components
+than the numbers represent.
+****
 
 The command to start the Pro/E program is specified by each installer.
-When Pro/E is started, the program looks for a file named [path]_protk.dat_ in a few specific places, one of which is in the current directory.
-This file informs Pro/E about Pro/TOOLKIT modules it should load.
-There is a [path]_protk.dat_ file for the Pro/E-to-BRL-CAD converter, and it is included in the distribution under the pro-engineer directory.
-Users should copy this file to the directory where they will be starting Pro/E.
-After that file is in place, Pro/E will load the converter at startup.
-If the loading succeeds, users will see a message saying ``Installation of Proe-BRL converter succeeded.'' With Pro/E started and the converter module loaded, the user can open any Pro/E model he wants to convert.
+When Pro/E is started, the program looks for a file named
+[path]_protk.dat_ in a few specific places, one of which is in the
+current directory.  This file informs Pro/E about Pro/TOOLKIT modules
+it should load.  There is a [path]_protk.dat_ file for the
+Pro/E-to-BRL-CAD converter, and it is included in the distribution
+under the pro-engineer directory.  Users should copy this file to the
+directory where they will be starting Pro/E.  After that file is in
+place, Pro/E will load the converter at startup.  If the loading
+succeeds, users will see a message saying ``Installation of Proe-BRL
+converter succeeded.'' With Pro/E started and the converter module
+loaded, the user can open any Pro/E model he wants to convert.
 
-The conversion process is started by selecting the 
-// <guimenuitem>ProE-BRL</guimenuitem>
- item in the Pro/E drop-down menu:File[] menu.
-The converter dialog box, shown in <<_fig_converter_dialog_box>>, will then appear.
+The conversion process is started by selecting the menu:File[ProE-BRL]
+item in the Pro/E drop-down menu.  The converter dialog box, shown in
+<<_fig_converter_dialog_box>>, will then appear.
 
+[[_fig_converter_dialog_box]]
 .Converter dialog box
 image::test_img.eps[]
 
-The following list provides a description of the use and functionality of the primary elements in the dialog box.
-Note that the box is preloaded with reasonable defaults for many of the inputs.
-In addition, if the user has a question about any of the entry windows, check boxes, or buttons, he can move the mouse over them to see a brief explanation of their use.
+The following list provides a description of the use and functionality
+of the primary elements in the dialog box.  Note that the box is
+preloaded with reasonable defaults for many of the inputs.  In
+addition, if the user has a question about any of the entry windows,
+check boxes, or buttons, he can move the mouse over them to see a
+brief explanation of their use.
 
-* [label]#Output File Name# - This is the name of the file to receive the ASCII output.
-* [label]#Log File Name# - If provided, verbose status logging will be written to that file.
-* [label]#Part Name File# - If provided, the converter will use that information to map Pro/E part and assembly names into the specified BRL-CAD object names. This file is simply a text file with each line specifying a Pro/E part or assembly name and a BRL-CAD object name separated by white space. Note that the BRL-CAD names should not include any special characters such as ``/'', ``['', ``]'', or white space.
-* [label]#Starting Ident Number# - Ident numbers will be assigned to the resulting BRL-CAD regions sequentially starting with the number that appears in the window.
-* [label]#Max Tessellation Error# - This value (expressed in millimeters) is used to control the coarseness of the tessellation. It is the maximum distance between the actual surface and its tessellated approximation. Smaller values here will result in finer tessellations and more triangles. The default value is reasonable for ballistic vulnerability analysis purposes.
-* [label]#Angle Control Value# - This is a number between 0 and 1 that provides additional control over the coarseness of the tessellation. The exact relationship between the tessellation and this value is not specified in the Pro/E documentation, but the default value of 0.5 seems to work well.
+* [label]#Output File Name# -- This is the name of the file to receive
+  the ASCII output.
+* [label]#Log File Name# -- If provided, verbose status logging will
+  be written to that file.
+* [label]#Part Name File# -- If provided, the converter will use that
+  information to map Pro/E part and assembly names into the specified
+  BRL-CAD object names. This file is simply a text file with each line
+  specifying a Pro/E part or assembly name and a BRL-CAD object name
+  separated by white space. Note that the BRL-CAD names should not
+  include any special characters such as "/", "[", "]", or white
+  space.
+* [label]#Starting Ident Number# -- Ident numbers will be assigned to
+  the resulting BRL-CAD regions sequentially starting with the number
+  that appears in the window.
+* [label]#Max Tessellation Error# -- This value (expressed in
+  millimeters) is used to control the coarseness of the
+  tessellation. It is the maximum distance between the actual surface
+  and its tessellated approximation. Smaller values here will result
+  in finer tessellations and more triangles. The default value is
+  reasonable for ballistic vulnerability analysis purposes.
+* [label]#Angle Control Value# -- This is a number between 0 and 1
+  that provides additional control over the coarseness of the
+  tessellation. The exact relationship between the tessellation and
+  this value is not specified in the Pro/E documentation, but the
+  default value of 0.5 seems to work well.
 
-For more information about the Pro/E file format and import possibilities, see the 
-// <orgname>Parametric Technology Corporation (PTC)</orgname>
- web site at http://www.ptc.com (PTC, 2003).
+For more information about the Pro/E file format and import
+possibilities, see the [org]_Parametric Technology Corporation (PTC)_
+web site at http://www.ptc.com (PTC, 2003).
 
 [[_sec_converting_from_stl]]
 == Converting From STL Format
 
-The STL format was developed by 
-// <orgname>3D Systems, Inc.</orgname>
-, in the 1980s for use with its StereoLithography Apparatus (SLA). The SLA device produces a physical 3-D model based on an STL format file.
-Because of its simplicity, the STL format has become an industry standard for exchanging 3-D models.
-Unfortunately, this simplicity also presents some limitations.
+The STL format was developed by [org]_3D Systems, Inc._ , in the 1980s
+for use with its StereoLithography Apparatus (SLA). The SLA device
+produces a physical 3-D model based on an STL format file.  Because of
+its simplicity, the STL format has become an industry standard for
+exchanging 3-D models.  Unfortunately, this simplicity also presents
+some limitations.
 
-The format consists only of triangles, and each triangle is represented by three vertices and a surface normal vector.
-Because the vertices for each triangle are explicitly listed, rather than indexed from a list, the topology must be inferred by the receiving system, which can sometimes lead to incorrect geometry.
+The format consists only of triangles, and each triangle is
+represented by three vertices and a surface normal vector.  Because
+the vertices for each triangle are explicitly listed, rather than
+indexed from a list, the topology must be inferred by the receiving
+system, which can sometimes lead to incorrect geometry.
 
-STL files may be either ASCII or binary.
-The ASCII format includes the capability of including more than one solid part and an optional name for each part, while the binary format can only support a single solid part with no naming.
+STL files may be either ASCII or binary.  The ASCII format includes
+the capability of including more than one solid part and an optional
+name for each part, while the binary format can only support a single
+solid part with no naming.
 
-The `stl-g` converter converts STL format to BRL-CAD.
-The STL format is entirely triangles.
-The resulting BRL-CAD database will consist of one or more regions and a top-level combination named ``all,'' which contains all the regions produced.
-Each region will consist of a single BOT primitive.
+The `stl-g` converter converts STL format to BRL-CAD.  The STL format
+is entirely triangles.  The resulting BRL-CAD database will consist of
+one or more regions and a top-level combination named ``all,'' which
+contains all the regions produced.  Each region will consist of a
+single BOT primitive.
 
-Note that the ASCII format STL file includes a capability to contain more than one solid part.
-The regions created will be named according to the name specified in the STL file unless a name is provided on the command line.
-If the STL file does not specify any name, and the user does not provide a name, then the regions produced in the BRL-CAD database will be constructed from the name of the STL file.
+Note that the ASCII format STL file includes a capability to contain
+more than one solid part.  The regions created will be named according
+to the name specified in the STL file unless a name is provided on the
+command line.  If the STL file does not specify any name, and the user
+does not provide a name, then the regions produced in the BRL-CAD
+database will be constructed from the name of the STL file.
 
 The syntax for the `stl-g` converter is as follows:
 
-`stl-g` [[option]``options``] [path]_input.stl_[path]_output.g_
+`[cmd]*stl-g* +++[+++[opt]_options_] [path]_input.stl_ [path]_output.g_`
 
-where [path]_input.stl_ is the STL file to be converted and [path]_output.g_ is the name of the BRL-CAD database to receive the converted output.
+where [path]_input.stl_ is the STL file to be converted and
+[path]_output.g_ is the name of the BRL-CAD database to receive the
+converted output.
 
 The options for this command are as follows:
 
-* [option]``-b`` - designates that the input STL file is in binary format (the default is ASCII).
-* [option]``-c units`` - specifies the units used in the STL file. Choices include ``cm,'' ``m,'' ``in,'' ``ft,'' and many others (the default is millimeters).
-* [option]``-N name`` - specifies a name for the resulting BRL-CAD region. If more than one region is produced, unique region names will be constructed by adding a suffix consisting of an underscore and an integer.
-* [option]``-d`` - designates that additional debugging information be printed during the conversion.
-* [option]``-i ident`` - specifies the ident number assigned to the first region created during the conversion. Additional regions will be assigned sequential ident numbers.
-* [option]``-I ident`` - specifies the ident number to assign to all the BRL-CAD regions created during this conversion. (This option and the [option]``-i ident`` option are mutually exclusive.)
-* [option]``-m material_code`` - specifies the integer material code to be assigned to each BRL-CAD region created during this conversion.
-* [option]``-t tolerance_distance`` - specifies the minimum distance (in millimeters) allowed between distinct vertices. Vertices closer than this minimum will be considered to be the same vertex (the default value is 0.005 mm).
-* [option]``-x librt_debug_flag`` - specifies a flag for the raytracing library that will result in additional debug log messages (see [path]_librt/debug.h_ in the binary distribution for details).
+[opt]`-b` :: designates that the input STL file is in binary format
+(the default is ASCII).
+[opt]`-c units` :: specifies the units used in the STL file. Choices
+include ``cm,'' ``m,'' ``in,'' ``ft,'' and many others (the default is
+millimeters).
+[opt]`-N name` :: specifies a name for the resulting BRL-CAD
+region. If more than one region is produced, unique region names will
+be constructed by adding a suffix consisting of an underscore and an
+integer.
+[opt]`-d` :: designates that additional debugging information be
+printed during the conversion.
+[opt]`-i ident` :: specifies the ident number assigned to the first
+region created during the conversion. Additional regions will be
+assigned sequential ident numbers.
+[opt]`-I ident` :: specifies the ident number to assign to all the
+BRL-CAD regions created during this conversion. (This option and the
+[opt]`-i ident` option are mutually exclusive.)
+[opt]`-m material_code` :: specifies the integer material code to be
+assigned to each BRL-CAD region created during this conversion.
+[opt]`-t tolerance_distance` :: specifies the minimum distance (in
+millimeters) allowed between distinct vertices. Vertices closer than
+this minimum will be considered to be the same vertex (the default
+value is 0.005 mm).
+[opt]`-x librt_debug_flag` :: specifies a flag for the raytracing
+library that will result in additional debug log messages (see
+[path]_librt/debug.h_ in the binary distribution for details).
 
-For more information on the STL file format and import possibilities, see the 
-// <orgname>3D Systems</orgname>
- web site at http://www.3dsystems.com (3D Systems, 2003).
+For more information on the STL file format and import possibilities,
+see the [org]_3D Systems_ web site at http://www.3dsystems.com (3D
+Systems, 2003).
 
 == Converting From TANKILL Format
 
-Distributed by the Advantage Business Group, a contractor to the British Ministry of Defence, the TANKILL format is used with the TANKILL vulnerability and lethality assessment code.
-This format is another purely triangulated representation of solid objects.
+Distributed by the Advantage Business Group, a contractor to the
+British Ministry of Defence, the TANKILL format is used with the
+TANKILL vulnerability and lethality assessment code.  This format is
+another purely triangulated representation of solid objects.
 
 The syntax for the tankill-g converter is as follows:
 
-`tankill-g` [[option]``options``]
+`[cmd]*tankill-g* +++[+++[opt]_options_]`
 
 The options for the command are as follows:
 
-* [option]``-v`` - verbose; prints out progress information.
-* [option]``-n`` - produces NMG primitives (default is BOT primitives).
-* [option]``-i [replaceable]``input.tkl```` - specifies the input TANKILL file (default is [path]_stdin_).
-* [option]``-o [replaceable]``output.g```` - specifies the output BRL-CAD file (default is [path]_tankill.g_).
-* [option]``-k`` - keeps components with id = 1001 (normally skipped).
-* [option]``-x lvl`` - sets librt debug flag (see [path]_raytrace.h_ in the binary distribution for definitions of DEBUG_xxx).
-* [option]``-X lvl`` - sets NMG library debug flag (see [path]_nmg.h_ in the binary distribution for definitions of DEBUG_xxx).
+[opt]`-v` :: verbose; prints out progress information.
+[opt]`-n` :: produces NMG primitives (default is BOT primitives).
+[opt]`-i [replaceable]_input.tkl_` :: specifies the input TANKILL file
+(default is [path]_stdin_).
+[opt]`-o [replaceable]_output.g_` :: specifies the output BRL-CAD file
+(default is [path]_tankill.g_).
+[opt]`-k` :: keeps components with id = 1001 (normally skipped).
+[opt]`-x lvl` :: sets librt debug flag (see [path]_raytrace.h_ in the
+binary distribution for definitions of DEBUG_xxx).
+[opt]`-X lvl` :: sets NMG library debug flag (see [path]_nmg.h_ in the
+binary distribution for definitions of DEBUG_xxx).
 
-For more information on the TANKILL file format and import possibilities, contact the 
-// <orgname>Advantage Business Group</orgname>
- at 
+For more information on the TANKILL file format and import
+possibilities, contact the [org]_Advantage Business Group_ at
 // <address>
 //   <otheraddr>the Barbician</otheraddr>
 //   <street>East Street</street>
@@ -590,89 +714,140 @@ For more information on the TANKILL file format and import possibilities, contac
 
 == Converting From Unigraphics Format
 
-Like Pro/E, Unigraphics is a widely popular CAD format used by thousands of companies in the United States and abroad, including 
-// <orgname>General Motors</orgname>
-, 
-// <orgname>Ford</orgname>
-, 
-// <orgname>Kodak</orgname>
-, 
-// <orgname>General Electric</orgname>
-, 
-// <orgname>Pratt &amp; Whitney</orgname>
-, 
-// <orgname>Boeing</orgname>
-, and 
-// <orgname>Samsung</orgname>
-$$.$$
-Now distributed by 
-// <orgname>EDS</orgname>
- (the company that also distributes Jack and a version of NASTRAN), the Unigraphics toolset addresses traditional CAD/CAM/CAE, conceptual and industrial design, knowledge-based engineering, real-time design collaboration, and process automation (EDS, 2003c).
+Like Pro/E, Unigraphics is a widely popular CAD format used by
+thousands of companies in the United States and abroad, including
+[org]_General Motors_ , [org]_Ford_ , [org]_Kodak_ , [org]_General
+Electric_ , [org]_Pratt &amp; Whitney_ , [org]_Boeing_ , and
+[org]_Samsung_ .  Now distributed by [org]_EDS_ (the company that also
+distributes Jack and a version of NASTRAN), the Unigraphics toolset
+addresses traditional CAD/CAM/CAE, conceptual and industrial design,
+knowledge-based engineering, real-time design collaboration, and
+process automation (EDS, 2003c).
 
 There are three modeling methodologies offered with Unigraphics.
-First, explicit (or traditional) modeling uses points, curves, and surfaces with no associativity or history.
-Second, history-based modeling uses associative geometric entities.
-Third, direct modeling uses a combination of both explicit and history-based modeling and also allows the global application of geometric rules and constraints across geometry of all origins (SURVICE Engineering Company, 2002).
+First, explicit (or traditional) modeling uses points, curves, and
+surfaces with no associativity or history.  Second, history-based
+modeling uses associative geometric entities.  Third, direct modeling
+uses a combination of both explicit and history-based modeling and
+also allows the global application of geometric rules and constraints
+across geometry of all origins (SURVICE Engineering Company, 2002).
 
-Unigraphics bases its component geometric modeling capabilities on the Parasolid geometry engine (developed by EDS in Cambridge, England) and related XT file format.
-This enables Parasolid-based systems (e.g., Unigraphics, Solid Edge, and systems by Parametric Technology, SolidWorks, Bentley Systems, CADKEY, ANSYS, Mechanical Dynamics, and MSC.Software) to share and exchange geometric data without translation via an interoperable data pipeline (SURVICE Engineering Company, 2002).
+Unigraphics bases its component geometric modeling capabilities on the
+Parasolid geometry engine (developed by EDS in Cambridge, England) and
+related XT file format.  This enables Parasolid-based systems (e.g.,
+Unigraphics, Solid Edge, and systems by Parametric Technology,
+SolidWorks, Bentley Systems, CADKEY, ANSYS, Mechanical Dynamics, and
+MSC.Software) to share and exchange geometric data without translation
+via an interoperable data pipeline (SURVICE Engineering Company,
+2002).
 
-Because the Unigraphics-to-BRL-CAD converter, ug-g, was written using the Unigraphics UG/Open API library, users must have a Unigraphics UG/Open execute or development license in order to run it.
-This converter is compiled for SGI Irix machines running on MIPS processors; however, users can compile it for other platforms by obtaining the BRL-CAD source distribution and a UG/Open development license from Unigraphics.
+Because the Unigraphics-to-BRL-CAD converter, ug-g, was written using
+the Unigraphics UG/Open API library, users must have a Unigraphics
+UG/Open execute or development license in order to run it.  This
+converter is compiled for SGI Irix machines running on MIPS
+processors; however, users can compile it for other platforms by
+obtaining the BRL-CAD source distribution and a UG/Open development
+license from Unigraphics.
 
-This converter creates a BRL-CAD region consisting of a single BOT primitive for each Unigraphics part and a combination for each Unigraphics assembly.
-Each instance of a Unigraphics part is converted independently, so there are no transformation matrices created in the resulting BRL-CAD model.
-The BRL-CAD regions are given the same name as the parts are assigned in the Unigraphics model, unless a part-name mapping file is provided.
-Region names are made unique, if necessary, by adding a suffix consisting of a dot and an integer number.
+This converter creates a BRL-CAD region consisting of a single BOT
+primitive for each Unigraphics part and a combination for each
+Unigraphics assembly.  Each instance of a Unigraphics part is
+converted independently, so there are no transformation matrices
+created in the resulting BRL-CAD model.  The BRL-CAD regions are given
+the same name as the parts are assigned in the Unigraphics model,
+unless a part-name mapping file is provided.  Region names are made
+unique, if necessary, by adding a suffix consisting of a dot and an
+integer number.
 
 The syntax for this converter is as follows:
 
-`ug-g` [[option]``options``] [option]``-o``[path]_output.g_[path]_UG_part_file_ [[option]``subpart1``[option]``subpart2`` ...]
+`[cmd]*ug-g* +++[+++[opt]_options_] [opt]_-o_ [path]_output.g_ [path]_UG_part_file_ +++[+++[opt]_subpart1_ [opt]_subpart2_ . . .]`
 
-where the [path]_UG_part_file_ is a Unigraphics part file.
-If subparts are listed on the command line, only those named parts in the specified part file will be converted.
+where the [path]_UG_part_file_ is a Unigraphics part file.  If
+subparts are listed on the command line, only those named parts in the
+specified part file will be converted.
 
 The available options are as follows:
 
-* [option]``-d level`` - specifies a debug level for additional log messages. Currently, any nonzero value here provides additional logging.
-* [option]``-i initial_ident`` - specifies the ident number for the first region created by the conversion. Subsequent regions are assigned sequential ident numbers.
-* [option]``-n [replaceable]``part_name_file```` - specifies a file containing a mapping of Unigraphics part and/or assembly names to BRL-CAD object names. If this file is provided, it will be used to create object names in the BRL-CAD model. The format of this file is simply a line per part, with the Unigraphics part/assembly name followed by the desired BRL- CAD object name, separated by white space. Note that the usual restrictions for BRL-CAD object names apply (e.g., no spaces, no special symbols, etc.) For a detailed discussion of recommended naming schemes and restrictions, see section 4 of Volume III (Butler et al., 2003).
-* [option]``-R refset_name`` - specifies a desired reference set (which Unigraphics uses to provide additional control over assembly components), overriding the reference set specified in the Unigraphics model.
-* [option]``-f`` - facetizes all the geometry. If this option is not specified, the converter will attempt to create CSG equivalent geometry wherever possible.
-* [option]``-s`` - lists all features that were attempted to convert to CSG. (This option and the [option]``-f`` option are mutually exclusive.)
-* [option]``-u`` - extracts surface normals from the Unigraphics model. Using this option will result in a BRL-CAD model that is significantly larger than when not using it, but raytraced objects will appear much smoother.
-* [option]``-o [replaceable]``output.g```` - specifies the name of the file to receive the BRL-CAD model.
-* [option]``-t tolerance_distance`` - specifies the minimum distance (in millimeters) allowed between distinct vertices. Vertices closer than this minimum will be considered to be the same vertex (the default value is 0.005 mm).
-* [option]``-a surface_normal_tolerance`` - specifies a surface normal error tolerance (in degrees) for the facetization process. By default, the surface normal is not considered during facetization.
-* [option]``-c min_chamfer`` - specifies that any chamfer with dimensions less than the provided minimum (in millimeters) will be ignored. By default, no features are ignored.
-* [option]``-r min_round`` - specifies that any round (or fillet) with a radius less than the specified minimum (in millimeters) will be ignored. By default, no features are ignored.
+[opt]`-d level` :: specifies a debug level for additional log
+messages. Currently, any nonzero value here provides additional
+logging.
+[opt]`-i initial_ident` :: specifies the ident number for the first
+region created by the conversion. Subsequent regions are assigned
+sequential ident numbers.
+[opt]`-n [replaceable]_part_name_file_` :: specifies a file containing
+a mapping of Unigraphics part and/or assembly names to BRL-CAD object
+names. If this file is provided, it will be used to create object
+names in the BRL-CAD model. The format of this file is simply a line
+per part, with the Unigraphics part/assembly name followed by the
+desired BRL- CAD object name, separated by white space. Note that the
+usual restrictions for BRL-CAD object names apply (e.g., no spaces, no
+special symbols, etc.) For a detailed discussion of recommended naming
+schemes and restrictions, see section 4 of Volume III (Butler et al.,
+2003).
+[opt]`-R refset_name` :: specifies a desired reference set (which
+Unigraphics uses to provide additional control over assembly
+components), overriding the reference set specified in the Unigraphics
+model.
+[opt]`-f` :: facetizes all the geometry. If this option is not
+specified, the converter will attempt to create CSG equivalent
+geometry wherever possible.
+[opt]`-s` :: lists all features that were attempted to convert
+to CSG. (This option and the [opt]`-f` option are mutually exclusive.)
+[opt]`-u` :: extracts surface normals from the Unigraphics
+model. Using this option will result in a BRL-CAD model that is
+significantly larger than when not using it, but raytraced objects
+will appear much smoother.
+[opt]`-o [replaceable]_output.g_` :: specifies the name of the file to
+receive the BRL-CAD model.
+[opt]`-t tolerance_distance` :: specifies the minimum distance (in
+millimeters) allowed between distinct vertices. Vertices closer than
+this minimum will be considered to be the same vertex (the default
+value is 0.005 mm).
+[opt]`-a surface_normal_tolerance` :: specifies a surface normal error
+tolerance (in degrees) for the facetization process. By default, the
+surface normal is not considered during facetization.
+[opt]`-c min_chamfer` :: specifies that any chamfer with dimensions
+less than the provided minimum (in millimeters) will be ignored. By
+default, no features are ignored.
+[opt]`-r min_round` :: specifies that any round (or fillet) with a
+radius less than the specified minimum (in millimeters) will be
+ignored. By default, no features are ignored.
 
-For more information on the Unigraphics file format and conversion potential, see the 
-// <orgname>EDS</orgname>
- web site at http://www.eds.com/products/plm/unigraphics_nx/ (EDS, 2003c).
+For more information on the Unigraphics file format and conversion
+potential, see the [org]_EDS_ web site at
+http://www.eds.com/products/plm/unigraphics_nx/ (EDS, 2003c).
 
 == Converting From Viewpoint Datalabs Format
 
 
-// <orgname>Viewpoint Datalabs</orgname>
- started out as a commercial supplier of 3-D models, maintaining a large repository of facetted models of many objects.
-The company has since grown to provide more services than models, and its model repository is now maintained by 
-// <orgname>Digimation, Inc.</orgname>
+[org]_Viewpoint Datalabs_ started out as a commercial supplier of 3-D
+models, maintaining a large repository of facetted models of many
+objects.  The company has since grown to provide more services than
+models, and its model repository is now maintained by
+[org]_Digimation, Inc._
 
-The `viewpoint-g` converter converts the Viewpoint Datalabs coor/elem format to BRL-CAD format.
-Objects in the input files are converted to regions, each consisting of a single BOT primitive.
-The converter will assign vertex normals if they are present in the input files.
-Two files are expected, one that contains vertex coordinates (and optional normals) and one that lists the vertex numbers for each polygonal face.
-This format was used by the original Viewpoint Datalabs model repository.
-The current repository uses more common formats such as DXF and VRML.
+The `viewpoint-g` converter converts the Viewpoint Datalabs coor/elem
+format to BRL-CAD format.  Objects in the input files are converted to
+regions, each consisting of a single BOT primitive.  The converter
+will assign vertex normals if they are present in the input files.
+Two files are expected, one that contains vertex coordinates (and
+optional normals) and one that lists the vertex numbers for each
+polygonal face.  This format was used by the original Viewpoint
+Datalabs model repository.  The current repository uses more common
+formats such as DXF and VRML.
 
 The syntax for the converter is as follows:
 
-`viewpoint-g` [[option]``options``]
+`[cmd]*viewpoint-g* +++[+++[opt]_options_]`
 
 The options for the command are as follows:
 
-* [option]``-c [replaceable]``coord_file_name```` - sets the input vertex coordinates file name (required).
-* [option]``-e [replaceable]``elements_file_name```` - sets the input faces file name (required).
-* [option]``-o [replaceable]``output_file_name```` - sets the output BRL-CAD database name (default is [path]_viewpoint.g_).
-* [option]``-t tolerance_distance`` - sets distance calculation tolerance (in millimeters) (default is 0.005).
+[opt]`-c [replaceable]_coord_file_name_` :: sets the input vertex
+coordinates file name (required).
+[opt]`-e [replaceable]_elements_file_name_` :: sets the input faces
+file name (required).
+[opt]`-o [replaceable]_output_file_name_` :: sets the output BRL-CAD
+database name (default is [path]_viewpoint.g_).
+[opt]`-t tolerance_distance` :: sets distance calculation tolerance
+(in millimeters) (default is 0.005).
