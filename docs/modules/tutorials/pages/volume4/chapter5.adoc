@@ -7,18 +7,27 @@
 :experimental:
 :sourcedir: .
 
+:fn-1: footnote:[Conversion is to the ASCII EUCLID decoded format, not native format.]
+
 == General Information About Converting From BRL-CAD
 
-<<_tbl_export_converters>> contains the primary file formats (other than ASCII) to which BRL- CAD currently converts.
-Once again, the "g-" designation at the beginning of each converter name indicates that the conversion process begins with BRL-CAD's standard geometry (.g) format.
+<<_tbl_export_converters>> contains the primary file formats (other
+than ASCII) to which BRL-CAD currently converts.  Once again, the "g-"
+designation at the beginning of each converter name indicates that the
+conversion process begins with BRL-CAD's standard geometry (.g)
+format.
 
-Note that most of the BRL-CAD export converters operate by tessellating all the primitive shapes in the BRL-CAD model, then evaluating the Boolean formula for each region.
-The result of this is a facetted representation of each region.
-The tessellation tolerances are used to determine the coarseness of the tessellation of curved surfaces.
-Smaller tolerances result in more, smaller facets and a larger output file.
-The calculation tolerance is the minimum distance between any two vertices in a region.
-Any vertices closer than this are fused into a single vertex.
+Note that most of the BRL-CAD export converters operate by
+tessellating all the primitive shapes in the BRL-CAD model, then
+evaluating the Boolean formula for each region.  The result of this is
+a facetted representation of each region.  The tessellation tolerances
+are used to determine the coarseness of the tessellation of curved
+surfaces.  Smaller tolerances result in more, smaller facets and a
+larger output file.  The calculation tolerance is the minimum distance
+between any two vertices in a region.  Any vertices closer than this
+are fused into a single vertex.
 
+[[_tbl_export_converters]]
 .BRL-CAD export converters.
 [cols="1,1", options="header"]
 |===
@@ -31,7 +40,7 @@ Any vertices closer than this are fused into a single vertex.
 |AutoCAD DXF
 |g-acad
 
-|EUCLIDfootnote:[Conversion is to the ASCII EUCLID decoded format, not native format.]
+|EUCLID {fn-1}
 |g-euclid
 
 |IGES
@@ -56,273 +65,357 @@ Any vertices closer than this are fused into a single vertex.
 |g-x3d
 |===
 
-Occasionally, the Boolean evaluation process will fail.
-When this happens, an error message specifying the region that failed to convert will be generated.
-The converter will then proceed to work on the next region to be converted.
+Occasionally, the Boolean evaluation process will fail.  When this
+happens, an error message specifying the region that failed to convert
+will be generated.  The converter will then proceed to work on the
+next region to be converted.
 
 == Converting to ACAD Format
 
-The Advanced Computer Aided Design (ACAD) format is the format for the in- house CAD package developed in the early 1980s by Lockheed Martin Tactical Aircraft Systems (then General Dynamics - Fort Worth) and distributed since 1995 by the Electromagnetic Code Consortium.
-The package was developed to improve the product design process by eliminating manual drawing boards and reducing design iteration cycle times.
-Notable aircraft programs that have used ACAD include the Joint Strike Fighter (F-35), the Raptor (F-22), the Advanced Technology Fighter, the National Aerospace Plane (X-30), and the Attack/Fighter-Experimental (A/F-X) (SURVICE Engineering Company, 2002).
+The Advanced Computer Aided Design (ACAD) format is the format for the
+in- house CAD package developed in the early 1980s by Lockheed Martin
+Tactical Aircraft Systems (then General Dynamics - Fort Worth) and
+distributed since 1995 by the Electromagnetic Code Consortium.  The
+package was developed to improve the product design process by
+eliminating manual drawing boards and reducing design iteration cycle
+times.  Notable aircraft programs that have used ACAD include the
+Joint Strike Fighter (F-35), the Raptor (F-22), the Advanced
+Technology Fighter, the National Aerospace Plane (X-30), and the
+Attack/Fighter-Experimental (A/F-X) (SURVICE Engineering Company,
+2002).
 
-A notable characteristic of ACAD is the layers by which modeled parts are separated and managed (e.g., by subsystem). The package stores geometric data in a relational database that uses parent-child dependencies to enable automatic and rapid geometric modification.
-For example, changing a control spline of a fuselage will automatically regenerate any surface(s) built with that spline.
-Any geometry that is associated to the fuselage surface (i.e., plane/curve and surface intersections, fillets, etc.) will then regenerate.
+A notable characteristic of ACAD is the layers by which modeled parts
+are separated and managed (e.g., by subsystem). The package stores
+geometric data in a relational database that uses parent-child
+dependencies to enable automatic and rapid geometric modification.
+For example, changing a control spline of a fuselage will
+automatically regenerate any surface(s) built with that spline.  Any
+geometry that is associated to the fuselage surface (i.e., plane/curve
+and surface intersections, fillets, etc.) will then regenerate.
 
-One of ACAD's strengths is its bidirectional IGES translator, which provides compatibility with other IGES-supported formats, including CADAM, CATIA, COMPUTERVISION, AutoCAD, and Pro/E.
+One of ACAD's strengths is its bidirectional IGES translator, which
+provides compatibility with other IGES-supported formats, including
+CADAM, CATIA, COMPUTERVISION, AutoCAD, and Pro/E.
 
 .ACAD or AutoCAD?
-[cols="1,1"]
-|===
-|
+****
+Although these packages are often confused, ACAD was developed by
+[org]_Lockheed Martin_ and is not connected with AutoCAD, which was
+developed by [org]_Autodesk Inc._
+****
 
+As its name implies, the `g-acad` utility converts a file in BRL-CAD
+format to a file in facetted ACAD format.  The form of the command is
+as follows:
 
-image::test_img.eps[]
-
-|Although these packages are often confused, ACAD was developed by 
-// <orgname>Lockheed Martin</orgname>
- and is not connected with AutoCAD, which was developed by 
-// <orgname>Autodesk Inc.</orgname>
-
-|===
-
-As its name implies, the `g-acad` utility converts a file in BRL-CAD format to a file in facetted ACAD format.
-The form of the command is as follows:
-
-`g-acad` [[option]``options``] [option]``-o [replaceable]``output_file``[replaceable]``input.g`` object(s)``
+`[cmd]*g-acad* +++[+++[opt]_options_] [opt]_-o_ [var]#output_file# [var]#input.g# object(s)`
 
 The options for the g-acad command are as follows:
 
-* [option]``-i`` - designates that the output be in inches (the default is millimeters).
-* [option]``-x lvl`` - sets librt debug flag (see [path]_raytrace.h_ in the binary distribution for definitions of DEBUG_xxx).
-* [option]``-X lvl`` - sets the NMG library debug flag (see [path]_nmg.h_ in the binary distribution for definitions of DEBUG_xxx).
-* [option]``-e [replaceable]``error_file```` - sends error messages to specified file (default is standard error [[path]_stderr_]).
-* [option]``-v`` - verbose; prints out progress information.
-* [option]``-D tolerance_distance`` - sets distance calculation tolerance (in millimeters) (default is 0.005).
-* [option]``-r rel_tess_tol`` - sets relative tessellation tolerance (normally 0.0 to 1.0) (default is 0.1).
-* [option]``-a abs_tess_tol`` - sets absolute tessellation tolerance to specified value (in millimeters) (overrides [option]``-r`` option).
-* [option]``-n norm_tess_tol`` - sets surface normal tessellation tolerance (angle in radians) (overrides [option]``-r`` option).
+[opt]`-i` :: designates that the output be in inches (the default is
+millimeters).
+[opt]`-x lvl` :: sets librt debug flag (see [path]`raytrace.h` in the
+binary distribution for definitions of DEBUG_xxx).
+[opt]`-X lvl` :: sets the NMG library debug flag (see [path]`nmg.h` in
+the binary distribution for definitions of DEBUG_xxx).
+[opt]`-e [var]#error_file#` :: sends error messages to
+specified file (default is standard error [[path]`stderr`]).
+[opt]`-v` :: verbose; prints out progress information.
+[opt]`-D tolerance_distance` :: sets distance calculation tolerance
+(in millimeters) (default is 0.005).
+[opt]`-r rel_tess_tol` :: sets relative tessellation tolerance
+(normally 0.0 to 1.0) (default is 0.1).
+[opt]`-a abs_tess_tol` :: sets absolute tessellation tolerance to
+specified value (in millimeters) (overrides [opt]`-r` option).
+[opt]`-n norm_tess_tol` :: sets surface normal tessellation tolerance
+(angle in radians) (overrides [opt]`-r` option).
 
-For more information on the ACAD file format and conversion potential, contact 
-// <orgname>Lockheed Martin</orgname>
- Tactical Aircraft Systems at http://www.lockheedmartin.com (
-// <orgname>Lockheed Martin</orgname>
-, 2003).
+For more information on the ACAD file format and conversion potential,
+contact [org]_Lockheed Martin_ Tactical Aircraft Systems at
+http://www.lockheedmartin.com ( [org]_Lockheed Martin_ , 2003).
 
 == Converting to AutoCAD DXF Format
 
-The g-dxf command converts BRL-CAD objects to the previously mentioned AutoCAD DXF format.
-The syntax for this command is as follows:
+The g-dxf command converts BRL-CAD objects to the previously mentioned
+AutoCAD DXF format.  The syntax for this command is as follows:
 
-`g-dxf` [[option]``options``] [option]``[replaceable]``input.g`` object(s``)
+`[cmd]*g-dxf* +++[+++[opt]_options_] [var]#input.g# object(s)`
 
 The options for the g-dxf command are as follows:
 
-* [option]``-i`` - requests the output DXF file to be in inches (default is millimeters).
-* [option]``-o [replaceable]``output.dxf```` - specifies the file to receive the DXF output (default is stdout).
-* [option]``-p`` - requests that the output DXF file consist of POLYFACE MESH entities (the default is 3DFACE entities).
+[opt]`-i` :: requests the output DXF file to be in inches (default is
+millimeters).
+[opt]`-o [var]#output.dxf#` :: specifies the file to receive
+the DXF output (default is stdout).
+[opt]`-p` :: requests that the output DXF file consist of POLYFACE
+MESH entities (the default is 3DFACE entities).
 
-The command also accepts the [option]``-v``, [option]``-r``, [option]``-a``, [option]``-n``, [option]``-x``, and [option]``-X`` options, which have been discussed in the import converters portion of this document (<<_sec_convert_to_brlcad>>).
+The command also accepts the [opt]`-v`, [opt]`-r`, [opt]`-a`,
+[opt]`-n`, [opt]`-x`, and [opt]`-X` options, which have been discussed
+in the import converters portion of this document
+(<<_sec_convert_to_brlcad>>).
 
-For more information on the DXF file format and export possibilities, see the on-line documentation on the Autodesk web site at http://www.autodesk.com (
-// <orgname>Autodesk, Inc.</orgname>
-, 2003).
+For more information on the DXF file format and export possibilities,
+see the on-line documentation on the Autodesk web site at
+http://www.autodesk.com ( [org]_Autodesk, Inc._ , 2003).
 
 == Converting to EUCLID Format
 
-The `g-euclid` command converts BRL-CAD objects to a EUCLID ``decoded'' facetted format.
-Note that, as previously mentioned, this format is not native EUCLID format.
-The form of the command is as follows:
+The `g-euclid` command converts BRL-CAD objects to a EUCLID "decoded"
+facetted format.  Note that, as previously mentioned, this format is
+not native EUCLID format.  The form of the command is as follows:
 
-`g-euclid` [[option]``options``] [option]``[replaceable]``input.g`` objects(s)``
+`[cmd]*g-euclid* +++[+++[opt]_options_] [var]#input.g# objects(s)`
 
 The options for the `g-euclid` command are as follows:
 
-* [option]``-u units`` - sets the output units (the default is millimeters).
-* [option]``-o [replaceable]``output_file_name```` - sets the output file name (the default is [path]_stdout_).
+[opt]`-u units` :: sets the output units (the default is millimeters).
+[opt]`-o [var]#output_file_name#` :: sets the output file name
+(the default is [path]`stdout`).
 
-For more information about the EUCLID file format and export possibilities, see the 
-// <orgname>MDTVISION</orgname>
- web site at http://support.mdtvision.com (MDTVISION, 2003).
+For more information about the EUCLID file format and export
+possibilities, see the [org]_MDTVISION_ web site at
+http://support.mdtvision.com (MDTVISION, 2003).
 
 == Converting to IGES Format
 
 The syntax for the BRL-CAD to IGES converter is as follows:
 
-`g-iges` [[option]``options``] [option]``[replaceable]``input.g`` object(s)``
+`g-iges` +++[+++[opt]_options_] [opt]`[var]#input.g# object(s)`
 
 The options for the g-iges  command are as follows:
 
-* [option]``-o [replaceable]``output_name```` - indicates the name of the resulting IGES file. If the m option is specified, then this is the name of a directory where resulting IGES files will be placed (the directory must already exist). (The default is [path]_stdout_.)
-* [option]``-f`` - designates that the resulting IGES file will be entirely facetted BREP entities. The [option]``-f`` and [option]``-t`` options (the next option discussed) are mutually exclusive.
-* t[option]```` - designates that the resulting IGES file will be entirely trimmed NURB entities similar to the [option]``-f`` option, but each facet is represented as a trimmed NURB. The [option]``-f`` and [option]``-t`` options are mutually exclusive.
-* [option]``-m`` - Each region in the specified objects is output in an individual IGES file and placed in the directory specified with the [option]``-o`` option. This option implies the [option]``-t`` option.
-* [option]``-s`` - Used in conjunction with the [option]``-f`` or [option]``-t`` options to indicate that the facets should all be expressed as planar NURB surfaces rather than the default simple planar surface.
+[opt]`-o [var]#output_name#` :: indicates the name of the
+resulting IGES file. If the m option is specified, then this is the
+name of a directory where resulting IGES files will be placed (the
+directory must already exist). (The default is [path]`stdout`.)
+[opt]`-f` :: designates that the resulting IGES file will be entirely
+facetted BREP entities. The [opt]`-f` and [opt]`-t` options (the next
+option discussed) are mutually exclusive.
+[opt]`-t` :: designates that the resulting IGES file will be entirely
+trimmed NURB entities similar to the [opt]`-f` option, but each facet
+is represented as a trimmed NURB. The [opt]`-f` and [opt]`-t` options
+are mutually exclusive.
+[opt]`-m` :: Each region in the specified objects is output in an
+individual IGES file and placed in the directory specified with the
+[opt]`-o` option. This option implies the [opt]`-t` option.
+[opt]`-s` :: Used in conjunction with the [opt]`-f` or [opt]`-t`
+options to indicate that the facets should all be expressed as planar
+NURB surfaces rather than the default simple planar surface.
 
-With the [option]``-t`` and [option]``-f`` options, the converter will employ Boolean evaluation of each region.
-If neither option is specified, then a CSG IGES file will be produced.
-The command also accepts the previously mentioned [option]``-v``, [option]``-r``, [option]``-a``, [option]``-n``, [option]``-x``, and [option]``-X`` options.
+With the [opt]`-t` and [opt]`-f` options, the converter will employ
+Boolean evaluation of each region.  If neither option is specified,
+then a CSG IGES file will be produced.  The command also accepts the
+previously mentioned [opt]`-v`, [opt]`-r`, [opt]`-a`, [opt]`-n`,
+[opt]`-x`, and [opt]`-X` options.
 
 .Package-Preferred IGES Converter Options
-[cols="1,1"]
-|===
-|
+****
+Note that different CAD packages seem to "prefer" certain options for
+the IGES converter. In particular, Pro/E works well with IGES files
+that use the [opt]`-m` option, and Unigraphics works well with IGES
+files that use the [opt]`-s` option.
+****
 
-
-image::test_img.eps[]
-
-|Note that different CAD packages seem to ``prefer'' certain options for the IGES converter. In particular, Pro/E works well with IGES files that use the [option]``-m`` option, and Unigraphics works well with IGES files that use the [option]``-s`` option.
-|===
-
-For more information about the IGES file format and export possibilities, see the NIST web site at http://www.nist.gov/iges (NIST, 2003).
+For more information about the IGES file format and export
+possibilities, see the NIST web site at http://www.nist.gov/iges
+(NIST, 2003).
 
 == Converting to Jack
 
 The syntax for the jack-g converter is as follows:
 
-`jack-g` [[option]``options``] [path]_input.jack_[path]_output.g_
+`[cmd]*jack-g* +++[+++[opt]_options_] [path]_input.jack_ [path]_output.g_`
 
 The options for the jack-g command are as follows:
 
-* [option]``-r region_name`` - specifies the name of the region to create in the BRL-CAD output (by default, this name is constructed from the input filename).
-* [option]``-g combination_name`` - specifies the name of a combination to be created to hold the region produced. If not specified, no combination will be created.
+[opt]`-r region_name` :: specifies the name of the region to create in
+the BRL-CAD output (by default, this name is constructed from the
+input filename).
+[opt]`-g combination_name` :: specifies the name of a combination to
+be created to hold the region produced. If not specified, no
+combination will be created.
 
-For more information about the Jack file format and export possibilities, see the EDS web page at http://www.eds.com/products/plm/efactory/jack[http://www.eds.com/products/plm/efactory/jack/] (EDS, 2003a).
+For more information about the Jack file format and export
+possibilities, see the EDS web page at
+http://www.eds.com/products/plm/efactory/jack (EDS, 2003a).
 
 == Converting to STL Format
 
 The syntax for the BRL-CAD to STL converter is as follows:
 
-`g-stl` [[option]``options``] [option]``[replaceable]``input.g`` object(s)``
+`[cmd]*g-stl* +++[+++[opt]_options_] [var]#input.g# object(s)`
 
 The options for the `g-stl` command are as follows:
 
-* [option]``-o [replaceable]``output_name```` - specifies the name of the file to receive the STL format output. This option is mutually exclusive with the m option. (The default is [path]_stdout_.)
-* [option]``-m [replaceable]``directory_name```` - specifies the name of an existing directory where output STL files will be placed. This option is mutually exclusive with the [option]``-o`` option. When this option is exercised, each region in the specified object(s) is output in a separate file written to the specified directory. The file names will be based on the BRL-CAD database path to the region, with ``/'' characters replaced by ``@'' and ``.'' characters replaced by ``_''.
-* [option]``-b`` - produces binary format STL files. The combination of this option and the [option]``-o`` option produces a binary STL file containing one solid object representing all the regions in the specified object(s). (The default output format is ASCII.)
-* [option]``-D calculation_tolerance`` - sets the distance calculation tolerance (in millimeters) (the default is 0.005).
-* [option]``-i`` - produces an STL file in units of inches (the default is millimeters).
+[opt]`-o [var]#output_name#` :: specifies the name of the file
+to receive the STL format output. This option is mutually exclusive
+with the m option. (The default is [path]`stdout`.)
+[opt]`-m [var]#directory_name#` :: specifies the name of an
+existing directory where output STL files will be placed. This option
+is mutually exclusive with the [opt]`-o` option. When this option is
+exercised, each region in the specified object(s) is output in a
+separate file written to the specified directory. The file names will
+be based on the BRL-CAD database path to the region, with "/"
+characters replaced by "@" and "." characters replaced by "_".
+[opt]`-b` :: produces binary format STL files. The combination of this
+option and the [opt]`-o` option produces a binary STL file containing
+one solid object representing all the regions in the specified
+object(s). (The default output format is ASCII.)
+[opt]`-D calculation_tolerance` :: sets the distance calculation
+tolerance (in millimeters) (the default is 0.005).
+[opt]`-i` :: produces an STL file in units of inches (the default is
+millimeters).
 
-The command also accepts the previously mentioned [option]``-v``, [option]``-r``, [option]``-a``, [option]``-n``, [option]``-x``, and [option]``-X`` options.
+The command also accepts the previously mentioned [opt]`-v`,
+[opt]`-r`, [opt]`-a`, [opt]`-n`, [opt]`-x`, and [opt]`-X` options.
 
-For more information on the STL file format and export possibilities, see the 3D Systems web site at http://www.3dsystems.com (3D Systems, 2003).
+For more information on the STL file format and export possibilities,
+see the 3D Systems web site at http://www.3dsystems.com (3D Systems,
+2003).
 
 == Converting to TANKILL Format
 
-As discussed previously, the TANKILL format is another purely triangulated representation of solid objects.
+As discussed previously, the TANKILL format is another purely
+triangulated representation of solid objects.
 
 The syntax for the g-tankill command is as follows:
 
-`g-tankill` [[option]``options``] [option]``[replaceable]``input.g`` object(s)``
+`[cmd]*g-tankill* +++[+++[opt]_options_] [var]#input.g# object(s)`
 
 The options for the `g-tankill` command are as follows:
 
-* [option]``-i [replaceable]``idents_file```` - specifies that the ident numbers in the output file should be assigned sequentially as BRL-CAD regions are encountered (rather than using the ident numbers assigned in the BRL-CAD file). A mapping of the assigned ident numbers and the BRL-CAD regions is written to the specified idents_file.
-* [option]``-s surroundings_code`` - specifies the surroundings code, which is a code TANKILL uses to indicate the type of volume that surrounds an object (the default is 1000).
-* [option]``-o [replaceable]``output_name```` -  specifies the name of a file to receive the output (default it [path]_stdout_).
+[opt]`-i [var]#idents_file#` :: specifies that the ident
+numbers in the output file should be assigned sequentially as BRL-CAD
+regions are encountered (rather than using the ident numbers assigned
+in the BRL-CAD file). A mapping of the assigned ident numbers and the
+BRL-CAD regions is written to the specified idents_file.
+[opt]`-s surroundings_code` :: specifies the surroundings code, which
+is a code TANKILL uses to indicate the type of volume that surrounds
+an object (the default is 1000).
+[opt]`-o [var]#output_name#` :: specifies the name of a file
+to receive the output (default it [path]`stdout`).
 
-The command also accepts the previously mentioned [option]``-v``, [option]``-r``, [option]``-a``, [option]``-n``, [option]``-x``, and [option]``-X`` options.
+The command also accepts the previously mentioned [opt]`-v`,
+[opt]`-r`, [opt]`-a`, [opt]`-n`, [opt]`-x`, and [opt]`-X` options.
 
-For more information on the TANKILL file format and export possibilities, contact the Advantage Business Group at the Barbician, East Street, Farnham, Surrey GU9 7TB or visit the web site at http://www.advantage-business.co.uk (Advantage Business Group, 2003)
+For more information on the TANKILL file format and export
+possibilities, contact the Advantage Business Group at the Barbician,
+East Street, Farnham, Surrey GU9 7TB or visit the web site at
+http://www.advantage-business.co.uk (Advantage Business Group, 2003)
 
 == Converting to VRML Format
 
-The Virtual Reality Modeling Language (VRML) began in 1994 at the first World Wide Web Conference.
-The format -which is maintained by the nonprofit, vendor-neutral Web3D Consortium- was designed to be a Web-interoperable standard for specifying multiparticipant 3-D graphical visualization tools.
-When a user selects a hyperlink to a VRML document from within a correctly configured WWW browser, a VRML viewer is launched to navigate through a given geometry (e.g., a model of a building). Future versions of VRML are planned to include more advanced features, including animations, motion physics, and real-time multiuser interaction (Web3D Consortium, 2003b).
+The Virtual Reality Modeling Language (VRML) began in 1994 at the
+first World Wide Web Conference.  The format -- which is maintained by
+the nonprofit, vendor-neutral Web3D Consortium -- was designed to be a
+Web-interoperable standard for specifying multiparticipant 3-D
+graphical visualization tools.  When a user selects a hyperlink to a
+VRML document from within a correctly configured WWW browser, a VRML
+viewer is launched to navigate through a given geometry (e.g., a model
+of a building). Future versions of VRML are planned to include more
+advanced features, including animations, motion physics, and real-time
+multiuser interaction (Web3D Consortium, 2003b).
 
 The g-vrml command converts BRL-CAD objects to the VRML 2.0 format.
 It takes the following form:
 
-`g-vrml` [[option]``options``] [option]``[replaceable]``input.g`` object(s)``
+`[cmd]*g-vrml* +++[+++[opt]_options_] [var]#input.g# object(s)`
 
 The options for the command are as follows:
 
-* [option]``-d tolerance_distance`` - sets distance calculation tolerance in millimeters (the default is 0.005).
-* [option]``-u units`` - sets the desired output units (the default is millimeters).
-* [option]``-o [replaceable]``output_file_name```` - sets output file name (the default is [path]_stdout_).
+[opt]`-d tolerance_distance` :: sets distance calculation tolerance in
+millimeters (the default is 0.005).
+[opt]`-u units` :: sets the desired output units (the default is
+millimeters).
+[opt]`-o [var]#output_file_name#` :: sets output file name
+(the default is [path]`stdout`).
 
-The command also accepts the previously mentioned [option]``-v``, [option]``-r``, [option]``-a``, [option]``-n``, [option]``-x``, and [option]``-X`` options.
+The command also accepts the previously mentioned [opt]`-v`,
+[opt]`-r`, [opt]`-a`, [opt]`-n`, [opt]`-x`, and [opt]`-X` options.
 
-For more information on VRML, see the Web3D Consortium web site at http://www.web3d.org /fs_technicalinfo.htm (Web3D Consortium, 2003b).
+For more information on VRML, see the Web3D Consortium web site at
+http://www.web3d.org /fs_technicalinfo.htm (Web3D Consortium, 2003b).
 
 .The Web3D Consortium
-[cols="1,1"]
-|===
-|
-
-
-image::test_img.eps[]
-
-|
-
-The Web3D Consortium is a nonprofit organization promoting open standards for 3-D Web and broadcast applications.
-Members include leading corporate and educational institutions, including 
-// <orgname>3Dlabs</orgname>
-, 
-// <orgname>ATI Technologies</orgname>
-, 
-// <orgname>blaxxun</orgname>
-, 
-// <orgname>Nexternet</orgname>
-, 
-// <orgname>OpenWorlds</orgname>
-, 
-// <orgname>Sony</orgname>
-, 
-// <orgname>SGDL Systems</orgname>
-, 
-// <orgname>ParallelGraphics</orgname>
-, the Naval Postgraduate School, and the Army Simulation, Training, and Instrumentation Command (STRICOM). Notable efforts include developing VRML specifications and an improved, componentized new-generation specification for Web3D, including X3D (see subsection 5.11) (SURVICE Engineering Company, 2002).
-|===
+****
+The Web3D Consortium is a nonprofit organization promoting open
+standards for 3-D Web and broadcast applications.  Members include
+leading corporate and educational institutions, including
+[org]_3Dlabs_ , [org]_ATI Technologies_ , [org]_blaxxun_ ,
+[org]_Nexternet_ , [org]_OpenWorlds_ , [org]_Sony_ , [org]_SGDL
+Systems_ , [org]_ParallelGraphics_ , the Naval Postgraduate School,
+and the Army Simulation, Training, and Instrumentation Command
+(STRICOM). Notable efforts include developing VRML specifications and
+an improved, componentized new-generation specification for Web3D,
+including X3D (see subsection 5.11) (SURVICE Engineering Company,
+2002).
+****
 
 == Converting to Wavefront Format
 
-The Wavefront OBJ format was developed in 1984 by 
-// <orgname>Wavefront Technologies</orgname>
- (now 
-// <orgname>Alias</orgname>
-, a company that merged with 
-// <orgname>Wavefront</orgname>
- under 
-// <orgname>SGI</orgname>
-). The format, which was intended for use with the Wavefront Advanced Visualizer, consists of lines, polygons, and smooth surfaces.
+The Wavefront OBJ format was developed in 1984 by [org]_Wavefront
+Technologies_ (now [org]_Alias_ , a company that merged with
+[org]_Wavefront_ under [org]_SGI_ ). The format, which was intended
+for use with the Wavefront Advanced Visualizer, consists of lines,
+polygons, and smooth surfaces.
 
-This `g-wave` converter produces an OBJ file that consists entirely of polygons (triangles). The command takes the following form:
+This `g-wave` converter produces an OBJ file that consists entirely of
+polygons (triangles). The command takes the following form:
 
-`g-wave` [[option]``options``] [option]``[replaceable]``input.g`` object(s)``
+`[cmd]*g-wave* +++[+++[opt]_options_] [var]#input.g# object(s)`
 
 The options for the command are as follows:
 
-* [option]``-m`` - includes "usemtl" statements in the output (encoded aircode, los, and material number).
-* [option]``-i`` - sets the output units to inches (the default is millimeters).
-* [option]``-d tolerance_distance`` - sets distance calculation tolerance in millimeters (the default is 0.005).
-* [option]``-u`` - includes vertexuse normals in the output.
-* [option]``-o [replaceable]``output.obj```` - specifies the output file name (default is [path]_stdout_).
+[opt]`-m` :: includes "usemtl" statements in the output (encoded
+aircode, los, and material number).
+[opt]`-i` :: sets the output units to inches (the default is
+millimeters).
+[opt]`-d tolerance_distance` :: sets distance calculation tolerance in
+millimeters (the default is 0.005).
+[opt]`-u` :: includes vertexuse normals in the output.
+[opt]`-o [var]#output.obj#` :: specifies the output file name
+(default is [path]`stdout`).
 
-The command also accepts the previously mentioned [option]``-v``, [option]``-r``, [option]``-a``, [option]``-n``, [option]``-x``, and [option]``-X`` options.
+The command also accepts the previously mentioned [opt]`-v`,
+[opt]`-r`, [opt]`-a`, [opt]`-n`, [opt]`-x`, and [opt]`-X` options.
 
-For more information on the Wavefront file format and export possibilities, see the Alias web site at http://www.alias.com/eng/index.shtml (Alias, 2003).
+For more information on the Wavefront file format and export
+possibilities, see the Alias web site at
+http://www.alias.com/eng/index.shtml (Alias, 2003).
 
 == Converting to X3D Format
 
-The successor to the Web3D Consortium's VRML format, the Extensible 3D (X3D) format was designed to be a standard for interactive web- and broadcast-based 3-D content.
-Its intended uses include engineering and scientific visualization, multimedia presentations, entertainment and educational applications, web pages, and shared virtual worlds.
-It is also intended to serve as a universal interchange format for integrated 3-D graphics and multimedia.
-X3D possesses several improvements over VRML, including advanced APIs, additional data encoding formats, stricter conformance, and a componentized architecture that allows for a modular approach (Web3D Consortium, 2003a).
+The successor to the Web3D Consortium's VRML format, the Extensible 3D
+(X3D) format was designed to be a standard for interactive web- and
+broadcast-based 3-D content.  Its intended uses include engineering
+and scientific visualization, multimedia presentations, entertainment
+and educational applications, web pages, and shared virtual worlds.
+It is also intended to serve as a universal interchange format for
+integrated 3-D graphics and multimedia.  X3D possesses several
+improvements over VRML, including advanced APIs, additional data
+encoding formats, stricter conformance, and a componentized
+architecture that allows for a modular approach (Web3D Consortium,
+2003a).
 
-The `g-x3d` command converts BRL-CAD objects to the X3D format.
-It takes the following form:
+The `g-x3d` command converts BRL-CAD objects to the X3D format.  It
+takes the following form:
 
-`g-x3d` [[option]``options``] [option]``[replaceable]``input.g`` object(s)``
+`[cmd]*g-x3d* +++[+++[opt]_options_] [var]#input.g# object(s)`
 
 The options for the command are as follows:
 
-* [option]``-d tolerance_distance`` - sets distance calculation tolerance in millimeters (the default is 0.005).
-* [option]``-u units`` - sets the desired output units (the default is millimeters).
-* [option]``-o [replaceable]``output_file_name```` - sets output file name (the default is [path]_stdout_).
+[opt]`-d tolerance_distance` :: sets distance calculation tolerance in
+millimeters (the default is 0.005).
+[opt]`-u units` :: sets the desired output units (the default is
+millimeters).
+[opt]`-o [var]#output_file_name#` :: sets output file name
+(the default is [path]`stdout`).
 
-The command also accepts the previously mentioned [option]``-v``, [option]``-r``, [option]``-a``, [option]``-n``, [option]``-x``, and [option]``-X`` options.
+The command also accepts the previously mentioned [opt]`-v`,
+[opt]`-r`, [opt]`-a`, [opt]`-n`, [opt]`-x`, and [opt]`-X` options.
 
-For more information on the X3D file format and export possibilities, see the Web3D Consortium web site at http://www.web3d.org/technicalinfo/specifications/ISO_IEC_19775 (Web3D Consortium, 2003a).
+For more information on the X3D file format and export possibilities,
+see the Web3D Consortium web site at
+http://www.web3d.org/technicalinfo/specifications/ISO_IEC_19775 (Web3D
+Consortium, 2003a).

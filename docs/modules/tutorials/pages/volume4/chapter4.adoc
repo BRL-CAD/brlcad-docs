@@ -188,7 +188,7 @@ standard graphic (e.g., PostScript, Encapsulated PostScript, and
 Interleaf) and plotting (e.g., CalComp, HP, HP/GL2, OCE, and Versatec)
 formats as well as to an STL file.
 
-The `euclid-g` converter converts an ASCII EUCLID ``decoded'' format
+The `euclid-g` converter converts an ASCII EUCLID "decoded" format
 file to BRL-CAD.  Each part is converted to a BRL-CAD region
 consisting of a single BOT primitive.
 
@@ -199,9 +199,9 @@ The syntax for the converter is as follows:
 The options for the command are as follows:
 
 [opt]`-v` :: verbose; prints out progress information.
-[opt]`-i [replaceable]_input_euclid_db_` :: sets input file name
+[opt]`-i [var]#input_euclid_db#` :: sets input file name
 (default is [path]`stdin`).
-[opt]`-o [replaceable]_output_brlcad_db_` :: sets output file name
+[opt]`-o [var]#output_brlcad_db#` :: sets output file name
 (default is [path]`stdout`).
 [opt]`-d tolerance_distance` :: sets distance calculation tolerance
 (in millimeters) (default is 0.005).
@@ -217,10 +217,10 @@ http://support.mdtvision.com (MDTVISION, 2003).
 
 .Header file note
 ****
-Note that all header (.h) files-including [path]_raytrace.h_,
-[path]_nmg.h_, and [path]_bu.h_ -- are accessible in both the source
+Note that all header (.h) files-including [path]`raytrace.h`,
+[path]`nmg.h`, and [path]`bu.h` -- are accessible in both the source
 and binary distributions of BRL-CAD.  In the binary distribution,
-these files are installed in the [path]_/user/brlcad/include/brlcad_
+these files are installed in the [path]`/user/brlcad/include/brlcad`
 directory.
 ****
 
@@ -268,11 +268,11 @@ The options for the command are as follows:
 [opt]`-d` :: prints verbose debugging output.
 [opt]`-q` :: prints nothing except errors.
 [opt]`-w` :: prints warnings about creating default names.
-[opt]`-o [replaceable]_plot_file_name_` :: creates a UNIX plot file of
+[opt]`-o [var]#plot_file_name#` :: creates a UNIX plot file of
 all CTRI and CQUAD elements processed.
 [opt]`-c component_list` :: processes only the listed region ids; may
 be a list (e.g., 3001,4082,5347) or a range (e.g., 2314-3527).
-[opt]`-m [replaceable]_muves_file_name_` :: creates a MUVES warnings
+[opt]`-m [var]#muves_file_name#` :: creates a MUVES warnings
 file containing CHGCOMP and CBACKING elements.
 [opt]`-b lvl` :: sets libbu debug flag (see [path]`bu.h` in the binary
 distribution for definitions of BU_DEBUG_xxx).
@@ -289,7 +289,7 @@ to BRL-CAD format.  The syntax for the command is as follows:
 
 The options for the command are as follows:
 
-[opt]`-f [replaceable]_fastgen.rp_` :: specifies preprocessed FASTGEN
+[opt]`-f [var]#fastgen.rp#` :: specifies preprocessed FASTGEN
 file (default is [path]`stdin`).
 [opt]`-a` :: processes phantom armor.
 [opt]`-n` :: processes volume mode as plate mode.
@@ -297,16 +297,16 @@ file (default is [path]`stdin`).
 (default is five).
 [opt]`-c "x y z"` :: specifies the object's center (in inches) (for
 some surface normal calculations).
-[opt]`-t title` :: specifies optional title (default is ``Untitled
-MGED database'').
+[opt]`-t title` :: specifies optional title (default is "Untitled
+MGED database").
 [opt]`-o object_name` :: specifies optional top-level name (default is
 "all").
 [opt]`-p` :: writes volume and plate mode components as BOTs.
 [opt]`-6` :: processes plate mode triangles as ARB6 solids (overrides
 p option for triangles).
-[opt]`-i [replaceable]_group.file_` :: specifies group labels source
+[opt]`-i [var]#group.file#` :: specifies group labels source
 file.
-[opt]`-m [replaceable]_mat.file_` :: specifies materials information
+[opt]`-m [var]#mat.file#` :: specifies materials information
 source file.
 [opt]`-r` :: reverses normals for plate mode triangles.
 [opt]`-d lvl` :: sets debug level.
@@ -329,7 +329,7 @@ of exchanging graphics and engineering drawings, IGES was extended to
 include solid models as well.  This specification includes so many
 different implementations within itself that conversion between IGES
 flavors has become a small industry.  Thus, conversion to/from IGES is
-a ``hit-or-miss'' proposition (NIST, 2003).
+a "hit-or-miss" proposition (NIST, 2003).
 
 The Product Data Exchange using STEP specification is intended to
 replace IGES and correct the aforementioned deficiency by explicitly
@@ -356,9 +356,9 @@ single BRL-CAD NMG primitive.
 created using the [opt]`-t` or [opt]`-n` options.
 [opt]`-p` :: converts all BREP entities to BRL-CAD NMG primitives
 rather than the default BOT primitives.
-[opt]`-x lvl` :: sets librt debug flag (see [path]_raytrace.h_ in the
+[opt]`-x lvl` :: sets librt debug flag (see [path]`raytrace.h` in the
 binary distribution for definitions of DEBUG_xxx).
-[opt]`-X lvl` :: sets librt NMG debug flag (see [path]_nmg.h_ in the
+[opt]`-X lvl` :: sets librt NMG debug flag (see [path]`nmg.h` in the
 binary distribution for definitions of DEBUG_xxx).
 
 The [opt]`-n`, [opt]`-d`, [opt]`-t`, and [opt]`-3` options are
@@ -379,7 +379,7 @@ Data Systems (EDS) (the company that now also distributes Unigraphics
 and NASTRAN), the package enables users to study and improve the
 ergonomics of product design and workplace tasks through the
 positioning of biomechanically accurate digital humans of various
-sizes in virtual environments.  Jack and Jill digital ``humans'' can
+sizes in virtual environments.  Jack and Jill digital "humans" can
 tell engineers what they can see and reach, how comfortable they are,
 when and why they're getting hurt, when they're getting tired, and
 other important ergonomics information.  The package's principal
@@ -451,14 +451,14 @@ The syntax for the converter is as follows:
 
 The options for the command are as follows:
 
-[opt]`-i [replaceable]_NASTRAN_input_file_` :: sets input NASTRAN file
-(default is [path]_stdin_).
-[opt]`-o [replaceable]_output.g_` :: sets output file name (default is
+[opt]`-i [var]#NASTRAN_input_file#` :: sets input NASTRAN file
+(default is [path]`stdin`).
+[opt]`-o [var]#output.g#` :: sets output file name (default is
 "nastran.g").
 [opt]`-n` :: produces NMG primitives (default is BOT primitives).
-[opt]`-x lvl` :: sets librt debug flag (see [path]_raytrace.h_ in the
+[opt]`-x lvl` :: sets librt debug flag (see [path]`raytrace.h` in the
 binary distribution for definitions of DEBUG_xxx).
-[opt]`-X lvl` :: sets NMG library debug flag (see [path]_nmg.h_ in the
+[opt]`-X lvl` :: sets NMG library debug flag (see [path]`nmg.h` in the
 binary distribution for definitions of DEBUG_xxx).
 [opt]`-t tolerance_distance` :: sets distance calculation tolerance
 (in millimeters) (default is 0.005).
@@ -495,9 +495,9 @@ users can compile it for different platforms if they have the
 Pro/Toolkit module for that platform.
 
 Pro/E models are made up of two elements: parts and assemblies.  Part
-files (which are designated by a [path]_.prt_ extension) are the basic
+files (which are designated by a [path]`.prt` extension) are the basic
 building blocks of Pro/E geometry.  Assembly files (which are
-designated by a [path]_.asm_ extension) are composed of parts and/or
+designated by a [path]`.asm` extension) are composed of parts and/or
 other assemblies.  The converter produces a BRL-CAD region for each
 Pro/E part that is converted and a BRL- CAD combination for each Pro/E
 assembly that is converted.  Each of these regions will consist of a
@@ -546,15 +546,15 @@ than the numbers represent.
 
 The command to start the Pro/E program is specified by each installer.
 When Pro/E is started, the program looks for a file named
-[path]_protk.dat_ in a few specific places, one of which is in the
+[path]`protk.dat` in a few specific places, one of which is in the
 current directory.  This file informs Pro/E about Pro/TOOLKIT modules
-it should load.  There is a [path]_protk.dat_ file for the
+it should load.  There is a [path]`protk.dat` file for the
 Pro/E-to-BRL-CAD converter, and it is included in the distribution
 under the pro-engineer directory.  Users should copy this file to the
 directory where they will be starting Pro/E.  After that file is in
 place, Pro/E will load the converter at startup.  If the loading
-succeeds, users will see a message saying ``Installation of Proe-BRL
-converter succeeded.'' With Pro/E started and the converter module
+succeeds, users will see a message saying "Installation of Proe-BRL
+converter succeeded." With Pro/E started and the converter module
 loaded, the user can open any Pro/E model he wants to convert.
 
 The conversion process is started by selecting the menu:File[ProE-BRL]
@@ -625,7 +625,7 @@ solid part with no naming.
 
 The `stl-g` converter converts STL format to BRL-CAD.  The STL format
 is entirely triangles.  The resulting BRL-CAD database will consist of
-one or more regions and a top-level combination named ``all,'' which
+one or more regions and a top-level combination named "all," which
 contains all the regions produced.  Each region will consist of a
 single BOT primitive.
 
@@ -640,8 +640,8 @@ The syntax for the `stl-g` converter is as follows:
 
 `[cmd]*stl-g* +++[+++[opt]_options_] [path]_input.stl_ [path]_output.g_`
 
-where [path]_input.stl_ is the STL file to be converted and
-[path]_output.g_ is the name of the BRL-CAD database to receive the
+where [path]`input.stl` is the STL file to be converted and
+[path]`output.g` is the name of the BRL-CAD database to receive the
 converted output.
 
 The options for this command are as follows:
@@ -649,7 +649,7 @@ The options for this command are as follows:
 [opt]`-b` :: designates that the input STL file is in binary format
 (the default is ASCII).
 [opt]`-c units` :: specifies the units used in the STL file. Choices
-include ``cm,'' ``m,'' ``in,'' ``ft,'' and many others (the default is
+include "cm", "m", "in", "ft", and many others (the default is
 millimeters).
 [opt]`-N name` :: specifies a name for the resulting BRL-CAD
 region. If more than one region is produced, unique region names will
@@ -671,7 +671,7 @@ this minimum will be considered to be the same vertex (the default
 value is 0.005 mm).
 [opt]`-x librt_debug_flag` :: specifies a flag for the raytracing
 library that will result in additional debug log messages (see
-[path]_librt/debug.h_ in the binary distribution for details).
+[path]`librt/debug.h` in the binary distribution for details).
 
 For more information on the STL file format and import possibilities,
 see the [org]_3D Systems_ web site at http://www.3dsystems.com (3D
@@ -692,14 +692,14 @@ The options for the command are as follows:
 
 [opt]`-v` :: verbose; prints out progress information.
 [opt]`-n` :: produces NMG primitives (default is BOT primitives).
-[opt]`-i [replaceable]_input.tkl_` :: specifies the input TANKILL file
-(default is [path]_stdin_).
-[opt]`-o [replaceable]_output.g_` :: specifies the output BRL-CAD file
-(default is [path]_tankill.g_).
+[opt]`-i [var]#input.tkl#` :: specifies the input TANKILL file
+(default is [path]`stdin`).
+[opt]`-o [var]#output.g#` :: specifies the output BRL-CAD file
+(default is [path]`tankill.g`).
 [opt]`-k` :: keeps components with id = 1001 (normally skipped).
-[opt]`-x lvl` :: sets librt debug flag (see [path]_raytrace.h_ in the
+[opt]`-x lvl` :: sets librt debug flag (see [path]`raytrace.h` in the
 binary distribution for definitions of DEBUG_xxx).
-[opt]`-X lvl` :: sets NMG library debug flag (see [path]_nmg.h_ in the
+[opt]`-X lvl` :: sets NMG library debug flag (see [path]`nmg.h` in the
 binary distribution for definitions of DEBUG_xxx).
 
 For more information on the TANKILL file format and import
@@ -761,9 +761,9 @@ integer number.
 
 The syntax for this converter is as follows:
 
-`[cmd]*ug-g* +++[+++[opt]_options_] [opt]_-o_ [path]_output.g_ [path]_UG_part_file_ +++[+++[opt]_subpart1_ [opt]_subpart2_ . . .]`
+`[cmd]*ug-g* +++[+++[opt]_options_] [opt]_-o_ [path]_output.g_ [path]_UG_part_file_ +++[+++[opt]_subpart1_ [opt]_subpart2_ ...]`
 
-where the [path]_UG_part_file_ is a Unigraphics part file.  If
+where the [path]`UG_part_file` is a Unigraphics part file.  If
 subparts are listed on the command line, only those named parts in the
 specified part file will be converted.
 
@@ -775,7 +775,7 @@ logging.
 [opt]`-i initial_ident` :: specifies the ident number for the first
 region created by the conversion. Subsequent regions are assigned
 sequential ident numbers.
-[opt]`-n [replaceable]_part_name_file_` :: specifies a file containing
+[opt]`-n [var]#part_name_file#` :: specifies a file containing
 a mapping of Unigraphics part and/or assembly names to BRL-CAD object
 names. If this file is provided, it will be used to create object
 names in the BRL-CAD model. The format of this file is simply a line
@@ -798,7 +798,7 @@ to CSG. (This option and the [opt]`-f` option are mutually exclusive.)
 model. Using this option will result in a BRL-CAD model that is
 significantly larger than when not using it, but raytraced objects
 will appear much smoother.
-[opt]`-o [replaceable]_output.g_` :: specifies the name of the file to
+[opt]`-o [var]#output.g#` :: specifies the name of the file to
 receive the BRL-CAD model.
 [opt]`-t tolerance_distance` :: specifies the minimum distance (in
 millimeters) allowed between distinct vertices. Vertices closer than
@@ -843,11 +843,11 @@ The syntax for the converter is as follows:
 
 The options for the command are as follows:
 
-[opt]`-c [replaceable]_coord_file_name_` :: sets the input vertex
+[opt]`-c [var]#coord_file_name#` :: sets the input vertex
 coordinates file name (required).
-[opt]`-e [replaceable]_elements_file_name_` :: sets the input faces
+[opt]`-e [var]#elements_file_name#` :: sets the input faces
 file name (required).
-[opt]`-o [replaceable]_output_file_name_` :: sets the output BRL-CAD
-database name (default is [path]_viewpoint.g_).
+[opt]`-o [var]#output_file_name#` :: sets the output BRL-CAD
+database name (default is [path]`viewpoint.g`).
 [opt]`-t tolerance_distance` :: sets distance calculation tolerance
 (in millimeters) (default is 0.005).
