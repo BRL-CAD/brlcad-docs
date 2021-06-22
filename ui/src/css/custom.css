@@ -1,11 +1,11 @@
 
-.prompt {
+.doc .prompt {
   color: blue;
   font-weight: bold;
 }
 
 .doc p code.userinput,
-.cmd,
+.doc .cmd,
 .doc p code.cmd {
   color: red;
   font-weight: bold;
@@ -18,7 +18,7 @@
 }
 
 .doc p code,
-.output {
+.doc .output {
   color: blue;
 }
 
@@ -27,19 +27,36 @@ kbd {
   font-weight: normal;
 }
 
-.doc p code.app {
-  color: #333;
+/* style for [app], <application> */
+.doc .app {
+  color: #363;
   font-weight: bold;
+}
+
+/* style for [org], <organization> */
+.doc .org {
+  color: #336;
 }
 
 .doc .literalblock pre {
   color: #006;
 }
 
-.doc em.path {
+/* style for [path], <filename> */
+.doc .path {
   color: #060;
 }
 
 .doc h4 {
   font-weight: bold;
+}
+
+/* style for [opt], <option> */
+.doc .opt {
+  color: #909;
+}
+
+/* style for [label], <guilabel> */
+.doc .label {
+  background: #aaa;
 }
