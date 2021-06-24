@@ -56,7 +56,7 @@ it would be impractical to try to address all of the conversion paths
 and methods that are currently or potentially possible.  Many times,
 conversion from one file format to another is not a one-to-one
 process.  Depending on the amount of time and effort the BRL-CAD user
-is willing to invest, seemingly incompatible formats can be ``forced''
+is willing to invest, seemingly incompatible formats can be "forced"
 to convert via another CAD format or via a standardized CAD format
 (e.g., the Initial Graphics Exchange Specification [IGES] or the
 Standard for the Exchange of Product Model Data [STEP]). In fact, when
@@ -70,18 +70,19 @@ computationally intensive output files) that completely rebuilding a
 model from scratch might be a preferable alternative.
 
 In any case, the focus of this document is on the primary formats that
-convert to and from BRL-CAD. <<_chapt_pert_char>> discusses pertinent
-characteristics specific to the BRL-CAD
-format. <<_sec_convert_from_to_ascii>> addresses general conversion
+convert to and from BRL-CAD. xref:converting/chapter2.adoc[] discusses
+pertinent characteristics specific to the BRL-CAD
+format. xref:converting/chapter3.adoc[] addresses general conversion
 to/from the American Standard Code for Information Interchange (ASCII)
-format. <<_sec_convert_to_brlcad>> addresses the primary formats that
-convert to BRL-CAD. <<_sec_convert_from_brlcad>> addresses the primary
-formats that convert from BRL-CAD. <<_sec_build_new_converter>>
-provides guidance for those users who desire to create their own
-customized converters.  And <<_sec_postconversion_issues>> addresses
-postconversion issues.  In addition, the user is encouraged to consult
-the web sites and other resources cited at the end of each converter
-discussion to obtain the latest information on each format.
+format. xref:converting/chapter4.adoc[] addresses the primary formats
+that convert to BRL-CAD. xref:converting/chapter5.adoc[] addresses the
+primary formats that convert from
+BRL-CAD. xref:converting/chapter6.adoc[] provides guidance for those
+users who desire to create their own customized converters.  And
+xref:converting/chapter7.adoc[] addresses postconversion issues.  In
+addition, the user is encouraged to consult the web sites and other
+resources cited at the end of each converter discussion to obtain the
+latest information on each format.
 
 == The Need for Conversion
 
@@ -127,7 +128,7 @@ when used for vulnerability studies.  They include the following
 (SURVICE Engineering Company, 2002):
 
 * _Incompatible/Inaccessible File Formats_ -- As discussed in
-  <<_chapt_pert_char>>, some CAD formats use the boundary
+  xref:converting/chapter2.adoc[], some CAD formats use the boundary
   representation (BREP) approach to solid modeling, which is largely
   incompatible with the constructive solid geometry (CSG) approach
   that BRL-CAD uses. In addition, although most commercial packages
@@ -136,14 +137,14 @@ when used for vulnerability studies.  They include the following
   format. Moreover, when target descriptions are converted to a format
   designed for vulnerability assessment (i.e., BRL-CAD or FASTGEN),
   they often require manual checking, adjustment, and additional
-  modeling (see <<_sec_postconversion_issues>>). Typical problems that
-  must be addressed include the translation of curved and irregular
-  surfaces, the representation of solids of rotation, tolerancing, and
-  interference handling.
+  modeling (see xref:converting/chapter7.adoc[]). Typical problems
+  that must be addressed include the translation of curved and
+  irregular surfaces, the representation of solids of rotation,
+  tolerancing, and interference handling.
 * _Too Much Detail_ -- Commercial geometry files often contain too much
   of a good thing for vulnerability analysis. That is to say,
   commercial CAD packages often model geometry all the way to the
-  ``nuts and bolts'' level, whereas vulnerability analyses are
+  "nuts and bolts" level, whereas vulnerability analyses are
   typically concerned only with details down to the level of shielding
   and critical components. Unfortunately, added detail produces
   unnecessarily large and complex input files and thus longer
@@ -163,7 +164,7 @@ when used for vulnerability studies.  They include the following
   assessment.
 * _Limited Integrated Vulnerability Assessment Support_ -- Commercial
   CAD packages are designed for engineering analysis, not ballistic
-  analysis and therefore offer few, if any, ``shotlining'' tools and
+  analysis and therefore offer few, if any, "shotlining" tools and
   limited integrated vulnerability assessment support.
 * _High Cost_ -- In addition to facing the typically high cost of
   commercial CAD software, the user often faces the decision of
@@ -172,7 +173,7 @@ when used for vulnerability studies.  They include the following
   complex geometry. In addition, users may be required to pay
   continuing licensing and maintenance fees, often on a per-seat basis
   (although recent developments have offered PC-based implementations
-  and short-term leasing ``seats'' to make these packages more
+  and short-term leasing "seats" to make these packages more
   affordable).
 
 Not surprisingly, when considering the benefits and liabilities of
