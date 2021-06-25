@@ -1,5 +1,7 @@
 = Article Title
 Firstname Middlename Lastname <devs@brlcad.org>
+:sectnums:
+:experimental:
 
 [[_some_descriptive_tag]]
 == Unknown Title!
@@ -70,4 +72,686 @@ references and examples:
 
 * https://docs.asciidoctor.org/asciidoc/latest/
 * https://www.vogella.com/tutorials/AsciiDoc/article.html
+====
+
+== AsciiDoc Examples
+
+These examples demonstrate some styles and patterns that are used in
+the BRL-CAD docs. They might help new doc writers and contributors by
+suggesting them what can be used, but they are not meant to be
+complete or restrictive.
+
+=== Monospace and application
+
+....
+The `oed` command in [app]`MGED` is used to ...
+....
+
+====
+The `oed` command in [app]`MGED` is used to ...
+====
+
+
+=== Organization
+
+....
+Notable aerospace firms and support organizations that use FASTGEN
+include [org]_Lockheed Martin_, [org]#Boeing#, [org]`Bell Helicopter`
+, [org]*Northrop Grumman* , [org]_Pratt &amp; Whitney_ , [org]_General
+Electric_ , [org]_KETRON_ , [org]_ITT_ , [org]_BAH_ , [org]_SURVICE
+Engineering_ , and [org]_ASI_ .
+....
+
+====
+Notable aerospace firms and support organizations that use FASTGEN
+include [org]_Lockheed Martin_, [org]#Boeing#, [org]`Bell Helicopter`
+, [org]*Northrop Grumman* , [org]_Pratt &amp; Whitney_ , [org]_General
+Electric_ , [org]_KETRON_ , [org]_ITT_ , [org]_BAH_ , [org]_SURVICE
+Engineering_ , and [org]_ASI_ .
+====
+
+
+=== Path and command
+
+* {blank}
++
+....
+[path]`input.asc` is a file created using [cmd]`g2asc`
+....
++
+====
+[path]`input.asc` is a file created using [cmd]`g2asc`
+====
+
+* {blank}
++
+....
+[cmd]`draw sph1.s kbd:[Enter]`
+....
++
+====
+[cmd]`draw sph1.s kbd:[Enter]`
+====
++
+NOTE: For `kbd:[]` macro to work, you need to add the attribute
+`:experimental:` at the top of the page.
+
+* {blank}
++
+....
+`[cmd]*g2asc* < [path]#input.g# > [path]#output.g#`
+....
++
+====
+`[cmd]*g2asc* < [path]#input.g# > [path]#output.g#`
+====
+
+
+=== Gui labels
+
+....
+The following list provides a description of the use and functionality
+of the primary elements in the dialog box.
+
+* [label]#Output File Name# -- This is the name of the file to receive
+  the ASCII output.
+* [label]#Log File Name# -- If provided, verbose status logging will
+  be written to that file.
+....
+
+====
+The following list provides a description of the use and functionality
+of the primary elements in the dialog box.
+
+* [label]#Output File Name# -- This is the name of the file to receive
+  the ASCII output.
+* [label]#Log File Name# -- If provided, verbose status logging will
+  be written to that file.
+====
+
+
+=== Inline markup inside a literal block
+
+.....
+[subs="+quotes"]
+....
+[prompt]#mged># [cmd]#l tire#
+[output]#tire:  --
+   u tire-215-55R17.r
+   u air-215-55R17.r
+   u wheel-215-55R17.r#
+....
+.....
+
+====
+[subs="+quotes"]
+.....
+[prompt]#mged># [cmd]#l tire#
+[output]#tire:  --
+   u tire-215-55R17.r
+   u air-215-55R17.r
+   u wheel-215-55R17.r#
+.....
+====
+
+NOTE: The attribute `[subs="+quotes"]` is an instruction for replacing
+(substituting) the quoted strings inside the block.
+
+
+=== Prompt and user input (`[in]`)
+
+.....
+[subs="+quotes,+macros"]
+....
+[prompt]#Enter X, Y, Z of vertex:# [in]#0 0 0# kbd:[Enter]
+[prompt]#Enter X, Y, Z of height (H) vector:# [in]#0 0 3.5# kbd:[Enter]
+[prompt]#Enter radius:# [in]#1.75# kbd:[Enter]
+....
+.....
+
+====
+[subs="+quotes,+macros"]
+....
+[prompt]#Enter X, Y, Z of vertex:# [in]#0 0 0# kbd:[Enter]
+[prompt]#Enter X, Y, Z of height (H) vector:# [in]#0 0 3.5# kbd:[Enter]
+[prompt]#Enter radius:# [in]#1.75# kbd:[Enter]
+....
+====
+
+
+=== Source code example
+
+....
+[source,c]
+----
+struct rt_wdb *wdbp;
+if( (wdbp=wdb_fopen( new_file_name ) ) == RT_WDB_NULL ) {
+    bu_exit(1, "Failed to open output file (%s)\n", new_file_name);
+}
+----
+....
+
+====
+[source,c]
+----
+struct rt_wdb *wdbp;
+if( (wdbp=wdb_fopen( new_file_name ) ) == RT_WDB_NULL ) {
+    bu_exit(1, "Failed to open output file (%s)\n", new_file_name);
+}
+----
+====
+
+
+=== Explaining the usage of a command with a table
+
+....
+[%header, cols="^,^", frame="all"]
+|===
+|draw
+|sph1.s
+
+|Draw a previously created primitive shape
+|named sph1.s
+|===
+....
+
+====
+[%header, cols="^,^", frame="all"]
+|===
+|draw
+|sph1.s
+
+|Draw a previously created primitive shape
+|named sph1.s
+|===
+====
+
+
+=== Another, more complex table
+
+....
+[%header, cols="10*^~", frame="all"]
+|===
+|in
+|?
+|rcc
+3+|?
+3+|?
+|?
+
+.2+|Insert a primitive shape
+.2+|Name of shape
+.2+|Type of shape is a right circular cylinder
+|Value of x
+|Value of y
+|Value of z
+|Value of x
+|Value of y
+|Value of z
+.2+|Radius of rcc
+
+3+|Vertex
+3+|Height vector
+|===
+....
+
+====
+[%header, cols="10*^~", frame="all"]
+|===
+|in
+|?
+|rcc
+3+|?
+3+|?
+|?
+
+.2+|Insert a primitive shape
+.2+|Name of shape
+.2+|Type of shape is a right circular cylinder
+|Value of x
+|Value of y
+|Value of z
+|Value of x
+|Value of y
+|Value of z
+.2+|Radius of rcc
+
+3+|Vertex
+3+|Height vector
+|===
+====
+
+
+=== Tables can be used to neatly display images
+
+==== Resize and center an image
+
+....
+[cols="^a", frame="none"]
+|===
+|
+.Azimuth, Elevation, and the xyz Coordinate System
+image::lessons:mged/02_coordsys.png[width=35%]
+|===
+....
+
+====
+[cols="^a", frame="none"]
+|===
+|
+.Azimuth, Elevation, and the xyz Coordinate System
+image::lessons:mged/02_coordsys.png[width=35%]
+|===
+====
+
+==== Display 2 images on cells of equal size
+
+....
+[cols="2*^.<a", frame="none"]
+|===
+|
+.Zoom In to View Details (small size of view)
+image::lessons:mged/02_flower_zoomin.png[width=400]
+|
+.Zoom Out to View Object in Relation to Environment (large size of view)
+image::lessons:mged/02_flower_zoomout.png[width=400]
+|===
+....
+
+====
+[cols="2*^.<a", frame="none"]
+|===
+|
+.Zoom In to View Details (small size of view)
+image::lessons:mged/02_flower_zoomin.png[width=400]
+|
+.Zoom Out to View Object in Relation to Environment (large size of view)
+image::lessons:mged/02_flower_zoomout.png[width=400]
+|===
+====
+
+==== Display images on cells of flexible width:
+
+....
+[cols="2*^~a", frame="none"]
+|===
+|
+.Front (az=0, el=0)
+image::lessons:mged/02_truck_front.png[]
+|
+.az=35, el=0
+image::lessons:mged/02_truck_35_0.png[]
+|===
+....
+
+====
+[cols="2*^~a", frame="none"]
+|===
+|
+.Front (az=0, el=0)
+image::lessons:mged/02_truck_front.png[]
+|
+.az=35, el=0
+image::lessons:mged/02_truck_35_0.png[]
+|===
+====
+
+=== Using a table to explain the usage of a command
+
+....
+.Usage of MGED's gdiff utility
+[cols="2*~", frame="none", options="noheader"]
+|===
+2+| Usage: `[cmd]#gdiff# +++[+++[opt]#OPTION#]... [var]#obj1# [var]#obj2#`
+
+|[opt]`--tol=#`, [opt]`-t#`
+|Tolerance in millimeters.
+
+|[opt]`--ray-diff`, [opt]`-R`
+|Test for differences with raytracing.
+
+|[opt]`--view-left`, [opt]`-l`
+|Visualize volumes added only by left object.
+
+|[opt]`--view-both`, [opt]`-b`
+|Visualize volumes common to both objects.
+
+|[opt]`--view-right`, [opt]`-r`
+|Visualize volumes added only by right object.
+
+|[opt]`--grazing`, [opt]`-G`
+|Report differences in grazing hits (raytracing mode).
+|===
+....
+
+====
+.Usage of MGED's gdiff utility
+[cols="2*~", frame="none", options="noheader"]
+|===
+2+| Usage: `[cmd]#gdiff# +++[+++[opt]#OPTION#]... [var]#obj1# [var]#obj2#`
+
+|[opt]`--tol=#`, [opt]`-t#`
+|Tolerance in millimeters.
+
+|[opt]`--ray-diff`, [opt]`-R`
+|Test for differences with raytracing.
+
+|[opt]`--view-left`, [opt]`-l`
+|Visualize volumes added only by left object.
+
+|[opt]`--view-both`, [opt]`-b`
+|Visualize volumes common to both objects.
+
+|[opt]`--view-right`, [opt]`-r`
+|Visualize volumes added only by right object.
+
+|[opt]`--grazing`, [opt]`-G`
+|Report differences in grazing hits (raytracing mode).
+|===
+====
+
+
+=== Another table that explains some options
+
+....
+.STL reader options
+[cols="2*~", frame="none"]
+|===
+|`--binary`
+|Specify that the input file is in binary STL format (the default
+ assumes ASCII).
+
+|[nowrap]`--starting-ident=[var]#number#`
+|Specify the starting ident for the regions created. The default is
+ `1000`. This number will be incremented for each region, unless
+ `--constant-ident` is specified.
+
+|`--constant-ident`
+|Specify that the starting ident should remain constant.
+
+|`--material=[var]#code#`
+|Specify the material code that will be assigned to all created
+ regions (the default is `1`).
+|===
+....
+
+====
+.STL reader options
+[cols="2*~", frame="none"]
+|===
+|`--binary`
+|Specify that the input file is in binary STL format (the default
+ assumes ASCII).
+
+|[nowrap]`--starting-ident=[var]#number#`
+|Specify the starting ident for the regions created. The default is
+ `1000`. This number will be incremented for each region, unless
+ `--constant-ident` is specified.
+
+|`--constant-ident`
+|Specify that the starting ident should remain constant.
+
+|`--material=[var]#code#`
+|Specify the material code that will be assigned to all created
+ regions (the default is `1`).
+|===
+====
+
+NOTE: Because the columns of the table have flexible widths, it is
+possible that the options' column is too narrow and the option lines
+are broken. To prevent this we are using `[nowrap]` for the longest
+option.
+
+
+=== Using bibliography references
+
+....
+The COMGEOM target descriptions are processed by the Geometric
+Information For Targets (GIFT <<r1>>,<<r2>>) code for use in follow-on
+vulnerability assessment codes.
+
+[bibliography]
+.References
+* [[[r1, 1]]] Lawrence W. Bain, Mathew J. Reisinger, "The GIFT Code User
+Manual; Vol I, Introduction and Input Requirements," BRL
+Report No. 1802, July 1975. (AD# B0060371)
+* [[[r2, 2]]] Gary G. Kuehl, Lawrence W. Bain, Mathew J. Reisinger, "The
+GIFT Code User Manual; Vol II, the Output Options," ARRADCOM Technical
+Report No. ARBRL-TR-02189, September 1979. (AD# A078364)
+....
+
+====
+The COMGEOM target descriptions are processed by the Geometric
+Information For Targets (GIFT <<r1>>,<<r2>>) code for use in follow-on
+vulnerability assessment codes.
+
+[bibliography]
+.References
+* [[[r1, 1]]] Lawrence W. Bain, Mathew J. Reisinger, "The GIFT Code User
+Manual; Vol I, Introduction and Input Requirements," BRL
+Report No. 1802, July 1975. (AD# B0060371)
+* [[[r2, 2]]] Gary G. Kuehl, Lawrence W. Bain, Mathew J. Reisinger, "The
+GIFT Code User Manual; Vol II, the Output Options," ARRADCOM Technical
+Report No. ARBRL-TR-02189, September 1979. (AD# A078364)
+====
+
+
+=== Another table example
+
+....
+[%header, cols="^h,~", frame="all"]
+|===
+|Event
+|Description
+
+|r
+|*Ray*.  A ray is cast.  The formatting associated with r will print
+ regardless of whether a region is encountered.
+
+|h
+|*Header*. First output after a ray hits anything.  Formatting at
+  *h* is output once per ray.
+
+|p
+|*Partition*.  Output for each region encountered by the ray.
+ Typically this will be where most of the information about a model is
+ reported.
+
+|f
+|*Footnote*.  Last output statement after a ray hits anything; a
+ "footnote" line after the ray has completed its evaluations; once
+ per ray.
+
+|g
+|*Gap*.  Output written once for each gap the ray may encounter.
+
+|m
+|*Miss*.  If triggered, prints a message that nothing was hit;
+ maximum once per ray.
+
+|o
+|*Overlap*.  Output written once for each overlap along the
+ ray.
+|===
+....
+
+====
+[%header, cols="^h,~", frame="all"]
+|===
+|Event
+|Description
+
+|r
+|*Ray*.  A ray is cast.  The formatting associated with r will print
+ regardless of whether a region is encountered.
+
+|h
+|*Header*. First output after a ray hits anything.  Formatting at
+  *h* is output once per ray.
+
+|p
+|*Partition*.  Output for each region encountered by the ray.
+ Typically this will be where most of the information about a model is
+ reported.
+
+|f
+|*Footnote*.  Last output statement after a ray hits anything; a
+ "footnote" line after the ray has completed its evaluations; once
+ per ray.
+
+|g
+|*Gap*.  Output written once for each gap the ray may encounter.
+
+|m
+|*Miss*.  If triggered, prints a message that nothing was hit;
+ maximum once per ray.
+
+|o
+|*Overlap*.  Output written once for each overlap along the
+ ray.
+|===
+====
+
+
+=== Another way for explaining a command
+
+[subs=""]
+.....
+[[_percent]]
+% :: Start a `/bin/sh` shell process for the user.  The
+[prompt]#mged># prompt will be replaced by a system prompt for the
+shell, and the user may perform any legal shell commands.  The `mged`
+process waits for the shell process to finish, which occurs when the
+user exits the shell.  This only works in a command window associated
+with a tty (i.e., the window used to start `mged` in classic mode).
++
+.Example:
+[subs="+quotes"]
+....
+[prompt]#mged># [cmd]#%#   <1>
+[prompt]#$# [cmd]#ls -al#  <2>
+[prompt]#$# [cmd]#exit#    <3>
+[prompt]#mged>#     <4>
+....
+<1> Start a new shell process.
+<2> Issue any shell commands.
+<3> Exit the shell.
+<4> Continue editing in `mged`.
+.....
+
+====
+[[_percent]]
+% :: Start a `/bin/sh` shell process for the user.  The
+[prompt]#mged># prompt will be replaced by a system prompt for the
+shell, and the user may perform any legal shell commands.  The `mged`
+process waits for the shell process to finish, which occurs when the
+user exits the shell.  This only works in a command window associated
+with a tty (i.e., the window used to start `mged` in classic mode).
++
+.Example:
+[subs="+quotes"]
+....
+[prompt]#mged># [cmd]#%#   <1>
+[prompt]#$# [cmd]#ls -al#  <2>
+[prompt]#$# [cmd]#exit#    <3>
+[prompt]#mged>#     <4>
+....
+<1> Start a new shell process.
+<2> Issue any shell commands.
+<3> Exit the shell.
+<4> Continue editing in `mged`.
+====
+
+
+=== Displaying the info of a book or article
+
+....
+****
+[cols=">h,<", frame="all"]
+|===
+| AUTHORS:
+| Lee A. Butler +
+  Eric W. Edwards +
+  Betty J. Schueler +
+  Robert G. Parker +
+  John R. Anderson
+
+| ORGANIZATION:
+| *U.S. Army Research Laboratory* +
+  Aberdeen Proving Ground, MD  21005-5068
+
+| REPORT:
+| ARL-SR-102 +
+  April 2001
+|===
+****
+....
+
+====
+****
+[cols=">h,<", frame="all"]
+|===
+| AUTHORS:
+| Lee A. Butler +
+  Eric W. Edwards +
+  Betty J. Schueler +
+  Robert G. Parker +
+  John R. Anderson
+
+| ORGANIZATION:
+| *U.S. Army Research Laboratory* +
+  Aberdeen Proving Ground, MD  21005-5068
+
+| REPORT:
+| ARL-SR-102 +
+  April 2001
+|===
+****
+====
+
+
+=== Explaining the usage of a command with definition lists
+
+....
+The g-dxf command converts BRL-CAD objects to the previously mentioned
+AutoCAD DXF format.  The syntax for this command is as follows:
+
+`[cmd]*g-dxf* +++[+++[opt]_options_] [var]#input.g# object(s)`
+
+The options for the g-dxf command are as follows:
+
+[opt]`-i` :: requests the output DXF file to be in inches (default is
+millimeters).
+[opt]`-o [var]#output.dxf#` :: specifies the file to receive
+the DXF output (default is stdout).
+[opt]`-p` :: requests that the output DXF file consist of POLYFACE
+MESH entities (the default is 3DFACE entities).
+
+The command also accepts the [opt]`-v`, [opt]`-r`, [opt]`-a`,
+[opt]`-n`, [opt]`-x`, and [opt]`-X` options, which have been discussed
+in the import converters portion of this document
+(xref:tutorials:converting/chapter4.adoc#_sec_convert_to_brlcad[Converting
+to BRL-CAD]).
+....
+
+====
+The g-dxf command converts BRL-CAD objects to the previously mentioned
+AutoCAD DXF format.  The syntax for this command is as follows:
+
+`[cmd]*g-dxf* +++[+++[opt]_options_] [var]#input.g# object(s)`
+
+The options for the g-dxf command are as follows:
+
+[opt]`-i` :: requests the output DXF file to be in inches (default is
+millimeters).
+[opt]`-o [var]#output.dxf#` :: specifies the file to receive
+the DXF output (default is stdout).
+[opt]`-p` :: requests that the output DXF file consist of POLYFACE
+MESH entities (the default is 3DFACE entities).
+
+The command also accepts the [opt]`-v`, [opt]`-r`, [opt]`-a`,
+[opt]`-n`, [opt]`-x`, and [opt]`-X` options, which have been discussed
+in the import converters portion of this document
+(xref:tutorials:converting/chapter4.adoc#_sec_convert_to_brlcad[Converting
+to BRL-CAD]).
 ====
