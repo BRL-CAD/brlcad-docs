@@ -289,26 +289,26 @@ merge the databases using the `dbconcat` command from within MGED.
 See `brlman dbconcat` for full documentation.
 
 .Usage of MGED's gdiff utility
-[cols="2*~", frame="none", options="header"]
+[cols="2*~", frame="none", options="noheader"]
 |===
-2+| Usage: gdiff [OPTION]... obj1 obj2
+2+| Usage: `[cmd]#gdiff# +++[+++[opt]#OPTION#]... [var]#obj1# [var]#obj2#`
 
-|`--tol=#`, `-t#`
+|[opt]`--tol=#`, [opt]`-t#`
 |Tolerance in millimeters.
 
-|`--ray-diff`, `-R`
+|[opt]`--ray-diff`, [opt]`-R`
 |Test for differences with raytracing.
 
-|`--view-left`, `-l`
+|[opt]`--view-left`, [opt]`-l`
 |Visualize volumes added only by left object.
 
-|`--view-both`, `-b`
+|[opt]`--view-both`, [opt]`-b`
 |Visualize volumes common to both objects.
 
-|`--view-right`, `-r`
+|[opt]`--view-right`, [opt]`-r`
 |Visualize volumes added only by right object.
 
-|`--grazing`, `-G`
+|[opt]`--grazing`, [opt]`-G`
 |Report differences in grazing hits (raytracing mode).
 |===
 
@@ -505,17 +505,17 @@ apply_filter_with_options(struct gcv_context *context,
 .FASTGEN4 reader options
 [cols="2*~", frame="none"]
 |===
-|`--colors=[replaceable]#path#`
+|`--colors=[var]#path#`
 |Path to a file specifying component colors.
 
-|`--muves=[replaceable]#path#`
+|`--muves=[var]#path#`
 |Create a MUVES input file containing any CHGCOMP and CBACKING
  components.
 
-|`--plot=[replaceable]#path#`
+|`--plot=[var]#path#`
 |Create a libplot3 plot file of all CTRI and CQUAD elements processed.
 
-|[nowrap]`--sections=[replaceable]#list#`
+|[nowrap]`--sections=[var]#list#`
 |Process only a list (`3001, 4082, 5347`) or a range (`2315 - 3527`)
  of section IDs.
 |===
@@ -540,7 +540,7 @@ filter-specific options.
  make the solidity detection more reliable, but may significantly
  increase processing time during the conversion.
 
-|`--grouping=[replaceable]#mode#`
+|`--grouping=[var]#mode#`
 | Select which OBJ face grouping is used to create BRL-CAD primitives.
 
 `group` = group (default) 
@@ -553,7 +553,7 @@ filter-specific options.
 
 `texture` = texture 
 
-|`--conversion-mode=[replaceable]#mode#`
+|`--conversion-mode=[var]#mode#`
 | Select the conversion mode.
 
 `bot` = native BoT (default) 
@@ -562,7 +562,7 @@ filter-specific options.
 
 `nmgbot` = BoT via NMG 
 
-|[nowrap]`--bot-plate-thickness=[replaceable]#thickness#`
+|[nowrap]`--bot-plate-thickness=[var]#thickness#`
 |Thickness (mm) used when a BoT is not a closed volume and it's
  converted as a plate or plate-nocos BoT.
 
@@ -570,7 +570,7 @@ filter-specific options.
 |Ignore the normals defined in the input file when using native BoT
  conversion mode.
 
-|`--bot-open-type=[replaceable]#type#`
+|`--bot-open-type=[var]#type#`
 | Select the type used for BoTs that aren't closed volumes.
 
 `surface` = surface (default) 
@@ -581,11 +581,11 @@ filter-specific options.
 
 |`--bot-plot`
 |Creates a plot/overlay (`.plot3`) file of open edges for BoTs that
- aren't closed volumes. `[replaceable]#bot_name#.plot3` will be
+ aren't closed volumes. `[var]#bot_name#.plot3` will be
  created in the current directory and will overwrite any existing file
  with the same name.
 
-|`--bot-orientation=[replaceable]#mode#`
+|`--bot-orientation=[var]#mode#`
 | Select the BoT orientation mode.
 
 `unoriented` = unoriented (default) 
@@ -609,11 +609,11 @@ filter-specific options.
  named provide information about the material codes assigned to the
  objects in the BRL-CAD database. The material names will be of the
  form
- `[replaceable]##aircode##\_[replaceable]##los##_[replaceable]##material##`,
- where `[replaceable]#aircode#` is the code number for the air
+ `[var]##aircode##\_[var]##los##_[var]##material##`,
+ where `[var]#aircode#` is the code number for the air
  represented by that region, if it does represent air; otherwise, this
- will be `0`. The `[replaceable]#los#` is the Line Of Sight thickness
- (`0` to `100`) assigned to the region, and `[replaceable]#material#`
+ will be `0`. The `[var]#los#` is the Line Of Sight thickness
+ (`0` to `100`) assigned to the region, and `[var]#material#`
  is the material code number assigned.
 |===
 
@@ -626,7 +626,7 @@ filter-specific options.
 |Specify that the input file is in binary STL format (the default
  assumes ASCII).
 
-|[nowrap]`--starting-ident=[replaceable]#number#`
+|[nowrap]`--starting-ident=[var]#number#`
 |Specify the starting ident for the regions created. The default is
  `1000`. This number will be incremented for each region, unless
  `--constant-ident` is specified.
@@ -634,7 +634,7 @@ filter-specific options.
 |`--constant-ident`
 |Specify that the starting ident should remain constant.
 
-|`--material=[replaceable]#code#`
+|`--material=[var]#code#`
 |Specify the material code that will be assigned to all created
  regions (the default is `1`).
 |===
