@@ -1,13 +1,35 @@
 = Introduction to Tcl/Tk
 TraNese Christy
-	
+:sectnums:	
+
+Tcl (Tool Command Language) is an interpreted language that is
+embeddable and highly extensible.  Tk (ToolKit) is a toolkit for
+developing user interfaces for desktop applications not only for Tcl,
+but for many other languages that run across various operating systems
+including Windows, Mac OS X, Linux etc.  Hence when combined, both
+create a programming framework that can be used for development and
+use of GUI applications.
+
+The most important benefit of using Tcl/Tk is Rapid Development of
+applications.  Applications can be implemented 5-10 times faster with
+Tcl than any other languages.  Application created with Tcl can be
+evolved rapidly to meet the changing requirements.  Some of the other
+benefits that make it loved by people are portability, user
+convenience.
+
+Tcl/Tk runs on every unix platform.  The deployment of applications
+developed using Tcl/Tk is made flexible, powerful and transparent by
+using technologies like Tcl virtual file system, starkits and
+starpacks.
+
 
 == What is Tcl/Tk?
 
 * Tool Command Language/ToolKit.
 * Tcl is an embeddable and extensible interpreted language. 
 * Tk is a toolkit for building user interfaces.
-* Combined, they provide a programming system for development and use of GUI applications.
+* Combined, they provide a programming system for development and use
+  of GUI applications.
 
 
 == Benefits of Tcl/Tk
@@ -20,25 +42,26 @@ TraNese Christy
 
 == Tcl/Tk-Based GUI for MGED
 
-
 image::tk-based-gui-for-mged.png[]
 
 
 == Tcl Syntax
 
 * A command is a list of words.
-* First word on the command line is the command name, any additional words are arguments.
+* First word on the command line is the command name, any additional
+  words are arguments.
++
+....
+-- command [arg1 ... argn]
+....
++
+[subs="+quotes"]
+....
+[prompt]#mged># [cmd]#puts "Hello World"#
+Hello World
+....
 
-
-[source]
-----
-
-      -- command [arg1 ... argn
-      mged> puts "Hello World"
-      Hello World
-----
-
-* Words can be grouped with double quotes (" ") or curly braces ({}). 
+* Words can be grouped with double quotes (" ") or curly braces ({}).
 * Commands are terminated with a newline or semicolon.
 
 
@@ -46,138 +69,97 @@ image::tk-based-gui-for-mged.png[]
 
 * Variable names are case-sensitive.
 * Declarations are not necessary.
-* set _varName [value]_
-* Assigns _value_ to the variable __varName__.
+* `set _varName [value]_` +
+-- Assigns `value` to the variable `varName`.
 
+[subs="+quotes"]
+....
+[prompt]#mged># [cmd]#set day Friday#
+Friday
 
-[source]
-----
+[prompt]#mged># [cmd]#set day#
+Friday
 
-      mged> set day Friday
-
-      Friday
-      mged> set day
-      Friday
-
-      mged> set day 25
-
-      25
-----
+[prompt]#mged># [cmd]#set day 25#
+25
+....
 
 == Lists
 
 * An ordered set of strings
 * Specified with curly braces
 
-
-[source]
-----
-
-      mged> set colors {red yellow green blue}
-      red yellow green blue
-----
+[subs="+quotes"]
+....
+[prompt]#mged># [cmd]#set colors {red yellow green blue}#
+red yellow green blue
+....
 
 * Sometimes created with "list" command
 
+[subs="+quotes"]
+....
+[prompt]#mged># [cmd]#set colors [list red yellow green blue]#
+red yellow green blue
+....
 
-[source]
-----
+* Can extract elements from the list using the "lindex" command
+  (indices start at zero)
 
-      mged> set colors [list red yellow green blue]
-      red yellow green blue
-----
-
-* Can extract elements from the list using the "lindex" command (indices start at zero)
-
-
-[source]
-----
-
-      mged> lindex {red yellow green blue} 2
-     green
-----
+[subs="+quotes"]
+....
+[prompt]#mged># [cmd]#lindex {red yellow green blue} 2#
+green
+....
 
 == Arrays
 
 * Uses associative arrays
 ** -- Strings used to index the array elements
 
+[subs="+quotes"]
+....
+[prompt]#mged># [cmd]#set profit(January) 1500#
+1500
 
-[source]
-----
+[prompt]#mged># [cmd]#set profit(February) -200#
+-200
 
-      mged> set profit(January) 1500
-      1500
-----
-
-[source]
-----
-
-      mged> set profit(February) -200
-      -200
-----
-
-[source]
-----
-
-    mged> set profit(January)
-    1500
-----
+[prompt]#mged># [cmd]#set profit(January)#
+1500
+....
 
 == Special Characters
 
-* Dollar sign $
-+
---Substitutes the value of the variable
-* Square brackets [ ]
-+
--- Replaces contents with the result of evaluating the command
-* Backslash \
-+
--- Allows special characters such as newlines, [, and $ to be inserted without being treated specially
-* Double quotes " "
-+
--- Allows special characters to be processed normally
-* Curly braces {}
-+
--- Disables special characters
-* Parentheses ()
-+
--- Delimits key values in arrays
-* Hashmark #
-+
--- At the beginning of a line, signifies a comment to follow
+Dollar sign `$` :: Substitutes the value of the variable
+Square brackets `[` `]` :: Replaces contents with the result of
+  evaluating the command
+Backslash `\` :: Allows special characters such as newlines, [, and $
+  to be inserted without being treated specially
+Double quotes `"` `"` :: Allows special characters to be processed
+  normally
+Curly braces `{}` :: Disables special characters
+Parentheses `()` :: Delimits key values in arrays
+Hashmark `#` :: At the beginning of a line, signifies a comment to
+  follow
 
 
 == Special Character Examples
 
-[source]
-----
+[subs="+quotes"]
+....
+[prompt]#mged># [cmd]#set name Elvis#
+Elvis
 
-      mged> set name Elvis
-      Elvis
-----
+[prompt]#mged># [cmd]#puts "Hello name"#
+Hello name
 
-[source]
-----
+[prompt]#mged># [cmd]#puts "Hello $name"#
+Hello Elvis
 
-      mged> puts "Hello name"
-      Hello name
-----
-
-[source]
-----
-
-     mged> puts "Hello $name"
-     Hello Elvis
-----
-
-[source]
-----
-
-      mged> set len [string length $name]
-      5
-----
+[prompt]#mged># [cmd]#set len [string length $name]#
+5
+....
 
 * -- string length $name returns 5
 * -- len gets the value 5
@@ -185,26 +167,26 @@ image::tk-based-gui-for-mged.png[]
 
 == Special Character Examples (cont'd)
 
-[source]
-----
-
-      mged> set price 1.41
-      1.41
-      mged> puts "Gasoline: \$ $price/gallon"
-      Gasoline: $1.41/gallon
-      mged> puts {Gasoline: \$ $price/gallon}
-      Gasoline: \$ $price/gallon
-      mged> set product 1; #This is a comment
-      1
-----
+[subs="+quotes"]
+....
+[prompt]#mged># [cmd]#set price 1.41#
+1.41
+[prompt]#mged># [cmd]#puts "Gasoline: \$ $price/gallon"#
+Gasoline: $1.41/gallon
+[prompt]#mged># [cmd]#puts {Gasoline: \$ $price/gallon}#
+Gasoline: \$ $price/gallon
+[prompt]#mged># [cmd]#set product 1; #This is a comment#
+1
+....
 
 == Special Character Conflicts
 
-* MGED traditional "name globbing" characters conflict with Tcl/Tk usage:
+* MGED traditional "name globbing" characters conflict with Tcl/Tk
+  usage:
 ** -- MGED follows Unix shell filename patterns.
 ** -- Tcl/Tk has different interpretation of * and [].
 * Users can select which interpretation of special characters:
-** $$.$$mgedrc: set MGED variable 
+** .mgedrc: set MGED variable 
 ** glob_compat_mode
 ** set glob_compat_mode 0 (for Tcl evaluation)
 ** set glob_compat_mode 1 (for object name matching)
@@ -215,205 +197,168 @@ image::tk-based-gui-for-mged.png[]
 
 * Special Character Interpretation
 
-
-
 image::special-character-interpretation.png[]
 
 
 == Expressions
 
-* The **expr**command is used to evaluate math expressions.
+* The `*expr*` command is used to evaluate math expressions.
 
+[subs="+quotes"]
+....
+[prompt]#mged># [cmd]#expr 2 + 2#
+4
 
-[source]
-----
+[prompt]#mged># [cmd]#expr (3 + 2) * 4#
+20
 
-      mged> expr 2 + 2
-
-      4
-
-      mged> expr (3 + 2) * 4
-
-      20
-
-      mged> in ball.s sph 0 0 0 [expr 3 + 4]
-----
+[prompt]#mged># [cmd]#in ball.s sph 0 0 0 [expr 3 + 4]#
+....
 
 -- A sphere is created with a vertex (0,0,0) and a radius of 7.
 
 == Control Flow
 
-[source]
-----
+[subs="+quotes"]
+....
+if {test} {body1} [else {body2}]
 
-      if {test} {body1} [else {body2}]
+[prompt]#mged># [cmd]#set temp 90#
+90
 
-      mged> set temp 90
+[prompt]#mged># if {$temp > 75} {
+puts "It's hot"
+} else {
+puts "It's moderate"
+}
 
-      90
-
-      mged> if {$temp > 75} {
-
-      puts "It's hot"
-
-      } else {
-
-      puts "It's moderate"
-
-      }
-
-      It's hot
-----
+It's hot
+....
 
 == Control Flow (cont'd) 
 
-[source]
-----
+[subs="+quotes"]
+....
+while {test} {body}
 
-      while {test} {body}
+[prompt]#mged># [cmd]#set time 3#
+3
 
-      mged> set time 3
-
-      3
-
-      mged> while {$time > 0} {
-
-      puts "Time is $time"
-
-      set time [expr $time - 1]
-
-      }
-----
+[prompt]#mged># while {$time > 0} {
+puts "Time is $time"
+set time [expr $time - 1]
+}
 
 Time is 3
-
 Time is 2
-
 Time is 1
+....
 
 == Control Flow (cont'd) 
 
-[source]
-----
+[subs="+quotes"]
+....
+for{init} {test} {reinit} {body}
 
-      for{init} {test} {reinit} {body}
-      for {set time 3} {$time > 0} {set time [expr $time - 1]} {puts "Time is $time"}
-----
+for {set time 3} {$time > 0} {set time [expr $time - 1]} {puts "Time is $time"}
 
 Time is 3
-
 Time is 2
-
 Time is 1
+....
 
 == Control Flow (cont'd)
 
-[source]
-----
+[subs="+quotes"]
+....
+foreach varList list{body}
 
-      foreach
-      varList list{body}
-      mged>
-      foreach fruit {apples pears peaches} {
-      puts "I like $fruit"}
-----
+[prompt]#mged># foreach fruit {apples pears peaches} {
+puts "I like $fruit"
+}
 
 I like apples
-
 I like pears
-
 I like peaches
+....
 
-[source]
-----
-
-      mged>
-      foreach {key val} {sky blue grass green snow white} {
-      puts "The $key is $val"
-      }
-----
+[subs="+quotes"]
+....
+[prompt]#mged># foreach {key val} {sky blue grass green snow white} {
+puts "The $key is $val"
+}
 
 The sky is blue
-
 The grass is green
-
 The snow is white
+....
 
 == MGED Commands
 
-[source]
-----
+[subs="+quotes"]
+....
+get obj[attr]
+Returns a list of the object's attributes. If attr is specified,
+only the value for that attribute is returned.
 
-     get
-     obj[attr]
-     Returns a list of the object's attributes. If attr is specified,
-      only the value for that attribute is returned.
-      mged>
-      get foo.r
-      comb region yes id 200 los 100 GIFTmater 2 rgb {100 100 100}
-      mged>
-      get foo.r rgb
-      100 100 100
-      mged>
-      get foo.s
-      ell V {0 0 0} A {4 0 0} B {0 4 0} C {0 0 4}
-----
+[prompt]#mged># [cmd]#get foo.r#
+comb region yes id 200 los 100 GIFTmater 2 rgb {100 100 100}
+
+[prompt]#mged># [cmd]#get foo.r rgb#
+100 100 100
+
+[prompt]#mged># [cmd]#get foo.s#
+ell V {0 0 0} A {4 0 0} B {0 4 0} C {0 0 4}
+....
 
 == MGED Commands (cont'd)
 
 * adjust obj attr value[attr value] 
-** Modifies the object's attribute(s) by adjusting the value of the attribute(s) to the new value(s).
-* ls[-c -r -s] 
+** Modifies the object's attribute(s) by adjusting the value of the
+   attribute(s) to the new value(s).
+* ls [-c -r -s] 
 ** Without any options, lists every object in the database. 
-** With the "c" option, lists all nonhidden combinations; "r"  option lists all nonhidden regions; and "s" option lists all nonhidden primitives.
+** With the "c" option, lists all nonhidden combinations; "r" option
+   lists all nonhidden regions; and "s" option lists all nonhidden
+   primitives.
 
 
 == MGED Examples 
 
 * Task: Change the color of all regions to blue. 
-
-
-[source]
-----
-
-
-      mged>
-      foreach region [ls -r] {
-      adjust $region rgb {0 0 255}
-      }
-----
++
+[subs="+quotes"]
+....
+[prompt]#mged># foreach region [ls -r] {
+  adjust $region rgb {0 0 255}
+}
+....
 
 * Task:  Print all regions with nonzero air codes. 
 
-Task:  Print all regions with nonzero air codes.
-
-[source]
-----
-
-
-      mged>
-      foreach reg [ls -r] {
-      if {[get $reg air] != 0} {
-      puts "$reg"
-      }
-      }
-----
+* Task:  Print all regions with nonzero air codes.
++
+[subs="+quotes"]
+....
+[prompt]#mged># foreach reg [ls -r] {
+  if {[get $reg air] != 0} {
+    puts "$reg"
+  }
+}
+....
 
 == MGED Examples (cont'd) 
 
 * Task: Print all objects with the inherit flag set.
-
-
-[source]
-----
-
-
-      mged> foreach obj [ls -c] {
-      if {[get $obj inherit] == "yes"} {
-      puts "$obj"
-      }
-      }
-----
++
+[subs="+quotes"]
+....
+[prompt]#mged># foreach obj [ls -c] {
+  if {[get $obj inherit] == "yes"} {
+    puts "$obj"
+  }
+}
+....
 
 == Procedures 
 
@@ -421,18 +366,18 @@ Task:  Print all regions with nonzero air codes.
 * proc
 
 
-[source]
-----
+[subs="+quotes"]
+....
+procName{args} {body}
 
-      procName{args} {body}
-      mged>
-      proc add {x y} {
-      set answer [expr $x + $y]
-      return $answer
-      }
-      mged>add 123 456
-      579
-----
+[prompt]#mged># proc add {x y} {
+set answer [expr $x + $y]
+return $answer
+}
+
+[prompt]#mged># add 123 456
+579
+....
 
 * Create new MGED commands
 * Save in .mgedrc
@@ -442,38 +387,30 @@ Task:  Print all regions with nonzero air codes.
 
 * Procedure that generates a PART that encompasses two specified SPHs
 
-
-[source]
-----
-
-
-    proc sph-part {sph1 sph2 newname} {
-    foreach {vx1 vy1 vz1} [lindex [get $sph1 V] 0] {}
-    foreach {vx2 vy2 vz2} [lindex [get $sph2 V] 0] {}
-    foreach {ax1 ay1 az1} [lindex [get $sph1 A] 0] {}
-    foreach {ax2 ay2 az2} [lindex [get $sph2 A] 0] {}
-    set radius1 [expr sqrt($ax1*$ax1 + $ay1*$ay1 + $az1*$az1)]
-    set radius2 [expr sqrt($ax2*$ax2 + $ay2*$ay2 + $az2*$az2)]
-    set hx [expr $vx2-$vx1]
-    set hy [expr $vy2-$vy1]
-    set hz [expr $vz2-$vz1]
-    in $newname part $vx1 $vy1 $vz1 $hx $hy $hz $radius1 $radius2
-    }
-----
+[subs="+quotes"]
+....
+proc sph-part {sph1 sph2 newname} {
+foreach {vx1 vy1 vz1} [lindex [get $sph1 V] 0] {}
+foreach {vx2 vy2 vz2} [lindex [get $sph2 V] 0] {}
+foreach {ax1 ay1 az1} [lindex [get $sph1 A] 0] {}
+foreach {ax2 ay2 az2} [lindex [get $sph2 A] 0] {}
+set radius1 [expr sqrt($ax1*$ax1 + $ay1*$ay1 + $az1*$az1)]
+set radius2 [expr sqrt($ax2*$ax2 + $ay2*$ay2 + $az2*$az2)]
+set hx [expr $vx2-$vx1]
+set hy [expr $vy2-$vy1]
+set hz [expr $vz2-$vz1]
+in $newname part $vx1 $vy1 $vz1 $hx $hy $hz $radius1 $radius2
+}
+....
 
 == Procedure Example (cont'd)
 
-[source]
-----
-
- mged>
-sph-part s1.s s2.s part.s
-----
-
+[subs="+quotes"]
+....
+[prompt]#mged># [cmd]#sph-part s1.s s2.s part.s#
+....
 
 image::copy-sph-part-left.png[]
-
-
 
 image::copy-sph-part-right.png[]
 
@@ -490,8 +427,6 @@ image::copy-sph-part-right.png[]
 ==  MGED Defaults 
 
 * Create the default .mgedrc from inside MGED:
-
-
 
 image::mged-defaults.png[]
 
@@ -522,6 +457,9 @@ set mged_default(max_text_lines) 1000
 
 == Useful References
 
-* Raines, Paul. __Tcl/Tk Pocket Reference__. O'Reilly & Associates, Inc., Sebastopol, CA, 1998.
-* Ousterhout, John K. __Tcl and the Tk Toolkit__. Addison-Wesley, Reading, MA, 1994.
-* Welch, Brent B. __Practical Programming in Tcl and Tk, Second Edition__. Prentice Hall, Upper Saddle River, NJ, 1997. 
+* Raines, Paul. _Tcl/Tk Pocket Reference_. O'Reilly & Associates,
+  Inc., Sebastopol, CA, 1998.
+* Ousterhout, John K. _Tcl and the Tk Toolkit_. Addison-Wesley,
+  Reading, MA, 1994.
+* Welch, Brent B. _Practical Programming in Tcl and Tk, Second
+  Edition_. Prentice Hall, Upper Saddle River, NJ, 1997.

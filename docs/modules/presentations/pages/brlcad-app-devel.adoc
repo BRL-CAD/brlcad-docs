@@ -1,19 +1,46 @@
 = Application Development
-
-    Lee A. Butler
-  ; 
-    John Anderson
+Lee A. Butler; John Anderson
+:sectnums:
   
+[WARNING]
+.This a code-intensive presentation for Code Warriors only!
+Non-programmers will need atropine, caffeine, and electro-shock
+therapy (run, do not walk, to the nearest exit).
 
-== WARNING
+== Introduction
 
-=== This a code-intensive presentation
+A suite of utilities capable of interactively displaying, editing, and
+interrogating geometric models is known as BRL-CAD.  BRL-CAD has
+become a powerful constructive solid geometry (CSG) modeling package.
+The package includes a large collection of tools and utilities
+including an interactive geometry editor, ray tracing and generic
+framebuffer libraries, a network-distributed image-processing and
+signal-processing capability, and an embedded scripting language.
 
+A particular strength of the package lies in its ability to build and
+analyze realistic models of complex objects using a relatively small
+set of "primitive shapes." Another strength of the package is the
+speed of its ray tracer, which is one of the fastest in existence.
+Finally, BRL-CAD users can accurately model objects on scales ranging
+from the subatomic through the galactic and get "all the details, all
+the time." BRL-CAD has been used for a wide variety of engineering and
+graphics applications.  BRL-CAD is basically a collection of
+libraries, tools, and utilities that work together to create,
+raytrace, and interrogate geometry and manipulate files and data.  In
+BRL-CAD library, Each library fits into one of three categories:
 
+* creating and/or editing geometry, 
+* raytracing geometry 
+* image handling. 
 
-=== for Code Warriors only!
+The application side of BRL-CAD also offers a number of tools and
+utilities.
 
-Non-programmers will need atropine, caffeine, and electro-shock therapy (run, do not walk, to the nearest exit). 
+`rt` :: the main raytracer for rendering images in BRL-CAD.
+`nirt` :: a package for firing rays interactively and getting
+information about what the rays run into.
+`remrt` :: a network-distributed ray tracing package.
+
 
 == Overview
 
@@ -28,17 +55,13 @@ Non-programmers will need atropine, caffeine, and electro-shock therapy (run, do
 
 == Header Files
 
-* The Big Six
-
-
-.
+.The Big Six
 [cols="1,1", options="header"]
 |===
 | Header
 | Library
 
-|
-bu.h
+|bu.h
 |libbu
 
 |bn.h
@@ -63,12 +86,12 @@ bu.h
 * Retrieves geometry
 * Prepares geometry for raytrace
 * Performs raytrace
-* See source tree: [path]_rt/rtexample.c_
+* See source tree: [path]`rt/rtexample.c`
 
 
 == Necessary Headers
 
-[source]
+[source,c]
 ----
 #include "conf.h"       /* compilation macros           */
 #include <stdio.h>
@@ -86,7 +109,7 @@ bu.h
 
 == Opening the Database
 
-[source]
+[source,c]
 ----
 static struct rt_i *rtip; /* librt Instance structure */
 /* rt_dirbuild() performs many functions for us */
@@ -104,31 +127,31 @@ if (rtip == RTI_NULL) {
 
 == Reading Geometry
 
-[source]
+[source,c]
 ----
 if (rt_gettree(rtip, argv[2]) < 0)
     fprintf(stderr,"rt_gettree(%s) FAILED\n", argv[2]);
 ----
 
-* Retrieves tree top specified by argv[2] into a working set used by librt
+* Retrieves tree top specified by argv[2] into a working set used by
+  librt
 
 
 == Preparing Geometry for Raytracing
 
-[source]
+[source,c]
 ----
 rt_prep_parallel(rtip, 1);
 ----
 
-* Pre-computes useful terms for each primitive, 
-+
-e.g.,triangle normals, function roots, trig terms. 
+* Pre-computes useful terms for each primitive, e.g.,triangle normals,
+  function roots, trig terms.
 * Builds space partition tree to accelerate ray-trace 
 
 
 == Application Struct and Shot
 
-[source]
+[source,c]
 ----
 struct application ap;
 ap.a_rt_i = rtip;
@@ -140,15 +163,15 @@ ap.a_miss = miss;         /* where to go on a miss */
 (void)rt_shootray(&); /* do it */
 ----
 
-* The application struct contains information about the ray that is to be computed and what should be done with the results.
+* The application struct contains information about the ray that is to
+  be computed and what should be done with the results.
 
 
 == Application Struct
 
-* Excerpts of application struct from raytrace.h:
-+
+Excerpts of application struct from raytrace.h:
 
-[source]
+[source,c]
 ----
 struct application {
 
@@ -167,7 +190,7 @@ struct application {
 
 == Miss Routine
 
-[source]
+[source,c]
 ----
 int
 miss(register struct application *ap)
@@ -182,7 +205,7 @@ miss(register struct application *ap)
 
 == Hit Routine
 
-[source]
+[source,c]
 ----
 int
 hit(register struct application *ap, /* see raytrace.h */
@@ -204,7 +227,7 @@ hit(register struct application *ap, /* see raytrace.h */
 
 == Hit Routine Breakdown
 
-[source]
+[source,c]
 ----
 int
 hit(register struct application *ap,
@@ -217,13 +240,15 @@ hit(register struct application *ap,
 }
 ----
 
-* Partition Structure contains information about intervals of the ray which pass through geometry
-* Hit structure contains information about an individual boundary/ray intersection
+* Partition Structure contains information about intervals of the ray
+  which pass through geometry
+* Hit structure contains information about an individual boundary/ray
+  intersection
 
 
 == Partition Structure
 
-[source]
+[source,c]
 ----
 struct partition {
     long              pt_magic;       /* sanity check               */
@@ -244,12 +269,12 @@ struct partition {
 };
 ----
 
-* From [path]_h/raytrace.h_.
+* From [path]`h/raytrace.h`.
 
 
 == Hit Structure
 
-[source]
+[source,c]
 ----
 struct hit {
     long         hit_magic;
@@ -263,14 +288,14 @@ struct hit {
 };
 ----
 
-* From [path]_raytrace.h_. 
+* From [path]`raytrace.h`. 
 * Holds information about a single ray/surface intersection.
-* (Note: Only [path]_hit_dist_ is filled in by [path]_librt_.
+* (Note: Only [path]`hit_dist` is filled in by [path]`librt`.
 
 
 == Hit Routine (Again)
 
-[source]
+[source,c]
 ----
 int
 hit(register struct application *ap, /* see raytrace.h */
@@ -294,7 +319,8 @@ hit(register struct application *ap, /* see raytrace.h */
 
 * Makes shooting grids of rays easy.
 * Uses the same command line interface as rt.
-* Foundation for: rt, rtweight, rthide, and other raytracing based applications.
+* Foundation for: rt, rtweight, rthide, and other raytracing based
+  applications.
 * Simplest example shown in rt/viewdummy.c in source tree
 
 
@@ -309,62 +335,64 @@ hit(register struct application *ap, /* see raytrace.h */
 
 == RTUIF Routines
 
-[source]
+[source,c]
 ----
 int view_init(struct application *ap, char *file,
               char *obj, int minus_o);
 ----
 
-Called by main() at the start of a run.
-Returns 1 if framebuffer should be opened, else 0.
+Called by `main()` at the start of a run.  Returns 1 if framebuffer
+should be opened, else 0.
 
-[source]
+[source,c]
 ----
 void view_setup(struct rt_i *rtip);
 ----
 
-Called by do_prep(), just before rt_prep() is called, in do.c.
-This allows the lighting model to get set up for this frame, e.g., generate lights, associate materials routines, etc.
+Called by `do_prep()`, just before `rt_prep()` is called, in do.c.
+This allows the lighting model to get set up for this frame, e.g.,
+generate lights, associate materials routines, etc.
 
-[source]
+[source,c]
 ----
 void view_2init(struct application *ap);
 ----
 
-Called at the beginning of a frame.
-Called by do_frame() just before raytracing starts.
+Called at the beginning of a frame.  Called by `do_frame()` just
+before raytracing starts.
 
 == RTUIF Routines 2
 
-[source]
+[source,c]
 ----
 int rayhit(struct application *ap, struct partition *PartHeadp);
 ----
 
-Called via a_hit linkage from rt_shootray() when ray hits.
+Called via a_hit linkage from `rt_shootray()` when ray hits.
 
-[source]
+[source,c]
 ----
 int raymiss(struct application *ap);
 ----
 
-Called via a_miss linkage from rt_shootray() when ray misses.
+Called via a_miss linkage from `rt_shootray()` when ray misses.
 
 == RTUIF 3 Routines 3
 
-[source]
+[source,c]
 ----
 void view_pixel(struct application *ap);
 ----
 
-Called by worker() after the end of processing for each pixel.
+Called by `worker()` after the end of processing for each pixel.
 
-[source]
+[source,c]
 ----
 void view_end(struct application *ap);
 ----
 
-Called in do_frame() at the end of a frame, just after raytracing completes.
+Called in `do_frame()` at the end of a frame, just after raytracing
+completes.
 
 == Thinking About Geometry
 
@@ -395,7 +423,8 @@ Called in do_frame() at the end of a frame, just after raytracing completes.
 * Database access is separate from object retrieval.
 ** Database layer returns named objects.
 *** Does not understand content.
-** Primitive objects get Bag-o-Bytes to turn into in-memory representation.
+** Primitive objects get Bag-o-Bytes to turn into in-memory
+   representation.
 *** Have no knowledge of data origins
 
 
@@ -411,7 +440,7 @@ Called in do_frame() at the end of a frame, just after raytracing completes.
 == Prepped Representation
 
 * The form that is actually raytraced
-* Created from internal form by rt_prep() call
+* Created from internal form by `rt_prep()` call
 * May not include internal form
 ** Saves memory
 * May include additional fields
@@ -422,8 +451,7 @@ Called in do_frame() at the end of a frame, just after raytracing completes.
 
 * Necessary headers
 
-
-[source]
+[source,c]
 ----
 #include "conf.h"
 #include <stdio.h>
@@ -436,7 +464,7 @@ Called in do_frame() at the end of a frame, just after raytracing completes.
 
 == Opening The Database
 
-[source]
+[source,c]
 ----
 struct rt_wdb *wdbp;
 struct db_i *dbip = DBI_NULL;
@@ -464,8 +492,7 @@ if ((dbip = db_open(argv[1], "r+w")) != DBI_NULL) {
 * Note: All db units are in mm
 ** Set mk_conv2mm global for other units
 
-
-[source]
+[source,c]
 ----
 point_t lo, hi;
 /* ... */
@@ -484,8 +511,7 @@ if (mk_sph(wdbp, "myball", hi, 0.5)) /* see libwdb for APIs */
 
 * To retrieve geometry, we have to get an internal representation.
 
-
-[source]
+[source,c]
 ----
 struct rt_db_internal ip;
 /* ... */
@@ -509,17 +535,19 @@ if (ip.idb_major_type == DB5_MAJORTYPE_BRLCAD /* see db5.h */
 
 == Primitive Methods
 
-* Retrieved geometry has a specific set of defined operations and methods available. 
-* See [path]_h/raytrace.h_ for a description of [path]_struct rt_functab_.
-* Primitives should implement every method, but some do not. See librt/table.c for specifics.
+* Retrieved geometry has a specific set of defined operations and
+  methods available.
+* See [path]`h/raytrace.h` for a description of [path]`struct
+  rt_functab`.
+* Primitives should implement every method, but some do not. See
+  librt/table.c for specifics.
 
 
 == Putting Geometry Back
 
 * Database I/O layer converts from internal to external format.
 
-
-[source]
+[source,c]
 ----
 wdb_export(wdbp, "mybox", arb, ID_ARB8, mk_conv2mm);
 ----
@@ -542,7 +570,7 @@ wdb_export(wdbp, "mybox", arb, ID_ARB8, mk_conv2mm);
 
 Build the list of elements first:
 
-[source]
+[source,c]
 ----
 struct wmember wm_hd; /* defined in wdb.h */
 BU_LIST_INIT(&wm_hd.l);
@@ -570,8 +598,7 @@ memcpy(wm_hd->wm_mat, trans_matrix, sizeof(mat_t));
 ** Note: use mk_lcomb/mk_comb for initial creation only!
 *** caveat: can use to update boolean tree under special conditions
 
-
-[source]
+[source,c]
 ----
 int is_region = 1;
 VSET(rgb, 64, 180, 96); /* a nice green */
@@ -596,8 +623,7 @@ mk_lcomb(wdbp,
 ** Boolean operations
 ** Matrix transformations.
 
-
-[source]
+[source,c]
 ----
 struct rt_comb_internal *comb; /* see raytrace.h */
 /* ... */
@@ -617,8 +643,7 @@ RT_CK_COMB(comb);
 * Modify the boolean tree
 * Write back out to db
 
-
-[source]
+[source,c]
 ----
 /* Modify the combination we retrieved */
 BU_GET(a, union tree);
@@ -645,8 +670,7 @@ wdb_export(wdbp, "box_n_ball.r", comb, ID_COMBINATION, 1.0);
 * Need to prep the tree to obtain geometry
 ** First, create rt instance struct rt_i object
 
-
-[source]
+[source,c]
 ----
 struct rt_i *rtip; /* see raytrace.h */
 
@@ -661,8 +685,7 @@ rtip=rt_dirbuild(filename, idbuf, sizeof(idbuf));
 
 * Now to retrieve a treetop and prep:
 
-
-[source]
+[source,c]
 ----
 rt_gettree(rtip, "box_n_ball.r");
 rt_prep(rtip);   /* now rtip has valid information */
@@ -677,8 +700,7 @@ rt_prep(rtip);   /* now rtip has valid information */
 * Access as a linked list
 * Example: getting bounding box of regions
 
-
-[source]
+[source,c]
 ----
 struct region *rp; /* see raytrace.h */
 
@@ -705,9 +727,10 @@ for (BU_LIST_FOR(rp, region, &rtip->HeadRegion)) {
 * Involves special inmem database
 ** Contains only modifications
 ** Akin to union filesystem of Unix
-* Directory structure tracks whether current version of object is on disk or in inmem database
+* Directory structure tracks whether current version of object is on
+  disk or in inmem database
 * Object retrieval gets most current version
-* Writes to inmem arranged though special wdb_dbopen() call
+* Writes to inmem arranged though special `wdb_dbopen()` call
 
 
 == Accessing inmem database
@@ -715,8 +738,7 @@ for (BU_LIST_FOR(rp, region, &rtip->HeadRegion)) {
 * small difference in wdb_dbopen call
 * all writes to this rt_wdb will go to memory database only
 
-
-[source]
+[source,c]
 ----
 struct rt_wdb *wdb_memp;
 struct db_i *dbip = DBI_NULL;
@@ -737,8 +759,7 @@ if ((dbip = db_open(argv[1], "r+w")) != DBI_NULL) {
 
 * Important to flush data and purge data structures!
 
-
-[source]
+[source,c]
 ----
 wdb_close(wdbp);
 ----
