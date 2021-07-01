@@ -199,9 +199,9 @@ The syntax for the converter is as follows:
 The options for the command are as follows:
 
 [opt]`-v` :: verbose; prints out progress information.
-[opt]`-i [var]#input_euclid_db#` :: sets input file name
+[opt]`-i [rep]#input_euclid_db#` :: sets input file name
 (default is [path]`stdin`).
-[opt]`-o [var]#output_brlcad_db#` :: sets output file name
+[opt]`-o [rep]#output_brlcad_db#` :: sets output file name
 (default is [path]`stdout`).
 [opt]`-d tolerance_distance` :: sets distance calculation tolerance
 (in millimeters) (default is 0.005).
@@ -268,11 +268,11 @@ The options for the command are as follows:
 [opt]`-d` :: prints verbose debugging output.
 [opt]`-q` :: prints nothing except errors.
 [opt]`-w` :: prints warnings about creating default names.
-[opt]`-o [var]#plot_file_name#` :: creates a UNIX plot file of
+[opt]`-o [rep]#plot_file_name#` :: creates a UNIX plot file of
 all CTRI and CQUAD elements processed.
 [opt]`-c component_list` :: processes only the listed region ids; may
 be a list (e.g., 3001,4082,5347) or a range (e.g., 2314-3527).
-[opt]`-m [var]#muves_file_name#` :: creates a MUVES warnings
+[opt]`-m [rep]#muves_file_name#` :: creates a MUVES warnings
 file containing CHGCOMP and CBACKING elements.
 [opt]`-b lvl` :: sets libbu debug flag (see [path]`bu.h` in the binary
 distribution for definitions of BU_DEBUG_xxx).
@@ -289,7 +289,7 @@ to BRL-CAD format.  The syntax for the command is as follows:
 
 The options for the command are as follows:
 
-[opt]`-f [var]#fastgen.rp#` :: specifies preprocessed FASTGEN
+[opt]`-f [rep]#fastgen.rp#` :: specifies preprocessed FASTGEN
 file (default is [path]`stdin`).
 [opt]`-a` :: processes phantom armor.
 [opt]`-n` :: processes volume mode as plate mode.
@@ -304,9 +304,9 @@ MGED database").
 [opt]`-p` :: writes volume and plate mode components as BOTs.
 [opt]`-6` :: processes plate mode triangles as ARB6 solids (overrides
 p option for triangles).
-[opt]`-i [var]#group.file#` :: specifies group labels source
+[opt]`-i [rep]#group.file#` :: specifies group labels source
 file.
-[opt]`-m [var]#mat.file#` :: specifies materials information
+[opt]`-m [rep]#mat.file#` :: specifies materials information
 source file.
 [opt]`-r` :: reverses normals for plate mode triangles.
 [opt]`-d lvl` :: sets debug level.
@@ -451,9 +451,9 @@ The syntax for the converter is as follows:
 
 The options for the command are as follows:
 
-[opt]`-i [var]#NASTRAN_input_file#` :: sets input NASTRAN file
+[opt]`-i [rep]#NASTRAN_input_file#` :: sets input NASTRAN file
 (default is [path]`stdin`).
-[opt]`-o [var]#output.g#` :: sets output file name (default is
+[opt]`-o [rep]#output.g#` :: sets output file name (default is
 "nastran.g").
 [opt]`-n` :: produces NMG primitives (default is BOT primitives).
 [opt]`-x lvl` :: sets librt debug flag (see [path]`raytrace.h` in the
@@ -692,9 +692,9 @@ The options for the command are as follows:
 
 [opt]`-v` :: verbose; prints out progress information.
 [opt]`-n` :: produces NMG primitives (default is BOT primitives).
-[opt]`-i [var]#input.tkl#` :: specifies the input TANKILL file
+[opt]`-i [rep]#input.tkl#` :: specifies the input TANKILL file
 (default is [path]`stdin`).
-[opt]`-o [var]#output.g#` :: specifies the output BRL-CAD file
+[opt]`-o [rep]#output.g#` :: specifies the output BRL-CAD file
 (default is [path]`tankill.g`).
 [opt]`-k` :: keeps components with id = 1001 (normally skipped).
 [opt]`-x lvl` :: sets librt debug flag (see [path]`raytrace.h` in the
@@ -779,7 +779,7 @@ logging.
 [opt]`-i initial_ident` :: specifies the ident number for the first
 region created by the conversion. Subsequent regions are assigned
 sequential ident numbers.
-[opt]`-n [var]#part_name_file#` :: specifies a file containing
+[opt]`-n [rep]#part_name_file#` :: specifies a file containing
 a mapping of Unigraphics part and/or assembly names to BRL-CAD object
 names. If this file is provided, it will be used to create object
 names in the BRL-CAD model. The format of this file is simply a line
@@ -802,7 +802,7 @@ to CSG. (This option and the [opt]`-f` option are mutually exclusive.)
 model. Using this option will result in a BRL-CAD model that is
 significantly larger than when not using it, but raytraced objects
 will appear much smoother.
-[opt]`-o [var]#output.g#` :: specifies the name of the file to
+[opt]`-o [rep]#output.g#` :: specifies the name of the file to
 receive the BRL-CAD model.
 [opt]`-t tolerance_distance` :: specifies the minimum distance (in
 millimeters) allowed between distinct vertices. Vertices closer than
@@ -847,11 +847,11 @@ The syntax for the converter is as follows:
 
 The options for the command are as follows:
 
-[opt]`-c [var]#coord_file_name#` :: sets the input vertex
+[opt]`-c [rep]#coord_file_name#` :: sets the input vertex
 coordinates file name (required).
-[opt]`-e [var]#elements_file_name#` :: sets the input faces
+[opt]`-e [rep]#elements_file_name#` :: sets the input faces
 file name (required).
-[opt]`-o [var]#output_file_name#` :: sets the output BRL-CAD
+[opt]`-o [rep]#output_file_name#` :: sets the output BRL-CAD
 database name (default is [path]`viewpoint.g`).
 [opt]`-t tolerance_distance` :: sets distance calculation tolerance
 (in millimeters) (default is 0.005).

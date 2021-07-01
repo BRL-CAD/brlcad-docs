@@ -402,7 +402,7 @@ image::lessons:mged/02_truck_35_0.png[]
 .Usage of MGED's gdiff utility
 [cols="2*~", frame="none", options="noheader"]
 |===
-2+| Usage: `[cmd]#gdiff# +++[+++[opt]#OPTION#]... [var]#obj1# [var]#obj2#`
+2+| Usage: `[cmd]#gdiff# +++[+++[opt]#OPTION#]... [rep]#obj1# [rep]#obj2#`
 
 |[opt]`--tol=#`, [opt]`-t#`
 |Tolerance in millimeters.
@@ -428,7 +428,7 @@ image::lessons:mged/02_truck_35_0.png[]
 .Usage of MGED's gdiff utility
 [cols="2*~", frame="none", options="noheader"]
 |===
-2+| Usage: `[cmd]#gdiff# +++[+++[opt]#OPTION#]... [var]#obj1# [var]#obj2#`
+2+| Usage: `[cmd]#gdiff# +++[+++[opt]#OPTION#]... [rep]#obj1# [rep]#obj2#`
 
 |[opt]`--tol=#`, [opt]`-t#`
 |Tolerance in millimeters.
@@ -461,7 +461,7 @@ image::lessons:mged/02_truck_35_0.png[]
 |Specify that the input file is in binary STL format (the default
  assumes ASCII).
 
-|[nowrap]`--starting-ident=[var]#number#`
+|[nowrap]`--starting-ident=[rep]#number#`
 |Specify the starting ident for the regions created. The default is
  `1000`. This number will be incremented for each region, unless
  `--constant-ident` is specified.
@@ -469,7 +469,7 @@ image::lessons:mged/02_truck_35_0.png[]
 |`--constant-ident`
 |Specify that the starting ident should remain constant.
 
-|`--material=[var]#code#`
+|`--material=[rep]#code#`
 |Specify the material code that will be assigned to all created
  regions (the default is `1`).
 |===
@@ -483,7 +483,7 @@ image::lessons:mged/02_truck_35_0.png[]
 |Specify that the input file is in binary STL format (the default
  assumes ASCII).
 
-|[nowrap]`--starting-ident=[var]#number#`
+|[nowrap]`--starting-ident=[rep]#number#`
 |Specify the starting ident for the regions created. The default is
  `1000`. This number will be incremented for each region, unless
  `--constant-ident` is specified.
@@ -491,7 +491,7 @@ image::lessons:mged/02_truck_35_0.png[]
 |`--constant-ident`
 |Specify that the starting ident should remain constant.
 
-|`--material=[var]#code#`
+|`--material=[rep]#code#`
 |Specify the material code that will be assigned to all created
  regions (the default is `1`).
 |===
@@ -716,13 +716,13 @@ with a tty (i.e., the window used to start `mged` in classic mode).
 The g-dxf command converts BRL-CAD objects to the previously mentioned
 AutoCAD DXF format.  The syntax for this command is as follows:
 
-`[cmd]*g-dxf* +++[+++[opt]_options_] [var]#input.g# object(s)`
+`[cmd]*g-dxf* +++[+++[opt]_options_] [rep]#input.g# object(s)`
 
 The options for the g-dxf command are as follows:
 
 [opt]`-i` :: requests the output DXF file to be in inches (default is
 millimeters).
-[opt]`-o [var]#output.dxf#` :: specifies the file to receive
+[opt]`-o [rep]#output.dxf#` :: specifies the file to receive
 the DXF output (default is stdout).
 [opt]`-p` :: requests that the output DXF file consist of POLYFACE
 MESH entities (the default is 3DFACE entities).
@@ -738,13 +738,13 @@ to BRL-CAD]).
 The g-dxf command converts BRL-CAD objects to the previously mentioned
 AutoCAD DXF format.  The syntax for this command is as follows:
 
-`[cmd]*g-dxf* +++[+++[opt]_options_] [var]#input.g# object(s)`
+`[cmd]*g-dxf* +++[+++[opt]_options_] [rep]#input.g# object(s)`
 
 The options for the g-dxf command are as follows:
 
 [opt]`-i` :: requests the output DXF file to be in inches (default is
 millimeters).
-[opt]`-o [var]#output.dxf#` :: specifies the file to receive
+[opt]`-o [rep]#output.dxf#` :: specifies the file to receive
 the DXF output (default is stdout).
 [opt]`-p` :: requests that the output DXF file consist of POLYFACE
 MESH entities (the default is 3DFACE entities).

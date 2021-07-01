@@ -108,7 +108,7 @@ As its name implies, the `g-acad` utility converts a file in BRL-CAD
 format to a file in facetted ACAD format.  The form of the command is
 as follows:
 
-`[cmd]*g-acad* +++[+++[opt]_options_] [opt]_-o_ [var]#output_file# [var]#input.g# object(s)`
+`[cmd]*g-acad* +++[+++[opt]_options_] [opt]_-o_ [rep]#output_file# [rep]#input.g# object(s)`
 
 The options for the g-acad command are as follows:
 
@@ -118,7 +118,7 @@ millimeters).
 binary distribution for definitions of DEBUG_xxx).
 [opt]`-X lvl` :: sets the NMG library debug flag (see [path]`nmg.h` in
 the binary distribution for definitions of DEBUG_xxx).
-[opt]`-e [var]#error_file#` :: sends error messages to
+[opt]`-e [rep]#error_file#` :: sends error messages to
 specified file (default is standard error [[path]`stderr`]).
 [opt]`-v` :: verbose; prints out progress information.
 [opt]`-D tolerance_distance` :: sets distance calculation tolerance
@@ -139,13 +139,13 @@ http://www.lockheedmartin.com ( [org]_Lockheed Martin_ , 2003).
 The g-dxf command converts BRL-CAD objects to the previously mentioned
 AutoCAD DXF format.  The syntax for this command is as follows:
 
-`[cmd]*g-dxf* +++[+++[opt]_options_] [var]#input.g# object(s)`
+`[cmd]*g-dxf* +++[+++[opt]_options_] [rep]#input.g# object(s)`
 
 The options for the g-dxf command are as follows:
 
 [opt]`-i` :: requests the output DXF file to be in inches (default is
 millimeters).
-[opt]`-o [var]#output.dxf#` :: specifies the file to receive
+[opt]`-o [rep]#output.dxf#` :: specifies the file to receive
 the DXF output (default is stdout).
 [opt]`-p` :: requests that the output DXF file consist of POLYFACE
 MESH entities (the default is 3DFACE entities).
@@ -166,12 +166,12 @@ The `g-euclid` command converts BRL-CAD objects to a EUCLID "decoded"
 facetted format.  Note that, as previously mentioned, this format is
 not native EUCLID format.  The form of the command is as follows:
 
-`[cmd]*g-euclid* +++[+++[opt]_options_] [var]#input.g# objects(s)`
+`[cmd]*g-euclid* +++[+++[opt]_options_] [rep]#input.g# objects(s)`
 
 The options for the `g-euclid` command are as follows:
 
 [opt]`-u units` :: sets the output units (the default is millimeters).
-[opt]`-o [var]#output_file_name#` :: sets the output file name
+[opt]`-o [rep]#output_file_name#` :: sets the output file name
 (the default is [path]`stdout`).
 
 For more information about the EUCLID file format and export
@@ -182,11 +182,11 @@ http://support.mdtvision.com (MDTVISION, 2003).
 
 The syntax for the BRL-CAD to IGES converter is as follows:
 
-`g-iges` +++[+++[opt]_options_] [opt]`[var]#input.g# object(s)`
+`g-iges` +++[+++[opt]_options_] [opt]`[rep]#input.g# object(s)`
 
 The options for the g-iges  command are as follows:
 
-[opt]`-o [var]#output_name#` :: indicates the name of the
+[opt]`-o [rep]#output_name#` :: indicates the name of the
 resulting IGES file. If the m option is specified, then this is the
 name of a directory where resulting IGES files will be placed (the
 directory must already exist). (The default is [path]`stdout`.)
@@ -245,14 +245,14 @@ http://www.eds.com/products/plm/efactory/jack (EDS, 2003a).
 
 The syntax for the BRL-CAD to STL converter is as follows:
 
-`[cmd]*g-stl* +++[+++[opt]_options_] [var]#input.g# object(s)`
+`[cmd]*g-stl* +++[+++[opt]_options_] [rep]#input.g# object(s)`
 
 The options for the `g-stl` command are as follows:
 
-[opt]`-o [var]#output_name#` :: specifies the name of the file
+[opt]`-o [rep]#output_name#` :: specifies the name of the file
 to receive the STL format output. This option is mutually exclusive
 with the m option. (The default is [path]`stdout`.)
-[opt]`-m [var]#directory_name#` :: specifies the name of an
+[opt]`-m [rep]#directory_name#` :: specifies the name of an
 existing directory where output STL files will be placed. This option
 is mutually exclusive with the [opt]`-o` option. When this option is
 exercised, each region in the specified object(s) is output in a
@@ -282,11 +282,11 @@ triangulated representation of solid objects.
 
 The syntax for the g-tankill command is as follows:
 
-`[cmd]*g-tankill* +++[+++[opt]_options_] [var]#input.g# object(s)`
+`[cmd]*g-tankill* +++[+++[opt]_options_] [rep]#input.g# object(s)`
 
 The options for the `g-tankill` command are as follows:
 
-[opt]`-i [var]#idents_file#` :: specifies that the ident
+[opt]`-i [rep]#idents_file#` :: specifies that the ident
 numbers in the output file should be assigned sequentially as BRL-CAD
 regions are encountered (rather than using the ident numbers assigned
 in the BRL-CAD file). A mapping of the assigned ident numbers and the
@@ -294,7 +294,7 @@ BRL-CAD regions is written to the specified idents_file.
 [opt]`-s surroundings_code` :: specifies the surroundings code, which
 is a code TANKILL uses to indicate the type of volume that surrounds
 an object (the default is 1000).
-[opt]`-o [var]#output_name#` :: specifies the name of a file
+[opt]`-o [rep]#output_name#` :: specifies the name of a file
 to receive the output (default it [path]`stdout`).
 
 The command also accepts the previously mentioned [opt]`-v`,
@@ -321,7 +321,7 @@ multiuser interaction (Web3D Consortium, 2003b).
 The g-vrml command converts BRL-CAD objects to the VRML 2.0 format.
 It takes the following form:
 
-`[cmd]*g-vrml* +++[+++[opt]_options_] [var]#input.g# object(s)`
+`[cmd]*g-vrml* +++[+++[opt]_options_] [rep]#input.g# object(s)`
 
 The options for the command are as follows:
 
@@ -329,7 +329,7 @@ The options for the command are as follows:
 millimeters (the default is 0.005).
 [opt]`-u units` :: sets the desired output units (the default is
 millimeters).
-[opt]`-o [var]#output_file_name#` :: sets output file name
+[opt]`-o [rep]#output_file_name#` :: sets output file name
 (the default is [path]`stdout`).
 
 The command also accepts the previously mentioned [opt]`-v`,
@@ -364,7 +364,7 @@ polygons, and smooth surfaces.
 This `g-wave` converter produces an OBJ file that consists entirely of
 polygons (triangles). The command takes the following form:
 
-`[cmd]*g-wave* +++[+++[opt]_options_] [var]#input.g# object(s)`
+`[cmd]*g-wave* +++[+++[opt]_options_] [rep]#input.g# object(s)`
 
 The options for the command are as follows:
 
@@ -375,7 +375,7 @@ millimeters).
 [opt]`-d tolerance_distance` :: sets distance calculation tolerance in
 millimeters (the default is 0.005).
 [opt]`-u` :: includes vertexuse normals in the output.
-[opt]`-o [var]#output.obj#` :: specifies the output file name
+[opt]`-o [rep]#output.obj#` :: specifies the output file name
 (default is [path]`stdout`).
 
 The command also accepts the previously mentioned [opt]`-v`,
@@ -402,7 +402,7 @@ architecture that allows for a modular approach (Web3D Consortium,
 The `g-x3d` command converts BRL-CAD objects to the X3D format.  It
 takes the following form:
 
-`[cmd]*g-x3d* +++[+++[opt]_options_] [var]#input.g# object(s)`
+`[cmd]*g-x3d* +++[+++[opt]_options_] [rep]#input.g# object(s)`
 
 The options for the command are as follows:
 
@@ -410,7 +410,7 @@ The options for the command are as follows:
 millimeters (the default is 0.005).
 [opt]`-u units` :: sets the desired output units (the default is
 millimeters).
-[opt]`-o [var]#output_file_name#` :: sets output file name
+[opt]`-o [rep]#output_file_name#` :: sets output file name
 (the default is [path]`stdout`).
 
 The command also accepts the previously mentioned [opt]`-v`,
