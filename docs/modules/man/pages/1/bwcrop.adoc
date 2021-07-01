@@ -1,0 +1,37 @@
+= BWCROP(1)
+BRL-CAD Team
+:doctype: manpage
+:man manual: BRL-CAD
+:man source: BRL-CAD
+:page-layout: base
+
+== NAME
+
+bwcrop - crop black and white bw files
+
+== SYNOPSIS
+
+*[cmd]#bwcrop#* [rep]_in.bw_[rep]_out.bw_
+*[cmd]#bwcrop#* [rep]_in.bw_[rep]_out.bw_[rep]_inwidth_[rep]_outwidth_[rep]_outheight_[rep]_ulx_[rep]_uly_[rep]_urx_[rep]_ury_[rep]_lrx_[rep]_lry_[rep]_llx_[rep]_lly_
+
+== DESCRIPTION
+
+*[cmd]#bwcrop#* crops any quadrilateral out of an arbitrarily large xref:man:5/bw.adoc[*bw*](5) input file (__in.bw__), squares that region to a given height and width output size, and writes the result to __out.bw__. The first form of *[cmd]#bwcrop#* prompts for all parameters it needs to do the cropping. All responses should be pixel counts or first quadrant coordinates. The second form allows all of the needed parameters to be given on the command line and is intended for use from shell scripts. The coordinate names (the eight arguments listed above after [rep]_outheight_ ) refer to the input file, and more specifically to upper-left-x (ulx), lower-right-y (lry), etc., in clockwise-from-upper-left order.
+
+The nearest input pixel is selected for each output pixel.  No interpolation is done by this program.
+
+== SEE ALSO
+
+xref:man:1/brlcad.adoc[*brlcad*](1), xref:man:1/bwrect.adoc[*bwrect*](1), xref:man:1/bwscale.adoc[*bwscale*](1), xref:man:5/bw.adoc[*bw*](5)
+
+== AUTHOR
+
+BRL-CAD Team
+
+== COPYRIGHT
+
+This software is Copyright (c) 1989-2021 by the United States Government as represented by U.S. Army Research Laboratory.
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to mailto:devs@brlcad.org[]

@@ -1,0 +1,40 @@
+= LOOKAT(nged)
+BRL-CAD Team
+:doctype: manpage
+:man manual: BRL-CAD User Commands
+:man source: BRL-CAD
+:page-layout: base
+
+== NAME
+
+lookat - Adjusts the current view in MGED such that the eye is
+	looking in the direction of the given coordinates, but does not move the eye point nor
+	change the view size.
+   
+
+== SYNOPSIS
+
+*[cmd]#lookat#*  {[rep]_x y z_}
+
+== DESCRIPTION
+
+Adjusts the current view in MGED such that the eye is looking in the direction of the given coordinates, but does not move the eye point nor change the view size. This is similar to just rotating the viewers head to look at the specified point, putting that point in the center of the MGED display. The center command performs a similar function, but moves the eye_pt without changing the viewing direction. 
+
+== EXAMPLES
+
+The example shows the use of the *[cmd]#lookat#*  command to rotate the view to place the given 	coordinates in the center of the display. 
+
+.Rotate the view to place specific coordinates in the center of the display.
+====
+
+[prompt]#mged># [ui]`lookat 10 20 30` ::
+Rotates the view to place the point (10 20 30) (model coordinates) in the center of the display.
+====
+
+== AUTHOR
+
+BRL-CAD Team
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to mailto:devs@brlcad.org[]

@@ -1,0 +1,77 @@
+= RTWEIGHT(1)
+BRL-CAD Team
+:doctype: manpage
+:man manual: BRL-CAD
+:man source: BRL-CAD
+:page-layout: base
+
+== NAME
+
+rtweight - Calculate mass, centroid, and volume of geometry using raytracing
+
+== SYNOPSIS
+
+*[cmd]#rtweight#* [[rep]_options_]...[rep]_model.g_[rep]_objects_...
+
+== DESCRIPTION
+
+*[cmd]#rtweight#*  operates on the indicated _objects_ in __model.g__.  Material density information and region line of sight (LOS) thickness measurements obtained via ray tracing are used to calculate the mass for each region encountered. It will calculate and report volume of the objects specified.  With material properties, it will also report per-region mass information as well as the overall geometric centroid.  All calculations take any Boolean operations into consideration. 
+
+*[cmd]#rtweight#*  can either use density information stored directly in a .g database or read a density file specified by the *[opt]#-d#*  option. 
+
+If using a density file the file must contain lines with the material number, density in g/cc, and material name, each separated by some white space.  See the xref:man:1/gqa.adoc[*gqa*](1) manual page for more information about defining and managing density information. 
+
+The following options are recognized.
+
+*[opt]#-s##* ::
+Number of rays to fire in X and Y directions (square grid). Default is 512 (512x512).  Conflicts with *[opt]#-g#* 
+
+*[opt]#-g##* ::
+Distance between rays in the X and Y directions in millimeters.  Conflicts with *[opt]#-s#* 
+
+*[opt]#-a##* ::
+Select azimuth in degrees.  Used with *[opt]#-e#* and conflicts with *[opt]#-M#* 
+
+*[opt]#-e##* ::
+Select elevation in degrees.  Used with *[opt]#-a#* and conflicts with *[opt]#-M#* 
+
+*[opt]#-d file#* ::
+Read density information from the specified file.
+
+*[opt]#-M#* ::
+Read model2view matrix from standard input. Conflicts with *[opt]#-a#* and *[opt]#-e#* 
+
+*[opt]#-r#* ::
+Report individual region weights by region path name and also by region id number.  The default only prints the total weight for all the objects specified.
+
+*[opt]#-o file#* ::
+Send the output to a specified file.  The default is to standard output.
+
+*[opt]#-P##* ::
+Specify the maximum number of processors (in a multi-processor system) to be used for this execution.  The default is the maximum number for the machine.
+
+*[cmd]#rtweight#*  also accepts all other options that the xref:man:1/rt.adoc[*rt*](1) program implements, such as for non-square views, perspective, etc.
+
+== SEE ALSO
+
+xref:man:1/mged.adoc[*mged*](1), xref:man:1/rt.adoc[*rt*](1), xref:man:3/librt.adoc[*librt*](3)
+
+== DIAGNOSTICS
+
+Numerous error conditions are possible.  Descriptive messages are printed on standard error (file descriptor 2).
+
+== BUGS
+
+Most deficiencies observed while using the *[cmd]#rtweight#* program are usually with the xref:man:3/librt.adoc[*librt*](3) package instead.
+
+== AUTHOR
+
+James E. Hunt
+
+== COPYRIGHT
+
+This software is Copyright (c) 1991-2021 United States Government as represented by the U.S. Army Research Laboratory.
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to mailto:devs@brlcad.org[]

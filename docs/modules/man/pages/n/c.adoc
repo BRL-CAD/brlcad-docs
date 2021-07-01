@@ -1,0 +1,39 @@
+= C(nged)
+BRL-CAD Team
+:doctype: manpage
+:man manual: BRL-CAD User Commands
+:man source: BRL-CAD
+:page-layout: base
+
+== NAME
+
+c - Creates a BRL-CAD combination with the name
+    combination_name.
+    
+
+== SYNOPSIS
+
+*[cmd]#c#*  [-c] [-r] {[rep]_combination_name_} [[rep]_Boolean_expression_]
+
+== DESCRIPTION
+
+The *[cmd]#c#*  command creates a _BRL-CAD_ combination with the name __combination_name__. The _-r_ option indicates that the combination is a __BRL-CAD__region. The _-c_ option is the default and indicates that the combination is not a region. The _Boolean_expression_ allows parentheses. Where no order is specified, intersections are performed before subtractions or unions; then subtractions and unions are performed, left to right. Where there is no _Boolean_expression_ and __combination_name__, a new empty combination will be created. If no _Boolean_expression_ is provided, and _combination_name_ does already exist and one of _-c_ or _-r_ is specified, then _combination_name_ is flagged to agree with the indicated option. If a new _region_ is created or an existing combination is flagged as a region with this command, its region-specific attributes will be set according to the current defaults (see *[cmd]#regdef#* ). The *[cmd]#comb#*  and *[cmd]#r#*  commands may also be used to create combinations. 
+
+== EXAMPLES
+
+The example shows how to use the *[cmd]#c#*  command to create a combination according to a given formula. 
+
+.Creating a combination according to a formula.
+====
+
+[prompt]#mged># [ui]`c -c abc (a u b)-(a + d)` ::
+Creates a combination named _abc_ according to the formula __(a u b) - (a + d)__. 
+====
+
+== AUTHOR
+
+BRL-CAD Team
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to mailto:devs@brlcad.org[]

@@ -1,0 +1,38 @@
+= MV(nged)
+BRL-CAD Team
+:doctype: manpage
+:man manual: BRL-CAD User Commands
+:man source: BRL-CAD
+:page-layout: base
+
+== NAME
+
+mv - Changes the name of old_name to new_name.
+   
+
+== SYNOPSIS
+
+*[cmd]#mv#*  {[rep]_old_name new_name_}
+
+== DESCRIPTION
+
+Changes the name of _old_name_ to __new_name__. Note that this does not change any references to _old_name_ that may appear in other combinations in the database. The *[cmd]#mvall#*  command will change an objects name everywhere. 
+
+== EXAMPLES
+
+The example shows the use of the *[cmd]#mv#*  command to change an object's _old_name_ to a __new_name__. 
+
+.Change an object's name.
+====
+[prompt]#mged># [ui]`mv shapea shapeb` 
+
+Changes the name of _shapea_ to __shapeb__. 
+====
+
+== AUTHOR
+
+BRL-CAD Team
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to mailto:devs@brlcad.org[]

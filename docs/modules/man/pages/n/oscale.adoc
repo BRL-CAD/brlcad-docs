@@ -1,0 +1,39 @@
+= OSCALE(nged)
+BRL-CAD Team
+:doctype: manpage
+:man manual: BRL-CAD User Commands
+:man source: BRL-CAD
+:page-layout: base
+
+== NAME
+
+oscale - This command of matrix edit mode modifies the matrix to perform a uniform
+scale operation.
+   
+
+== SYNOPSIS
+
+*[cmd]#oscale#*  {[rep]_scale_factor_}
+
+== DESCRIPTION
+
+This command of matrix edit mode modifies the matrix to perform a uniform scale operation. A _scale_factor_ of 2 doubles the size of the associated object, and a __scale_factor__ of 0.5 reduces it by half. 
+
+== EXAMPLES
+
+The example shows the use of the *[cmd]#oscale#*  command to increase the size of a currently edited object by a specified factor. 
+
+.Increase a currently edited object by a specified factor.
+====
+[prompt]#mged># [ui]`oscale 3` 
+
+Increases the size of the currently edited object by a factor of 3. 
+====
+
+== AUTHOR
+
+BRL-CAD Team
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to mailto:devs@brlcad.org[]

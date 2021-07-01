@@ -1,0 +1,49 @@
+= DBCONCAT(nged)
+BRL-CAD Team
+:doctype: manpage
+:man manual: BRL-CAD User Commands
+:man source: BRL-CAD
+:page-layout: base
+
+== NAME
+
+dbconcat - 
+      Concatenates an existing BRL-CAD database to the
+      database currently being edited.
+    
+
+== SYNOPSIS
+
+*[cmd]#dbconcat#*  [[rep]_-t_] [[rep]_-u_] [[rep]_-c_] [[rep]_-s|-p_] {[rep]_database_file_} [[rep]_affix_]
+
+== DESCRIPTION
+
+Concatenates an existing _BRL-CAD_ database to the database currently being edited. If an _affix_ is supplied, then all objects from the _database_file_ will have the _affix_ added to their names as a suffix (if the _-s_ option is specified), or as a prefix (if the _-p_ option is specified). The _-p_ is the default. Note that each _BRL-CAD_ object must have a unique name, so care must be taken not to "dbconcat" a  database that has objects with names the same as objects in the current database. 	The *[cmd]#dup#* command may be used to check for duplicate names. If the *[cmd]#dup#* command finds duplicate names, use the _prefix_ option to both the *[cmd]#dup#*  	and *[cmd]#dbconcat#*  commands to find a _prefix_ that produces no duplicates.	If duplicate names are encountered during the "dbconcat" process, computer-generated prefixes will be added to the object names coming from the _database_file_ (but member names appearing in combinations will not be modified, so this is a dangerous practice and should be avoided). The _-t_ option indicates that the title of the _database_file_ should become the title of the currently edited database. The _-u_ option indicates that the units of the _database_file_ should become the units of the currently edited database. Similarly, the _-c_ option indicates that the region color table of the currently edited database should be replaced with that of the __database_file__. 
+
+== EXAMPLES
+
+This example shows the use of the *[cmd]#dbconcat#*  command to copy all objects in a particular database to the current database. It also shows how to add a particular prefix to every object copied. 
+
+.Copy objects in a specified database to the current one and add a prefix to all the copied objects.
+====
+[prompt]#mged># [ui]`dbconcat model_two.g two_` 
+
+Copies all the objects in _model_two.g_ to the current database, but prefixes the name of every object copied with the string __two___. 
+====
+
+Another example shows a usage to import the title, units, color table, and all the objects of a database file into the current database. This is particularly useful if the current database is empty or just created by mged. 
+
+.Copy an entire database, including title, units, and color table, to the current database without any affix
+====
+[prompt]#mged># [ui]`dbconcat -t -u -c model_two.g` 
+
+Copies all the objects in _model_two.g_ to the current database, including the title, units, and color table. No suffix or prefix is added to the object names. 
+====
+
+== AUTHOR
+
+BRL-CAD Team
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to mailto:devs@brlcad.org[]

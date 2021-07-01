@@ -1,0 +1,38 @@
+= SHADER(nged)
+BRL-CAD Team
+:doctype: manpage
+:man manual: BRL-CAD User Commands
+:man source: BRL-CAD
+:page-layout: base
+
+== NAME
+
+shader - Assigns shader parameters to the specified combination.
+   
+
+== SYNOPSIS
+
+*[cmd]#shader#*  {[rep]_combination_} {[rep]_shader_name_} [[rep]_"{shader_ args}"_]
+
+== DESCRIPTION
+
+Assigns shader parameters to the specified combination. The _shader_name_ indicates which shader should be assigned. If _shader_args_ are supplied, they will be assigned to parameters of the indicated shader. This performs a similar function as the *[cmd]#mater#*  command. 
+
+== EXAMPLES
+
+The example shows the use of the *[cmd]#shader#*  command to assign shader parameters to a 	specified combination. 
+
+.Assign shader parameters to a specified combination.
+====
+[prompt]#mged># [ui]`shader group1 checker "{a 0,255,0 b 0,0,255}"` 
+
+Assigns the checkerboard shader to _group1_ using green and blue colors for the squares. 
+====
+
+== AUTHOR
+
+BRL-CAD Team
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to mailto:devs@brlcad.org[]

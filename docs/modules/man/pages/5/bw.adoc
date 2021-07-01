@@ -1,0 +1,71 @@
+= BW(5)
+BRL-CAD Team
+:doctype: manpage
+:man manual: BRL-CAD
+:man source: BRL-CAD
+:page-layout: base
+
+== NAME
+
+bw - Black and White image file format and utilities
+
+
+== FORMAT
+
+A __bw__ file contains sequences of pixels. Each pixel is stored as one __unsigned char__, and thus ranges in intensity from 0 (black) to 255 (white). The first pixel in a __bw__ file is the lower left corner of the image. The pixels proceed from left-to-right across each scanline, with scanlines being written from the bottom to the top of the image.
+
+By convention, __bw__ images are usually square, and thus their dimensions can be determined by the file size.  If this is not the case, often only the file width need be known by a program reading the file.  History has left us with two "standard" sizes, 512x512 and the "higher" 1024x1024. A common practice for other file sizes is to include the file width in the filename.
+
+At some time in the future __bw__ files will probably get self-typing headers so that parameters such as their size can be automatically determined by programs.
+
+== UTILITIES
+
+_bw-fb_ display a .bw format image on a framebuffer.
+
+_fb-bw_ produce a .bw file from a framebuffer image.
+
+_bw-pix_ convert a .bw file to a color .pix file.
+
+_pix-bw_ convert a color .pix file to a .bw file.
+
+_bwstat_ gives statistics concerning a .bw file.
+
+_bwhist_ displays a histogram on a framebuffer.
+
+_bwmod_ a filter to shift and scale pixel intensities.
+
+_bwdiff_ yields the difference between two .bw files.
+
+_bwrect_ extracts an arbitrary rectangle from a .bw file.
+
+_bwcrop_ maps any quadrilateral in a .bw file into any rectangle.
+
+_bwrot_ rotates, reverses, or inverts a .bw file.
+
+_bwscale_ scales a .bw file larger or smaller.
+
+_bwfilter_ a variety of 3x3 kernel filters for .bw images.
+
+_bw3-pix_ merges three .bw files into one .pix file.
+
+_pix-bw3_ separates .pix file RGB colors into three .bw files.
+
+== FILES
+
+file.bw
+
+== SEE ALSO
+
+xref:man:1/brlcad.adoc[*brlcad*](1), xref:man:5/pix.adoc[*pix*](5), and above named programs.
+
+== AUTHOR
+
+BRL-CAD Team
+
+== COPYRIGHT
+
+This software is Copyright (c) 1989-2021 by the United States Government as represented by U.S. Army Research Laboratory.
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to mailto:devs@brlcad.org[]

@@ -1,0 +1,61 @@
+= CAD_BOUNDP(1)
+BRL-CAD Team
+:doctype: manpage
+:man manual: BRL-CAD
+:man source: BRL-CAD
+:page-layout: base
+
+== NAME
+
+cad_boundp - find bounding polygon of two-dimensional view
+
+== SYNOPSIS
+
+*[cmd]#cad_boundp#* [-i[rep]_input_][-o[rep]_output_][-t[rep]_tolerance_][-v]
+
+== DESCRIPTION
+
+*[cmd]#cad_boundp#* reads from __input__ (standard input if not specified) a series of line segment endpoint (__x__,__y__) coordinate values describing a two-dimensional view of the edges of a (possibly transparent) three-dimensional object and writes to __output__ (standard output if not specified) the (__x__,__y__) coordinates of vertices of the bounding polygon in counter-clockwise order, starting with the vertex having the smallest __y__ coordinate. If the *[opt]#-v#* argument is used, instead of points the output will consist of line segment data suitable for input into another invocation of *[cmd]#cad_boundp#*  .
+
+Input lines not beginning with a number are silently skipped. This feature can be used to accommodate comments or additional control information in the data stream.
+
+When a __tolerance__ is specified, a point is considered to be identical to a previously-input point if its __x__ and __y__ coordinates are both within __tolerance__ of the first point encountered within a group passing the tolerance test. Otherwise, point coordinates must match precisely or the algorithm will produce erroneous results.
+
+== RESTRICTIONS
+
+*[cmd]#cad_boundp#* may output a polygon smaller than desired or produce a "degenerate input" message if the __tolerance__ is too tight or if input is incomplete. It may be wise to specify double the expected __tolerance__.
+
+Holes within the view cannot be recognized.
+
+Silhouette thickness must everywhere exceed __tolerance__ (no narrow necking-down) or a portion of the silhouette will be "lost"; in particular, the view should not consist of disjoint parts.
+
+== EXAMPLE
+
+[quote]
+$ cad_boundp -t 0.1 # _comment_ 0 2 0 1 3 2 3 1 2 0 1 0 0 2 3 2 0 2 3 1 0 1 3 2 2 2 2 0 1 0 1 2 2 2 1 2 0 1 3 1 _^D_ 1 0 2 0 2 1 3 1 3 2 2 2 1 2 0 2 0 1 1 1 
+
+== SEE ALSO
+
+xref:man:1/cad_parea.adoc[*cad_parea*](1)
+
+== DIAGNOSTICS
+
+Any error condition causes *[cmd]#cad_boundp#* to terminate with non-zero exit status after it prints an error message on the standard error output.
+
+An illegal argument or improperly formatted input produces an appropriate message.
+
+If a vertex having only one line segment connected to it is found on the perimeter, *[cmd]#cad_boundp#* produces the message "degenerate input".
+
+If there is too much data for *[cmd]#cad_boundp#* to handle, the message "out of memory" is produced.
+
+== AUTHOR
+
+Douglas A. Gwyn, BRL/VLD-VMB
+
+== COPYRIGHT
+
+This software is Copyright (c) 1991-2021 by the United States Government as represented by U.S. Army Research Laboratory.
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to mailto:devs@brlcad.org[]

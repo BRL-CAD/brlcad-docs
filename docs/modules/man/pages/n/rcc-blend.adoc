@@ -1,0 +1,45 @@
+= RCC-BLEND(nged)
+BRL-CAD Team
+:doctype: manpage
+:man manual: BRL-CAD User Commands
+:man source: BRL-CAD
+:page-layout: base
+
+== NAME
+
+rcc-blend - Generates a blend at an end (base [b] or top
+	[t]) of the specified RCC shape.
+
+== SYNOPSIS
+
+*[cmd]#rcc-blend#*  {[rep]_rccname newname thickness_} [b] [t]
+
+== DESCRIPTION
+
+Generates a blend at an end (base [__b__] or top [__t__]) of the specified RCC shape. The thickness is the radius of the TOR 	curvature. The blend is saved as a region made up of an RCC and a TOR. The default end is the 	base. 
+
+== EXAMPLES
+
+The two examples show the use of the *[cmd]#rcc-blend#*  command to generate a blend 	at the base and at the top of specified RCC shapes. 
+
+.Generate a blend at the base of a specified RCC shape.
+====
+[prompt]#mged># [ui]`rcc-blend rcc.s blend.s 10` 
+
+Creates a region named _blend.s_ that extends 10 units from the base of__rcc.s__. 
+====
+
+.Generate a blend at the top of a specified RCC shape.
+====
+[prompt]#mged># [ui]`rcc-blend rcc.s blend.s 10 t` 
+
+Creates a region named _blend.s_ that extends 10 units from the top of__rcc.s__. 
+====
+
+== AUTHOR
+
+BRL-CAD Team
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to mailto:devs@brlcad.org[]

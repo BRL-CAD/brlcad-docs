@@ -1,0 +1,45 @@
+= ARCED(nged)
+BRL-CAD Team
+:doctype: manpage
+:man manual: BRL-CAD User Commands
+:man source: BRL-CAD
+:page-layout: base
+
+== NAME
+
+arced - Provides a means for directly editing transformation matrices of Boolean tree leaves.
+    
+
+== SYNOPSIS
+
+*[cmd]#arced#*  {[rep]_comb/memb_} {[rep]_anim_command_}
+
+== DESCRIPTION
+
+The objects in a BRL-CAD model are stored as Boolean combinations of primitive shapes and/or other combinations. These combinations are stored as Boolean trees, with each leaf of the tree including a corresponding transformation matrix. The *[cmd]#arced#*  command provides a means for directly editing these matrices. The first argument to the *[cmd]#arced#* command must identify the combination and which member's matrix is to be edited. The _comb/memb_ argument indicates that member _memb_ of combination _comb_ has the matrix to be edited. The remainder of the *[cmd]#arced#* command line consists of an animation command to be applied to that matrix. The available animation commands are: 
+
+*[cmd]#matrix rarc <xlate|rot> matrix elements#* ::
+Replace the members matrix with the given matrix. 
+
+*[cmd]#matrix lmul <xlate|rot> matrix elements#* ::
+Left multiply the members matrix with the given matrix. 
+
+*[cmd]#matrix rmul <xlate|rot> matrix elements#* ::
+Right multiply the members matrix with the given matrix. 
+
+== EXAMPLES
+
+.Rotate body/head 45 degrees about Z axis
+====
+[prompt]#mged># [ui]`arced body/head matrix rot 0 0 45` 
+
+Rotates member head (in combination body) about the _z_ axis through a 45° angle. By default, the *[cmd]#matrix#*  commands expect a list of 16 matrix elements to define a matrix. The _xlate_ option may be used along with three translation distances in the __x__, __y__, and _z_ directions (in mm) as a shorthand notation for a matrix that is pure translation. Similarly, the _rot_	option along with rotation angles (degrees) about the __x__, __y__, and _z_ axes may be used as shorthand for a matrix that is pure rotation. 
+====
+
+== AUTHOR
+
+BRL-CAD Team
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to mailto:devs@brlcad.org[]

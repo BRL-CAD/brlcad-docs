@@ -1,0 +1,39 @@
+= SCREENGRAB(nged)
+BRL-CAD Team
+:doctype: manpage
+:man manual: BRL-CAD User Commands
+:man source: BRL-CAD
+:page-layout: base
+
+== NAME
+
+screengrab - 
+      Save the current MGED display visual or framebuffer contents to an image file.
+    
+
+== SYNOPSIS
+
+*[cmd]#screengrab#*  [[rep]_-F_] [[rep]_--format fmt_] {[rep]_image_file_}
+
+== DESCRIPTION
+
+Generates an image file containing either the current application display manager's visual representation of the current scene or (when the *[opt]#-F#*  option is specified) the contents of the current application embedded framebuffer. 
+
+The output format of the image file will be deduced from the filename, but if the caller wishes to ensure a specific format the *[opt]#--format#* may be used. 
+
+== EXAMPLES
+
+.Write a PNG image file of the MGED framebuffer contents.
+====
+[prompt]#mged># [ui]`screengrab -F fb.png` 
+
+Writes the contents of the active MGED framebuffer to the image file __fb.png__. 
+====
+
+== AUTHOR
+
+BRL-CAD Team 
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to mailto:devs@brlcad.org[]

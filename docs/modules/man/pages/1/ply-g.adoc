@@ -1,0 +1,40 @@
+= PLY-G(1)
+BRL-CAD Team
+:doctype: manpage
+:man manual: User Commands
+:man source: BRL-CAD
+:page-layout: base
+
+== NAME
+
+ply-g - Stanford PLY format Translator (PLY to BRL-CAD)
+
+== SYNOPSIS
+
+*[cmd]#ply-g#* [-s [rep]_scale_factor_][-v][-d][rep]_file.ply_[rep]_file.g_
+
+== DESCRIPTION
+
+*[cmd]#ply-g#* converts the specified __file.ply__ to a BRL-CAD __file.g__ file. The *[opt]#-v#* option (verbose) prints much information about what the process is doing. The *[opt]#-d#* option sets a debug flag which will cause a core dump on error. The *[opt]#-s#* option specifies a scale factor to be applied to the PLY data. By convention, PLY data is typically in meters, so the default scale factor is 1000. The scale factor supplied on the command line will replace the default scale factor. So, for example, specifying a scale factor of 500 will halve the size of the resulting BRL-CAD model as compared to converting it without specifying a scale factor. The __file.ply__ file is expected to be in the Stanford PLY format (ASCII or binary).
+
+== EXAMPLE
+// <synopsis>
+// $ ply-g <emphasis remap="I">sample.ply sample.g</emphasis>
+// </synopsis>
+
+
+== DIAGNOSTICS
+
+Error messages are intended to be self-explanatory.
+
+== AUTHOR
+
+BRL-CAD Team
+
+== COPYRIGHT
+
+This software is Copyright (c) 2003-2021 by the United States Government as represented by U.S. Army Research Laboratory.
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to mailto:devs@brlcad.org[]

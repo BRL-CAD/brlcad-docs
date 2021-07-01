@@ -1,0 +1,39 @@
+= PUSH(nged)
+BRL-CAD Team
+:doctype: manpage
+:man manual: BRL-CAD User Commands
+:man source: BRL-CAD
+:page-layout: base
+
+== NAME
+
+push - Forces the effects of all transformation matrices that appear in
+	any combinations in the trees from the specified objects down to the primitive 	shapes.
+   
+
+== SYNOPSIS
+
+*[cmd]#push#*  [[rep]_objects_]
+
+== DESCRIPTION
+
+Forces the effects of all transformation matrices that appear in any combinations in the trees from the specified _objects_ down to the primitive 	shapes. This will change the parameters of the _primitive shapes_ if any of the 	transformation matrices are not identity matrices. All the transformation matrices visited will be set to 	identity matrices. This command will fail, and no changes will be made, if any primitive shape referenced 	by the list of _objects_ is positioned differently in two or more __combinations__. The *[cmd]#xpush#*  command will perform a similar function, even if 	some shapes are multiply referenced. 
+
+== EXAMPLES
+
+The example shows the use of the *[cmd]#push#*  command to push the effects of any 	transformation matrices in the trees headed by two specified objects down to the primitive shapes. 
+
+.Push the effects of any transformation matrices in trees headed by two specified objects down to the 	primitive shapes.
+====
+[prompt]#mged># [ui]`push group1 regiona` 
+
+Pushes the effects of any transformation matrices in the trees headed by _group1_ 	and _regiona_ down to the primitive shapes. 
+====
+
+== AUTHOR
+
+BRL-CAD Team
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to mailto:devs@brlcad.org[]

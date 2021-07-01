@@ -1,0 +1,39 @@
+= G(nged)
+BRL-CAD Team
+:doctype: manpage
+:man manual: BRL-CAD User Commands
+:man source: BRL-CAD
+:page-layout: base
+
+== NAME
+
+g - Creates a special type of combination often referred to as a group.
+	This builds a combination by unioning together all the listed objects.
+   
+
+== SYNOPSIS
+
+*[cmd]#g#*  {[rep]_groupname_} {[rep]_objects_}
+
+== DESCRIPTION
+
+Creates a special type of combination often referred to as a group. This builds a combination by unioning together all the listed __objects__. If _groupname_ already exists, then the list of objects will be unioned to the end of it. (Note that 	an existing groupname is not restricted to being a group; any combination is legal.)  Other commands to 	build combinations are *[cmd]#c#* , *[cmd]#r#* , or *[cmd]#comb#* . 
+
+== EXAMPLES
+
+The example shows the use of the *[cmd]#g#*  command to create or extend a specified group by 	unioning it with specified objects. 
+
+.Create a group with a _groupname_ and specified objects.
+====
+
+[prompt]#mged># [ui]`g shape1.nmg f` ::
+Creates or extends shape1.nmg by unioning in __f__. 
+====
+
+== AUTHOR
+
+BRL-CAD Team
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to mailto:devs@brlcad.org[]

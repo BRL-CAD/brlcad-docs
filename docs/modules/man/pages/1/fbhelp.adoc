@@ -1,0 +1,36 @@
+= FBHELP(1)
+BRL-CAD Team
+:doctype: manpage
+:man manual: BRL-CAD
+:man source: BRL-CAD
+:page-layout: base
+
+== NAME
+
+fbhelp - provide information on frame buffer selections
+
+== SYNOPSIS
+
+*[cmd]#fbhelp#*  [-F [rep]_framebuffer_]
+
+== DESCRIPTION
+
+*[cmd]#fbhelp#* displays information about the selection of frame buffer devices available to the xref:man:3/libfb.adoc[*libfb*](3) frame buffer library and the whole family of __fb__ programs in the BRL-CAD package, for the machine *[cmd]#fbhelp#* is run on.
+
+The display device used by a program is taken first from the *[opt]#-F#* [rep]_framebuffer_ option if given, else from the environment variable __FB_FILE__, or finally from whatever the default display is for that system. *[cmd]#fbhelp#* will tell you what the available choices of frame buffers are, as well as detailed information about any options the currently selected device may have.
+
+== SEE ALSO
+
+xref:man:3/libfb.adoc[*libfb*](3), xref:man:1/brlcad.adoc[*brlcad*](1)
+
+== AUTHOR
+
+BRL-CAD Team
+
+== COPYRIGHT
+
+This software is Copyright (c) 1988-2021 by the United States Government as represented by U.S. Army Research Laboratory.
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to mailto:devs@brlcad.org[]

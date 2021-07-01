@@ -1,0 +1,87 @@
+= Command History Object Documentation
+
+       Mark 
+  L. Ulferts 
+ <mulferts@austin.dsccc.com>; 
+    Glenn
+  Durfee
+  
+:doctype: book
+:sectnums:
+:toc: left
+:icons: font
+:experimental:
+
+== Unknown Title!
+
+=== Name
+
+ch_open - create and manipulate a command history object. 
+
+=== SYNOPSIS 
+
+__ch_open__[__chName__] 
+
+=== DESCRIPTION 
+
+The *ch_open* command creates a new command history object (given by the _chName_ argument). The *ch_open* command returns its _chName_ argument. At the time this command is invoked, there must not exist a command history object named __chName__. 
+
+=== METHODS 
+
+The *ch_open* command creates a new Tcl command whose name is __chName__. This command may be used to invoke various operations on the command history object. It has the following general form: 
+
+_chName option ?arg arg ...?_
+
+_Option_ and the__args__ determine the exact behavior of the command. The following commands are possible for command history objects: 
+
+_chName_**add command_string __chName__**addM** command_string**
+
+Add a command to the history and reset the current command pointer. 
+
+__chName__**curr**
+
+Return the current command in the history. 
+
+__chName__**history**
+
+Return the entire history. 
+
+__chName__**next**
+
+Return the next command in the history making that the current command. 
+
+__chName__**prev**
+
+Return the previous command in the history making that the current command. 
+
+=== EXAMPLE 
+
+The following sequence creates a command history object, adds commands and traverses the history. 
+
+
+[source]
+----
+
+cwish> ch_open ch
+ch
+cwish> ch add "cmd1"
+cwish> ch add "cmd2"
+cwish> ch prev
+cmd2
+cwish> ch prev
+cmd1
+cwish> ch curr
+cmd1
+cwish> ch add "cmd3"
+cwish> ch prev
+cmd3
+cwish> ch prev
+cmd2
+cwish> ch next
+cmd3
+cwish> ch next
+cwish> ch history
+cmd1
+cmd2
+cmd3
+----
