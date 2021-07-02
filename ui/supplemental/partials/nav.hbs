@@ -1,0 +1,16 @@
+<div class="nav-container"{{#if page.component}} data-component="{{page.component.name}}" data-version="{{page.version}}"{{/if}}>
+  <aside class="nav">
+    <div class="panels">
+{{> nav-menu}}
+
+{{!--
+    We don't need the component/version selector at the end of the nav menu.
+    But if we just remove nav-explore, the right menu (toc) disappears as well.
+    So, we enclose it in another div, and make it invisible.
+--}}
+<div style="display: none;">
+{{> nav-explore}}
+</div>
+    </div>
+  </aside>
+</div>
