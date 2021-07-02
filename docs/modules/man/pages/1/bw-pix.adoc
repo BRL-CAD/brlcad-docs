@@ -1,0 +1,34 @@
+= BW-PIX(1)
+BRL-CAD Team
+:doctype: manpage
+:man manual: BRL-CAD
+:man source: BRL-CAD
+:page-layout: base
+
+== NAME
+
+bw-pix - convert a black and white image to color format
+
+== SYNOPSIS
+
+*[cmd]#bw-pix#* [[-s [rep]_squaresize_][-w [rep]_width_][-n [rep]_height_]][-o [rep]_out.pix_][[<][rep]_in.bw_]>[[rep]_out.pix_]
+
+== DESCRIPTION
+
+*[cmd]#bw-pix#* converts a black and white xref:man:5/bw.adoc[*bw*](5) format file to a color xref:man:5/pix.adoc[*pix*](5) format file. Each input value is replicated three times, thus the resulting output file has the same value in all three color planes. An input file name can be given, else input comes from stdin. Output will go to stdout unless an optional output file name is given.
+
+== SEE ALSO
+
+xref:man:1/brlcad.adoc[*brlcad*](1), xref:man:1/pix-bw.adoc[*pix-bw*](1), xref:man:1/pix-bw3.adoc[*pix-bw3*](1), xref:man:5/pix.adoc[*pix*](5), xref:man:5/bw.adoc[*bw*](5)
+
+== AUTHOR
+
+BRL-CAD Team
+
+== COPYRIGHT
+
+This software is Copyright (c) 1989-2021 by the United States Government as represented by U.S. Army Research Laboratory.
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to mailto:devs@brlcad.org[]

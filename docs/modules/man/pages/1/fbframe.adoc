@@ -1,0 +1,40 @@
+= FBFRAME(1)
+BRL-CAD Team
+:doctype: manpage
+:man manual: BRL-CAD
+:man source: BRL-CAD
+:page-layout: base
+
+== NAME
+
+fbframe - place a colored frame around a framebuffer
+
+== SYNOPSIS
+
+*[cmd]#fbframe#*  [-F [rep]_framebuffer_] [-w|W [rep]_frame_width_] [-n|N [rep]_frame_height_] [-s|S [rep]_squareframesize_]
+
+== DESCRIPTION
+
+*[cmd]#fbframe#* places a colored frame around the edge pixels of a framebuffer. It is mostly for purposes of framebuffer alignment. The *[opt]#-F#* option can be used to specify the framebuffer. If this option is omitted, the environment variable [var]*FB_FILE* is used to select the display device (see xref:man:1/brlcad.adoc[*brlcad*](1)). If the variable is not set, the default device for your system will be used.
+
+The frame starts in the lower left with a red line running to the right to the next to last pixel.  Next, a green line from there up to the next to top scan line is drawn.  Then blue across the top scan line to the next to first column.  Finally a white line down the left edge stopping just above the red line.
+
+By default, the dimensions of the frame will be taken from the framebuffer used.  Alternatively, one or more of the options *[opt]#-s#* , *[opt]#-w#* , *[opt]#-n#* (or *[opt]#-S#* , *[opt]#-W#* , *[opt]#-N#* ) may be used to set the dimensions of the frame drawn.
+
+The options *[opt]#-w#*  (or *[opt]#-W#* ) [rep]_frame_width_ and *[opt]#-n#*  (or *[opt]#-N#* ) [rep]_frame_height_ are used to specify the width (in pixels) and height (in scanlines) of the frame on the framebuffer respectively. The *[opt]#-s#*  (or *[opt]#-S#* ) [rep]_squareframesize_ option specifies both the height and width of the frame to be drawn.
+
+== SEE ALSO
+
+xref:man:1/brlcad.adoc[*brlcad*](1), xref:man:1/fbgrid.adoc[*fbgrid*](1)
+
+== AUTHOR
+
+BRL-CAD Team
+
+== COPYRIGHT
+
+This software is Copyright (c) 1989-2021 by the United States Government as represented by U.S. Army Research Laboratory.
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to mailto:devs@brlcad.org[]

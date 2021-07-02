@@ -1,0 +1,50 @@
+= BWRECT(1)
+BRL-CAD Team
+:doctype: manpage
+:man manual: BRL-CAD
+:man source: BRL-CAD
+:page-layout: base
+
+== NAME
+
+bwrect - extract a rectangle from a black and white bw file
+
+== SYNOPSIS
+
+*[cmd]#bwrect#* [-s [rep]_squaresize_][-w [rep]_width_][-n [rep]_height_][-S [rep]_out_squaresize_][-W [rep]_out_width_][-N [rep]_out_height_][-x [rep]_xorig_][-y [rep]_yorig_][-o [rep]_out_file.bw_][rep]_file.bw_>[[rep]_out_file.bw_]
+
+== DESCRIPTION
+
+*[cmd]#bwrect#* extracts a rectangular region from a black and white xref:man:5/bw.adoc[*bw*](5) format file. The default input image size is 512x512. The x,y coordinates of the origin (the default xorig=0, yorig=0 corresponds to the lower left corner) are passed as arguments for *[opt]#-x#*  and *[opt]#-y#* .
+
+The *[opt]#-w#* [rep]_file_width_ flag specifies the width of each scanline in the input file, in pixels. *[opt]#-W#* [rep]_scr_width_ does the same for the display device.
+
+The *[opt]#-n#* [rep]_file_height_ and *[opt]#-N#* [rep]_scr_height_ flags specify the height in scanlines of the input file and display device respectively.
+
+*[opt]#-s#* [rep]_squarefilesize_ and *[opt]#-S#* [rep]_squarescrsize_ set both the height and width to the size given (for input file and display device respectively).
+
+([rep]_scr_width_  and [rep]_scr_height_  must be set to positive values, either separately via *[opt]#-W#*  and *[opt]#-N#* , or jointly via *[opt]#-S#* .  This is because they start with default values of zero.) 
+
+*[opt]#-o#* [rep]_out_file.bw_  is a way of specifying output file name.
+
+This utility supports pipes and can read/write from/to them. 
+
+== SEE ALSO
+
+xref:man:1/brlcad.adoc[*brlcad*](1), xref:man:1/bwcrop.adoc[*bwcrop*](1), xref:man:1/bwscale.adoc[*bwscale*](1), xref:man:1/pixrect.adoc[*pixrect*](1), xref:man:5/bw.adoc[*bw*](5)
+
+== BUGS
+
+We ought to allow the questions to be answered on the command line so that shell scripts, etc., could use this.
+
+== AUTHOR
+
+BRL-CAD Team
+
+== COPYRIGHT
+
+This software is Copyright (c) 1989-2021 by the United States Government as represented by U.S. Army Research Laboratory.
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to mailto:devs@brlcad.org[]

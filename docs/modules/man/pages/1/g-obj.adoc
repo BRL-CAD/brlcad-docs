@@ -1,0 +1,40 @@
+= G-OBJ(1)
+BRL-CAD Team
+:doctype: manpage
+:man manual: User Commands
+:man source: BRL-CAD
+:page-layout: base
+
+== NAME
+
+g-obj - BRL-CAD to Wavefront Object File converter
+
+== SYNOPSIS
+
+*[cmd]#g-obj#* [-mviu][-xX [rep]_lvl_][-e [rep]_error_file_][-D [rep]_calculation_tolerance_][-a [rep]_abs_tol_][-r [rep]_rel_tol_][-n [rep]_norm_tol_][-P [rep]_number_of_CPUs_][-o [rep]_output.obj_][rep]_database.g_[rep]_object(s)_
+
+== DESCRIPTION
+
+*[cmd]#g-obj#* converts the specified __object(s)__ from a BRL-CAD __database.g__ file to the __Wavefront____OBJ__ file format. The *[opt]#-x#* option specifies an RT debug flag and the *[opt]#-X#* option specifies an NMG debug flag. The *[opt]#-a#* , *[opt]#-r#* , and *[opt]#-n#* options specify tessellation tolerances. The *[opt]#-P#* option specifies the number of CPUs. The *[opt]#-D#* option specifies a calculational distance tolerance (mm). Any two vertices that are less than this distance apart will be treated as the same vertex. The *[opt]#-u#* option specifies that vertex normals are desired. The *[opt]#-v#* option requests verbose output. The *[opt]#-i#* option requests the output file units to be inches (the default is mm). The *[opt]#-o#* option specifies the name of the file to receive the output (stdout is the default). The *[opt]#-m#* option will result in 'usemtl' statements in the output file. These statements are fictional (they do not refer to any material database). The materials named provide information about the material codes assigned to the objects in the BRL-CAD database. The material names will be of the form 'aircode_los_material', where __aircode__ is the code number for the air represented by that region, if it does represent air, otherwise this will be zero. The __los__ is the Line Of Sight thickness (0-100) assigned to the region, and the __material__ is the material code number assigned. The *[opt]#-e#* option specifies a file for receiving the error messages.
+
+== EXAMPLE
+// <synopsis>
+// $ g-obj -o <emphasis remap="I">sample.obj sample.g sample_object</emphasis>
+// </synopsis>
+
+
+== DIAGNOSTICS
+
+Error messages are intended to be self-explanatory.
+
+== AUTHOR
+
+BRL-CAD Team
+
+== COPYRIGHT
+
+This software is Copyright (c) 1997-2021 by the United States Government as represented by U.S. Army Research Laboratory.
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to mailto:devs@brlcad.org[]

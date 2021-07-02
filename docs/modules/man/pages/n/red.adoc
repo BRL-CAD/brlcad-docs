@@ -1,0 +1,39 @@
+= RED(nged)
+BRL-CAD Team
+:doctype: manpage
+:man manual: BRL-CAD User Commands
+:man source: BRL-CAD
+:page-layout: base
+
+== NAME
+
+red - Creates a file describing the specified combination and starts an
+	editor for the user to modify the combination.
+   
+
+== SYNOPSIS
+
+*[cmd]#red#*  {[rep]_combination_}
+
+== DESCRIPTION
+
+Creates a file describing the specified combination and starts an editor for the user to modify the combination. The environment _EDITOR_ 	variable will be used to select the editor. If _EDITOR_ is not set, then__/bin/ed__ will be used. All the attributes of BRL-CAD regions and__combinations__ may be edited in this way. The region-specific attributes 	will be ignored if the _combination_ is not a region and is not set to be a _region_ during editing. It is not necessary to be in an 	editing mode to run this command. The *[cmd]#rm, r, comb, c,#*  and *[cmd]#g#*  commands provide some basic combination editing capabilities. 
+
+== EXAMPLES
+
+The example shows the use of the *[cmd]#red#*  command to edit a specified combination with the user's editor. 
+
+.Create a file describing a specified combination and edit the combination.
+====
+[prompt]#mged># [ui]`red group2` 
+
+Edits the combination _group2_ with the users editor of choice. 
+====
+
+== AUTHOR
+
+BRL-CAD Team
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to mailto:devs@brlcad.org[]

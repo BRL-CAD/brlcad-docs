@@ -1,0 +1,68 @@
+= ATTACH(nged)
+BRL-CAD Team
+:doctype: manpage
+:man manual: BRL-CAD User Commands
+:man source: BRL-CAD
+:page-layout: base
+
+== NAME
+
+attach - 
+      Opens a display window.
+    
+
+== SYNOPSIS
+
+*[cmd]#attach#*  [-d [rep]_display_string_] [-i [rep]_init_script_] [-n [rep]_name_] [-t [rep]_is_toplevel_] [-W [rep]_width_] [-N [rep]_height_] [-S [rep]_square_size_] [[rep]_win_type_]
+
+== DESCRIPTION
+
+This command is used to open a display window. The set of supported window types includes X and ogl. It should be noted that *[cmd]#attach#*  no longer releases previously attached display windows (i.e., multiple attaches are supported). To destroy a display window, use the *[cmd]#release#*  command. 
+
+== EXAMPLES
+
+These examples demonstrate the use of the *[cmd]#attach#*  command to open ogl and X display windows. 
+
+.Opening an ogl display window
+====
+
+[prompt]#mged># [ui]`attach ogl` ::
+Opens an ogl display window named .dm_ogl0 (assuming this is the first ogl display window opened using the default naming scheme) 
+
+[prompt]#mged# [ui]`attach ogl` ::
+Opens an ogl display window named .dm_ogl1. 
+
+[prompt]#mged># [ui]`attach -n myOgl -W 720 -N 486 ogl` ::
+Opens a 720 x 486 OpenGL display window named myOgl. 
+
+[prompt]#mged># [ui]`attach -n myX -d remote_host:0 -i myInitX` ::
+Open an X display window named myX on remote_host that is initialized by myInit. 
++
+myInit might contain user-specified bindings like those found in the default bindings. 
+
+[prompt]#mged># [ui]`toplevel.t` ::
+A top-level window named .t was created. 
+
+[prompt]#mged># [ui]`attach -t 0 -S 800 -n .t.ogl ogl` ::
+Opens a 800 x 800 OpenGL display window named .t.ogl that is not a top-level window. 
+
+[prompt]#mged># [ui]`button .t.dismiss -text Dismiss -command "release .t.ogl; destroy .t"` ::
+Creates a button that dismisses the display manager, etc. 
+
+[prompt]#mged># [ui]`pack .t.ogl -expand 1 -fill both` ::
+Packs the display manager inside .t. 
+
+[prompt]#mged># [ui]`pack .t.dismiss` ::
+Packs the Dismiss button inside .t. 
+
+[prompt]#mged># [ui]`attach` ::
+Lists the help message that includes the valid display types. 
+====
+
+== AUTHOR
+
+BRL-CAD Team
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to mailto:devs@brlcad.org[]

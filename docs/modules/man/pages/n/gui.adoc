@@ -1,0 +1,59 @@
+= GUI(nged)
+BRL-CAD Team
+:doctype: manpage
+:man manual: BRL-CAD User Commands
+:man source: BRL-CAD
+:page-layout: base
+
+== NAME
+
+gui - Creates an instance of MGEDs default Tcl/Tk graphical user
+interface (GUI).
+   
+
+== SYNOPSIS
+
+*[cmd]#gui#*  [{-config} | [b] | [c] | [g]] [{-d} | {[rep]_display_string_}] [{-gd} | {[rep]_graphics_display_string_}] [{-dt} | {[rep]_graphics_type_}] [{id} | {[rep]_name_}] [{-c} | {-h} | {-j} | {-s}]
+
+== DESCRIPTION
+
+Creates an instance of MGEDs default Tcl/Tk graphical user interface (GUI). The following options are allowed: 
+
+_-config b c g_::
+Configures the GUI to display the command window, the graphics window, or both. This option is useful only when the GUI is combining the text and graphics windows. See the _-c_ option. 
+
+_-d display_string_::
+Displays/draws the GUI on the screen indicated by the display_string. Note that this string format is the same as the X DISPLAY environment variable. 
+
+_-gd display_string_::
+Displays/draws the graphics window on the screen indicated by the display_string. Note that this string format is the same as the X DISPLAY environment variable. 
+
+_-dt graphics_type_::
+Indicates the type of graphics windows to use. The possible choices are X and ogl (for machines that support OpenGL). Defaults to ogl, if supported; otherwise X. 
+
+_-id name_::
+Specifies the id to use when referring to this instance of the GUI. 
+
+_-c_::
+Combines text window and display manager windows. 
+
+_-s_::
+Uses separate text window and display manager windows. This is the default behavior. 
+
+_-j_::
+Join the collaborative session. 
+
+_-h_::
+Prints the help message. 
+
+== EXAMPLES
+
+There were no examples given for this command. 
+
+== AUTHOR
+
+BRL-CAD Team
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to mailto:devs@brlcad.org[]

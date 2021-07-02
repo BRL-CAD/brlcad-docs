@@ -1,0 +1,36 @@
+= FBFREE(1)
+BRL-CAD Team
+:doctype: manpage
+:man manual: BRL-CAD
+:man source: BRL-CAD
+:page-layout: base
+
+== NAME
+
+fbfree - free any frame buffer resources
+
+== SYNOPSIS
+
+*[cmd]#fbfree#*  [-F[rep]_framebuffer_]
+
+== DESCRIPTION
+
+*[cmd]#fbfree#* is used to free any resources associated with a frame buffer. Its most common use is to close down an xref:man:1/fbserv.adoc[*fbserv*](1) process and its associated frame buffer. This command can also be used to free any shared memory segments on, e.g., Sun and SGI frame buffers.
+
+This program simply calls the fb_free() routine in xref:man:3/libfb.adoc[*libfb*](3).
+
+== SEE ALSO
+
+xref:man:1/brlcad.adoc[*brlcad*](1), xref:man:1/fbclear.adoc[*fbclear*](1), xref:man:3/libfb.adoc[*libfb*](3)
+
+== AUTHOR
+
+BRL-CAD Team
+
+== COPYRIGHT
+
+This software is Copyright (c) 1991-2021 by the United States Government as represented by U.S. Army Research Laboratory.
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to mailto:devs@brlcad.org[]

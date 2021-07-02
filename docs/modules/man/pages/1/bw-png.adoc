@@ -1,0 +1,44 @@
+= BW-PNG(1)
+BRL-CAD Team
+:doctype: manpage
+:man manual: BRL-CAD
+:man source: BRL-CAD
+:page-layout: base
+
+== NAME
+
+bw-png - convert a BRL BW(5) format image to a PNG (Portable Network Graphics) format image
+
+== SYNOPSIS
+
+*[cmd]#bw-png#* [-a][-n [rep]_file_height_][-w [rep]_file_width_][-s [rep]_squaresize_][[rep]_BRLbwfile_]>[rep]_PNG_file_
+
+== DESCRIPTION
+
+*[cmd]#bw-png#* converts a __BRL BW(5)__ format file to a __PNG__ format file on the standard output. The PNG file created will be a Gray scale file with a bit-depth of 8 and a file gamma of 1.0.
+
+== OPTIONS
+
+*[opt]#-a#* ::
+autosize the input file to determine file image height and width
+
+*[opt]#-n file_height#* ::
+tells *[cmd]#bw-png#* that the input is __file_height__ scanlines tall
+
+*[opt]#-w file_width#* ::
+tells *[cmd]#bw-png#* that the input is __file_width__ pixels wide
+
+*[opt]#-s squaresize#* ::
+sets both the width and the height for the input to be __squaresize__
+
+== AUTHOR
+
+BRL-CAD Team
+
+== COPYRIGHT
+
+This software is Copyright (c) 1998-2021 by the United States Government as represented by U.S. Army Research Laboratory.
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to mailto:devs@brlcad.org[]

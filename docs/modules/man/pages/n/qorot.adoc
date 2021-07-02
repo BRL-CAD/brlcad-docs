@@ -1,0 +1,38 @@
+= QOROT(nged)
+BRL-CAD Team
+:doctype: manpage
+:man manual: BRL-CAD User Commands
+:man source: BRL-CAD
+:page-layout: base
+
+== NAME
+
+qorot - Rotates an object through the specified angle (in degrees).
+   
+
+== SYNOPSIS
+
+*[cmd]#qorot#*  {[rep]_x y z dx dy dz angle_}
+
+== DESCRIPTION
+
+Rotates an object through the specified _angle_ (in degrees). This command requires that MGED already be in _matrix edit_ mode. The edited object is rotated about the axis defined by the start point (__x y z__) and the direction vector 	(__dx dy dz__). 
+
+== EXAMPLES
+
+The example shows the use of the *[cmd]#qorot#*  command to rotate a currently edited object through a specified angle and starting point and in a particular direction. 
+
+.Rotate a currently edited object.
+====
+[prompt]#mged># [ui]`qorot 1 2 3 0 0 1 25` 
+
+Rotates the currently edited object through 25° about the axis through the point (1, 2, 3) and in the Z-direction. 
+====
+
+== AUTHOR
+
+BRL-CAD Team
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to mailto:devs@brlcad.org[]

@@ -1,0 +1,60 @@
+= L(nged)
+BRL-CAD Team
+:doctype: manpage
+:man manual: BRL-CAD User Commands
+:man source: BRL-CAD
+:page-layout: base
+
+== NAME
+
+l - Displays a verbose description about the specified list of objects.
+   
+
+== SYNOPSIS
+
+*[cmd]#l#*  [-t] [-r] {[rep]_objects_}
+
+== DESCRIPTION
+
+Displays a verbose description about the specified list of objects. If a specified _object_ is a path, then any transformation matrices along that _path_ are applied. If the final _path_ component is a combination, the command will list the Boolean formula for the _combination_ and will indicate any accumulated transformations (including any in that __combination__). If a shader and/or color has been assigned to the __combination__, the details will be listed. For a region, its ident, air code, material code, and LOS will also be listed. For primitive shapes, detailed _shape_ parameters will be displayed with the accumulated transformation applied. 
+
+== OPTIONS
+
+*[opt]#-t#* ::
+The _-t_ (terse) option forces a shorter list of primitive shape parameters. This option is useful for primitives with potentially long parameter lists, such as BOTs. 
+
+*[opt]#-r#* ::
+If the _-r_ (recursive) option is used, then each _object_ on the command line will be treated as a __path__. If the _path_ does not end at a primitive __shape__, then all possible _paths_ from that point down to individual _shapes_ will be considered. The _shape_ at the end of each possible _path_ will be listed with its parameters adjusted by the accumulated transformation. 
+
+== EXAMPLES
+
+The three examples show the use of the *[cmd]#l#*  command to display details about a region, shape parameters, and all possible paths starting with a particular designation. 
+
+.Display details about a particular region.
+====
+
+[prompt]#mged># [ui]`l region1` ::
+Displays details about region1. 
+====
+
+.Display shape parameters for a particular shape.
+====
+[prompt]#mged># [ui]`l group1/group2/region1/shape3` 
+
+Displays shape parameters for _shape3_ with matrices applied from the __path__. 
+====
+
+.Display all paths that start with a particular designation and end in a primitive shape.
+====
+[prompt]#mged># [ui]`l -r a/b` 
+
+Displays all paths that start with a particular designation and end in a primitive shape. Also, the shape parameters with the accumulated transformation applied will be displayed. 
+====
+
+== AUTHOR
+
+BRL-CAD Team
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to mailto:devs@brlcad.org[]

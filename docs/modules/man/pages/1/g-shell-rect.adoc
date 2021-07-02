@@ -1,0 +1,72 @@
+= G-SHELL-RECT(1)
+BRL-CAD Team
+:doctype: manpage
+:man manual: User Commands
+:man source: BRL-CAD
+:page-layout: base
+
+== NAME
+
+g-shell-rect - Produce triangulated shell from BRL-CAD model
+
+== SYNOPSIS
+
+*[cmd]#g-shell-rect#* [-a [rep]_rpp_args_][-R [rep]_edge_tol_][-p [rep]_plotfile_][-X [rep]_lvl_][-d [rep]_debug_level_][-b][-n][-i [rep]_initial_ray_dir_][-g [rep]_cell_size_]-o [rep]_brlcad_output_file_[rep]_database.g_[rep]_object(s)_
+
+== DESCRIPTION
+
+*[cmd]#g-shell-rect#* converts the specified __objects(s)__ from a BRL-CAD model __database.g__ to a single NMG solid using raytracing. Rays are fired in a uniform grid. The direction for the first set of rays is chosen by calculating the presented area of the bounding box of the __object(s)__ and selecting the direction with the largest area. The user may override this by specifying a desired initial ray direction using the *[opt]#-i#* option (see below). The initial shell is constructed using only the first and last intersections with the __object(s)__. This will typically result in some rather large faces with normals at right angles to the ray direction. Unless the *[opt]#-n#* option is specified, these faces are then subdivided (according to the __cell_size__) and additional rays fired from the other two directions are used to refine their shape. The resulting NMG solid will be named __shell__ and will be written to the specified __brlcad_output_file__.
+
+The following command line options are recognized:
+
+*[opt]#-g#* _cell_size_::
+Specify the dimensions (in millimeters) of the grid spacing.  The default is 50mm.
+
+*[opt]#-i#* _initial_ray_dir_::
+Specify the initial ray direction.  Valid values are X, Y, or Z. The best results are usually obtained by raytracing in the direction that produces the most hits first.
+
+*[opt]#-d#* _debug_level_::
+Set the debugging level.  Higher values produce more debugging information.
+
+*[opt]#-n#* ::
+Suppresses the refinement stage (firing rays from the secondary and tertiary axis directions).
+
+*[opt]#-b#* ::
+Output a BOT rather than an NMG.
+
+*[opt]#-a#* _rpp_args_::
+Add an RPP for refining.
+
+*[opt]#-R#* _edge_tol_::
+Supply edge tolerance.
+
+*[opt]#-p#* _plotfile_::
+Supply plotfile for plot edge breaking.
+
+*[opt]#-X#* _lvl_::
+Supply NMG debug flags.
+
+*[opt]#-o#* _output.g_::
+Specifies the name of the BRL-CAD geometry file to create.
+
+== EXAMPLE
+// <synopsis>
+// $ g-shell-rect -o <emphasis remap="I">shell.g sample.g sample_object</emphasis>
+// </synopsis>
+
+
+== DIAGNOSTICS
+
+Error messages are intended to be self-explanatory.
+
+== AUTHOR
+
+BRL-CAD Team
+
+== COPYRIGHT
+
+This software is Copyright (c) 1998-2021 by the United States Government as represented by U.S. Army Research Laboratory.
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to mailto:devs@brlcad.org[]

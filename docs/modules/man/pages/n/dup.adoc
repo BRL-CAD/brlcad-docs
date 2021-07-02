@@ -1,0 +1,46 @@
+= DUP(nged)
+BRL-CAD Team
+:doctype: manpage
+:man manual: BRL-CAD User Commands
+:man source: BRL-CAD
+:page-layout: base
+
+== NAME
+
+dup - Checks the specified file (which is expected
+	to contain a BRL-CAD model) for names that are the same as those in the current model.
+   
+
+== SYNOPSIS
+
+*[cmd]#dup#*  {[rep]_file_} [[rep]_prefix_]
+
+== DESCRIPTION
+
+Checks the specified _file_ (which is expected to contain a _BRL-CAD_ model) for names that are the same as those in the current model. If a__prefix__ is included on the command line, all names in the specified _file_ will have that _prefix_ added to their names before comparison with the 	current model. This command is often used prior to invoking the *[cmd]#dbconcat#*  command to 	ensure that there are no name clashes. 
+
+== EXAMPLES
+
+The first example shows the use of the *[cmd]#dup#*  command to check for files having the same name as those in the current model. The second example shows how to prefix the file names in the other model before comparing them with the names of the current model files. 
+
+.Check for files having the same name as those in the current model. 
+====
+
+[prompt]#mged># [ui]`dup other_model.g` ::
+Checks _other_model.g_ for names duplicating those in the current model. 
+====
+
+.
+====
+[prompt]#mged># [ui]`dup other_model.g abc` 
+
+Does the same check as in the first example, but prefixes all the names in __other_model.g__with _abc_ before comparing with the names in the current model. 
+====
+
+== AUTHOR
+
+BRL-CAD Team
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to mailto:devs@brlcad.org[]

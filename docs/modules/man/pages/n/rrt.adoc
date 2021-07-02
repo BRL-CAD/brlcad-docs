@@ -1,0 +1,46 @@
+= RRT(nged)
+BRL-CAD Team
+:doctype: manpage
+:man manual: BRL-CAD User Commands
+:man source: BRL-CAD
+:page-layout: base
+
+== NAME
+
+rrt - Executes the specified program with the provided 	options and includes the current database name and the list of currently 	displayed objects on the command line.
+   
+
+== SYNOPSIS
+
+*[cmd]#rrt#*  {[rep]_program_} [[rep]_options_]
+
+== DESCRIPTION
+
+Executes the specified _program_ with the provided _options_ and includes the current database name and the list of currently displayed 	objects on the command line. This command effectively executes: 
+
+_program options database_name objects._
+
+The *[cmd]#rrt#*  command also provides the current MGED viewing parameters to 	the _program_ on standard input.  Many BRL-CAD programs use the__-M__ option to indicate that viewing parameters will be provided on 	standard input. The *[cmd]#rt#*  command can be simulated with *[cmd]#rrt#*  as: 
+
+_rrt /usr/brlcad/bin/rt -M -s50_
+
+provided that perspective is not currently being used. Any executable routine may be run using *[cmd]#rrt#* ; however, it will always be run with the provided options 	followed by the current database name and the list of currently displayed objects. 
+
+== EXAMPLES
+
+The example shows the use of the *[cmd]#rrt#*  command to execute the specified 	program and list the current database name and currently displayed objects. 
+
+.Execute a specified program and list the current database name and currently displayed 	objects. 
+====
+[prompt]#mged># [ui]`rrt echo` 
+
+Lists the current database name and currently displayed objects. 
+====
+
+== AUTHOR
+
+BRL-CAD Team
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to mailto:devs@brlcad.org[]

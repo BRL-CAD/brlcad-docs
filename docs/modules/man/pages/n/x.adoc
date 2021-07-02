@@ -1,0 +1,37 @@
+= X(nged)
+BRL-CAD Team
+:doctype: manpage
+:man manual: BRL-CAD MGED Commands
+:man source: BRL-CAD
+:page-layout: base
+
+== NAME
+
+x - Lists all the primitive shapes currently drawn in the MGED display.
+
+== SYNOPSIS
+
+*[cmd]#x#*  [[rep]_level_]
+
+== DESCRIPTION
+
+Lists all the primitive shapes currently drawn in the MGED display. The _level_ determines how much detail should be included in the list. For _level_ zero (the default), only a list of paths to shapes in the display list is produced. Each shape is prefixed by VIEW or -no-, indicating that the shape is actually being drawn or that it is being skipped, respectively.  If _level_ is greater than zero, the center, size, ident number, RGB color assigned to the region, and the actual color used to draw the shape are also listed.  If _level_ is greater than one, the number of vlist structures and the number of points in each vlist structure are also listed for each shape.  If _level_ is greater than two, then the actual lines drawn for each shape are also listed. The *[cmd]#who#* command performs a similar function, but lists only the top-level objects that are displayed. 
+
+== EXAMPLES
+
+The example shows the use of the *[cmd]#x#*  command with no arguments to list the paths to the displayed shapes. 
+
+.List the paths to the displayed shapes.
+====
+[prompt]#mged># [ui]`x` 
+
+Lists the paths to the displayed shapes. 
+====
+
+== AUTHOR
+
+BRL-CAD Team
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to mailto:devs@brlcad.org[]

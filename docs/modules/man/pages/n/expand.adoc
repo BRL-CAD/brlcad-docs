@@ -1,0 +1,39 @@
+= EXPAND(nged)
+BRL-CAD Team
+:doctype: manpage
+:man manual: BRL-CAD User Commands
+:man source: BRL-CAD
+:page-layout: base
+
+== NAME
+
+expand - Performs matching of the shell globbing pattern with the names
+of all the objects in the database. It returns all those that successfully match.
+   
+
+== SYNOPSIS
+
+*[cmd]#expand#*  {[rep]_globbing_expression_}
+
+== DESCRIPTION
+
+Performs matching of the _globbing_expression_ with the names of all the objects in the database. It returns all those that successfully match. 
+
+== EXAMPLES
+
+The example shows the use of the *[cmd]#expand#*  command to display a list of all database object names having a particular ending. 
+
+.Display a list of database object names having a particular ending.
+====
+
+[prompt]#mged># [ui]`expand *.r` ::
+A list of all database object names that end in .r is displayed. 
+====
+
+== AUTHOR
+
+BRL-CAD Team
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to mailto:devs@brlcad.org[]
