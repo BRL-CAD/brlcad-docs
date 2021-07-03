@@ -1,0 +1,64 @@
+= BOT_DUMP(1)
+BRL-CAD Team
+ifndef::site-gen-antora[:doctype: manpage]
+:man manual: BRL-CAD
+:man source: BRL-CAD
+:page-layout: base
+
+== NAME
+
+bot_dump - export polygonal BoT primitives without performing
+evaluation
+
+== SYNOPSIS
+
+*bot_dump* [-b] [-n] [-m _directory_] [-o _file_] [-t _dxf_ | _obj_ | _sat_ | _stl_] [-u _units_] [-v] _geom.g_ [_bot1_ _bot2_ ...]
+
+== DESCRIPTION
+
+[cmd]*bot_dump*
+
+The [opt]*-b* option may be specified to indicate that the output file
+should be in a binary format (e.g., for formats that support ascii and
+binary formats like stl).
+
+If the [opt]*-n* option is specified, BoT surface normals will be
+included in the output of _obj_ files. This option is specific to
+_obj_ file generation since normal vector outputs are already an
+integral part of the _stl_ file outputs and both the _dxf_ and _sat_
+file formats do not support or require surface normal generation.
+
+If the [opt]*-m* option is specified, then BoTs will be output to the
+directory name specified with one BoT per file.
+
+The [opt]*-o* option specifies what output file the BoT data should be
+dumped to.
+
+The [opt]*-t* is used to specify the desired output file type.  The
+default output type is STL in ASCII format.
+
+The [opt]*-u* option takes a units string that indicates the unit
+conversion to perform during output (converting from internal
+millimeter values to the unit type specified).
+
+== EXAMPLE
+
+`$ [cmd]*bot_dump* -o _some_bot_dump.dxf_ -t _dxf_ _sample.g_ _some_bot_`
+
+== DIAGNOSTICS
+
+Error messages are intended to be self-explanatory.
+
+== AUTHOR
+
+BRL-CAD Team
+
+== COPYRIGHT
+
+This software is Copyright (c) 2008-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to
+mailto:devs@brlcad.org[]
