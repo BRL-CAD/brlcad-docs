@@ -11,47 +11,47 @@ gdiff - a BRL-CAD differential geometry comparator
 
 == SYNOPSIS
 
-*[cmd]#gdiff#* [[rep]_options_]...[rep]_left_model.g_[[rep]_ancestor_model.g_][rep]_right_model.g_
+*gdiff*[_options_]..._left_model.g_[_ancestor_model.g_]_right_model.g_
 
 == DESCRIPTION
 
-*[cmd]#gdiff#*  compares BRL-CAD models specified on the command line, reporting differences according to the specified options.  It supports a plain "diff" comparison between two files, as well as a "3-way" comparison that accepts a third file with "ancestral" information that provides a context for the left and right files. 
+[cmd]*gdiff* compares BRL-CAD models specified on the command line, reporting differences according to the specified options.  It supports a plain "diff" comparison between two files, as well as a "3-way" comparison that accepts a third file with "ancestral" information that provides a context for the left and right files. 
 
 The following options are recognized:
 
-*[opt]#-a#* ::
+*-a*::
 (two-way diff) Report objects added in right_model.g
 +
 (three-way diff) Report objects added in left_model.g and/or right_model.g
 
-*[opt]#-d#* ::
+*-d*::
 (two-way diff) Report objects deleted in right_model.g
 +
 (three-way diff) Report objects deleted in left_model.g and/or right_model.g
 
-*[opt]#-m#* ::
+*-m*::
 (two-way diff) Report objects modified in right_model.g
 +
 (three-way diff) Report objects that are different in left_model.g and/or right_model.g relative to ancestor.g
 
-*[opt]#-q#* ::
-Decrease the verbosity of the output.  Additional specifications will further decrease the output provided.  (Opposite effect of *[opt]#v#*  option.) All settings for this option will respect other constraints applied to the reporting output.
+*-q*::
+Decrease the verbosity of the output.  Additional specifications will further decrease the output provided.  (Opposite effect of [opt]*v* option.) All settings for this option will respect other constraints applied to the reporting output.
 
-*[opt]#-u#* ::
+*-u*::
 (two-way diff) Report objects that are identical in left_model.g and right_model.g
 +
 (three-way diff) Report objects that are identical in ancestor_model.g, left_model.g and right_model.g
 
-*[opt]#-v#* ::
-Increase the verbosity of the output.  Additional specifications will further increase the output provided.  (Opposite effect of *[opt]#q#*  option.) All settings for this option will respect other constraints applied to the reporting output.
+*-v*::
+Increase the verbosity of the output.  Additional specifications will further increase the output provided.  (Opposite effect of [opt]*q* option.) All settings for this option will respect other constraints applied to the reporting output.
 
-*[opt]#-t ##* ::
+*-t #*::
 Set a numerical comparison tolerance used to compare numerical properties.  Default value is RT_LEN_TOL, but be aware that this comparison is not aware of units.
 
-*[opt]#-F "filter_string"#* ::
-Apply filters to the diff output, using the same set of filters available in the *[cmd]#search#*  command's search.  See the *[cmd]#search#*  manual page for more details.
+*-F "filter_string"*::
+Apply filters to the diff output, using the same set of filters available in the [cmd]*search* command's search.  See the [cmd]*search* manual page for more details.
 
-*[opt]#-M merged_file.g#* ::
+*-M merged_file.g*::
 Merge the files being diffed into one output file.
 
 The program returns 0 if the files being compared have no differences that satisfy the user-supplied options, otherwise it returns the total number of differing objects that do satisfy the supplied options.  Default is to report all differences that rise above RT_LEN_TOL. 
@@ -83,9 +83,9 @@ A eto.s
 
 .Alternate Diffing Result Outputs
 ====
-The *[opt]#v#*  and *[opt]#q#*  options provide various styles of output, as follows: 
+The [opt]*v* and [opt]*q* options provide various styles of output, as follows: 
 
-*[opt]#-qq#*  (no output except the return code): 
+[opt]*-qq* (no output except the return code): 
 
 ....
 
@@ -93,7 +93,7 @@ The *[opt]#v#*  and *[opt]#q#*  options provide various styles of output, as fol
 	~: gdiff -qq moss.g moss2.g
 ....
 
-*[opt]#-q#* : 
+[opt]*-q*: 
 
 ....
 
@@ -128,7 +128,7 @@ A tgc_new.s
 A eto.s
 .... If verbosity is not specified, this is the default output. 
 
-*[opt]#-v#* : 
+[opt]*-v*: 
 
 ....
 
@@ -165,7 +165,7 @@ A tgc_new.s
 A eto.s
 .... The first elevated verbosity level is a more detailed version of the previous setting, with each parameter in the modified objects reported in detail.  '-' lines show what was removed for a given attribute or parameter, and '+' lines contain the data that replaced them. 
 
-*[opt]#-vv#* : 
+[opt]*-vv*: 
 
 ....
 
@@ -220,7 +220,7 @@ A "eto.s" DB5_MINORTYPE(p): eto
 
 .Filtering Based on Difference Type
 ====
-The options *[opt]#a#* , *[opt]#d#* , *[opt]#m#* , and *[opt]#u#*  control which categories of diff results (added, deleted, modified, and unchanged) are reported. By default added, deleted and modified items are reported, but once one of these four options is specified only those specified are reported: 
+The options [opt]*a*, [opt]*d*, [opt]*m*, and [opt]*u* control which categories of diff results (added, deleted, modified, and unchanged) are reported. By default added, deleted and modified items are reported, but once one of these four options is specified only those specified are reported: 
 
 Report only objects added: 
 
@@ -266,7 +266,7 @@ all.g
 
 .Filtering Results With Tolerance
 ====
-To eliminate differences in modifications that are too small to be of interest, the *[opt]#t#*  is used.  What difference constitutes "too small" is up to the user - in this example, we will use 30 millimeters: 
+To eliminate differences in modifications that are too small to be of interest, the [opt]*t* is used.  What difference constitutes "too small" is up to the user - in this example, we will use 30 millimeters: 
 
 ....
 
@@ -292,7 +292,7 @@ A eto.s
 
 .Filtering Results With Search Filters
 ====
-The _search_ filtering technique can be used to select specific subsets of the database to see in reports, using the *[opt]#F#*  option.  For example, limiting the diff report to only objects of type elliptical torus: 
+The _search_ filtering technique can be used to select specific subsets of the database to see in reports, using the [opt]*F* option.  For example, limiting the diff report to only objects of type elliptical torus: 
 
 ....
 
@@ -406,7 +406,7 @@ C eto.s
 A(R) ellipse2.r
 .... We can now see that ellipse.r was deleted only from the right file (moss3.g) and was unchanged in moss2.g. Similarly, we can tell that LIGHT wsa deleted from moss2.g, ellipse2.r was added in moss3.g, tgc_new.s was added identically in both moss2.g and moss3.g, and eto.s is different in moss2.g and moss3.g in some fashion that the ancestor file moss.g cannot help gdiff resolve (a conflict, denoted by 'C'.) 
 
-To delve deeper into the nature of the changes, we increase the verbosity with the *[opt]#v#*  option: 
+To delve deeper into the nature of the changes, we increase the verbosity with the [opt]*v* option: 
 
 ....
 
@@ -471,7 +471,7 @@ M(L) "ell.s" A(p): 1100 0 0
 
 .Merging Files
 ====
-The last and most powerful feature of *[cmd]#gdiff#*  is to _merge_ two or three different geometry files into a single output file.  This is most useful when an ancestor is available and a three way merge can be performed - in the two way case, the "ancestor" is an empty file and the results will tend to include many more conflicts.  For example, the three way merge of the moss examples earlier: 
+The last and most powerful feature of [cmd]*gdiff* is to _merge_ two or three different geometry files into a single output file.  This is most useful when an ancestor is available and a three way merge can be performed - in the two way case, the "ancestor" is an empty file and the results will tend to include many more conflicts.  For example, the three way merge of the moss examples earlier: 
 
 ....
 
@@ -539,7 +539,7 @@ CONFLICT(light.r).left/R      tgc_new.s
 
 == SEE ALSO
 
-xref:man:n/search.adoc[*search*](n)
+xref:man:n/search.adoc[*search*(n)]
 
 == AUTHOR
 

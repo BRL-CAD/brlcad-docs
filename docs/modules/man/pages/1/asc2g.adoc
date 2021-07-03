@@ -11,45 +11,45 @@ asc2g - convert a BRL-CAD mged geometry database from ASCII to binary form.
 
 == SYNOPSIS
 
-*[cmd]#asc2g#*  [rep]_input.asc_ [rep]_output.g_
+*asc2g* _input.asc_ _output.g_
 
 == DESCRIPTION
 
-_*[cmd]#asc2g#*_ is a utility provided by BRL-CAD used to convert _*[cmd]#mged(1)#*_ geometry databases in ASCII form outputted by _*[cmd]#g2asc(1)#*_ to the new binary format. The utility will always create the new binary format, but it will accept either of the two ASCII formats (see __HISTORY__).
+_[cmd]*asc2g*_ is a utility provided by BRL-CAD used to convert _[cmd]*mged(1)*_ geometry databases in ASCII form outputted by _[cmd]*g2asc(1)*_ to the new binary format. The utility will always create the new binary format, but it will accept either of the two ASCII formats (see __HISTORY__).
 
-The local machine binary representation of a mged database is inherently non-portable. _*[cmd]#asc2g#*_ and its converse, _*[cmd]#g2asc#*_ , are simple filters which convert between the binary form and an ASCII representation.
+The local machine binary representation of a mged database is inherently non-portable. _[cmd]*asc2g*_ and its converse, _[cmd]*g2asc*_ , are simple filters which convert between the binary form and an ASCII representation.
 
 This was traditionally performed so the files could be transferred to another machine in a portable format.  Although no longer necessary for the current binary geometry database files that  are  created by  mged  ("v5"  format), the conversion process is still necessary if manipulating older ("v4" format) geometry database files.
 
 [[_examples]]
 == EXAMPLE
 
-_*[cmd]#g2asc#*___file.g file.asc__
+_[cmd]*g2asc*___file.g file.asc__
 
 [quote]
-On the local machine, convert the mged databases to ASCII using _*[cmd]#g2asc#*_ . 
+On the local machine, convert the mged databases to ASCII using _[cmd]*g2asc*_ . 
 
 scp _file.asc_ remote:__file.asc__
 
 [quote]
 Transfer the converted databases to the remote machine. 
 
-ssh remote "__*[cmd]#asc2g#*____file.asc file.g__"
+ssh remote "__[cmd]*asc2g*____file.asc file.g__"
 
 [quote]
-On the remote machine, convert the files back to the binary representation for that machine using _*[cmd]#asc2g#*_ . 
+On the remote machine, convert the files back to the binary representation for that machine using _[cmd]*asc2g*_ . 
 
 == OPTIONS
 
-_*[cmd]#asc2g#*_ does not take any options. However, you have to supply the input and output files.
+_[cmd]*asc2g*_ does not take any options. However, you have to supply the input and output files.
 
 == FILES
 
-_input.asc_ is a file previously created using _*[cmd]#g2asc#*_ and _output.g_ is the name of the file where the resulting binary database should be stored.
+_input.asc_ is a file previously created using _[cmd]*g2asc*_ and _output.g_ is the name of the file where the resulting binary database should be stored.
 
 == SEE ALSO
 
-xref:man:1/g2asc.adoc[*g2asc*](1), xref:man:1/brlcad.adoc[*brlcad*](1), xref:man:1/mged.adoc[*mged*](1)
+xref:man:1/g2asc.adoc[*g2asc*(1)], xref:man:1/brlcad.adoc[*brlcad*(1)], xref:man:1/mged.adoc[*mged*(1)]
 
 == DIAGNOSTICS
 

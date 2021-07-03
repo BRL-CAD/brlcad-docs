@@ -11,17 +11,17 @@ pixrot - rotate, invert, or reverse a color pix file
 
 == SYNOPSIS
 
-*[cmd]#pixrot#* [-#bytes][-rifb][-s [rep]_squaresize_][-w [rep]_in_width_][-n [rep]_in_height_][[rep]_file.pix_]>[rep]_newfile.pix_
+*pixrot*[-#bytes][-rifb][-s _squaresize_][-w _in_width_][-n _in_height_][_file.pix_]>_newfile.pix_
 
 == DESCRIPTION
 
-*[cmd]#pixrot#* will rotate, invert, or reverse a color xref:man:5/pix.adoc[*pix*](5) format file or read from standard input if a file name is not given.  The *[opt]#-w#* and *[opt]#-n#* flags specify the input file width and number of scan lines in pixels; they can be set to the same value via *[opt]#-s#* .
+[cmd]*pixrot* will rotate, invert, or reverse a color xref:man:5/pix.adoc[*pix*(5)] format file or read from standard input if a file name is not given.  The [opt]*-w* and [opt]*-n* flags specify the input file width and number of scan lines in pixels; they can be set to the same value via [opt]*-s*.
 
-The *[opt]#-r#* flag reverses the scan lines left to right. The *[opt]#-i#* flag inverts the image top to bottom. The *[opt]#-f#* and *[opt]#-b#* flag will rotate the image ninety degrees forward or backward respectively. The sense of the rotation is relative to a first quadrant coordinate system, i.e. origin lower left, where "forward" means clockwise.
+The [opt]*-r* flag reverses the scan lines left to right. The [opt]*-i* flag inverts the image top to bottom. The [opt]*-f* and [opt]*-b* flag will rotate the image ninety degrees forward or backward respectively. The sense of the rotation is relative to a first quadrant coordinate system, i.e. origin lower left, where "forward" means clockwise.
 
 Note that a 180 degree rotation can be obtained by both reversing and inverting.
 
-By default three byte pixels are assumed as in the xref:man:5/pix.adoc[*pix*](5) format.  However, the *[opt]#-##* [rep]_bytes_ flag can be used to specify some other pixel size, where __bytes__ is the number of bytes per pixel.  Thus this program can be used to manipulate rectangles of other data types, such as an array of floating point numbers, files of text, etc.
+By default three byte pixels are assumed as in the xref:man:5/pix.adoc[*pix*(5)] format.  However, the [opt]*-#*[rep]_bytes_ flag can be used to specify some other pixel size, where __bytes__ is the number of bytes per pixel.  Thus this program can be used to manipulate rectangles of other data types, such as an array of floating point numbers, files of text, etc.
 
 == METHOD
 
@@ -29,7 +29,7 @@ A fairly large buffer is kept in memory so that, file size permitting, the entir
 
 == SEE ALSO
 
-xref:man:1/brlcad.adoc[*brlcad*](1), xref:man:1/pixscale.adoc[*pixscale*](1), xref:man:1/pixrect.adoc[*pixrect*](1), xref:man:5/pix.adoc[*pix*](5)
+xref:man:1/brlcad.adoc[*brlcad*(1)], xref:man:1/pixscale.adoc[*pixscale*(1)], xref:man:1/pixrect.adoc[*pixrect*(1)], xref:man:5/pix.adoc[*pix*(5)]
 
 == BUGS
 

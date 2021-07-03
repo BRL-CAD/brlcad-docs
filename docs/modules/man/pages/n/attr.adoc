@@ -13,7 +13,7 @@ objects.
 
 == SYNOPSIS
 
-*[cmd]#attr#*  [get] [set] [rm] [append] [list] [show] [sort] [copy] {[rep]_object_name_pattern_} [[rep]_arguments_]
+*attr* [get] [set] [rm] [append] [list] [show] [sort] [copy] {_object_name_pattern_} [_arguments_]
 
 == DESCRIPTION
 
@@ -48,7 +48,7 @@ Adds the attribute and value provied for the specified attribute to the object o
 *list* object_name_pattern [key_filter_pattern [value_filter_pattern]]::
 Lists the attributes assigned to the object or objects matched by the pattern.  If multiple objects are matched, the list returned is a consolidated list of all attribute types present on one or more of the matched objects.  This option is useful when investigating what attributes are present in objects in a database. 
 +
-Optionally, the *[cmd]#list#*  subcommand will accept filters that are used to match key or key/value combinations and report only those matches.  If both key and value filters are supplied, the output of the list subcommand will be not just the unique matching attribute keys but the unique matching key/value pairs.  The latter is particularly useful as a way to get an overview of all actively used values associated with a particular attribute key. 
+Optionally, the [cmd]*list* subcommand will accept filters that are used to match key or key/value combinations and report only those matches.  If both key and value filters are supplied, the output of the list subcommand will be not just the unique matching attribute keys but the unique matching key/value pairs.  The latter is particularly useful as a way to get an overview of all actively used values associated with a particular attribute key. 
 
 *show*::
 Pretty print the specified attributes for the object or objects matching the pattern.  If no attributes are listed, all attributes are printed for each object.   The arguments for the "rm" sub-command are attribute names. 
@@ -61,32 +61,32 @@ Takes the value of the first attribute from the specified object and set the sec
 
 == EXAMPLES
 
-The examples demonstrate the use of the *[cmd]#attr#*  command and subcommands to assign and list attributes of database objects. 
+The examples demonstrate the use of the [cmd]*attr* command and subcommands to assign and list attributes of database objects. 
 
 .Assigns an attribute to an object.
 ====
 
-[prompt]#mged># [ui]`attr set region_1 material_id 10` ::
+[prompt]#mged>#[ui]`attr set region_1 material_id 10`::
 Assigns an attribute name "material_id" to __region_1__. Its value is 10. 
 ====
 
 .Assigns an attribute (with embedded white space in its value) to an object.
 ====
 
-[prompt]#mged># [ui]`attr set region_1 comment {This is a comment for region_1}` ::
+[prompt]#mged>#[ui]`attr set region_1 comment {This is a comment for region_1}`::
 Assigns an attribute named "comment" to __region_1__. Its value is "This is a comment for region_1." 
 ====
 
 .List all the attributes for an object
 ====
 
-[prompt]#mged># [ui]`attr show region_1 comment` ::
+[prompt]#mged>#[ui]`attr show region_1 comment`::
 Lists all the attributes for __region_1__. 
 ====
 
 .List all the attribute types present on one or more objects in a database
 ====
-[prompt]#mged># [ui]`attr list *` 
+[prompt]#mged>#[ui]`attr list *`
 
 ....
 
@@ -108,7 +108,7 @@ Generate a list of all attribute keys found one one or more objects in the datab
 
 .List all the material_id attribute values in use in a database
 ====
-[prompt]#mged># [ui]`attr list * material_id *` 
+[prompt]#mged>#[ui]`attr list * material_id *`
 
 ....
 
@@ -129,7 +129,7 @@ Produces a list of all material_id values found one or more times in the databas
 
 == SEE ALSO
 
-xref:man:5/attributes.adoc[*attributes*](5).
+xref:man:5/attributes.adoc[*attributes*(5)].
 
 == AUTHOR
 

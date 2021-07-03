@@ -11,13 +11,13 @@ whichair - Reports information relating to usag of air codes on regions.
 
 == SYNOPSIS
 
-*[cmd]#whichair#*  [[rep]_options ..._] {[rep]_air_codes_}
+*whichair* [_options ..._] {_air_codes_}
 
 == DESCRIPTION
 
-Reports information about the usage of the _air_codes_ property by regions in a .g file.  Its default mode is to report which regions in a .g file are using one or a range of region_id values.  If a root object is specified, it will report that result only for the regions in the tree of the root object.  If the *[opt]#U#*  is specified, the reporting is inverted and the command will report the ranges of _unused_ aircodes rather than the regions using various aircodes. 
+Reports information about the usage of the _air_codes_ property by regions in a .g file.  Its default mode is to report which regions in a .g file are using one or a range of region_id values.  If a root object is specified, it will report that result only for the regions in the tree of the root object.  If the [opt]*U* is specified, the reporting is inverted and the command will report the ranges of _unused_ aircodes rather than the regions using various aircodes. 
 
-The *[cmd]#eac#*  command will perform a similar search, but will draw the qualifying regions in the MGED display rather than listing them. 
+The [cmd]*eac* command will perform a similar search, but will draw the qualifying regions in the MGED display rather than listing them. 
 
 [[_search_options]]
 == OPTIONS
@@ -34,7 +34,7 @@ For these examples the geometry file used is the standard _m35.g_ included with 
 
 .Report all regions using air codes between 7 and 10.
 ====
-[prompt]#mged># [ui]`whichair 7-10` 
+[prompt]#mged>#[ui]`whichair 7-10`
 
 ....
 
@@ -54,7 +54,7 @@ Region[s] with air code 8:
 
 .Report all unused aircode ranges in the database between 1 and 10.
 ====
-[prompt]#mged># [ui]`whichair -U 1-10` 
+[prompt]#mged>#[ui]`whichair -U 1-10`
 
 ....
 

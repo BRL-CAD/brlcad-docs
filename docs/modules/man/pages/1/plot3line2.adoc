@@ -11,11 +11,11 @@ plot3line2 - output a 2D UnixPlot line
 
 == SYNOPSIS
 
-*[cmd]#plot3line2#* [rep]_x1_[rep]_y1_[rep]_x2_[rep]_y2_[[rep]_r_[rep]_g_[rep]_b_][<][rep]_unix_plot_>[rep]_unix_plot_
+*plot3line2*_x1__y1__x2__y2_[_r__g__b_][<]_unix_plot_>_unix_plot_
 
 == DESCRIPTION
 
-*[cmd]#plot3line2#* outputs a UnixPlot command to draw a line in the XY plane from the point (__x1 y1__) to the point (__x2 y2__). These points can be floating point and the output is always written as a floating point plotting command.  If you need an integer command then feed the output of this through xref:man:1/plot3-plot3.adoc[*plot3-plot3*](1). If an optional [__r g b__] is given, where __r__, __g__, and __b__ are values from 0 to 255 representing Red, Green, and Blue color values, the line will be drawn in that color.  Otherwise the current drawing color (white by default) is used.
+[cmd]*plot3line2* outputs a UnixPlot command to draw a line in the XY plane from the point (__x1 y1__) to the point (__x2 y2__). These points can be floating point and the output is always written as a floating point plotting command.  If you need an integer command then feed the output of this through xref:man:1/plot3-plot3.adoc[*plot3-plot3*(1)]. If an optional [__r g b__] is given, where __r__, __g__, and __b__ are values from 0 to 255 representing Red, Green, and Blue color values, the line will be drawn in that color.  Otherwise the current drawing color (white by default) is used.
 
 To allow this command to be used in pipelines, an optional input file can be given.  All of the input will be passed through until end of file, and then the line will be appended to the end.
 
@@ -23,7 +23,7 @@ This command exists mostly as an aid for making graphs and things from shell com
 
 == SEE ALSO
 
-xref:man:1/plot3color.adoc[*plot3color*](1), xref:man:1/plot3-plot3.adoc[*plot3-plot3*](1), xref:man:5/plot3.adoc[*plot3*](5)
+xref:man:1/plot3color.adoc[*plot3color*(1)], xref:man:1/plot3-plot3.adoc[*plot3-plot3*(1)], xref:man:5/plot3.adoc[*plot3*(5)]
 
 == AUTHOR
 

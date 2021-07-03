@@ -11,42 +11,42 @@ g-ply -  Stanford PLY exporter (BRL-CAD to PLY)
 
 == SYNOPSIS
 
-*[cmd]#g-ply#* [-v][-xX [rep]_lvl_][-a [rep]_abs_tess_tol_][-r [rep]_rel_tess_tol_][-n [rep]_norm_tess_tol_][-t [rep]_type_][-s][-D [rep]_dist_calc_tol_]-o [rep]_output_file_name_[rep]_database.g_[rep]_object(s)_...
+*g-ply*[-v][-xX _lvl_][-a _abs_tess_tol_][-r _rel_tess_tol_][-n _norm_tess_tol_][-t _type_][-s][-D _dist_calc_tol_]-o _output_file_name__database.g__object(s)_...
 
 == DESCRIPTION
 
-*[cmd]#g-ply#*  converts the specified__object(s)__ from a BRL-CAD _database.g_ file to the _Stanfort PLY_ file format. 
+[cmd]*g-ply* converts the specified__object(s)__ from a BRL-CAD _database.g_ file to the _Stanfort PLY_ file format. 
 
 The following options are recognized.
 
-*[opt]#-o filename#* ::
+*-o filename*::
 Specify output file name.
 
-*[opt]#-s#* ::
+*-s*::
 Write out one object per file, instead of merging individual objects into a single ply file. 
 
-*[opt]#-t#*  type (asc: ascii), (le: little endian), (be: big endian)::
+*-t* type (asc: ascii), (le: little endian), (be: big endian)::
 Specify the type of PLY file to write. 
 
-*[opt]#-D##* ::
+*-D#*::
 Specify a calculational distance tolerance (mm). Any two vertices that are less than this distance apart will be treated as the same vertex.
 
-*[opt]#-a##* ::
+*-a#*::
 Specify the absolute tesselation tolerance.
 
-*[opt]#-r##* ::
+*-r#*::
 Specify the relative tesselation tolerance.
 
-*[opt]#-n##* ::
+*-n#*::
 Specify the surface-normal tesselation tolerance.
 
-*[opt]#-x##* ::
+*-x#*::
 Specify an RT debug flag.
 
-*[opt]#-X##* ::
+*-X#*::
 Specify an NMG debug flag.
 
-*[opt]#-v#* ::
+*-v*::
 Enable verbose output.
 
 == EXAMPLE

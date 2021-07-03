@@ -11,27 +11,27 @@ dxf-g - DXF Translator (DXF to BRL-CAD)
 
 == SYNOPSIS
 
-*[cmd]#dxf-g#* [-c][-d][-v][-s [rep]_scale_factor_][-t [rep]_tolerance_][rep]_file.dxf_[rep]_database.g_
+*dxf-g*[-c][-d][-v][-s _scale_factor_][-t _tolerance_]_file.dxf__database.g_
 
 == DESCRIPTION
 
-*[cmd]#dxf-g#* converts the specified __file.dxf__ to a BRL-CAD __database.g__ file.
+[cmd]*dxf-g* converts the specified __file.dxf__ to a BRL-CAD __database.g__ file.
 
 The following options are available:
 
-*[opt]#-c#* ::
+*-c*::
 Only the first color seen for a layer should be used. Without this option, layers may be broken into separate BOT primitives according to color assigned.
 
-*[opt]#-d#* ::
+*-d*::
 Sets a debug flag. The only effect is to cause a core dump on failure. This is probably not useful except for developers.
 
-*[opt]#-v#* ::
+*-v*::
 Produces very verbose output on stderr.
 
-*[opt]#-s#* _scale_factor_::
+*-s*__scale_factor__::
 Provides a scale factor to be applied to the DXF input. This can be used for DXF files that do not provide units information.
 
-*[opt]#-t#* _tolerance_::
+*-t*__tolerance__::
 Specifies the maximum distance (in mm) between two vertices at which the two vertices will be considered to be the same vertex.
 
 The __file.dxf__ file is expected to be in the ASCII Autodesk DXF format as defined in the Autocad 2006 manuals. This converter handles entities of types:

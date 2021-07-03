@@ -11,23 +11,23 @@ fbgamma - load a gamma correcting colormap
 
 == SYNOPSIS
 
-*[cmd]#fbgamma#*  [-H] [-o] [-i] [-F [rep]_framebuffer_] [rep]_val_ [[rep]_gval_[rep]_bval_]
+*fbgamma* [-H] [-o] [-i] [-F _framebuffer_] _val_ [_gval__bval_]
 
 == DESCRIPTION
 
-*[cmd]#fbgamma#* loads a gamma correcting colormap into a framebuffer. If a single value is given, that number is used for all three color channels.  If three values are specified, they will be applied to the red, green, and blue channels respectively.
+[cmd]*fbgamma* loads a gamma correcting colormap into a framebuffer. If a single value is given, that number is used for all three color channels.  If three values are specified, they will be applied to the red, green, and blue channels respectively.
 
 Gamma values larger than one will boost dim pixels with respect to bright ones.  Values less than one will exaggerate the difference in brightness.  The former has the effect of desaturating the displayed colors ("washing them out"), the latter will saturate the colors.  An uncorrected monitor is usually too saturated.
 
 Note that since this program is intended for gamma __correction__, the exponent to which pixel values are raised is the inverse of the given value.  To linearize a display then, the given value will be equal to the gamma of the display (typically 2.0-3.0, see below).  If you wish to directly apply an exponent to a picture (rather than its inverse), this can be done by giving a negative value (which means reciprocal in the usual mathematical sense).
 
-By default, this program will "correct to linear", that is to say, it will apply correction to a standard linear ramp.  If you wish to "correct" some other colormap, e.g. an inverse video map, the *[opt]#-o#* overlay option can be used.  This will read whatever colormap is currently in the framebuffer and operate on it.  One useful result of this is the ability saturate or desaturate an arbitrary colormap.
+By default, this program will "correct to linear", that is to say, it will apply correction to a standard linear ramp.  If you wish to "correct" some other colormap, e.g. an inverse video map, the [opt]*-o* overlay option can be used.  This will read whatever colormap is currently in the framebuffer and operate on it.  One useful result of this is the ability saturate or desaturate an arbitrary colormap.
 
-By default, the display is assumed to be 512x512 pixels; if the *[opt]#-H#* flag is specified, the size is changed to 1024x1024. This size distinction is important for devices like the Adage framebuffers which have different operating modes based on the display size. In general, *[cmd]#fbgamma#* manipulates the RGB color maps in the graphics hardware, and has an effect on the entire screen, not just the portion containing the current framebuffer display. As such, there is no need to match the display size on the command line.
+By default, the display is assumed to be 512x512 pixels; if the [opt]*-H* flag is specified, the size is changed to 1024x1024. This size distinction is important for devices like the Adage framebuffers which have different operating modes based on the display size. In general, [cmd]*fbgamma* manipulates the RGB color maps in the graphics hardware, and has an effect on the entire screen, not just the portion containing the current framebuffer display. As such, there is no need to match the display size on the command line.
 
-A framebuffer may be explicitly selected with the *[opt]#-F#* option, followed by the name of the desired framebuffer.
+A framebuffer may be explicitly selected with the [opt]*-F* option, followed by the name of the desired framebuffer.
 
-The *[opt]#-i#* option requests that a standard gamma calibration image be displayed on the framebuffer. This image consists of intensity ramps with patches of solid color, and vertically adjacent patches containing alternating black and colored scanlines. When using gamma to compensate for non-linearity of a display, the gamma values should be adjusted until vertically adjacent ramps of the same color appear equal in intensity for all patches.
+The [opt]*-i* option requests that a standard gamma calibration image be displayed on the framebuffer. This image consists of intensity ramps with patches of solid color, and vertically adjacent patches containing alternating black and colored scanlines. When using gamma to compensate for non-linearity of a display, the gamma values should be adjusted until vertically adjacent ramps of the same color appear equal in intensity for all patches.
 
 == THEORY
 
@@ -45,7 +45,7 @@ A gamma value greater than unity will saturate colors by pushing them away from 
 
 == SEE ALSO
 
-xref:man:1/brlcad.adoc[*brlcad*](1), xref:man:1/fbcmap.adoc[*fbcmap*](1), xref:man:1/cmap-fb.adoc[*cmap-fb*](1), xref:man:1/fb-cmap.adoc[*fb-cmap*](1)
+xref:man:1/brlcad.adoc[*brlcad*(1)], xref:man:1/fbcmap.adoc[*fbcmap*(1)], xref:man:1/cmap-fb.adoc[*cmap-fb*(1)], xref:man:1/fb-cmap.adoc[*fb-cmap*(1)]
 
 == AUTHOR
 

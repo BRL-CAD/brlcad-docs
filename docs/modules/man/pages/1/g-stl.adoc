@@ -11,48 +11,48 @@ g-stl -  Stereolithography Translator (BRL-CAD to STL)
 
 == SYNOPSIS
 
-*[cmd]#g-stl#* [-o [rep]_output_file_][-m [rep]_output_directory_][-b][-i][-8][-D [rep]_calculation_tolerance_][-a [rep]_absolute_tol_][-r [rep]_relative_tol_][-n [rep]_normal_tol_][-xX [rep]_level_][-v][rep]_database.g_[rep]_object(s)_...
+*g-stl*[-o _output_file_][-m _output_directory_][-b][-i][-8][-D _calculation_tolerance_][-a _absolute_tol_][-r _relative_tol_][-n _normal_tol_][-xX _level_][-v]_database.g__object(s)_...
 
 == DESCRIPTION
 
-*[cmd]#g-stl#* converts the specified __object(s)__ from a BRL-CAD __database.g__ file to the __stereolithography__ file format.
+[cmd]*g-stl* converts the specified __object(s)__ from a BRL-CAD __database.g__ file to the __stereolithography__ file format.
 
 The following options are recognized.
 
-*[opt]#-o PATH#* ::
+*-o PATH*::
 Specify output file name (default is stdout).
 
-*[opt]#-m DIR#* ::
-Specify a directory for output files. Each region converted is written to a separate file. File names are constructed from the full path names of each region (the path from the specified object to the region). Any "/" characters in the path name are replaced by "@" characters and "." and white space are replaced by "_" characters. If the -m option is not specified, all regions are written to the same file. The *[opt]#-o#*  and *[opt]#-m#*  options are mutually exclusive. 
+*-m DIR*::
+Specify a directory for output files. Each region converted is written to a separate file. File names are constructed from the full path names of each region (the path from the specified object to the region). Any "/" characters in the path name are replaced by "@" characters and "." and white space are replaced by "_" characters. If the -m option is not specified, all regions are written to the same file. The [opt]*-o* and [opt]*-m* options are mutually exclusive. 
 
-*[opt]#-b#* ::
+*-b*::
 Write output as a binary STL file. The default is ASCII. In the case of ASCII output, the region name is specified on the "solid" line of the STL file. In the case of binary output, all the regions are output as a single STL part. 
 
-*[opt]#-i#* ::
+*-i*::
 Use inches as the output format (the default is mm).
 
-*[opt]#-8#* ::
+*-8*::
 Facetize using the marching cubes algorithm.
 
-*[opt]#-D##* ::
+*-D#*::
 Specify a calculational distance tolerance (mm). Any two vertices that are less than this distance apart will be treated as the same vertex.
 
-*[opt]#-a##* ::
+*-a#*::
 Specify the absolute tesselation tolerance.
 
-*[opt]#-r##* ::
+*-r#*::
 Specify the relative tesselation tolerance.
 
-*[opt]#-n##* ::
+*-n#*::
 Specify the surface-normal tesselation tolerance.
 
-*[opt]#-x##* ::
+*-x#*::
 Specify an RT debug flag.
 
-*[opt]#-X##* ::
+*-X#*::
 Specify an NMG debug flag.
 
-*[opt]#-v#* ::
+*-v*::
 Enable verbose output.
 
 == EXAMPLE

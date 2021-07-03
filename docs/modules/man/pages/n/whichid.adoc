@@ -12,11 +12,11 @@ whichid - Reports information relating to usage of the region_id property on reg
 
 == SYNOPSIS
 
-*[cmd]#whichid#*  [[rep]_options ..._] {[rep]_ident[-ident]_}...
+*whichid* [_options ..._] {_ident[-ident]_}...
 
 == DESCRIPTION
 
-Reports information about the usage of the _region_id_ property by regions in a .g file.  Its default mode is to report which regions in a .g file are using one or a range of region_id values.  If a root object is specified, it will report that result only for the regions in the tree of the root object.  If the *[opt]#U#*  is specified, the reporting is inverted and the command will report the ranges of _unused_ ids rather than the regions using various ids. 
+Reports information about the usage of the _region_id_ property by regions in a .g file.  Its default mode is to report which regions in a .g file are using one or a range of region_id values.  If a root object is specified, it will report that result only for the regions in the tree of the root object.  If the [opt]*U* is specified, the reporting is inverted and the command will report the ranges of _unused_ ids rather than the regions using various ids. 
 
 [[_search_options]]
 == OPTIONS
@@ -33,7 +33,7 @@ For these examples the geometry file used is the standard _ktank.g_ included wit
 
 .Report all regions using region ids between 4000 and 7000.
 ====
-[prompt]#mged># [ui]`whichid 4000-7000` 
+[prompt]#mged>#[ui]`whichid 4000-7000`
 
 ....
 
@@ -52,7 +52,7 @@ Region[s] with ident 6002:
 
 .Report all regions using region ids between 1000-2000 and 4000-5000.
 ====
-[prompt]#mged># [ui]`whichid 1000-2000 4000-5000` 
+[prompt]#mged>#[ui]`whichid 1000-2000 4000-5000`
 
 ....
 
@@ -71,7 +71,7 @@ Region[s] with ident 4050:
 
 .Report all regions using region ids between 1000-2000 and 4000-5000, limitingresults to regions in the _tank_ geomtry tree.
 ====
-[prompt]#mged># [ui]`whichid --root tank 1000-2000 4000-5000` 
+[prompt]#mged>#[ui]`whichid --root tank 1000-2000 4000-5000`
 
 ....
 
@@ -86,7 +86,7 @@ Region[s] with ident 4050:
 
 .Report all unused region_id ranges in the database between 1 and 1000.
 ====
-[prompt]#mged># [ui]`whichid -U 1-1000` 
+[prompt]#mged>#[ui]`whichid -U 1-1000`
 
 ....
 

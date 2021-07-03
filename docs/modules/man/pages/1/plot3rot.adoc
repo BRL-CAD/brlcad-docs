@@ -11,25 +11,25 @@ plot3rot - rotate, translate, or scale a UnixPlot file
 
 == SYNOPSIS
 
-*[cmd]#plot3rot#* [-x#-y#-z#][-X#-Y#-Z#][-s#][-a#-e#][-g#][-M][-m#][-v][-S#]<[rep]_unix_plot_>[rep]_unix_plot_
+*plot3rot*[-x#-y#-z#][-X#-Y#-Z#][-s#][-a#-e#][-g#][-M][-m#][-v][-S#]<_unix_plot_>_unix_plot_
 
 == DESCRIPTION
 
-*[cmd]#plot3rot#* will rotate translate or scale a UnixPlot file (see xref:man:5/plot3.adoc[*plot3*](5)). Any number of the above options can be given. Each operation is performed left to right in the order in which they appear on the command line, and the operations are concatenated. It is important to note that rotations are not commutative, so the order they are specified in is important. Typing the command without any arguments gives a useful summary.
+[cmd]*plot3rot* will rotate translate or scale a UnixPlot file (see xref:man:5/plot3.adoc[*plot3*(5)]). Any number of the above options can be given. Each operation is performed left to right in the order in which they appear on the command line, and the operations are concatenated. It is important to note that rotations are not commutative, so the order they are specified in is important. Typing the command without any arguments gives a useful summary.
 
-The lower case *[opt]#-x# -y# -z##* flags perform a rotation about the X, Y, and Z axes respectively by the given number of degrees.  A positive value indicates a right handed rotation.  Upper case *[opt]#-X# -Y# -Z##* are translations along these axes in whatever units the plot file is in. The *[opt]#-s##* flag applies a scale factor up (> 1) or down (< 1) to the plot.
+The lower case [opt]*-x# -y# -z#* flags perform a rotation about the X, Y, and Z axes respectively by the given number of degrees.  A positive value indicates a right handed rotation.  Upper case [opt]*-X# -Y# -Z#* are translations along these axes in whatever units the plot file is in. The [opt]*-s#* flag applies a scale factor up (> 1) or down (< 1) to the plot.
 
-The *[opt]#-a# -e##* flags are for azimuth and elevation about the center point. They are really shorthands for positive Z axis and negative X axis rotations respectively, and should be used in the order shown for the proper combined effect to occur.  These flags also cause the plot to auto-center based on the "space" command in the plot file, and the new "space" command will be shrunk to fit the rotated plot as tightly as possible.
+The [opt]*-a# -e#* flags are for azimuth and elevation about the center point. They are really shorthands for positive Z axis and negative X axis rotations respectively, and should be used in the order shown for the proper combined effect to occur.  These flags also cause the plot to auto-center based on the "space" command in the plot file, and the new "space" command will be shrunk to fit the rotated plot as tightly as possible.
 
-The *[opt]#-M#* flag causes the plot to auto-center based on the "space" command in the plot file in much the same way that the xref:man:1/rt.adoc[*rt*](1) ray tracer does to a model bounding box.  I.e. a sphere is fit to this space and the diameter and center of this sphere are used as the center and width of the plot in all three dimensions.  This has the advantage of keeping the entire model in view from any angle, and is invariant with respect to viewing direction. It has the disadvantage that the "space" will be enlarged on every cascaded pass through xref:man:1/plot3rot.adoc[*plot3rot*](1) where the *[opt]#-M#* flag is used.
+The [opt]*-M* flag causes the plot to auto-center based on the "space" command in the plot file in much the same way that the xref:man:1/rt.adoc[*rt*(1)] ray tracer does to a model bounding box.  I.e. a sphere is fit to this space and the diameter and center of this sphere are used as the center and width of the plot in all three dimensions.  This has the advantage of keeping the entire model in view from any angle, and is invariant with respect to viewing direction. It has the disadvantage that the "space" will be enlarged on every cascaded pass through xref:man:1/plot3rot.adoc[*plot3rot*(1)] where the [opt]*-M* flag is used.
 
-The *[opt]#-S##* flag takes a quoted string of 6 floating point numbers ("min_x min_y min_z max_x max_y max_z"), which are immediately output as a "space" command, and which override any spaces specified by "space" commands found in the input file, as well as any spaces which are computed by translating, rotating, or scaling from those input spaces as directed by other flags.
+The [opt]*-S#* flag takes a quoted string of 6 floating point numbers ("min_x min_y min_z max_x max_y max_z"), which are immediately output as a "space" command, and which override any spaces specified by "space" commands found in the input file, as well as any spaces which are computed by translating, rotating, or scaling from those input spaces as directed by other flags.
 
-The *[opt]#-v#* flag signals that verbose mode is requested. When set, the initial transformation matrix is printed. In addition, every time a _space_ command is encountered in the input file, the old and new bounding RPP is printed.
+The [opt]*-v* flag signals that verbose mode is requested. When set, the initial transformation matrix is printed. In addition, every time a _space_ command is encountered in the input file, the old and new bounding RPP is printed.
 
-The *[opt]#-m##* flag takes a quoted string of 16 floating point numbers as its parameter. This string is a 4x4 rotation matrix (see h/vmath.h for details). Note that when using this flag, do not use *[opt]#-a#, -e#,#* or *[opt]#-g.#* 
+The [opt]*-m#* flag takes a quoted string of 16 floating point numbers as its parameter. This string is a 4x4 rotation matrix (see h/vmath.h for details). Note that when using this flag, do not use [opt]*-a#, -e#,* or [opt]*-g.*
 
-UnixPlot is traditionally a first quadrant 2D plotting space with X increasing to the right of the plot, and Y increasing up the plot. The "front" of a solid model in the BRL-CAD Package is traditionally defined by the right handed system of X coming out of the screen toward you, Y increasing to the right, and Z increasing up the display (elevation above the XY ground plane).  The *[opt]#-g#* flag is a convenient shorthand to transform azimuths and elevations described in _gift_ notation (as degrees off the front or -X view) into the UnixPlot coordinate system for display. If used, this option should usually appear as the last argument, because it acts by modifying the rotation already established. The *[opt]#-g#* command has exactly the same effect as giving *[opt]#-z-90 -x-90#* in the same place.
+UnixPlot is traditionally a first quadrant 2D plotting space with X increasing to the right of the plot, and Y increasing up the plot. The "front" of a solid model in the BRL-CAD Package is traditionally defined by the right handed system of X coming out of the screen toward you, Y increasing to the right, and Z increasing up the display (elevation above the XY ground plane).  The [opt]*-g* flag is a convenient shorthand to transform azimuths and elevations described in _gift_ notation (as degrees off the front or -X view) into the UnixPlot coordinate system for display. If used, this option should usually appear as the last argument, because it acts by modifying the rotation already established. The [opt]*-g* command has exactly the same effect as giving [opt]*-z-90 -x-90* in the same place.
 
 == EXAMPLES
 
@@ -51,11 +51,11 @@ rthide -a35 -e25 -o file.plot3
 plot3rot -a35 -e25 -g < file.plot3 | plot3-fb
 ....
 
-The final *[opt]#-g#* converts the _gift_ style azimuth and elevations into the conventional UnixPlot (screen) X,Y coordinate system.
+The final [opt]*-g* converts the _gift_ style azimuth and elevations into the conventional UnixPlot (screen) X,Y coordinate system.
 
 == SEE ALSO
 
-xref:man:1/plot3-plot3.adoc[*plot3-plot3*](1), xref:man:1/plot3debug.adoc[*plot3debug*](1), xref:man:1/plot3-fb.adoc[*plot3-fb*](1), xref:man:3/libplot3.adoc[*libplot3*](3), xref:man:5/plot3.adoc[*plot3*](5)
+xref:man:1/plot3-plot3.adoc[*plot3-plot3*(1)], xref:man:1/plot3debug.adoc[*plot3debug*(1)], xref:man:1/plot3-fb.adoc[*plot3-fb*(1)], xref:man:3/libplot3.adoc[*libplot3*(3)], xref:man:5/plot3.adoc[*plot3*(5)]
 
 == AUTHOR
 

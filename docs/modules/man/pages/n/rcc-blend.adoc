@@ -12,7 +12,7 @@ rcc-blend - Generates a blend at an end (base [b] or top
 
 == SYNOPSIS
 
-*[cmd]#rcc-blend#*  {[rep]_rccname newname thickness_} [b] [t]
+*rcc-blend* {_rccname newname thickness_} [b] [t]
 
 == DESCRIPTION
 
@@ -20,18 +20,18 @@ Generates a blend at an end (base [__b__] or top [__t__]) of the specified RCC s
 
 == EXAMPLES
 
-The two examples show the use of the *[cmd]#rcc-blend#*  command to generate a blend 	at the base and at the top of specified RCC shapes. 
+The two examples show the use of the [cmd]*rcc-blend* command to generate a blend 	at the base and at the top of specified RCC shapes. 
 
 .Generate a blend at the base of a specified RCC shape.
 ====
-[prompt]#mged># [ui]`rcc-blend rcc.s blend.s 10` 
+[prompt]#mged>#[ui]`rcc-blend rcc.s blend.s 10`
 
 Creates a region named _blend.s_ that extends 10 units from the base of__rcc.s__. 
 ====
 
 .Generate a blend at the top of a specified RCC shape.
 ====
-[prompt]#mged># [ui]`rcc-blend rcc.s blend.s 10 t` 
+[prompt]#mged>#[ui]`rcc-blend rcc.s blend.s 10 t`
 
 Creates a region named _blend.s_ that extends 10 units from the top of__rcc.s__. 
 ====

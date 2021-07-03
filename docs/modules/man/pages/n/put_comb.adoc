@@ -12,7 +12,7 @@ boolean expressions and standard attribute values.
 
 == SYNOPSIS
 
-*[cmd]#put_comb#*  {[rep]_comb_name_} [is_Region[[id] | [air] | [material] | [los]]] {[rep]_color_} {[rep]_shader_} {[rep]_inherit_} {[rep]_boolean_expr_}
+*put_comb* {_comb_name_} [is_Region[[id] | [air] | [material] | [los]]] {_color_} {_shader_} {_inherit_} {_boolean_expr_}
 
 == DESCRIPTION
 
@@ -20,11 +20,11 @@ Command for inserting regions and combinations with attributes set using a singl
 
 == EXAMPLES
 
-The *[cmd]#put_comb#*  expects one of two particular forms of input - combination or region.
+The [cmd]*put_comb* expects one of two particular forms of input - combination or region.
 
-.Specifying a combination using *[cmd]#put_comb#* 
+.Specifying a combination using [cmd]*put_comb*
 ====
-[prompt]#mged># [ui]`put_comb test.c n 255/255/255 plastic n "u sph.s u arb8.s"` 
+[prompt]#mged>#[ui]`put_comb test.c n 255/255/255 plastic n "u sph.s u arb8.s"`
 
 Creates a combination that is not a region, using the plastic shader, consisting of the union of sph.s and arb8.s". 
 
@@ -40,9 +40,9 @@ oshader {plastic}
 ....
 ====
 
-.Specifying a region using *[cmd]#put_comb#* 
+.Specifying a region using [cmd]*put_comb*
 ====
-[prompt]#mged># [ui]`put_comb test.r y 1001 0 32 1 255/255/255 plastic y "u sph.s u arb8.s"` 
+[prompt]#mged>#[ui]`put_comb test.r y 1001 0 32 1 255/255/255 plastic y "u sph.s u arb8.s"`
 
 Creates a combination that is a region, with region id 1001, air flag off, material 32, los 1, white in color, using the plastic shader, inheriting, consisting of the union of sph.s and arb8.s" 
 

@@ -12,73 +12,73 @@ qray - Gets/sets query ray characteristics.
 
 == SYNOPSIS
 
-*[cmd]#qray#*  [[rep]_subcommand_]
+*qray* [_subcommand_]
 
 == DESCRIPTION
 
 Gets/sets _query ray_ characteristics. Without a subcommand, the usage message is printed. The _qray_ command accepts the following subcommands:
 
-*[cmd]#vars#* ::
+[cmd]*vars*::
 Prints a list of all query ray variables. 
 
-*[cmd]#basename#*  [__str__]::
+[cmd]*basename* [__str__]::
 If _str_ is specified, then set basename to __str__. 			Otherwise, return the basename. Note that the basename is the name used to create the fake shape 		names corresponding to the query ray. There will be one fake shape for every color used along the 		ray. 
 
-*[cmd]#effects#* [__t|g|b__]::
+[cmd]*effects*[__t|g|b__]::
 Set or get the type of _effects_ that will occur when firing a query ray. The 		effects of firing a ray can be either _t_ for textual output, _g_ for graphical output, or _b_ for both textual and graphical. 
 
-*[cmd]#echo#*  [__0|1__]::
-Sets or gets the value of __echo__.  If set to 1, the actual *[cmd]#nirt#*  command used will be echoed to the screen. 
+[cmd]*echo* [__0|1__]::
+Sets or gets the value of __echo__.  If set to 1, the actual [cmd]*nirt* command used will be echoed to the screen. 
 
-*[cmd]#oddcolor#*  [__r g b__]::
+[cmd]*oddcolor* [__r g b__]::
 Sets or gets the color of odd partitions. 
 
-*[cmd]#evencolor#*  [__r g b__]::
+[cmd]*evencolor* [__r g b__]::
 Sets or gets the color of even partitions. 
 
-*[cmd]#voidcolor#*  [__r g b__]::
+[cmd]*voidcolor* [__r g b__]::
 Sets or gets the color of areas where the ray passes through nothing. 
 
-*[cmd]#overlapcolor#*  [__r g b__]::
+[cmd]*overlapcolor* [__r g b__]::
 Sets or gets the color of areas that overlap. 
 
-*[cmd]#fmt#*  [__r|h|p|f|m|o__ [__str__]]::
-Sets or gets the format string(s). See the _man_ page of *[cmd]#nirt#*  	for more details. 
+[cmd]*fmt* [__r|h|p|f|m|o__ [__str__]]::
+Sets or gets the format string(s). See the _man_ page of [cmd]*nirt* 	for more details. 
 
-*[cmd]#script#*  [__str__]::
-Sets or gets the *[cmd]#nirt#*  script string. 
+[cmd]*script* [__str__]::
+Sets or gets the [cmd]*nirt* script string. 
 
-*[cmd]#help#* ::
+[cmd]*help*::
 Prints the usage message. 
 
 == EXAMPLES
 
-The four examples show the use of the *[cmd]#qray#*  command without a subcommand and with three of the listed subcommands. 
+The four examples show the use of the [cmd]*qray* command without a subcommand and with three of the listed subcommands. 
 
 .Print the usage message.
 ====
-[prompt]#mged># [ui]`qray` 
+[prompt]#mged>#[ui]`qray`
 
 Prints the usage message. 
 ====
 
 .Return the overlap format string.
 ====
-[prompt]#mged># [ui]`qray fmt o` 
+[prompt]#mged>#[ui]`qray fmt o`
 
 Returns the overlap format string. 
 ====
 
 .Return the rgb color used to color odd partitions.
 ====
-[prompt]#mged># [ui]`qray oddcolor` 
+[prompt]#mged>#[ui]`qray oddcolor`
 
 Returns the rgb color used to color odd partitions. 
 ====
 
 .Set the odd partition color to red.
 ====
-[prompt]#mged># [ui]`qray oddcolor 255 0 0` 
+[prompt]#mged>#[ui]`qray oddcolor 255 0 0`
 
 Sets the odd partition color to red. 
 ====

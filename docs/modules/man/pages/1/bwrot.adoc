@@ -11,19 +11,19 @@ bwrot - rotate, invert, or reverse a black and white bw file
 
 == SYNOPSIS
 
-*[cmd]#bwrot#* [-rifb | -a [rep]_angle_][-s [rep]_squaresize_][-w [rep]_in_width_][-n [rep]_in_height_][-o [rep]_out.bw_][[rep]_file.bw_][>[rep]_out.bw_]
+*bwrot*[-rifb | -a _angle_][-s _squaresize_][-w _in_width_][-n _in_height_][-o _out.bw_][_file.bw_][>_out.bw_]
 
 == DESCRIPTION
 
-*[cmd]#bwrot#* will rotate, vertically invert, and horizontally reverse a black and white xref:man:5/bw.adoc[*bw*](5) format file or read from standard input if a file name is not given.  The *[opt]#-w#* and *[opt]#-n#* flags specify the input file width and number of scan lines in pixels (both values default to 512); they can be set to same value via *[opt]#-s.#* 
+[cmd]*bwrot* will rotate, vertically invert, and horizontally reverse a black and white xref:man:5/bw.adoc[*bw*(5)] format file or read from standard input if a file name is not given.  The [opt]*-w* and [opt]*-n* flags specify the input file width and number of scan lines in pixels (both values default to 512); they can be set to same value via [opt]*-s.*
 
-The *[opt]#-r#* flag reverses the scan lines left to right. The *[opt]#-i#* flag inverts the image top to bottom. The *[opt]#-f#* and *[opt]#-b#* flag will rotate the image ninety degrees forward or backward respectively. The sense of the rotation is relative to a first quadrant coordinate system, i.e. origin lower left, where "forward" means clockwise.
+The [opt]*-r* flag reverses the scan lines left to right. The [opt]*-i* flag inverts the image top to bottom. The [opt]*-f* and [opt]*-b* flag will rotate the image ninety degrees forward or backward respectively. The sense of the rotation is relative to a first quadrant coordinate system, i.e. origin lower left, where "forward" means clockwise.
 
 Note that a 180 degree rotation can be obtained by both reversing and inverting.
 
-If the *[opt]#-a#* flag is used, the image will be rotated counterclockwise by the specified arbitrary angle (in degrees).
+If the [opt]*-a* flag is used, the image will be rotated counterclockwise by the specified arbitrary angle (in degrees).
 
-The *[opt]#-o#* option can be used to specify an output file instead of redirecting standard out.
+The [opt]*-o* option can be used to specify an output file instead of redirecting standard out.
 
 == METHOD
 
@@ -31,7 +31,7 @@ A fairly large buffer is kept in memory so that, file size permitting, the entir
 
 == SEE ALSO
 
-xref:man:1/brlcad.adoc[*brlcad*](1), xref:man:1/pixrot.adoc[*pixrot*](1), xref:man:5/bwscale.adoc[*bwscale*](5), xref:man:1/bwrect.adoc[*bwrect*](1), xref:man:5/bw.adoc[*bw*](5)
+xref:man:1/brlcad.adoc[*brlcad*(1)], xref:man:1/pixrot.adoc[*pixrot*(1)], xref:man:5/bwscale.adoc[*bwscale*(5)], xref:man:1/bwrect.adoc[*bwrect*(1)], xref:man:5/bw.adoc[*bw*(5)]
 
 == BUGS
 

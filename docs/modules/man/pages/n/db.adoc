@@ -13,7 +13,7 @@ routines.
 
 == SYNOPSIS
 
-*[cmd]#db#*  {[rep]_command_} [[rep]_arguments_]
+*db* {_command_} [_arguments_]
 
 == DESCRIPTION
 
@@ -42,49 +42,49 @@ Closes the previously opened database and deletes the associated command.
 
 == EXAMPLES
 
-The following examples show the uses of the *[cmd]#db#*  command to list various objects and attributes from the database, as well as to create new TGC shapes, adjust a vertex attribute, and display command formats. 
+The following examples show the uses of the [cmd]*db* command to list various objects and attributes from the database, as well as to create new TGC shapes, adjust a vertex attribute, and display command formats. 
 
 .List all objects in the database that end with ".s"
 ====
 
-[prompt]#mged># [ui]`db match *.s` ::
+[prompt]#mged>#[ui]`db match *.s`::
 Gets a list of all objects in the database that end with .s. 
 ====
 
 .List all attributes and their values for _cone.s_
 ====
-[prompt]#mged># [ui]`db get cone.s` 
+[prompt]#mged>#[ui]`db get cone.s`
 
 Gets a list of all the attributes and their values for shape __cone.s__. 
 ====
 
 .Get the value of the vertex attribute of _cone.s_
 ====
-[prompt]#mged># [ui]`db get cone.s V` 
+[prompt]#mged>#[ui]`db get cone.s V`
 
 Gets the value of the _V_ (vertex) attribute of shape _cone.s_
 ====
 
 .Create a new TGC shape named _new_cone.s_ with specified attributes.
 ====
-[prompt]#mged># [ui]`db put new_cone.s tgc V {0 0 0} H {0 0 1} A {1 0 0}
-     B {0 1 0} C {5 0 0} D {0 5 0}` 
+[prompt]#mged>#[ui]`db put new_cone.s tgc V {0 0 0} H {0 0 1} A {1 0 0}
+     B {0 1 0} C {5 0 0} D {0 5 0}`
 
 Creates a new TGC shape named _new_cone.s_ with the specified attributes. 
 ====
 
 .Adjust the vertex attribute of _new_cone.s_ to a given value.
 ====
-[prompt]#mged># [ui]`db adjust new_cone.s V {0 0 10}` 
+[prompt]#mged>#[ui]`db adjust new_cone.s V {0 0 10}`
 
 Adjusts the _V_ (vertex) attribute of _new_cone.s_ to the value {0 0 10}. 
 ====
 
-.Display the format used by the *[cmd]#get#*  and *[cmd]#put#*  commands for the TGC shape type.
+.Display the format used by the [cmd]*get* and [cmd]*put* commands for the TGC shape type.
 ====
-[prompt]#mged># [ui]`db form tgc` 
+[prompt]#mged>#[ui]`db form tgc`
 
-Displays the format used by the *[cmd]#get#*  and *[cmd]#put#*  commands for the TGC shape type. 
+Displays the format used by the [cmd]*get* and [cmd]*put* commands for the TGC shape type. 
 ====
 
 == AUTHOR

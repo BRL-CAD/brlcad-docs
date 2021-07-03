@@ -13,7 +13,7 @@ npush -
 
 == SYNOPSIS
 
-*[cmd]#npush#*  [-h] [-?] [-v] [-f] [-x] [-r] [-s] [-d [rep]_max_depth_] {arg1 [arg2]...}
+*npush* [-h] [-?] [-v] [-f] [-x] [-r] [-s] [-d _max_depth_] {arg1 [arg2]...}
 
 [[_npush_background]]
 == Background: Matrices in BRL-CAD
@@ -57,7 +57,7 @@ As useful as these matrices are, users frequently need to consolidate multiple l
 [[_npush_overview]]
 == Overview
 
-The GED command *[cmd]#npush#*  defines logic for "moving" matrix operations within a COMB tree, without changing the position of individual object instances in the tree definition. 
+The GED command [cmd]*npush* defines logic for "moving" matrix operations within a COMB tree, without changing the position of individual object instances in the tree definition. 
 
 [[_npush_depth]]
 == A Note on Depth
@@ -173,7 +173,7 @@ sph_011/
 [[_npush_special_depths]]
 == Pushing relative to Regions and Shapes
 
-In addition to numerical depth limits, *[cmd]#npush#*  offers two additional specifiers that are more aware of specific types of objects in trees.  The *[opt]#r#*  option will push matrices down to a level just above region references, and the *[opt]#s#*  option will push matrices to a level just above primitive shapes.  For example, using the following hierarchy: 
+In addition to numerical depth limits, [cmd]*npush* offers two additional specifiers that are more aware of specific types of objects in trees.  The [opt]*r* option will push matrices down to a level just above region references, and the [opt]*s* option will push matrices to a level just above primitive shapes.  For example, using the following hierarchy: 
 
 ....
 
@@ -186,7 +186,7 @@ sph_010/
 		u [M3] sph10.s
 ....
 
-a *[opt]#r#*  push would result in the following: 
+a [opt]*r* push would result in the following: 
 
 ....
 
@@ -199,7 +199,7 @@ sph_010/
 		u [M3] sph10.s
 ....
 
-A *[opt]#s#*  push, on the other hand, will take the matrices in both branches deeper: 
+A [opt]*s* push, on the other hand, will take the matrices in both branches deeper: 
 
 ....
 
@@ -325,6 +325,6 @@ Halt push operations at the hierarchy level specified by __max_depth__.
 
 .Default
 ====
-[ui]`push sph1` 
+[ui]`push sph1`
 
 ====

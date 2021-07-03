@@ -12,7 +12,7 @@ voxelize - Takes as input a primitive or a collection of primitives ,old_obj, an
 
 == SYNOPSIS
 
-*[cmd]#voxelize#*  [[-d] | {n}] [[-s] | {"%s %s %s"}] [[-t] | {f}] {[rep]_new_obj old_obj_} [[rep]_old_obj1 old_obj2 ..._]
+*voxelize* [[-d] | {n}] [[-s] | {"%s %s %s"}] [[-t] | {f}] {_new_obj old_obj_} [_old_obj1 old_obj2 ..._]
 
 == DESCRIPTION
 
@@ -20,12 +20,12 @@ Takes as input a primitive or a collection of primitives ,__old_obj__, and creat
 
 == EXAMPLES
 
-The following example shows the use of the *[cmd]#voxelize#*  command to create a voxelized version of an existing object (__old_object__) and naming the output(__new_object__). 
+The following example shows the use of the [cmd]*voxelize* command to create a voxelized version of an existing object (__old_object__) and naming the output(__new_object__). 
 
 .Create a voxelized version of an existing primitive or collection.
 ====
 
-[prompt]#mged># [ui]`voxelize -d 2 -s "0.5 0.5 0.5" -t 0.3 newregion.r oldregion.r` ::
+[prompt]#mged>#[ui]`voxelize -d 2 -s "0.5 0.5 0.5" -t 0.3 newregion.r oldregion.r`::
 Creates a voxelized region corresponding to the original region __oldregion.r__. 
 +
 The region _newregion.r_ consists of the resulting voxels.

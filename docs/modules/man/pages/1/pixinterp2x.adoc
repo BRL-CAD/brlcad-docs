@@ -11,28 +11,28 @@ pixinterp2x - interpolate a color pix file twice as large as the original
 
 == SYNOPSIS
 
-*[cmd]#pixinterp2x#* [-s [rep]_squarefilesize_][-w [rep]_file_width_][-n [rep]_file_height_][[rep]_infile.pix_]>[rep]_outfile.pix_
+*pixinterp2x*[-s _squarefilesize_][-w _file_width_][-n _file_height_][_infile.pix_]>_outfile.pix_
 
 == DESCRIPTION
 
-*[cmd]#pixinterp2x#* does a bilinear interpolation between the pixels of the input xref:man:5/pix.adoc[*pix*](5) file to create the output file. This program is most useful when creating images for photographing. Even though no additional image information is created, there may be significant photographic advantages to operating the display at its highest resolution.
+[cmd]*pixinterp2x* does a bilinear interpolation between the pixels of the input xref:man:5/pix.adoc[*pix*(5)] file to create the output file. This program is most useful when creating images for photographing. Even though no additional image information is created, there may be significant photographic advantages to operating the display at its highest resolution.
 
-This is a very fast implementation of one special case of interpolation;  the general tool for interpolation is xref:man:1/pixscale.adoc[*pixscale*](1).
+This is a very fast implementation of one special case of interpolation;  the general tool for interpolation is xref:man:1/pixscale.adoc[*pixscale*(1)].
 
-*[opt]#-w#* [rep]_file_width_ ::
+*-w*_file_width_::
 Specify the width (in pixels) of the scanlines in the input file. The default is 512.
 
-*[opt]#-n#* [rep]_file_height_ ::
+*-n*_file_height_::
 Specify the number of scanlines of input to be processed. The default is 512.
 
-*[opt]#-s#* [rep]_squarefilesize_ ::
+*-s*_squarefilesize_::
 Specify both the number of pixels per scanline and the number of scanlines in the file to process.
 
-The interpolated scanlines fall exactly half way between the input lines, and the input lines are exactly preserved.  Rather than extrapolate beyond the edges of the file, the first X and Y line is duplicated (left and bottom edge).  This differs from the behavior of xref:man:1/pixscale.adoc[*pixscale*](1).
+The interpolated scanlines fall exactly half way between the input lines, and the input lines are exactly preserved.  Rather than extrapolate beyond the edges of the file, the first X and Y line is duplicated (left and bottom edge).  This differs from the behavior of xref:man:1/pixscale.adoc[*pixscale*(1)].
 
 == SEE ALSO
 
-xref:man:1/brlcad.adoc[*brlcad*](1), xref:man:1/pixscale.adoc[*pixscale*](1), xref:man:5/pix.adoc[*pix*](5)
+xref:man:1/brlcad.adoc[*brlcad*(1)], xref:man:1/pixscale.adoc[*pixscale*(1)], xref:man:5/pix.adoc[*pix*(5)]
 
 == BUGS
 

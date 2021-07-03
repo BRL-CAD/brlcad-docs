@@ -12,36 +12,36 @@ debug - Allows the user to set or check the flags used by BRL-CAD libraries to e
 
 == SYNOPSIS
 
-*[cmd]#debug#*  [-h] [-l [[rep]_lib_ ]] [-C [[rep]_lib_ ]] [-V [[rep]_val_ ]] [lib [[rep]_flag_ ]]
+*debug* [-h] [-l [_lib_]] [-C [_lib_]] [-V [_val_]] [lib [_flag_]]
 
 == DESCRIPTION
 
 Supports listing, setting and checking the debug flags defined by _BRL-CAD_ libraries.  The outputs controlled by this command are extremely low level, most likely cryptic to those not familiar with the internal of BRL-CAD's implementation, and may cause any variety of odd or unexpected behaviors.  Generally speaking, they are present to avoid having to recompile the code to obtain more verbose information printing during a debugging setssion, and are intended only for that use case.  In short, they are development only, _not_ intended for general user consumption and should be avoided unless you know _exactly_ what you are doing. 
 
-The *[opt]#-h#*  help option will print out a list of libraries supported by the debug command. 
+The [opt]*-h* help option will print out a list of libraries supported by the debug command. 
 
-The *[opt]#-l#*  option will print out a list of debugging flags supported by the debug command.  With no argument to *[opt]#-l#*  all flags for all libraries are listed - supplying a library name (per output from the *[opt]#-h#*  option) to *[opt]#-l#* will list only the flags specific to that library. 
+The [opt]*-l* option will print out a list of debugging flags supported by the debug command.  With no argument to [opt]*-l* all flags for all libraries are listed - supplying a library name (per output from the [opt]*-h* option) to [opt]*-l* will list only the flags specific to that library. 
 
 Note that this list and the flags defined within specific libraries may change at any time - debugging flags are not considered public API and should _never_ be relied upon for any user-facing functionality. 
 
 [[_options]]
 == FLAG REPORTING AND MANIPULATION
 
-With no arguments, the *[cmd]#debug#*  command displays all currently set debug flags for all libraries.  If no debug flags are set (the default) the return will be empty. 
+With no arguments, the [cmd]*debug* command displays all currently set debug flags for all libraries.  If no debug flags are set (the default) the return will be empty. 
 
-If a library name is added as an argument, (for example, "debug bu") the *[cmd]#debug#*  command displays only the currently set debug flags for that specific library.  Again if no debug flags are set (the default) the return will be empty. 
+If a library name is added as an argument, (for example, "debug bu") the [cmd]*debug* command displays only the currently set debug flags for that specific library.  Again if no debug flags are set (the default) the return will be empty. 
 
-To toggle a particular flag, the user supplies the library name and the flag to the *[cmd]#debug#*  command - for example, "debug bu AVS" will toggle the state of the attribute-value debugging flag in libbu. If the flag was previously set this command will unset it, and if unset will set it.  The previously discussed *[cmd]#debug#*  command modes allow the user to determine the current state of a flag. 
+To toggle a particular flag, the user supplies the library name and the flag to the [cmd]*debug* command - for example, "debug bu AVS" will toggle the state of the attribute-value debugging flag in libbu. If the flag was previously set this command will unset it, and if unset will set it.  The previously discussed [cmd]*debug* command modes allow the user to determine the current state of a flag. 
 
-If a user wishes to simply clear all active flags, they can use the *[opt]#-C#*  option to *[cmd]#debug#*  to accomplishe this.  If an optional library name is supplied only the flags speific to that library will be cleared - otherwise, all flags will be cleared globally for all libraries. 
+If a user wishes to simply clear all active flags, they can use the [opt]*-C* option to [cmd]*debug* to accomplishe this.  If an optional library name is supplied only the flags speific to that library will be cleared - otherwise, all flags will be cleared globally for all libraries. 
 
-Although it shouldn't normally be necessary, the *[opt]#-V#*  option provides a way to report and manipulate the low level hexadecimal numerical values controlling the flag behaviors.  Without additional arguments, *[opt]#-V#*  will report the hex values for all libraries.  With a library name supplied, it will report the value for that library.  If a library name and a string defining a positive hexidecimal number are supplied, the debugging flag will be directly assigned that numerical value. 
+Although it shouldn't normally be necessary, the [opt]*-V* option provides a way to report and manipulate the low level hexadecimal numerical values controlling the flag behaviors.  Without additional arguments, [opt]*-V* will report the hex values for all libraries.  With a library name supplied, it will report the value for that library.  If a library name and a string defining a positive hexidecimal number are supplied, the debugging flag will be directly assigned that numerical value. 
 
 == EXAMPLES
 
 .Display help and available libraries
 ====
-[prompt]#mged># [ui]`debug -h` 
+[prompt]#mged>#[ui]`debug -h`
 
 ....
 
@@ -57,7 +57,7 @@ Available libs:
 
 .List available flags for _LIBBU_
 ====
-[prompt]#mged># [ui]`debug -l BU` 
+[prompt]#mged>#[ui]`debug -l BU`
 
 ....
 
@@ -77,14 +77,14 @@ BU flags:
 
 .Set _LIBBU_ flags for bu_avs and path debugging
 ====
-[prompt]#mged># [ui]`debug BU AVS` 
+[prompt]#mged>#[ui]`debug BU AVS`
 
 ....
 
            AVS (0x00000400): bu_avs_() loggin
 ....
 
-[prompt]#mged># [ui]`debug BU PATHS` 
+[prompt]#mged>#[ui]`debug BU PATHS`
 
 ....
 
@@ -95,7 +95,7 @@ BU flags:
 
 .Set _LIBRT_ flag for rt_shootray processing
 ====
-[prompt]#mged># [ui]`debug RT SHOOT` 
+[prompt]#mged>#[ui]`debug RT SHOOT`
 
 ....
 
@@ -105,7 +105,7 @@ BU flags:
 
 .List LIBBU's active debugging flags and all active debugging flags
 ====
-[prompt]#mged># [ui]`debug BU` 
+[prompt]#mged>#[ui]`debug BU`
 
 ....
 
@@ -113,7 +113,7 @@ BU flags:
          PATHS (0x00001000): File and path debug logging
 ....
 
-[prompt]#mged># [ui]`debug` 
+[prompt]#mged>#[ui]`debug`
 
 ....
 
@@ -128,8 +128,8 @@ RT flags:
 
 .Clear LIBRT debug flags
 ====
-[prompt]#mged># [ui]`debug -C RT` 
-[prompt]#mged># [ui]`debug` 
+[prompt]#mged>#[ui]`debug -C RT`
+[prompt]#mged>#[ui]`debug`
 
 ....
 
@@ -141,7 +141,7 @@ BU flags:
 
 .Clear all active debug flags for all libraries
 ====
-[prompt]#mged># [ui]`debug -C` 
+[prompt]#mged>#[ui]`debug -C`
 ====
 
 == AUTHOR

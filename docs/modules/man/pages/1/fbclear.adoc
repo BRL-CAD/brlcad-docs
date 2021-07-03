@@ -11,22 +11,22 @@ fbclear - clear a frame buffer image
 
 == SYNOPSIS
 
-*[cmd]#fbclear#*  [-c] [-F [rep]_framebuffer_] [[rep]_red_[rep]_green_[rep]_blue_]  +
-     [-c] [-F [rep]_framebuffer_] [[rep]_gray_value_]
+*fbclear* [-c] [-F _framebuffer_] [_red__green__blue_]  +
+     [-c] [-F _framebuffer_] [_gray_value_]
 
 == DESCRIPTION
 
-*[cmd]#fbclear#* is used to erase a frame buffer using whatever method is efficient for the device being accessed. By default, the selected color will be flooded into the color planes. If the *[opt]#-c#* option is used, a standard linear colormap will be loaded and the pan and zoom values will be reset.
+[cmd]*fbclear* is used to erase a frame buffer using whatever method is efficient for the device being accessed. By default, the selected color will be flooded into the color planes. If the [opt]*-c* option is used, a standard linear colormap will be loaded and the pan and zoom values will be reset.
 
-If the optional color values are given, *[cmd]#fbclear#* writes the specified color over the entire image. The color values must be in the range 0 to 255. In the second form shown above, the single gray_value is written into all three color channels.
+If the optional color values are given, [cmd]*fbclear* writes the specified color over the entire image. The color values must be in the range 0 to 255. In the second form shown above, the single gray_value is written into all three color channels.
 
-The frame buffer to be cleared is determined from the *[opt]#-F#* option if given. Otherwise the environment variable [var]*FB_FILE* is used to select the display device (see xref:man:1/brlcad.adoc[*brlcad*](1)). If this variable is not set, the default device for your system will be used.
+The frame buffer to be cleared is determined from the [opt]*-F* option if given. Otherwise the environment variable [var]`FB_FILE` is used to select the display device (see xref:man:1/brlcad.adoc[*brlcad*(1)]). If this variable is not set, the default device for your system will be used.
 
-In addition to those flags shown above, the *[opt]#-W#* (or *[opt]#-w#* ) [rep]_width_ , *[opt]#-N#* (or *[opt]#-n#* ) [rep]_height_ , and *[opt]#-S#* (or *[opt]#-s#* ) [rep]_square_size_ options can be used to set the size of the output frame buffer.
+In addition to those flags shown above, the [opt]*-W* (or [opt]*-w*) [rep]_width_, [opt]*-N* (or [opt]*-n*) [rep]_height_, and [opt]*-S* (or [opt]*-s*) [rep]_square_size_ options can be used to set the size of the output frame buffer.
 
 == SEE ALSO
 
-xref:man:1/brlcad.adoc[*brlcad*](1), xref:man:1/fbcmap.adoc[*fbcmap*](1), xref:man:1/fbhelp.adoc[*fbhelp*](1)
+xref:man:1/brlcad.adoc[*brlcad*(1)], xref:man:1/fbcmap.adoc[*fbcmap*(1)], xref:man:1/fbhelp.adoc[*fbhelp*(1)]
 
 == AUTHOR
 

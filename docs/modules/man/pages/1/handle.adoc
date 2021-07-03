@@ -13,35 +13,35 @@ handle -
 
 == SYNOPSIS
 
-*[cmd]#handle#*  [[rep]_options_]...
+*handle* [_options_]...
 
 == DESCRIPTION
 
-*[cmd]#handle#*  is a program to create a BRL-CAD database of handles.  Up to twenty-six handles of the same dimensions may be created. *[cmd]#handle#*  uses libwdb to create a BRL-CAD database file. The handles are composed of three cylinders, two tori, and two arb8s.  This program may be run interactively or the user may specify options on a command line.  If the user chooses to run the program interactively, he answers the questions as the program prompts him.  Below are the options that can be used on the command line. 
+[cmd]*handle* is a program to create a BRL-CAD database of handles.  Up to twenty-six handles of the same dimensions may be created. [cmd]*handle* uses libwdb to create a BRL-CAD database file. The handles are composed of three cylinders, two tori, and two arb8s.  This program may be run interactively or the user may specify options on a command line.  If the user chooses to run the program interactively, he answers the questions as the program prompts him.  Below are the options that can be used on the command line. 
 
 == OPTIONS
 
-*[opt]#-f#* [rep]_name.g_ ::
+*-f*_name.g_::
 BRL-CAD file name. 
 
-*[opt]#-n ##* ::
+*-n #*::
 The number of handles to be creates (must be less than or equal to 26). 
 
-*[opt]#-l ##* ::
+*-l #*::
 Length of handle in millimeters. 
 
-*[opt]#-H ##* ::
+*-H #*::
 Height of handle in millimeters. 
 
-*[opt]#-r1 ##* ::
+*-r1 #*::
 Radius, r1, of the tori in millimeters. 
 
-*[opt]#-r2 ##* ::
+*-r2 #*::
 Radius, r2, of the tori in millimeters. 
 
 == EXAMPLES
 
-.Interactive *[cmd]#handle#*  Session
+.Interactive [cmd]*handle* Session
 ====
 
 
@@ -72,9 +72,9 @@ number of handles:  3
 ....
 ====
 
-.Single-Line *[cmd]#handle#*  Command
+.Single-Line [cmd]*handle* Command
 ====
-[ui]`handle -fhandle.g -n3 -l200 -H100 -r120 -r210` 
+[ui]`handle -fhandle.g -n3 -l200 -H100 -r120 -r210`
 ====
 
 Both of these examples produce the same result - a database called handle.g containing three handles of length 200mm, height 100mm, radius 20mm for the rounding, and radius 10mm for the cylinders. 

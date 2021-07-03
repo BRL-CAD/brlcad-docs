@@ -11,11 +11,11 @@ g-egg - Panda3D Translator (BRL-CAD to EGG)
 
 == SYNOPSIS
 
-*[cmd]#g-egg#* [-v89][-xX [rep]_lvl_][-a [rep]_abs_tol_][-r [rep]_rel_tol_][-n [rep]_norm_tol_][-D [rep]_calculation_tolerance_][-o [rep]_EGG_file_][-P [rep]_number_of_CPUs_][rep]_database.g_[rep]_object(s)_
+*g-egg*[-v89][-xX _lvl_][-a _abs_tol_][-r _rel_tol_][-n _norm_tol_][-D _calculation_tolerance_][-o _EGG_file_][-P _number_of_CPUs_]_database.g__object(s)_
 
 == DESCRIPTION
 
-*[cmd]#g-egg#* converts the specified __object(s)__ from a BRL-CAD __database.g__ file to the __panda3d__ file format. The *[opt]#-x#* option specifies an RT debug flag and the *[opt]#-X#* option specifies an NMG debug flag. The *[opt]#-a#* , *[opt]#-r#* , and *[opt]#-n#* options specify tessellation tolerances. The *[opt]#-D#* option specifies a calculational distance tolerance (mm). Any two vertices that are less than this distance apart will be treated as the same vertex. The *[opt]#-v#* option requests verbose output, which goes to standard error. The *[opt]#-o#* option specifies the name of the file to receive the output (stdout is the default). *[opt]#-8#* option tells the facetizer to use the marching cubes algorithm. *[opt]#-9#* option tells the facetizer to use the "bottess" algorithm. The *[opt]#-P#* option specifies the number of CPU's to be used.
+[cmd]*g-egg* converts the specified __object(s)__ from a BRL-CAD __database.g__ file to the __panda3d__ file format. The [opt]*-x* option specifies an RT debug flag and the [opt]*-X* option specifies an NMG debug flag. The [opt]*-a*, [opt]*-r*, and [opt]*-n* options specify tessellation tolerances. The [opt]*-D* option specifies a calculational distance tolerance (mm). Any two vertices that are less than this distance apart will be treated as the same vertex. The [opt]*-v* option requests verbose output, which goes to standard error. The [opt]*-o* option specifies the name of the file to receive the output (stdout is the default). [opt]*-8* option tells the facetizer to use the marching cubes algorithm. [opt]*-9* option tells the facetizer to use the "bottess" algorithm. The [opt]*-P* option specifies the number of CPU's to be used.
 
 == EXAMPLE
 // <synopsis>

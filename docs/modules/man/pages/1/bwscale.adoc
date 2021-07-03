@@ -13,19 +13,19 @@ bwscale -
 
 == SYNOPSIS
 
-*[cmd]#bwscale#*  [-r] [-s [rep]_squareinsize_] [-w [rep]_in_width_] [-n [rep]_in_height_] [-S [rep]_squareoutsize_] [-W [rep]_out_width_] [-N [rep]_out_height_] [[rep]_infile.bw_] > [rep]_outfile.bw_
+*bwscale* [-r] [-s _squareinsize_] [-w _in_width_] [-n _in_height_] [-S _squareoutsize_] [-W _out_width_] [-N _out_height_] [_infile.bw_] > _outfile.bw_
 
 == DESCRIPTION
 
-*[cmd]#bwscale#* will take a black and white xref:man:5/bw.adoc[*bw*](5) format file of given dimensions and produce a larger or smaller scaled version. The *[opt]#-w#* and *[opt]#-n#* flags specify the input file width and number of scan lines in pixels; they can be set to the same value via *[opt]#-s.#* Similarly, the *[opt]#-W#* and *[opt]#-N#* flags specify the desired output file width and number of scan lines in pixels; they can be set to the same value via *[opt]#-S.#* Defaults of 512 are assumed for any unspecified dimensions.
+[cmd]*bwscale* will take a black and white xref:man:5/bw.adoc[*bw*(5)] format file of given dimensions and produce a larger or smaller scaled version. The [opt]*-w* and [opt]*-n* flags specify the input file width and number of scan lines in pixels; they can be set to the same value via [opt]*-s.* Similarly, the [opt]*-W* and [opt]*-N* flags specify the desired output file width and number of scan lines in pixels; they can be set to the same value via [opt]*-S.* Defaults of 512 are assumed for any unspecified dimensions.
 
 By default, the algorithm used is bilinear interpolation if scaling up, and a box filter of arbitrary size if scaling down.  For the box filter a "square pixel" assumption is made; that is, all whole and fractional input pixels falling into a rectangle the size of an output pixel contribute equally according to the fraction of the output pixel area they cover. When interpolating, the edge pixels are preserved, i.e., all of the interpolated pixels fall inside of the edges.  This can be a bit surprising when doubling the size of a file, for example, as only the edge pixels will fall at exactly the location of an output pixel. 
 
-Specifying the *[opt]#-r#* flag changes from bilinear interpolation to nearest neighbor interpolation, i.e., it enlarges the image by pixel replication.
+Specifying the [opt]*-r* flag changes from bilinear interpolation to nearest neighbor interpolation, i.e., it enlarges the image by pixel replication.
 
 == SEE ALSO
 
-xref:man:1/brlcad.adoc[*brlcad*](1), xref:man:1/bwcrop.adoc[*bwcrop*](1), xref:man:1/bwrect.adoc[*bwrect*](1), xref:man:5/bw.adoc[*bw*](5), xref:man:1/pixscale.adoc[*pixscale*](1)
+xref:man:1/brlcad.adoc[*brlcad*(1)], xref:man:1/bwcrop.adoc[*bwcrop*(1)], xref:man:1/bwrect.adoc[*bwrect*(1)], xref:man:5/bw.adoc[*bw*(5)], xref:man:1/pixscale.adoc[*pixscale*(1)]
 
 == BUGS
 

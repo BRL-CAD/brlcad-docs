@@ -11,19 +11,19 @@ fbed - frame buffer editor
 
 == SYNOPSIS
 
-*[cmd]#fbed#* [-pH]
+*fbed*[-pH]
 
 == DESCRIPTION
 
-*[cmd]#fbed#* is an editor for frame buffer images, designed to facilitate the manipulation of existing images for the preparation of presentation quality graphics.  Although it does have the potential to generate fairly complex images, it is meant mainly for touching up existing images; adding titles, captions or other labels; cutting and pasting of one or more images; and reducing images or portions thereof. *[cmd]#fbed#* uses the frame buffer library xref:man:3/libfb.adoc[*libfb*](3) and therefore is available on all graphics devices which are supported by this package.  On start up, the program always attempts to open the default frame buffer.  This device is specified by the frame buffer library, and is configurable on a per system basis.  Often the user will want to override this default by setting the environment variable [var]*FB_FILE* (see xref:man:1/brlcad.adoc[*brlcad*](1)). The *[opt]#-H#* option is for editing 1024x1024 or high resolution (__HIRES__) images;  the default is low resolution, 512x512 (__LORES__). The frame buffer's state can be toggled back and forth between `HIRES` and `LORES` at any time during execution of the program.
+[cmd]*fbed* is an editor for frame buffer images, designed to facilitate the manipulation of existing images for the preparation of presentation quality graphics.  Although it does have the potential to generate fairly complex images, it is meant mainly for touching up existing images; adding titles, captions or other labels; cutting and pasting of one or more images; and reducing images or portions thereof. [cmd]*fbed* uses the frame buffer library xref:man:3/libfb.adoc[*libfb*(3)] and therefore is available on all graphics devices which are supported by this package.  On start up, the program always attempts to open the default frame buffer.  This device is specified by the frame buffer library, and is configurable on a per system basis.  Often the user will want to override this default by setting the environment variable [var]`FB_FILE` (see xref:man:1/brlcad.adoc[*brlcad*(1)]). The [opt]*-H* option is for editing 1024x1024 or high resolution (__HIRES__) images;  the default is low resolution, 512x512 (__LORES__). The frame buffer's state can be toggled back and forth between `HIRES` and `LORES` at any time during execution of the program.
 
-The *[opt]#-p#*  option turns on the "pad" flag. 
+The [opt]*-p* option turns on the "pad" flag. 
 
-*[cmd]#fbed#* allows function-to-key bindings and macro definition facilities in a fashion similar to some of the more versatile EMACS-style screen editors, such as xref:man:1/jove.adoc[*jove*](1).
+[cmd]*fbed* allows function-to-key bindings and macro definition facilities in a fashion similar to some of the more versatile EMACS-style screen editors, such as xref:man:1/jove.adoc[*jove*(1)].
 
 _Cursor Movement_
 
-When *[cmd]#fbed#* is running on a graphics device, a cursor will appear on the screen. The position of the cursor points to the __current pixel__`$$.$$` 
+When [cmd]*fbed* is running on a graphics device, a cursor will appear on the screen. The position of the cursor points to the __current pixel__`$$.$$`
 
 _Terminal Display_
 
@@ -301,7 +301,7 @@ Startup configuration file
 
 == SEE ALSO
 
-xref:man:1/fb-rle.adoc[*fb-rle*](1), xref:man:1/rle-fb.adoc[*rle-fb*](1), xref:man:3/libfb.adoc[*libfb*](3)
+xref:man:1/fb-rle.adoc[*fb-rle*(1)], xref:man:1/rle-fb.adoc[*rle-fb*(1)], xref:man:3/libfb.adoc[*libfb*(3)]
 
 == KNOWN BUGS
 

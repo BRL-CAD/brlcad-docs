@@ -13,7 +13,7 @@ postscript - Temporarily attaches the Postscript display manager and outputs
 
 == SYNOPSIS
 
-*[cmd]#postscript#*  [-f [rep]_font_] [-t [rep]_title_] [-c [rep]_creator_] [-s [rep]_size_in_inches_] [-l [rep]_line_width_] {[rep]_output_file_}
+*postscript* [-f _font_] [-t _title_] [-c _creator_] [-s _size_in_inches_] [-l _line_width_] {_output_file_}
 
 == DESCRIPTION
 
@@ -21,18 +21,18 @@ Temporarily attaches the _Postscript_ display manager and outputs the current MG
 
 == EXAMPLES
 
-The first example shows the use of the *[cmd]#postscript#*  command to place a _PostScript_ version of the current MGED display in a specified file and give it a particular title.  The 	second example is much like the first except that a line width is specified and the title and output file 	names are different. 
+The first example shows the use of the [cmd]*postscript* command to place a _PostScript_ version of the current MGED display in a specified file and give it a particular title.  The 	second example is much like the first except that a line width is specified and the title and output file 	names are different. 
 
 .Place a _PostScript_ version of the current MGED display in a specified file.
 ====
-[prompt]#mged># [ui]`postscript -t "Test Title" test.ps` 
+[prompt]#mged>#[ui]`postscript -t "Test Title" test.ps`
 
 Places a _PostScript_ version of the current MGED display in a file named__test.ps__ and titles it Test Title. 
 ====
 
 .Specify the line width of a _PostScript_ version of the current MGED display in a 	specified file.
 ====
-[prompt]#mged># [ui]`postscript -l 10 -t "Test Fat Lines" fat_lines.ps` 
+[prompt]#mged>#[ui]`postscript -l 10 -t "Test Fat Lines" fat_lines.ps`
 
 Places a _PostScript_ version of the current MGED display with fat lines in a file 	named _fat_lines.ps_ and titles it Test Fat Lines. 
 ====

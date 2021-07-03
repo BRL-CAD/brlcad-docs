@@ -14,7 +14,7 @@ delete all or part of the list.
 
 == SYNOPSIS
 
-*[cmd]#vdraw#*  {[rep]_command_} [[rep]_args_]
+*vdraw* {_command_} [_args_]
 
 == DESCRIPTION
 
@@ -56,10 +56,10 @@ Allows drawing of lines and polygons (optionally with per vertex normals) in the
 |Vertex normal (for shading interpolation)
 |===
 
-The *[cmd]#vdraw#*  commands are as follows: 
+The [cmd]*vdraw* commands are as follows: 
 
 * open -- with no arguments, this returns 1 if there is a open list; 0 otherwise. If an argument is supplied, a command list is opened with the provided name. 
-* write-- with arguments of __i c x y z__, the MGED drawing command *[cmd]#\#c#*  is placed in the _ith_ position of the command list with the vertex as (__x y z__). 
+* write-- with arguments of __i c x y z__, the MGED drawing command [cmd]*\#c* is placed in the _ith_ position of the command list with the vertex as (__x y z__). 
 +
 -- with arguments of __next c x y z__, the command is placed at the end of the list. 
 * insert -- with arguments of__i c x y z__, the MGED drawing command _\#c_ is inserted just before the __ith__position of the command list. 
@@ -87,60 +87,60 @@ All textual arguments may be abbreviated by their first letter.
 
 == EXAMPLES
 
-The eight examples show the use of the *[cmd]#vdraw#*  command with four different commands and various arguments to build a list of commands to draw a square. 
+The eight examples show the use of the [cmd]*vdraw* command with four different commands and various arguments to build a list of commands to draw a square. 
 
 .Open a specified list.
 ====
-[prompt]#mged># [ui]`vdraw open square` 
+[prompt]#mged>#[ui]`vdraw open square`
 
 Opens a list named __square__. 
 ====
 
 .Set the color.
 ====
-[prompt]#mged># [ui]`vdraw params color ff00` 
+[prompt]#mged>#[ui]`vdraw params color ff00`
 
 Sets the color to green. 
 ====
 
 .Start a line at the origin.
 ====
-[prompt]#mged># [ui]`vdraw write next 0 0 0 0` 
+[prompt]#mged>#[ui]`vdraw write next 0 0 0 0`
 
 Starts a line at the origin. 
 ====
 
 .Draw a line from the previous point to a specified point.
 ====
-[prompt]#mged># [ui]`vdraw write next 1 100 0 0` 
+[prompt]#mged>#[ui]`vdraw write next 1 100 0 0`
 
 Draws a line from the origin to (100 0 0). 
 ====
 
 .Draw a line from the previous point to a specified point.
 ====
-[prompt]#mged># [ui]`vdraw write next 1 100 100 0` 
+[prompt]#mged>#[ui]`vdraw write next 1 100 100 0`
 
 Draws a line from the previous point to (100 100 0). 
 ====
 
 .Draw a line from the previous point to a specified point.
 ====
-[prompt]#mged># [ui]`vdraw write next 1 0 100 0` 
+[prompt]#mged>#[ui]`vdraw write next 1 0 100 0`
 
 Draws a line from the previous point to (0 100 0). 
 ====
 
 .Draw a line from the previous point to the origin.
 ====
-[prompt]#mged># [ui]`vdraw write next 1 0 0 0` 
+[prompt]#mged>#[ui]`vdraw write next 1 0 0 0`
 
 Draws a line from the previous point to the origin. 
 ====
 
 .Send the command list to the display manager.
 ====
-[prompt]#mged># [ui]`vdraw send` 
+[prompt]#mged>#[ui]`vdraw send`
 
 Draws the square in the MGED display. 
 ====

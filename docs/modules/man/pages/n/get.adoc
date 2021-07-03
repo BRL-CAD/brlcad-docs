@@ -12,7 +12,7 @@ get -  Used to retrieve parameter values of database objects.
 
 == SYNOPSIS
 
-*[cmd]#get#*  {[rep]_object_name_pattern_} [[rep]_param_name_]
+*get* {_object_name_pattern_} [_param_name_]
 
 == DESCRIPTION
 
@@ -22,9 +22,9 @@ Low level command for extracting specific parameter information from geometry ob
 
 .Elliptical Torus 'r' parameter extraction
 ====
-Use the *[cmd]#get#*  command to exctract the r parameter value from an elliptical torus. 
+Use the [cmd]*get* command to exctract the r parameter value from an elliptical torus. 
 
-[prompt]#mged># [ui]`make eto.s eto` [prompt]#mged># [ui]`l eto.s` 
+[prompt]#mged>#[ui]`make eto.s eto`[prompt]#mged>#[ui]`l eto.s`
 
 ....
 
@@ -34,7 +34,7 @@ eto.s:  Elliptical Torus (ETO)
       C=(200, 0, 200) mag=282.843
       r=800
       d=100
-....[prompt]#mged># [ui]`get eto.s r` 
+....[prompt]#mged>#[ui]`get eto.s r`
 
 ....
 
@@ -44,7 +44,7 @@ eto.s:  Elliptical Torus (ETO)
 
 == SEE ALSO
 
-xref:man:n/attr.adoc[*attr*](n).
+xref:man:n/attr.adoc[*attr*(n)].
 
 == AUTHOR
 

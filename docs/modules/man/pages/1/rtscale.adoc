@@ -11,19 +11,19 @@ rtscale -  supplements rthide output by plotting a scale to indicate drawing siz
 
 == SYNOPSIS
 
-*[cmd]#rtscale#* [rep]_width_[rep]_units_[rep]_intervals_[rep]_file.log_[rep]_optional_string_>[rep]_scale.plot3_
+*rtscale*_width__units__intervals__file.log__optional_string_>_scale.plot3_
 
 == DESCRIPTION
 
-*[cmd]#rtscale#* supplements the use of _rthide_ by generating a UNIX-Plot of a scale that permits the accurate measuring of _rthide_ plots. _rthide_ provides a hidden-line-removed plot of the geometry, and *[cmd]#rtscale#*  produces an identical plot file containing just a scale.   The two files can then be concatenated making sure that the scale precedes the _rthide_ file to produce a finished plot with scale.
+[cmd]*rtscale* supplements the use of _rthide_ by generating a UNIX-Plot of a scale that permits the accurate measuring of _rthide_ plots. _rthide_ provides a hidden-line-removed plot of the geometry, and [cmd]*rtscale* produces an identical plot file containing just a scale.   The two files can then be concatenated making sure that the scale precedes the _rthide_ file to produce a finished plot with scale.
 
-*[cmd]#Rtscale#*  operates on the RT log file from the _rthide_ run and produces a UNIX-Plot file of a scale with desired units and number of tick marks.  The scale's width is given in model units.  A descriptive string may be added.  The scale and the strings are plotted in the lower left corner of the image.
+[cmd]*Rtscale* operates on the RT log file from the _rthide_ run and produces a UNIX-Plot file of a scale with desired units and number of tick marks.  The scale's width is given in model units.  A descriptive string may be added.  The scale and the strings are plotted in the lower left corner of the image.
 
 The inputs required are: __width,__ which specifies the length of the scale in model space, __units,__ which may be any units (metric or English), __intervals,__ which allows the user to specifies the number of tickmarks on the scale. __filename,__ which names the  RT log file that is used to calculate the view2model matrix for the raytraced. A view such as azimuth 45, elevation 45, is useful for measuring diagonal dimensions of the geometry. Optionally, a __descriptive string__ may be given to identify the view or the model.
 
 == EXAMPLE
 
-This section shows the ordinary usage of *[cmd]#rtscale#* .  For example:
+This section shows the ordinary usage of [cmd]*rtscale*.  For example:
 
 ....
 
@@ -55,7 +55,7 @@ plot3rot -a# -e# -g model.w.scale.plot3 | plot3-fb
 
 == SEE ALSO
 
-xref:man:1/mged.adoc[*mged*](1), xref:man:1/plot3rot.adoc[*plot3rot*](1), xref:man:1/rt.adoc[*rt*](1), xref:man:1/rthide.adoc[*rthide*](1), xref:man:3/librt.adoc[*librt*](3), xref:man:3/libplot3.adoc[*libplot3*](3), xref:man:5/plot3.adoc[*plot3*](5), xref:man:5V/ray.adoc[*ray*](5V)
+xref:man:1/mged.adoc[*mged*(1)], xref:man:1/plot3rot.adoc[*plot3rot*(1)], xref:man:1/rt.adoc[*rt*(1)], xref:man:1/rthide.adoc[*rthide*(1)], xref:man:3/librt.adoc[*librt*(3)], xref:man:3/libplot3.adoc[*libplot3*(3)], xref:man:5/plot3.adoc[*plot3*(5)], xref:man:5V/ray.adoc[*ray*(5V)]
 
 == DIAGNOSTICS
 

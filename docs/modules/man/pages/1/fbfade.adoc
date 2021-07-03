@@ -11,13 +11,13 @@ fbfade - fade a frame buffer image in or out
 
 == SYNOPSIS
 
-*[cmd]#fbfade#*  [-H] [-f[rep]_input_image_name_] [-s[rep]_input_square_size_] [-w[rep]_input_width_]  +
-     [-n[rep]_input_height_] [-S[rep]_output_square_size_] [-W[rep]_output_width_] [-N[rep]_output_height_]  +
-     [[-F][rep]_output_frame_buffer_name_]
+*fbfade* [-H] [-f_input_image_name_] [-s_input_square_size_] [-w_input_width_]  +
+     [-n_input_height_] [-S_output_square_size_] [-W_output_width_] [-N_output_height_]  +
+     [[-F]_output_frame_buffer_name_]
 
 == DESCRIPTION
 
-*[cmd]#fbfade#* gradually displays an image on a frame buffer, one randomly chosen pixel at a time.
+[cmd]*fbfade* gradually displays an image on a frame buffer, one randomly chosen pixel at a time.
 
 === Options
 
@@ -25,7 +25,7 @@ fbfade - fade a frame buffer image in or out
 (high resolution) Assumes 1024 by 1024 pixels for default input image size instead of 512 by 512. Explicitly-specified sizes override the default, and if actual input image size is smaller than requested, the actual size will be used. If output frame buffer size is not specified, the revised input size will be requested for output. If actual output frame buffer size is greater than requested, only the lower-left portion of the frame buffer will be used. Actual sizes depend on details of specific frame buffers.
 
 -f _input_image_name_::
-Inputs the image to be displayed from the specified frame buffer or xref:man:5/pix.adoc[*pix*](5) file, instead of using pure background (which fades out the image already on the output frame buffer).
+Inputs the image to be displayed from the specified frame buffer or xref:man:5/pix.adoc[*pix*(5)] file, instead of using pure background (which fades out the image already on the output frame buffer).
 
 -s__input_square_size__::
 Specifies input image width and height.
@@ -50,7 +50,7 @@ Outputs to the specified frame buffer instead of the one specified by the __FB_F
 
 == CAVEAT
 
-*[cmd]#fbfade#* works best in conjunction with a frame buffer having very fast access to pixels.
+[cmd]*fbfade* works best in conjunction with a frame buffer having very fast access to pixels.
 
 == EXAMPLE
 
@@ -70,7 +70,7 @@ ____
 
 == SEE ALSO
 
-xref:man:3/libfb.adoc[*libfb*](3), xref:man:5/pix.adoc[*pix*](5).
+xref:man:3/libfb.adoc[*libfb*(3)], xref:man:5/pix.adoc[*pix*(5)].
 
 == DIAGNOSTICS
 

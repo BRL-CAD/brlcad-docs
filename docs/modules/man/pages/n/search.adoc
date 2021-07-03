@@ -13,13 +13,13 @@ search -
 
 == SYNOPSIS
 
-*[cmd]#search#*  [[rep]_options_]... [[rep]_path1_] [[rep]_path2_]... [[rep]_search plan_]...
+*search* [_options_]... [_path1_] [_path2_]... [_search plan_]...
 
 == DESCRIPTION
 
-*[cmd]#search#*  works in a fashion similar to Unix-style find commands (internally it is based on OpenBSD's and NetBSD's find code) but searches _objects_ in the current open database in MGED rather than files in a file system. One or more search paths are specified for searching, and a search plan specifies filters through which objects in the search paths are tested.  The names of objects satisfying all of the filters are returned as the command output. 
+[cmd]*search* works in a fashion similar to Unix-style find commands (internally it is based on OpenBSD's and NetBSD's find code) but searches _objects_ in the current open database in MGED rather than files in a file system. One or more search paths are specified for searching, and a search plan specifies filters through which objects in the search paths are tested.  The names of objects satisfying all of the filters are returned as the command output. 
 
-Search Inputs are specified using <<_primitives,PATHS>> and matching of objects is done according to a search plan built using boolean expressions constructed using the <<_primitives,PRIMITIVES>> and <<_operators,OPERATORS>> described below. Note that <<_search_options,OPTIONS>> are not used to form search plans - unlike the search plan they are specified _before_ the paths and are used to control settings that apply globally to *[cmd]#search#* 's behavior and reporting during the execution of the search. 
+Search Inputs are specified using <<_primitives,PATHS>> and matching of objects is done according to a search plan built using boolean expressions constructed using the <<_primitives,PRIMITIVES>> and <<_operators,OPERATORS>> described below. Note that <<_search_options,OPTIONS>> are not used to form search plans - unlike the search plan they are specified _before_ the paths and are used to control settings that apply globally to [cmd]*search*'s behavior and reporting during the execution of the search. 
 
 The results of the search command will be sorted according to David Koelle's "alphanum" algorithm, which is basically a human-intuitive ordering for strings with letters and numbers.  For example, a result returning d1.r, d10.r and d2.r will be sorted as: 
 
@@ -100,7 +100,7 @@ Returns TRUE if the object has attribute __attrib__. If a specific value is also
 *-bool*__u/+/-__::
 True if the object in question is being combined into the local hierarchy with the specified boolean operation.  Recognized types are Union (u), Intersection (+), and Subtraction (-). 
 +
-Note that by convention, top level objects are implicitly "unioned" into the database. To see only objects that have been unioned into a comb tree without returning the top level comb object as well, use the *[opt]#-mindepth#*  option to filter for returns deeper in the tree. 
+Note that by convention, top level objects are implicitly "unioned" into the database. To see only objects that have been unioned into a comb tree without returning the top level comb object as well, use the [opt]*-mindepth* option to filter for returns deeper in the tree. 
 
 *-depth*__[>/</=]depth__::
 True if the depth of the object in the tree is within the range specified. 
@@ -129,9 +129,9 @@ True if the object name (not the full path, just the name) matches __pattern__. 
 True if the object is a combination and has _n_ nodes.  This option also supports supplying <, >, <=, and >= in front of the number to support returning true for objects with node counts less than, greater than, less than or equal to, and greater than or equal to __n__. 
 
 *-param*__param[>/</=val]__::
-Returns TRUE if the object has parameter __param__.  Unlike *[opt]#-attr#* , which looks only at general attributes stored as metadata on objects, the *[opt]#-param#* 	    filters based only on the internal geometric object's characteristics. If a specific value is also supplied for the parameter with an equal condition, TRUE is returned if the object both has the parameter and the parameter is set to value _val._  In the case of >, <, >=, and <= there are two possibilities - if _val_ is numerical a numerical comparison is performed, otherwise a string comparison is performed. Both _attrib_ and _val_	    are treated as patterns under shell pattern matching rules when a string comparison is performed, but in numerical mode only the parameter name is pattern matched. 
+Returns TRUE if the object has parameter __param__.  Unlike [opt]*-attr*, which looks only at general attributes stored as metadata on objects, the [opt]*-param*	    filters based only on the internal geometric object's characteristics. If a specific value is also supplied for the parameter with an equal condition, TRUE is returned if the object both has the parameter and the parameter is set to value _val._  In the case of >, <, >=, and <= there are two possibilities - if _val_ is numerical a numerical comparison is performed, otherwise a string comparison is performed. Both _attrib_ and _val_	    are treated as patterns under shell pattern matching rules when a string comparison is performed, but in numerical mode only the parameter name is pattern matched. 
 +
-The following table outlines what parameters are visible to the *[opt]#-param#*  option.  Because BRL-CAD uses the same internal containers for some types, some parameters will be present even when they do not make sense for the specific subtype.  Examples include using arb8's container for arb4 and tgc for rcc.  Note:  there are also a number of primitives whose parameters are not exposed in a way that that *[opt]#-param#*  can access them: arbn, ars, brep, bspline, dsp, metaball, nmg, pipe, pnts, and poly. 
+The following table outlines what parameters are visible to the [opt]*-param* option.  Because BRL-CAD uses the same internal containers for some types, some parameters will be present even when they do not make sense for the specific subtype.  Examples include using arb8's container for arb4 and tgc for rcc.  Note:  there are also a number of primitives whose parameters are not exposed in a way that that [opt]*-param* can access them: arbn, ars, brep, bspline, dsp, metaball, nmg, pipe, pnts, and poly. 
 +
 
 .Primitive Parameters
@@ -314,7 +314,7 @@ Returns TRUE if the type of the object matches _pattern._	    Pattern evaluation
 |===
 +
 +
-As a convenience, the *[opt]#-type#*  option will also recognize the pattern __shape__, which will match any object that is _not_ a combination, region, annotation, constraint, grip or joint. 
+As a convenience, the [opt]*-type* option will also recognize the pattern __shape__, which will match any object that is _not_ a combination, region, annotation, constraint, grip or joint. 
 +
 In order to identify shapes defined as implicit solids using the "plate mode" methodology, the pattern _plate_ will match any object whose internal definition indiciates it is of that type.  Currently such objects are possible with "bot" and "brep" objects. 
 +
@@ -358,153 +358,153 @@ The following are run from the MGED command prompt:
 
 .Shell Globbing Based Pattern Match of Object Name
 ====
-[ui]`search -name *.s` 
+[ui]`search -name *.s`
 
 Find all objects in the database with names ending in ".s". 
 ====
 
 .Full Path Instance Reporting of Search Results
 ====
-[ui]`search / -name *.s` 
+[ui]`search / -name *.s`
 
 Find all instances of objects in the database with names ending in ".s". 
 ====
 
 .Name Pattern Matching at Depth >= 3
 ====
-[ui]`search / -name *.s -mindepth 3` 
+[ui]`search / -name *.s -mindepth 3`
 
 Find all instances of objects in the database with names ending in ".s" that are 3 or more levels deep in their tree. 
 ====
 
 .Finding all Objects in a Subtree
 ====
-[ui]`search group1 -name *.r` 
+[ui]`search group1 -name *.r`
 
 Find all objects within group1 in the database that have names ending in ".r" Note that this will return a list of objects, not the full path information associated with each instance of the objects matched. 
 ====
 
 .Finding all Instances of Objects in a Subtree
 ====
-[ui]`search /group1 -name *.r` 
+[ui]`search /group1 -name *.r`
 
 Find all instances of objects within group1 in the database that have names ending in ".r" Note that, unlike the previous example,  this will return the full path information associated with each instance of the objects matched. 
 ====
 
 .Finding all Instances of a Sub-Path
 ====
-[ui]`search / -path \*r245` 
+[ui]`search / -path \*r245`
 
 Find all paths which end with the object r245.  Note that all paths generated by objects _below_ r245 will not match this pattern.  To find all paths with r245 in them, use the following pattern: 
 
-[ui]`search / -path \*r245\*` 
+[ui]`search / -path \*r245\*`
 
 If you need to match an object path that is potentially ambiguous (say, r1 when there are lots of regions that match the r1* globbing rule) add the trailing slash to the expression: 
 
-[ui]`search / -path \*r1\/\*` 
+[ui]`search / -path \*r1\/\*`
 ====
 
 .Searching by Type
 ====
-[ui]`search . -type eto` 
+[ui]`search . -type eto`
 
 Find all objects in the database that are elliptical tori.  Note that a path of "." produces the same search behavior as the default behavior for an unspecified path. 
 ====
 
 .Finding all Instances of Nested Regions
 ====
-[ui]`search / -type region -below -type region` 
+[ui]`search / -type region -below -type region`
 
 Find all instances of objects of type region that contain a region.  This searches for regions being used within the subtrees of other regions, which is considered bad practice in BRL-CAD. 
 ====
 
 .Finding all Assemblies
 ====
-[ui]`search / -type comb ! -below -type region ! -type region` 
+[ui]`search / -type comb ! -below -type region ! -type region`
 
 Find all instances of objects of type combination that are not below regions and are not themselves regions.  These are regarded as "assemblies" in BRL-CAD. 
 ====
 
 .Finding all Combinations below Regions
 ====
-[ui]`search / -type comb -below -type region ! -type region` 
+[ui]`search / -type comb -below -type region ! -type region`
 
 Find all instances of combinations that are not regions and do not contain regions. 
 ====
 
 .Finding all Empty Combinations
 ====
-[ui]`search -nnodes 0` 
+[ui]`search -nnodes 0`
 
 Find all combinations containing zero nodes. 
 ====
 
 .Finding all Combinations With 10 or More Nodes
 ====
-[ui]`search -nnodes >=10` 
+[ui]`search -nnodes >=10`
 
 Find all combinations with 10 or more nodes. 
 ====
 
 .Finding all Intersected Objects
 ====
-[ui]`search -bool +` 
+[ui]`search -bool +`
 
 Find all objects that are combined into one or more trees using the Intersect boolean operation somewhere in the .g file. This approach only identifies which objects are intersected somewhere in the tree, not where specifically they are intersected. 
 ====
 
 .Finding all Instances of Object Intersection
 ====
-[ui]`search / -bool +` 
+[ui]`search / -bool +`
 
 Find all boolean operations that use the Intersect boolean operation and report the full paths to those objects. This approach reports all individual cases where an object has been combined into a hierarchy by intersection, not just which objects have been included with the intersection operator. 
 ====
 
 .Finding all Unions Within a Comb's Tree
 ====
-[ui]`search /all.g -mindepth 1 -bool u` 
+[ui]`search /all.g -mindepth 1 -bool u`
 
 Find all unions within the all.g tree hierarchy, excluding all.g itself. 
 ====
 
 .Finding all Non-Subtracted Regions below Regions
 ====
-[ui]`search / -type region -below -type region ! -bool -` 
+[ui]`search / -type region -below -type region ! -bool -`
 
 A more nuanced variation on finding nested regions that adds a check to make sure that the regions aren't being subtracted.  While not ideal, using a subtraction does avoid the modeling error of two volumes claiming the three dimensional space and is arguably acceptable - the below command finds nested region instances that are considered errors. 
 ====
 
 .Finding all Regions with RGB color 180 180 180
 ====
-[ui]`search -type region ( -attr color=180/180/180 -or -attr rgb=180/180/180 )` 
+[ui]`search -type region ( -attr color=180/180/180 -or -attr rgb=180/180/180 )`
 
 Prints all regions with their color attribute set to 180/180/180.  Some files may use _rgb_ instead of color, so to be comprehensive an _-or_ option is used to check both possibilities. 
 ====
 
 .Find All Combs Containing At Least One of Two Objects (dbfind)
 ====
-[ui]`search |. ( -depth 0 -above=1 -name obj1 ) -or ( -depth 0 -above=1 -name obj2 )` 
+[ui]`search |. ( -depth 0 -above=1 -name obj1 ) -or ( -depth 0 -above=1 -name obj2 )`
 
 Prints all combs immediately above either obj1 or obj2.  This more or less mimics the results of the dbfind command, although it will be somewhat slower (noticably so on large databases.) 
 ====
 
 .Finding all regions containing an intersection of obj2
 ====
-[ui]`search |/ -maxdepth 0 -type region -above ( -name obj2 -bool + )` 
+[ui]`search |/ -maxdepth 0 -type region -above ( -name obj2 -bool + )`
 
 Prints all regions immediately above obj2 where obj2 is included using an intersection operation. 
 ====
 
 .Finding all Plate-Mode BoT Objects
 ====
-[ui]`search -type bot -param mode=plate` 
+[ui]`search -type bot -param mode=plate`
 
 Prints all BoT primitives using "plate" mode, instead of the closed-mesh-requiring "volume" mode. 
 ====
 
 .Verbose Reporting of Search Information 
 ====
-[prompt]#mged># [ui]`search -v /all.g ! -type comb` 
+[prompt]#mged>#[ui]`search -v /all.g ! -type comb`
 
 ....
 
@@ -519,9 +519,9 @@ Prints all BoT primitives using "plate" mode, instead of the closed-mesh-requiri
 Report all paths ending in an object that is not a comb using "verbose" output style. The verbose form of path reporting reports not just the path, but the boolean operator used at each setp along the path and the primitive type of each object along the path. 
 ====
 
-.Operating on Sets of *[cmd]#search#*  Results
+.Operating on Sets of [cmd]*search* Results
 ====
-There are two available methods for working with sets of *[cmd]#search#*  results.  The first is the *[opt]#exec#*  option, which is used in the following example to search for all regions below subtractions or intersections in the m35.g example model in BRL-CAD and draw the objects' wireframes in the display manager: 
+There are two available methods for working with sets of [cmd]*search* results.  The first is the [opt]*exec* option, which is used in the following example to search for all regions below subtractions or intersections in the m35.g example model in BRL-CAD and draw the objects' wireframes in the display manager: 
 
 ....
 

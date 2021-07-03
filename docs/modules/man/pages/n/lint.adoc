@@ -12,7 +12,7 @@ lint - Detect and report problems with subsets or all of a .g database.
 
 == SYNOPSIS
 
-*[cmd]#lint#*  [-h] [-C] [-M] [-I] [-F "filters"] [[rep]_ObjectName_]
+*lint* [-h] [-C] [-M] [-I] [-F "filters"] [_ObjectName_]
 
 == DESCRIPTION
 
@@ -20,26 +20,26 @@ The 'lint' command analyzes the currently open geometry database (or a subset of
 
 == OPTIONS
 
-*[opt]#-h#* ::
+*-h*::
 Print help message. 
 
-*[opt]#-C#* , *[opt]#--cyclic#* ::
+*-C*, *--cyclic*::
 Check for full paths that are cyclic - i.e. a situation where a high level object incorporates in its definition tree a reference to itself. Such definitions are always considered invalid, and are sometimes problematic for tools working with geometry hierarchy. 
 
-*[opt]#-M#* , *[opt]#--missing#* ::
+*-M*, *--missing*::
 Check for references to objects or files that are missing (not present in the database or on the file system.)  Primarily this is a check for comb objects referring to missing objects, but it will also check for and report invalid object and file references in extrude and dsp primitives. 
 
-*[opt]#-I#* , *[opt]#--invalid#* ::
-Check for shapes in the database that do not satisfy one or more properties required for them to be valid definitions, where correcting the problem requires a change to the object's definition.  (As of this writing the only implemented check is for BoT object solidity, but many more are possible and planned.) (Objects invalid due to missing objects are potentially valid without the necessity of changing the object's own definition - e.g. the missing object/file can be added. That category of error can be searched for with the *[opt]#-M#*  check.) 
+*-I*, *--invalid*::
+Check for shapes in the database that do not satisfy one or more properties required for them to be valid definitions, where correcting the problem requires a change to the object's definition.  (As of this writing the only implemented check is for BoT object solidity, but many more are possible and planned.) (Objects invalid due to missing objects are potentially valid without the necessity of changing the object's own definition - e.g. the missing object/file can be added. That category of error can be searched for with the [opt]*-M* check.) 
 
-*[opt]#-F#* , *[opt]#--filter#* ::
+*-F*, *--filter*::
 Apply search command style filters to the set of objects to be tested.  Allows, (for example) a user to test only brep objects and not bot objects or only objects matching a particular name pattern.  Does not impact the checks for missing or cylic geometry - the underlying search mechanism assumes inputs do not have those particular categories of problem and thus can't be reliably applied in those cases. 
 
 == EXAMPLES
 
 .Examine entire database for all defect categories
 ====
-[prompt]#mged># [ui]`lint` 
+[prompt]#mged>#[ui]`lint`
 
 ....
 
@@ -61,7 +61,7 @@ Found invalid objects:
 
 .Check the validity of a single geometry object
 ====
-[prompt]#mged># [ui]`lint -I nonsolid.bot` 
+[prompt]#mged>#[ui]`lint -I nonsolid.bot`
 
 ....
 
@@ -73,7 +73,7 @@ Found invalid objects:
 
 .Examine all non-BoT objects in the database matching the name pattern "*_1.*" for invalidity
 ====
-[prompt]#mged># [ui]`lint -F "! -type bot -name *_1.*"` 
+[prompt]#mged>#[ui]`lint -F "! -type bot -name *_1.*"`
 
 ....
 

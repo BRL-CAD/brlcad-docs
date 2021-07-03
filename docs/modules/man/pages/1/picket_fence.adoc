@@ -13,25 +13,25 @@ picket_fence -
 
 == SYNOPSIS
 
-*[cmd]#picket_fence#*  [[rep]_filename_] [[rep]_prefix_] [[rep]_height_] [[rep]_spacing_] [[rep]_x0_] [[rep]_y0_] [[rep]_z0_] []... [[rep]_xn_] [[rep]_yn_] [[rep]_zn_] [-r]
+*picket_fence* [_filename_] [_prefix_] [_height_] [_spacing_] [_x0_] [_y0_] [_z0_] []... [_xn_] [_yn_] [_zn_] [-r]
 
 == DESCRIPTION
 
-*[cmd]#picket_fence#*  creates a geometry file in _filename_ of a picket fence.  All  parameters for the fence are in mm.  If more than two points are specified, it will generate a fence with multiple sections connecting the points.  Parts of the fence are created starting at the origin.  The two backing boards are created in the negative x halfspace.  The pickets are created in the positive x halfspace and translated down the y-axis to their proper positions.  The entire segment is then rotated and translated to the position specified by the user.  To create a box of fence with the pickets on the outside, the points must be specified in a counter-clockwise order.  Parts of the model are named according to the format 
+[cmd]*picket_fence* creates a geometry file in _filename_ of a picket fence.  All  parameters for the fence are in mm.  If more than two points are specified, it will generate a fence with multiple sections connecting the points.  Parts of the fence are created starting at the origin.  The two backing boards are created in the negative x halfspace.  The pickets are created in the positive x halfspace and translated down the y-axis to their proper positions.  The entire segment is then rotated and translated to the position specified by the user.  To create a box of fence with the pickets on the outside, the points must be specified in a counter-clockwise order.  Parts of the model are named according to the format 
 
 ....
 
 <prefix><partname><sec_name><[>part_num<].<obj_type>
-.... The _<prefix>_ above is the second argument to the program.  The _spacing_ parameter specifies the amount of space (in mm) between pickets.  The *[cmd]#-r#*  option specifies round fronts for the pickets. 
+.... The _<prefix>_ above is the second argument to the program.  The _spacing_ parameter specifies the amount of space (in mm) between pickets.  The [cmd]*-r* option specifies round fronts for the pickets. 
 
 == EXAMPLES
 
-.*[cmd]#picket_fence#*  Example
+.[cmd]*picket_fence* Example
 ====
-[ui]`picket_fence fence.g Imy 2000 15 0 0 0 100 6000 0` 
+[ui]`picket_fence fence.g Imy 2000 15 0 0 0 100 6000 0`
 ====
 
-Creates an example fence two meters high and six meters long with fifteen millimeter spaces between the pickets.  "Imy" will be used as a name prefix for the *[cmd]#mged#*  objects. The fence will be started at the origin and be stretched out to (100,6000,0). 
+Creates an example fence two meters high and six meters long with fifteen millimeter spaces between the pickets.  "Imy" will be used as a name prefix for the [cmd]*mged* objects. The fence will be started at the origin and be stretched out to (100,6000,0). 
 
 == AUTHOR
 

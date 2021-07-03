@@ -11,11 +11,11 @@ asc-nmg - ascii-to-NMG converter
 
 == SYNOPSIS
 
-*[cmd]#asc-nmg#* [rep]_ascii_file_[rep]_nmg.g_
+*asc-nmg*_ascii_file__nmg.g_
 
 == DESCRIPTION
 
-*[cmd]#asc-nmg#* converts the specified __ascii_file__ (not a .asc geometry database) to a binary BRL-CAD __nmg.g__ geometry database file containing NMG objects. The __ascii_file__ is expected to contain lines of the following forms:
+[cmd]*asc-nmg* converts the specified __ascii_file__ (not a .asc geometry database) to a binary BRL-CAD __nmg.g__ geometry database file containing NMG objects. The __ascii_file__ is expected to contain lines of the following forms:
 
 To start a new outer loop for a face:
 
@@ -49,7 +49,7 @@ To extrude a face:
 
 where x, y, and z compose the extrusion vector for the face.
 
-If an extrusion vector is specified, then the first face in the NMG objects list of faces will be extruded. This is intended for cases where only one face is described and then extruded to form a solid. Supplying an extrusion vector when more than one face is described may produce erroneous results. A solid may be built by extruding a face or by building enough faces to produce a closed shell. Each execution of *[cmd]#asc-nmg#* will produce a single NMG object.
+If an extrusion vector is specified, then the first face in the NMG objects list of faces will be extruded. This is intended for cases where only one face is described and then extruded to form a solid. Supplying an extrusion vector when more than one face is described may produce erroneous results. A solid may be built by extruding a face or by building enough faces to produce a closed shell. Each execution of [cmd]*asc-nmg* will produce a single NMG object.
 
 == EXAMPLE
 

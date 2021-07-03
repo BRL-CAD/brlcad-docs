@@ -11,7 +11,7 @@ rtarea - Calculate exposed, presented and centers of surface areas (MGED Command
 
 == SYNOPSIS
 
-*[cmd]#rtarea#*  [[rep]_options_]...
+*rtarea* [_options_]...
 
 == DESCRIPTION
 
@@ -119,77 +119,77 @@ When reporting the presented area of the group, there is a subtle point - rtarea
 
 It should be noted that rtarea only counts surfaces with a surface normal that has a component looking back in the direction of the ray.  So, for example, a cube with only one face looking "back toward" the ray will not report area from other faces as "presented", since their surface normals will indicate they are not surfaces being presented to the ray. 
 
-WARNING: _Rtarea_ may not correctly report area or center when instancing is done at the group level. Using *[cmd]#xpush#* can be a workaround for this problem. 
+WARNING: _Rtarea_ may not correctly report area or center when instancing is done at the group level. Using [cmd]*xpush* can be a workaround for this problem. 
 
 == OPTIONS
 
-*[opt]#-s##* ::
+*-s#*::
 Specifies the number of rays to fire in the X and Y directions on a square grid. The default size is 512 pixels. 
 
-*[opt]#-a##* ::
+*-a#*::
 Selects auto-sizing, and gives the view azimuth in degrees. Used with -e option. The default is the current display azimuth. 
 
-*[opt]#-e##* ::
+*-e#*::
 Selects auto-sizing, and gives the view elevation in degrees. Used with -a option. The default is the current display elevation. 
 
-*[opt]#-g##* ::
+*-g#*::
 Is used to set the grid cell width, in millimeters. Ordinarily, the cell width is computed by dividing the view size by the number of pixels of width, so this option need not be used. To obtain exactly 1 inch ray spacing, specify -g25.4.  If the grid cell width is specified and the grid cell height is not specified, the grid cell height defaults to be the same as the width. 
 
-*[opt]#-G##* ::
+*-G#*::
 Sets the grid cell height, in millimeters. 
 
-*[opt]#-J##* ::
+*-J#*::
 The "jitter" flag is a bit vector. If one (-J1), it randomizes the point from which each ray is fired by +/- one half of the pixel size. If two (-J2), it shifts the origin of the output frame once for each frame. The shift is along a circular path in the plane of the frame, with a period of ten seconds, and a radius of +/- 1/4 pixel width. If three (-J3), it performs both operations. 
 
-*[opt]#-U##* ::
+*-U#*::
 Sets the "use_air" value. The default is 1, meaning "air" solids (i.e. regions with a non-zero aircode attribute value) will be retained. If this value is zero, "air" solids in the model will be ignored. 
 
-*[opt]#-c "set cc=1"#* ::
+*-c "set cc=1"*::
 Compute and report area centers. The default is off. 
 
-*[opt]#-X##* ::
+*-X#*::
 Turns on the rt(1) program debugging flags. See raytrace.h for the meaning of these bits. 
 
-*[opt]#-x##* ::
+*-x#*::
 Sets the librt(3) debug flags to the given hexadecimal bit vector. See raytrace.h for the bit definitions. 
 
 == EXAMPLES
 
 .Calculate exposed and presented surface areas
 ====
-[prompt]#mged># [ui]`rtarea` 
+[prompt]#mged>#[ui]`rtarea`
 
 Calculate exposed and presented surface areas of the displayed objects using current azimuth, elevation and size. Results are reported in current editing units. 
 ====
 
 .Calculate exposed, presented and centers of surface areas
 ====
-[prompt]#mged># [ui]`rtarea -c "set cc=1"` 
+[prompt]#mged>#[ui]`rtarea -c "set cc=1"`
 
 Calculate exposed, presented and centers of surface areas of the displayed objects using current azimuth, elevation and size. Results are reported in current editing units. 
 ====
 
 .Calculate exposed and presented surface areas (results in inches)
 ====
-[prompt]#mged># [ui]`units in` 
+[prompt]#mged>#[ui]`units in`
 
 Set current editing units to inches. 
 
-[prompt]#mged># [ui]`rtarea` 
+[prompt]#mged>#[ui]`rtarea`
 
 Calculate exposed and presented surface areas of the displayed objects using current azimuth, elevation and size. Results reported in inches. 
 ====
 
 .Calculate exposed and presented surface areas (az=35, el=25, auto-size)
 ====
-[prompt]#mged># [ui]`rtarea -a35 -e25` 
+[prompt]#mged>#[ui]`rtarea -a35 -e25`
 
 Calculate exposed and presented surface areas of the displayed objects using azimuth 35, elevation 25 and size auto-set for best fit. Results reported in current editing units. 
 ====
 
 .Calculate exposed and presented surface areas (1x1 inch grid cells)
 ====
-[prompt]#mged># [ui]`rtarea -g25.4` 
+[prompt]#mged>#[ui]`rtarea -g25.4`
 
 Calculate exposed and presented surface areas of the displayed objects using current azimuth, elevation and size. The grid cell width and height is 25.4 millimeters (i.e. 1 inch). Results reported in current editing units. 
 ====

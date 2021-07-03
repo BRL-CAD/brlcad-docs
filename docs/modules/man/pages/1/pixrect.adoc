@@ -11,25 +11,25 @@ pixrect - extract a rectangle from a color pix file
 
 == SYNOPSIS
 
-*[cmd]#pixrect#* [-s [rep]_squaresize_][-w [rep]_width_][-n [rep]_height_][-S [rep]_out_squaresize_][-W [rep]_out_width_][-N [rep]_out_height_][-x [rep]_xorig_][-y [rep]_yorig_][-o [rep]_out_file.pix_][rep]_file.pix_>[[rep]_out_file.pix_]
+*pixrect*[-s _squaresize_][-w _width_][-n _height_][-S _out_squaresize_][-W _out_width_][-N _out_height_][-x _xorig_][-y _yorig_][-o _out_file.pix_]_file.pix_>[_out_file.pix_]
 
 == DESCRIPTION
 
-*[cmd]#pixrect#* extracts a rectangular region from a colored xref:man:5/pix.adoc[*pix*](5) format file. The default input image size is 512x512. The x,y coordinates of the origin (the default xorig=0, yorig=0 corresponds to the lower left corner) are passed as command line arguments.
+[cmd]*pixrect* extracts a rectangular region from a colored xref:man:5/pix.adoc[*pix*(5)] format file. The default input image size is 512x512. The x,y coordinates of the origin (the default xorig=0, yorig=0 corresponds to the lower left corner) are passed as command line arguments.
 
-The *[opt]#-w#* [rep]_file_width_ flag specifies the width of each scanline in the input file, in pixels. *[opt]#-W#* [rep]_scr_width_ does the same for the display device.
+The [opt]*-w*[rep]_file_width_ flag specifies the width of each scanline in the input file, in pixels. [opt]*-W*[rep]_scr_width_ does the same for the display device.
 
-The *[opt]#-n#* [rep]_file_height_ and *[opt]#-N#* [rep]_scr_height_ flags specifies the height in scanlines of the input file or display device respectively.
+The [opt]*-n*[rep]_file_height_ and [opt]*-N*[rep]_scr_height_ flags specifies the height in scanlines of the input file or display device respectively.
 
-*[opt]#-s#* [rep]_squarefilesize_ and *[opt]#-S#* [rep]_squarescrsize_ set both the height and width to the size given (for input file and display device respectively).
+[opt]*-s*[rep]_squarefilesize_ and [opt]*-S*[rep]_squarescrsize_ set both the height and width to the size given (for input file and display device respectively).
 
-*[opt]#-o#* [rep]_out_file.pix_  is a way of specifying output file name.
+[opt]*-o*[rep]_out_file.pix_ is a way of specifying output file name.
 
 This utility supports redirected input/output images. 
 
 == SEE ALSO
 
-xref:man:1/brlcad.adoc[*brlcad*](1), xref:man:1/bwrect.adoc[*bwrect*](1), xref:man:5/pix.adoc[*pix*](5), xref:man:5/bw.adoc[*bw*](5)
+xref:man:1/brlcad.adoc[*brlcad*(1)], xref:man:1/bwrect.adoc[*bwrect*(1)], xref:man:5/pix.adoc[*pix*(5)], xref:man:5/bw.adoc[*bw*(5)]
 
 == AUTHOR
 

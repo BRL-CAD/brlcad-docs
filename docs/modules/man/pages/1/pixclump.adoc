@@ -11,22 +11,22 @@ pixclump - quantize the colors in a pix(5) stream
 
 == SYNOPSIS
 
-*[cmd]#pixclump#* [-c [rep]_R/G/B_][-f [rep]_color_file_][-x [rep]_debug_flags_][[rep]_infile.pix_[[rep]_outfile.pix_]] +
+*pixclump*[-c _R/G/B_][-f _color_file_][-x _debug_flags_][_infile.pix_[_outfile.pix_]] +
     
 
 == DESCRIPTION
 
-*[cmd]#pixclump#* reads an input stream of __pix__ data, converts each pixel to one of a set of specified colors, and writes out these quantized pixels.
+[cmd]*pixclump* reads an input stream of __pix__ data, converts each pixel to one of a set of specified colors, and writes out these quantized pixels.
 
-The colors may be specified either on the command line, with one *[opt]#-c#* option per color, or in a file specified with the *[opt]#-f#* option.
+The colors may be specified either on the command line, with one [opt]*-c* option per color, or in a file specified with the [opt]*-f* option.
 
-Each pixel in the input stream is compared to all of the specified colors and replaced on the output by the specified color most resembling it. *[cmd]#pixclump#* computes the difference between an input pixel and a specified color as the sum of the squares of the differences in their respective red, green, and blue channels.
+Each pixel in the input stream is compared to all of the specified colors and replaced on the output by the specified color most resembling it. [cmd]*pixclump* computes the difference between an input pixel and a specified color as the sum of the squares of the differences in their respective red, green, and blue channels.
 
-The *[opt]#-x#* option may be used to selectively enable various diagnostic print statements.
+The [opt]*-x* option may be used to selectively enable various diagnostic print statements.
 
 == HINT
 
-A typical use for *[cmd]#pixclump#* is in renormalizing an image. For example, if a tool such as *[cmd]#pixscale#* has been used to transform an image containing a relatively small number of colors, *[cmd]#pixclump#* will change pixels whose colors have been interpolated back to one of the original colors.
+A typical use for [cmd]*pixclump* is in renormalizing an image. For example, if a tool such as [cmd]*pixscale* has been used to transform an image containing a relatively small number of colors, [cmd]*pixclump* will change pixels whose colors have been interpolated back to one of the original colors.
 
 == AUTHOR
 

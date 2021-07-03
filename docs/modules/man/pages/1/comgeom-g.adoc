@@ -11,7 +11,7 @@ comgeom-g - convert GIFT COMGEOM model into MGED database
 
 == SYNOPSIS
 
-*[cmd]#comgeom-g#* [-d [rep]_debug_lvl_][-v [rep]_version_num_][-s [rep]_name_suffix_][rep]_file.cg_[rep]_file.g_ +
+*comgeom-g*[-d _debug_lvl_][-v _version_num_][-s _name_suffix_]_file.cg__file.g_ +
     
 
 == DESCRIPTION
@@ -20,13 +20,13 @@ Read a COMGEOM version 4 or version 5 format model from a GIFT-style input file,
 
 Each solid is given the name s###, retaining the COMGEOM solid number. Each region is given the name r###, retaining the COMGEOM region number. Regions are grouped together into various groups g### based on the region-id numbers.  Group g00 gets all regions with region-id of zero, g0 gets ids one through 99, g1 gets ids 100 through 199, etc.
 
-The default input is COMGEOM version 5. Version 4 can be converted by specifying the *[opt]#-v4#* flag. For the time being, the DoE MORSE/RAFFLE format (believed to be the original MAGIC format) can be converted by specifying the *[opt]#-v1#* flag.
+The default input is COMGEOM version 5. Version 4 can be converted by specifying the [opt]*-v4* flag. For the time being, the DoE MORSE/RAFFLE format (believed to be the original MAGIC format) can be converted by specifying the [opt]*-v1* flag.
 
-By default, the program *[cmd]#comgeom-g#* operates silently. Because the program may require a minute or two to convert a large database, some users prefer to have various status reports that indicate the progress of the conversion. This can be selected by specifying the *[opt]#-d1#* flag (debug level 1).
+By default, the program [cmd]*comgeom-g* operates silently. Because the program may require a minute or two to convert a large database, some users prefer to have various status reports that indicate the progress of the conversion. This can be selected by specifying the [opt]*-d1* flag (debug level 1).
 
-In the resulting .g file, high-level group all.g is created. If the *[cmd]#-s#*  option is used, its argument (without automatic supplying of leading period) is tacked onto the end of the names of all other items in the .g file. 
+In the resulting .g file, high-level group all.g is created. If the [cmd]*-s* option is used, its argument (without automatic supplying of leading period) is tacked onto the end of the names of all other items in the .g file. 
 
-The units used in a COMGEOM file are specified on a header record. The units of an MGED database are always millimeters. *[cmd]#comgeom-g#* performs automatic units conversion using the built-in units conversion feature of xref:man:3/libwdb.adoc[*libwdb*](3).
+The units used in a COMGEOM file are specified on a header record. The units of an MGED database are always millimeters. [cmd]*comgeom-g* performs automatic units conversion using the built-in units conversion feature of xref:man:3/libwdb.adoc[*libwdb*(3)].
 
 == EXAMPLE
 
@@ -42,7 +42,7 @@ It is expected that the input file should be a valid COMGEOM model. While quite 
 
 == SEE ALSO
 
-xref:man:1/brlcad.adoc[*brlcad*](1), xref:man:1/mged.adoc[*mged*](1), xref:man:3/libwdb.adoc[*libwdb*](3)
+xref:man:1/brlcad.adoc[*brlcad*(1)], xref:man:1/mged.adoc[*mged*(1)], xref:man:3/libwdb.adoc[*libwdb*(3)]
 
 == AUTHOR
 

@@ -11,11 +11,11 @@ enf-g - Elysium Neutral Format Translator (ENF to BRL-CAD)
 
 == SYNOPSIS
 
-*[cmd]#enf-g#* [-t [rep]_tolerance_][-i [rep]_starting_ident_number_][-l [rep]_name_length_limit_][-n [rep]_part_number_to_name_mapping_][-v][rep]_input_enf_facet_file_[rep]_database.g_
+*enf-g*[-t _tolerance_][-i _starting_ident_number_][-l _name_length_limit_][-n _part_number_to_name_mapping_][-v]_input_enf_facet_file__database.g_
 
 == DESCRIPTION
 
-*[cmd]#enf-g#* converts the specified __input_enf_facet_file__ to a BRL-CAD __database.g__ file. This input file is expected to be the ASCII output from the Elysium enf2mxp tessellator. The __tolerance__ provided is the maximum distance (in mm) between two vertices at which they will be considered to be the same vertex. The __starting_ident_number__ is the ident number to use for the first region created, each succeeding region will have their ident numbers incremented by one. If a __name_length_limit__ is provided, then the resulting names in the BRL-CAD model will not be longer than that limit. If a __part_number_to_name_mapping__ file is provided, then that file will be read and used to convert part numbers in the __input_enf_facet_file__ to the corresponding names in the mapping, and is expected to consist of a series of lines of text with each line having a part number and a legal BRL-CAD object name separated by a tab. (__-v__ option is provided for verbose mode.) 
+[cmd]*enf-g* converts the specified __input_enf_facet_file__ to a BRL-CAD __database.g__ file. This input file is expected to be the ASCII output from the Elysium enf2mxp tessellator. The __tolerance__ provided is the maximum distance (in mm) between two vertices at which they will be considered to be the same vertex. The __starting_ident_number__ is the ident number to use for the first region created, each succeeding region will have their ident numbers incremented by one. If a __name_length_limit__ is provided, then the resulting names in the BRL-CAD model will not be longer than that limit. If a __part_number_to_name_mapping__ file is provided, then that file will be read and used to convert part numbers in the __input_enf_facet_file__ to the corresponding names in the mapping, and is expected to consist of a series of lines of text with each line having a part number and a legal BRL-CAD object name separated by a tab. (__-v__ option is provided for verbose mode.) 
 
 == EXAMPLE
 // <synopsis>

@@ -14,7 +14,7 @@ ev - Evaluates the objects specified by tessellating all primitive shapes
 
 == SYNOPSIS
 
-*[cmd]#ev#*  [-dfnrstuvwST] [-P [rep]_\#_] [-C [rep]_\#/#/#_] {objects} []
+*ev* [-dfnrstuvwST] [-P _\#_] [-C _\#/#/#_] {objects} []
 
 == DESCRIPTION
 
@@ -37,18 +37,18 @@ Evaluates the _objects_ specified by tessellating all primitive shapes in the ob
 
 == EXAMPLES
 
-The first example shows the use of the *[cmd]#ev#*  command to display two evaluated objects as shaded  	polygons.  The second example shows the use of the *[cmd]#ev#*  command to display an evaluated object as 	wireframe without triangulating. 
+The first example shows the use of the [cmd]*ev* command to display two evaluated objects as shaded  	polygons.  The second example shows the use of the [cmd]*ev* command to display an evaluated object as 	wireframe without triangulating. 
 
 .Display evaluated objects as polygons.
 ====
 
-[prompt]#mged># [ui]`ev region1 shapea` ::
+[prompt]#mged>#[ui]`ev region1 shapea`::
 Displays evaluated _region1_ and _shapea_ as shaded polygons. 
 ====
 
 .Display an evaluated object as wireframe without triangulation.
 ====
-[prompt]#mged># [ui]`ev -wT region1` 
+[prompt]#mged>#[ui]`ev -wT region1`
 
 Displays an evaluated object, __region1__, as wireframe without triangulation. 
 ====

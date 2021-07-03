@@ -13,7 +13,7 @@ gr -
 
 == SYNOPSIS
 
-*[cmd]#gr#*  {[rep]_GroupName_} {[rep]_\+_ | [rep]_-_} [[rep]_ListLimit_] [[rep]_-p_]
+*gr* {_GroupName_} {_\+_ | _-_} [_ListLimit_] [_-p_]
 
 == DESCRIPTION
 
@@ -23,16 +23,16 @@ Caveats: This command will not function as expected if a selected object has mat
 
 == OPTIONS
 
-*[opt]#GroupName#* ::
+*GroupName*::
 The name of the group to add/remove primitives or primitive parents. 
 
-*[opt]#\+#* ::
+*\+*::
 Indicates if to add or remove from group. 
 
-*[opt]#ListLimit#* ::
+*ListLimit*::
 As primitives/parents are selected using a selection box, the names of the selected objects can be listed. This option controls the number of entries which will be listed. By default this value is zero. All selected objects will be listed, assuming the 'ListLimit' is high enough, even if they are not added to the group. This will happen if some of the selected objects are already in the group. 
 
-*[opt]#-p#* ::
+*-p*::
 Places the parent of the selected primitives in the group instead of the primitives. With the '-p' option, if the primitive does not have a parent (i.e. is in the root) it will be ignored. 
 
 == AUTHOR

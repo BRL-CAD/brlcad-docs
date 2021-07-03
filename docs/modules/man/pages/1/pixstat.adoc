@@ -11,13 +11,13 @@ pixstat - list statistics related to a color pix image
 
 == SYNOPSIS
 
-*[cmd]#pixstat#* [-v][[rep]_file.pix_]
+*pixstat*[-v][_file.pix_]
 
 == DESCRIPTION
 
-*[cmd]#pixstat#* will take the given xref:man:5/pix.adoc[*pix*](5) format file, or read from standard in.  A collection of statistics related to the pixel intensities is produced for each color plane (red, green, and blue). These include: the number of pixels (and the square root of this which is the file dimensions if square); the max and min values; the mean; the median (dividing line where half the pixels are above this value, half below); the mode (most frequently occurring value) and the number of pixels at this value; the variance, standard deviation, and skew.
+[cmd]*pixstat* will take the given xref:man:5/pix.adoc[*pix*(5)] format file, or read from standard in.  A collection of statistics related to the pixel intensities is produced for each color plane (red, green, and blue). These include: the number of pixels (and the square root of this which is the file dimensions if square); the max and min values; the mean; the median (dividing line where half the pixels are above this value, half below); the mode (most frequently occurring value) and the number of pixels at this value; the variance, standard deviation, and skew.
 
-The *[opt]#-v#* flag will also dump a histogram of the pixel values.
+The [opt]*-v* flag will also dump a histogram of the pixel values.
 
 == METHOD
 
@@ -25,7 +25,7 @@ Since the pixel values are quantized (each color having discrete values from 0 t
 
 == SEE ALSO
 
-xref:man:1/brlcad.adoc[*brlcad*](1), xref:man:1/pixhist.adoc[*pixhist*](1), xref:man:1/bwstat.adoc[*bwstat*](1), xref:man:5/pix.adoc[*pix*](5)
+xref:man:1/brlcad.adoc[*brlcad*(1)], xref:man:1/pixhist.adoc[*pixhist*(1)], xref:man:1/bwstat.adoc[*bwstat*(1)], xref:man:5/pix.adoc[*pix*(5)]
 
 == AUTHOR
 

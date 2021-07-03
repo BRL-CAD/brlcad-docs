@@ -11,13 +11,13 @@ plot3-fb - display 3-D UNIX plot on a framebuffer
 
 == SYNOPSIS
 
-*[cmd]#plot3-fb#*  [-id] [-O|o] [-t [rep]_line_thickness_] [-F [rep]_framebuffer_] [-S|s [rep]_squaresize_] [-W|w [rep]_width_] [-N|n [rep]_height_] [<] [rep]_file.plot3_
+*plot3-fb* [-id] [-O|o] [-t _line_thickness_] [-F _framebuffer_] [-S|s _squaresize_] [-W|w _width_] [-N|n _height_] [<] _file.plot3_
 
 == DESCRIPTION
 
-*[cmd]#plot3-fb#* displays a BRL extended three dimensional UNIX plot file on a framebuffer. The environment variable [var]*FB_FILE* is used to select the display device (see xref:man:1/brlcad.adoc[*brlcad*](1)); if this variable is not set, the default device for your system will be used. Alternatively, the framebuffer may be explicitly specified by using the *[opt]#-F#* flag. By default, the display size is assumed to be 512x512 pixels. The *[opt]#-S#* , *[opt]#-W#* , and *[opt]#-N#* (or *[opt]#-s#* , *[opt]#-w#* , and *[opt]#-n#* ) flags allow different screen sizes to be set.  The plotting space will fill the given screen dimensions.  No attempt is made at present to preserve aspect.
+[cmd]*plot3-fb* displays a BRL extended three dimensional UNIX plot file on a framebuffer. The environment variable [var]`FB_FILE` is used to select the display device (see xref:man:1/brlcad.adoc[*brlcad*(1)]); if this variable is not set, the default device for your system will be used. Alternatively, the framebuffer may be explicitly specified by using the [opt]*-F* flag. By default, the display size is assumed to be 512x512 pixels. The [opt]*-S*, [opt]*-W*, and [opt]*-N* (or [opt]*-s*, [opt]*-w*, and [opt]*-n*) flags allow different screen sizes to be set.  The plotting space will fill the given screen dimensions.  No attempt is made at present to preserve aspect.
 
-The *[opt]#-O#*  (or *[opt]#-o#* ) flag is for overlay mode, where the current framebuffer image will be left in the background. The *[opt]#-i#* flag causes the rasterized image to be plotted immediately, rather than buffering up rasterized data into bands.  While useful for quick feedback on small plots, this mode is generally more expensive in CPU time. The *[opt]#-d#* flag outputs a very verbose debugging stream to standard error listing every UNIX plot command and the corresponding framebuffer coordinates. The *[opt]#-t#* flag causes all lines to be thickened perpendicular to their length, to the given number of pixels. This is especially useful when making images for recording on videotape, as single pixel lines are difficult to resolve. The thickening will be reduced so that a line will never be wider than it is long.
+The [opt]*-O* (or [opt]*-o*) flag is for overlay mode, where the current framebuffer image will be left in the background. The [opt]*-i* flag causes the rasterized image to be plotted immediately, rather than buffering up rasterized data into bands.  While useful for quick feedback on small plots, this mode is generally more expensive in CPU time. The [opt]*-d* flag outputs a very verbose debugging stream to standard error listing every UNIX plot command and the corresponding framebuffer coordinates. The [opt]*-t* flag causes all lines to be thickened perpendicular to their length, to the given number of pixels. This is especially useful when making images for recording on videotape, as single pixel lines are difficult to resolve. The thickening will be reduced so that a line will never be wider than it is long.
 
 If __file.plot3__ is not specified, the plot commands are read from standard input.
 
@@ -25,7 +25,7 @@ Note that 3-D UNIX plot is a superset of the standard UNIX plot format, thus thi
 
 == SEE ALSO
 
-xref:man:1/plot3rot.adoc[*plot3rot*](1), xref:man:1/plot3debug.adoc[*plot3debug*](1), xref:man:3/libplot3.adoc[*libplot3*](3), xref:man:1/brlcad.adoc[*brlcad*](1)
+xref:man:1/plot3rot.adoc[*plot3rot*(1)], xref:man:1/plot3debug.adoc[*plot3debug*(1)], xref:man:3/libplot3.adoc[*libplot3*(3)], xref:man:1/brlcad.adoc[*brlcad*(1)]
 
 == AUTHOR
 

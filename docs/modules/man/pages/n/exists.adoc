@@ -16,11 +16,11 @@ exists -
 
 == SYNOPSIS
 
-*[cmd]#exists#*  {expression} [[rep]_expression_]...
+*exists* {expression} [_expression_]...
 
 == DESCRIPTION
 
-*[cmd]#exists#*  works in a fashion similar to Unix-style test commands (internally it is based on NetBSD's test code) but tests _objects_ in the current open database rather than files in a file system.  If an object matching a valid expression or expressions is found 1 is returned, otherwise 0 is returned.  Expressions are formed using <<_primaries,PRIMARIES>> and <<_operators,OPERATORS>>.  A simple object name with no primaries or operators will return true if db_lookup succeeds and the object is non-null (TODO). 
+[cmd]*exists* works in a fashion similar to Unix-style test commands (internally it is based on NetBSD's test code) but tests _objects_ in the current open database rather than files in a file system.  If an object matching a valid expression or expressions is found 1 is returned, otherwise 0 is returned.  Expressions are formed using <<_primaries,PRIMARIES>> and <<_operators,OPERATORS>>.  A simple object name with no primaries or operators will return true if db_lookup succeeds and the object is non-null (TODO). 
 
 == PRIMARIES:
 
@@ -101,7 +101,7 @@ The following are run from the MGED command prompt:
 
 .Example1
 ====
-[ui]`exists object1.s` 
+[ui]`exists object1.s`
 
 
 ====

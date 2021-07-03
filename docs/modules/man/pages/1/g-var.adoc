@@ -11,27 +11,27 @@ g-var - Produce (OpenGL) Vertex Arrays from BOT BRL-CAD geometry
 
 == SYNOPSIS
 
-*[cmd]#g-var#* [-v][-y][-s [rep]_scale_][-f][-o [rep]_outfile_][rep]_infile.g_[rep]_object_
+*g-var*[-v][-y][-s _scale_][-f][-o _outfile_]_infile.g__object_
 
 == DESCRIPTION
 
-*[cmd]#g-var#* writes the bag of triangle (BOT) primitives of the specified __object__ in a binary array format to __outfile__ or to __stdout__.
+[cmd]*g-var* writes the bag of triangle (BOT) primitives of the specified __object__ in a binary array format to __outfile__ or to __stdout__.
 
 == OPTIONS
 
-*[opt]#-v#* ::
+*-v*::
 Request verbose output.
 
-*[opt]#-y#* ::
+*-y*::
 Transform the coordinate system from xyz to xzy.
 
-*[opt]#-s#* [ui]`scale` ::
+*-s*[ui]`scale`::
 Scale the output geometry by factor __scale__. By default the scale factor is 0.001 (standard transformation from meters to millimeters).
 
-*[opt]#-f#* ::
+*-f*::
 Flip face normals. This changes both the vertex order and the output normals.
 
-*[opt]#-o#* _outfile_::
+*-o*__outfile__::
 The output will be written to __outfile__. By default the output is written to stdout.
 
 == FILE FORMAT

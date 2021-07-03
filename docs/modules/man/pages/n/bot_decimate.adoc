@@ -15,7 +15,7 @@ bot_decimate -
 
 == SYNOPSIS
 
-*[cmd]#bot_decimate#*  [-f [rep]_feature_size_] [-c [rep]_maximum_chord_error_] [-n [rep]_maximum_normal_error_] [-e [rep]_minimum_edge_length_] {[rep]_new_bot_primitive_} {[rep]_old_bot_primitive_}
+*bot_decimate* [-f _feature_size_] [-c _maximum_chord_error_] [-n _maximum_normal_error_] [-e _minimum_edge_length_] {_new_bot_primitive_} {_old_bot_primitive_}
 
 == DESCRIPTION
 
@@ -23,27 +23,27 @@ Reduces the number of triangles in the _old_bot_primitive_ and saves the results
 
 == EXAMPLES
 
-These examples demonstrate the use of the *[cmd]#bot_decimate#*  command to create new primitives by reducing the number of triangles within certain constraints. 
+These examples demonstrate the use of the [cmd]*bot_decimate* command to create new primitives by reducing the number of triangles within certain constraints. 
 
 .Decimate Specifying Chord Error and Max Normal Error
 ====
 Creating a new BOT primitive by reducing the number of triangles in the old BOT primitive and specifying the maximum chord error and maximum normal error between the old and new primitives. 
 
-[prompt]#mged># [ui]`bot_decimate -c 0.5 -n 10.0 bot.new abot` ::
+[prompt]#mged>#[ui]`bot_decimate -c 0.5 -n 10.0 bot.new abot`::
 Creates a new BOT primitive named __bot.new__by reducing the number of triangles in _abot_ while keeping the resulting surface within 0.5 units of the surface of _abot_ and keeping the surface normals within 10 degrees. 
 +
 Note that the constraints specified only relate the output BOT primitive to the input BOT primitive for a single invocation of the command. Repeated application of this command on its own BOT output will result in a final BOT primitive that has unknown relationships to the original BOT primitive. For example: 
 
-[prompt]#mged># [ui]`bot_decimate -c 10.0 bot_b bot_a` ::
+[prompt]#mged>#[ui]`bot_decimate -c 10.0 bot_b bot_a`::
 
 
-[prompt]#mged># [ui]`bot_decimate -c 10.0 bot_c bot_b` ::
+[prompt]#mged>#[ui]`bot_decimate -c 10.0 bot_c bot_b`::
 This sequence of commands will produce primitive __bot_c__with up to 20.0 units of chord error between _bot_a_ and __bot_c__. 
 
-[prompt]#mged># [ui]`bot_decimate -c 10.0 bot_b bot_a` ::
+[prompt]#mged>#[ui]`bot_decimate -c 10.0 bot_b bot_a`::
 
 
-[prompt]#mged># [ui]`bot_decimate -n 5.0 bot_c bot_b` ::
+[prompt]#mged>#[ui]`bot_decimate -n 5.0 bot_c bot_b`::
 This sequence of commands will produce primitive _bot_c_ with no guaranteed relationships to __bot_a__. 
 ====
 

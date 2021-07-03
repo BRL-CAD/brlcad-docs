@@ -33,7 +33,7 @@ _bu_rb_create_ allocates storage for and initializes the tree header. __Descript
 
 The application can specify that the red-black tree package may not insert new nodes that compare equal in any of the orders to an existing node. Such uniqueness enforcement is switch selectable and may be controlled independently for each order and modified dynamically. The default behavior is not to enforce any uniqueness.
 
-`bu_rb_free` relinquishes the storage used by __tree,__ calling `free_data` to dispose of the application data in the nodes. If `free_data` equals __BU_RB_RETAIN_DATA__ (defined in __"bu.h"__), then the application data blocks are left unaffected. Otherwise, `bu_rb_free`  calls `free_data` once for each block of application data, passing a pointer to the data. Since __bu_rb_create1__ allocates its own table of comparison functions, a memory leak will result if a tree returned by __bu_rb_create1__ is freed before this table is freed. For this reason, __bu.h__ provides the macro __bu_rb_free1(tree, free_data),__ which should be used instead of `bu_rb_free` when relinquishing a tree created by __bu_rb_create1.__
+`bu_rb_free` relinquishes the storage used by __tree,__ calling `free_data` to dispose of the application data in the nodes. If `free_data` equals __BU_RB_RETAIN_DATA__ (defined in __"bu.h"__), then the application data blocks are left unaffected. Otherwise, `bu_rb_free` calls `free_data` once for each block of application data, passing a pointer to the data. Since __bu_rb_create1__ allocates its own table of comparison functions, a memory leak will result if a tree returned by __bu_rb_create1__ is freed before this table is freed. For this reason, __bu.h__ provides the macro __bu_rb_free1(tree, free_data),__ which should be used instead of `bu_rb_free` when relinquishing a tree created by __bu_rb_create1.__
 
 `bu_rb_insert` creates a new node containing __data__ and adds it to __tree,__ provided that doing so would not violate current uniqueness requirements. If a uniqueness requirement would be violated, `bu_rb_insert` does nothing but return a negative integer, the absolute value of which is the first order for which a violation exists. Otherwise, the node is inserted in the appropriate place in each order, as determined by the comparison functions, and `bu_rb_insert` returns the number of orders for which the new node compared equal to an existing node in the tree.
 
@@ -77,7 +77,7 @@ Diagnostic output may be requested by setting the debug bits in the `bu_rb_tree`
 
 == SEE ALSO
 
-xref:man:3B/libbu.adoc[*libbu*](3B), xref:man:3/qsort.adoc[*qsort*](3).
+xref:man:3B/libbu.adoc[*libbu*(3B)], xref:man:3/qsort.adoc[*qsort*(3)].
 
 == AUTHOR
 

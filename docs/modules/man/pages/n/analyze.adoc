@@ -13,27 +13,27 @@ analyze -
 
 == SYNOPSIS
 
-*[cmd]#analyze#*  [[rep]_options_]... [[rep]_subcommand_]
+*analyze* [_options_]... [_subcommand_]
 ::
 +
-*[cmd]#summarize#*  {obj}...::
+*summarize* {obj}...::
 +
-*[cmd]#intersect#*  [[rep]_options_]... {obj1 obj2 [...]}...::
+*intersect* [_options_]... {obj1 obj2 [...]}...::
 +
-*[cmd]#subtract#*  [[rep]_options_]... {obj1 obj2 [...]}...
+*subtract* [_options_]... {obj1 obj2 [...]}...
 == DESCRIPTION
 
-The *[cmd]#analyze#*  command provides an array of reporting and shape generation capabilities.  The classic behavior (and the behavior users will see if calling without specifying a subcommand) is a report summarizing geometric information about the specified solid(s).  This behavior may also be explicitly invoked by the *[cmd]#summarize#*  subcommand. 
+The [cmd]*analyze* command provides an array of reporting and shape generation capabilities.  The classic behavior (and the behavior users will see if calling without specifying a subcommand) is a report summarizing geometric information about the specified solid(s).  This behavior may also be explicitly invoked by the [cmd]*summarize* subcommand. 
 
-The *[cmd]#intersect#*  will take the first object specified and intersect it with any subsequently specified objects - in effect, building up a new object with the geoemtry common to all objects specified. 
+The [cmd]*intersect* will take the first object specified and intersect it with any subsequently specified objects - in effect, building up a new object with the geoemtry common to all objects specified. 
 
-The *[cmd]#subtract#*  will take the first object specified and subtract from it any subsequently specified objects. 
+The [cmd]*subtract* will take the first object specified and subtract from it any subsequently specified objects. 
 
 == EXAMPLES
 
 .Analyze a particular _ARB_
 ====
-[prompt]#mged># [ui]`analyze box.s` 
+[prompt]#mged>#[ui]`analyze box.s`
 
 ....
 
@@ -76,7 +76,7 @@ box.s:  ARB8
 
 .Analyze a particular _TOR_
 ====
-[prompt]#mged># [ui]`analyze tor` 
+[prompt]#mged>#[ui]`analyze tor`
 
 ....
 
@@ -100,7 +100,7 @@ tor:  torus (TOR)
 
 .Points inside a sphere
 ====
-[prompt]#mged># [ui]`l sph.s` 
+[prompt]#mged>#[ui]`l sph.s`
 
 ....
 
@@ -117,7 +117,7 @@ sph.s:  ellipsoid (ELL)
 	C rotation angle=0, fallback angle=90
 ....
 
-[prompt]#mged># [ui]`l pnts.s` 
+[prompt]#mged>#[ui]`l pnts.s`
 
 ....
 
@@ -133,14 +133,14 @@ point#, (point)
 6, 	 (0.000000 10.000000 20.000000)
 ....
 
-[prompt]#mged># [ui]`analyze intersect -o inside.s pnts.s sph.s` 
+[prompt]#mged>#[ui]`analyze intersect -o inside.s pnts.s sph.s`
 
 ....
 
 3
 ....
 
-[prompt]#mged># [ui]`l inside.s` 
+[prompt]#mged>#[ui]`l inside.s`
 
 ....
 
@@ -156,7 +156,7 @@ point#, (point)
 
 .Points outside a sphere
 ====
-[prompt]#mged># [ui]`l sph.s` 
+[prompt]#mged>#[ui]`l sph.s`
 
 ....
 
@@ -173,7 +173,7 @@ sph.s:  ellipsoid (ELL)
 	C rotation angle=0, fallback angle=90
 ....
 
-[prompt]#mged># [ui]`l pnts.s` 
+[prompt]#mged>#[ui]`l pnts.s`
 
 ....
 
@@ -189,14 +189,14 @@ point#, (point)
 6, 	 (0.000000 10.000000 20.000000)
 ....
 
-[prompt]#mged># [ui]`analyze subtract -o outside.s pnts.s sph` 
+[prompt]#mged>#[ui]`analyze subtract -o outside.s pnts.s sph`
 
 ....
 
 3
 ....
 
-[prompt]#mged># [ui]`l outside.s` 
+[prompt]#mged>#[ui]`l outside.s`
 
 ....
 

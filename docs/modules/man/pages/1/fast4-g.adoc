@@ -11,25 +11,25 @@ fast4-g - FASTGEN4 Translator (FASTGEN4 to BRL-CAD)
 
 == SYNOPSIS
 
-*[cmd]#fast4-g#* [-dwq][-o [rep]_plot_file_][-m [rep]_muves_warnings_][-c [rep]_id_list_][-x [rep]_RT_DEBUG_FLAG_][-b [rep]_BU_DEBUG_FLAG_][rep]_file.fastgen4_[rep]_file.g_
+*fast4-g*[-dwq][-o _plot_file_][-m _muves_warnings_][-c _id_list_][-x _RT_DEBUG_FLAG_][-b _BU_DEBUG_FLAG_]_file.fastgen4__file.g_
 
 == DESCRIPTION
 
-*[cmd]#fast4-g#* converts the specified __file.fastgen4__ to a BRL-CAD __file.g__ file.
+[cmd]*fast4-g* converts the specified __file.fastgen4__ to a BRL-CAD __file.g__ file.
 
-The *[opt]#-d#* option prints debugging information and the *[opt]#-w#* option prints warnings whenever an object is assigned a default name (no name specified in the FASTGEN4 file).
+The [opt]*-d* option prints debugging information and the [opt]*-w* option prints warnings whenever an object is assigned a default name (no name specified in the FASTGEN4 file).
 
-The *[opt]#-q#* option requests quiet mode, so that nothing will be printed except errors.
+The [opt]*-q* option requests quiet mode, so that nothing will be printed except errors.
 
-The *[opt]#-b#* option specifies a value for a debug flag for libbu and the *[opt]#-x#* option specifies a value for the librt debug flag.
+The [opt]*-b* option specifies a value for a debug flag for libbu and the [opt]*-x* option specifies a value for the librt debug flag.
 
-The *[opt]#-o#* option indicates that all CTRI and CQUAD elements that get processed should be output to the specified plot_file in libplot3 format.  This plot file can be viewed in MGED using the __overlay__ command.
+The [opt]*-o* option indicates that all CTRI and CQUAD elements that get processed should be output to the specified plot_file in libplot3 format.  This plot file can be viewed in MGED using the __overlay__ command.
 
-The *[opt]#-m#* option requests that information about any CHGCOMP and CBACKING elements be output in the specified __muves_warnings__ file.
+The [opt]*-m* option requests that information about any CHGCOMP and CBACKING elements be output in the specified __muves_warnings__ file.
 
-The *[opt]#-c#* option allows the user to specify a restricted set of components to process from the input file. The __id_list__ may be a comma-separated list of ident numbers and ranges. For example, *[opt]#-c 3002,5678,9213,1002-1100#* will convert only the regions with idents of 3002,5678,9213, and everything from 1002 through 1100.
+The [opt]*-c* option allows the user to specify a restricted set of components to process from the input file. The __id_list__ may be a comma-separated list of ident numbers and ranges. For example, [opt]*-c 3002,5678,9213,1002-1100* will convert only the regions with idents of 3002,5678,9213, and everything from 1002 through 1100.
 
-If you have a FASTGEN2 or FASTGEN3 format file, they can be converted by processing them with *[cmd]#rpatch#* and then providing the resulting rpatch file to the *[cmd]#patch-g#* converter.  See their respective manual pages for more information.
+If you have a FASTGEN2 or FASTGEN3 format file, they can be converted by processing them with [cmd]*rpatch* and then providing the resulting rpatch file to the [cmd]*patch-g* converter.  See their respective manual pages for more information.
 
 The __file.fastgen4__ file is expected to be in the FASTGEN 4.1 format as defined in the FASTGEN 4.1 User Manual.
 
@@ -50,7 +50,7 @@ and object names are assigned from the FASTGEN4 __$NAME__ elements using an algo
 
 == SEE ALSO
 
-xref:man:1/rpatch.adoc[*rpatch*](1), xref:man:1/patch-g.adoc[*patch-g*](1)__FASTGEN 4.1 User's Manual__, XRESV Tech Note 94-01, Hugh Griffis and Maty Lentz, April 1994
+xref:man:1/rpatch.adoc[*rpatch*(1)], xref:man:1/patch-g.adoc[*patch-g*(1)]__FASTGEN 4.1 User's Manual__, XRESV Tech Note 94-01, Hugh Griffis and Maty Lentz, April 1994
 
 == DIAGNOSTICS
 

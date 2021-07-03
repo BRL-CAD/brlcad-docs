@@ -11,11 +11,11 @@ bwthresh - threshold a black-and-white bw file
 
 == SYNOPSIS
 
-*[cmd]#bwthresh#* [rep]_val_...<[rep]_file.bw_
+*bwthresh*_val_...<_file.bw_
 
 == DESCRIPTION
 
-*[cmd]#bwthresh#* reads from standard input a stream of black-and-white data in xref:man:5/bw.adoc[*bw*](5) format and thresholds it among the __val__s, writing the resulting xref:man:5/bw.adoc[*bw*](5) data to standard output. The __val__s must appear on the command line in strictly increasing order.
+[cmd]*bwthresh* reads from standard input a stream of black-and-white data in xref:man:5/bw.adoc[*bw*(5)] format and thresholds it among the __val__s, writing the resulting xref:man:5/bw.adoc[*bw*(5)] data to standard output. The __val__s must appear on the command line in strictly increasing order.
 
 The grey scale 0..255 is divided evenly into __n__+1 bins, and each pixel of input is compared to the __val__s, to determine which of the __n__+1 grey levels should be output.
 
@@ -31,7 +31,7 @@ if (pixel_in < 37) pixel_out = 0 else if (pixel_in < 143) pixel_out = 128 else p
 
 == SEE ALSO
 
-xref:man:1/bwmod.adoc[*bwmod*](1), xref:man:1/bwstat.adoc[*bwstat*](1), xref:man:5/bw.adoc[*bw*](5)
+xref:man:1/bwmod.adoc[*bwmod*(1)], xref:man:1/bwstat.adoc[*bwstat*(1)], xref:man:5/bw.adoc[*bw*(5)]
 
 == AUTHOR
 

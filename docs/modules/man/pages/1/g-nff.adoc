@@ -11,11 +11,11 @@ g-nff - NFF Translator (BRL-CAD to NFF)
 
 == SYNOPSIS
 
-*[cmd]#g-nff#* [-v][-i][-xX [rep]_lvl_][-e [rep]_error_file_][-D [rep]_calculation_tolerance_][-a [rep]_abs_tol_][-r [rep]_rel_tol_][-n [rep]_norm_tol_][-o [rep]_output.nff_][rep]_database.g_[rep]_object(s)_
+*g-nff*[-v][-i][-xX _lvl_][-e _error_file_][-D _calculation_tolerance_][-a _abs_tol_][-r _rel_tol_][-n _norm_tol_][-o _output.nff_]_database.g__object(s)_
 
 == DESCRIPTION
 
-*[cmd]#g-nff#* converts the specified __object(s)__ from a BRL-CAD __database.g__ file to the __NFF__ file format. The *[opt]#-x#* option specifies an RT debug flag and the *[opt]#-X#* option specifies an NMG debug flag. The *[opt]#-a#* , *[opt]#-r#* , and *[opt]#-n#* options specify tessellation tolerances. The *[opt]#-D#* option specifies a calculational distance tolerance (mm). Any two vertices that are less than this distance apart will be treated as the same vertex. The *[opt]#-v#* option requests verbose output. The *[opt]#-i#* option requests the output file units to be inches (the default is mm). The *[opt]#-o#* option specifies the name of the file to receive the output (stdout is the default). The *[opt]#-e#* option specifies a file for receiving the error messages.
+[cmd]*g-nff* converts the specified __object(s)__ from a BRL-CAD __database.g__ file to the __NFF__ file format. The [opt]*-x* option specifies an RT debug flag and the [opt]*-X* option specifies an NMG debug flag. The [opt]*-a*, [opt]*-r*, and [opt]*-n* options specify tessellation tolerances. The [opt]*-D* option specifies a calculational distance tolerance (mm). Any two vertices that are less than this distance apart will be treated as the same vertex. The [opt]*-v* option requests verbose output. The [opt]*-i* option requests the output file units to be inches (the default is mm). The [opt]*-o* option specifies the name of the file to receive the output (stdout is the default). The [opt]*-e* option specifies a file for receiving the error messages.
 
 == EXAMPLE
 // <synopsis>

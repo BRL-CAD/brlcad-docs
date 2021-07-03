@@ -11,25 +11,25 @@ canonize - queue a pix file to a printer using MDQS
 
 == SYNOPSIS
 
-*[cmd]#canonize#* [-ah][-s [rep]_squarefilesize_] +
-    [-w [rep]_filewidth_][-n [rep]_fileheight_] +
-    [-g[[rep]_cg_ | [rep]_rgb_ | [rep]_scan_]] +
-    [-t[[rep]_u_ | [rep]_l_ | [rep]_m_]][-C [rep]_numcopies_][-q [rep]_queue_] +
-    [-R [rep]_dpi_][-M [rep]_xmag:ymag_][-m] +
-    [-X [rep]_page_xoff_][-Y [rep]_page_yoff_] +
-    [-N [rep]_printheight_][-W [rep]_printwidth_] +
-    [-v][-q [rep]_queue_][[rep]_file.pix_]...
+*canonize*[-ah][-s _squarefilesize_] +
+    [-w _filewidth_][-n _fileheight_] +
+    [-g[_cg_ | _rgb_ | _scan_]] +
+    [-t[_u_ | _l_ | _m_]][-C _numcopies_][-q _queue_] +
+    [-R _dpi_][-M _xmag:ymag_][-m] +
+    [-X _page_xoff_][-Y _page_yoff_] +
+    [-N _printheight_][-W _printwidth_] +
+    [-v][-q _queue_][_file.pix_]...
 
 == DESCRIPTION
 
-*[cmd]#canonize#* is a user agent for printing xref:man:5/pix.adoc[*pix*](5) format files using a Canon(tm) CLC500 and the MDQS queuing system. It can read the image from the standard input, or can send one or more files whose names are specified on the command line.
+[cmd]*canonize* is a user agent for printing xref:man:5/pix.adoc[*pix*(5)] format files using a Canon(tm) CLC500 and the MDQS queuing system. It can read the image from the standard input, or can send one or more files whose names are specified on the command line.
 
 By default, the image is printed using the "cg" gamma map (computer graphics), with paper from the "upper" paper tray, and the image proportionally scaled to fill the print area on the page.
 
 == OPTIONS
 
 -a::
-Causes *[cmd]#canonize#* to attempt to determine the size of the image to find out the number of bytes in the file.  This option cannot be used if the image is provided on the standard input.
+Causes [cmd]*canonize* to attempt to determine the size of the image to find out the number of bytes in the file.  This option cannot be used if the image is provided on the standard input.
 
 -h::
 indicates that the input image is 1024 pixels square.
@@ -62,16 +62,16 @@ Print image with dpi dots-per-inch on the output page.  This option disables the
 Print the image with a magnification of "xmag" in the X dimension and "ymag" in the y dimension.
 
 -X page_xoff::
-Specifies the offset of left side of the image from the left side of the output page. This option is available only when *[opt]#-R#* or *[opt]#-M#* have been specified, and are especially useful in conjunction with the *[opt]#-m#* option.
+Specifies the offset of left side of the image from the left side of the output page. This option is available only when [opt]*-R* or [opt]*-M* have been specified, and are especially useful in conjunction with the [opt]*-m* option.
 
 -Y page_xoff::
-Specifies the distance from the top of the page to the top of the image. This option is available only when *[opt]#-R#* or *[opt]#-M#* have been specified, and are especially useful in conjunction with the *[opt]#-m#* option.
+Specifies the distance from the top of the page to the top of the image. This option is available only when [opt]*-R* or [opt]*-M* have been specified, and are especially useful in conjunction with the [opt]*-m* option.
 
 -N::
-Specifies the height of the image on the output page. This option is available only when *[opt]#-A#* AutoScaling (on by default). The image is scaled equally in the X and Y dimensions to make it fit the available print area as closely as possible. *[opt]#-R#* or *[opt]#-M#* have been specified, and are especially useful in conjunction with the *[opt]#-m#* option.
+Specifies the height of the image on the output page. This option is available only when [opt]*-A* AutoScaling (on by default). The image is scaled equally in the X and Y dimensions to make it fit the available print area as closely as possible. [opt]*-R* or [opt]*-M* have been specified, and are especially useful in conjunction with the [opt]*-m* option.
 
 -W::
-Specifies the width of the image on the output page. This option is available only when *[opt]#-R#* or *[opt]#-M#* have been specified, and are especially useful in conjunction with the *[opt]#-m#* option.
+Specifies the width of the image on the output page. This option is available only when [opt]*-R* or [opt]*-M* have been specified, and are especially useful in conjunction with the [opt]*-m* option.
 
 -m::
 causes the image to be repeated across the page.
@@ -87,11 +87,11 @@ Because high resolution images occupy a substantial amount of disk space, it is 
 
 == SEE ALSO
 
-xref:man:1/pix-fb.adoc[*pix-fb*](1), xref:man:1/pix-ipu.adoc[*pix-ipu*](1), IPU Programmer's Manual
+xref:man:1/pix-fb.adoc[*pix-fb*(1)], xref:man:1/pix-ipu.adoc[*pix-ipu*(1)], IPU Programmer's Manual
 
 == DIAGNOSTICS
 
-If the *[opt]#-a#* option is specified when the image is being redirected from the standard input, *[cmd]#canonize#* will abort. This avoids wasting paper (printing an image using incorrect dimensions).
+If the [opt]*-a* option is specified when the image is being redirected from the standard input, [cmd]*canonize* will abort. This avoids wasting paper (printing an image using incorrect dimensions).
 
 == AUTHOR
 

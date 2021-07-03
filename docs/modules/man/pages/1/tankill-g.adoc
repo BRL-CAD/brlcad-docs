@@ -11,11 +11,11 @@ tankill-g - TANKILL Translator (TANKILL to BRL-CAD)
 
 == SYNOPSIS
 
-*[cmd]#tankill-g#* [-n][-t [rep]_tolerance_][-i [rep]_input_tankill_file_][-o [rep]_database.g_]
+*tankill-g*[-n][-t _tolerance_][-i _input_tankill_file_][-o _database.g_]
 
 == DESCRIPTION
 
-*[cmd]#tankill-g#* converts the specified __input_tankill_file__ to a BRL-CAD __database.g__ file. The __tolerance__ provided is the maximum distance (in mm) between two vertices at which they will be considered to be the same vertex. The *[opt]#-n#* option provides output in the form of NMG primitives rather than the default which is BOT objects. The __input_tankill_file__ is expected to be in the __TANKILL__ format used by the British Defense Research Agency. This is a simple triangular patch format where each object is described by a series of vertices. Triangular facets are built from the first, second, and third vertices; from the second, third, and fourth vertices; from the third, fourth and fifth; and so on. Each object is converted to a single BOT object which is then placed into its own region and assigned the component code provided in the TANKILL file.
+[cmd]*tankill-g* converts the specified __input_tankill_file__ to a BRL-CAD __database.g__ file. The __tolerance__ provided is the maximum distance (in mm) between two vertices at which they will be considered to be the same vertex. The [opt]*-n* option provides output in the form of NMG primitives rather than the default which is BOT objects. The __input_tankill_file__ is expected to be in the __TANKILL__ format used by the British Defense Research Agency. This is a simple triangular patch format where each object is described by a series of vertices. Triangular facets are built from the first, second, and third vertices; from the second, third, and fourth vertices; from the third, fourth and fifth; and so on. Each object is converted to a single BOT object which is then placed into its own region and assigned the component code provided in the TANKILL file.
 
 == EXAMPLE
 // <synopsis>

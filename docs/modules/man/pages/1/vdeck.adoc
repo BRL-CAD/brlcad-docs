@@ -11,20 +11,20 @@ vdeck - generate COM-GEOM decks from a GED file
 
 == SYNOPSIS
 
-*[cmd]#vdeck#* [rep]_file.vg_ +
+*vdeck*_file.vg_ +
     
 
 == DESCRIPTION
 
-The *[cmd]#vdeck#* tool converts a model into an ASCII text representation separating regions (combinations with the region flag set) and primitives (also known as solids) into separate files.  A list of objects to be converted are selected interactively from the table of contents. String matching operators (wild cards) like those used to specify file or directory names in xref:man:1/sh.adoc[*sh*](1) are provided for this purpose, as well as to search for names in the table of contents.
+The [cmd]*vdeck* tool converts a model into an ASCII text representation separating regions (combinations with the region flag set) and primitives (also known as solids) into separate files.  A list of objects to be converted are selected interactively from the table of contents. String matching operators (wild cards) like those used to specify file or directory names in xref:man:1/sh.adoc[*sh*(1)] are provided for this purpose, as well as to search for names in the table of contents.
 
-One or more COM-GEOM decks can be output.  Each deck consists of three files: the solid, region, and region-id tables.  These can be combined with xref:man:1/cat.adoc[*cat*](1).
+One or more COM-GEOM decks can be output.  Each deck consists of three files: the solid, region, and region-id tables.  These can be combined with xref:man:1/cat.adoc[*cat*(1)].
 
 A menu of the commands and their usage is available by typing __?__ to the program.
 
 == WARNING
 
-The *[cmd]#vdeck#* tool is intended for v5 BRL-CAD geometry databases only.  Files produced by older (v4 and earlier) versions of BRL-CAD may be incompatible with *[cmd]#vdeck#*  .
+The [cmd]*vdeck* tool is intended for v5 BRL-CAD geometry databases only.  Files produced by older (v4 and earlier) versions of BRL-CAD may be incompatible with [cmd]*vdeck* .
 
 == EXAMPLE
 
@@ -72,7 +72,7 @@ temporary file used during processing
 
 == SEE ALSO
 
-xref:man:1/cat.adoc[*cat*](1), xref:man:1V/gedplot.adoc[*gedplot*](1V), xref:man:1B/mged.adoc[*mged*](1B)
+xref:man:1/cat.adoc[*cat*(1)], xref:man:1V/gedplot.adoc[*gedplot*(1V)], xref:man:1B/mged.adoc[*mged*(1B)]
 
 == AUTHORS
 

@@ -11,13 +11,13 @@ reshoot - re-shoot rays and compare results
 
 == SYNOPSIS
 
-*[cmd]#reshoot#* [rep]_model.g_[rep]_objects_...<[rep]_raylist_
+*reshoot*_model.g__objects_...<_raylist_
 
 == DESCRIPTION
 
 This program is designed to shoot a set of rays and compare the results with previous results. The program exits with a non-zero status if any rays are different from the previous run, and a 0 status if no differences were found.
 
-Typically, an application (probably other than *[cmd]#reshoot#* ) is run with the RT_G_DEBUG flag DEBUG_ALLHITS set. This will cause librt to log all calls to the application _hit_ routine to the standard error. The logged output can be processed by an __awk__ program to produce input to *[cmd]#reshoot#* . Consider the file p.awk with the following contents:
+Typically, an application (probably other than [cmd]*reshoot*) is run with the RT_G_DEBUG flag DEBUG_ALLHITS set. This will cause librt to log all calls to the application _hit_ routine to the standard error. The logged output can be processed by an __awk__ program to produce input to [cmd]*reshoot*. Consider the file p.awk with the following contents:
 
 ....
 
@@ -43,7 +43,7 @@ Given this __awk__ program The log file from the application can be processed as
 
 awk -f p.awk < logfile > shotlist
 
-to produce input for *[cmd]#reshoot#* . An example of the input file format for *[cmd]#reshoot#* is:
+to produce input for [cmd]*reshoot*. An example of the input file format for [cmd]*reshoot* is:
 
 ....
 
@@ -59,7 +59,7 @@ Dir=0,0,-1
 	... (arbitrary many region lines)
 ....
 
-There can be an arbitrary number of rays specified in the file. There must not be whitespace between the values of Pnt and between the values of Dir; it is best to comma-separate the three coordinate values. The keywords "Pnt" and "Dir" must occur at the beginning of a line. There can be an arbitrary number of regions along the ray path. Each region must be described on a single line. A new ray is started by a "Pnt" value. Then *[cmd]#reshoot#* can be run as follows:
+There can be an arbitrary number of rays specified in the file. There must not be whitespace between the values of Pnt and between the values of Dir; it is best to comma-separate the three coordinate values. The keywords "Pnt" and "Dir" must occur at the beginning of a line. There can be an arbitrary number of regions along the ray path. Each region must be described on a single line. A new ray is started by a "Pnt" value. Then [cmd]*reshoot* can be run as follows:
 
 reshoot geom.g obj ... < shotlist
 
@@ -69,7 +69,7 @@ Ray Pt 0,0,1 Dir 0,0,-1 inhit mismatch 17.8177 16.8 outhit mismatch 24.7685 23.8
 
 == BUGS
 
-The floating point values logged when the DEBUG_ALLHITS flag is set in RT_G_DEBUG are printed with a %g format. This causes some truncation of precision.  This is accounted for by *[cmd]#reshoot#* by re-formatting the numbers computed into ascii and re-parsing them back in. This causes the same amount of precision loss as the original values have undergone.  However, small actual differences are also overlooked as a result.
+The floating point values logged when the DEBUG_ALLHITS flag is set in RT_G_DEBUG are printed with a %g format. This causes some truncation of precision.  This is accounted for by [cmd]*reshoot* by re-formatting the numbers computed into ascii and re-parsing them back in. This causes the same amount of precision loss as the original values have undergone.  However, small actual differences are also overlooked as a result.
 
 == AUTHOR
 

@@ -11,37 +11,37 @@ pix-ppm - convert a BRL-CAD PIX or BW format image to a PPM format image
 
 == SYNOPSIS
 
-*[cmd]#pix-ppm#* [-a][-s [rep]_squaresize_][-w [rep]_file_width_][-n [rep]_file_height_][-# [rep]_bytes_per_pixel_][-o [rep]_PPM_file_][[rep]_PIX_file_]>[rep]_PPM_file_
+*pix-ppm*[-a][-s _squaresize_][-w _file_width_][-n _file_height_][-# _bytes_per_pixel_][-o _PPM_file_][_PIX_file_]>_PPM_file_
 
 == DESCRIPTION
 
-*[cmd]#pix-ppm#* converts a __BRL PIX(5)__ format file to a __PPM__ (Portable PixMap) format file on the standard output. The PPM file created will be either an RGB file with 3 bytes per pixel (default) or a B&W file with 1 byte per pixel.
+[cmd]*pix-ppm* converts a __BRL PIX(5)__ format file to a __PPM__ (Portable PixMap) format file on the standard output. The PPM file created will be either an RGB file with 3 bytes per pixel (default) or a B&W file with 1 byte per pixel.
 
 PIX image files do not contain information about their size.  The size of the input PIX image file must be specified if the dimensions are not the default 512x512 size.
 
 == OPTIONS
 
-*[opt]#-a#* ::
+*-a*::
 autosize the input file to determine file image height and width
 
-*[opt]#-s squaresize#* ::
+*-s squaresize*::
 sets both the width and the height for the input to be __squaresize__
 
-*[opt]#-w file_width#* ::
-tells *[cmd]#pix-ppm#* that the input is __file_width__ pixels wide
+*-w file_width*::
+tells [cmd]*pix-ppm* that the input is __file_width__ pixels wide
 
-*[opt]#-n file_height#* ::
-tells *[cmd]#pix-ppm#* that the input is __file_height__ scanlines tall
+*-n file_height*::
+tells [cmd]*pix-ppm* that the input is __file_height__ scanlines tall
 
-*[opt]#-# bytes_per_pixel#* ::
-tells *[cmd]#pix-ppm#* how many bytes there are per pixel in the input PIX or BW file
+*-# bytes_per_pixel*::
+tells [cmd]*pix-ppm* how many bytes there are per pixel in the input PIX or BW file
 
-*[opt]#-o PPM_file#* ::
-tells *[cmd]#pix-ppm#* to write image data to the specified __PPM_file__ output file.  The *[cmd]#pix-ppm#* command will not write out binary image data directly to a terminal device as a safeguard.
+*-o PPM_file*::
+tells [cmd]*pix-ppm* to write image data to the specified __PPM_file__ output file.  The [cmd]*pix-ppm* command will not write out binary image data directly to a terminal device as a safeguard.
 
 == SEE ALSO
 
-xref:man:1/brlcad.adoc[*brlcad*](1), xref:man:1/pix-png.adoc[*pix-png*](1), xref:man:1/pix-bw.adoc[*pix-bw*](1), xref:man:1/bw-pix.adoc[*bw-pix*](1), xref:man:1/pix-fb.adoc[*pix-fb*](1), xref:man:5/pix.adoc[*pix*](5), xref:man:5/bw.adoc[*bw*](5)
+xref:man:1/brlcad.adoc[*brlcad*(1)], xref:man:1/pix-png.adoc[*pix-png*(1)], xref:man:1/pix-bw.adoc[*pix-bw*(1)], xref:man:1/bw-pix.adoc[*bw-pix*(1)], xref:man:1/pix-fb.adoc[*pix-fb*(1)], xref:man:5/pix.adoc[*pix*(5)], xref:man:5/bw.adoc[*bw*(5)]
 
 == AUTHOR
 

@@ -11,28 +11,28 @@ fbzoom - modify zoom and window parameters of a frame buffer
 
 == SYNOPSIS
 
-*[cmd]#fbzoom#*  [-T] [-F [rep]_frame_buffer_] [-s|S [rep]_image_sqrsize_] [-w|W [rep]_image_width_] [-n|N [rep]_image_height_]
+*fbzoom* [-T] [-F _frame_buffer_] [-s|S _image_sqrsize_] [-w|W _image_width_] [-n|N _image_height_]
 
 == DESCRIPTION
 
-Using xref:man:1/vi.adoc[*vi*](1) and/or xref:man:1/emacs.adoc[*emacs*](1) -like keystrokes, *[cmd]#fbzoom#* allows interactive zooming and panning of a frame buffer.  Using the optional command line arguments,
+Using xref:man:1/vi.adoc[*vi*(1)] and/or xref:man:1/emacs.adoc[*emacs*(1)] -like keystrokes, [cmd]*fbzoom* allows interactive zooming and panning of a frame buffer.  Using the optional command line arguments,
 
-*[opt]#-T#* ::
+*-T*::
 toggles the sense of the pan commands.
 
-*[opt]#-F#* [rep]_frame_buffer_ ::
-explicitly specifies the frame buffer.  Otherwise, the environment variable [rep]_FB_FILE_ specifies the current framebuffer; see xref:man:1/brlcad.adoc[*brlcad*](1).
+*-F*_frame_buffer_::
+explicitly specifies the frame buffer.  Otherwise, the environment variable [rep]_FB_FILE_ specifies the current framebuffer; see xref:man:1/brlcad.adoc[*brlcad*(1)].
 
-*[opt]#-s#* (or *[opt]#-S#* ) [rep]_image_sqrsize_ ::
+*-s*(or *-S*) _image_sqrsize_::
 displays the image file as a square, [rep]_image_sqrsize_ pixels per side (default is 512x512).
 
-*[opt]#-w#* (or *[opt]#-W#* ) [rep]_image_width_ ::
+*-w*(or *-W*) _image_width_::
 displays the image [rep]_image_width_ pixels wide (default is 512).
 
-*[opt]#-n#* (or *[opt]#-N#* ) [rep]_image_height_ ::
+*-n*(or *-N*) _image_height_::
 displays the image [rep]_image_height_ pixels high (default is 512).
 
-*[cmd]#fbzoom#* will display the image currently in the frame buffer and then act on commands entered by the user.  Available commands are:
+[cmd]*fbzoom* will display the image currently in the frame buffer and then act on commands entered by the user.  Available commands are:
 
 _b ^V_::
 zoom Bigger (*2)
@@ -92,7 +92,7 @@ Note that these commands change the way the frame buffer is viewed but not the i
 
 == SEE ALSO
 
-xref:man:1/bw-fb.adoc[*bw-fb*](1), xref:man:1/gif-fb.adoc[*gif-fb*](1), xref:man:1/pix-fb.adoc[*pix-fb*](1), xref:man:1/plot3-fb.adoc[*plot3-fb*](1), xref:man:1/rle-fb.adoc[*rle-fb*](1)
+xref:man:1/bw-fb.adoc[*bw-fb*(1)], xref:man:1/gif-fb.adoc[*gif-fb*(1)], xref:man:1/pix-fb.adoc[*pix-fb*(1)], xref:man:1/plot3-fb.adoc[*plot3-fb*(1)], xref:man:1/rle-fb.adoc[*rle-fb*(1)]
 
 == AUTHOR
 

@@ -12,11 +12,11 @@ knob - Provides a method for simulating knob input. With no options, it will dis
 
 == SYNOPSIS
 
-*[cmd]#knob#*  [-e -i -m -v] [[-o] | [v] | [m] | [e] | [k]] [[zap] | [zero] | [[rep]_id_ [[rep]_val_]]]
+*knob* [-e -i -m -v] [[-o] | [v] | [m] | [e] | [k]] [[zap] | [zero] | [_id_[_val_]]]
 
 == DESCRIPTION
 
-*The *[cmd]#knob#*  command is used internally by MGED in the processing of knob input devices and is not recommended for users.* The *[cmd]#knob#*  command provides a method for simulating knob input. With no options, it will display the current values for the knobs. With the *[cmd]#zap or zero#*  command provided, all the knob values will be reset to zero. If an _id_ and __value__are provided, the specified knob setting will be simulated. If the _-i_ option is specified, then the value provided will be used as an increment to be applied to the indicated knob. The knobs have different functions depending on the current mode. For example, if in primitive or matrix edit mode and a rotation or translation function is selected, the knob effects are applied to the edited object by default. However, the __-v__(view coordinates) and _-m_ (model coordinates) options may be used to adjust the view without modifying primitives or matrices.  The _-e_ option allows the knob effects to be applied to the edited object when they would normally be applied to the view. The _-o_ option allows the origin of rotation to be specified with _v, m, e,_ and __k__, indicating view, model, eye, and keypoint, respectively. The units for _value_ are degrees for rotation and local units for translation. The available _knob ids_ are: 
+*The [cmd]*knob* command is used internally by MGED in the processing of knob input devices and is not recommended for users.* The [cmd]*knob* command provides a method for simulating knob input. With no options, it will display the current values for the knobs. With the [cmd]*zap or zero* command provided, all the knob values will be reset to zero. If an _id_ and __value__are provided, the specified knob setting will be simulated. If the _-i_ option is specified, then the value provided will be used as an increment to be applied to the indicated knob. The knobs have different functions depending on the current mode. For example, if in primitive or matrix edit mode and a rotation or translation function is selected, the knob effects are applied to the edited object by default. However, the __-v__(view coordinates) and _-m_ (model coordinates) options may be used to adjust the view without modifying primitives or matrices.  The _-e_ option allows the knob effects to be applied to the edited object when they would normally be applied to the view. The _-o_ option allows the origin of rotation to be specified with _v, m, e,_ and __k__, indicating view, model, eye, and keypoint, respectively. The units for _value_ are degrees for rotation and local units for translation. The available _knob ids_ are: 
 
 * *x* -- rate-based rotation about horizontal axis. 
 * *y* -- rate-based rotation about vertical axis. 
@@ -41,12 +41,12 @@ knob - Provides a method for simulating knob input. With no options, it will dis
 
 == EXAMPLES
 
-The example shows the use of the *[cmd]#knob#*  command with the _y_ option to rotate a view about the vertical axis. 
+The example shows the use of the [cmd]*knob* command with the _y_ option to rotate a view about the vertical axis. 
 
 .Rotate a view about the vertical axis.
 ====
 
-[prompt]#mged># [ui]`knob y 1` ::
+[prompt]#mged>#[ui]`knob y 1`::
 Starts the view rotating about the vertical axis. 
 ====
 

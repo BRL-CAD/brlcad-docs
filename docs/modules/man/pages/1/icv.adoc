@@ -11,11 +11,11 @@ icv - Convert images to and from various formats
 
 == SYNOPSIS
 
-*[cmd]#icv#* [-h][-i [rep]_file_][--input-format [rep]_fmt_][-o [rep]_file_][--output-format [rep]_fmt_][-w [rep]_width_][[rep]_input_file_][[rep]_output_file_]
+*icv*[-h][-i _file_][--input-format _fmt_][-o _file_][--output-format _fmt_][-w _width_][_input_file_][_output_file_]
 
 == DESCRIPTION
 
-*[cmd]#icv#*  is a tool to convert images to and from a variety of image formats.  Currently support formats include: 
+[cmd]*icv* is a tool to convert images to and from a variety of image formats.  Currently support formats include: 
 
 .Supported ICV Image Formats
 [cols="1,1", options="header"]
@@ -44,27 +44,27 @@ icv - Convert images to and from various formats
 
 == OPTIONS
 
-File types will be deduced unless explicitly specfied with the *[opt]#input-format#* and/or *[opt]#output-format#*  options.  For file types like PIX that do not encode dimensional information, *[cmd]#icv#* will attempt to guess the image size based on various assumptions (a square image, known sizes for image displays, paper sizes at various dots-per-inch, etc.).  If the users does know the correct image width and height, they may be specified with the *[opt]#w#*  and *[opt]#n#*  options. 
+File types will be deduced unless explicitly specfied with the [opt]*input-format* and/or [opt]*output-format* options.  For file types like PIX that do not encode dimensional information, [cmd]*icv* will attempt to guess the image size based on various assumptions (a square image, known sizes for image displays, paper sizes at various dots-per-inch, etc.).  If the users does know the correct image width and height, they may be specified with the [opt]*w* and [opt]*n* options. 
 
-*[opt]#-h#* , *[opt]#--help#* ::
+*-h*, *--help*::
 Print help and exit. 
 
-*[opt]#-i#* [rep]_file_ , *[opt]#--input#* [rep]_file_ ::
+*-i*_file_, *--input*_file_::
 Specify an input file.  If none is specified, the first non-option-related argument will be used as the input file name. 
 
-*[opt]#-o#* [rep]_file_ , *[opt]#--output#* [rep]_file_ ::
+*-o*_file_, *--output*_file_::
 Specify an input file.  If none is specified, the second non-option-related argument will be used as the output file name. 
 
-*[opt]#-w#* [rep]_\#_ , *[opt]#--width#* [rep]_\#_ ::
+*-w*_\#_, *--width*_\#_::
 Specify the width of the input image.  Useful for file types such as PIX that do not encode explicit size information. 
 
-*[opt]#-n#* [rep]_\#_ , *[opt]#--height#* [rep]_\#_ ::
+*-n*_\#_, *--height*_\#_::
 Specify the height of the input image.  Useful for file types such as PIX that do not encode explicit size information. 
 
-*[opt]#--input-format#* [rep]_fmt_ ::
+*--input-format*_fmt_::
 Explicitly specify input file format. 
 
-*[opt]#--output-format#* [rep]_fmt_ ::
+*--output-format*_fmt_::
 Explicitly specify output file format. 
 
 == EXAMPLE
@@ -76,7 +76,7 @@ Explicitly specify output file format.
 
 == SEE ALSO
 
-xref:man:5/pix.adoc[*pix*](5)xref:man:5/bw.adoc[*bw*](5)
+xref:man:5/pix.adoc[*pix*(5)]xref:man:5/bw.adoc[*bw*(5)]
 
 == AUTHOR
 

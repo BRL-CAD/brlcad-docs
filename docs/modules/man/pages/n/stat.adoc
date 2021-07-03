@@ -13,12 +13,12 @@ stat -
 
 == SYNOPSIS
 
-*[cmd]#stat#*  [-h] [-?] [-r] [-F [rep]_string_] [-C [rep]_type1[,type2]..._] [-S [rep]_type1[,type2]..._] [-o [rep]_filename_] {glob pattern}
+*stat* [-h] [-?] [-r] [-F _string_] [-C _type1[,type2]..._] [-S _type1[,type2]..._] [-o _filename_] {glob pattern}
 
 [[_stat_overview]]
 == Overview
 
-The GED *[cmd]#stat#*  command reports information about objects in a BRL-CAD .g file.  It produces a tabular output, with options for user configurability and sorting. 
+The GED [cmd]*stat* command reports information about objects in a BRL-CAD .g file.  It produces a tabular output, with options for user configurability and sorting. 
 
 Available types reflect geometry object data: 
 
@@ -62,13 +62,13 @@ Print help and exit.
 Print raw values, instead of human friendly strings (for example, 5195952 for a size instead of 5.0M). 
 
 *-F*::
-Specify *[cmd]#search#*  style filters to trim down what is reported in *[cmd]#stat#*  output. 
+Specify [cmd]*search* style filters to trim down what is reported in [cmd]*stat* output. 
 
 *-C*::
-Supply a comma separated list of column specifiers or attribute keys to define the table layout for *[cmd]#stat#* . 
+Supply a comma separated list of column specifiers or attribute keys to define the table layout for [cmd]*stat*. 
 
 *-S*::
-Supply a comma separated list of column specifiers or attribute keys to specify a sorting priority for *[cmd]#stat#* . Priority is left to right - sorting will be performed first based on the leftmost specifier, and subsequent specifiers will be used to resolve any ties.  To reverse the ordering decisions for a given column, prefix the specifier with a "!" character. 
+Supply a comma separated list of column specifiers or attribute keys to specify a sorting priority for [cmd]*stat*. Priority is left to right - sorting will be performed first based on the leftmost specifier, and subsequent specifiers will be used to resolve any ties.  To reverse the ordering decisions for a given column, prefix the specifier with a "!" character. 
 
 *-o*::
 Write output to _filename_ instead of the command prompt. 
@@ -77,7 +77,7 @@ Write output to _filename_ instead of the command prompt.
 
 .Default Output
 ====
-[ui]`stat *` 
+[ui]`stat *`
 
 ....
 
@@ -99,7 +99,7 @@ Write output to _filename_ instead of the command prompt.
 
 .Sorting by Size
 ====
-[ui]`stat -S "size" *` 
+[ui]`stat -S "size" *`
 
 ....
 
@@ -121,7 +121,7 @@ Write output to _filename_ instead of the command prompt.
 
 .Sorting by Size, Reversed Order
 ====
-[ui]`stat -S "!size" *` 
+[ui]`stat -S "!size" *`
 
 ....
 
@@ -143,7 +143,7 @@ Write output to _filename_ instead of the command prompt.
 
 .Filtering by Type
 ====
-[ui]`stat -F "-type brep" *` 
+[ui]`stat -F "-type brep" *`
 
 ....
 
@@ -158,7 +158,7 @@ Write output to _filename_ instead of the command prompt.
 
 .Custom Columns
 ====
-[ui]`stat -C "name,type,size,color" *` 
+[ui]`stat -C "name,type,size,color" *`
 
 ....
 

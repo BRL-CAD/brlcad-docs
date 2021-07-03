@@ -12,7 +12,7 @@ cmap - Framebuffer colormap file format and utilities
 
 == FORMAT
 
-A __cmap__ file is a storage format for framebuffer colormaps. It is an ascii file with one line per colormap entry. In order to accommodate colormaps of any "depth" (number of bits per entry), 16 bit unsigned integers were selected (see xref:man:3/libfb.adoc[*libfb*](3) for a discussion of the C program interface to colormaps). A value of zero corresponds to full off, or black, a value of 65535 decimal or ffff hexadecimal corresponds to full on, or white.  A given device will use as many of the "leftmost" bits as it can support.
+A __cmap__ file is a storage format for framebuffer colormaps. It is an ascii file with one line per colormap entry. In order to accommodate colormaps of any "depth" (number of bits per entry), 16 bit unsigned integers were selected (see xref:man:3/libfb.adoc[*libfb*(3)] for a discussion of the C program interface to colormaps). A value of zero corresponds to full off, or black, a value of 65535 decimal or ffff hexadecimal corresponds to full on, or white.  A given device will use as many of the "leftmost" bits as it can support.
 
 Each line of the file has a decimal colormap index, followed by a tab character, and then three 4 digit hexadecimal values, separated by spaces, which correspond to the red, green, and blue, channels.  Any blank lines or lines beginning with non-numeric characters are ignored, and can thus be used for comments.
 
@@ -48,7 +48,7 @@ file.cm
 
 == SEE ALSO
 
-xref:man:1/brlcad.adoc[*brlcad*](1), and above named programs.
+xref:man:1/brlcad.adoc[*brlcad*(1)], and above named programs.
 
 == AUTHOR
 

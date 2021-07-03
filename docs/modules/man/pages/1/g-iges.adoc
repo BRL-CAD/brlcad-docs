@@ -11,48 +11,48 @@ g-iges - IGES Translator (BRL-CAD to IGES)
 
 == SYNOPSIS
 
-*[cmd]#g-iges#* [-f | [rep]_t_ | [rep]_m_][-v][-s][-x [rep]_flag1_][-X [rep]_flag2_][-a [rep]_abs_tol_][-r [rep]_rel_tol_][-n [rep]_norm_tol_][-o [rep]_output_file_or_directory_][rep]_database.g_[rep]_object(s)_
+*g-iges*[-f | _t_ | _m_][-v][-s][-x _flag1_][-X _flag2_][-a _abs_tol_][-r _rel_tol_][-n _norm_tol_][-o _output_file_or_directory_]_database.g__object(s)_
 
 == DESCRIPTION
 
-*[cmd]#g-iges#* converts the specified objects of the BRL-CAD database, __database.g__, to an IGES version 5.1 file, __file.iges__.
+[cmd]*g-iges* converts the specified objects of the BRL-CAD database, __database.g__, to an IGES version 5.1 file, __file.iges__.
 
 The following options are recognized
 
-*[opt]#-f#* ::
-selects  a  BREP  IGES  file  consisting  of  only  Manifold Solid BREP Objects.  All CSG solids in the specified objects  are  tessellated  to produce  facetted  BREP  objects, then the indicated Boolean operations are performed for each region. Individual regions are  written  to  the IGES  file  as individual BREP objects.  This procedure results in some approximations since curved surface solids, such as TGCs or ellipsoids, are  approximated  by flat facets.  The accuracy of the tessellation may be controlled through the use of the *[opt]#-a, -r, -n#* options.
+*-f*::
+selects  a  BREP  IGES  file  consisting  of  only  Manifold Solid BREP Objects.  All CSG solids in the specified objects  are  tessellated  to produce  facetted  BREP  objects, then the indicated Boolean operations are performed for each region. Individual regions are  written  to  the IGES  file  as individual BREP objects.  This procedure results in some approximations since curved surface solids, such as TGCs or ellipsoids, are  approximated  by flat facets.  The accuracy of the tessellation may be controlled through the use of the [opt]*-a, -r, -n* options.
 
-*[opt]#-a#* _abs_tol_::
+*-a*__abs_tol__::
 Sets the absolute tolerance (floating point value) for tessellation.
 
-*[opt]#-r#* _rel_tol_::
+*-r*__rel_tol__::
 Sets the relative (to the size of the object) tolerance (floating point value) for tessellation.
 
-*[opt]#-n#* _norm_tol_::
+*-n*__norm_tol__::
 Sets the normal tolerance (floating point value 0..1) for tessellation. This value is compared to the dot product of the normals to determine if the surfaces are within tolerance
 
-*[opt]#-t#* ::
+*-t*::
 indicates that an IGES file consisting of only trimmed NURBs should be created. The trimmed  NURBs  will  all  be planar NURBs, and they are the facets derived from the tessellation and Boolean evaluation as in the -f option. The file produced in  this  way is  acceptable  to the Pro/Engineer IGES import routine.
 
-*[opt]#-m#* ::
+*-m*::
 implies the -t option, and is used to produce multiple IGES files  (one for  each region converted). In this case the argument to the -o option should be a directory where the IGES files  will  accumulate.
 
-*[opt]#-v#* ::
+*-v*::
 requests debugging information
 
-*[opt]#-s#* ::
+*-s*::
 all facets in  BREP  objects  should  be output  in  the form of planar NURBs (Intergraph likes their IGES files this way).
 
-*[opt]#-x#* _flag1_::
+*-x*__flag1__::
 set the librt debug flag (see raytrace.h for values)
 
-*[opt]#-X#* _flag2_::
+*-X*__flag2__::
 set the librt debug flag (see nmg.h for values)
 
-*[opt]#-o#* _output_file_or_directory_::
+*-o*__output_file_or_directory__::
 Specifies the output file (or in the case of the -m) the output directory for the iges file(s).
 
-*[opt]#-P#* _num_cpus_::
+*-P*__num_cpus__::
 Specifies the number of processors to use.
 
 If neither the -f , -t , nor the -m options  are  selected, the  default is a CSG IGES file. In this situation, all regions will be written to the IGES file as Boolean trees with all possible solids represented  by their IGES CSG equivalent. In cases where there is no IGES CSG equivalent, the BRL-CAD solid is  tesellated  (using  the  provided tolerances),  and  a  BREP  object  is  written for that solid.
@@ -65,7 +65,7 @@ This command will produce an IGES BREP output file, __sample.iges__, from __obje
 
 == SEE ALSO
 
-xref:man:1/iges-g.adoc[*iges-g*](1)__The Initial Graphics Exchange Specification (IGES) Version 5.1__, IGES/PDES Organization, September 1991
+xref:man:1/iges-g.adoc[*iges-g*(1)]__The Initial Graphics Exchange Specification (IGES) Version 5.1__, IGES/PDES Organization, September 1991
 
 == DIAGNOSTICS
 

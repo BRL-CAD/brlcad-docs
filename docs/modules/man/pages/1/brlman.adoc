@@ -13,11 +13,11 @@ brlman -
 
 == SYNOPSIS
 
-*[cmd]#brlman#*  [[rep]_options_]... [[rep]_manpage_]
+*brlman* [_options_]... [_manpage_]
 
 == DESCRIPTION
 
-*[cmd]#brlman#*  provides manual page viewing capabilities for BRL-CAD's programs, commands, libraries, and conventions (such as file formats and attribute standards.)  On Unix-type systems, its default behavior is to wrap the system *[cmd]#man#*  command with the appropriate path information to allow man to find and display BRL-CAD's man pages.  On systems without a *[cmd]#man#*  command, *[cmd]#brlman#* will instead launch a Tcl/Tk based graphical view that displays html versions of the manual pages.  Both versions are generated from the same DocBook source files and contain the same information. 
+[cmd]*brlman* provides manual page viewing capabilities for BRL-CAD's programs, commands, libraries, and conventions (such as file formats and attribute standards.)  On Unix-type systems, its default behavior is to wrap the system [cmd]*man* command with the appropriate path information to allow man to find and display BRL-CAD's man pages.  On systems without a [cmd]*man* command, [cmd]*brlman* will instead launch a Tcl/Tk based graphical view that displays html versions of the manual pages.  Both versions are generated from the same DocBook source files and contain the same information. 
 
 [[_brlman_options]]
 == OPTIONS
@@ -26,16 +26,16 @@ brlman -
 Prints help. 
 
 *-g*::
-Instructs *[cmd]#brlman#*  to use its graphical man page viewer. 
+Instructs [cmd]*brlman* to use its graphical man page viewer. 
 
 *-L*::
 Specify a language to use when selecting man pages. 
 
 *-S [1 3 5 n]*::
-Specify a particular section to use when searching for a man page.  Useful when there are programs and MGED commands with the same names - the default man page returned will be that of the program, so *[opt]#-S#*  can be used to specify the MGED page instead.  Allowed sections are 1 (programs), 3 (libraries), 5 (conventions), and n (MGED). 
+Specify a particular section to use when searching for a man page.  Useful when there are programs and MGED commands with the same names - the default man page returned will be that of the program, so [opt]*-S* can be used to specify the MGED page instead.  Allowed sections are 1 (programs), 3 (libraries), 5 (conventions), and n (MGED). 
 
 *--no-gui*::
-Instructs *[cmd]#brlman#* _not_ to use its graphical man page viewer, even in situations where there is no command line option.  Primarily useful in scripting situations. 
+Instructs [cmd]*brlman*__not__ to use its graphical man page viewer, even in situations where there is no command line option.  Primarily useful in scripting situations. 
 
 == AUTHOR
 

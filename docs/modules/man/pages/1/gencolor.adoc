@@ -11,13 +11,13 @@ gencolor - output a pattern of byte values
 
 == SYNOPSIS
 
-*[cmd]#gencolor#* [-r[rep]_\#_][-p -b][-{sS} [rep]_squaresize_][-{wW} [rep]_width_][-{nN} [rep]_height_][[rep]_val1_...[rep]_valN_]
+*gencolor*[-r_\#_][-p -b][-{sS} _squaresize_][-{wW} _width_][-{nN} _height_][_val1_..._valN_]
 
 == DESCRIPTION
 
-*[cmd]#gencolor#* repeats a pattern of up to 8192 8-bit values on its standard output. The values, which range from 0 to 255, are taken either from the command line, or in binary (as stored in a .bw or .pix file) from standard input; if the values are not supplied, a single value of 0, for black, is used.  The *[opt]#-r#* flag can be used to specify the number of times to repeat the given pattern, the default being infinity (unless any other "-" options are used -- see below). This program is useful for producing a given grey value or color. Note that *[cmd]#gencolor#* will refuse to write its output to a window; you must redirect the output to a file.
+[cmd]*gencolor* repeats a pattern of up to 8192 8-bit values on its standard output. The values, which range from 0 to 255, are taken either from the command line, or in binary (as stored in a .bw or .pix file) from standard input; if the values are not supplied, a single value of 0, for black, is used.  The [opt]*-r* flag can be used to specify the number of times to repeat the given pattern, the default being infinity (unless any other "-" options are used -- see below). This program is useful for producing a given grey value or color. Note that [cmd]*gencolor* will refuse to write its output to a window; you must redirect the output to a file.
 
-*[opt]#-p#*  and *[opt]#-b#*  are used to specify [rep]_pix_  file and [rep]_bw_  file, respectively. *[opt]#-w#*  (or *[opt]#-W#* ) indicates the width; *[opt]#-n#*  (or *[opt]#-N#* ) indicates the height; width and height are set to the same value using *[opt]#-s#*  (or *[opt]#-S#* ). By default, a pix file of size 512x512 is assumed; however, use of *[opt]#-r#* overrules use of any other "-" options.
+[opt]*-p* and [opt]*-b* are used to specify [rep]_pix_ file and [rep]_bw_ file, respectively. [opt]*-w* (or [opt]*-W*) indicates the width; [opt]*-n* (or [opt]*-N*) indicates the height; width and height are set to the same value using [opt]*-s* (or [opt]*-S*). By default, a pix file of size 512x512 is assumed; however, use of [opt]*-r* overrules use of any other "-" options.
 
 == EXAMPLE
 
@@ -31,7 +31,7 @@ will do the same as above, using standard input instead of having the values on 
 
 == SEE ALSO
 
-xref:man:1/brlcad.adoc[*brlcad*](1), xref:man:5/pix.adoc[*pix*](5), xref:man:5/bw.adoc[*bw*](5)
+xref:man:1/brlcad.adoc[*brlcad*(1)], xref:man:5/pix.adoc[*pix*(5)], xref:man:5/bw.adoc[*bw*(5)]
 
 == AUTHOR
 

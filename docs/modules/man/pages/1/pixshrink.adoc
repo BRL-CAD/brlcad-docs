@@ -11,19 +11,19 @@ pixshrink - shrink a color pix file
 
 == SYNOPSIS
 
-*[cmd]#pixshrink#* [-s [rep]_squareinsize_][-w [rep]_in_width_][-n [rep]_in_height_][-f [rep]_shrink_factor_][-u][[rep]_infile.pix_]>[rep]_outfile.pix_
+*pixshrink*[-s _squareinsize_][-w _in_width_][-n _in_height_][-f _shrink_factor_][-u][_infile.pix_]>_outfile.pix_
 
 == DESCRIPTION
 
-*[cmd]#pixshrink#* will take a color xref:man:5/pix.adoc[*pix*](5) format file of given dimensions and produce a smaller scaled version. The *[opt]#-w#* and *[opt]#-n#* flags specify the input file width and number of scan lines in pixels. They can both be set to the same value via *[opt]#-s.#* Defaults of 512 are assumed for unspecified dimensions. The integer scaling factor ([rep]_shrink_factor_ ) is set with the *[opt]#-f#* flag.  By default, the factor is 2.  Thus, pixshrink forms the logical opposite of the __pixinterp2x (1)__ program.
+[cmd]*pixshrink* will take a color xref:man:5/pix.adoc[*pix*(5)] format file of given dimensions and produce a smaller scaled version. The [opt]*-w* and [opt]*-n* flags specify the input file width and number of scan lines in pixels. They can both be set to the same value via [opt]*-s.* Defaults of 512 are assumed for unspecified dimensions. The integer scaling factor ([rep]_shrink_factor_) is set with the [opt]*-f* flag.  By default, the factor is 2.  Thus, pixshrink forms the logical opposite of the __pixinterp2x (1)__ program.
 
-The program reads the entire image into memory, and then scales the image down to 1/[rep]_shrink_factor_  the original size in both dimensions.
+The program reads the entire image into memory, and then scales the image down to 1/[rep]_shrink_factor_ the original size in both dimensions.
 
-By default, pixshrink uses boxcar averaging to produce the output pixels from the input.  The *[opt]#-u#* option causes pixshrink to use image undersampling instead.
+By default, pixshrink uses boxcar averaging to produce the output pixels from the input.  The [opt]*-u* option causes pixshrink to use image undersampling instead.
 
 == SEE ALSO
 
-xref:man:1/brlcad.adoc[*brlcad*](1), xref:man:1/pixcrop.adoc[*pixcrop*](1), xref:man:1/pixrect.adoc[*pixrect*](1), xref:man:1/pixinterp2x.adoc[*pixinterp2x*](1), xref:man:1/pixscale.adoc[*pixscale*](1), xref:man:5/pix.adoc[*pix*](5)
+xref:man:1/brlcad.adoc[*brlcad*(1)], xref:man:1/pixcrop.adoc[*pixcrop*(1)], xref:man:1/pixrect.adoc[*pixrect*(1)], xref:man:1/pixinterp2x.adoc[*pixinterp2x*(1)], xref:man:1/pixscale.adoc[*pixscale*(1)], xref:man:5/pix.adoc[*pix*(5)]
 
 == BUGS
 

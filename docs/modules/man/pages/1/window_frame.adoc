@@ -13,38 +13,38 @@ window_frame -
 
 == SYNOPSIS
 
-*[cmd]#window_frame#*  [[rep]_options_]...
+*window_frame* [_options_]...
 
 == DESCRIPTION
 
-*[cmd]#window_frame#*  is a program to create a BRL-CAD database of window frames with rounded corners.  Up to twenty-six windows of the same size may be created.  The windows are made with rounded corners. *[cmd]#window_frame#*  uses libwdb to create a BRL-CAD database.  The window frames are composed of four arb8s and eight cylinders.   This program may be run interactively or the user may specify options on a command line.  If the user chooses to run the program interactively, he answers the questions as the program prompts him.  Below are the options that can be used on the command line. 
+[cmd]*window_frame* is a program to create a BRL-CAD database of window frames with rounded corners.  Up to twenty-six windows of the same size may be created.  The windows are made with rounded corners. [cmd]*window_frame* uses libwdb to create a BRL-CAD database.  The window frames are composed of four arb8s and eight cylinders.   This program may be run interactively or the user may specify options on a command line.  If the user chooses to run the program interactively, he answers the questions as the program prompts him.  Below are the options that can be used on the command line. 
 
 == OPTIONS
 
-*[opt]#-f#* [rep]_name.g_ ::
+*-f*_name.g_::
 BRL-CAD file name. 
 
-*[opt]#-n ##* ::
+*-n #*::
 The number of window frames to be created (must be less than or equal to 26). 
 
-*[opt]#-H ##* ::
+*-H #*::
 Height of window frame in millimeters. 
 
-*[opt]#-w ##* ::
+*-w #*::
 Width of window frame in millimeters. 
 
-*[opt]#-d ##* ::
+*-d #*::
 Depth of window frame in millimeters. 
 
-*[opt]#-r ##* ::
+*-r #*::
 Radius of the corner in millimeters. 
 
-*[opt]#-i ##* ::
+*-i #*::
 Actual width of the frame in millimeters. 
 
 == EXAMPLES
 
-.Interactive *[cmd]#window_frame#*  Session
+.Interactive [cmd]*window_frame* Session
 ====
 
 
@@ -76,9 +76,9 @@ number of window frames:  3
 ....
 ====
 
-.Single-Line *[cmd]#window_frame#*  Command
+.Single-Line [cmd]*window_frame* Command
 ====
-[ui]`window_frame -fwin.frm.g -n3 -H200 -w300 -d20 -r30 -i10` 
+[ui]`window_frame -fwin.frm.g -n3 -H200 -w300 -d20 -r30 -i10`
 ====
 
 Both of these examples create a database named win.frm.g containing three window frames with a height of 200mm, width of 300mm, depth of 20mm, and corner radius of 30mm. The actual width of the frame itself is 10mm. 

@@ -13,44 +13,44 @@ bolt -
 
 == SYNOPSIS
 
-*[cmd]#bolt#*  [[rep]_options_]...
+*bolt* [_options_]...
 
 == DESCRIPTION
 
-*[cmd]#bolt#*  is a program to create a BRL-CAD data base of one of four different kinds of bolts.  Up to twenty-six bolts of one type and size may be created. *[cmd]#bolt#*  uses libwdb to create a database file.  This program may be run interactively or the user may specify options on a command line.   If the user chooses to run the program interactively he answers the questions as the program prompts him.  Below are the options that can be used on the command line. 
+[cmd]*bolt* is a program to create a BRL-CAD data base of one of four different kinds of bolts.  Up to twenty-six bolts of one type and size may be created. [cmd]*bolt* uses libwdb to create a database file.  This program may be run interactively or the user may specify options on a command line.   If the user chooses to run the program interactively he answers the questions as the program prompts him.  Below are the options that can be used on the command line. 
 
 == OPTIONS
 
-*[opt]#-o##* ::
+*-o#*::
 Type of bolt to be created:  1=>bolt head; 2=>bolt head and washer;  3=>bolt head, washer, and bolt stem; and 4=>bolt head and bolt stem. 
 
-*[opt]#-f#* [rep]_name.g_ ::
+*-f*_name.g_::
 BRL-CAD file name. 
 
-*[opt]#-n ##* ::
+*-n #*::
 The number of bolts to be created.  This number must be less than or equal to 26 (or it will be set to  26). 
 
-*[opt]#-hd ##* ::
+*-hd #*::
 Diameter of bolt head, flat edge to flat edge, in millimeters. 
 
-*[opt]#-hh ##* ::
+*-hh #*::
 Height of bolt head in millimeters. 
 
-*[opt]#-wd ##* ::
+*-wd #*::
 Diameter of washer in millimeters. 
 
-*[opt]#-wh ##* ::
+*-wh #*::
 Height of washer in millimeters. 
 
-*[opt]#-sd ##* ::
+*-sd #*::
 Diameter of bolt stem in millimeters. 
 
-*[opt]#-sh ##* ::
+*-sh #*::
 Height of bolt stem in millimeters. 
 
 == EXAMPLES
 
-.Interactive *[cmd]#bolt#*  Session
+.Interactive [cmd]*bolt* Session
 ====
 
 
@@ -79,9 +79,9 @@ number of bolts:  3
 ....
 ====
 
-.Single-Line *[cmd]#bolt#*  Command
+.Single-Line [cmd]*bolt* Command
 ====
-[ui]`bolt -o1 -fbolt.g -n3 -hd30 -hh10` 
+[ui]`bolt -o1 -fbolt.g -n3 -hd30 -hh10`
 ====
 
 Both examples produce the same output - the bolt heads (option 1) are created with a diameter of 30mm and a height of 10mm in a database file called bolt.g. 

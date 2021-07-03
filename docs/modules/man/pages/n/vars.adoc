@@ -12,7 +12,7 @@ values.
 
 == SYNOPSIS
 
-*[cmd]#vars#*  [[rep]_variable_ =[rep]_value_]
+*vars* [_variable_=_value_]
 
 == DESCRIPTION
 
@@ -26,7 +26,7 @@ With no arguments, will list all the MGED variables and their values. If a _vari
 * linewidth -- indicates how wide to draw lines. 
 * linestyle -- set line style of wireframe shapes. Currently not being used. 
 * hot_key -- the X11 keysym definition for the key to toggle the _send_key_ value. The default is 0xFFC6 (65478 decimal), which is the F9 key. The keysym values are defined in the X11 file named __keysymdef.h__. 
-* context -- if nonzero (the default), then primitive editing parameters entered via the *[cmd]#p#*  command will be applied to the edited shape in the context of the combination tree above it in the displayed hierarchy. This means, for example, a translation applied to a shape will translate the shape to some point such that when the transformation matrices for that path are applied, the edited shape will appear at the specified location. If _context_ is set to zero, then the primitive edit operations will be applied directly to the edited shape. This means that a translation to a specific point may result in the edited shape being drawn at a point different from that specified (due to transformations in the _combination_ tree above it). Note that this only affects primitive edit operations that use the _p_ command. 
+* context -- if nonzero (the default), then primitive editing parameters entered via the [cmd]*p* command will be applied to the edited shape in the context of the combination tree above it in the displayed hierarchy. This means, for example, a translation applied to a shape will translate the shape to some point such that when the transformation matrices for that path are applied, the edited shape will appear at the specified location. If _context_ is set to zero, then the primitive edit operations will be applied directly to the edited shape. This means that a translation to a specific point may result in the edited shape being drawn at a point different from that specified (due to transformations in the _combination_ tree above it). Note that this only affects primitive edit operations that use the _p_ command. 
 * dlist -- if nonzero, use display lists. 
 * use_air -- if nonzero, use air while raytracing. 
 * listen -- if nonzero, listen for connections to MGEDs built-in fbserv.
@@ -62,7 +62,7 @@ With no arguments, will list all the MGED variables and their values. If a _vari
 * perspective -- if greater than zero, this is the perspective angle in degrees; otherwise, perspective is turned off. 
 * perspective_mode -- if nonzero, turn perspective on; otherwise, turn it off. 
 * toggle_perspective -- used to toggle among the four canned perspective angles (i.e., 30, 45, 60, and 90). 
-* nmg_eu_dist -- when the _-u_ option to the *[cmd]#ev#*  command is used, the NMG edgeuses are drawn this distance (mm) away from the actual edge. 
+* nmg_eu_dist -- when the _-u_ option to the [cmd]*ev* command is used, the NMG edgeuses are drawn this distance (mm) away from the actual edge. 
 * eye_sep_dist -- if greater than zero, this is the eye separation distance (mm) for stereo viewing; otherwise, stereo is off. 
 * union_op -- not currently used. 
 * intersection_op -- not currently used. 
@@ -71,11 +71,11 @@ With no arguments, will list all the MGED variables and their values. If a _vari
 
 == EXAMPLES
 
-The example shows the use of the *[cmd]#vars#*  command with an argument. 
+The example shows the use of the [cmd]*vars* command with an argument. 
 
 .Display the sliders.
 ====
-[prompt]#mged># [ui]`vars sliders=1` 
+[prompt]#mged>#[ui]`vars sliders=1`
 
 Turns on the __sliders__. 
 ====

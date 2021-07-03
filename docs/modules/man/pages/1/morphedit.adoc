@@ -11,15 +11,15 @@ morphedit - set up line segment correspondences between pix(5) images
 
 == SYNOPSIS
 
-*[cmd]#morphedit.tcl#* [-w [rep]_width_][-n [rep]_height_][rep]_picA.pix_[rep]_picB.pix_[rep]_linesfile_
+*morphedit.tcl*[-w _width_][-n _height_]_picA.pix__picB.pix__linesfile_
 
 == DESCRIPTION
 
-*[cmd]#morphedit#* allows the user to set up line segment correspondences to be used by the utility *[cmd]#pixmorph#*  .
+[cmd]*morphedit* allows the user to set up line segment correspondences to be used by the utility [cmd]*pixmorph* .
 
 First, the program displays the two images and presents a dialog box in which the user can enter values for __a, b,__ and __p__ (see __pixmorph(1)__ for details on these constants). [Note: after replacing these values, the user must press <Enter> for the new values to be recorded.]
 
-The user is now editing the lines file __linesfile__. The purpose of writing a lines file is to set up correspondences between the two images to improve the quality of morphed images produced by utilities such as *[cmd]#pixmorph#*  . To set up a correspondence, the user must create a (directed) line segment for each image that specifies which feature of the first image corresponds to which feature of the second.  These directed line segments are created in the following fashion.
+The user is now editing the lines file __linesfile__. The purpose of writing a lines file is to set up correspondences between the two images to improve the quality of morphed images produced by utilities such as [cmd]*pixmorph* . To set up a correspondence, the user must create a (directed) line segment for each image that specifies which feature of the first image corresponds to which feature of the second.  These directed line segments are created in the following fashion.
 
 To create the first endpoint of a new line segment, the user presses the left mouse button at the desired location in either image.  The point appears at the same location in the other image.  While the mouse button is held down, the endpoint may be dragged to any location (including off of the image...please do not misplace endpoints in this fashion -- they are very difficult to recover).  Releasing the mouse button deposits the endpoint at that location.
 
@@ -31,9 +31,9 @@ To display the orientation of a line segment, the user moves the mouse cursor un
 
 The "Save" button writes the currently displayed line segment correspondence set, along with the constants __a__, __b__, and __p__, to the file __linesfile__. The "Quit" button closes all associated windows and terminates the program.
 
-The "Preview" button, with corresponding __fraction__ entry box, spawns a process to display the morph specified by the given fraction and the last *saved* version of __linesfile__. (Note: this currently uses the utilities *[cmd]#pixmorph#* and *[cmd]#pix-fb#* . If the "Preview" button fails, verify that the paths to these utilities (specified in the first few lines of __morphedit.tcl__) are correct.
+The "Preview" button, with corresponding __fraction__ entry box, spawns a process to display the morph specified by the given fraction and the last *saved* version of __linesfile__. (Note: this currently uses the utilities [cmd]*pixmorph* and [cmd]*pix-fb*. If the "Preview" button fails, verify that the paths to these utilities (specified in the first few lines of __morphedit.tcl__) are correct.
 
-Note: *[cmd]#morphedit.tcl#* uses __bwish__ instead of the standard Tcl/Tk __wish__, since __bwish__ supports __pix__ images while __wish__ does not.  If you have difficulty running __morphedit.tcl__, make sure the first line of *[cmd]#morphedit.tcl#* (giving the path to __bwish__) is correct.
+Note: [cmd]*morphedit.tcl* uses __bwish__ instead of the standard Tcl/Tk __wish__, since __bwish__ supports __pix__ images while __wish__ does not.  If you have difficulty running __morphedit.tcl__, make sure the first line of [cmd]*morphedit.tcl* (giving the path to __bwish__) is correct.
 
 == EXAMPLES
 
@@ -41,7 +41,7 @@ morphedit.tcl face1.pix face2.pix lf
 
 == SEE ALSO
 
-xref:man:1/brlcad.adoc[*brlcad*](1), xref:man:1/pixmorph.adoc[*pixmorph*](1), xref:man:5/pix.adoc[*pix*](5)
+xref:man:1/brlcad.adoc[*brlcad*(1)], xref:man:1/pixmorph.adoc[*pixmorph*(1)], xref:man:5/pix.adoc[*pix*(5)]
 
 == BUGS
 

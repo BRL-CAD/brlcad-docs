@@ -11,13 +11,13 @@ cv - convert binary data files between representation formats
 
 == SYNOPSIS
 
-*[cmd]#cv#* [rep]_in_pat_[rep]_out_pat_[[[rep]_infile_][rep]_outfile_]
+*cv*_in_pat__out_pat_[[_infile_]_outfile_]
 
 == DESCRIPTION
 
 Convert a binary data file from one representation (format) to another. The particular representation desired is expressed as a set of choices from the pattern: [h|n][s|u] c|s|i|l|d|8|16|32|64. For example, "hui" is host unsigned int, "nl" is network (signed) long. The default is NETWORK format.
 
-Host specific format is the native internal number representation used inside the computer that *[cmd]#cv#* is running on. There is great variation between vendors in the host-specific formats that they use. Especially for double-precision floating point, DEC, Cray, and IBM have peculiar formats and byte orderings. The network-independent byte orderings used within BRL-CAD is big-endian (most significant bit first, on the left side of the word), twos complement. The network-independent double-precision floating point format used within BRL-CAD is 64-bit IEEE 754, transmitted in big-endian order.
+Host specific format is the native internal number representation used inside the computer that [cmd]*cv* is running on. There is great variation between vendors in the host-specific formats that they use. Especially for double-precision floating point, DEC, Cray, and IBM have peculiar formats and byte orderings. The network-independent byte orderings used within BRL-CAD is big-endian (most significant bit first, on the left side of the word), twos complement. The network-independent double-precision floating point format used within BRL-CAD is 64-bit IEEE 754, transmitted in big-endian order.
 
 Signed or unsigned integer formats can be selected. This has no effect on the double-precision format.
 
@@ -27,7 +27,7 @@ For example, to change a file of host-specific (machine-specific) signed shorts 
 
 == SEE ALSO
 
-xref:man:1/pix-bw.adoc[*pix-bw*](1), xref:man:1/dpix-pix.adoc[*dpix-pix*](1), xref:man:1/bw-pix.adoc[*bw-pix*](1); M. J. Muuss, ``__Workstations, Networking, Distributed Graphics, and Parallel Processing__`` in Computer Graphics Techniques:  Theory and Practice, edited by D. F. Rogers, R. A. Earnshaw, Springer-Verlag, 1990
+xref:man:1/pix-bw.adoc[*pix-bw*(1)], xref:man:1/dpix-pix.adoc[*dpix-pix*(1)], xref:man:1/bw-pix.adoc[*bw-pix*(1)]; M. J. Muuss, ``__Workstations, Networking, Distributed Graphics, and Parallel Processing__`` in Computer Graphics Techniques:  Theory and Practice, edited by D. F. Rogers, R. A. Earnshaw, Springer-Verlag, 1990
 
 == AUTHOR
 

@@ -11,25 +11,25 @@ pix-sun - convert a BRL PIX(5) format image to a Sun Rasterfile format
 
 == SYNOPSIS
 
-*[cmd]#pix-sun#* [-d][-s [rep]_squaresize_][-w [rep]_file_width_][-n [rep]_file_height_]<[rep]_BRLpixfile_>[rep]_rasterfile_
+*pix-sun*[-d][-s _squaresize_][-w _file_width_][-n _file_height_]<_BRLpixfile_>_rasterfile_
 
 == DESCRIPTION
 
-*[cmd]#pix-sun#* converts the __BRL PIX(5)__ format file on the standard input to a __Sun Rasterfile__ format file on the standard output.  The rasterfile produced is a "standard" (as opposed to "byte encoded") image, with 8 bits per pixel, with a palette of 256 colors.
+[cmd]*pix-sun* converts the __BRL PIX(5)__ format file on the standard input to a __Sun Rasterfile__ format file on the standard output.  The rasterfile produced is a "standard" (as opposed to "byte encoded") image, with 8 bits per pixel, with a palette of 256 colors.
 
 == OPTIONS
 
-*[opt]#-d#* ::
+*-d*::
 use a dither map
 
-*[opt]#-n file_height#* ::
-tells *[cmd]#pix-sun#* that the input is __file_height__ scanlines tall
+*-n file_height*::
+tells [cmd]*pix-sun* that the input is __file_height__ scanlines tall
 
-*[opt]#-s squaresize#* ::
+*-s squaresize*::
 sets both the width and the height for the input to be __squaresize__
 
-*[opt]#-w file_width#* ::
-tells *[cmd]#pix-sun#* that the input is __file_width__ pixels wide
+*-w file_width*::
+tells [cmd]*pix-sun* that the input is __file_width__ pixels wide
 
 == AUTHOR
 

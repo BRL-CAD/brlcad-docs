@@ -13,19 +13,19 @@ nmg_collapse - Simplifies an existing nmg_shape by a process of edge
 
 == SYNOPSIS
 
-*[cmd]#nmg_collapse#*  {[rep]_old_nmg_shape new_nmg_shape maximum_error_dist_} [[rep]_minimum_angle_]
+*nmg_collapse* {_old_nmg_shape new_nmg_shape maximum_error_dist_} [_minimum_angle_]
 
 == DESCRIPTION
 
-Simplifies an existing _nmg_shape_ by a process of edge decimation. Each edge in the _old_nmg_shape_ is considered; if it can be deleted without creating an error greater than the specified _maximum_error_dist,_ then that edge is deleted. If a _minimum_angle_ is specified (degrees), then the edge will not 	be deleted if it would create a triangle with an angle less than __minimum_angle__. The resulting shape is saved in __new_nmg_shape__. The _old_nmg_shape_	must have been triangulated previous to using the *[cmd]#nmg_collapse#*  command. The resulting 	shape consists of all triangular faces. 
+Simplifies an existing _nmg_shape_ by a process of edge decimation. Each edge in the _old_nmg_shape_ is considered; if it can be deleted without creating an error greater than the specified _maximum_error_dist,_ then that edge is deleted. If a _minimum_angle_ is specified (degrees), then the edge will not 	be deleted if it would create a triangle with an angle less than __minimum_angle__. The resulting shape is saved in __new_nmg_shape__. The _old_nmg_shape_	must have been triangulated previous to using the [cmd]*nmg_collapse* command. The resulting 	shape consists of all triangular faces. 
 
 == EXAMPLES
 
-The example shows the use of the *[cmd]#nmg_collapse#*  command to simplify an existing nmg 	shape by decimating its edges. The new nmg shape will be within a maximum error distribution and will 	not have any triangles with angles less than a given minimum. 
+The example shows the use of the [cmd]*nmg_collapse* command to simplify an existing nmg 	shape by decimating its edges. The new nmg shape will be within a maximum error distribution and will 	not have any triangles with angles less than a given minimum. 
 
 .Create a new nmg shape by decimating the edges of an existing nmg shape.
 ====
-[prompt]#mged># [ui]`nmg_collapse nmg_old nmg_new 1.0 10.0` 
+[prompt]#mged>#[ui]`nmg_collapse nmg_old nmg_new 1.0 10.0`
 
 Decimates edges in _nmg_old_ to produce an NMG with an error no greater than 1.0 units. The process will not create any triangles with an angle less than 10°. The new NMG shape will be named __nmg_new__. 
 ====

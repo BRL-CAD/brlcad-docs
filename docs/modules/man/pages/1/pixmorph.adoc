@@ -11,11 +11,11 @@ pixmorph - morph two pix(5) images
 
 == SYNOPSIS
 
-*[cmd]#pixmorph#* [-w [rep]_width_][-n [rep]_height_][rep]_picA.pix_[rep]_picB.pix_[rep]_linesfile_[rep]_warpfrac_[rep]_dissolvefrac_>[rep]_out.pix_
+*pixmorph*[-w _width_][-n _height_]_picA.pix__picB.pix__linesfile__warpfrac__dissolvefrac_>_out.pix_
 
 == DESCRIPTION
 
-*[cmd]#pixmorph#* performs feature-based image metamorphosis between "picA.pix" and "picB.pix". The feature correspondences are specified in the file "linesfile", which can be created using a utility such as __morphedit.tcl__ (see __morphedit(1)__).
+[cmd]*pixmorph* performs feature-based image metamorphosis between "picA.pix" and "picB.pix". The feature correspondences are specified in the file "linesfile", which can be created using a utility such as __morphedit.tcl__ (see __morphedit(1)__).
 
 The output image is computed in the following fashion. First, for each pixel in the output image, we choose a set __A__ of pixels (and associated weights) from "picA.pix" and another set __B__ of pixels from "picB.pix" (how these sets and weights are chosen will be described momentarily). The pixel values from __A__ are then averaged (using the associated weights) to determine the contribution __cA__ from the original image; the contribution __cB__ is computed similarly.  Then, the values __cA__ and __cB__ are interpolated by the value __dissolvefrac__ to compute the final value of the output pixel.
 
@@ -33,11 +33,11 @@ In general, the user will wish to set __warpfrac__ = __dissolvefrac__. Typically
 
 == OPTIONS
 
-*[opt]#-w#* [rep]_WIDTH_ ::
-Tells *[cmd]#pixmorph#* that the input images have width WIDTH.
+*-w*_WIDTH_::
+Tells [cmd]*pixmorph* that the input images have width WIDTH.
 
-*[opt]#-n#* [rep]_HEIGHT_ ::
-Tells *[cmd]#pixmorph#* that the input images have height HEIGHT.
+*-n*_HEIGHT_::
+Tells [cmd]*pixmorph* that the input images have height HEIGHT.
 
 == EXAMPLES
 
@@ -65,7 +65,7 @@ In this example, __warpfrac__ = 0. This will perform a simple 50% cross-dissolve
 
 == SEE ALSO
 
-xref:man:1/brlcad.adoc[*brlcad*](1), xref:man:1/morphedit.adoc[*morphedit*](1), xref:man:5/pix.adoc[*pix*](5)
+xref:man:1/brlcad.adoc[*brlcad*(1)], xref:man:1/morphedit.adoc[*morphedit*(1)], xref:man:5/pix.adoc[*pix*(5)]
 
 == AUTHOR
 

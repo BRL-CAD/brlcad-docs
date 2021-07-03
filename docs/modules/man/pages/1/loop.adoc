@@ -11,15 +11,15 @@ loop - generate numerical indices for shell loops, etc.
 
 == SYNOPSIS
 
-*[cmd]#loop#* [-c][rep]_start_[rep]_finish_[[rep]_increment_]
+*loop*[-c]_start__finish_[_increment_]
 
 == DESCRIPTION
 
-*[cmd]#loop#* generates a sequence of numbers between __start__ and __finish__ inclusive, one per line, on stdout. This is mostly useful for driving loops when writing Shell programs xref:man:1/sh.adoc[*sh*](1). The default increment is +1 when __start__<__finish__, and -1 when __start__>__finish__. An optional __increment__ may be specified. If __increment__ is zero, then the __start__ value will be generated continuously.
+[cmd]*loop* generates a sequence of numbers between __start__ and __finish__ inclusive, one per line, on stdout. This is mostly useful for driving loops when writing Shell programs xref:man:1/sh.adoc[*sh*(1)]. The default increment is +1 when __start__<__finish__, and -1 when __start__>__finish__. An optional __increment__ may be specified. If __increment__ is zero, then the __start__ value will be generated continuously.
 
 Both floating point and integer arguments can be used.  On integer arguments, if leading zeros are specified, they will be preserved on output.  This is useful for generating sequences of file names which are numbered with leading zeros.
 
-*[cmd]#-c#*  is used for character (char) looping. 
+[cmd]*-c* is used for character (char) looping. 
 
 == EXAMPLES
 

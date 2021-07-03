@@ -11,23 +11,23 @@ bot_dump - export polygonal BoT primitives without performing evaluation
 
 == SYNOPSIS
 
-*[cmd]#bot_dump#* [-b][-n][-m [rep]_directory_][-o [rep]_file_][-t [rep]_dxf_ | [rep]_obj_ | [rep]_sat_ | [rep]_stl_][-u [rep]_units_][-v][rep]_geom.g_[[rep]_bot1_[rep]_bot2_...]
+*bot_dump*[-b][-n][-m _directory_][-o _file_][-t _dxf_ | _obj_ | _sat_ | _stl_][-u _units_][-v]_geom.g_[_bot1__bot2_...]
 
 == DESCRIPTION
 
-*[cmd]#bot_dump#* 
+[cmd]*bot_dump*
 
-The *[opt]#-b#* option may be specified to indicate that the output file should be in a binary format (e.g., for formats that support ascii and binary formats like stl).
+The [opt]*-b* option may be specified to indicate that the output file should be in a binary format (e.g., for formats that support ascii and binary formats like stl).
 
-If the *[opt]#-n#* option is specified, BoT surface normals will be included in the output of __obj__ files. This option is specific to __obj__ file generation since normal vector outputs are already an integral part of the __stl__ file outputs and both the __dxf__ and __sat__ file formats do not support or require surface normal generation.
+If the [opt]*-n* option is specified, BoT surface normals will be included in the output of __obj__ files. This option is specific to __obj__ file generation since normal vector outputs are already an integral part of the __stl__ file outputs and both the __dxf__ and __sat__ file formats do not support or require surface normal generation.
 
-If the *[opt]#-m#* option is specified, then BoTs will be output to the directory name specified with one BoT per file.
+If the [opt]*-m* option is specified, then BoTs will be output to the directory name specified with one BoT per file.
 
-The *[opt]#-o#* option specifies what output file the BoT data should be dumped to.
+The [opt]*-o* option specifies what output file the BoT data should be dumped to.
 
-The *[opt]#-t#* is used to specify the desired output file type.  The default output type is STL in ASCII format.
+The [opt]*-t* is used to specify the desired output file type.  The default output type is STL in ASCII format.
 
-The *[opt]#-u#* option takes a units string that indicates the unit conversion to perform during output (converting from internal millimeter values to the unit type specified).
+The [opt]*-u* option takes a units string that indicates the unit conversion to perform during output (converting from internal millimeter values to the unit type specified).
 
 == EXAMPLE
 // <synopsis>

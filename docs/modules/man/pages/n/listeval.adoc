@@ -13,20 +13,20 @@ listeval - Displays primitive shape parameters after applying the
 
 == SYNOPSIS
 
-*[cmd]#listeval#*  [-t] {[rep]_path_}
+*listeval* [-t] {_path_}
 
 == DESCRIPTION
 
-Combinations may include transformation matrices to be applied to their members. A _path_ through a series of _combinations_ and ending with a primitive shape represents that _primitive shape_ with the transformations accumulated through the path applied to it. The *[cmd]#listeval#*  command displays primitive shape parameters after applying the accumulated transformations from the indicated __path__. If the specified _path_ does not end at a __primitive shape__, then all possible paths from the indicated _path_ to any _primitive shape_ will be evaluated and displayed. The -t option forces a shorter (i.e. terse) list of primitive shape parameters. This option is useful for primitives with potentially long parameter lists, such as BOTs.
+Combinations may include transformation matrices to be applied to their members. A _path_ through a series of _combinations_ and ending with a primitive shape represents that _primitive shape_ with the transformations accumulated through the path applied to it. The [cmd]*listeval* command displays primitive shape parameters after applying the accumulated transformations from the indicated __path__. If the specified _path_ does not end at a __primitive shape__, then all possible paths from the indicated _path_ to any _primitive shape_ will be evaluated and displayed. The -t option forces a shorter (i.e. terse) list of primitive shape parameters. This option is useful for primitives with potentially long parameter lists, such as BOTs.
 
 == EXAMPLES
 
-The example shows the use of the *[cmd]#listeval#*  command to display the parameters for a 	specified shape after applying the transformations from the given path. 
+The example shows the use of the [cmd]*listeval* command to display the parameters for a 	specified shape after applying the transformations from the given path. 
 
 .Display parameters for a given shape after applying transformations from a given path.
 ====
 
-[prompt]#mged># [ui]`listeval group1/region1/shapeb` ::
+[prompt]#mged>#[ui]`listeval group1/region1/shapeb`::
 Displays the parameters for _shapeb_ after applying the transformation matrix 		  from _group1_ for _region1_ and the transformation matrix 			  from _region1_ for __shapeb__. 
 ====
 
