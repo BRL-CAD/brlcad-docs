@@ -1,0 +1,66 @@
+= BRLCAD-CONFIG(1)
+BRL-CAD Team
+ifndef::site-gen-antora[:doctype: manpage]
+:man manual: BRL-CAD
+:man source: BRL-CAD
+:page-layout: base
+
+== NAME
+
+brlcad-config - script to get information about the installed version
+of BRL-CAD
+
+== SYNOPSIS
+
+*brlcad-config* [--prefix[_=DIR_]] [--libs] [--cflags] [--version] [--help]
+
+== DESCRIPTION
+
+[cmd]*brlcad-config* is a script that describes the compile and linker
+flags that should be used to compile and link programs that use
+_BRL-CAD_'s libraries.
+
+== OPTIONS
+
+[cmd]*brlcad-config* accepts the following options:
+
+*--prefix=PREFIX* :: If specified, use the provided installation
+PREFIX instead of the prefix that _BRL-CAD_ was compiled with when
+providing the output for the other [cmd]*brlcad-config* script
+options.
+
+*--libs* :: Prints out library linker flags that are generally needed
+when creating a program that links to _BRL-CAD_ libraries.
+
+*--cflags* :: Prints out compilation flags that are generally needed
+when creating a program that refers to _BRL-CAD_ headers.
+
+*--version* :: Prints out the version of _BRL-CAD_ that is installed.
+
+*--help* :: Display usage.
+
+== SEE ALSO
+
+xref:man:1/brlcad.adoc[*brlcad*(1)],
+xref:man:3/libbu.adoc[*libbu*(3)],
+xref:man:3/libbn.adoc[*libbn*(3)],
+xref:man:3/librt.adoc[*librt*(3)],
+xref:man:3/libwdb.adoc[*libwdb*(3)]
+
+== BUGS
+
+No bugs known for [cmd]*brlcad-config*.
+
+== AUTHOR
+
+Christopher Sean Morrison
+
+== COPYRIGHT
+
+This software is Copyright (c) 2007-2021 United States Government as
+represented by the U.S. Army Research Laboratory.
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to
+mailto:devs@brlcad.org[]
