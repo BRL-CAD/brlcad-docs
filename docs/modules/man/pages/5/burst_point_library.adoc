@@ -7,15 +7,25 @@ ifndef::site-gen-antora[:doctype: manpage]
 
 == NAME
 
-burst_point_library - Data output by the burst-file command from the burst tool.
+burst_point_library - Data output by the burst-file command from the
+burst tool.
 
 
 == FORMAT
 
-Burst point library files are composed of single-line records. Each line begins with a digit that identifies the type of record it represents. The file is composed of one or more runs that begin with a run header. Each shotline that intersects the target will result in a shotline header that is followed by one or more shotline intersection records. If a burst point occurs along a shotline, the burst ray header will immediately follow that shotline's last intersection record. Each burst ray header records will be immediately followed by burst ray intersection records, one for each ray that strikes a critical component. 
+Burst point library files are composed of single-line records. Each
+line begins with a digit that identifies the type of record it
+represents. The file is composed of one or more runs that begin with a
+run header. Each shotline that intersects the target will result in a
+shotline header that is followed by one or more shotline intersection
+records. If a burst point occurs along a shotline, the burst ray
+header will immediately follow that shotline's last intersection
+record. Each burst ray header records will be immediately followed by
+burst ray intersection records, one for each ray that strikes a
+critical component.
 
 .Burst Point Library File Format
-[cols="1,1,1", options="header"]
+[cols="3*~", options="header"]
 |===
 | Record Description
 | Field Format
@@ -152,8 +162,10 @@ BRL-CAD Team
 
 == COPYRIGHT
 
-This software is Copyright (c) 1989-2021 by the United States Government as represented by U.S. Army Research Laboratory. 
+This software is Copyright (c) 1989-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
 
 == BUG REPORTS
 
-Reports of bugs or problems should be submitted via electronic mail to mailto:devs@brlcad.org[]
+Reports of bugs or problems should be submitted via electronic mail to
+mailto:devs@brlcad.org[]

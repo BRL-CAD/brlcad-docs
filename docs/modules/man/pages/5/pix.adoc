@@ -1,0 +1,89 @@
+= PIX(5)
+ifndef::site-gen-antora[:doctype: manpage]
+:man manual: BRL-CAD
+:man source: BRL-CAD
+:page-layout: base
+
+== NAME
+
+pix - Color RGB image file format and utilities
+
+== FORMAT
+
+A _pix_ file contains sequences of pixels. Each pixel is stored as
+three __unsigned char__s, first red, then green, then blue. The
+intensity of each color ranges from 0 ("off") to 255 ("on"). The first
+pixel in a _pix_ file is the lower left corner of the image. The
+pixels proceed from left-to-right across each scanline, with scanlines
+being written from the bottom to the top of the image.
+
+By convention, _pix_ images are usually square, and thus their
+dimensions can be determined by the file size.  If this is not the
+case, often only the file width need be known by a program reading the
+file.  History has left us with two "standard" sizes, 512x512 and the
+"higher" 1024x1024. A common practice for other file sizes is to
+include the file width in the filename.
+
+At some time in the future _pix_ files will probably get self-typing
+headers so that parameters such as their size can be automatically
+determined by programs.
+
+== UTILITIES
+
+_pix-fb_ :: display a .pix format image on a framebuffer.
+
+_fb-pix_ :: produce a .pix file from a framebuffer image.
+
+_pix-bw_ :: convert a .pix file to a black and white .bw file.
+
+_bw-pix_ :: convert a black and white .bw file to a .pix file.
+
+_ap-pix_ :: convert an Applicon Color Plotter file to a .pix file.
+
+_pixtile_ :: combine several small .pix files into one large one.
+
+_pixstat_ :: gives statistics concerning a .pix file.
+
+_pixhist_ :: displays a color histogram on a framebuffer.
+
+_pixhist3d_ :: display three views of an RGB color space histogram on
+a framebuffer.
+
+_pixhist3d-plot3_ :: unix plot of RGB color space utilization.
+
+_pixdiff_ :: shows which pixels/colors differ between two .pix files.
+
+_pixrect_ :: extracts an arbitrary rectangle from a .pix file.
+
+_pixrot_ :: rotate, reverse, or invert a .pix file.
+
+_pixscale_ :: scale a .pix file up or down.
+
+_pixfilter_ :: a collection of 3x3 kernel filters for .pix files.
+
+_bw3-pix_ :: merges three .bw files into one .pix file.
+
+_pix-bw3_ :: separates .pix file RGB colors into three .bw files.
+
+== FILES
+
+file.pix
+
+== SEE ALSO
+
+xref:man:1/brlcad.adoc[*brlcad*(1)], xref:man:5/bw.adoc[*bw*(5)], and
+above named programs.
+
+== AUTHOR
+
+BRL-CAD Team
+
+== COPYRIGHT
+
+This software is Copyright (c) 1989-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to
+mailto:devs@brlcad.org[]

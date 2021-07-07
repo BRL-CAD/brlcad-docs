@@ -7,94 +7,158 @@ ifndef::site-gen-antora[:doctype: manpage]
 
 == NAME
 
-benchmark - This document describes the BRL-CAD Benchmark Suite Methodology, and
-    the Ray-Tracing Figure of Merit (RTFM) used to judge the computational
-    performance of different computer systems.
-
+benchmark - This document describes the BRL-CAD Benchmark Suite
+Methodology, and the Ray-Tracing Figure of Merit (RTFM) used to judge
+the computational performance of different computer systems.
 
 [[_intro]]
 == Introduction
 
-The core of the test is the [cmd]*rt* ray-tracing program. The results for each processor are determined by running a benchmark test of the RT ray-tracing program on each of the sample databases provided.  The [cmd]*rt* program requires a binary database for input ("db/xxx.g"), and produces a binary image as output ("bench/xxx.pix"), along with a log file ("bench/xxx.log").  Each run will produce a 512x512x24 bit color shaded image in a "bench/xxx.pix" file, and a run log in "bench/xxx.log".  Reference copies of the images are provided as "pix/xxx.pix" and "pix/xxx.log".  The sample databases provided are processed in order of increasing difficulty, and each produces a colorful image.  In each picture there are two light sources; the primary source is located near the center of the model (the white ball), and the secondary light source is located at the "eye" position. 
+The core of the test is the [cmd]*rt* ray-tracing program. The results
+for each processor are determined by running a benchmark test of the
+RT ray-tracing program on each of the sample databases provided.  The
+[cmd]*rt* program requires a binary database for input ("db/xxx.g"),
+and produces a binary image as output ("bench/xxx.pix"), along with a
+log file ("bench/xxx.log").  Each run will produce a 512x512x24 bit
+color shaded image in a "bench/xxx.pix" file, and a run log in
+"bench/xxx.log".  Reference copies of the images are provided as
+"pix/xxx.pix" and "pix/xxx.log".  The sample databases provided are
+processed in order of increasing difficulty, and each produces a
+colorful image.  In each picture there are two light sources; the
+primary source is located near the center of the model (the white
+ball), and the secondary light source is located at the "eye"
+position.
 
 == The Benchmark Models
 
-moss.g -- This is a simple model, containing a yellow torus, a green ellipsoid, a bluish cube, a pink truncated (distorted) cone, all sitting on a blue plate.  Note the shadowing, and "specular splash". 
+moss.g :: This is a simple model, containing a yellow torus, a green
+ellipsoid, a bluish cube, a pink truncated (distorted) cone, all
+sitting on a blue plate.  Note the shadowing, and "specular splash".
 
-world.g -- The same model as moss.g, but with various rendering features enabled.  The model is enclosed in a hollow cloud sphere. The plate is a mirror, the egg is crystal, the box has a debugging texture map applied. 
+world.g :: The same model as moss.g, but with various rendering
+features enabled.  The model is enclosed in a hollow cloud sphere. The
+plate is a mirror, the egg is crystal, the box has a debugging texture
+map applied.
 
-star.g -- A familiar sight to Star Trek fans; a low-detail exterior of the ship "Enterprise".  The hull is white, with some other structures in other colors.  The small red object in the foreground is the shuttlecraft Galileo, to scale. 
+star.g :: A familiar sight to Star Trek fans; a low-detail exterior of
+the ship "Enterprise".  The hull is white, with some other structures
+in other colors.  The small red object in the foreground is the
+shuttlecraft Galileo, to scale.
 
-bldg391.g -- An exploded view of a two-story imaginary computer site, including various walls, red stairways, green disk drives, etc.  The lower floor is a mirror, the upper floor is glass. 
+bldg391.g :: An exploded view of a two-story imaginary computer site,
+including various walls, red stairways, green disk drives, etc.  The
+lower floor is a mirror, the upper floor is glass.
 
-m35.g -- A truck. 
+m35.g :: A truck.
 
-sphflake.g -- A sphereflake. 
+sphflake.g :: A sphereflake. 
 
 == MACHINE INDEPENDENCE
 
-The databases are provided in an ASCII format in the "db" directory. ascii-to-binary converters are provided in the "conv" directory.  On most systems the command "[cmd]*make benchmark*" (see the document __Installing
-      the BRL-CAD Package__) will automatically compile, generate the binary .g files, and run the benchmark tests. 
+The databases are provided in an ASCII format in the "db"
+directory. ascii-to-binary converters are provided in the "conv"
+directory.  On most systems the command "[cmd]*make benchmark*" (see
+the document _Installing the BRL-CAD Package_) will automatically
+compile, generate the binary .g files, and run the benchmark tests.
 
-The reference images are distributed in binary BRL-CAD xref:man:5/pix.adoc[*pix*(5)] format.  Earlier releases distributed the reference images in the portable ASCII form, and then converted them to the binary form.  This consumed a significant amount of extra storage on UNIX machines, so this practice was discontinued.  It is assumed that anyone attempting to benchmark a system that can not read pure binary files will at least have access to a UNIX system.  That UNIX system can be used to convert the reference images to the portable ASCII form with the xref:man:1/pix2asc.adoc[*pix2asc*(1)] tool, and then those images may be sent to the machine under test. 
+The reference images are distributed in binary BRL-CAD
+xref:man:5/pix.adoc[*pix*(5)] format.  Earlier releases distributed
+the reference images in the portable ASCII form, and then converted
+them to the binary form.  This consumed a significant amount of extra
+storage on UNIX machines, so this practice was discontinued.  It is
+assumed that anyone attempting to benchmark a system that can not read
+pure binary files will at least have access to a UNIX system.  That
+UNIX system can be used to convert the reference images to the
+portable ASCII form with the xref:man:1/pix2asc.adoc[*pix2asc*(1)]
+tool, and then those images may be sent to the machine under test.
 
-If you encounter difficulty with running the benchmark, you might wish to build the full BRL-CAD package, to take advantage of the image tools in determining the nature of the problem.  For example, one system suffered from a compiler bug that made TGC solids vanish, while another system had difficulties with the light visibility calculations. 
+If you encounter difficulty with running the benchmark, you might wish
+to build the full BRL-CAD package, to take advantage of the image
+tools in determining the nature of the problem.  For example, one
+system suffered from a compiler bug that made TGC solids vanish, while
+another system had difficulties with the light visibility
+calculations.
 
 == OBTAINING CORRECT RESULTS
 
-The benchmark timings are not considered valid unless the correct results are given.  Make sure that the answers match the reference files to within plus-or-minus one in each color (see pixdiff(1)). Slight variations in the calculated pixels are generally attributable to variations in floating point precision.  You may wish to compare the execution times and log file remarks from your tests (in the "bench/xxx.log" files) with the VAX-11/780 (with hardware FPA) times which are given in the "pix/xxx.log" files.  The log file for sphflake has yet to be run on the same system, causing weighted results.  It's still useful and informative, however, for deriving performance statistics.  The reference images are also located in the "pix/" directory. 
+The benchmark timings are not considered valid unless the correct
+results are given.  Make sure that the answers match the reference
+files to within plus-or-minus one in each color (see
+pixdiff(1)). Slight variations in the calculated pixels are generally
+attributable to variations in floating point precision.  You may wish
+to compare the execution times and log file remarks from your tests
+(in the "bench/xxx.log" files) with the VAX-11/780 (with hardware FPA)
+times which are given in the "pix/xxx.log" files.  The log file for
+sphflake has yet to be run on the same system, causing weighted
+results.  It's still useful and informative, however, for deriving
+performance statistics.  The reference images are also located in the
+"pix/" directory.
 
-For example, if you are running the benchmark on a Cray XMP, the world.pix and bldg391.pix images will have a single byte in the blue channel off by 1, out in the cloud background.  This is not to be considered an error. 
+For example, if you are running the benchmark on a Cray XMP, the
+world.pix and bldg391.pix images will have a single byte in the blue
+channel off by 1, out in the cloud background.  This is not to be
+considered an error.
 
 == BENCHMARK IMAGE DISPLAY
 
-If you have a suitable framebuffer, you may wish to display the images generated by the benchmark, and compare them to the reference images. This section assumes that you have successfully compiled the full set of BRL-CAD software, not just the benchmark portion.  Programs for dealing with images are in the "util" directory.  To display a xref:man:5/pix.adoc[*pix*(5)] file on a framebuffer, set environment variable FB_FILE (see xref:man:1/brlcad.adoc[*brlcad*(1)] for details), and run **pix-fb**.  Note that by leaving FB_FILE unset, your default display will be used. 
+If you have a suitable framebuffer, you may wish to display the images
+generated by the benchmark, and compare them to the reference
+images. This section assumes that you have successfully compiled the
+full set of BRL-CAD software, not just the benchmark portion.
+Programs for dealing with images are in the "util" directory.  To
+display a xref:man:5/pix.adoc[*pix*(5)] file on a framebuffer, set
+environment variable FB_FILE (see xref:man:1/brlcad.adoc[*brlcad*(1)]
+for details), and run **pix-fb**.  Note that by leaving FB_FILE unset,
+your default display will be used.
 
 ....
-
-      
-	cd bench
-	pix-fb moss.pix
+cd bench
+pix-fb moss.pix
 ....
 
-If the images computed on your machine do not match the reference images, the program "util/pixdiff" will compute a pix file that will highlight the differences for you, and report a summary of bytes equal, off-by-1, and off-by-many, e.g., 
+If the images computed on your machine do not match the reference
+images, the program "util/pixdiff" will compute a pix file that will
+highlight the differences for you, and report a summary of bytes
+equal, off-by-1, and off-by-many, e.g.,
 
 ....
-
-      pixdiff moss.pix ../pix/moss.pix (or) pix-fb
+pixdiff moss.pix ../pix/moss.pix (or) pix-fb
 ....
 
-For a display of the relative magnitude of the differences at each pixel, use "util/bwdiff" instead, e.g., 
+For a display of the relative magnitude of the differences at each
+pixel, use "util/bwdiff" instead, e.g.,
 
 ....
+bwdiff moss.pix ../pix/moss.pix (or) pix-fb
+....
 
-      
-	bwdiff moss.pix ../pix/moss.pix (or) pix-fb
-      
-      or
-      
-	bwdiff moss.pix ../pix/moss.pix (or)
-	bwmod -s 128 -m 4 -a 128 | pix-fb
+or
+
+....
+bwdiff moss.pix ../pix/moss.pix (or)
+bwmod -s 128 -m 4 -a 128 | pix-fb
 ....
 
 and for statistics on the differences, use
 
+....
 bwdiff moss.pix ../pix/moss.pix (or) pixstat
+....
 
 == THE COMPETITION
 
-The full benchmark takes about 9 CPU hours on a VAX-11/780, so you should scale your expectations accordingly.
+The full benchmark takes about 9 CPU hours on a VAX-11/780, so you
+should scale your expectations accordingly.
 
-Here is a sampling of some systems that have been tested, with as much information about the configuration as could be obtained.  Some systems have a great many options for small things that can affect performance, such as memory interleaving.
+Here is a sampling of some systems that have been tested, with as much
+information about the configuration as could be obtained.  Some
+systems have a great many options for small things that can affect
+performance, such as memory interleaving.
 
-[cols="1,1", frame="border"]
+[%header, cols="2*~", frame="border"]
 |===
-
 |System Name
 |Configuration
-
-|_
-|_
 
 |axposf
 |DEC Alpha 4000/710, 256M, OSF/1 V3.0(1)
@@ -154,22 +218,44 @@ Here is a sampling of some systems that have been tested, with as much informati
 |SGI Ingido**2, 150 MHz IP22, 96M RAM, Irix 5.3
 |===
 
-(1) The Alpha was heavily loaded while the benchmark was being run. DEC requires us to show the load average at the time:
+(1) The Alpha was heavily loaded while the benchmark was
+being run. DEC requires us to show the load average at the time:
 
+....
 03:28  up 18 days, 10:59,  7 users,  load average: 2.00, 2.00, 2.08
+....
 
 == BENCHMARK RESULTS
 
-In the tradition of Dongarra, the Rays/sec figure is considered the "RT Figure of Merit" (RTFM).  Note that the RTFM can only be compared between different runs on the _same_ database; it is not meaningful to compare RTFM numbers between different databases. The Rays/sec number for a multi-processor machine is for "aggregate CPU cluster seconds", rather than rays/total CPU seconds (which remains fairly constant on good parallel machines).
+In the tradition of Dongarra, the Rays/sec figure is considered the
+"RT Figure of Merit" (RTFM).  Note that the RTFM can only be compared
+between different runs on the _same_ database; it is not meaningful to
+compare RTFM numbers between different databases. The Rays/sec number
+for a multi-processor machine is for "aggregate CPU cluster seconds",
+rather than rays/total CPU seconds (which remains fairly constant on
+good parallel machines).
 
-The statistics are recorded in an easily understood format, with all results for a particular configuration listed on a single line.  The numbers reported are the rays/sec (RTFM) figure.  Entries denoted with an asterisk ("*") produced incorrect results.  Entries denoted with a dash ("-") were not available and should be considered differently than those entries with an asterisk.  Generally the results are not available because time constraints prevented running the complete set of databases.
+The statistics are recorded in an easily understood format, with all
+results for a particular configuration listed on a single line.  The
+numbers reported are the rays/sec (RTFM) figure.  Entries denoted with
+an asterisk ("*") produced incorrect results.  Entries denoted with a
+dash ("-") were not available and should be considered differently
+than those entries with an asterisk.  Generally the results are not
+available because time constraints prevented running the complete set
+of databases.
 
 [[_release_44_statistics]]
 == RELEASE 4.4 STATISTICS (4-Jan-1995)
 
-There is very little difference in RTFM numbers between Release 4.0 and Release 4.4, so they can be usefully compared.  In some cases the 4.4 performance is slower due to the use of shared libraries.  For example "vision" dropped from 1.33 to 1.22 due to the shared libraries.  For most users reducing the disk consumption from 300 MBytes to 30 MBytes makes this a reasonable tradeoff.  However, for the best performance, use non-shared libraries.
+There is very little difference in RTFM numbers between Release 4.0
+and Release 4.4, so they can be usefully compared.  In some cases the
+4.4 performance is slower due to the use of shared libraries.  For
+example "vision" dropped from 1.33 to 1.22 due to the shared
+libraries.  For most users reducing the disk consumption from 300
+MBytes to 30 MBytes makes this a reasonable tradeoff.  However, for
+the best performance, use non-shared libraries.
 
-[cols="1,1,1,1,1,1,1,1", frame="border", options="header"]
+[cols="8*1", frame="border", options="header"]
 |===
 | H/W
 | Moss
@@ -179,15 +265,6 @@ There is very little difference in RTFM numbers between Release 4.0 and Release 
 | M35
 | Mean
 | S/W Notes
-| .TH
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-
 
 |vapor
 |810.91
@@ -806,14 +883,10 @@ There is very little difference in RTFM numbers between Release 4.0 and Release 
 
 These are the definitions for systems measured in previous tests.
 
-[cols="1,1", frame="border"]
+[%header, cols="2*~", frame="border"]
 |===
-
 |System Name
 |Configuration
-
-|_
-|_
 
 |alliant
 |Alliant FX/8 (8 CEs, 9 IPs, 64 Mbytes), Concentrix 3.0
@@ -885,9 +958,7 @@ These are the definitions for systems measured in previous tests.
 |Silicon Graphics 4D R4000 50Mhz clock
 
 |c1east
-|
-
-Convex C1 XP (2 IOPs, 4 Multibus, 64 Mbytes), S/W 6.0.1.12
+|Convex C1 XP (2 IOPs, 4 Multibus, 64 Mbytes), S/W 6.0.1.12
 
 |elxsi-gnu
 |Elxsi 6420, BSD 4.2 16 MB
@@ -905,14 +976,15 @@ Convex C1 XP (2 IOPs, 4 Multibus, 64 Mbytes), S/W 6.0.1.12
 |SGI Iris 3030, FPA, GL2-W3.5
 
 |mseries
-|MIPS Mseries, Release 0.6, UMIPS 2.1, 16 MB of R2350 RAM.
-	R2000 CPU rev 5.0, R2010 FP rev 2.0
+|MIPS Mseries, Release 0.6, UMIPS 2.1, 16 MB of R2350 RAM.  R2000 CPU
+ rev 5.0, R2010 FP rev 2.0
 
 |multiflow
 |Multiflow Trace 7/200 (PRELIMINARY)
 
 |nova
-|Sun SPARCserver 490, 32 Mb, 33 MHz clock, 33 MHz TI 8847 FPU, SunOS 4.1.1B
+|Sun SPARCserver 490, 32 Mb, 33 MHz clock, 33 MHz TI 8847 FPU, SunOS
+ 4.1.1B
 
 |rh2
 |Tektronix, Motorola 88000
@@ -967,7 +1039,7 @@ These are the results of previous benchmarks.
 [[_release_120_statistics]]
 == RELEASE 1.20 STATISTICS (12-Feb-1987)
 
-[cols="1,1,1,1,1,1,1,1", frame="border", options="header"]
+[cols="8*1", frame="border", options="header"]
 |===
 | A/*
 | H/W
@@ -977,15 +1049,6 @@ These are the results of previous benchmarks.
 | Bldg
 | Mean
 | S/W Notes
-| .TH
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-
 
 |Rays
 |tek4132
@@ -1657,7 +1720,7 @@ These are the results of previous benchmarks.
 [[_release_23_statistics]]
 == RELEASE 2.3 STATISTICS (2-Nov-1987)
 
-[cols="1,1,1,1,1,1,1,1", frame="border", options="header"]
+[cols="8*1", frame="border", options="header"]
 |===
 | A/*
 | H/W
@@ -1667,15 +1730,6 @@ These are the results of previous benchmarks.
 | Bldg
 | Mean
 | S/W Notes
-| .TH
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-
 
 |Rays
 |vgr
@@ -2185,7 +2239,7 @@ These are the results of previous benchmarks.
 [[_release_30_statistics]]
 == RELEASE 3.0 STATISTICS (10-Oct-1988)
 
-[cols="1,1,1,1,1,1,1,1", frame="border", options="header"]
+[cols="8*1", frame="border", options="header"]
 |===
 | A/*
 | H/W
@@ -2195,15 +2249,6 @@ These are the results of previous benchmarks.
 | Bldg
 | Mean
 | S/W Notes
-| .TH
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-
 
 |Abs
 |vgr
@@ -2605,7 +2650,7 @@ These are the results of previous benchmarks.
 [[_release_37_statistics]]
 == RELEASE 3.7 STATISTICS (19-June-1989)
 
-[cols="1,1,1,1,1,1,1,1,1", frame="border", options="header"]
+[cols="9*1", frame="border", options="header"]
 |===
 | A/*
 | H/W
@@ -2616,16 +2661,6 @@ These are the results of previous benchmarks.
 | M35
 | Mean
 | CPU
-| .TH
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-
 
 |Abs
 |vgr
@@ -3031,7 +3066,7 @@ These are the results of previous benchmarks.
 [[_release_40_statistics]]
 == RELEASE 4.0 STATISTICS
 
-[cols="1,1,1,1,1,1,1,1,1", frame="border", options="header"]
+[cols="9*1", frame="border", options="header"]
 |===
 | A/*
 | H/W
@@ -3042,16 +3077,6 @@ These are the results of previous benchmarks.
 | M35
 | Mean
 | CPU
-| .TH
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-
 
 |Abs
 |vgr
@@ -3536,4 +3561,11 @@ These are the results of previous benchmarks.
 
 == ADDITIONAL STATISTICS
 
-It would be greatly appreciated if you would e-mail any statistics that you gather to the BRL-CAD developers, including: the "summary" file produced by the benchmark script, which BRL-CAD release was used, the manufacturer of the machine, hardware model name/number, software version numbers (OS and compiler), presence or absence of floating point hardware, processor cache sizes, bus and memory speeds, and the local host name (preferably an Internet or UUCP host name) of the specific machine used.
+It would be greatly appreciated if you would e-mail any statistics
+that you gather to the BRL-CAD developers, including: the "summary"
+file produced by the benchmark script, which BRL-CAD release was used,
+the manufacturer of the machine, hardware model name/number, software
+version numbers (OS and compiler), presence or absence of floating
+point hardware, processor cache sizes, bus and memory speeds, and the
+local host name (preferably an Internet or UUCP host name) of the
+specific machine used.
