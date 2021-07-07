@@ -1,0 +1,240 @@
+= libfb - FrameBuffer Library(3)
+BRL-CAD Team
+ifndef::site-gen-antora[:doctype: manpage]
+:man manual: BRL-CAD Libraries
+:man source: BRL-CAD
+:page-layout: base
+
+== NAME
+
+libfb - multiple device, generic frame buffer library
+		
+[[_libfbgeneric]]
+== Generic frame buffer routines
+
+[source,c]
+----
+fb *fb_open (* fbfile,
+             int fb_close ( fbp ) fb * fbp,
+             int fb_read ( fbp , x , y , addr , count ) fb * fbp,
+             RGBpixel *addr;,
+             long count;);
+----
+
+[[_libfbhardware]]
+== Hardware specific frame buffer routines
+
+[source,c]
+----
+int fb_cursor (* fbp,
+               int fb_scursor ( fbp , mode , x , y ) fb * fbp,
+               int fb_setcursor ( fbp , bits , xbits , ybits , xorig , yorig ) fb * fbp,
+               unsigned char bits[],
+               int xbits, ybits;,
+               int xorig, yorig;);
+----
+
+== DESCRIPTION
+
+These routines are designed to provide a device-independent method of
+using frame buffers or files containing frame buffer images. The
+coordinate system used is first-quadrant (0..width-1, 0..height-1),
+with integer addressing.  Translation to hardware coordinate systems
+is handled by the library.
+
+This version of the library assumes that red, green, and blue
+intensities are described by unsigned 8-bit bytes in the range
+(0..255). The library interface uses arrays of __RGBpixel__s, which is
+a typedef for an array of three unsigned chars (this was done to avoid
+structure padding).  Note that a pointer to an _RGBpixel_ is thus the
+name of the _RGBpixel_ itself, i.e. no ampersand is needed.
+
+The exact interpretation of color maps tends to be somewhat device
+specific. The three ColorMap arrays each have 256 entries of unsigned
+16-bit values. In order to accommodate color maps with differing
+amounts of output resolution, the color map entries are fixed-point
+fractions in the range (0.0..1.0).  In integer notation, the range is
+(0..65525). For devices with less than 16 bits of output from their
+color maps, the left-most portion of each entry is used.
+
+_Fb_open_ :: is used to open a frame buffer file __fbfile__. The file
+may be either the name of a supported frame buffer interface,
+referenced as "/dev/interface", or the name of a UNIX file. The
+routine will try to determine if the file opened was a real frame
+buffer by examining the name, and if so will perform whatever
+initialization actions are necessary. If the value of _fbfile_ is
+`NULL` and the environment variable [var]`FB_FILE` is set, then the
+value of [var]`FB_FILE` is used; otherwise the default frame buffer
+device for the system is used. See below for more details. The _width_
+and _height_ parameters specify the initial size of display
+desired. If these are zero the default sizes for that device will be
+used. On a successful open, the frame buffer I/O (fb) structure
+pointer is returned. This structure contains size you were actually
+given, as well as the maximum possible size for the selected device. A
+return of FB_NULL indicates failure.
+
+_Fb_close_ :: simply closes the frame buffer.
+
+_Fb_read_ :: reads _count_ pixels from the frame buffer starting at
+the location specified by _x_ and _y_, and places them at program
+memory address specified by _addr_. _Fb_read_ returns the number of
+pixels actually read, or -1 on error.
+
+_Fb_write_ :: writes _count_ pixels from program address _addr_ into
+the frame buffer starting at the location specified by _x_ and
+_y_. _Fb_write_ returns the number of pixels actually written, or -1
+on error.
+
+_Fb_rmap_ :: reads in the color map from the frame buffer and leaves
+at the location pointed to by _cmap_.
+
+_Fb_wmap_ :: writes the color map pointed to by _cmap_ into the frame
+buffer.  If the value of _cmap_ is `NULL` then a linear color map is
+used as the default.
+
+_Fb_clear_ :: erases the frame buffer by setting all pixels to the
+given color. If the color pointer is NULL, black will be used. On a
+UNIX file, this entails writing the entire file, which is an expensive
+operation, whereas on most frame buffer displays this can be done in
+less than a second by a special command.
+
+_Fb_gettype_ :: returns a pointer to a string describing the frame
+buffer specified by the fb pointer.
+
+_Fb_getwidth_ and _Fb_getheight_ :: returns the current size of the fb
+frame buffer.
+
+The following routines work in conjunction with those described above
+to provide functions which only apply if the frame buffer file is
+actually a hardware frame buffer display.
+
+_Fb_cursor_ :: places the cursor at the image space coordinates given
+by _x_ and _y_. If the mode is non-zero, the cursor is made visible,
+and if mode is zero, the cursor is turned off.
+
+_Fb_scursor_ :: is the same as _fb_cursor_ except that it places the
+cursor at the _screen_ space coordinates given by _x_ and _y_.
+
+_Fb_setcursor_ :: allows the user to set the bitmap used to represent the
+cursor, thereby changing the cursor shape. This is not necessarily
+supported by all hardware. The argument _bits_ is a pointer to an
+array of unsigned chars containing the bits of the cursor. The
+arguments _xbits_ and _ybits_ specify the size of the cursor bitmap.
+The number of bytes in the `bits` array will be the width rounded up
+to a multiple of eight (so that the cursor "scanlines" are byte
+aligned) times the height. `bits`[0] is the lower left corner,
+`bits`[1] is to the right of it, etc.  The next line of the `bits`
+array goes above the current one.  Within a byte the most significant
+bit is the leftmost.  The values _xorig_ and _yorig_ specify which bit
+in the bitmap actually gets placed at the location specified in the
+cursor move routines.  Again, a first quadrant coordinate system is
+used.
+
+_Fb_window_ :: sets the frame buffer window center position to the image
+space coordinates given by _x_ and _y_. This command is usually used
+in conjunction with the _fb_zoom_ routine.
+
+_Fb_zoom_ :: sets the zoom factor for the X coordinate to _x_ and the
+zoom factor for the Y coordinate to _y_. Zooming is generally done by
+pixel replication in hardware.
+
+The following routines work in conjunction with those described above
+to provide buffered reading and writing of frame buffer images either
+to a real frame buffer or a UNIX file. The routines use a simple
+paging strategy to hold "`bands`" of the image in core. Since
+horizontal bands are buffered, the ideal motion is to scan left to
+right, then bottom to top.
+
+_Fb_ioinit_ :: should be called before using any of the other buffered
+I/O routines and repeated whenever the frame buffer is reopened.
+
+_Fb_seek_ :: is used to position the current read/write pointer to the
+location to the next position to be read or written. It is not
+necessary to do a _fb_seek_ after every read or write since both
+_fb_rpixel_ and _fb_wpixel_ imply an automatic move to the next
+pixel. If you read or write the last pixel on a scan line, the pointer
+will automatically move to the beginning of the following scan line.
+
+_Fb_tell_ :: returns the current location of the read write pointer in
+terms of (X,Y) coordinates on the frame buffer. The X and Y values are
+returned into the integers pointed to by _xp_ and _yp_.
+
+_Fb_rpixel_ :: reads the pixel at the current frame buffer location
+and returns it into the location specified by _pixelp_.
+
+_Fb_wpixel_ :: writes the pixel pointed to by _pixelp_ at the current
+frame buffer location.
+
+_Fb_flush_ :: caused any current buffered frame buffer pages to be
+written out. Unnecessary writes are avoided by the use of page
+reference bits.
+
+The following is a printing routine which this library uses to
+indicate errors.
+
+_Fb_log_ :: will convert, format and print its _args_ under control of
+_format_ to the standard error output. For more detailed information
+on the specification of the control string, see
+xref:man:3S/printf.adoc[*printf*(3S)]. This function may be supplied
+by the application if different behavior is desired.
+
+== FB_FILE DEVICES
+
+The following devices are supported by the library; not all may be
+available on any given system.  New device support can be incorporated
+by the addition of a single module to the library.
+
+[path]_/dev/debug_ _[num]_ :: The "/dev/debug" interface prints one
+line to logs each call to the frame buffer library. _num_ is a
+bitvector indicating the levels of verbosity of the output.  See
+_fb.h_ for the bit definitions.
+
+_filename_ :: Disk file interface
+
+_hostname:_ _[devicename]_ :: TCP-based network links to a remote
+framebuffer, where _devicename_ is any from this list, for example,
+fictitious.brlcad.org:/dev/ik0 or fictitious.brlcad.org:/dev/sgi. A
+_hostname_ with a null _devicename_ will select the default display
+device on that host. If explicitly specifying a remote device, be
+careful not to omit the colon between the host and device name, or you
+will be specifying a local disk file as the result. Note that for
+security reasons, it is not permitted to access a disk file via the
+remote interface.
+
+== EXAMPLES
+
+_Libfb_ can be loaded with any C program:
+
+....
+$ /bin/cc program.c -lfb -l<system-library>...
+....
+
+where _<system-library>_ denotes specific libraries necessary on a
+particular machine.  All machines with networking will require the
+"-lpkg" option.  Machines which support the X Windows(tm) system will
+require the "-lX11" option.
+
+== RETURN VALUES
+
+_fb_close_, _fb_write_, _fb_read_, _fb_wmap_, _fb_rmap_, _fb_clear_,
+_fb_cursor_, _fb_scursor_, _fb_setcursor_, _fb_window_, _fb_zoom_,
+_fb_ioinit_, _fb_seek_, _fb_wpixel_, _fb_rpixel_ and _fb_flush_ return
+-1 to indicate failure. _Fb_open_ returns FB_NULL to indicate failure,
+and a non-null fb structure pointer upon success. _fb_read_, and
+_fb_write_ return the number of pixels actually read or
+written. _fb_gettype_ returns a pointer to a NULL terminated
+description string.
+
+== SEE ALSO
+
+xref:man:1/fbhelp.adoc[*fbhelp*(1)],
+xref:man:1/brlcad.adoc[*brlcad*(1)].
+
+== AUTHOR
+
+BRL-CAD Team
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to
+mailto:devs@brlcad.org[]

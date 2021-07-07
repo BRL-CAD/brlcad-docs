@@ -1,0 +1,87 @@
+= LIBPLOT3(3)
+BRL-CAD Team
+ifndef::site-gen-antora[:doctype: manpage]
+:man manual: BRL-CAD
+:man source: BRL-CAD
+:page-layout: base
+
+== NAME
+
+libplot3 - graphics interface subroutines
+
+== SYNOPSIS
+
+[source,c]
+----
+void pl_3box (FILE *fp,
+              int x0,
+              int y0,
+              int z0,
+              int x1,
+              int y1,
+              int z1);
+----
+
+== DESCRIPTION
+
+These subroutines generate graphic output commands for processing with
+the _plot(1)_ plotting filters. They are slightly more general than
+those in _libplot_ as these take a file pointer.  They also include
+the BRL 3-D extensions to the plot intermediate code.
+
+_Pl_space_ or _pl_3space_ must be used before any of the graphic
+primitives to declare the amount of space necessary. See _plot3(5)_.
+
+_Pl_box_ or _pl_3box_ draws a box between the two given opposite
+points. The 'pen' will be left at the second point.
+
+_Pl_circle_ draws a circle of radius _r_ with center at the point
+(_x_, _y_). Note that _circle_ and _arc_ cannot be transformed in
+three space if one is using a filter to do that.
+
+_Pl_arc_ draws an arc of a circle with center at the point (_x_, _y_)
+between the points (_x0_, _y0_) and (_x1_, _y1_).
+
+String arguments to _pl_label_ and _pl_linmod_ are terminated by nulls
+and do not contain new-lines.
+
+There are also 2-D and 3_D double-precision versions, with arguments
+identical to their counterparts above.  The naming conventions are to
+change the prefix to "pd"; examples are thus _pd_point_ and
+_pd_3point_. Vector versions for 3_D (also double-precision) are
+prefixed "pdv", as in _pdv_3point_.
+
+See _plot3(5)_ and _plot(5)_ for a description of the effect of the
+remaining functions.
+
+== FILES
+
+/usr/brlcad/lib/libplot3.a :: produces output for
+xref:man:1G/plot.adoc[*plot*(1G)] filters
+
+== WARNINGS
+
+In order to compile a program containing these functions in _file.c_
+it is necessary to use: `cc _file.c_ -lplot3`
+
+_Color_ specification and three-dimensional primitives are BRL
+extensions to the "unix plot" language that are not generally found on
+other systems.
+
+== SEE ALSO
+
+xref:man:1/plot.adoc[*plot*(1)], xref:man:1/pl-fb.adoc[*pl-fb*(1)],
+xref:man:5/plot3.adoc[*plot3*(5)], xref:man:5/plot.adoc[*plot*(5)]
+
+== AUTHOR
+
+BRL-CAD Team
+
+== COPYRIGHT
+
+This software is Copyright (c) 1989-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to mailto:devs@brlcad.org[]
