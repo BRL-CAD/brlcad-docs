@@ -1,0 +1,59 @@
+= ARB(nged)
+ifndef::site-gen-antora[:doctype: manpage]
+:man manual: BRL-CAD User Commands
+:man source: BRL-CAD
+:page-role: manpage
+
+== NAME
+
+arb - Creates a new ARB shape with the specified arb_name.
+    
+
+== SYNOPSIS
+
+*arb* {_arb_name_} {_rotation_} {_fallback_}
+
+== DESCRIPTION
+
+The [cmd]*arb* command creates a new ARB shape with the specified
+_arb_name_. The new ARB will be 20 inches by 20 inches and 2 inches
+thick. The square faces will be perpendicular to the direction defined
+by the rotation and fallback angles. This direction can be determined
+by interpreting the rotation angle as an azimuth and the fallback
+angle as an elevation as in the [cmd]*ae* command.
+
+== EXAMPLES
+
+The first example shows the use of the [cmd]*arb* command to create a
+new ARB shape with a specified name.  The second example shows the use
+of the [cmd]*ae* command to determine the view orientation of the arb.
+
+.Create _new_arb_ with a specific rotation angle and fallback angle.
+====
+[subs="+quotes"]
+....
+[prompt]#mged># [ui]`arb new_arb 35 25`
+....
+
+Create new_arb with a rotation angle of 35° and a fallback angle of
+25°.
+====
+
+.Using the [cmd]*ae* command to determine the view orientation of the arb
+====
+[subs="+quotes"]
+....
+[prompt]#mged># [ui]`ae 35 25`
+....
+
+Rotates view to look straight on at square face of _new_arb_. 
+====
+
+== AUTHOR
+
+BRL-CAD Team
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to
+mailto:devs@brlcad.org[]
