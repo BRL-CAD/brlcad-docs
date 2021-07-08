@@ -1,0 +1,52 @@
+= GIF2FB(1)
+ifndef::site-gen-antora[:doctype: manpage]
+:man manual: BRL-CAD
+:man source: BRL-CAD
+:page-role: manpage
+
+== NAME
+
+gif2fb - display GIF file on frame buffer
+
+== SYNOPSIS
+
+*gif2fb* [-H] [-v] [-F _frame_buffer_name_] _GIF_file_name_
+
+== DESCRIPTION
+
+[cmd]*gif2fb* displays on a frame buffer the images described by a
+CompuServe GIF (Graphics Interchange Format) file. The [opt]*-F*
+option outputs to the specified frame buffer instead of the one
+specified by the _FB_FILE_ environment variable (or the default frame
+buffer, if _FB_FILE_ is not set). The frame buffer size requested will
+be the same as the input GIF screen size. The actual size obtained
+depends on details of the specific frame buffer. The [opt]*-H* option
+prints the GIF screen size on stderr. The [opt]*-v* option prints
+additional information about the GIF file on stderr. The
+_GIF_file_name_ specifies the GIF input file to be translated, rather
+than reading the file from the standard input.
+
+== SEE ALSO
+
+A Standard Defining a Mechanism for the Storage and Transmission of
+Raster-Based Graphics Information, June 15, 1987 (CompuServe
+Incorporated). xref:man:3/libfb.adoc[*libfb*(3)] ,
+xref:man:1/gif-fb.adoc[*gif-fb*(1)]
+
+== DIAGNOSTICS
+
+Error messages are intended to be self-explanatory.
+
+== AUTHOR
+
+Christopher T. Johnson
+
+== COPYRIGHT
+
+This software is Copyright (c) 1994-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to
+mailto:devs@brlcad.org[]

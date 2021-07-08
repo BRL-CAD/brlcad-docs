@@ -10,11 +10,15 @@ gdiff - a BRL-CAD differential geometry comparator
 
 == SYNOPSIS
 
-*gdiff*[_options_]..._left_model.g_[_ancestor_model.g_]_right_model.g_
+*gdiff* [_options_]... _left_model.g_ [_ancestor_model.g_] _right_model.g_
 
 == DESCRIPTION
 
-[cmd]*gdiff* compares BRL-CAD models specified on the command line, reporting differences according to the specified options.  It supports a plain "diff" comparison between two files, as well as a "3-way" comparison that accepts a third file with "ancestral" information that provides a context for the left and right files. 
+[cmd]*gdiff* compares BRL-CAD models specified on the command line,
+reporting differences according to the specified options.  It supports
+a plain "diff" comparison between two files, as well as a "3-way"
+comparison that accepts a third file with "ancestral" information that
+provides a context for the left and right files.
 
 The following options are recognized:
 
@@ -26,45 +30,56 @@ The following options are recognized:
 *-d*::
 (two-way diff) Report objects deleted in right_model.g
 +
-(three-way diff) Report objects deleted in left_model.g and/or right_model.g
+(three-way diff) Report objects deleted in left_model.g and/or
+right_model.g
 
 *-m*::
 (two-way diff) Report objects modified in right_model.g
 +
-(three-way diff) Report objects that are different in left_model.g and/or right_model.g relative to ancestor.g
+(three-way diff) Report objects that are different in left_model.g
+and/or right_model.g relative to ancestor.g
 
-*-q*::
-Decrease the verbosity of the output.  Additional specifications will further decrease the output provided.  (Opposite effect of [opt]*v* option.) All settings for this option will respect other constraints applied to the reporting output.
+*-q*:: Decrease the verbosity of the output.  Additional
+specifications will further decrease the output provided.  (Opposite
+effect of [opt]*v* option.) All settings for this option will respect
+other constraints applied to the reporting output.
 
-*-u*::
-(two-way diff) Report objects that are identical in left_model.g and right_model.g
+*-u*:: (two-way diff) Report objects that are identical in
+left_model.g and right_model.g
 +
-(three-way diff) Report objects that are identical in ancestor_model.g, left_model.g and right_model.g
+(three-way diff) Report objects that are identical in
+ancestor_model.g, left_model.g and right_model.g
 
-*-v*::
-Increase the verbosity of the output.  Additional specifications will further increase the output provided.  (Opposite effect of [opt]*q* option.) All settings for this option will respect other constraints applied to the reporting output.
+*-v*:: Increase the verbosity of the output.  Additional
+specifications will further increase the output provided.  (Opposite
+effect of [opt]*q* option.) All settings for this option will respect
+other constraints applied to the reporting output.
 
-*-t #*::
-Set a numerical comparison tolerance used to compare numerical properties.  Default value is RT_LEN_TOL, but be aware that this comparison is not aware of units.
+*-t #*:: Set a numerical comparison tolerance used to compare
+numerical properties.  Default value is RT_LEN_TOL, but be aware that
+this comparison is not aware of units.
 
-*-F "filter_string"*::
-Apply filters to the diff output, using the same set of filters available in the [cmd]*search* command's search.  See the [cmd]*search* manual page for more details.
+*-F "filter_string"*:: Apply filters to the diff output, using the
+same set of filters available in the [cmd]*search* command's search.
+See the [cmd]*search* manual page for more details.
 
-*-M merged_file.g*::
-Merge the files being diffed into one output file.
+*-M merged_file.g*:: Merge the files being diffed into one output
+file.
 
-The program returns 0 if the files being compared have no differences that satisfy the user-supplied options, otherwise it returns the total number of differing objects that do satisfy the supplied options.  Default is to report all differences that rise above RT_LEN_TOL. 
+The program returns 0 if the files being compared have no differences
+that satisfy the user-supplied options, otherwise it returns the total
+number of differing objects that do satisfy the supplied options.
+Default is to report all differences that rise above RT_LEN_TOL.
 
 [[_example]]
 == EXAMPLES
 
 .Default Diffing Results
 ====
-Running the default options on two pre-prepared examples of Moss World gives us a summary of the status of various objects: 
+Running the default options on two pre-prepared examples of Moss World
+gives us a summary of the status of various objects:
 
-....
-
-      
+....  
 ~: gdiff moss.g moss2.g
 M platform.r
 M ellipse.s
@@ -77,26 +92,26 @@ M tor.r
 D LIGHT
 A tgc_new.s
 A eto.s
-.... 'M' denotes an object that was modified, 'D' is an object that was deleted, and 'A' is an object that was added. 
+....
+
+'M' denotes an object that was modified, 'D' is an object that was
+deleted, and 'A' is an object that was added.
 ====
 
 .Alternate Diffing Result Outputs
 ====
-The [opt]*v* and [opt]*q* options provide various styles of output, as follows: 
+The [opt]*v* and [opt]*q* options provide various styles of output, as
+follows:
 
-[opt]*-qq* (no output except the return code): 
-
+* [opt]*-qq* (no output except the return code): 
++
+....
+~: gdiff -qq moss.g moss2.g
 ....
 
-      
-	~: gdiff -qq moss.g moss2.g
-....
-
-[opt]*-q*: 
-
-....
-
-      
+* [opt]*-q*: 
++
+....     
 ~: gdiff -q moss.g moss2.g
 Added:
 tgc_new.s, eto.s
@@ -106,13 +121,13 @@ LIGHT
 
 Changed:
 platform.r, ellipse.s, light.r, _GLOBAL, cone.s, cone.r, box.s, tor.r
-.... Objects are reported in lists, categorized by their status. 
-
-(default): 
-
 ....
++
+Objects are reported in lists, categorized by their status. 
 
-      
+* (default): 
++
+....     
 ~: gdiff moss.g moss2.g
 M platform.r
 M ellipse.s
@@ -125,13 +140,13 @@ M tor.r
 D LIGHT
 A tgc_new.s
 A eto.s
-.... If verbosity is not specified, this is the default output. 
-
-[opt]*-v*: 
-
 ....
++
+If verbosity is not specified, this is the default output. 
 
-      
+* [opt]*-v*: 
++
+....     
 ~: gdiff -v moss.g moss2.g
 - "platform.r" tree(p): l platform.s
 + "platform.r" tree(p): - {l platform.s} {l cone.s}
@@ -162,13 +177,16 @@ A eto.s
 D LIGHT
 A tgc_new.s
 A eto.s
-.... The first elevated verbosity level is a more detailed version of the previous setting, with each parameter in the modified objects reported in detail.  '-' lines show what was removed for a given attribute or parameter, and '+' lines contain the data that replaced them. 
-
-[opt]*-vv*: 
-
 ....
++
+The first elevated verbosity level is a more detailed version of the
+previous setting, with each parameter in the modified objects reported
+in detail.  '-' lines show what was removed for a given attribute or
+parameter, and '+' lines contain the data that replaced them.
 
-      
+* [opt]*-vv*: 
++
+....     
 ~: gdiff -vv moss.g moss2.g
 - "platform.r" tree(p): l platform.s
 + "platform.r" tree(p): - {l platform.s} {l cone.s}
@@ -214,48 +232,47 @@ A "eto.s" C(p): 3.448298656000062134552309 0 3.448298656000062134552309
 A "eto.s" N(p): 0 0 0.01724149328000028000285049
 A "eto.s" V(p): 8.533195938359670051909234 -11.04524849332910996224655 -1.403988582132086548881489
 A "eto.s" DB5_MINORTYPE(p): eto
-.... The second elevation of the verbosity level is a fully detailed diff that contains all information added or removed. 
+....
++
+The second elevation of the verbosity level is a fully detailed diff
+that contains all information added or removed.
 ====
 
 .Filtering Based on Difference Type
 ====
-The options [opt]*a*, [opt]*d*, [opt]*m*, and [opt]*u* control which categories of diff results (added, deleted, modified, and unchanged) are reported. By default added, deleted and modified items are reported, but once one of these four options is specified only those specified are reported: 
+The options [opt]*a*, [opt]*d*, [opt]*m*, and [opt]*u* control which
+categories of diff results (added, deleted, modified, and unchanged)
+are reported. By default added, deleted and modified items are
+reported, but once one of these four options is specified only those
+specified are reported:
 
-Report only objects added: 
-
-....
-
-    
+* Report only objects added: 
++
+....   
 ~: gdiff -a moss.g moss2.g
 A tgc_new.s
 A eto.s
 ....
 
-Report only objects deleted: 
-
-....
-
-    
+* Report only objects deleted: 
++
+....   
 ~: gdiff -d moss.g moss2.g
 D LIGHT
 ....
 
-Report both added and deleted objects, but not modified objects: 
-
-....
-
-    
+* Report both added and deleted objects, but not modified objects: 
++
+....   
 ~: gdiff -a -d moss.g moss2.g
 D LIGHT
 A tgc_new.s
 A eto.s
 ....
 
-Report unmodified objects: 
-
-....
-
-    
+* Report unmodified objects: 
++
+....   
 ~: gdiff -u moss.g moss2.g
 ellipse.r
 box.r
@@ -265,11 +282,12 @@ all.g
 
 .Filtering Results With Tolerance
 ====
-To eliminate differences in modifications that are too small to be of interest, the [opt]*t* is used.  What difference constitutes "too small" is up to the user - in this example, we will use 30 millimeters: 
+To eliminate differences in modifications that are too small to be of
+interest, the [opt]*t* is used.  What difference constitutes "too
+small" is up to the user - in this example, we will use 30
+millimeters:
 
 ....
-
-    
 ~: gdiff -v -t 30.0 moss.g moss2.g
 - "platform.r" tree(p): l platform.s
 + "platform.r" tree(p): - {l platform.s} {l cone.s}
@@ -286,16 +304,24 @@ To eliminate differences in modifications that are too small to be of interest, 
 D LIGHT
 A tgc_new.s
 A eto.s
-.... Notice that ellipse.s, which was on earlier lists, is now filtered out.  cone.s has a difference in the x coordinates of the parameter V that is large enough to satisfy the tolerance filter, so that parameter stays in.  Parameters that are not strictly numerical comparisons, or those that are part of added or deleted objects, remain in the report. 
+....
+
+Notice that ellipse.s, which was on earlier lists, is now
+filtered out.  cone.s has a difference in the x coordinates of the
+parameter V that is large enough to satisfy the tolerance filter, so
+that parameter stays in.  Parameters that are not strictly numerical
+comparisons, or those that are part of added or deleted objects,
+remain in the report.
 ====
 
 .Filtering Results With Search Filters
 ====
-The _search_ filtering technique can be used to select specific subsets of the database to see in reports, using the [opt]*F* option.  For example, limiting the diff report to only objects of type elliptical torus: 
+The _search_ filtering technique can be used to select specific
+subsets of the database to see in reports, using the [opt]*F* option.
+For example, limiting the diff report to only objects of type
+elliptical torus:
 
 ....
-
-    
 ~: gdiff -F "-type eto" moss.g moss2.g
 A eto.s
 ....
@@ -303,8 +329,6 @@ A eto.s
 Note that this option will work at all levels of verbosity: 
 
 ....
-
-    
 ~: gdiff -vv -F "-type eto" moss.g moss2.g
 A "eto.s" r_d(p): 1.724149328000026404339451
 A "eto.s" r(p): 13.79319462400021123471561
@@ -317,11 +341,11 @@ A "eto.s" DB5_MINORTYPE(p): eto
 
 .Combining Multiple Filters
 ====
-The various diff filters can be used together.  For example, repeating the search filter with ell types added to the accepted list produces the following: 
+The various diff filters can be used together.  For example, repeating
+the search filter with ell types added to the accepted list produces
+the following:
 
 ....
-
-    
 ~: gdiff -vv -F "-type eto -or -type ell" moss.g moss2.g
 - "ellipse.s" C(p): 0 8.980256080627000869753829 8.980256080627000869753829
 + "ellipse.s" C(p): 0 1.561016355403846755933728 1.561016355403846755933728
@@ -343,8 +367,6 @@ A "eto.s" DB5_MINORTYPE(p): eto
 If we now add the tolerance filter, we see ellipse.s is filtered out: 
 
 ....
-
-    
 ~: gdiff -vv -t 30.0 -F "-type eto -or -type ell" moss.g moss2.g
 D "LIGHT" C(p): 0 0 2.539999961852999810218989
 D "LIGHT" B(p): 0 2.539999961852999810218989 0
@@ -357,16 +379,23 @@ A "eto.s" C(p): 3.448298656000062134552309 0 3.448298656000062134552309
 A "eto.s" N(p): 0 0 0.01724149328000028000285049
 A "eto.s" V(p): 8.533195938359670051909234 -11.04524849332910996224655 -1.403988582132086548881489
 A "eto.s" DB5_MINORTYPE(p): eto
-.... ellipse.s satisfies the search filter, but is filtered by virtue of having no differences larger than 30 in its parameters. 
+....
+
+ellipse.s satisfies the search filter, but is filtered by virtue of
+having no differences larger than 30 in its parameters.
 ====
 
 .Three Way Differences
 ====
-A "3-way" diff uses an ancestor file as a basis for evaluating the differences between two other files.  This ancestor provides a "context" in which it is possible to tell whether a difference between two files is a) the product of a change in one but not the other in comparison to the original or b) whether both have (incompatibly) changed in comparison to the original.  For example, if we compare moss2.g from the previous examples to a new file moss3.g: 
+A "3-way" diff uses an ancestor file as a basis for evaluating the
+differences between two other files.  This ancestor provides a
+"context" in which it is possible to tell whether a difference between
+two files is a) the product of a change in one but not the other in
+comparison to the original or b) whether both have (incompatibly)
+changed in comparison to the original.  For example, if we compare
+moss2.g from the previous examples to a new file moss3.g:
 
 ....
-
-    
 ~: gdiff moss2.g moss3.g
 M platform.r
 M ellipse.s
@@ -382,11 +411,12 @@ M all.g
 M tor
 A ellipse2.r
 A LIGHT
-.... All we can tell is that these objects differ from each other.  If, however, we add moss.g to the comparison as an ancestor file: 
-
 ....
 
-    
+All we can tell is that these objects differ from each other.  If,
+however, we add moss.g to the comparison as an ancestor file:
+
+....
 ~: gdiff moss2.g moss.g moss3.g
 M platform.r
 M ellipse.s
@@ -403,13 +433,19 @@ M tor
 A(B) tgc_new.s
 C eto.s
 A(R) ellipse2.r
-.... We can now see that ellipse.r was deleted only from the right file (moss3.g) and was unchanged in moss2.g. Similarly, we can tell that LIGHT wsa deleted from moss2.g, ellipse2.r was added in moss3.g, tgc_new.s was added identically in both moss2.g and moss3.g, and eto.s is different in moss2.g and moss3.g in some fashion that the ancestor file moss.g cannot help gdiff resolve (a conflict, denoted by 'C'.) 
-
-To delve deeper into the nature of the changes, we increase the verbosity with the [opt]*v* option: 
-
 ....
 
-    
+We can now see that ellipse.r was deleted only from the right file
+(moss3.g) and was unchanged in moss2.g. Similarly, we can tell that
+LIGHT wsa deleted from moss2.g, ellipse2.r was added in moss3.g,
+tgc_new.s was added identically in both moss2.g and moss3.g, and eto.s
+is different in moss2.g and moss3.g in some fashion that the ancestor
+file moss.g cannot help gdiff resolve (a conflict, denoted by 'C'.)
+
+To delve deeper into the nature of the changes, we increase the
+verbosity with the [opt]*v* option:
+
+....
 ~: gdiff -v moss2.g moss.g moss3.g
 M(L) "platform.r" tree(p): - {l platform.s} {l cone.s}
 M(L) "ellipse.s" C(p): 0 1.561016355403846755933728 1.561016355403846755933728
@@ -435,46 +471,72 @@ M(R) "tor" r_a(p): 30.18139425891995841766402
 A(B) tgc_new.s
 C(LA!=RA) eto.s
 A(R) ellipse2.r
-.... At this level of verbosity, we can now see that most of the modifications are from the left (moss2.g) file.  M(L) denotes a change that is present only in the left file - the right (moss3.g) agrees with the ancestor.  Similarly, we can now see that the deletion of ellipse.r, the addition of ellipse2.r and the change to all.g come from moss3.g.  The conflict on eto.s is that two add operations (one in moss2.g, one in moss3.g) produced different eto.s primitives - there is no ancestor for eto.s in moss.g, so there is no way to identify one of the eto.s primitives as "correct" - they have equal standing, and manual intervention is needed to determine which eto.s is the "correct" version. 
+....
+
+At this level of verbosity, we can now see that most of the
+modifications are from the left (moss2.g) file.  M(L) denotes a change
+that is present only in the left file - the right (moss3.g) agrees
+with the ancestor.  Similarly, we can now see that the deletion of
+ellipse.r, the addition of ellipse2.r and the change to all.g come
+from moss3.g.  The conflict on eto.s is that two add operations (one
+in moss2.g, one in moss3.g) produced different eto.s primitives -
+there is no ancestor for eto.s in moss.g, so there is no way to
+identify one of the eto.s primitives as "correct" - they have equal
+standing, and manual intervention is needed to determine which eto.s
+is the "correct" version.
 ====
 
 .Complex Three Way Differences
 ====
-Conflicts can arise from situations other than incompatible additions - an incompatible modification is also enough to trigger a conflict.  Consider three ellipsoids, one of which is an ancestor, one of which has had its A and B vectors modified, and the other of which has had its B and C vectors modified. A three-way diff of these files reports a conflict: 
+Conflicts can arise from situations other than incompatible
+additions - an incompatible modification is also enough to trigger a
+conflict.  Consider three ellipsoids, one of which is an ancestor, one
+of which has had its A and B vectors modified, and the other of which
+has had its B and C vectors modified. A three-way diff of these files
+reports a conflict:
 
 ....
-
-    
 ~: gdiff ell_1.g ell_0.g ell_2.g
 C ell.s
-.... However, closer inspection reveals that this conflict is different than the one reported above for the eto.s object: 
-
 ....
 
-    
+However, closer inspection reveals that this conflict is different
+than the one reported above for the eto.s object:
+
+....
 ~: gdiff -v ell_1.g ell_0.g ell_2.g
 C(LM!=RM) ell.s
-.... This notation indicates that a modification in the left side (ell_1.g) does not match a modification made in ell_2.g. Unlike the eto.s, which reported an add conflict, this is a modification conflict triggered by incompatible, different parameters.  Indeed a full verbosity inspection: 
-
 ....
 
-    
+This notation indicates that a modification in the left side (ell_1.g)
+does not match a modification made in ell_2.g. Unlike the eto.s, which
+reported an add conflict, this is a modification conflict triggered by
+incompatible, different parameters.  Indeed a full verbosity
+inspection:
+
+....
 ~: gdiff -vv ell_1.g ell_0.g ell_2.g
 M(R) "ell.s" C(p): 0 0 300
 C(A) "ell.s" B(p): 0 500 0
 C(L) "ell.s" B(p): 0 510 0
 C(R) "ell.s" B(p): 0 300 0
 M(L) "ell.s" A(p): 1100 0 0
-.... reveals that the changes to the A and C parameters are _not_ in conflict - it is the B parameter that is causing the problem. 
+....
+
+reveals that the changes to the A and C parameters are _not_ in
+conflict - it is the B parameter that is causing the problem.
 ====
 
 .Merging Files
 ====
-The last and most powerful feature of [cmd]*gdiff* is to _merge_ two or three different geometry files into a single output file.  This is most useful when an ancestor is available and a three way merge can be performed - in the two way case, the "ancestor" is an empty file and the results will tend to include many more conflicts.  For example, the three way merge of the moss examples earlier: 
+The last and most powerful feature of [cmd]*gdiff* is to _merge_ two
+or three different geometry files into a single output file.  This is
+most useful when an ancestor is available and a three way merge can be
+performed - in the two way case, the "ancestor" is an empty file and
+the results will tend to include many more conflicts.  For example,
+the three way merge of the moss examples earlier:
 
 ....
-
-    
 ~: gdiff -M moss_merged.g moss2.g moss0.g moss3.g
 M platform.r
 M ellipse.s
@@ -498,11 +560,13 @@ CONFLICT(eto.s).right    cone.s                   platform.s
 all.g/                   ellipse.s                tgc_new.s
 box.r/R                  ellipse2.r/R             tor
 box.s                    light.r/R                tor.r/R
-.... The resulting file has only two conflict objects present - the same eto.s issue that was discussed earlier.  Trying to do the same merge _without_ the ancestor file: 
-
 ....
 
-    
+The resulting file has only two conflict objects present - the same
+eto.s issue that was discussed earlier.  Trying to do the same merge
+_without_ the ancestor file:
+
+....
 ~: gdiff -M moss_2way_merge.g moss2.g moss3.g
 M platform.r
 M ellipse.s
@@ -533,7 +597,11 @@ CONFLICT(ellipse.s).right     ellipse.r/R
 CONFLICT(eto.s).left          ellipse2.r/R
 CONFLICT(eto.s).right         platform.s
 CONFLICT(light.r).left/R      tgc_new.s
-.... The result is far less clean, although the merge was still performed - in this latter case, the end user will have to resolve many more conflicting object states manually. 
+....
+
+The result is far less clean, although the merge was still performed -
+in this latter case, the end user will have to resolve many more
+conflicting object states manually.
 ====
 
 == SEE ALSO
@@ -546,8 +614,10 @@ BRL-CAD Team
 
 == COPYRIGHT
 
-This software is Copyright (c) 2014-2021 by the United States Government as represented by U.S. Army Research Laboratory.
+This software is Copyright (c) 2014-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
 
 == BUG REPORTS
 
-Reports of bugs or problems should be submitted via electronic mail to mailto:devs@brlcad.org[]
+Reports of bugs or problems should be submitted via electronic mail to
+mailto:devs@brlcad.org[]
