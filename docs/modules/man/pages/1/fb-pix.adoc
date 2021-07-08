@@ -1,0 +1,57 @@
+= FB-PIX(1)
+ifndef::site-gen-antora[:doctype: manpage]
+:man manual: BRL-CAD
+:man source: BRL-CAD
+:page-role: manpage
+
+== NAME
+
+fb-pix - save a framebuffer image in a color pix file
+
+== SYNOPSIS
+
+*fb-pix* [-ic] [-F _framebuffer_] [-s _squaresize_] [-w _width_] [-n _height_] [_file.pix_]
+
+== DESCRIPTION
+
+[cmd]*fb-pix* will take a region of a framebuffer display and save it
+as a color xref:man:5/pix.adoc[*pix*(5)] format file. The environment
+variable [var]`FB_FILE` is used to select the display device (see
+xref:man:1/brlcad.adoc[*brlcad*(1)]). If this variable is not set, the
+default device for your system will be used. Alternatively, the
+framebuffer may be explicitly specified by using the [opt]*-F* flag.
+
+By default, the output _pix_ file, and the requested framebuffer size,
+is assumed to be 512x512 pixels. The [opt]*-s* flag will set both the
+file height and width to be the given size, while [opt]*-w* and
+[opt]*-n* are used for setting them individually.
+
+A first quadrant coordinate system is used (origin in lower left of
+screen), and the area saved is normally from this origin. The
+[opt]*-i* flag switches to a fourth quadrant system, both in the
+storage order as well as the origin offset coordinates (i.e. origin is
+now the upper left corner of the screen).
+
+The [opt]*-c* flag specifies that the color map in the frame buffer
+should be applied to the pixel values (crunched) before they are
+written to the output file.
+
+== SEE ALSO
+
+xref:man:1/brlcad.adoc[*brlcad*(1)],
+xref:man:1/pix-fb.adoc[*pix-fb*(1)],
+xref:man:1/fb-bw.adoc[*fb-bw*(1)], xref:man:5/pix.adoc[*pix*(5)]
+
+== AUTHOR
+
+BRL-CAD Team
+
+== COPYRIGHT
+
+This software is Copyright (c) 1989-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to
+mailto:devs@brlcad.org[]

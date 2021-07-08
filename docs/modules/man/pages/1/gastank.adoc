@@ -6,9 +6,7 @@ ifndef::site-gen-antora[:doctype: manpage]
 
 == NAME
 
-gastank - 
-    Creates a BRL-CAD .g file containing gas tanks.
-  
+gastank - Creates a BRL-CAD .g file containing gas tanks.
 
 == SYNOPSIS
 
@@ -16,11 +14,22 @@ gastank -
 
 == DESCRIPTION
 
-[cmd]*gastank* is a program to create a BRL-CAD data base of gas tanks. Up to twenty-six gas tanks of the same size may be created. These gas tanks are solid with rounded corners and edges.  They are appropriate for use with millimeter wave signature analysis.  They are not appropriate for infra  red or vulnerability analysis. [cmd]*gastank* uses libwdb to create a BRL-CAD database.  The gas tanks are composed of three arb8s, eight spheres, and twelve cylinders.  This program may be run interactively or the user may specify options on a command line.  If the user chooses to run the program interactively he answers the questions as the program prompts him. Below are the options that can be used on the command line. 
+[cmd]*gastank* is a program to create a BRL-CAD data base of gas
+tanks. Up to twenty-six gas tanks of the same size may be
+created. These gas tanks are solid with rounded corners and edges.
+They are appropriate for use with millimeter wave signature analysis.
+They are not appropriate for infra red or vulnerability
+analysis. [cmd]*gastank* uses libwdb to create a BRL-CAD database.
+The gas tanks are composed of three arb8s, eight spheres, and twelve
+cylinders.  This program may be run interactively or the user may
+specify options on a command line.  If the user chooses to run the
+program interactively he answers the questions as the program
+prompts him. Below are the options that can be used on the command
+line.
 
 == OPTIONS
 
-*-f*_name.g_::
+*-f* _name.g_::
 BRL-CAD file name. 
 
 *-n #*::
@@ -42,10 +51,7 @@ Radius of the corner in millimeters.
 
 .Interactive [cmd]*gastank* Session
 ====
-
-
 ....
-
 $ gastank
 
 This program constructs a solid gas tank with all
@@ -74,7 +80,10 @@ number of gas tanks:  3
 [ui]`gastank -fgastank.g -n3 -H300 -w200 -d400 -r30`
 ====
 
-Both of these examples produce the same result - 3 gas tanks with a height of 300mm, a width of 200mm, a depth of 400mm, and a radius for the corner of 30mm.  The BRL-CAD database file created in each case is gastank.g 
+Both of these examples produce the same result - 3 gas tanks with a
+height of 300mm, a width of 200mm, a depth of 400mm, and a radius for
+the corner of 30mm.  The BRL-CAD database file created in each case is
+gastank.g
 
 == AUTHOR
 
@@ -82,7 +91,8 @@ Susan A. Coates
 
 == COPYRIGHT
 
-This software is Copyright (c) 2005-2021 United States Government as represented by the U.S. Army Research Laboratory. 
+This software is Copyright (c) 2005-2021 United States Government as
+represented by the U.S. Army Research Laboratory.
 
 == SEE ALSO
 
@@ -90,4 +100,5 @@ bolt(1), handle(1), window(1), window_frame(1)
 
 == BUG REPORTS
 
-Reports of bugs or problems should be submitted via electronic mail to mailto:devs@brlcad.org[]
+Reports of bugs or problems should be submitted via electronic mail to
+mailto:devs@brlcad.org[]
