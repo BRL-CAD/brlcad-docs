@@ -1,0 +1,85 @@
+= BW-FB(1)
+ifndef::site-gen-antora[:doctype: manpage]
+:man manual: BRL-CAD
+:man source: BRL-CAD
+:page-role: manpage
+
+== NAME
+
+bw-fb - display a black and white bw image on a framebuffer
+
+== SYNOPSIS
+
+*bw-fb* [-ahiczRGB] [-F _framebuffer_] [-s _squarefilesize_] [-w _file_width_] [-n _file_height_] [-S _squarescrsize_] [-W _scr_width_] [-N _scr_height_] [-x _file_xoff_] [-y _file_yoff_] [-X _scr_xoff_] [-Y _src_yoff_] [_infile.bw_]
+
+== DESCRIPTION
+
+*bw-fb* reads a xref:man:5/bw.adoc[*bw*(5)] format file from standard
+input if an input file is not given, and displays the image on the
+currently selected framebuffer. The environment variable _FB_FILE_
+specifies the current framebuffer; see
+xref:man:1/brlcad.adoc[*brlcad*(1)]. Alternatively, the framebuffer
+may be explicitly specified by using the [opt]*-F* flag.
+
+By default, the _bw_ file (and, automatically, the requested
+framebuffer size) is assumed to be 512x512 pixels. Specifying the
+[opt]*-a* flag causes the program to attempt to autosize. A table of
+common image sizes is consulted, and if any match the size of the
+input file, then the width and height values associated with that size
+will be used.
+
+If the [opt]*-i* flag is specified, the image is output from top to
+bottom. Customarily, _bw_ files are stored bottom to top, so this
+inverts the image.
+
+The [opt]*-c* flag causes the screen to be cleared before the image is
+displayed. The default behavior is to overwrite the current image with
+the new image without clearing the screen.
+
+The [opt]*-z* flag will zoom and center on the image being displayed
+to make it fill the display area.
+
+The flags [opt]*-R*, [opt]*-G*, and [opt]*-B* select individual color
+planes into which the image will be loaded. One or more can be given.
+By default all three colors are written with the _bw_ pixel value.
+
+The [opt]*-w* [rep]_file_width_ flag specifies the width of each
+scanline in the input file, in pixels. The [opt]*-n*
+[rep]_file_height_ flag specifies the height in scanlines of the input
+file. Both are set to to the same value via [opt]*-s*
+[rep]_squarefilesize_. ([opt]*-W* [rep]_scr_width_, [opt]*-N*
+[rep]_scr_height_, and [opt]*-S* [rep]_squarescrsize_ perform these
+roles for the display device; if none of these three options are used,
+the display device uses the dimensions of the input file.)
+
+[opt]*-x* [rep]_file_xoff_, [opt]*-y* [rep]_file_yoff_, [opt]*-X*
+[rep]_scr_xoff_, and [opt]*-y* [rep]_scr_yoff_ will offset into the
+file or onto the screen by the given amounts. The coordinate system
+for these offsets is first quadrant, with the origin at the lower left
+corner of the image.
+
+== FORMAT
+
+A xref:man:5/bw.adoc[*bw*(5)] file contains sequences of pixels. Each
+pixel is stored as one _unsigned char_. The first pixel in a _bw_ file
+is the lower left corner of the image. The pixels proceed from
+left-to-right across each scanline, with scanlines being written from
+the bottom to the top of the image.
+
+== SEE ALSO
+
+xref:man:1/fb-bw.adoc[*fb-bw*(1)], xref:man:5/bw.adoc[*bw*(5)]
+
+== AUTHOR
+
+BRL-CAD Team
+
+== COPYRIGHT
+
+This software is Copyright (c) 1989-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to
+mailto:devs@brlcad.org[]
