@@ -1,0 +1,80 @@
+= IR-X(1)
+ifndef::site-gen-antora[:doctype: manpage]
+:man manual: BRL-CAD
+:man source: BRL-CAD
+:page-role: manpage
+
+== NAME
+
+ir-X - reads the file created by showtherm and draws a picture on the
+screen, in an X-windows environment, giving an appropriate color to
+each pixel based on the temperature
+
+== SYNOPSIS
+
+*ir-X*
+
+== DESCRIPTIONS
+
+[cmd]*ir-X* is an interactive program that reads the information in
+the file created by [cmd]*showtherm* and then draws an image on the
+screen.  The color of each pixel is based on the temperature of the
+region that pixel belongs to.
+
+[cmd]*ir-X* is designed to be run in an X-windows environment.
+
+== EXAMPLE
+
+The following is an example from an interactive session.
+
+....
+$ ir-X
+Enter name of file to be read (26 char max)
+	veh.dis
+Indicate type of color shading to use.
+	0 - gray
+	1 - red
+	2 - black-blue-cyan-green-yellow-white
+	3 - black-blue-magenta-red-yellow-white
+0
+Do you wish to create a pix file (0-no, 1-yes)?
+	0
+Zeroing color info array - finished zeroing.
+Setting up color scale - shades of gray - finished.
+Reading file - file read.
+Width:  512
+Height:  512
+Finding min & max.
+Minimum:  22.590000
+Maximum:  46.830000
+Finding pixel bins - found pixel bins.
+Putting color info in arrays - color info in arrays.
+$
+....
+
+== SEE ALSO
+
+xref:man:1/firpass.adoc[*firpass*(1)],
+xref:man:1/secpass.adoc[*secpass*(1)],
+xref:man:1/shapefact.adoc[*shapefact*(1)],
+xref:man:1/all_sf.adoc[*all_sf*(1)],
+xref:man:1/showtherm.adoc[*showtherm*(1)],
+xref:man:1/ir-sgi.adoc[*ir-sgi*(1)],
+xref:man:1/pictx.adoc[*pictx*(1)],
+xref:man:1/pictsgi.adoc[*pictsgi*(1)], User's Manual for IRPREP
+(BRL-SP-96), Computer Programs for Generating an Input File for PRISM
+and Displaying PRISM Results (BRL report in progress)
+
+== AUTHOR
+
+Susan A. Coates
+
+== COPYRIGHT
+
+This software is Copyright (c) 1994-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to
+mailto:devs@brlcad.org[]

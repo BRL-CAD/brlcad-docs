@@ -1,0 +1,100 @@
+= ICV(1)
+ifndef::site-gen-antora[:doctype: manpage]
+:man manual: BRL-CAD
+:man source: BRL-CAD
+:page-role: manpage
+
+== NAME
+
+icv - Convert images to and from various formats
+
+== SYNOPSIS
+
+*icv* [-h] [-i _file_] [--input-format _fmt_] [-o _file_] [--output-format _fmt_] [-w _width_] [_input_file_] [_output_file_]
+
+== DESCRIPTION
+
+[cmd]*icv* is a tool to convert images to and from a variety of image
+formats.  Currently support formats include:
+
+.Supported ICV Image Formats
+[cols="2*~", options="header"]
+|===
+| Format
+| Extension
+
+|PIX - pixel sequence of R/G/B values stored as unsigned chars.
+|pix
+
+|Double PIX - double precision pixel sequence
+|dpix
+
+|Portable Network Graphics
+|png
+
+|PPM - "lowest common denominator" Netbpm color iamge format
+|ppm
+
+|BW - black and white image data
+|bw
+
+|(TODO) Utah Raster Toolkit Run-Length Encoded (RLE)
+|rle
+|===
+
+== OPTIONS
+
+File types will be deduced unless explicitly specfied with the
+[opt]*input-format* and/or [opt]*output-format* options.  For file
+types like PIX that do not encode dimensional information, [cmd]*icv*
+will attempt to guess the image size based on various assumptions (a
+square image, known sizes for image displays, paper sizes at various
+dots-per-inch, etc.).  If the users does know the correct image width
+and height, they may be specified with the [opt]*w* and [opt]*n*
+options.
+
+*-h*, *--help*:: Print help and exit.
+
+*-i* _file_, *--input* _file_:: Specify an input file.  If none is
+specified, the first non-option-related argument will be used as the
+input file name.
+
+*-o* _file_, *--output* _file_:: Specify an input file.  If none is
+specified, the second non-option-related argument will be used as the
+output file name.
+
+*-w* _#_, *--width* _#_:: Specify the width of the input image.
+Useful for file types such as PIX that do not encode explicit size
+information.
+
+*-n* _#_, *--height* _#_:: Specify the height of the input image.
+Useful for file types such as PIX that do not encode explicit size
+information.
+
+*--input-format* _fmt_:: Explicitly specify input file format.
+
+*--output-format* _fmt_:: Explicitly specify output file format.
+
+== EXAMPLE
+
+....
+icv -w 1024 -n 512 tank.pix tank.png
+....
+
+== SEE ALSO
+
+xref:man:5/pix.adoc[*pix*(5)]xref:man:5/bw.adoc[*bw*(5)]
+
+== AUTHOR
+
+Clifford Yapp 
+
+== COPYRIGHT
+
+This software is Copyright (c) 1989-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to
+mailto:devs@brlcad.org[]

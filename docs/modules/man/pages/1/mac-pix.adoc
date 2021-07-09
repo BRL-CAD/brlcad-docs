@@ -1,0 +1,79 @@
+= MAC-PIX(1)
+ifndef::site-gen-antora[:doctype: manpage]
+:man manual: BRL-CAD
+:man source: BRL-CAD
+:page-role: manpage
+
+== NAME
+
+mac-pix - convert Apple MacPaint bitmap into pix(5) or bw(5) raster
+image
+
+== SYNOPSIS
+
+*mac-pix* [-clb] [-s _squareMacSize_] [-w _Mac_width_] [-n _Mac_height_] [-x _Mac_xoff_] [-y _Mac_yoff_] [-X _output_xoff_] [-Y _output_yoff_] [-S _squareOutputSize_] [-W _output_width_] [-N _output_height_] [-C _r/g/b_] [_file.mac_]
+
+== DESCRIPTION
+
+[cmd]*mac-pix* reads an Apple MacIntosh MacPaint bitmap file and
+generates a xref:man:5/pix.adoc[*pix*(5)] or
+xref:man:5/bw.adoc[*bw*(5)] raster image file. While the MacPaint file
+is 720x576 pixels, it is possible to specify an alternate size input
+file with the [opt]*-s* , [opt]*-w* , and [opt]*-n* flags; the
+usefulness of this is unknown. By default, the output
+xref:man:5/pix.adoc[*pix*(5)] file is 1024x1024 pixels, with the input
+image located in the lower left corner of the output (nearest the
+origin).  The default color for an "on" pixel is white (R=G=B=255);
+alternatively, the [opt]*-C r/g/b* flag can be used to specify
+intensities for each of the colors, in the range of [0..255]. The
+[opt]*-b* flag will output a xref:man:5/bw.adoc[*bw*(5)] black and
+white file instead. If the [opt]*-c* flag is specified, the input
+image is centered in the middle of the output image.
+
+If the output width is set to 0 by the user, the input width is used
+for the output width; similarly, if the output height is set to 0 by
+the user, the input height is used for the output height.  Those
+values of 0 can be set simultaneously by use of the [opt]*-l* flag, so
+that both width and height of the input are used. Alternatively, the
+[opt]*-S* flag can be used to specify the square output size, or
+[opt]*-W* and [opt]*-N* flags can be used to specify the output width
+and height.
+
+If no input file is specified, standard input is read instead.
+
+The [opt]*-x* and [opt]*-y* flags can be used to specify the input x
+and y offset. The [opt]*-X* and [opt]*-Y* flags can be used to specify
+the output x and y offset.
+
+[[_examples]]
+== EXAMPLE
+
+Especially pleasing displays of MacPaint documents can be made by
+using xref:man:1/pixmerge.adoc[*pixmerge*(1)] to combine them with the
+output of xref:man:1/pixbackgnd.adoc[*pixbackgnd*(1)]:
+
+....
+pixbackgnd -H 160 200 > bg.pix
+
+mac-pix -c file.mac | pixmerge - bg.pix | pix-fb
+....
+
+== SEE ALSO
+
+xref:man:1/brlcad.adoc[*brlcad*(1)],
+xref:man:1/pixmerge.adoc[*pixmerge*(1)],
+xref:man:5/pix.adoc[*pix*(5)], xref:man:5/bw.adoc[*bw*(5)]
+
+== AUTHOR
+
+BRL-CAD Team
+
+== COPYRIGHT
+
+This software is Copyright (c) 1989-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to
+mailto:devs@brlcad.org[]
