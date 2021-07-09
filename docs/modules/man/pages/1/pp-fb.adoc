@@ -1,0 +1,47 @@
+= PP-FB(1)
+ifndef::site-gen-antora[:doctype: manpage]
+:man manual: BRL-CAD
+:man source: BRL-CAD
+:page-role: manpage
+
+== NAME
+
+pp-fb - display a GIFT pretty-picture file on a frame buffer
+
+== SYNOPSIS
+
+*pp-fb* [-F _framebuffer_] [-W _out_width_] [-N _out_height_] _file.pp_
+
+== DESCRIPTION
+
+[cmd]*pp-fb* reads _file.pp_, determines the size, and displays a
+color shaded image represented therein on a frame buffer. The *.pp*
+files are the output of the pretty-picture option of the
+xref:man:1V/gift.adoc[*gift*(1V)] ray-tracing program. The options are
+standard xref:man:1/brlcad.adoc[*brlcad*(1)] options specifying
+framebuffer, output width, and output height. Some information
+pertaining to the color assignment of region identification numbers
+and the background color is prompted for on the standard input. The
+environment variable [var]`FB_FILE` is used to select the display
+device (see xref:man:1/brlcad.adoc[*brlcad*(1)]). If this variable is
+not set, the default device for your system will be used. Commands for
+manipulating the display are documented on-line. The file format is
+not documented anywhere.
+
+== SEE ALSO
+
+xref:man:1V/gift.adoc[*gift*(1V)], xref:man:1/brlcad.adoc[*brlcad*(1)]
+
+== AUTHOR
+
+BRL-CAD Team
+
+== COPYRIGHT
+
+This software is Copyright (c) 1986-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to
+mailto:devs@brlcad.org[]

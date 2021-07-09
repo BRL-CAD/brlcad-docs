@@ -1,0 +1,53 @@
+= RANDOM(1)
+ifndef::site-gen-antora[:doctype: manpage]
+:man manual: BRL-CAD
+:man source: BRL-CAD
+:page-role: manpage
+
+== NAME
+
+random - generates a random number between two specified values
+
+== SYNOPSIS
+
+*random* [-s _seed_] [-g [-c _center_]] [-u] [-v] _low_ _high_
+
+== DESCRIPTION
+
+[cmd]*random* generates a random number between the two values given
+by [rep]_low_ and [rep]_high_, which are required arguments. The
+number can be uniform across the entire range or it can be a gaussian
+distribution around the center of the range (or a named center).
+
+The [opt]*-s* option specifies what integer seed to use to prime the
+random number generator.
+
+The [opt]*-u* option specifies that the random number distribution
+should be uniform across the low-to-high range. The [opt]*-g* option
+specifies that the random number distribution should be a gaussian
+distribution around a default or named center, specified with the
+[opt]*-c* option. If neither [opt]*-u* nor [opt]*-g* is specified,
+[opt]*-u* will be used.
+
+The [opt]*-v* option specifies verbose diagnostic output.
+
+== EXAMPLES
+
+....
+random 0 100
+random -g 40 2000
+....
+
+== AUTHOR
+
+BRL-CAD Team
+
+== COPYRIGHT
+
+This software is Copyright (c) 2010-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to
+mailto:devs@brlcad.org[]
