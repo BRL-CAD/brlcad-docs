@@ -1,0 +1,47 @@
+= PIX-SUN(1)
+ifndef::site-gen-antora[:doctype: manpage]
+:man manual: BRL-CAD
+:man source: BRL-CAD
+:page-role: manpage
+
+== NAME
+
+pix-sun - convert a BRL PIX(5) format image to a Sun Rasterfile format
+
+== SYNOPSIS
+
+*pix-sun* [-d] [-s _squaresize_] [-w _file_width_] [-n _file_height_] < _BRLpixfile_ > _rasterfile_
+
+== DESCRIPTION
+
+[cmd]*pix-sun* converts the _BRL PIX(5)_ format file on the standard
+input to a _Sun Rasterfile_ format file on the standard output.  The
+rasterfile produced is a "standard" (as opposed to "byte encoded")
+image, with 8 bits per pixel, with a palette of 256 colors.
+
+== OPTIONS
+
+*-d*:: use a dither map
+
+*-n file_height*:: tells [cmd]*pix-sun* that the input is
+_file_height_ scanlines tall
+
+*-s squaresize*:: sets both the width and the height for the input to
+be _squaresize_
+
+*-w file_width*:: tells [cmd]*pix-sun* that the input is _file_width_
+pixels wide
+
+== AUTHOR
+
+BRL-CAD Team
+
+== COPYRIGHT
+
+This software is Copyright (c) 1989-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to
+mailto:devs@brlcad.org[]
