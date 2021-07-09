@@ -1,0 +1,51 @@
+= PIXDIFF(1)
+ifndef::site-gen-antora[:doctype: manpage]
+:man manual: BRL-CAD
+:man source: BRL-CAD
+:page-role: manpage
+
+== NAME
+
+pixdiff - highlight pixel colors which differ between two files
+
+== SYNOPSIS
+
+*pixdiff* _file1.pix_ _file2.pix_ > _out.pix_
+
+== DESCRIPTION
+
+[cmd]*pixdiff* highlights the pixels which differ between two color
+xref:man:5/pix.adoc[*pix*(5)] format files. The input files are read
+pixel by pixel and if any of the color planes red, green, or blue
+differ, those colors are specially marked. Bytes that differ by +/-1
+are drawn with intensity 192; bytes that differ more are displayed at
+full intensity of 255.  If none of the color values differ, an NTSC
+converted black and white equivalent at one half the original
+intensity is displayed. This is to aid in seeing where in the image
+the different pixels lie. Upon completion, [cmd]*pixdiff* reports the
+number of bytes matching, the number off by 1, and the number off by
+many.
+
+Also see xref:man:1/bwdiff.adoc[*bwdiff*(1)], which can still be used
+on _pix_ files, yet can produce different kinds of output.
+
+== SEE ALSO
+
+xref:man:1/brlcad.adoc[*brlcad*(1)],
+xref:man:1/bwdiff.adoc[*bwdiff*(1)],
+xref:man:1/pix-fb.adoc[*pix-fb*(1)],
+xref:man:1/pixstat.adoc[*pixstat*(1)], xref:man:5/pix.adoc[*pix*(5)]
+
+== AUTHOR
+
+BRL-CAD Team
+
+== COPYRIGHT
+
+This software is Copyright (c) 1989-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+
+== BUG REPORTS
+
+Reports of bugs or problems should be submitted via electronic mail to
+mailto:devs@brlcad.org[]
