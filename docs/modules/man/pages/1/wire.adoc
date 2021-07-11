@@ -4,9 +4,7 @@ include::../header.adoc[]
 
 == NAME
 
-wire - 
-    Creates a BRL-CAD .g file containing wiring or fuel lines.
-  
+wire - Creates a BRL-CAD .g file containing wiring or fuel lines.
 
 == SYNOPSIS
 
@@ -14,16 +12,20 @@ wire -
 
 == DESCRIPTION
 
-[cmd]*wire* is a program to create a BRL-CAD database of solid wires or fuel lines.  The user enters the coordinates of the starting and ending points of the different segments of wires along with the radius at each of these points.  Currently the program is limited to 10 segments.  This number may be changed by changing the variable MAXSEG.  MAXSEG may be no greater than 100 without changing other parts of the program.  The wires are composed of cones and spheres.  This program is designed to be run interactively. 
+[cmd]*wire* is a program to create a BRL-CAD database of solid wires
+or fuel lines.  The user enters the coordinates of the starting and
+ending points of the different segments of wires along with the radius
+at each of these points.  Currently the program is limited to 10
+segments.  This number may be changed by changing the variable MAXSEG.
+MAXSEG may be no greater than 100 without changing other parts of the
+program.  The wires are composed of cones and spheres.  This program
+is designed to be run interactively.
 
 == EXAMPLES
 
 .Interactive [cmd]*wire* Session
 ====
-
-
 ....
-
 Enter mged file name (25 char max).
 	wire.g
 Enter the number of segments (maximum of 10).
@@ -56,7 +58,8 @@ Segment # 3:  (0.000000, 10.000000, -3.000000) 0.250000
 ....
 ====
 
-In this example, a wire of three segments is made.  These segments  are  joined together with spheres.  All dimensions are in millimeters. 
+In this example, a wire of three segments is made.  These segments are
+joined together with spheres.  All dimensions are in millimeters.
 
 == AUTHOR
 
