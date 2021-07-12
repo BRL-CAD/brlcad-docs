@@ -1,0 +1,37 @@
+include::../header.adoc[]
+
+= CP(nged)
+
+== NAME
+
+cp - copy object
+
+== SYNOPSIS
+
+*cp* {_from_object to_object_}
+
+== DESCRIPTION
+
+Makes a duplicate of an object (shape or combination). If
+_from_object_ is a shape, then it is simply copied to a new shape
+named_to_object_. If _from_object_ is a combination, then a new
+combination is created that contains exactly the same members,
+transformation matrices, etc., and it is named _to_object_.
+
+== EXAMPLES
+
+The example shows the use of the command [cmd]*cp* to duplicate a
+combination.
+
+.Duplicate a combination.
+====
+[prompt]#mged># [ui]`cp comb1 comb2`
+
+Duplicate combination comb1 and call it comb2.
+====
+
+== AUTHOR
+
+BRL-CAD Team
+
+include::../footer.adoc[]

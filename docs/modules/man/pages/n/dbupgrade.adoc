@@ -1,0 +1,76 @@
+include::../header.adoc[]
+
+= DBUPGRADE(nged)
+
+== NAME
+
+dbupgrade - Upgrade the currently open BRL-CAD mged geometry database
+to the current geometry database format version.
+
+== SYNOPSIS
+
+*dbupgrade*
+
+== DESCRIPTION
+
+[cmd]*dbupgrade* operates on the currently open input geometry
+databasefile in MGED.  After dbupgrade is complete, the working
+database will be upgraded and a backup file will be saved preserving
+the original "pre-upgrade" version of the .g file.  Keep the backup
+file until it is clear all necessary information was successfully
+preserved.
+
+Starting with v5, the geometry file format is platform
+independent. For v4 .g files, however, there is a potential problem in
+that the floating point storage format within the file is platform
+dependent.  Consequently the safest way to upgrade a v4 file is to run
+[cmd]*dbupgrade* on the file before transferring it from the platform
+on which it was created.  If that system is no longer available, the
+[cmd]*dbupgrade* will attempt to automatically 'fix' an existing (v4
+format) binary database that was transferred from a
+binary-incompatible platform.
+
+The older process of running xref:man:1/g2asc.adoc[*g2asc*(1)] and
+xref:man:1/asc2g.adoc[*asc2g*(1)] on a database to preserve a text
+version as a work-around for platform specific binary files is no
+longer necessary.
+
+== SEE ALSO
+
+xref:man:1/mged.adoc[*mged*(1)], xref:man:1/g2asc.adoc[*g2asc*(1)],
+xref:man:1/asc2g.adoc[*asc2g*(1)].
+
+== DIAGNOSTICS
+
+Numerous error conditions are possible, usually due to errors in the
+geometry database.  In the case of a binary-incompatible v4 file, some
+errors may reflect incomplete conversion code. Descriptive messages
+are printed on standard error (file descriptor 2).
+
+.Binary Incompatible v4 .g File Upgrade from MGED
+====
+....
+bash4.0$ mged -c -a nu model.g
+BRL-CAD Release 7.22.1  Geometry Editor (MGED)
+    Fri, 08 Feb 2013 15:36:52 -0500, Compilation 0
+    user@machine:/usr/brlcad/dev-7.22.1
+
+WARNING: Binary-incompatible v4 geometry database detected.
+Endianness flipped.  Converting to READ ONLY.
+Opened in READ ONLY mode
+/home/user/model.g: READ ONLY
+Historical Model (units=in)
+
+mged> dbupgrade
+upgrade, cancel, or help? [default: help] upgrade
+mged> q
+bash4.0$ ls
+model.g model.g.R4.g
+....
+====
+
+== AUTHOR
+
+BRL-CAD Team
+
+include::../footer.adoc[]
