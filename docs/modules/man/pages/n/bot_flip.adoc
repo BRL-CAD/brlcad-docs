@@ -1,0 +1,28 @@
+include::../header.adoc[]
+
+= BOT_FLIP(nged)
+
+== NAME
+
+bot_flip - Reverse (i.e. flip) all the facet normals within a BOT
+primitive.
+
+== SYNOPSIS
+
+*bot_flip* {_bot_} [_bot2 bot3_]...
+
+== DESCRIPTION
+
+Reverse (i.e. flip) all the facet normals within a BOT primitive. When
+viewing a BOT with the MGED 'e -m1' or 'draw -m1' command, if all the
+exterior facets are black and all interior facets are shaded (red by
+default), then this command will flip the normals resulting in all
+exterior facets to become shaded and all interior facets to become
+black. It is recommended to run the commands 'bot_vertex_fuse' then
+'bot_face_fuse' before running 'bot_flip'.
+
+== AUTHOR
+
+BRL-CAD Team
+
+include::../footer.adoc[]
