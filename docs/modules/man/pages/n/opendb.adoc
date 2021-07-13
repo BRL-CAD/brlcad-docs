@@ -1,0 +1,64 @@
+include::../header.adoc[]
+
+= OPENDB(nged)
+
+== NAME
+
+opendb - Closes the current database file and opens database.g.
+
+== SYNOPSIS
+
+*opendb* [-f] [_database.g_]
+
+== DESCRIPTION
+
+Closes the current database file and opens _database.g_. If
+_database.g_ is not found, the current database is left open.  If
+_database.g_ is not specified on the command line, the name of the
+current database file is returned.
+
+If the -f option is specified and the database.g is a v4 geometry
+database, the file will be read with a flipped binary endianness
+encoding.  This is useful for binary-incompatible v4 geometry files
+that were created on a different platform type.
+
+Binary-incompatible v4 geometry database files that can be
+auto-detected will be automatically converted if all resulting
+matrices are valid.
+
+== EXAMPLES
+
+The first example shows the use of the [cmd]*opendb* command to close
+the current database file and open the one specified.  The second
+example shows the use of the command with no database name, which
+returns the name of the current database file.
+
+.Close the current database and open another one.
+====
+[prompt]#mged># [ui]`opendb model.g`
+
+Closes the current database file and opens _model.g_.
+====
+
+.Return the name of the current database file.
+====
+[prompt]#mged># [ui]`opendb`
+
+Returns the name of the current database file.
+====
+
+.Open and upgrade a binary-incompatible v4 file.
+====
+[prompt]#mged># [ui]`opendb -f model.g`
+
+[prompt]#mged># [ui]`dbupgrade`
+
+Closes any currently open database and opens _model.g_ as a
+binary-incompatible v4 geometry database.
+====
+
+== AUTHOR
+
+BRL-CAD Team
+
+include::../footer.adoc[]

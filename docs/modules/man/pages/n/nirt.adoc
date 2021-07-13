@@ -1,0 +1,42 @@
+include::../header.adoc[]
+
+= NIRT(nged)
+
+== NAME
+
+nirt - Runs the NIRT program that is distributed with BRL-CAD to
+intersect a single ray with the displayed objects.
+
+== SYNOPSIS
+
+*nirt* [_nirt_args_]
+
+== DESCRIPTION
+
+Runs the NIRT program that is distributed with BRL-CAD to intersect a
+single ray with the displayed objects.  By default, NIRT is run using
+the current database and the currently displayed objects, and it uses
+the current eye point as the ray start point and the current viewing
+direction as the ray direction. This effectively fires a ray at the
+center of the MGED display. The resulting collection of intersections
+between the ray and the objects is listed.  Additional arguments may
+be supplied on the [cmd]*nirt* command line. See the __man__page of
+[cmd]*nirt* for more details.
+
+== EXAMPLES
+
+The example shows the use of the [cmd]*nirt* command to fire a single
+ray through the center of the MGED display.
+
+.Run the NIRT program to fire a ray through the MGED display.
+====
+[prompt]#mged># [ui]`nirt`
+
+Fires a single ray through the center of the MGED display.
+====
+
+== AUTHOR
+
+BRL-CAD Team
+
+include::../footer.adoc[]
