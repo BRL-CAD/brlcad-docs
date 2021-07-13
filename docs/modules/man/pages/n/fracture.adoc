@@ -1,0 +1,39 @@
+include::../header.adoc[]
+
+= FRACTURE(nged)
+
+== NAME
+
+fracture - Creates a new NMG shape for every "face" in the
+specified NMG_shape.
+
+== SYNOPSIS
+
+*fracture* {_NMG_shape_} [_prefix_]
+
+== DESCRIPTION
+
+Creates a new NMG shape for every "face" in the specified
+_NMG_shape_. The new shapes will be named by adding an underscore and
+a number to the _prefix_. If no _prefix_ is specified, then the
+_NMG_shape_ name provided is used in place of the _prefix_.
+
+== EXAMPLES
+
+The example shows the use of the [cmd]*fracture* command to create a
+new NMG shape with a given prefix for every face in the specified
+_NMG_shape_.
+
+.Create an NMG shape with a specific prefix for every face in a specified NMG shape.
+====
+[prompt]#mged># [ui]`fracture shape1.nmg f`
+
+Creates a series of NMG shapes named "f_#", one for each face in
+_shape1.nmg_.
+====
+
+== AUTHOR
+
+BRL-CAD Team
+
+include::../footer.adoc[]
