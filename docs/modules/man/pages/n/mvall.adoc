@@ -1,0 +1,50 @@
+include::../header.adoc[]
+
+= MVALL(nged)
+
+== NAME
+
+mvall - Changes the name of old_name to new_name wherever it occurs in
+the database.
+
+== SYNOPSIS
+
+*mvall* [_-n_] [_(-f mapping_file) | (old_name new_name)_]
+
+== DESCRIPTION
+
+Changes the name of _old_name_ to _new_name_. This will also change
+any references to _old_name_ that may occur in other combinations in
+the database. If the _-f_ variation of the command is used, all
+_old_name_ _new_name_ pairings are read from the _mapping_file_ and
+processed as previously stated.
+
+== EXAMPLES
+
+.Change the name of an object everywhere it occurs in the database.
+====
+[prompt]#mged># [ui]`mvall shapea shapeb`
+
+Changes the name of _shapea_ to _shapeb_ everywhere it occurs in the
+database.
+====
+
+.This example shows a simple mapping file.
+====
+....
+# this line is a comment
+old_name new_name
+foo bar # another comment, replacing foo with bar
+bad_name good_name
+....
+====
+
+== SEE ALSO
+
+mv prefix
+
+== AUTHOR
+
+BRL-CAD Team
+
+include::../footer.adoc[]
