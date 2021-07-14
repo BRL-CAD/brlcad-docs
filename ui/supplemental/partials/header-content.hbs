@@ -5,6 +5,11 @@
         <img src="{{@root.uiRootPath}}/img/logo/brlcad.jpg" height="48px">
         {{site.title}}
       </a>
+      {{#if env.DOCSEARCH_ENABLED}}
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      {{/if}}
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
         <span></span>
