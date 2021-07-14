@@ -1,0 +1,53 @@
+include::../header.adoc[]
+
+= SCA(nged)
+
+== NAME
+
+sca - Used to apply a scaling factor.
+
+== SYNOPSIS
+
+*sca* {[sfactor] | [x-sfactor y-sfactor z-sfactor]}
+
+== DESCRIPTION
+
+Applies a scaling factor to an object or view. When passed one
+parameter, an "object or view" is applied a uniform scale factor. When
+passed three parameters, an "object" is applied a unique scale factor
+to each axis. The effect is determined by the Transform option in the
+Settings menu. This is normally affected by the current mode of
+operation in MGED (e.g., matrix edit, primitive edit, or viewing).
+
+NOTE: Three parameters can only be applied in "matrix edit" mode. Only
+scale pipe and tori primitives uniformly otherwise raytracer and other
+errors may occur.
+
+== EXAMPLES
+
+The example shows the use of the [cmd]*sca* command to apply a scaling
+factor to an object or view.
+
+.Apply a scaling factor to an object or view.
+====
+[prompt]#mged># [ui]`sca 2`
+
+In matrix edit mode, the object being affected will get twice
+as big. In view mode, the size of the view will be doubled (showing
+twice the volume of space, hence making objects appear half their
+previous size on the display).
+====
+
+.Apply a scaling factor to an object.
+====
+[prompt]#mged># [ui]`sca 2 1 1`
+
+In matrix edit mode, the object being affected will get twice as big
+along the x-axis.
+====
+
+== AUTHOR
+
+BRL-CAD Team
+
+include::../footer.adoc[]
