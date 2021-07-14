@@ -1,0 +1,45 @@
+include::../header.adoc[]
+
+= RCC-CAP(nged)
+
+== NAME
+
+rcc-cap - Used to round the end of a cylinder with an ellipsoid.
+
+== SYNOPSIS
+
+*rcc-cap* {_rccname newname_} [_height_] [b] [t]
+
+== DESCRIPTION
+
+Used to round the end of a cylinder with an ellipsoid. It creates an
+ELL shape with the given height at one end (base [_b_] or top [_t_])
+of the specified RCC. If the height option is not specified, a
+spherical cap will be generated. The default end is the base.
+
+== EXAMPLES
+
+The two examples show the use of the [cmd]*rcc-cap* command to round
+the base and the top of a cylinder with an ellipsoid.
+
+.Round the base of a specified cylinder.
+====
+[prompt]#mged># [ui]`rcc-cap rcc.s cap.s 20`
+
+Creates an ELL shape named _cap.s_ with a radius of 20 units at the
+base of _rcc.s_.
+====
+
+.Round the top of a specified cylinder.
+====
+[prompt]#mged># [ui]`rcc-cap rcc.s cap.s 20 t`
+
+Creates an ELL shape named _cap.s_ with a radius of 20 units at the
+top of _rcc.s_.
+====
+
+== AUTHOR
+
+BRL-CAD Team
+
+include::../footer.adoc[]
