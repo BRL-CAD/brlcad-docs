@@ -1,0 +1,35 @@
+include::../header.adoc[]
+
+= TRA(nged)
+
+== NAME
+
+tra - Translates the view or an object.
+
+== SYNOPSIS
+
+*tra* {_dx_} {_dy_} {_dz_}
+
+== DESCRIPTION
+
+Translates the view or an object. Exactly what is done is determined
+by MGED's state as well as the state of the current display
+manager. The parameters _dx, dy,_ and _dz_ are in local units.
+
+== EXAMPLES
+
+The example shows the use of the [cmd]*tra* command to translate a
+view.
+
+.Translate a view along the __x__-axis.
+====
+[prompt]#mged># [ui]`tra 10 0 0`
+
+Translates by 10 units along the _x_ axis.
+====
+
+== AUTHOR
+
+BRL-CAD Team
+
+include::../footer.adoc[]

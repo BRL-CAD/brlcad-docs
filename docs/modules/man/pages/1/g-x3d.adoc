@@ -1,0 +1,58 @@
+include::../header.adoc[]
+
+= G-X3D(1)
+
+== NAME
+
+g-x3d - Perform Boolean evaluations to produce an X3D facetted model
+
+== SYNOPSIS
+
+*g-x3d* [-v] [-d _calc_dist_tol_] [-a _abs_tess_tol_] [-n _norm_tess_tol_] [-r _rel_tess_tol_] [-x _librt_debug_flag_] [-X _NMG_debug_flag_] [-u _units_name_] [-P _#_of_CPUs_] [-o _outfile_] _infile.g_ _object(s)_
+
+== DESCRIPTION
+
+[cmd]*g-x3d* performs the Boolean operations specified in any regions
+in the specified _object(s)_ and writes the resulting facetted objects
+to _outfile_ or to _stdout_ if the [opt]*-o* option is not used. The
+output is in X3D facetted format. The [opt]*-v* option requests
+verbose output while the conversion is taking place. The [opt]*-d*
+option specifies a calculational distance tolerance (in
+millimeters). This tolerance is used to distinguish neighboring
+vertices. Any two vertices less than this tolerance distance apart
+will be considered the same vertex. The default value is
+0.005mm. Prior to performing the Boolean operations for each region,
+the involved primitive solids are converted to a planar facetted
+approximation and stored as NMG solids. This tessellation can be
+controlled using the tessellation tolerances. The [opt]*-a* option may
+be used to specify an absolute tessellation tolerance (in
+millimeters). This requires that the maximum absolute error from the
+tessellated surface to the actual surface must not be greater than
+_abs_tess_tol_. The [opt]*-n* option specifies a surface normal error
+tolerance (in degrees) for the tessellation. The [opt]*-r* option may
+be used to set a relative error tolerance. This effectively sets an
+absolute tolerance for each primitive solid by multiplying the overall
+size of the solid by _rel_tess_tol_. The [opt]*-x* and [opt]*-X*
+options are used to set debug flags for _librt_ and the _NMG_ routines
+respectively. The definitions of these flags may be found in
+_raytrace.h_ and _nmg.h_. The [opt]*-u* option can be used to set the
+units for the resulting X3D file (the default is mm). Any units name
+that MGED accepts will work here.
+
+The [opt]*-P* option sets the number of processors (default is 1). 
+
+== EXAMPLE
+
+....
+$ g-x3d -o shell.x3d sample.g sample_object
+....
+
+== DIAGNOSTICS
+
+Error messages are intended to be self-explanatory.
+
+== AUTHOR
+
+Robert Parker (The SURVICE Engineering Co., Aberdeen, MD)
+
+include::../footer.adoc[]

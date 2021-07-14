@@ -1,0 +1,65 @@
+include::../header.adoc[]
+
+= PIXBGSTRIP(1)
+
+== NAME
+
+pixbgstrip - strip smooth shaded background from a pix(5) file
+
+== SYNOPSIS
+
+*pixbgstrip* [-a] [-t _thresh_] [-x _x_offset_for_bg_pixel_] [-s _squarefilesize_] [-w _file_width_] [-n _file_height_] [_file.pix_]
+
+== DESCRIPTION
+
+[cmd]*pixbgstrip* reads a xref:man:5/pix.adoc[*pix*(5)] format file
+from the named file, or from standard input if no file is
+specified. For each scanline read, all pixels that match the color of
+the background pixel are converted to black (0/0/0), and then the new
+scanline is written on stdout.
+
+The default X offset for the background pixel is zero (i.e. [opt]*-x*
+`0`), but if the pixel at X offset zero is not the desired background
+(for example, if a border exists around the actual image), then
+another offset can be specified.
+
+By default, a pixel will be replaced with black only if it exactly
+matches the value of the background pixel (i.e., the matching
+threshold is zero; [opt]*-t* `0`). However, if the background is
+slightly noisy, it may be necessary to perform a slightly looser
+matching.  The threshold variable specifies how large a difference
+between an input pixel and the background pixel will still result in
+black being output.
+
+By default, the _pix_ file is assumed to be 512x512 pixels. Specifying
+the [opt]*-a* flag causes the program to attempt to autosize. A table
+of common image sizes is consulted, and if any match the size of the
+input file, then the width and height values associated with that size
+will be used.
+
+The [opt]*-w* [rep]_file_width_ flag specifies the width of each
+scanline in the input file, in pixels.
+
+The [opt]*-n* [rep]_file_height_ flag specifies the height in
+scanlines of the input file.
+
+[opt]*-s* [rep]_squarefilesize_ sets both the height and width to the
+size given.
+
+== SEE ALSO
+
+xref:man:1/pixbackgnd.adoc[*pixbackgnd*(1)],
+xref:man:1/pix-fb.adoc[*pix-fb*(1)],
+xref:man:1/fb-pix.adoc[*fb-pix*(1)],
+xref:man:3/libfb.adoc[*libfb*(3)], xref:man:5/pix.adoc[*pix*(5)]
+
+== DIAGNOSTICS
+
+If the _pix_ file is shorter than expected, the program exits
+silently.
+
+== AUTHOR
+
+BRL-CAD Team
+
+include::../footer.adoc[]

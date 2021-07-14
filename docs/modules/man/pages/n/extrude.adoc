@@ -1,0 +1,42 @@
+include::../header.adoc[]
+
+= EXTRUDE(nged)
+
+== NAME
+
+extrude - Modifies an ARB shape by extruding the specified face
+through the specified distance to determine the position of the
+opposing face.
+
+== SYNOPSIS
+
+*extrude* {_+++#####+++ distance_}
+
+== DESCRIPTION
+
+Modifies an ARB shape by extruding the specified face through the
+specified _distance_ to determine the position of the opposing
+face. The face to be extruded is identified by listing its vertex
+numbers as they are labeled in the MGED display when the ARB is
+edited. Note that the face identified is not moved, but the opposite
+face is adjusted so that it is the specified distance from the
+specified face. The order that the vertex numbers are listed
+determines the direction of the extrusion using the right-hand rule.
+
+== EXAMPLES
+
+The example shows the use of the [cmd]*extrude* command to move a face
+a specific distance from its opposing face.
+
+.Moving a face a specific distance from its opposing face.
+====
+[prompt]#mged># [ui]`extrude 1234 5`
+
+Moves face 5678 so that it is 5 units from face 1234.
+====
+
+== AUTHOR
+
+BRL-CAD Team
+
+include::../footer.adoc[]

@@ -1,0 +1,37 @@
+include::../header.adoc[]
+
+= APROPOS(nged)
+
+== NAME
+
+apropos - Searches through the one-line usage messages for each mged
+command and displays the name of each command where a match is found.
+
+== SYNOPSIS
+
+*apropos* {_keyword_}
+
+== DESCRIPTION
+
+The [cmd]*apropos* command searches through the one-line usage
+messages for specified _mged_ commands and displays the commands that
+match.
+
+== EXAMPLES
+
+.List all commands having "region" in their one-line usage messages.
+====
+[subs="+quotes"]
+....
+[prompt]#mged># [ui]`apropos region`
+
+build_region eac edcodes edcomb em idents item lm r rcodes read_muves red
+regdef regions reid remat summary wcodes whatid whichair whichid
+....
+====
+
+== AUTHOR
+
+BRL-CAD Team
+
+include::../footer.adoc[]

@@ -1,0 +1,38 @@
+include::../header.adoc[]
+
+= JOURNAL(nged)
+
+== NAME
+
+journal - Starts or stops the journaling of MGED commands to a file.
+
+== SYNOPSIS
+
+*journal* [-d] [_journal_file_name_]
+
+== DESCRIPTION
+
+Starts or stops the journaling of MGED commands to a file. If executed
+with no arguments, the command stops journaling. If
+_journal_file_name_ is provided, that file will become the recipient
+of the journaling. If a _-d_ option is also provided, the journaling
+will include the delays between commands. Journaling is off by
+default.
+
+== EXAMPLES
+
+The example shows the use of the [cmd]*journal* command to start the
+journaling of a specified file.
+
+.Start the journaling of a specified file.
+====
+[prompt]#mged># [ui]`journal journal_file`
+
+Starts journaling to _journal_file_. 
+====
+
+== AUTHOR
+
+BRL-CAD Team
+
+include::../footer.adoc[]

@@ -1,0 +1,47 @@
+include::../header.adoc[]
+
+= PNG-PIX(1)
+
+== NAME
+
+png-pix - convert Portable Network Graphics (PNG) encoded image to RGB
+pixel format
+
+== SYNOPSIS
+
+*png-pix* [-v] [_file.png_] > _file.pix_
+
+== DESCRIPTION
+
+[cmd]*png-pix* decodes a Portable Network Graphics (PNG) format file
+(saved with xref:man:1/fb-png.adoc[*fb-png*(1)],
+xref:man:1/pix-png.adoc[*pix-png*(1)], or a similar program), converts
+it into xref:man:5/pix.adoc[*pix*(5)] format, and writes it to
+standard out. If _file.png_ is not specified, standard input is
+read. The [opt]*-v* option provide verbose information about the PNG
+file.
+
+_file.png_:: Name of file to decode, in PNG format.
+
+_file.pix_:: Name of file to store PIX image in.
+
+== EXAMPLE
+
+....
+png-pix tank.png > tank.pix
+....
+
+== SEE ALSO
+
+xref:man:1/brlcad.adoc[*brlcad*(1)],
+xref:man:1/png-fb.adoc[*png-fb*(1)],
+xref:man:1/fb-png.adoc[*fb-png*(1)],
+xref:man:1/pix-png.adoc[*pix-png*(1)],
+xref:man:1/png-bw.adoc[*png-bw*(1)],
+xref:man:1/bw-png.adoc[*bw-png*(1)], xref:man:5/pix.adoc[*pix*(5)]
+
+== AUTHOR
+
+John R. Anderson
+
+include::../footer.adoc[]

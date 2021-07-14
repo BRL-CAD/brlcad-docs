@@ -1,0 +1,89 @@
+include::../header.adoc[]
+
+= FBZOOM(1)
+
+== NAME
+
+fbzoom - modify zoom and window parameters of a frame buffer
+
+== SYNOPSIS
+
+*fbzoom* [-T] [-F _frame_buffer_] [-s|S _image_sqrsize_] [-w|W _image_width_] [-n|N _image_height_]
+
+== DESCRIPTION
+
+Using xref:man:1/vi.adoc[*vi*(1)] and/or
+xref:man:1/emacs.adoc[*emacs*(1)] -like keystrokes, [cmd]*fbzoom*
+allows interactive zooming and panning of a frame buffer.  Using the
+optional command line arguments,
+
+*-T*:: toggles the sense of the pan commands.
+
+*-F* _frame_buffer_:: explicitly specifies the frame buffer.
+Otherwise, the environment variable [rep]_FB_FILE_ specifies the
+current framebuffer; see xref:man:1/brlcad.adoc[*brlcad*(1)].
+
+*-s*(or *-S*) _image_sqrsize_:: displays the image file as a square,
+[rep]_image_sqrsize_ pixels per side (default is 512x512).
+
+*-w*(or *-W*) _image_width_:: displays the image [rep]_image_width_
+pixels wide (default is 512).
+
+*-n*(or *-N*) _image_height_:: displays the image [rep]_image_height_
+pixels high (default is 512).
+
+[cmd]*fbzoom* will display the image currently in the frame buffer and
+then act on commands entered by the user.  Available commands are:
+
+_b ^V_:: zoom Bigger (*2)
+
+_s_:: zoom Smaller (*0.5)
+
+_+_:: zoom Bigger (+1)
+
+_-_:: zoom Smaller (-1)
+
+_h B_:: pan Left (1)
+
+_j N_:: pan Down (1)
+
+_k P_:: pan Up (1)
+
+_l F_:: pan Right (1)
+
+_H ^B_:: pan Left (many)
+
+_J ^N_:: pan Down (many)
+
+_K ^P_:: pan Up (many)
+
+_L ^F_:: pan Right (many)
+
+_T_:: toggle sense of pan commands
+
+_c_:: goto Center
+
+_z_:: zoom 1 1
+
+_r_:: Reset to normal
+
+_q_:: Exit
+
+_RETURN_:: Exit
+
+Note that these commands change the way the frame buffer is viewed but
+not the image in the frame buffer.
+
+== SEE ALSO
+
+xref:man:1/bw-fb.adoc[*bw-fb*(1)],
+xref:man:1/gif-fb.adoc[*gif-fb*(1)],
+xref:man:1/pix-fb.adoc[*pix-fb*(1)],
+xref:man:1/plot3-fb.adoc[*plot3-fb*(1)],
+xref:man:1/rle-fb.adoc[*rle-fb*(1)]
+
+== AUTHOR
+
+BRL-CAD Team
+
+include::../footer.adoc[]

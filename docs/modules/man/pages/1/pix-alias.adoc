@@ -1,0 +1,33 @@
+include::../header.adoc[]
+
+= PIX-ALIAS(1)
+
+== NAME
+
+pix-alias - convert an image from pix format to Alias(tm) pix format
+
+== SYNOPSIS
+
+*pix-alias* [-s _squaresize_] [-w _file_width_] [-n _file_height_] < _BRLpixfile_ > _ALIASpixfile_
+
+== DESCRIPTION
+
+[cmd]*pix-alias* converts the (BRL) _pix(5)_ format file on the
+standard input to an _Alias pix_ format file on the standard output.
+
+== OPTIONS
+
+*-n* _file_height_:: tells [cmd]*pix-alias* that the input is
+_file_height_ scanlines tall
+
+*-w* _file_width_:: tells [cmd]*pix-alias* that the input is
+_file_width_ pixels wide
+
+*-s* _squaresize_:: sets both the width and the height for the input
+to be _squaresize_
+
+== AUTHOR
+
+BRL-CAD Team
+
+include::../footer.adoc[]

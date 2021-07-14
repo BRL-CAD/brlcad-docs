@@ -1,0 +1,44 @@
+include::../header.adoc[]
+
+= BWSTAT(1)
+
+== NAME
+
+bwstat - list statistics related to a black and white bw image.
+
+== SYNOPSIS
+
+*bwstat* [-v] [_file.bw_]
+
+== DESCRIPTION
+
+[cmd]*bwstat* will take the given xref:man:5/bw.adoc[*bw*(5)] format
+file, or read from standard in.  A collection of statistics related to
+the pixel intensities is produced. These include: The number of pixels
+(and the square root of this, yielding the file dimension if it's
+square); the max and min values; the mean; the median (dividing line
+where half the pixels are above this value, half below); the mode
+(most frequently occurring value) and the number of pixels at this
+value; the variance, standard deviation, and skew.
+
+The [opt]*-v* flag will also dump a histogram of the pixel values.
+
+== METHOD
+
+Since the pixel values are quantized (have discrete values from 0 to
+255), the statistics can be computed from "lump sums" after building a
+histogram of the input.  This results in a fantastic savings in
+computation while also making a single pass over the input file
+sufficient.
+
+== SEE ALSO
+
+xref:man:1/brlcad.adoc[*brlcad*(1)],
+xref:man:1/bwhist.adoc[*bwhist*(1)],
+xref:man:1/pixstat.adoc[*pixstat*(1)], xref:man:5/bw.adoc[*bw*(5)]
+
+== AUTHOR
+
+BRL-CAD Team
+
+include::../footer.adoc[]

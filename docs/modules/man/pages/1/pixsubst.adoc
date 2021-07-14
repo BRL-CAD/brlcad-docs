@@ -1,0 +1,25 @@
+include::../header.adoc[]
+
+= PIXSUBST(1)
+
+== NAME
+
+pixsubst - Change color values used in a PIX(5) format image
+
+== SYNOPSIS
+
+*pixsubst* [_R_in_ _G_in_ _B_in_] _R_out_ _G_out_ _B_out_ < _pixfile_in_ > _pixfile_out_
+
+== DESCRIPTION
+
+[cmd]*pixsubst* reads _pix(5)_ format pixels on the standard input and
+converts all pixels matching {R_in G_in B_in} to {R_out G_out
+B_out}. The pixels' values are specified as integers from 0 to 255. If
+{R_in G_in B_in} is not specified, the first pixel in the input stream
+is used as the value to be changed.
+
+== AUTHOR
+
+BRL-CAD Team
+
+include::../footer.adoc[]

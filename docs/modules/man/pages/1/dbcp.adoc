@@ -1,0 +1,59 @@
+include::../header.adoc[]
+
+= DBCP(1)
+
+== NAME
+
+dbcp - double buffered copy
+
+== SYNOPSIS
+
+*dbcp* [-v] _blocksize_ < _infile_ > _outfile_
+
+== DESCRIPTION
+
+[cmd]*dbcp* is a program for copying data rapidly between devices.
+
+This command is DEPRECATED.  Use [cmd]*dd* instead.
+
+While the primary application is to move data between raw devices such
+as tape and disk, it can also be used with pipes. No special support
+is required from the operating system; [cmd]*dbcp* forks into two
+processes which communicate over a pair of regular pipes using a token
+passing scheme to synchronize their reading and writing activities.
+They continue copying until an end of file or error is
+detected. [cmd]*dbcp* reads from the standard input and copies to the
+standard output. The argument _blocksize_ specifies the number of 512
+byte "blocks" to be read or written in each record.
+
+If the [opt]*-v* flag is given, the number of records processed is
+printed upon exit.
+
+== EXAMPLES
+
+....
+$ dbcp 16 < /dev/rdk1a > /dev/rmt0
+....
+
+[cmd]*dbcp* copies the filesystem on dk1a to tape with a record size
+of 8K bytes (16 * 512). This allows "streaming" tape drives to operate
+a peak speed.
+
+....
+$ tar cf - . | dbcp 20 > /dev/rmt0
+....
+
+The _tar_ process runs independently of the [cmd]*dbcp*, which rapidly
+copies the data to tape with the usual _tar_ tape record size of 10K
+bytes (20 * 512).
+
+== SEE ALSO
+
+xref:man:1/cp.adoc[*cp*(1)], xref:man:1/dd.adoc[*dd*(1)]
+
+== AUTHOR
+
+Douglas P. Kingston III (Davis, Polk, and Wardwell, Chase Manhattan
+Building, New York, NY)
+
+include::../footer.adoc[]

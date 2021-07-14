@@ -1,0 +1,223 @@
+include::../header.adoc[]
+
+= REDBLACK(3)
+
+== NAME
+
+redblack - red-black tree operations
+
+== SYNOPSIS
+
+[source,c]
+....
+#include "common.h"
+
+#include <stdio.h>
+
+#include "bu.h"
+
+struct bu_rb_tree *bu_rb_create (description,
+                                 nm_orders,
+                                 order_funcs);
+....
+
+== DESCRIPTION
+
+These routines implement red-black trees, a form of balanced binary
+trees, in such a way that all the basic dynamic set operations (e.g.,
+insertion, deletion, search, minimum, maximum, predecessor, and
+successor) and order-statistic operations (i.e., select and rank)
+require no more than _O(log n)_ time, where _n_ is the number of
+nodes. They allow storage of arbitrary data structures at tree nodes
+and also support multiple simultaneous orders (trees) on the same
+nodes. The trees are based on comparison functions like those used by
+_qsort(3)_. The routines are available only in _libbu(3B)_.
+
+_bu_rb_create_ :: allocates storage for and initializes the tree
+header. _Description_ is an explanatory comment that the red-black
+tree package prints in its diagnostics, _nm_orders_ is the number of
+simultaneous orders, and _order_funcs_ points to the table of
+comparison functions (one for each order). These are called with two
+arguments that point to the application data blocks being
+compared. Each function must return an integer less than, equal to, or
+greater than zero according as the first argument is to be considered
+less than, equal to, or greater than the second. _bu_rb_create_
+returns a pointer to a _bu_rb_tree_ structure. This pointer must be
+saved, as it is a required argument to all the other
+routines. _bu_rb_create1_ is similar, except that it creates a tree
+that supports only the single order specified by _order_func_.
++
+The application can specify that the red-black tree package may not
+insert new nodes that compare equal in any of the orders to an
+existing node. Such uniqueness enforcement is switch selectable and
+may be controlled independently for each order and modified
+dynamically. The default behavior is not to enforce any uniqueness.
+
+_bu_rb_free_ :: relinquishes the storage used by _tree_, calling
+_free_data_ to dispose of the application data in the nodes. If
+_free_data_ equals _BU_RB_RETAIN_DATA_ (defined in _"bu.h"_), then the
+application data blocks are left unaffected. Otherwise, _bu_rb_free_
+calls _free_data_ once for each block of application data, passing a
+pointer to the data. Since _bu_rb_create1_ allocates its own table of
+comparison functions, a memory leak will result if a tree returned by
+_bu_rb_create1_ is freed before this table is freed. For this reason,
+_bu.h_ provides the macro _bu_rb_free1(tree, free_data)_, which should
+be used instead of _bu_rb_free_ when relinquishing a tree created by
+_bu_rb_create1_.
+
+_bu_rb_insert_ :: creates a new node containing _data_ and adds it to
+_tree_, provided that doing so would not violate current uniqueness
+requirements. If a uniqueness requirement would be violated,
+_bu_rb_insert_ does nothing but return a negative integer, the
+absolute value of which is the first order for which a violation
+exists. Otherwise, the node is inserted in the appropriate place in
+each order, as determined by the comparison functions, and
+_bu_rb_insert_ returns the number of orders for which the new node
+compared equal to an existing node in the tree.
+
+_bu_rb_uniq_on_ :: specifies that subsequent insertion of nodes into
+_tree_ should enforce uniqueness on _order_, and returns the previous
+setting of the switch. _bu_rb_uniq_off_ specifies that subsequent
+insertion of nodes into _tree_ should proceed without regard for
+uniqueness on _order_, and returns the previous setting of the
+switch. The macros _bu_rb_uniq_on1(tree)_ and _bu_rb_uniq_off1(tree)_
+available in _"bu.h"_, are similar, except that they control the first
+(perhaps only) order. _bu_rb_is_uniq_ returns 1 if uniqueness is
+currently enforced for _order_ in _tree_, and 0 otherwise. The macro
+_bu_rb_is_uniq1(tree)_ available in _"bu.h"_, is similar, except that
+it queries the first (perhaps only) order. _bu_rb_uniq_all_on_ and
+_bu_rb_uniq_all_off_ set all _nm_orders_ orders identically on or off,
+and _bu_rb_set_uniqv_ sets the orders according to the bit vector
+_vec_.
+
+_bu_rb_extreme_ :: searches through _tree_ to find a minimum or
+maximum node in one of the orders as determined by the corresponding
+comparison function. _Sense_ is either _SENSE_MIN_ or _SENSE_MAX_, and
+_order_ specifies which order to search. _bu_rb_extreme_ returns a
+pointer to the extreme data. The macros _bu_rb_min(tree, order)_ and
+_bu_rb_max(tree, order)_, available in _"bu.h"_, are implemented in
+terms of _bu_rb_extreme_ in the obvious way.
+
+_bu_rb_search_ :: traverses _tree_ searching for a node of which the
+contents equals _data_ according to the comparison function specified
+by _order_. On success, _bu_rb_search_ returns a pointer to the data
+in the matching node. Otherwise, it returns _NULL_. The macro
+_bu_rb_search1(tree, data)_, available in _"bu.h"_, is similar, except
+that it searches the first (perhaps only) order.
+
+_bu_rb_select_ :: traverses _tree_ to retrieve the __k__th order
+statistic (i.e., the data block of rank _k_, the __k__th-smallest data
+block) according to the comparison function specified by _order_,
+where _k_ is between 1 and the number of nodes in _tree_,
+inclusive. On success, _bu_rb_select_ returns a pointer to the block
+of data of rank _k_. Otherwise, it returns _NULL_. The macro
+_bu_rb_select1(tree, k)_, available in _"bu.h"_, is similar, except
+that it uses the first (perhaps only) order.
+
+_bu_rb_walk_ :: traverses _tree_ according to the comparison function
+specified by _order_. The function _visit_ is called for each node in
+turn, being passed two arguments: a pointer to the data at that node
+and the depth of the node in the tree for the specified order. The
+type of tree traversal to perform, specified by _trav_type_, may be
+any one of _PREORDER_, _INORDER_, and _POSTORDER_. The macro
+_bu_rb_walk1(tree, visit, trav_type)_, available in _"bu.h"_, is
+similar, except that it walks the first (perhaps only) order.
+
+_bu_rb_diagnose_tree_ :: traverses _tree_ according to the comparison
+function specified by _order_, printing information about the various
+structures. The application may optionally store in the _rbt_print_
+member of the _bu_rb_tree_ structure the address of an
+application-specific print routine. If this pointer is nonzero,
+_bu_rb_diagnose_tree_ dereferences it to print information for the
+data at each node. The type of tree traversal to perform, specified by
+_trav_type_, may be any one of _PREORDER_, _INORDER_, and _POSTORDER_.
+
+The _bu_rb_tree_ structure contains a pointer to the node most
+recently accessed (e.g., inserted, discovered in a search, or selected
+by rank). When the most recent access failed, this current node is
+undefined. The following commands make use of the current node:
+
+_bu_rb_curr_ :: returns a pointer to the data in the current node in
+_order_, or _NULL_ if the current node is undefined. The macro
+_bu_rb_curr1(tree)_, available in _"bu.h"_, is similar, except that it
+returns a pointer to the data in the current node in the first
+(perhaps only) order.
+
+_bu_rb_delete_ :: removes a block of application data from
+_tree_. Because the algorithms sometimes cause a single block of data
+to be stored in different nodes for the different orders, the
+application specifies _order_, which indicates the block of data (in
+the current node) to be removed. If the current node is defined,
+_bu_rb_delete_ removes this block of data from every order. Otherwise,
+it prints a warning and returns. The macro _bu_rb_delete1(tree)_,
+available in _"bu.h"_, is similar, except that it removes the block of
+data in the first (perhaps only) order.
+
+_bu_rb_neighbor_ :: returns a pointer to the data in the node adjacent
+(in _order_) to the current node, or _NULL_ if the current node is
+undefined. _sense_, which may be one of _SENSE_MIN_ and _SENSE_MAX_,
+specifies either predecessor or successor, respectively. The macros
+_bu_rb_pred(tree, order)_ and _bu_rb_succ(tree, order)_, available in
+_"bu.h"_, are implemented in terms of _bu_rb_neighbor_ in the
+obvious way.
+
+_bu_rb_rank_ :: returns the rank (i.e., position expressed as an
+integer between 1 and the number of nodes in _tree_, inclusive) of the
+current node in _order_, or _NULL_ if the current node is
+undefined. The macro _bu_rb_rank1(tree)_, available in _"bu.h"_, is
+similar, except that it uses the first (perhaps only) order.
+
+The members of the _bu_rb_tree_ structure, as defined in _"bu.h"_, are
+classified into three classes based on their suitability for direct
+manipulation by applications.
+
+* Class I, members that applications may read directly, includes
++
+[source,c]
+....
+uint32_t rbt_magic; /* Magic no. for integrity check */
+int  rbt_nm_nodes;  /* Number of nodes */
+....
+
+* Class II, members that applications may read or write directly as
+  necessary, includes
++
+[source,c]
+....
+void (*rbt_print)();   /* Data pretty-print function */
+int  rbt_debug;        /* Debug bits */
+char *rbt_description; /* Comment for diagnostics */
+....
+
+* Class III comprises members that applications should not manipulate directly; any access should be through the routines provided by the red-black tree package. They include
++
+[source,c]
+....
+int               rbt_nm_orders;   /* Number of orders */
+int               (**rbt_order)(); /* Comparison funcs */
+struct bu_rb_node **rbt_root;      /* The actual trees */
+char              *rbt_unique;     /* Uniqueness flags */
+struct bu_rb_node *rbt_current;    /* Current node */
+struct bu_rb_list rbt_nodes;       /* All nodes */
+struct bu_rb_list rbt_packages;    /* All packages */
+struct bu_rb_node *rbt_empty_node; /* Sentinel for nil */
+....
+
+The distinction between classes I and III is not critical, but any
+direct modification of members in either class will result in
+unpredictable (probably dire) results. The order of the members within
+the _bu_rb_tree_ structure is subject to change in future releases.
+
+Diagnostic output may be requested by setting the debug bits in the
+_bu_rb_tree_ structure using the debug bit flags defined in _"bu.h"_.
+
+== SEE ALSO
+
+xref:man:3B/libbu.adoc[*libbu*(3B)],
+xref:man:3/qsort.adoc[*qsort*(3)].
+
+== AUTHOR
+
+Paul Tanenbaum
+
+include::../footer.adoc[]

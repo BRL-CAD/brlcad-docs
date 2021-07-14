@@ -1,0 +1,39 @@
+include::../header.adoc[]
+
+= EDMATER(nged)
+
+== NAME
+
+edmater - Places the user in an editor ready to edit a file filled
+with shader arguments for the combinations listed on the command line.
+
+== SYNOPSIS
+
+*edmater* {_combinations_} []
+
+== DESCRIPTION
+
+Places the user in an editor ready to edit a file filled with shader
+arguments for the combinations listed on the command line. The
+arguments placed in the file for editing are the _shader_ name and its
+own arguments, RGB color, _RGB_valid_ flag, and the inheritance
+flag. The editor used is whatever the user has set in the environment
+variable _EDITOR_. If _EDITOR_ is not set, then _/bin/ed_ is used.
+
+== EXAMPLES
+
+The example shows the use of the [cmd]*edmater* command to edit
+_shader_ parameters for two combinations.
+
+.Editing _shader_ parameters for two combinations.
+====
+[prompt]#mged># [ui]`edmater comb1 comb2`
+
+The _shader_ parameters can now be edited for _comb1_ and__comb2__.
+====
+
+== AUTHOR
+
+BRL-CAD Team
+
+include::../footer.adoc[]

@@ -1,0 +1,46 @@
+include::../header.adoc[]
+
+= BWSHRINK(1)
+
+== NAME
+
+bwshrink - shrink a black and white bw file
+
+== SYNOPSIS
+
+*bwshrink* [-s _squareinsize_] [-w _in_width_] [-n _in_height_] [-f _shrink_factor_] [-u] [_infile.bw_] > _outfile.bw_
+
+== DESCRIPTION
+
+[cmd]*bwshrink* will take a black and white
+xref:man:5/bw.adoc[*bw*(5)] format file of given dimensions and
+produce a smaller scaled version. The [opt]*-w* and [opt]*-n* flags
+specify the input file width and number of scan lines in pixels. They
+can both be set to the same value via [opt]*-s.* Defaults of 512 are
+assumed for unspecified dimensions. The integer scaling factor is set
+with the [opt]*-f* flag.  By default, the factor is 2.
+
+The program reads the entire image into memory, and then scales the
+image down to 1/factor the original size in both dimensions.
+
+By default, [cmd]*bwshrink* uses boxcar averaging to produce the
+output pixels from the input.  The [opt]*-u* option causes
+[cmd]*bwshrink* to use image undersampling instead.
+
+== SEE ALSO
+
+xref:man:1/brlcad.adoc[*brlcad*(1)],
+xref:man:1/bwcrop.adoc[*bwcrop*(1)],
+xref:man:1/bwrect.adoc[*bwrect*(1)],
+xref:man:1/bwscale.adoc[*bwscale*(1)], xref:man:5/bw.adoc[*bw*(5)]
+
+== BUGS
+
+If the dimensions of the input image are not evenly divisible by the
+shrink factor, incorrect and bizarre output is generated.
+
+== AUTHOR
+
+BRL-CAD Team
+
+include::../footer.adoc[]

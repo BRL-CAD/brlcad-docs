@@ -1,0 +1,40 @@
+include::../header.adoc[]
+
+= CONV-VG2G(1)
+
+== NAME
+
+conv-vg2g - upgrade old to new format binary MGED database
+
+== SYNOPSIS
+
+*conv-vg2g* _file.vg_ _file.g_
+
+== DESCRIPTION
+
+[cmd]*conv-vg2g* converts several older forms of binary
+xref:man:1/mged.adoc[*mged*(1)] databases to the current form.
+
+The conversion from version 3 to version 4 (the current version) is
+fairly straightforward. Conversion from older versions requires
+additional information, for which the user is prompted.  The units of
+the database must be specified as: 1=mm, 2=cm, 3=meters, 4=inches,
+5=feet. A title for the database is also requested.
+
+== SEE ALSO
+
+xref:man:1/brlcad.adoc[*brlcad*(1)], xref:man:1/mged.adoc[*mged*(1)],
+xref:man:3/libged.adoc[*libged*(3)]
+
+== DIAGNOSTICS
+
+Error messages are intended to be self-explanatory, and usually
+indicate errors in the input database. It may be possible to rescue a
+damaged old database by suitably modifying the source code to the
+converter.
+
+== AUTHOR
+
+Keith A. Applin
+
+include::../footer.adoc[]

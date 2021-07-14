@@ -1,0 +1,36 @@
+include::../header.adoc[]
+
+= KEEP(nged)
+
+== NAME
+
+keep - Copies the objects specified to the keep_file.
+
+== SYNOPSIS
+
+*keep* {_keep_file_} {_objects_}
+
+== DESCRIPTION
+
+Copies the _objects_ specified to the _keep_file_. If _keep_file_ does
+not exist, it is created. If _keep_file_ does exist, the_objects_ are
+appended to it. The _keep_file_ is a _BRL-CAD_ database file. The
+_objects_ in the list must exist in the current database.
+
+== EXAMPLES
+
+The example shows the use of the [cmd]*keep* command to copy specified
+objects to a designated file.
+
+.Copy specified objects to a designated file.
+====
+[prompt]#mged># [ui]`keep sample.g sample1 sample2`
+
+Creates _sample.g_ file with objects _sample1_ and _sample2_ in it.
+====
+
+== AUTHOR
+
+BRL-CAD Team
+
+include::../footer.adoc[]

@@ -1,0 +1,42 @@
+include::../header.adoc[]
+
+= BWCROP(1)
+
+== NAME
+
+pixcrop - crop color pix files
+
+== SYNOPSIS
+
+*pixcrop* _in.pix_ _out.pix_
+
+*pixcrop* _in.pix_ _out.pix_ _inwidth_ _outwidth_ _outheight_ _ulx_ _uly_ _urx_ _ury_ _lrx_ _lry_ _llx_ _lly_
+
+== DESCRIPTION
+
+[cmd]*pixcrop* crops any quadrilateral out of an arbitrarily large
+xref:man:5/pix.adoc[*pix*(5)] input file (_in.pix_), squares that
+region to a given height and width output size, and writes the result
+to _out.pix_. The first form of [cmd]*pixcrop* prompts for all
+parameters it needs to do the cropping. All responses should be pixel
+counts or first quadrant coordinates. The second form allows all of
+the needed parameters to be given on the command line and is intended
+for use from shell scripts. The coordinate names (the eight arguments
+listed above after [rep]_outheight_) refer to the input file, and more
+specifically to upper-left-x (ulx), lower-right-y (lry), etc., in
+clockwise-from-upper-left order.
+
+The nearest input pixel is selected for each output pixel.  No
+interpolation is done by this program.
+
+== SEE ALSO
+
+xref:man:1/brlcad.adoc[*brlcad*(1)],
+xref:man:1/pixrect.adoc[*pixrect*(1)],
+xref:man:1/pixscale.adoc[*pixscale*(1)], xref:man:5/pix.adoc[*pix*(5)]
+
+== AUTHOR
+
+BRL-CAD Team
+
+include::../footer.adoc[]

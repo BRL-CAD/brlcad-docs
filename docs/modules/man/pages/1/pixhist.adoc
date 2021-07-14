@@ -1,0 +1,45 @@
+include::../header.adoc[]
+
+= PIXHIST(1)
+
+== NAME
+
+pixhist - display a histogram of a color pix file on a framebuffer
+
+== SYNOPSIS
+
+*pixhist* [-v] [_file.pix_]
+
+== DESCRIPTION
+
+[cmd]*pixhist* displays a histogram of the pixel values of the given
+xref:man:5/pix.adoc[*pix*(5)] format file, or, if no file is
+specified, will read from standard input. The environment variable
+[var]`FB_FILE` is used to select the display device (see
+xref:man:1/brlcad.adoc[*brlcad*(1)]). If this variable is not set, the
+default device for your system will be used.
+
+The relative frequency is displayed on the x axis scaled so that the
+maximum is full screen.  The value 0 is at the bottom of the screen,
+255 is at the top. All three colors will be drawn on each scan line,
+and all are scaled by the same factor. The output is overlaid on
+whatever is currently on the display.
+
+The [opt]*-v* flag will output the histogram values on the terminal
+(standard error).
+
+== SEE ALSO
+
+xref:man:1/brlcad.adoc[*brlcad*(1)],
+xref:man:1/pixhist3d.adoc[*pixhist3d*(1)],
+xref:man:1/pixstat.adoc[*pixstat*(1)], xref:man:5/pix.adoc[*pix*(5)]
+
+== BUGS
+
+This program assumes it has at least 512 lines in y to work with.
+
+== AUTHOR
+
+BRL-CAD Team
+
+include::../footer.adoc[]

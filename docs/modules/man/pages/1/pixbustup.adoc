@@ -1,0 +1,40 @@
+include::../header.adoc[]
+
+= PIXBUSTUP(1)
+
+== NAME
+
+pixbustup - break up concatenated pix images into separate files
+
+== SYNOPSIS
+
+*pixbustup* _basename_ _width_ [_image_offset_] [_first_number_] < _input.pix_
+
+== DESCRIPTION
+
+[cmd]*pixbustup* takes input consisting of a concatenated collection
+of xref:man:5/pix.adoc[*pix*(5)] format files and breaks them up into
+separate files.  The output file names will be of the form
+_basename.num_, where _basename_ is given on the command line, and
+_num_ is a consecutive series of integers.  By default the first image
+will be made number " 0 ", but an alternate _first_number_ can be
+given. The images must be square and the width (and height) is given
+by _width_. The program keeps reading these small files until end of
+file is reached. If one does not wish to extract from the beginning of
+the input file, an _image_offset_ can be given which will skip that
+number of images before beginning.
+
+This program is mostly a holdover from the days when
+xref:man:1/rt.adoc[*rt*(1)] wrote animations into one huge file, but
+it is still sometimes useful.
+
+== SEE ALSO
+
+xref:man:1/brlcad.adoc[*brlcad*(1)], xref:man:1/rt.adoc[*rt*(1)],
+xref:man:5/pix.adoc[*pix*(5)]
+
+== AUTHOR
+
+BRL-CAD Team
+
+include::../footer.adoc[]

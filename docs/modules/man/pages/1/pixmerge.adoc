@@ -1,0 +1,75 @@
+include::../header.adoc[]
+
+= PIXMERGE(1)
+
+== NAME
+
+pixmerge - merge two pix(5) or bw(5) images by a formula
+
+== SYNOPSIS
+
+*pixmerge* [-glen] [-w _bytes_wide_] [-C _r/g/b_] _foreground.pix_ [_background.pix_] > _out.pix_
+
+== DESCRIPTION
+
+[cmd]*pixmerge*, given two streams of data, typically
+xref:man:5/pix.adoc[*pix*(5)] or xref:man:5/bw.adoc[*bw*(5)] images,
+generates an output stream of the same size, where the value of the
+output is determined by a formula involving the first (foreground)
+stream and the second (background) stream, with the option of using a
+constant in place of the background stream. This routine operates on a
+pixel-by-pixel basis, and thus is independent of the resolution of the
+image. More sophisticated processing can be performed by
+[cmd]*pixmatte* .
+
+If a constant is to be used in place of the background stream, it is
+supplied via the [opt]*-C r/g/b* option, with the constant color
+specified by r/g/b . (Exception: see below for default zeroes being
+used with default [opt]*-g* .) It is expected that there will be up to
+[rep]_bytes_wide_ slash-separated constants given as a single
+parameter here. If [opt]*-C* is used, the [rep]_background.pix_
+argument is omitted.
+
+The formula can be any combination of [opt]*-g* (fg greater than bg),
+[opt]*-l* (fg less than bg), [opt]*-e* (fg equal to bg), [opt]*-n* (fg
+not equal to bg). For example, [opt]*-le* selects the foreground pixel
+when it is lexically less than or equal to the background pixel, that
+is, when each byte of the foreground pixel is less than or equal to
+the corresponding byte of the background pixel; if said relationship
+is found to be false, the background pixel is selected.
+
+The [opt]*-w#* flag specifies the width (in bytes) of each "pixel";
+the default is 3, _i.e._ xref:man:5/pix.adoc[*pix*(5)] file format.  A
+width of 1 is used for processing xref:man:5/bw.adoc[*bw*(5)] files.
+It is unclear if other widths are useful.
+
+If no formula is specified, the default is to use [opt]*-g*, taking
+all foreground pixels greater than a constant ([opt]*-C* parameter if
+that option is used, otherwise defaulting to black, which is specified
+with all bytes zero).  If the default formula and constant are used
+(and [opt]*-a* was NOT used), this is the same as:
+
+  pixmerge -g -C 0/0/0 fg.pix
+
+== EXAMPLES
+
+  gencolor 200 0 200 | pixmerge -g fg.pix - > out.pix
+
+  pixbackgnd -t0 160 200 | pixmerge -n fg.pix - | pix-fb
+
+The second example is used to composite an xref:man:1/rt.adoc[*rt*(1)]
+generated image on top of a shaded background.
+
+== SEE ALSO
+
+xref:man:1/brlcad.adoc[*brlcad*(1)],
+xref:man:1/gencolor.adoc[*gencolor*(1)],
+xref:man:1/pixbackgnd.adoc[*pixbackgnd*(1)],
+xref:man:1/pixmatte.adoc[*pixmatte*(1)],
+xref:man:5/pix.adoc[*pix*(5)], xref:man:5/bw.adoc[*bw*(5)]
+
+== AUTHOR
+
+BRL-CAD Team
+
+include::../footer.adoc[]

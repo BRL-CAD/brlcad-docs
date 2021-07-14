@@ -1,0 +1,82 @@
+include::../header.adoc[]
+
+= PNG-FB(1)
+
+== NAME
+
+png-fb - display a Portable Network Graphics (PNG) image file on a
+framebuffer
+
+== SYNOPSIS
+
+*png-fb* [-Hicvz1] [-g screen_gamma] [-F framebuffer] [-m #lines] [-S squarescrsize] [-W scr_width] [-N scr_height] [-x file_xoff] [-y file_yoff] [-X scr_xoff] [-Y scr_yoff] [_file.png_]
+
+== DESCRIPTION
+
+[cmd]*png-fb* reads a _PNG_ format file from the named file, or from
+standard in if no file is specified, and displays the image on the
+currently selected framebuffer. The environment variable FB_FILE may
+be used to specify the current framebuffer, see
+xref:man:1/brlcad.adoc[*brlcad*(1)]. Alternatively, the framebuffer
+may be explicitly specified by using the [opt]*-F* flag.
+
+By default, the requested framebuffer size is assumed to be 512x512
+pixels.
+
+The [opt]*-g* option specifies the gamma value for the screen where
+the image is to be displayed. Larger values will produce lighter
+colored display.
+
+If the [opt]*-i* flag is specified, the image is inverted.
+
+The [opt]*-c* flag causes the screen to be cleared before the image is
+displayed. The default behavior is to overwrite the current image with
+the new image without clearing the screen.
+
+The [opt]*-v* option will print verbose information about the PNG
+file.
+
+The [opt]*-H* option will print a single line on standard output
+providing the dimensions of the image in a format readily usable in
+shell scripts, e.g. WIDTH=42 HEIGHT=17.
+
+The [opt]*-z* flag will zoom and center on the image being displayed
+to make it fill the display area, using the libfb fb_zoom()
+routine. fb_zoom only offers integer zoom factors, so displays with
+non-square screens (such as the SGI 3D machines) may find this option
+of limited usefulness.
+
+The [opt]*-W scr_width* flag specifies the width of each scanline in
+the display device, in pixels.
+
+The [opt]*-N scr_height* flag specifies the height in scanlines of the
+display device.
+
+[opt]*-S squarescrsize* set both the height and width to the size
+given.
+
+[opt]*-x file_xoff -y file_yoff* and [opt]*-X scr_xoff -Y scr_yoff*
+will offset into the file or onto the screen by the given amounts. The
+coordinate system for these offsets is first quadrant, with the origin
+at the lower left corner of the image.
+
+The [opt]*-1* flag causes the image to be written to the framebuffer
+one line at a time, using the xref:man:3/fb_write.adoc[*fb_write*(3)]
+routine.  This is the default behavior. The [opt]*-m #lines* flag can
+be used to specify the number of lines to be written to the
+framebuffer in rectangular blocks of scanlines, using the
+xref:man:3/fb_writerect.adoc[*fb_writerect*(3)] routine. In some
+circumstances, this can result in significantly faster image display,
+at the expense of the image being written less smoothly. If both
+[opt]*-m* and [opt]*-1* are specified, [opt]*-1* wins.
+
+== SEE ALSO
+
+xref:man:1/rt.adoc[*rt*(1)], xref:man:1/fb-png.adoc[*fb-png*(1)],
+xref:man:3/libfb.adoc[*libfb*(3)], xref:man:5/pix.adoc[*pix*(5)]
+
+== AUTHOR
+
+John R. Anderson
+
+include::../footer.adoc[]

@@ -1,0 +1,53 @@
+include::../header.adoc[]
+
+= G-OBJ(1)
+
+== NAME
+
+g-obj - BRL-CAD to Wavefront Object File converter
+
+== SYNOPSIS
+
+*g-obj* [-mviu] [-xX _lvl_] [-e _error_file_] [-D _calculation_tolerance_] [-a _abs_tol_] [-r _rel_tol_] [-n _norm_tol_] [-P _number_of_CPUs_] [-o _output.obj_] _database.g_ _object(s)_
+
+== DESCRIPTION
+
+[cmd]*g-obj* converts the specified _object(s)_ from a BRL-CAD
+_database.g_ file to the _Wavefront_ _OBJ_ file format. The [opt]*-x*
+option specifies an RT debug flag and the [opt]*-X* option specifies
+an NMG debug flag. The [opt]*-a* , [opt]*-r* , and [opt]*-n* options
+specify tessellation tolerances. The [opt]*-P* option specifies the
+number of CPUs. The [opt]*-D* option specifies a calculational
+distance tolerance (mm). Any two vertices that are less than this
+distance apart will be treated as the same vertex. The [opt]*-u*
+option specifies that vertex normals are desired. The [opt]*-v* option
+requests verbose output. The [opt]*-i* option requests the output file
+units to be inches (the default is mm). The [opt]*-o* option specifies
+the name of the file to receive the output (stdout is the
+default). The [opt]*-m* option will result in 'usemtl' statements in
+the output file. These statements are fictional (they do not refer to
+any material database). The materials named provide information about
+the material codes assigned to the objects in the BRL-CAD
+database. The material names will be of the form
+'aircode_los_material', where _aircode_ is the code number for the air
+represented by that region, if it does represent air, otherwise this
+will be zero. The _los_ is the Line Of Sight thickness (0-100)
+assigned to the region, and the _material_ is the material code number
+assigned. The [opt]*-e* option specifies a file for receiving the
+error messages.
+
+== EXAMPLE
+
+....
+$ g-obj -o sample.obj sample.g sample_object
+....
+
+== DIAGNOSTICS
+
+Error messages are intended to be self-explanatory.
+
+== AUTHOR
+
+BRL-CAD Team
+
+include::../footer.adoc[]

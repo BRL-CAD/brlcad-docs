@@ -1,0 +1,56 @@
+include::../header.adoc[]
+
+= VIEW(nged)
+
+== NAME
+
+view - Gets/sets the view parameters (local units).
+
+== SYNOPSIS
+
+*view* {_subcommand_}
+
+== DESCRIPTION
+
+Gets/sets view parameters (local units). The [cmd]*view* command
+accepts the following subcommands:
+
+*center* [_x y z_] -- get/set the view center of the current view.
+
+*size* [_val_] -- get/set the view size of the current view.
+
+*eye* [_x y z_] -- get/set the eye point of the current view.
+
+*ypr* [_y p r_] -- get/set the yaw, pitch, and roll of the current
+ view.
+
+*quat* [_v1 v2 v3 v4_] -- get/set the view in the form of a
+ quaternion.
+
+*aet*[_a e t_] -- get/set the azimuth, elevation, and twist of the
+ current view.
+
+== EXAMPLES
+
+The two examples show the use of the [cmd]*view* command with the
+subcommand _center_.
+
+.Get the view center.
+====
+[prompt]#mged># [ui]`view center`
+
+Gets the view center. 
+====
+
+.Set the view center at the origin of model space.
+====
+[prompt]#mged># [ui]`view center 0 0 0`
+
+Sets the view center at the origin of model space.
+====
+
+== AUTHOR
+
+BRL-CAD Team
+
+include::../footer.adoc[]

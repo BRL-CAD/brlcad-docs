@@ -1,0 +1,62 @@
+include::../header.adoc[]
+
+= BWFILTER(1)
+
+== NAME
+
+bwfilter - apply a 3x3 filter to a black and white bw file
+
+== SYNOPSIS
+
+*bwfilter* [-f _type_] [-v] [-d _div_] [-O _offset_] [-s _squaresize_] [-w _width_] [-n _height_] [-o _out_file_] [_file.bw_] > _newfile.bw_
+
+== DESCRIPTION
+
+[cmd]*bwfilter* applies one of several 3x3 kernel filters to a black
+and white xref:man:5/bw.adoc[*bw*(5)] format file. It will take a file
+name or else read from standard input. The input file size will be
+assumed to be 512x512 pixels unless the [opt]*-s*, [opt]*-w*, or
+[opt]*-n* flags are used to tell it otherwise (see
+xref:man:1/brlcad.adoc[*brlcad*(1)]). By default a low pass filter is
+used.  The [opt]*-f* [rep]_type_ flag can be used to specify a
+different type of filter.
+
+The _type_ choices include:
+
+_lo_ :: low pass, the default.
+
+_hi_ :: high pass
+
+_vg_ :: vertical gradient
+
+_hg_ :: horizontal gradient
+
+_la_ :: laplacian
+
+_b_ :: boxcar low pass
+
+Most filters divide the result of the kernel multiplication by some
+value about in order to scale it back to a 0->255 range. For example,
+the boxcar divides by nine.  The [opt]*-d* flag can be used to change
+this divisor. Some filters also add an offset to their results.  The
+output of a laplacian for example is "centered" about zero, thus it
+adds 128 to the answer to yield a difference from neutral grey. The
+[opt]*-O* flag can be used to change this offset.
+
+The [opt]*-v* flag displays the max and minimum values and the kernel
+information on standard error.
+
+== BUGS
+
+This should allow any 3x3 kernel to be specified.
+
+== SEE ALSO
+
+xref:man:1/brlcad.adoc[*brlcad*(1)],
+xref:man:1/bwscale.adoc[*bwscale*(1)], xref:man:5/bw.adoc[*bw*(5)]
+
+== AUTHOR
+
+BRL-CAD Team
+
+include::../footer.adoc[]

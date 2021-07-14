@@ -1,0 +1,51 @@
+include::../header.adoc[]
+
+= FB-BW(1)
+
+== NAME
+
+fb-bw - save a framebuffer image in a black and white bw file
+
+== SYNOPSIS
+
+*fb-bw* [-i] [-F _framebuffer_] [-X _scr_xoff_] [-Y _scr_yoff_] [-s _squaresize_] [-w _width_] [-n _height_] [_file.bw_]
+
+== DESCRIPTION
+
+[cmd]*fb-bw* will take a region of a framebuffer display and save it
+as a black and white xref:man:5/bw.adoc[*bw*(5)] format file. The
+environment variable [var]`FB_FILE` is used to select the display
+device (see xref:man:1/brlcad.adoc[*brlcad*(1)]). If this variable is
+not set, the default device for your system will be
+used. Alternatively, the framebuffer may be explicitly specified by
+using the [opt]*-F* flag.
+
+By default, the output file will be size 512x512 pixels. The [opt]*-s*
+flag will set both the file height and width to be the given size,
+while [opt]*-w* and [opt]*-n* are used for setting them individually.
+
+A first quadrant coordinate system is used (origin in lower left of
+screen), and the area saved is normally from this origin.  The
+[opt]*-X* and [opt]*-Y* flags can be used to move the origin to an
+offset position on the screen. The [opt]*-i* flag switches to a fourth
+quadrant system, both in the storage order as well as the origin
+offset coordinates (i.e. origin is now the upper left corner of the
+screen).
+
+An equal blending of red, green, and blue is done.  For more
+complicated black and white conversion use
+xref:man:1/fb-pix.adoc[*fb-pix*(1)] and
+xref:man:1/pix-bw.adoc[*pix-bw*(1)].
+
+== SEE ALSO
+
+xref:man:1/brlcad.adoc[*brlcad*(1)],
+xref:man:1/bw-fb.adoc[*bw-fb*(1)],
+xref:man:1/fb-pix.adoc[*fb-pix*(1)],
+xref:man:1/pix-bw.adoc[*pix-bw*(1)], xref:man:5/bw.adoc[*bw*(5)]
+
+== AUTHOR
+
+BRL-CAD Team
+
+include::../footer.adoc[]

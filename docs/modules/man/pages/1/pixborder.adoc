@@ -1,0 +1,69 @@
+include::../header.adoc[]
+
+= PIXBORDER(1)
+
+== NAME
+
+pixborder - add a 1-pixel-wide border to regions of a specified color
+
+== SYNOPSIS
+
+*pixborder* [-b _'RGB'_] [-e _'RGB'_] [-i _'RGB'_] [-t _'RGB'_] [-B _'HSV'_] [-E _'HSV'_] [-I _'HSV'_] [-T _'HSV'_] [-x _left_edge_] [-y _bottom_edge_] [-X _right_edge_] [-Y _top_edge_] [-a] [-n _file_height_] [-s _squaresize_] [-w _file_width_] [_file.pix_]
+
+== DESCRIPTION
+
+[cmd]*pixborder* reads an input stream of _pix_ data, looking for
+maximal contiguous regions of a specified interior color, and writes
+out the _pix_ data with all pixels on the boundaries of these regions
+changed to a specified border color.
+
+The way [cmd]*pixborder* decides if a given pixel is on the boundary
+depends on how the user specified the interior and exterior. The
+[opt]*-i* option causes [cmd]*pixborder* to replace the default
+interior color of 255 255 255 by _R G B_, while the [opt]*-I* option
+replaces it by _H S V_, which are reals, with _H_ in [0, 360) and _S_,
+_V_ in [0, 1]. Similarly, the [opt]*-e* and [opt]*-E* options replace
+the default exterior color of 1 1 1. If the user specified colors for
+both or neither of the interior and exterior, then a pixel is on the
+boundary provided that it has the interior color and at least one of
+its four neighbors (left, right, above, and below) has the exterior
+color. If, on the other hand, the user specified only the interior
+(exterior) color, then a pixel is on the boundary provided that it has
+the interior color (does not have the exterior color) and at least one
+of its neighbors does not have the interior color (has the exterior
+color).
+
+The [opt]*-b* and [opt]*-B* options are for the specification of what
+will be used for the border.
+
+Variability in the interior and exterior colors may be accommodated by
+the [opt]*-t* and [opt]*-T* options, with which one specifies a
+symmetric tolerance for each of the red, green, and blue channels or
+hue, saturation, and value. Any color within the specified tolerance
+of the nominal interior (exterior) color is treated as though it were
+the nominal color.
+
+The [opt]*-a* option is for autosizing. The [opt]*-w* option is for
+file width, the [opt]*-n* option is for file height, and the [opt]*-s*
+option sets file width and height to the same value. (Values are in
+pixels.)
+
+Changes are restricted to a specified rectangular portion of the image
+(by default this is the entire image). The [opt]*-x* option sets the
+left edge of that rectangle: no pixels to the left of this edge are
+changed. The [opt]*-X*, [opt]*-y*, and [opt]*-Y* options respectively
+set the right, bottom, and top edges in the same manner.
+
+== HINT
+
+To obtain borders more than one pixel wide, one can run several copies
+of [cmd]*pixborder* in a pipeline. In doing this to get, for instance,
+a border made up of constant-thickness segments of different colors,
+one should produce all the segments of a given layer before beginning
+any segments of the next inner layer.
+
+== AUTHOR
+
+Paul Tanenbaum
+
+include::../footer.adoc[]

@@ -1,0 +1,82 @@
+include::../header.adoc[]
+
+= WAVELET(1)
+
+== NAME
+
+wavelet - perform a haar wavelet decomposition/reconstruction
+
+== SYNOPSIS
+
+*wavelet* [-1] [-2] [-d] [-r] [-# _channels_] [-t [_c_ | _d_ | _f_ | _i_ | _l_ | _s_]] [-w _width_] [-n _scanlines_] [-s _squaresize_] [-S _square_out_size_] [-W _width_out_] < _file_ > _wavelet_
+
+== DESCRIPTION
+
+The [cmd]*wavelet* command will perform Haar wavelet decomposition or
+reconstruction transforms on the input dataset. The command line
+options are:
+
+[opt]*-d* perform decomposition.
+
+[opt]*-r* perform reconstruction.
+
+[opt]*-1* perform a 1-dimensional (horizontal) transform.
+
+[opt]*-2* perform a 1-dimensional (interleaved horizontal and
+vertical) transform.
+
+[opt]*-# channels* Indicates the number of values in each sample
+point.  For example, to perform a transform on a
+xref:man:5/pix.adoc[*pix*(5)] file properly, specify "-# 3".  This
+causes the red, green and blue channels to be transformed
+individually.
+
+[opt]*-t \{cdfils}* specifies the data type of the input, and hence the
+data type in which the wavelet calculations will be performed. The
+letters each stand for the first character of the C programming
+language data type: __c__haracter, __d__ouble, __f__loat, __i__nt,
+__l__ong, __s__hort. Note that if lossless decomposition and
+reconstruction are desired, then data sets should be converted to the
+next larger data type before being processed.
+
+[opt]*-w width* Specify the number of samples per scanline.
+
+[opt]*-n scanline* Specify the number of scanlines in the dataset
+
+[opt]*-s squaresize* Specify both width and scanlines simultaneously
+(square image).
+
+[opt]*-W width_out* Specifies the width of the output image.  Normally
+this is 1 for a full decomposition/reconstruction.  You may specify a
+width at which decomposition or reconstruction should stop. This
+number should be a power of 2.  The result will be an "average" image
+of the specified size, with the remainder of the original data width
+converted to "detail" coefficients.  See also: -R
+
+[opt]*-R avg_size* Resumes a transform that left off with an average
+image of avg_size.
+
+[opt]*-S square_out_size* This is the same as the [opt]*-W* option.
+It implies the square size for a 2D decomposition limit.
+
+== EXAMPLES
+
+The command [ui]`decompose -# 3 < img.pix | pix-fb` will display the
+horizontal decomposition of the file img.pix.
+
+The command [ui]`decompose -# 3 -s 1024 -l 64 < img.pix >` will
+decompose a 1024x1024 image.  The decomposition will stop when the
+image has been decomposed to 64x64.  The output image will thus have a
+64x64 version of the original in the lower left corner of the image,
+with detail terms in the remainder.
+
+== SEE ALSO
+
+xref:man:1/brlcad.adoc[*brlcad*(1)], xref:man:5/pix.adoc[*pix*(5)],
+xref:man:5/bw.adoc[*bw*(5)]
+
+== AUTHOR
+
+BRL-CAD Team
+
+include::../footer.adoc[]

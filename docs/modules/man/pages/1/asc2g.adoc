@@ -1,0 +1,99 @@
+include::../header.adoc[]
+
+= ASC2G(1)
+
+== NAME
+
+asc2g - convert a BRL-CAD mged geometry database from ASCII to binary
+form.
+
+== SYNOPSIS
+
+*asc2g* _input.asc_ _output.g_
+
+== DESCRIPTION
+
+[cmd]*asc2g* is a utility provided by BRL-CAD used to convert
+*mged(1)* geometry databases in ASCII form outputted by *g2asc(1)* to
+the new binary format. The utility will always create the new binary
+format, but it will accept either of the two ASCII formats (see
+_HISTORY_).
+
+The local machine binary representation of a mged database is
+inherently non-portable. [cmd]*asc2g* and its converse, [cmd]*g2asc*,
+are simple filters which convert between the binary form and an ASCII
+representation.
+
+This was traditionally performed so the files could be transferred to
+another machine in a portable format.  Although no longer necessary
+for the current binary geometry database files that are created by
+mged ("v5" format), the conversion process is still necessary if
+manipulating older ("v4" format) geometry database files.
+
+== EXAMPLE
+
+. [cmd]*g2asc* _file.g_ _file.asc_
++
+On the local machine, convert the mged databases to ASCII using
+[cmd]*g2asc*.
+
+. scp _file.asc_ remote:__file.asc__
++
+Transfer the converted databases to the remote machine.
+
+. ssh remote "[cmd]*asc2g* _file.asc_ _file.g_"
++
+On the remote machine, convert the files back to the binary
+representation for that machine using [cmd]*asc2g*.
+
+== OPTIONS
+
+[cmd]*asc2g* does not take any options. However, you have to supply
+the input and output files.
+
+== FILES
+
+[path]_input.asc_ is a file previously created using [cmd]*g2asc* and
+[path]_output.g_ is the name of the file where the resulting binary
+database should be stored.
+
+== SEE ALSO
+
+xref:man:1/g2asc.adoc[*g2asc*(1)],
+xref:man:1/brlcad.adoc[*brlcad*(1)], xref:man:1/mged.adoc[*mged*(1)]
+
+== DIAGNOSTICS
+
+The diagnostics are intended to be self-explanatory. Any warning
+messages are written to standard error.
+
+== BUGS
+
+Reports of bugs or problems should be submitted via e-mail to
+_mailto:devs@brlcad.org[]_.
+
+== HISTORY
+
+Release 6.0 introduced a new ASCII format. This format is simply a Tcl
+script that, when executed by a simplified geometry command
+interpreter (in essence, a properly empowered Tcl interpreter),
+rebuilds the database from which it was derived.
+
+In contrast, the old ASCII format consisted of a sequence of one-line
+records that corresponded to the old database format records.
+
+== DISCLAIMER
+
+The ASCII representation of BRL-CAD geometry databases is not a fixed
+format and is allowed to change without deprecation notice. In
+general, this will not occur any more frequently than the binary
+geometry database format changes, though both are open
+specifications. Regardless, the ASCII representation is subject to
+change without notice and should not be relied upon by external
+codes. (See _HISTORY_.)
+
+== AUTHOR
+
+_BRL-CAD Team_
+
+include::../footer.adoc[]

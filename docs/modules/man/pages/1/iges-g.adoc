@@ -1,0 +1,65 @@
+include::../header.adoc[]
+
+= IGES-G(1)
+
+== NAME
+
+iges-g - IGES Translator (IGES CSG to BRL-CAD)
+
+== SYNOPSIS
+
+*iges-g* [-X _NMG_debug_flag_] [-x _rt_debug_flag_] [-N _solid_name_] [-b] [-n | _d_ | _3_ | _t_] -o _database.g_ _file.iges_
+
+== DESCRIPTION
+
+[cmd]*iges-g* converts the specified _file.iges_ to a BRL-CAD
+_database.g_ file. The IGES file is expected to conform to IGES
+5.1. The [opt]*-n* option specifies that all rational B-spline
+surfaces in the IGES file should be combined into one BRL-CAD spline
+solid. The [opt]*-d* option indicates that IGES drawings should be
+converted to BRL-CAD NMG objects. Theses objects will be
+two-dimensional drawings, not solids. The [opt]*-3* option is the same
+as the [opt]*-d* option except the final projection into 2D is not
+performed. This may produce 3D drawings in cases where the drawings
+have been produced from a 3D model. The [opt]*-t* option requests all
+the trimmed surfaces in the IGES file be converted to a single BRL-CAD
+NMG solid. The [opt]*-N* option provides a name to be used for the
+single solid created under the [opt]*-n* or [opt]*-t* options, and is
+ignored for other options. The [opt]*-p* option indicates that BREP
+objects should be converted to NMG solids rather than the default BOT
+solids. The [opt]*-X* and [opt]*-x* options allow the setting of debug
+flags for the NMG routines and the rt library respectively. See
+_nmg.h_ and _raytrace.h_ for details. The absence of any of the
+[opt]*-n* , [opt]*-d* , or [opt]*-t* options results in the default
+behavior where all IGES CSG and planar face BREP objects are converted
+to BRL-CAD equivalents. Most conversions are exact, with the
+exceptions of the solid of revolution and the solid of linear
+extrusion. These solids do not exist in BRL-CAD and are therefore
+approximated. The solid of revolution is built from a series of
+truncated right cones developed by approximating the curve to be
+revolved with a series of straight line segments. The extrusion is
+similarly handled by approximating the curve to be extruded with
+straight line segments and using that to build a BRL-CAD
+_polysolid_. Planar faced IGES BREP objects are converted to BRL-CAD
+NMG structures.
+
+== EXAMPLE
+
+....
+$ iges-g -o -o sample.g sample.iges
+....
+
+== SEE ALSO
+
+_The Initial Graphics Exchange Specification (IGES) Version 5.1_,
+IGES/PDES Organization, September 1991
+
+== DIAGNOSTICS
+
+Error messages are intended to be self-explanatory.
+
+== AUTHORS
+
+_BRL-CAD Team_
+
+include::../footer.adoc[]

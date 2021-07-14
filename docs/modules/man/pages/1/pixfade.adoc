@@ -1,0 +1,45 @@
+include::../header.adoc[]
+
+= PIXFADE(1)
+
+== NAME
+
+pixfade - darken a pix file
+
+== SYNOPSIS
+
+*pixfade* [-f _fraction_] [-p _percentage_] [-m _max_] [-s _squaresize_] [-w _width_] [-n _height_] [-o _out_file.pix_] [_infile.pix_] > _outfile.pix_
+
+== DESCRIPTION
+
+[cmd]*pixfade* darkens a color pix file by fading the entire image a
+fractional amount or by using a pixel value as a maximum level.
+
+The [opt]*-f* option specifies a nonnegative fractional multiplier
+which is used to scale the red, green, and blue values of each pixel.
+In a similar way, the [opt]*-p* option is used to specify the
+multiplier as a nonnegative percentage. The default is [opt]*-f* 0.5
+([opt]*-p* 50.0).
+
+An alternative way to darken the image is to specify a ceiling pixel
+level (0 - 255) with the [opt]*-m* option.  The pixel plotted is the
+minimum of the ceiling value and each of the red, green, and blue
+levels of the pixel.  If this option is used, the [opt]*-f* and
+[opt]*-p* options are ignored.
+
+The [opt]*-w* and [opt]*-n* flags specify the input file width and
+number of scan lines in pixels; they can be set to the same value via
+[opt]*-s*. Default is 512x512.
+
+The [opt]*-o* option supplies output file name.  If this option is
+omitted, standard output is used.
+
+== SEE ALSO
+
+xref:man:1/brlcad.adoc[*brlcad*(1)], xref:man:5/pix.adoc[*pix*(5)]
+
+== AUTHOR
+
+BRL-CAD Team
+
+include::../footer.adoc[]

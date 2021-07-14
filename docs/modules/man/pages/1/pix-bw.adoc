@@ -1,0 +1,82 @@
+include::../header.adoc[]
+
+= PIX-BW(1)
+
+== NAME
+
+pix-bw - combine pix color planes into a bw black and white image
+
+== SYNOPSIS
+
+*pix-bw* [-s _squaresize_] [-w _width_] [-n _height_] [ [-e _ntsc|crt|hdtv|hdr|avg_] [ [-R _r_weight_] [-G _g_weight_][-B _b_weight_]]] [-o _out.bw_][ [<] _in.pix_] > _out.bw_
+
+== DESCRIPTION
+
+[cmd]*pix-bw* will combine or select the color planes of a
+xref:man:5/pix.adoc[*pix*(5)] format file from its standard input and
+produce a black and white xref:man:5/bw.adoc[*bw*(5)] file on its
+standard output.
+
+The [opt]*-w* [rep]_file_width_ flag specifies the width of each
+scanline in the input file, in pixels. The [opt]*-n*
+[rep]_file_height_ flag specifies the height in scanlines of the input
+file. They are set to the same value using [opt]*-s*
+[rep]_squarefilesize_.
+
+By default all three colors are weighted equally. The [opt]*-e*
+[rep]_type_ flag can be used to specify a standard weighting scheme;
+the _type_ choices include:
+
+_ntsc_:: Weighting used is based on the NTSC primaries and white
+alignment.  Conforming with Rec.ITU-R BT.601-7, this uses
+0.299/0.587/0.114 RGB weights.  This gives a simplified linear
+conversion of perceived luminance that reflects human physiological
+sensitivity to green and least to blue.
+
+_crt_:: Weighting scheme matches "historic" CRT phosphor
+chromaticities and a D6500 white alignment.  Uses 0.26/0.66/0.08 RGB
+weights.
+
+_hdtv_:: Weighting scheme matches "modern" HDTV display
+chromacities. Uses 0.2126/0.7152/0.0722 RGB weights per Rec.ITU-R
+BT.709
+
+_hdr_:: Weighting scheme matches high dynamic range (HDR)
+chromacities. Uses 0.2627/0.6780/0.0593 RGB weights per Rec.ITU-R
+BT.2020
+
+_avg_:: Weighting scheme simply takes the average of all three values
+(i.e., R + G + B / 3.0).
+
+Individual color plane(s) can be selected via the [opt]*-R#*,
+[opt]*-G#*, and [opt]*-B#* options. The value used with each flag will
+be treated as a weight to be applied to that color.
+
+If 0 is supplied by the user for weights, then the weights assigned
+are 1.0 divided by the number of colors selected.
+
+== EXAMPLES
+
+  pix-bw -R0.0 -B0.0 < file.pix > file.bw
+
+will equally blend the red and blue color planes; because -G is
+omitted, the green color plane is not considered. (Had "-G0.0" been
+included in this example, the three colors would have been weighted
+equally, as in the default condition.)
+
+  pix-bw -R0.3 -G0.6 -B0.1 < file.pix > file.bw
+
+applies weights close to the [opt]*-ntsc* flag. 
+
+== SEE ALSO
+
+xref:man:1/brlcad.adoc[*brlcad*(1)],
+xref:man:1/pix-bw3.adoc[*pix-bw3*(1)],
+xref:man:1/bw-pix.adoc[*bw-pix*(1)], xref:man:5/pix.adoc[*pix*(5)],
+xref:man:5/bw.adoc[*bw*(5)]
+
+== AUTHOR
+
+BRL-CAD Team
+
+include::../footer.adoc[]

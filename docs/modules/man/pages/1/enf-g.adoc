@@ -1,0 +1,46 @@
+include::../header.adoc[]
+
+= ENF-G(1)
+
+== NAME
+
+enf-g - Elysium Neutral Format Translator (ENF to BRL-CAD)
+
+== SYNOPSIS
+
+*enf-g* [-t _tolerance_] [-i _starting_ident_number_] [-l _name_length_limit_] [-n _part_number_to_name_mapping_] [-v] _input_enf_facet_file_ _database.g_
+
+== DESCRIPTION
+
+[cmd]*enf-g* converts the specified _input_enf_facet_file_ to a
+BRL-CAD _database.g_ file. This input file is expected to be the ASCII
+output from the Elysium enf2mxp tessellator. The _tolerance_ provided
+is the maximum distance (in mm) between two vertices at which they
+will be considered to be the same vertex. The _starting_ident_number_
+is the ident number to use for the first region created, each
+succeeding region will have their ident numbers incremented by one. If
+a _name_length_limit_ is provided, then the resulting names in the
+BRL-CAD model will not be longer than that limit. If a
+_part_number_to_name_mapping_ file is provided, then that file will be
+read and used to convert part numbers in the _input_enf_facet_file_ to
+the corresponding names in the mapping, and is expected to consist of
+a series of lines of text with each line having a part number and a
+legal BRL-CAD object name separated by a tab. (_-v_ option is provided
+for verbose mode.)
+
+== EXAMPLE
+
+....
+$ enf-g sample.enf sample.g
+....
+
+
+== DIAGNOSTICS
+
+Error messages are intended to be self-explanatory.
+
+== AUTHOR
+
+BRL-CAD Team
+
+include::../footer.adoc[]

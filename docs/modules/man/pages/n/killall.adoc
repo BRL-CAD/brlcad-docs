@@ -1,0 +1,48 @@
+include::../header.adoc[]
+
+= KILLALL(nged)
+
+== NAME
+
+killall - Deletes the specified objects from the current database and
+removes all references to them from all combinations in the database.
+
+== SYNOPSIS
+
+*killall* [-n] {_objects_}
+
+== DESCRIPTION
+
+Deletes the specified _objects_ from the current database and removes
+all references to them from all combinations in the database. Note
+that the _objects_ are killed immediately unless the [opt]*-n* flag is
+passed.  The [opt]*-n* flag causes the command to return a string of
+the objects that would be killed in a scriptable list format without
+actually killing them.
+
+*Use this command with caution.* Killed objects cannot be recovered so
+[cmd]*keep* a backup.
+
+== EXAMPLES
+
+The example shows the use of the [cmd]*killall* command to delete
+specified objects and to remove all references to them from the
+database.
+
+.Delete specified objects and all references to them from the database.
+====
+[prompt]#mged># [ui]`killall group1 region2 shapeb`
+
+Deletes _group1_, _region2_, and _shapeb_ and removes all references
+to these objects from the database.
+====
+
+== SEE ALSO
+
+xref:man:nged/kill.adoc[*kill*(nged)]xref:man:nged/killtree.adoc[*killtree*(nged)]
+
+== AUTHOR
+
+BRL-CAD Team
+
+include::../footer.adoc[]

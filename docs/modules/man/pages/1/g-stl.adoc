@@ -1,0 +1,69 @@
+include::../header.adoc[]
+
+= G-STL(1)
+
+== NAME
+
+g-stl - Stereolithography Translator (BRL-CAD to STL)
+
+== SYNOPSIS
+
+*g-stl* [-o _output_file_] [-m _output_directory_] [-b] [-i] [-8] [-D _calculation_tolerance_] [-a _absolute_tol_] [-r _relative_tol_] [-n _normal_tol_] [-xX _level_] [-v] _database.g_ _object(s)_...
+
+== DESCRIPTION
+
+[cmd]*g-stl* converts the specified _object(s)_ from a BRL-CAD
+_database.g_ file to the _stereolithography_ file format.
+
+The following options are recognized.
+
+*-o PATH*:: Specify output file name (default is stdout).
+
+*-m DIR*:: Specify a directory for output files. Each region converted
+is written to a separate file. File names are constructed from the
+full path names of each region (the path from the specified object to
+the region). Any "/" characters in the path name are replaced by "@"
+characters and "." and white space are replaced by "_" characters. If
+the -m option is not specified, all regions are written to the same
+file. The [opt]*-o* and [opt]*-m* options are mutually exclusive.
+
+*-b*:: Write output as a binary STL file. The default is ASCII. In the
+case of ASCII output, the region name is specified on the "solid" line
+of the STL file. In the case of binary output, all the regions are
+output as a single STL part.
+
+*-i*:: Use inches as the output format (the default is mm).
+
+*-8*:: Facetize using the marching cubes algorithm.
+
+*-D#*:: Specify a calculational distance tolerance (mm). Any two
+vertices that are less than this distance apart will be treated as the
+same vertex.
+
+*-a#*:: Specify the absolute tesselation tolerance.
+
+*-r#*:: Specify the relative tesselation tolerance.
+
+*-n#*:: Specify the surface-normal tesselation tolerance.
+
+*-x#*:: Specify an RT debug flag.
+
+*-X#*:: Specify an NMG debug flag.
+
+*-v*:: Enable verbose output.
+
+== EXAMPLE
+
+....
+$ g-stl -o sample.stl sample.g sample_object
+....
+
+== DIAGNOSTICS
+
+Error messages are intended to be self-explanatory.
+
+== AUTHOR
+
+BRL-CAD Team
+
+include::../footer.adoc[]
