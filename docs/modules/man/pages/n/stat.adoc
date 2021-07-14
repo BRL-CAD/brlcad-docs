@@ -5,9 +5,7 @@ BRL-CAD Team
 
 == NAME
 
-stat - 
-      report information about objects in a BRL-CAD database
-    
+stat - report information about objects in a BRL-CAD database
 
 == SYNOPSIS
 
@@ -16,12 +14,14 @@ stat -
 [[_stat_overview]]
 == Overview
 
-The GED [cmd]*stat* command reports information about objects in a BRL-CAD .g file.  It produces a tabular output, with options for user configurability and sorting. 
+The GED [cmd]*stat* command reports information about objects in a
+BRL-CAD .g file.  It produces a tabular output, with options for user
+configurability and sorting.
 
-Available types reflect geometry object data: 
+Available types reflect geometry object data:
 
 .STAT Information Keys - Core Object Info
-[cols="1,1", frame="all"]
+[cols="2*~", frame="all"]
 |===
 |name
 |Object database name (for example, "primitive.s")
@@ -48,28 +48,33 @@ Available types reflect geometry object data:
 |Object type (short name)
 |===
 
-In addition to the above standard keys, attributes may also be specified.  If the desired attribute happens to have the same name as one of the above standard keys, the prefix "attr:" may be added to denote an attribute. 
+In addition to the above standard keys, attributes may also be
+specified.  If the desired attribute happens to have the same name as
+one of the above standard keys, the prefix "attr:" may be added to
+denote an attribute.
 
 [[_search_options]]
 == OPTIONS
 
-*-h or -?*::
-Print help and exit. 
+*-h or -?*:: Print help and exit.
 
-*-r*::
-Print raw values, instead of human friendly strings (for example, 5195952 for a size instead of 5.0M). 
+*-r*:: Print raw values, instead of human friendly strings (for
+example, 5195952 for a size instead of 5.0M).
 
-*-F*::
-Specify [cmd]*search* style filters to trim down what is reported in [cmd]*stat* output. 
+*-F*:: Specify [cmd]*search* style filters to trim down what is
+reported in [cmd]*stat* output.
 
-*-C*::
-Supply a comma separated list of column specifiers or attribute keys to define the table layout for [cmd]*stat*. 
+*-C*:: Supply a comma separated list of column specifiers or attribute
+keys to define the table layout for [cmd]*stat*.
 
-*-S*::
-Supply a comma separated list of column specifiers or attribute keys to specify a sorting priority for [cmd]*stat*. Priority is left to right - sorting will be performed first based on the leftmost specifier, and subsequent specifiers will be used to resolve any ties.  To reverse the ordering decisions for a given column, prefix the specifier with a "!" character. 
+*-S*:: Supply a comma separated list of column specifiers or attribute
+keys to specify a sorting priority for [cmd]*stat*. Priority is left
+to right - sorting will be performed first based on the leftmost
+specifier, and subsequent specifiers will be used to resolve any ties.
+To reverse the ordering decisions for a given column, prefix the
+specifier with a "!" character.
 
-*-o*::
-Write output to _filename_ instead of the command prompt. 
+*-o*:: Write output to _filename_ instead of the command prompt.
 
 == EXAMPLES
 
@@ -78,7 +83,6 @@ Write output to _filename_ instead of the command prompt.
 [ui]`stat *`
 
 ....
-
  Object Name             uses   References   Flags   Type     Size 
 ----------------------- ------ ------------ ------- -------- ------
  Default                 0      1            2       comb     288B 
@@ -100,7 +104,6 @@ Write output to _filename_ instead of the command prompt.
 [ui]`stat -S "size" *`
 
 ....
-
  Object Name             uses   References   Flags   Type     Size 
 ----------------------- ------ ------------ ------- -------- ------
  _GLOBAL                 0      0            8                96B  
@@ -122,7 +125,6 @@ Write output to _filename_ instead of the command prompt.
 [ui]`stat -S "!size" *`
 
 ....
-
  Object Name             uses   References   Flags   Type     Size 
 ----------------------- ------ ------------ ------- -------- ------
  Solid1.r.s              0      1            1       brep     859K 
@@ -144,7 +146,6 @@ Write output to _filename_ instead of the command prompt.
 [ui]`stat -F "-type brep" *`
 
 ....
-
  Object Name    uses   References   Flags   Type   Size 
 -------------- ------ ------------ ------- ------ ------
  Solid1.r.s     0      1            1       brep   859K 
@@ -159,7 +160,6 @@ Write output to _filename_ instead of the command prompt.
 [ui]`stat -C "name,type,size,color" *`
 
 ....
-
  Object Name             Type     Size   color       
 ----------------------- -------- ------ -------------
  Default                 comb     288B   0/0/0       
