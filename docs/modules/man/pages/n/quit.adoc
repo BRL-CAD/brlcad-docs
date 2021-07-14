@@ -1,0 +1,36 @@
+include::../header.adoc[]
+
+= QUIT(nged)
+
+== NAME
+
+quit - Ends the MGED process.
+
+== SYNOPSIS
+
+*quit*
+
+== DESCRIPTION
+
+Ends the MGED process. Note that there is no write database command in
+MGED. All changes are made to the database as the user performs
+them. Therefore, a [cmd]*quit* command will not restore the database
+to its pre-edited state. This is a synonym for the [cmd]*q* command.
+
+== EXAMPLES
+
+The example shows the use of the [cmd]*quit* command to end the
+current MGED session.
+
+.End the current MGED session.
+====
+[prompt]#mged># [ui]`quit`
+
+Quits the current MGED session. 
+====
+
+== AUTHOR
+
+BRL-CAD Team
+
+include::../footer.adoc[]
