@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>10. Crear una taza :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/es/lecciones/mged/10_crear_taza.html">
+    <link rel="prev" href="09_esfera_en_caja_exhibidora.html">
+    <link rel="next" href="11_refinar_taza.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../ui-es/css/site.css">
+    <link rel="stylesheet" href="../../../ui-es/css/search.css">
+    <link rel="stylesheet" href="../../../ui-es/css/custom.css">
+    <script>var uiRootPath = '../../../ui-es'</script>
+    <link rel="icon" href="../../../ui-es/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../../ui-es/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="es" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lecciones</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01_crear_figuras_primitivas.html">1. Crear Figuras Primitivas with MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02_opciones_vistas.html">2. Reconocer las opciones de vistas en MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03_utilizar_comando_in.html">3. Usar el comando Insert en MGED para dimensionar y ubicar figuras</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="04_prop_materiales.html">4. Asignación de propiedades de los materiales y trazado de rayos (Raytracing) en MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="05_expresiones_booleanas.html">5. Expresiones Booleanas</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="06_crear_una_copa.html">6. Crear una copa</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="07_prop_materiales_copa.html">7. Asignar propiedades de los materiales a una copa</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="08_prop_materiales_copa2.html">8. Asignar más propiedades de los materiales a la copa</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="09_esfera_en_caja_exhibidora.html">9. Crear una esfera en una caja exhibidora transparente</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="10_crear_taza.html">10. Crear una taza</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="11_refinar_taza.html">11. Refinando el modelo de la taza</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="12_taza_desde_gui.html">12. Crear el modelo de una taza utilizando la interfaz de MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="13_ubicar_figuras_en_3d.html">13. Ubicar figuras en espacios 3-D</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="14_ubicar_figuras_en_3d_2.html">14. Ejercicios adicionales de ubicación de imágenes en espacios 3-D</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="15_crear_camion_de_juguete.html">15. Crear un camión de juguete</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="16_mod_tech_struct.html">16. Aprender técnicas de modelado y estructuras</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Spanish</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../../index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">Spanish</a></li>
+    <li>Lecciones</li>
+    <li><a href="../mged.html">MGED</a></li>
+    <li><a href="10_crear_taza.html">10. Crear una taza</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/translations/es/modules/lecciones/pages/mged/10_crear_taza.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">10. Crear una taza</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>En este tutorial usted aprenderá a:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Crear el cilindro externo utilizando el comando in.</p>
+</li>
+<li>
+<p>Crear el cilindro interno para generar el vacío en la figura
+cilíndrica más grande.</p>
+</li>
+<li>
+<p>Crear el asa de su taza.</p>
+</li>
+<li>
+<p>Crear una combinación para producir el cuerpo de su taza.</p>
+</li>
+<li>
+<p>Crear una combinación para unir el asa al cuerpo de la taza.</p>
+</li>
+<li>
+<p>Crear una región para combinar las figuras con igual material y
+color.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>En este tutorial usted continuará su trabajo de creación de objetos de
+la vida real, en este caso, la forma básica del cuerpo de una taza de café.
+En los próximos tutoriales, perfeccionará el cuerpo para que sea más realista.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mug_new_db"><a class="anchor" href="#_mug_new_db"></a>1. Crear una nueva base de datos</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cree una nueva base de datos y llamela mug.g.  Vuelva al menú File
+(Archivo) y seleccione Preferences (Preferencias) a continuación,
+Units (Unidades) y finalmente Inches (Pulgadas). Esto creará su cuerpo
+usando pulgadas como unidad de medida.  (Nota: También puede hacer
+esto escribiendo "units in" en la ventana de comandos del sistema.)</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mug_outside_cyl"><a class="anchor" href="#_mug_outside_cyl"></a>2. Creando el cilindro externo utilizando el comando in</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Para comenzar a hacer el cuerpo de la taza, usted necesitará crear el
+cilindro externo.  Para esto tipee lo siguiente en el prompt de
+<code class="app">MGED</code>:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">in bodyout.s rcc</code></p>
+</div>
+<div class="paragraph">
+<p>El diagrama de este comando es:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">in</th>
+<th class="tableblock halign-center valign-top">bodyout.s</th>
+<th class="tableblock halign-center valign-top">rcc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Crear una figura</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Llamarla bodyout.s</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">La figura es un cilindro circular</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><code class="app">MGED</code> le pedirá los siguientes datos sobre del cilindro que
+usted desea crear.  Tipee los valores dados en negrita.  Asegúrese de
+dejar espacios entre los valores de las variables.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre><span class="prompt">Enter X, Y, Z of vertex:</span> <span class="cmd">0 0 0</span> <kbd>Enter</kbd>
+<span class="prompt">Enter X, Y, Z of height (H) vector:</span> <span class="cmd">0 0 3.5</span> <kbd>Enter</kbd>
+<span class="prompt">Enter radius:</span> <span class="cmd">1.75</span> <kbd>Enter</kbd></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note que el formato de una sola línea para darle todos estos datos al
+programa sería:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">in bodyout.s rcc 0 0 0 0 0 3.5 1.75 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>El diagrama de este comando es:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">in</th>
+<th class="tableblock halign-center valign-top">bodyout.s</th>
+<th class="tableblock halign-center valign-top">rcc</th>
+<th class="tableblock halign-center valign-top">0 0 0</th>
+<th class="tableblock halign-center valign-top">0 0 3.5</th>
+<th class="tableblock halign-center valign-top">1.75</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Crear una figura</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Llamarla bodyout.s</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">La figura es un cilindro circular</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">La x, y, y z de los vértices es 0 0 0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">La x, y, y z del vector de altura es 0 0 3.5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">El radio es de 1.75</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>La figura del cilindro, en forma de malla de alambre, aparecerá en la
+ventana gráfica.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mug_inside_cyl"><a class="anchor" href="#_mug_inside_cyl"></a>3. Creando el cilindro interno</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Utilizando este mismo método, escriba la información del cilindro
+circular interno.  Este cilindro se utiliza para vaciar el exterior
+cilindro.  Siempre que vaya a crear un agujero en la superficie de un
+objeto, asegúrese de que la forma creada para hacer el agujero
+sobresalga de la superficie.  De esta forma estará seguro de no dejar
+una capa delgada de material donde las dos superficies se unen.</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">in bodyin.s rcc 0 0 0.25 0 0 3.5 1.5 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>El diagrama de este comando es:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">in</th>
+<th class="tableblock halign-center valign-top">bodyin.s</th>
+<th class="tableblock halign-center valign-top">rcc</th>
+<th class="tableblock halign-center valign-top">0 0 0.25</th>
+<th class="tableblock halign-center valign-top">0 0 3.5</th>
+<th class="tableblock halign-center valign-top">1.5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Crear una figura</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Llamarla bodyin.s</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">la figura es un cilindro circular</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">La x, y, y z del vértice es 0, 0, y 0.25</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">La x, y, y z del vector de altura 0, 0, y 3.5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">el radio es de 1.5</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>El segundo cilindro, en el interior del primer cilindro, deberá
+aparecer ahora en la ventana gráfica.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mug_handle"><a class="anchor" href="#_mug_handle"></a>4. Creando el asa</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ahora tendrá que introducir algunos datos sobre el cuerpo del asa.  El
+tipo de forma para el asa es un toro elíptico.  En la ventana de
+comandos del sistema, escriba:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">in handle.s eto 0 2.5 1.75 1 0 0 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>El diagrama de este comando es:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">in</th>
+<th class="tableblock halign-center valign-top">handle.s</th>
+<th class="tableblock halign-center valign-top">eto</th>
+<th class="tableblock halign-center valign-top">0 2.5 1.75</th>
+<th class="tableblock halign-center valign-top">1 0 0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Crear una figura</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Llamarla handle.s</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">La figura es un toro elíptico</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">La x, y, y z del vértice es 0, 2.5, y 1.75</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">La x, y, y z del vector normal es 1, 0, y 0</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>El programa le pedirá lo siguientes datos de la figura a crear.  Tipee
+los valores mostrados en negrita.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre><span class="prompt">Enter X, Y, Z, of vector C:</span> <span class="cmd">.6 0 0</span> <kbd>Enter</kbd>
+<span class="prompt">Enter radius of revolution, r:</span> <span class="cmd">1.45</span> <kbd>Enter</kbd>
+<span class="prompt">Enter elliptical semi-minor axis, d:</span> <span class="cmd">0.2</span> <kbd>Enter</kbd></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>La figura de una rosquilla debe aparecer en el lado derecho del
+cuerpo.  Si usted mira atentamente, podrá ver que alrededor de un
+tercio del toro elíptico corta el cuerpo.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mug_comb1"><a class="anchor" href="#_mug_comb1"></a>5. Creando la combinación Bodyout.s-Bodyin.s</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>El próximo paso será combinar los dos cilindros en el cuerpo de la
+taza.  Para hacer esto tipee:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">comb body.c u bodyout.s - bodyin.s <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Le ha dicho al programa que cree la combinación body.c a partir de la
+unión de bodyout.s menos bodyin.s.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">comb</th>
+<th class="tableblock halign-center valign-top">body.c</th>
+<th class="tableblock halign-center valign-top">u</th>
+<th class="tableblock halign-center valign-top">bodyout.s</th>
+<th class="tableblock halign-center valign-top">-</th>
+<th class="tableblock halign-center valign-top">bodyin.s</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Crear una combinación</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Llamarla body.c</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Crear la unión de&#8230;&#8203;</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">el cilindro bodyout.s&#8230;&#8203;</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">y substraerle&#8230;&#8203;</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">el cilindro bodyin.s</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mug_comb2"><a class="anchor" href="#_mug_comb2"></a>6. Creando la combinación Handle.s - Bodyout.s</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Para combinar el asa con la parte externa del cilindro tipee:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">comb handle.c u handle.s - bodyout.s <kbd>Enter</kbd></code></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">comb</th>
+<th class="tableblock halign-center valign-top">handle.c</th>
+<th class="tableblock halign-center valign-top">u</th>
+<th class="tableblock halign-center valign-top">handle.s</th>
+<th class="tableblock halign-center valign-top">-</th>
+<th class="tableblock halign-center valign-top">bodyout.s</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Crear una combinación</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Llamarla handle.c</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Crear la unión de&#8230;&#8203;</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">el toro handle.s&#8230;&#8203;</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">y substraerle&#8230;&#8203;</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">el cilindro bodyout.s</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mug_region"><a class="anchor" href="#_mug_region"></a>7. Creando la región Mug.r</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>El último paso en la creación de la taza es crear una región a partir
+de las combinaciones.  Tipee:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r mug.r u body.c u handle.c <kbd>Enter</kbd></code></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">r</th>
+<th class="tableblock halign-center valign-top">mug.r</th>
+<th class="tableblock halign-center valign-top">u</th>
+<th class="tableblock halign-center valign-top">body.c</th>
+<th class="tableblock halign-center valign-top">u</th>
+<th class="tableblock halign-center valign-top">handle.c</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Crear una región de figuras del mismo material y color</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Llamarlo mug.r</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Crear la unión de&#8230;&#8203;</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">la combinación body.c&#8230;&#8203;</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">y unirla con&#8230;&#8203;</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">la combinación handle.c</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Si realizó estos pasos correctamente, el programa responderá algo
+similar a:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>   Defaulting item number to 1002
+   Creating region id=1001, air=0, GIFTmaterial=1, los=100</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/10_mug_wireframe.png" alt="10 mug wireframe">
+</div>
+<div class="title">Figure 1. Vista en marco de alambre de la taza</div>
+</div>
+<div class="paragraph">
+<p>Ahora debe tener la región mug.r como una combinación de formas que
+contienen el mismo material y color.  Usted puede asignar el color y
+el material en este momento, pero deberá trabajar más sobre el diseño
+para hacerlo más realista.  Por ahora, revise lo que apredió en este
+tutorial.  Cuando esté listo para trabajar de nuevo, puede seguir
+perfeccionando su diseño en el próximo tutorial.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mug_review"><a class="anchor" href="#_mug_review"></a>8. Repasemos&#8230;&#8203;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>En este tutorial usted aprendió a:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Crear el cilindro externo utilizando el comando in.</p>
+</li>
+<li>
+<p>Crear el cilindro interno para generar el vacío en la figura
+cilíndrica más grande.</p>
+</li>
+<li>
+<p>Crear el asa de su taza.</p>
+</li>
+<li>
+<p>Crear una combinación para producir el cuerpo de su taza.</p>
+</li>
+<li>
+<p>Crear una combinación para unir el asa al cuerpo de la taza.</p>
+</li>
+<li>
+<p>Crear una región para combinar las figuras con igual material y
+color.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="09_esfera_en_caja_exhibidora.html">9. Crear una esfera en una caja exhibidora transparente</a></span>
+  <span class="next"><a href="11_refinar_taza.html">11. Refinando el modelo de la taza</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../ui-es/js/site.js"></script>
+<script src="../../../ui-es/js/vendor/lunr.js"></script>
+<script src="../../../ui-es/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/es/lecciones/mged/10_crear_taza.html"></script>
+<script async src="../../../ui-es/../search-index.js"></script>
+<script async src="../../../ui-es/js/vendor/highlight.js"></script>
+  </body>
+</html>

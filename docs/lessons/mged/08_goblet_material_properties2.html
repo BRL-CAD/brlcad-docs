@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>8. Assigning More Material Properties to a Goblet :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/docs/lessons/mged/08_goblet_material_properties2.html">
+    <link rel="prev" href="07_goblet_material_properties.html">
+    <link rel="next" href="09_globe_in_display_box.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../ui/css/site.css">
+    <link rel="stylesheet" href="../../../ui/css/search.css">
+    <link rel="stylesheet" href="../../../ui/css/custom.css">
+    <script>var uiRootPath = '../../../ui'</script>
+    <link rel="icon" href="../../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lessons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01_creating_primitive_shapes.html">1. Creating Primitive Shapes in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02_learning_viewing_options.html">2. Learning Viewing Options in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03_using_insert_command.html">3. Using the Insert Command in MGED to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="04_assign_mat_prop_rt.html">4. Assigning Material Properties and Raytracing in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="05_learning_boolean_expressions.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="06_creating_a_goblet.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="07_goblet_material_properties.html">7. Assigning Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="08_goblet_material_properties2.html">8. Assigning More Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="09_globe_in_display_box.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="10_creating_mug.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="11_refining_mug.html">11. Refining a Mug Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="12_mug_through_gui.html">12. Creating a Mug Model using the MGED Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="13_placing_shapes_in_3d.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="14_placing_shapes_in_3d_2.html">14. Additional Exercises Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="15_creating_a_toy_truck.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="16_mod_tech_struct.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Books</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../hacking/index.html">Hacking BRL-CAD</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting Started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter1.html">A Call to Arms (and Contributors)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter2.html">Feature Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developers</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter3.html">Working with Our Code</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter4.html">What Code to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter5.html">Contributing Code</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Documenters</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter6.html">Working with Our Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter7.html">Types of Documentation We Maintain</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter8.html">What Documentation to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter9.html">Contributing Documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Other Contributors</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part4/chapter10.html">You Can Help Too</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendix: Resources and Examples</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix1.html">Further References and Resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix2.html">Doc Template: New MGED Command</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix3.html">Code Example: Shooting Rays</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix4.html">Code Example: Walking Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix5.html">Code Example: Command Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix6.html">Example Code: Root Solving</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/index.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../tutorials/overview.html">I. An Overview of BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/mged-intro.html">II. Introduction to MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/preface1.html">Preface</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/preface2.html">Acknowledgments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter1.html">1. Creating Primitive Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter2.html">2. Learning the Viewing Options</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter3.html">3. Using the Insert Command to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter4.html">4. Assigning Material Properties and Raytracing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter5.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter6.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter7.html">7. Assigning Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter8.html">8. Assigning More Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter9.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter10.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter11.html">11. Refining the Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter12.html">12. Creating the Mug Through the GUI</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter13.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter14.html">14. Gaining More Practice Placing Shapes in Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter15.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter16.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/appendix1.html"><code class="app">MGED</code> Commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/modeling.html">III. Modeling</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter2.html">2. The Model Process</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter3.html">3. Measuring data</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter4.html">4. Organizing the Structure</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter5.html">5. Developing Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter6.html">5. Evaluating Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter7.html">7. Logging Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendices</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix1.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix2.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix3.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix4.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix5.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix6.html">Using the build_region Command</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/converting.html">IV. Converting</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter2.html">2. Pertinent Characteristics of the BRL-CAD Format</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter3.html">3. Converting From/to ASCII</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter4.html">4. Converting to BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter5.html">5. Converting From BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter6.html">6. Building a New Converter</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter7.html">7. Postconversion Issues</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/index.html">Articles</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_pattern.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_region.html">Using the build_region Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/camo_shader.html">Camouflage shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ebm_primitive.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/gcv.html">The Geometry Conversion Library</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ged.html">GED: An Interactive Solid Modeling System</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/mged/index.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tutorial.html">Tutorial</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/gui.html">Graphical User Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/command-line-editing.html">Command Line Editing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/user-commands.html">User Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/developer-commands.html">Developer Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tcl-variables.html">Tcl Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/env.html">Environment Variable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/callback.html">Callback</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/brlcad-solid.html">BRL-CAD Solid</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/mgedrc.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/nirt.html">Interactive Raytracing: The nirt Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/overlap_tool.html">The Overlap Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/oed.html">Object Editing - the oed Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/pipes.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/projection_shader.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/tire.html">Vehicle Tire and Wheel Creation in BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/TEMPLATE.html">TEMPLATE</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Misc</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Dev Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../devguides/bool_eval_development.html">NURBS Boolean Evaluation Development Guide</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Presentations</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/brlcad-app-devel.html">Application Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="presentations:_attachments/brlcad-app-devel.html">brlcad-app-devel</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/intro-to-tcltk.html">Introduction to Tcl/Tk</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../specifications/BRL_CAD_g_format_V5.html">BRL-CAD Database Format</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Manual Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/1.html">man1</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/3.html">man3</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/5.html">man5</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/n.html">mann</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Wiki Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">page-1</span>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">BRL-CAD</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../../index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../es/index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../es/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">BRL-CAD</a></li>
+    <li>Lessons</li>
+    <li><a href="../mged.html">MGED</a></li>
+    <li><a href="08_goblet_material_properties2.html">8. Assigning More Material Properties to a Goblet</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/docs/modules/lessons/pages/mged/08_goblet_material_properties2.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">8. Assigning More Material Properties to a Goblet</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this lesson, you will:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Use the specular and diffuse reflectivity options of the plastic
+shader.</p>
+</li>
+<li>
+<p>Assign values to the refractive index of the plastic shader.</p>
+</li>
+<li>
+<p>Assign values to the shininess option of the plastic shader.</p>
+</li>
+<li>
+<p>Assign values to the extinction option of the plastic shader.</p>
+</li>
+<li>
+<p>Experiment with various combinations of plastic shader options.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Open the goblet.g database using whichever method you prefer.  Go to
+the Edit menu and select Combination Editor.  Select basin1.r.</p>
+</div>
+<div class="paragraph">
+<p>In the last lesson, we assigned values for two shader
+attributes-transparency and mirror reflectance.  In this lesson, we
+will assign values for still other shader properties.  When the
+plastic shader is selected for region basin1.r, eight attribute entry
+boxes currently appear in the Combination Editor.  These boxes contain
+either the values that the user has previously set (e.g., those we
+previously set for transparency and mirror reflectance) or the default
+values that the raytracer will use if no others are specified.  When
+any of these values is modified, the change can be seen in braces in
+the shader string box and in the appropriate attribute entry boxes, as
+indicated by the arrows in the following example:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/08_goblet_combeditor.png" alt="08 goblet combeditor">
+</div>
+<div class="title">Figure 1. The Combination Editor</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Note that in <code class="app">BRL-CAD</code> versions prior to 5.2, the default values
+are used, but they are not displayed in the shader attribute boxes.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In this example, the shader entry box indicates that the transparency
+(tr) is set at .5 and the mirror reflectance (re) is set at .45.  The
+eight abbreviations currently used in the shader entry box are as
+follows:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>tr</strong> - transparency</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>sp</strong> - specular reflectivity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ri</strong> - refractive index</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ex</strong> - extinction</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>re</strong> - mirror reflectance</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>di</strong> - diffuse reflectivity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>sh</strong> - shininess</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>em</strong> - emission</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_goblet_specular_diffuse"><a class="anchor" href="#_goblet_specular_diffuse"></a>1. Specular and Diffuse Reflectivity</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When light reflects off of a shiny surface, it produces two types of
+reflections.  The most noticeable highlights are caused by specular
+reflectivity.  The rest of the surface produces diffuse reflectivity.
+The shinier (or glossier) the surface is, such as on a crystal vase,
+the more specular reflectivity that is produced.  The duller the
+surface is, such as with a wall painted with flat paint, the more
+diffuse reflectivity that is produced.  A model of the relationship
+between these reflectivities is shown in the following illustration:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/08_spec_vs_diff_reflectivity.png" alt="08 spec vs diff reflectivity">
+</div>
+<div class="title">Figure 2. Specular vs. Diffuse Reflectivity Model</div>
+</div>
+<div class="paragraph">
+<p>As seen in the illustration, diffuse reflectivity shows an object&#8217;s
+color by reflecting ambient light off the object.  The upper left ball
+exhibits the maximum value for diffuse reflectivity (1.0), and as a
+result, its surface color is uniform.</p>
+</div>
+<div class="paragraph">
+<p>Specular reflectivity, on the other hand, reflects the color of a
+light source.  The lowest right ball, with the maximum value for
+specular reflectivity (1.0), shows a white light source being
+reflected off the surface of the ball.</p>
+</div>
+<div class="paragraph">
+<p>The range for both specular and diffuse reflectivity is 0.0 through
+1.0.  However, combined values for these are typically equal to 1.0.
+Remember, if you are going to set values for one of these attributes,
+you need to assign a corresponding value to the complementary
+attribute so that the combination of the values equals 1.0.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_goblet_refractive_index"><a class="anchor" href="#_goblet_refractive_index"></a>2. Refractive Index</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When light passes through one medium (e.g., air) into another medium
+(e.g., water), it bends from its original path.  The degree to which
+the light bends is called the refractive index.  The more dissimilar
+the media are, the greater the degree of refraction that will occur.
+For example, sunlight passing through a diamond will bend more than
+the same sunlight through optical glass.  The diamond would have a
+higher refractive index (approximately 2.42) whereas optical glass
+would have a lower refractive index (approximately 1.71).</p>
+</div>
+<div class="paragraph">
+<p>The range of index of refraction for <code class="app">MGED</code> is 1.0 (the index for
+air) or greater.  This parameter is only useful for materials that
+have a transparency greater than 0.  The following drawing of sunlight
+passing through water shows how refraction works.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/08_refractive_index.png" alt="08 refractive index">
+</div>
+<div class="title">Figure 3. A Ray of Sunlight Passing Through a Body of Water</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_goblet_shininess"><a class="anchor" href="#_goblet_shininess"></a>3. Shininess</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The shininess of an object affects the size of the specular component
+of the plastic shader.  The shinier an object&#8217;s surface is, the
+smaller the reflection of the light source on the object&#8217;s surface
+will be.  The range for shininess is typically an integer value from 1
+to 10.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_goblet_extinction"><a class="anchor" href="#_goblet_extinction"></a>4. Extinction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The term extinction applies to the transmissive component of the
+plastic shader, and it indicates the amount of light absorbed by the
+object&#8217;s material.  The default value is 0.0, and the range can be any
+nonnegative number.  Using this attribute can dramatically impact
+other attributes of the shader, especially the refractive index.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_goblet_emission"><a class="anchor" href="#_goblet_emission"></a>5. Emission</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Emission is a relatively new feature that has been added to the
+<code class="app">BRL-CAD</code> package.  It concerns the amount of artificial
+brightness of the object.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_goblet_shader_attributes"><a class="anchor" href="#_goblet_shader_attributes"></a>6. Applying Attributes of the Plastic Shader to the Goblet</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now that you understand the various attributes of the plastic shader,
+it is time to experiment with how they affect the final product-the
+goblet you created in the previous two lessons.  You have already
+assigned values for transparency and mirror reflectance.  Now add the
+attributes of specular reflectivity and diffuse reflectivity to
+basin1.r.  Once you see how these two attributes affect your design,
+add the refractive index, then shininess and extinction.  You might
+want to capture some of these changes so that you can refer to them
+later, when you are creating other models using the plastic shader.
+Remember to click Apply in the Combination Editor to actually
+incorporate the changes.</p>
+</div>
+<div class="paragraph">
+<p>As you change the values for the attributes of the plastic shader, you
+will notice that some changes do not significantly alter the design.
+This is because there are a variety of ways to produce a particular
+look on an object.  The following are two examples of the goblet with
+various values of the plastic attributes (which do create a noticeable
+difference) applied to basin1.r.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/08_goblet_reflectivity_1.png" alt="08 goblet reflectivity 1">
+</div>
+<div class="title">Figure 4. Goblet Assigned .9 for Specular Reflectivity and .1 for Diffuse Reflectivity</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/08_goblet_reflectivity_2.png" alt="08 goblet reflectivity 2">
+</div>
+<div class="title">Figure 5. Same Goblet Also Assigned a Value of .5 for Extinction</div>
+</div>
+<div class="paragraph">
+<p>By the time you have finished experimenting with changing attributes
+of the plastic shader, your Combination Editor window might look
+something like this:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/08_comb_editor_window_mater_prop.png" alt="08 comb editor window mater prop">
+</div>
+<div class="title">Figure 6. The Combination Editor Window</div>
+</div>
+<div class="paragraph">
+<p>Notice that while the shader string entry box reflects the values set
+by the user in the attribute entry boxes (e.g., the Transparency
+of .5), it does not reflect the default values (e.g., the Shininess of
+10).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_goblet_material_properties2_review"><a class="anchor" href="#_goblet_material_properties2_review"></a>7. Review</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this lesson, you:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Used the specular reflectivity and diffuse reflectivity options of
+the plastic shader.</p>
+</li>
+<li>
+<p>Assigned values to the refractive index of the plastic shader.</p>
+</li>
+<li>
+<p>Assigned values to the shininess option of the plastic shader.</p>
+</li>
+<li>
+<p>Assigned values to the extinction option of the plastic shader.</p>
+</li>
+<li>
+<p>Experimented with various combinations of plastic shader options.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="07_goblet_material_properties.html">7. Assigning Material Properties to a Goblet</a></span>
+  <span class="next"><a href="09_globe_in_display_box.html">9. Creating a Globe in a Display Box</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../ui/js/site.js"></script>
+<script src="../../../ui/js/vendor/lunr.js"></script>
+<script src="../../../ui/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/docs/lessons/mged/08_goblet_material_properties2.html"></script>
+<script async src="../../../ui/../search-index.js"></script>
+<script async src="../../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Vehicle Tire and Wheel Creation in BRL-CAD :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/docs/articles/tire.html">
+    <link rel="prev" href="projection_shader.html">
+    <link rel="next" href="TEMPLATE.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../ui/css/site.css">
+    <link rel="stylesheet" href="../../ui/css/search.css">
+    <link rel="stylesheet" href="../../ui/css/custom.css">
+    <script>var uiRootPath = '../../ui'</script>
+    <link rel="icon" href="../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../about.html">About</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lessons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../lessons/mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/01_creating_primitive_shapes.html">1. Creating Primitive Shapes in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/02_learning_viewing_options.html">2. Learning Viewing Options in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/03_using_insert_command.html">3. Using the Insert Command in MGED to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/04_assign_mat_prop_rt.html">4. Assigning Material Properties and Raytracing in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/05_learning_boolean_expressions.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/06_creating_a_goblet.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/07_goblet_material_properties.html">7. Assigning Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/08_goblet_material_properties2.html">8. Assigning More Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/09_globe_in_display_box.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/10_creating_mug.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/11_refining_mug.html">11. Refining a Mug Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/12_mug_through_gui.html">12. Creating a Mug Model using the MGED Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/13_placing_shapes_in_3d.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/14_placing_shapes_in_3d_2.html">14. Additional Exercises Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/15_creating_a_toy_truck.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/16_mod_tech_struct.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Books</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../hacking/index.html">Hacking BRL-CAD</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting Started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part1/chapter1.html">A Call to Arms (and Contributors)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part1/chapter2.html">Feature Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developers</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part2/chapter3.html">Working with Our Code</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part2/chapter4.html">What Code to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part2/chapter5.html">Contributing Code</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Documenters</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part3/chapter6.html">Working with Our Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part3/chapter7.html">Types of Documentation We Maintain</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part3/chapter8.html">What Documentation to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part3/chapter9.html">Contributing Documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Other Contributors</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part4/chapter10.html">You Can Help Too</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendix: Resources and Examples</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix1.html">Further References and Resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix2.html">Doc Template: New MGED Command</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix3.html">Code Example: Shooting Rays</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix4.html">Code Example: Walking Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix5.html">Code Example: Command Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix6.html">Example Code: Root Solving</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials/index.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tutorials/overview.html">I. An Overview of BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials/mged-intro.html">II. Introduction to MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/preface1.html">Preface</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/preface2.html">Acknowledgments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter1.html">1. Creating Primitive Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter2.html">2. Learning the Viewing Options</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter3.html">3. Using the Insert Command to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter4.html">4. Assigning Material Properties and Raytracing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter5.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter6.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter7.html">7. Assigning Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter8.html">8. Assigning More Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter9.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter10.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter11.html">11. Refining the Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter12.html">12. Creating the Mug Through the GUI</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter13.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter14.html">14. Gaining More Practice Placing Shapes in Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter15.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter16.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/appendix1.html"><code class="app">MGED</code> Commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials/modeling.html">III. Modeling</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter2.html">2. The Model Process</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter3.html">3. Measuring data</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter4.html">4. Organizing the Structure</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter5.html">5. Developing Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter6.html">5. Evaluating Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter7.html">7. Logging Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendices</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix1.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix2.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix3.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix4.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix5.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix6.html">Using the build_region Command</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials/converting.html">IV. Converting</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter2.html">2. Pertinent Characteristics of the BRL-CAD Format</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter3.html">3. Converting From/to ASCII</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter4.html">4. Converting to BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter5.html">5. Converting From BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter6.html">6. Building a New Converter</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter7.html">7. Postconversion Issues</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">Articles</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="build_pattern.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="build_region.html">Using the build_region Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="camo_shader.html">Camouflage shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="ebm_primitive.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="gcv.html">The Geometry Conversion Library</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="ged.html">GED: An Interactive Solid Modeling System</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="mged/index.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/tutorial.html">Tutorial</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/gui.html">Graphical User Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/command-line-editing.html">Command Line Editing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/user-commands.html">User Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/developer-commands.html">Developer Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/tcl-variables.html">Tcl Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/env.html">Environment Variable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/callback.html">Callback</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/brlcad-solid.html">BRL-CAD Solid</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="mgedrc.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="nirt.html">Interactive Raytracing: The nirt Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="overlap_tool.html">The Overlap Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="oed.html">Object Editing - the oed Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="pipes.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="projection_shader.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="tire.html">Vehicle Tire and Wheel Creation in BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="TEMPLATE.html">TEMPLATE</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Misc</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Dev Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../devguides/bool_eval_development.html">NURBS Boolean Evaluation Development Guide</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Presentations</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../presentations/brlcad-app-devel.html">Application Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="presentations:_attachments/brlcad-app-devel.html">brlcad-app-devel</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../presentations/intro-to-tcltk.html">Introduction to Tcl/Tk</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../specifications/BRL_CAD_g_format_V5.html">BRL-CAD Database Format</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Manual Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../man/1.html">man1</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../man/3.html">man3</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../man/5.html">man5</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../man/n.html">mann</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Wiki Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">page-1</span>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">BRL-CAD</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../es/index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../es/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">BRL-CAD</a></li>
+    <li><a href="index.html">Articles</a></li>
+    <li><a href="tire.html">Vehicle Tire and Wheel Creation in BRL-CAD</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/docs/modules/articles/pages/tire.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Vehicle Tire and Wheel Creation in BRL-CAD</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_overview">1. Overview</a></li>
+<li><a href="#_specifying_a_tire">2. Specifying a Tire with Standard Dimensional Conventions</a></li>
+<li><a href="#_options_for_tire">3. Options for Tire Tread Modeling</a></li>
+<li><a href="#_setting_tire_thickness">4. Setting Tire Thickness</a></li>
+<li><a href="#_changing_the_rim_width">5. Changing the Rim Width</a></li>
+<li><a href="#_changing_the_redial">6. Changing the Radial Location of the Maximum Tire Width</a></li>
+<li><a href="#_other_options">7. Other Options</a></li>
+<li><a href="#_structure_of_a_tire">8. Structure of a Tire Model</a></li>
+<li><a href="#_summary">9. Summary</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vehicle wheels are often approximated in BRL-CAD models with tori,
+cylinders, or other basic geometric shapes that represent a very rough
+visual and geometric approximation of a tire/wheel combination. The
+tire procedure provides BRL-CAD users with the ability to rapidly
+generate complex tire and wheel structures with standard dimensional
+input information.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_overview"><a class="anchor" href="#_overview"></a>1. Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Traditionally, <a href="http://brlcad.org">BRL-CAD</a> tire models have been
+created using a single cylinder, a torus intersected with a cylinder,
+or in some cases additional combinations of these primitives.  While
+these approximations are often sufficient for analytical purposes the
+resulting model is typically a poor visual match to the real tire when
+raytracing.  Creating more complex models to better approximate the
+tire&#8217;s shape almost always requires more resources than can be
+justified.</p>
+</div>
+<div class="paragraph">
+<p>The <code>tire</code> tool offers a method to generate a model that is
+dimensionally close to a "real" tire using primitives and CSG
+operations.  The primitives used are the elliptical torus (eto), right
+circular cylinder (rcc), ellipsoid (ell), and truncated general cone
+(tgc).  When tread is added, the sketch and extrude primitives are
+also used.</p>
+</div>
+<div class="paragraph">
+<p>By default, a basic steel wheel (a.k.a.  "rim") is included in the
+model.  If this wheel does not work for a given modeling purpose, it
+is quite simple to remove it and substitute in a user-defined wheel so
+long as the dimensions of the user supplied wheel match the standard
+wheel at the key points (radius and width).</p>
+</div>
+<div class="paragraph">
+<p>While the <code>tire</code> tool <em>can</em> supply tread, it does not do so by
+default.  Complex tread patterns can SIGNIFICANTLY increase the time
+for analysis and visualization, so the modeler needs to bear this cost
+in mind.</p>
+</div>
+<div class="paragraph">
+<p>The tire generated is always centered at the global origin.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_specifying_a_tire"><a class="anchor" href="#_specifying_a_tire"></a>2. Specifying a Tire with Standard Dimensional Conventions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The default behavior for the tire procedure with no arguments given is
+to produce a tire of dimensions 215/55R17 without tread in a file
+named tire.g.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/tire_fig01.png" alt="tire fig01">
+</div>
+<div class="title">Figure 1. Default tire model created by <em class="cmd">tire</em> tool.</div>
+</div>
+<div class="paragraph">
+<p>Since this default is unlikely to meet the needs of most specific
+modeling tasks, almost all uses of <code>tire</code> will need the <code>-d</code> flag to
+customize the dimensions:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">tire -d 255/40R18</code></p>
+</div>
+<div class="paragraph">
+<p>There are actually a wide variety of standards used in practice to
+specify tire dimensions.  Generally the majority of them have the same
+"core" information plus additional performance and rim compatibility
+notations.  At this time, BRL-CAD supports the following input format:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Width(mm)</th>
+<th class="tableblock halign-left valign-top">separator</th>
+<th class="tableblock halign-left valign-top">Ratio (#/100)</th>
+<th class="tableblock halign-left valign-top">separator</th>
+<th class="tableblock halign-left valign-top">Inner Diameter(in)</th>
+</tr>
+</thead>
+</table>
+<div class="paragraph">
+<p>Separators can be any non-numeric character, but normally are either
+"/", "-", or in the case of the latter separator a letter denoting
+tire structure.  Only single character separators are allowed. <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>
+The ratio specifies the sidewall height in terms of the overall tire
+width - for example, if a tire is 100mm wide and the Ratio is 40, the
+sidewall height is 40mm.  Examples of valid input strings for tire
+dimensions include:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 1%;">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">255/40R18</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Width=255mm, Ratio=40, Wheel Diameter=18in</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">250-50R17</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Width=250mm, Ratio=50, Wheel Diameter=17in</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">180/100/15</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Width=180mm, Ratio=100, Wheel Diameter=15in</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>All three values must be present to have a valid input string.  Also
+note that at the moment this procedure takes ONLY integer arguments
+and single non-numeric character separators, so the above formatting
+restrictions need to be observed.  Examples of INVALID inputs include:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 1%;">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">255.0/40R18</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">First number is floating point rather than integer.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">250-50RD17</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Multiple characters in second separator.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">185.65/15</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"." has significance numerically and will not read correctly.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>If more precision is needed on any of these inputs, the <code>tire</code> tool
+offers other command-line options to use instead of (or even in
+combination with) the <em>d</em> flag which accept floating point input.
+When used <em>with</em> the <em>d</em> flag, they override the value for their
+particular parameter supplied to the <em>d</em> flag.  They are the <em>W</em> flag
+for maximum width, <em>R</em> for the ratio, and <em>D</em> for the diameter of the
+wheel.  For example, if a width of 255.5mm was needed, the command
+could be:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">tire -d 255/40R18 -W 255.5</code></p>
+</div>
+<div class="paragraph">
+<p>There are limits to the dimensional configurations that can be modeled
+by <code>tire</code> (for example, hub width can not be wider than the maximum
+tire width), but it should cover most real-world dimensions.  Some
+examples:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/tire_fig02.png" alt="tire fig02">
+</div>
+<div class="title">Figure 2. Example models generated by use of <em class="cmd">tire</em>'s dimensional flag.</div>
+</div>
+<div class="paragraph">
+<p>The model that is created by this routine results in a hollow tire
+with a thickness (by default) related to its radius - the greater the
+tire radius, the thicker the tire "walls".  The structure created is a
+fairly good geometric tire shape, but does not contain any internal
+structure <em>within</em> the tire material itself.  Modern radial tires in
+reality are composed of several different layers of varying materials
+designed to enhance structural strength and performance, but (as of
+April 2008) the <code>tire</code> tool approximates tire surfaces and walls as
+being a single region.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/tire_fig03.png" alt="tire fig03">
+</div>
+<div class="title">Figure 3. Cutaway views of the default tire model - left image uses default illumination and right image uses the surface-normals illumination model.</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_options_for_tire"><a class="anchor" href="#_options_for_tire"></a>3. Options for Tire Tread Modeling</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Tread is the most difficult part of a tire to define in terms of the
+amount of input data required.  At present it is not possible for a
+user to define tread on the command line - only built-in tread options
+are available. <sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup>} Tread profile and tread pattern are the two
+factors to consider when specifying tread.  Tread profile is the
+"shape" of the tread on the edges of the tread pattern.  Many truck
+tires have a "squared off" tread, while automobile tires tend to have
+more rounded tread.  Different patterns can be combined with different
+profiles.</p>
+</div>
+<div class="paragraph">
+<p>The <em>t</em> flag controls the tread profile, and the <em>p</em> flag controls the tread pattern.
+Currently, the following profiles and patterns are available:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Profile #</th>
+<th class="tableblock halign-left valign-top">Profile (t)</th>
+<th class="tableblock halign-left valign-top">Pattern #</th>
+<th class="tableblock halign-left valign-top">Pattern (p)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Curved</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">All-Weather</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Squared Off</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Off-Road</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Using either the <em>t</em> or <em>p</em> flags to the tire command will trigger
+tread generation.  For each flag, a default on the other flag is
+assumed - if ONLY the <em>p</em> flag is specified, the t value is assumed to
+be the same and vice versa.  To override the assumption, both flags
+may be specified.  Here is the default output for style one:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/tire_fig04.png" alt="tire fig04">
+</div>
+<div class="title">Figure 4. Combination of curved profile and all-weather tread pattern - generated with the command <em class="cmd">tire -p 1</em></div>
+</div>
+<div class="paragraph">
+<p>Style two is intended more for trucks and other rugged vehicles:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/tire_fig05.png" alt="tire fig05">
+</div>
+<div class="title">Figure 5. Combination of squared-off profile and off-road tread - generated with the command <em class="cmd">tire -p 2</em></div>
+</div>
+<div class="paragraph">
+<p>Using <em>t</em> in place of <em>p</em> would also have produced the same model.
+Internally the <code>tire</code> command must use some pattern and profile for
+every tread it creates, and for ease of use it will select a default
+if a pattern or profile is specified by itself.  Using the flags
+together can produce different results - for example, profile 2 with
+pattern 1:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/tire_fig06.png" alt="tire fig06">
+</div>
+<div class="title">Figure 6. ination of squared-off profile and all-weather tread pattern - generated by <em class="cmd">tire -t 2 -p 1</em></div>
+</div>
+<div class="paragraph">
+<p>There exist two additional user level flags that can change the
+behavior of the tread routine.  The first is the <em>g</em> flag, which can
+be used to specify different tread depths in integer numbers of 32nds
+of an inch.  For example, the default number two style previously can
+be rendered with a deeper tread:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">tire -p 2 -g 25 to produce a different look:</code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/tire_fig07.png" alt="tire fig07">
+</div>
+<div class="title">Figure 7. Combination of squared-off profile and off-road tread with increased tread depth - generated by <em class="cmd">tire -p2 -g 25</em></div>
+</div>
+<div class="paragraph">
+<p>The other flag is the <em>c</em> flag, which allows user control over how
+many copies of the master tread pattern are used to encircle the tread
+surface of the tire.  This can be used to create courser or finer
+tread with the same geometric pattern.  For example, if the first
+profile, second pattern and count of 100 are used:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/tire_fig08.png" alt="tire fig08">
+</div>
+<div class="title">Figure 8. Combination of curved profile, off-road tread and increased tread pattern count - generated by <code class="cmd">tire -p 2 -t 1 -c 100</code></div>
+</div>
+<div class="paragraph">
+<p>Adjusting the count of patterns can be a way to get a different visual
+tread style without defining a new tread pattern, although it is
+unlikely to result in a "real" pattern in the sense of representing an
+in-use tire tread.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>It is important when using the count flag to remember that tread
+patterns are actual geometry and a high count of patterns can slow
+down a raytrace considerably.  A strategy for models that will see a
+variety of uses is to include both treaded and slick (non-treaded)
+tire models in the database under different names, make a tire-model.c
+combination that is referenced by the vehicle model, and include
+either the treaded or non-treaded model in the tire-model.c
+combination based on the analysis.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_setting_tire_thickness"><a class="anchor" href="#_setting_tire_thickness"></a>4. Setting Tire Thickness</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Tire thickness is manipulated via the <em>u</em> flag.  By default, the tire
+procedure will adjust the thickness of the tire according to the size
+of the tire, but there may be cases where it is desirable to change
+this thickness.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s say, for the sake of argument, a model of a large vehicle tire
+is needed and it is known that a very thick wall is being used.  To
+start, input the dimensional information:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">tire -d 395/85R20 -p 2 -g 30</code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/tire_fig09.png" alt="tire fig09">
+</div>
+<div class="title">Figure 9. External view of a 395/85R20 tire with off-road tread and deepened tread grip.</div>
+</div>
+<div class="paragraph">
+<p>Now, examine the cross section in normal and surface normal views (the
+tread pattern and depth are added so the cross section WITH tread is
+shown - it will change with and without tread):</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/tire_fig10.png" alt="tire fig10">
+</div>
+<div class="title">Figure 10. Cross section views - default and surface normal - of the default thickness on the previous 395/85R20 tire.</div>
+</div>
+<div class="paragraph">
+<p>This is a visual check - other tools are available for actual
+dimensional testing.  Let&#8217;s say the desired thickness is 70mm.  The
+tire is re-generated thus:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">tire -d 395/85R20 -p 2 -g 30 -u 70</code></p>
+</div>
+<div class="paragraph">
+<p>Examining the cross sections again, the thickness increase is clearly
+seen:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/tire_fig11.png" alt="tire fig11">
+</div>
+<div class="title">Figure 11. Cross section views - default and surface normal - of the new 395/85R20 tire with increased thickness.</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_changing_the_rim_width"><a class="anchor" href="#_changing_the_rim_width"></a>5. Changing the Rim Width</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The default behavior of <code>tire</code> is to make the rim width (the width of
+the tire at the point where the outer wall connects with the steel
+wheel) equal to the width of the tread, which is in turn defined
+internally as a fraction of the total width.  This normally produces
+reasonable tires, but <code>tire</code> does provide the <em>j</em> flag to allow custom
+values for rim width.  The input units are inches.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/tire_fig12.png" alt="tire fig12">
+</div>
+<div class="title">Figure 12. Demonstration of tire model changes when different rim widths are used.</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_changing_the_redial"><a class="anchor" href="#_changing_the_redial"></a>6. Changing the Radial Location of the Maximum Tire Width</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When <code>tire</code> accepts a maximum width specification, it internally
+decides on a default distance from the tire center where that maximum
+will occur.  This parameter can be adjusted by the modeler with the
+<em>s</em> flag.  Some examples using the narrow rim width model settings
+from the previous section:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/tire_fig13.png" alt="tire fig13">
+</div>
+<div class="title">Figure 13. From left to right, the <em>s</em> flag settings are 260, 270 and 280.  Notice in the surface normal view the change in color gradient on the side walls, and in the normal view notice the different shapes the tires exhibit.  The visual impact of this parameter can be fairly</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_other_options"><a class="anchor" href="#_other_options"></a>7. Other Options</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The other flags available in <code>tire</code> relate to naming of the top-level
+tire object.  The <em>a</em> flag automatically appends the dimensional
+information to the name, making it simple to import multiple tires of
+different dimensions into a single .g file with the MGED <code>dbconcat</code>
+command.  The <em>n</em> option allows the modeler to specify a string other
+than "tire" for the root name of the top level object.  These options
+can work individually or in concert.  So, for example, to generate a
+top-level name of "car-255-55R17" instead of "tire" for the top level
+object the following will work:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">tire -a -n "car"</code></p>
+</div>
+<div class="paragraph">
+<p>By default, the procedure creates a file called "tire.g" to contain
+the model.  If some other name is desired, a different file name can
+be supplied as the final argument to the tire procedure.  For example,</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">tire mytire.g</code></p>
+</div>
+<div class="paragraph">
+<p>will create the "mytire.g" file and insert the default tire model.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_structure_of_a_tire"><a class="anchor" href="#_structure_of_a_tire"></a>8. Structure of a Tire Model</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Although it is not visible to the eye in normal raytracing, the tire
+models do include knowledge in the model of the presence of air inside
+the tire as well as the tire and wheel structures themselves.  For
+illustration purposes, the following image displays the air region
+inside the tire:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/tire_fig14.png" alt="tire fig14">
+</div>
+<div class="title">Figure 14. Visualization of air region inside a tire.</div>
+</div>
+<div class="paragraph">
+<p>The three material regions are defined immediately below the top-level
+object:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre><span class="prompt">mged&gt;</span> <span class="cmd">l tire</span>
+<span class="output">tire:  --
+   u tire-215-55R17.r
+   u air-215-55R17.r
+   u wheel-215-55R17.r</span></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The names of these regions will change with the dimensions of the tire
+requested, but the basic form will remain consistent.  The
+tire-215-55R17.r region holds the tire and tread (if tread was
+requested), wheel-215-55R17.r holds the rim and internal hub of the
+wheel, and air-215-55R17.r defines a volume inside the tire and wheel
+not occupied by the other regions.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre><span class="prompt">mged></span> <span class="cmd">tree -d 2 tire</span>
+<span class="output">tire/
+	u tire-215-55R17.r/R
+		u tire-solid-215-55R17.c/
+		- tire-cut-215-55R17.c/
+	u air-215-55R17.r/R
+		u wheel-air-215-55R17.c/
+		u tire-cut-215-55R17.c/
+	u wheel-215-55R17.r/R
+		u Inner-Hub-215-55R17.c/
+		u Wheel-Rim-215-55R17.c/</span></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Below this level, the structure describes the details of cuts and
+combination interactions needed to specify the tire shape.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Due to the nature of the primitives used to define these shapes,
+operations such as scaling along one axis may produce unexpected
+results.  Generally speaking, it is almost always easier and less
+error-prone to re-generate a tire model with different parameters than
+it is to edit the tire structure directly.  The wheel region is fairly
+simple to remove and work with but the tire/tread geometries are
+<em>much</em> more involved.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_summary"><a class="anchor" href="#_summary"></a>9. Summary</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><code>tire</code> is a procedural geometry database tool to create
+sophisticated tire models using standard dimensional specifications.</p>
+</li>
+<li>
+<p>The model consists of three regions which define air, tire, and
+wheel structures.</p>
+</li>
+<li>
+<p>The wheel is generated in response to the tire dimensions and there
+is currently only one wheel type available in this procedure (users
+may model and substitute their own wheel designs).</p>
+</li>
+<li>
+<p>Tread is not modeled by default due to performance considerations
+but can be added using options.</p>
+</li>
+<li>
+<p>Fine grained control of parameters such as tire thickness is
+available with optional user flags.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. As yet BRL-CAD does not use the structural information (e.g. R = radial construction) in the tire building procedure when a valid structure character is supplied, but as it may do so in the future the "best practice" is to use the letter if available.
+</div>
+<div class="footnote" id="_footnotedef_2">
+<a href="#_footnoteref_2">2</a>. Note that in most cases, BRL-CAD will not have pre-defined knowledge of specific real world tread patterns.
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="projection_shader.html">Using the Projection Shader</a></span>
+  <span class="next"><a href="TEMPLATE.html">TEMPLATE</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../ui/js/site.js"></script>
+<script src="../../ui/js/vendor/lunr.js"></script>
+<script src="../../ui/js/vendor/search.js" id="search-script" data-base-path="../.." data-page-path="/docs/articles/tire.html"></script>
+<script async src="../../ui/../search-index.js"></script>
+<script async src="../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

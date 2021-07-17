@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>5. Evaluating Geometry :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/docs/tutorials/modeling/chapter6.html">
+    <link rel="prev" href="chapter5.html">
+    <link rel="next" href="chapter7.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../ui/css/site.css">
+    <link rel="stylesheet" href="../../../ui/css/search.css">
+    <link rel="stylesheet" href="../../../ui/css/custom.css">
+    <script>var uiRootPath = '../../../ui'</script>
+    <link rel="icon" href="../../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lessons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../lessons/mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/01_creating_primitive_shapes.html">1. Creating Primitive Shapes in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/02_learning_viewing_options.html">2. Learning Viewing Options in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/03_using_insert_command.html">3. Using the Insert Command in MGED to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/04_assign_mat_prop_rt.html">4. Assigning Material Properties and Raytracing in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/05_learning_boolean_expressions.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/06_creating_a_goblet.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/07_goblet_material_properties.html">7. Assigning Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/08_goblet_material_properties2.html">8. Assigning More Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/09_globe_in_display_box.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/10_creating_mug.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/11_refining_mug.html">11. Refining a Mug Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/12_mug_through_gui.html">12. Creating a Mug Model using the MGED Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/13_placing_shapes_in_3d.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/14_placing_shapes_in_3d_2.html">14. Additional Exercises Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/15_creating_a_toy_truck.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/16_mod_tech_struct.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Books</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../hacking/index.html">Hacking BRL-CAD</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting Started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter1.html">A Call to Arms (and Contributors)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter2.html">Feature Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developers</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter3.html">Working with Our Code</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter4.html">What Code to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter5.html">Contributing Code</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Documenters</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter6.html">Working with Our Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter7.html">Types of Documentation We Maintain</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter8.html">What Documentation to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter9.html">Contributing Documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Other Contributors</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part4/chapter10.html">You Can Help Too</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendix: Resources and Examples</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix1.html">Further References and Resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix2.html">Doc Template: New MGED Command</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix3.html">Code Example: Shooting Rays</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix4.html">Code Example: Walking Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix5.html">Code Example: Command Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix6.html">Example Code: Root Solving</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../index.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview.html">I. An Overview of BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../mged-intro.html">II. Introduction to MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/preface1.html">Preface</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/preface2.html">Acknowledgments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter1.html">1. Creating Primitive Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter2.html">2. Learning the Viewing Options</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter3.html">3. Using the Insert Command to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter4.html">4. Assigning Material Properties and Raytracing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter5.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter6.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter7.html">7. Assigning Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter8.html">8. Assigning More Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter9.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter10.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter11.html">11. Refining the Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter12.html">12. Creating the Mug Through the GUI</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter13.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter14.html">14. Gaining More Practice Placing Shapes in Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter15.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter16.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/appendix1.html"><code class="app">MGED</code> Commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../modeling.html">III. Modeling</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter2.html">2. The Model Process</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter3.html">3. Measuring data</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter4.html">4. Organizing the Structure</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter5.html">5. Developing Geometry</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="chapter6.html">5. Evaluating Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter7.html">7. Logging Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendices</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="appendix1.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="appendix2.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="appendix3.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="appendix4.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="appendix5.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="appendix6.html">Using the build_region Command</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../converting.html">IV. Converting</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter2.html">2. Pertinent Characteristics of the BRL-CAD Format</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter3.html">3. Converting From/to ASCII</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter4.html">4. Converting to BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter5.html">5. Converting From BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter6.html">6. Building a New Converter</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter7.html">7. Postconversion Issues</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/index.html">Articles</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_pattern.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_region.html">Using the build_region Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/camo_shader.html">Camouflage shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ebm_primitive.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/gcv.html">The Geometry Conversion Library</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ged.html">GED: An Interactive Solid Modeling System</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/mged/index.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tutorial.html">Tutorial</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/gui.html">Graphical User Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/command-line-editing.html">Command Line Editing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/user-commands.html">User Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/developer-commands.html">Developer Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tcl-variables.html">Tcl Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/env.html">Environment Variable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/callback.html">Callback</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/brlcad-solid.html">BRL-CAD Solid</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/mgedrc.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/nirt.html">Interactive Raytracing: The nirt Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/overlap_tool.html">The Overlap Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/oed.html">Object Editing - the oed Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/pipes.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/projection_shader.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/tire.html">Vehicle Tire and Wheel Creation in BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/TEMPLATE.html">TEMPLATE</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Misc</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Dev Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../devguides/bool_eval_development.html">NURBS Boolean Evaluation Development Guide</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Presentations</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/brlcad-app-devel.html">Application Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="presentations:_attachments/brlcad-app-devel.html">brlcad-app-devel</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/intro-to-tcltk.html">Introduction to Tcl/Tk</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../specifications/BRL_CAD_g_format_V5.html">BRL-CAD Database Format</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Manual Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/1.html">man1</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/3.html">man3</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/5.html">man5</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/n.html">mann</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Wiki Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">page-1</span>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">BRL-CAD</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../../index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../es/index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../es/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">BRL-CAD</a></li>
+    <li>Books</li>
+    <li><a href="../index.html">Tutorials</a></li>
+    <li><a href="../modeling.html">III. Modeling</a></li>
+    <li><a href="chapter6.html">5. Evaluating Geometry</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/docs/modules/tutorials/pages/modeling/chapter6.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">5. Evaluating Geometry</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Evaluating geometry for correctness is an important companion to
+building real-world models.  In fact, without testing the validity of
+the geometry&#8217;s positioning and composition, the modeling process has
+not actually been completed.  Evaluation is performed at the following
+two times in the modeling process: (1) after individual objects are
+built and organized into regions and combinations, and (2) after the
+model is completely built.  In both cases, the primary evaluation goal
+is to identify any errors in measurement, logic, or input that would
+make the model invalid or unrealistic.</p>
+</div>
+<div class="paragraph">
+<p>One common error that the evaluation process reveals is overlapping
+geometry.  Overlaps are the physical violation that occurs when two or
+more objects (regions) occupy the same volume in space.  While this
+condition is occasionally acceptable (e.g., when modeling air
+volumes), it creates inaccuracies when the geometry is later analyzed.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Because all of the volume within a region is considered to be one
+material, it is acceptable for primitives within a region to "overlap"
+without error (e.g., spheres rounding cylinder ends). However, it is
+good modeling practice to minimize this wherever practical to simplify
+Boolean logic and keep primitives as compact as possible.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Shotlining is the principal method of interrogation in BRL-CAD.  Rays
+are fired through geometry to report information about material
+properties, thickness, orientation, etc., of objects encountered along
+each ray&#8217;s path (see Figure 18).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/tutorial_series_volIII_fig18.png" alt="tutorial series volIII fig18">
+</div>
+<div class="title">Figure 1. Shotline through a tank.</div>
+</div>
+<div class="paragraph">
+<p>There are several ways to evaluate BRL-CAD geometry.  These include
+(1) rendering the image using rt, (2) checking for overlaps using
+rtcheck (or the lesser-known/used glint or MGED&#8217;s overlap tool), and
+(3) checking for faulty material composition (e.g., densities) using
+rtweight.</p>
+</div>
+<div class="paragraph">
+<p>Generally, as soon as a region is completed, it is good practice to
+raytrace it using rt.  This allows the user to visually verify that
+all Boolean logic is correct and that the geometry has no obvious
+problems.  If there is anything questionable, it can then be examined
+more closely with a raytrace that highlights that particular area.
+Note that rendering is also a good way to compare geometry with
+drawings, sketches, photographs, or images from other CAD systems.</p>
+</div>
+<div class="paragraph">
+<p>As subcomponents are organized into assemblies and the complexity of
+the geometry increases, it is then a good practice to use rtcheck (or
+glint or the overlap tool) to help find any errors in the geometry and
+isolate any problems.</p>
+</div>
+<div class="paragraph">
+<p>The rtcheck feature is a program run from the MGED command line or
+shell command line that fires a grid of rays through a list of objects
+in order to check for overlapping geometry.  It reports a total count
+of the overlaps and a list of overlap pairs, a listing of the paths to
+the regions, the number of overlaps between each pair, and the maximum
+depth in millimeters.  This is followed by a summary of the total
+number of overlaps, the number of unique overlapping region pairs, and
+a listing of all overlapping regions.</p>
+</div>
+<div class="paragraph">
+<p>When run from within MGED, overlaps are displayed in the graphics
+display as yellow lines (see Figure 19). These yellow lines are
+created as temporary database objects and are stored in a combination
+called OVERLAPSffff00 ("ffff00" is hexadecimal notation for yellow
+[255 255 0]). Note that these temporary objects cannot be edited or
+saved and last only as long as they are not erased from the MGED
+display or are not overwritten by another set of overlaps.</p>
+</div>
+<div class="paragraph">
+<p>After these lines have been created in the display, the user may use
+them as a visual reference to analyze the overlaps.  A good practice
+is to erase geometry (e.g., the top-level item) and draw smaller
+subcomponents (perhaps just a few of the overlapping regions) to see
+more clearly where and what the problems are.  When doing this, note
+that the zap (Z) and blast (B) commands should not be used until the
+evaluator is finished with the yellow lines as a visual reference.
+The user should also keep in mind that the rays are difficult to see
+from the azimuth/elevation orientation from which they were shot.  To
+see them clearly, one should change the azimuth/elevation to another
+orientation.</p>
+</div>
+<div class="paragraph">
+<p>To get the output shown in Figure 20, the "all" assembly was displayed
+in the graphics window and "rtcheck" was typed in the command window.</p>
+</div>
+<div class="paragraph">
+<p>This command could also be run from outside of MGED.  The command
+"rtcheck" is typed at a shell prompt, followed by the file name and
+the list of objects to be evaluated (in this case, "all"). Note that
+when running rtcheck from outside MGED, the default parameters include
+a top view and a grid size of 512 × 512 cells (which is the default
+size for all rt operations). For more details, see the on-line man
+page on rt.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/tutorial_series_volIII_fig19.png" alt="tutorial series volIII fig19">
+</div>
+<div class="title">Figure 2. Example of overlaps in the graphics window.</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>When first checking larger assemblies, it is wise to use a relatively
+low-resolution rtcheck grid size&#8212;&#8203;say, 128 × 128 pixels.  Often, there
+are simple errors that produce large numbers of overlaps, and
+reporting them all takes a long time.  Starting with low resolution,
+however, allows the user to quickly find and eliminate gross errors
+and proceed to the insidious small overlaps using a tighter grid and
+more specific view parameters.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/tutorial_series_volIII_fig20.png" alt="tutorial series volIII fig20">
+</div>
+<div class="title">Figure 3. Example of an overlap report in the command window.</div>
+</div>
+<div class="paragraph">
+<p>Another tool that can be useful for evaluating geometry, especially
+target descriptions, is rtweight.  During or after model development,
+material codes and effective percentages can be assigned to the
+appropriate regions/ combinations based on the known materials and
+weights of actual components, subsystems, and systems.  The rtweight
+feature can then be used to calculate volume and material densities
+and provide the overall weight of the model.  This information can, in
+turn, be compared with the weight of the actual object to see if the
+two match.  If they do not, chances are that there is a problem in the
+model&#8217;s material property assignments or construction (e.g., a hollow
+component was modeled as solid). For a list of standard material codes
+and air codes and their associated densities, see Robertson et al.
+(1996) and Winner et al.  (2002).</p>
+</div>
+<div class="paragraph">
+<p>In addition, the following are some general tips regarding the
+evaluation of geometry in BRL-CAD:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Evaluate early and often:</em> As mentioned previously, evaluations
+should be performed both on individual objects as they are built and
+on sections of the model as they are assembled. In general, problems
+identified early are more easily isolated and fixed than if "buried"
+in a host of other problems. Early and continuous evaluation also
+reduces the amount of evaluation that needs to be done at
+the end. Final evaluation at the end helps ensure that the
+individual pieces are all working together in the model.</p>
+</li>
+<li>
+<p><em>Evaluate at low resolution before high resolution:</em> Especially in
+large and complex models, running rtcheck at high resolution can be
+computation- and time-intensive. Therefore, it is recommended that
+the modeler initially set a lower number of rays to be fired, fix
+any significant overlaps, and then increase the number of rays
+and/or zoom in on particular areas as fewer overlaps are found.</p>
+</li>
+<li>
+<p><em>Use multiple views:</em> Because rtcheck finds overlaps by firing
+individual rays at geometry, it can miss overlaps that occur between
+rays (e.g., when viewing a face edge-on or with low
+obliquity). Therefore, to ensure the highest evaluation accuracy
+possible, it is a good idea to use several of BRL-CAD&#8217;s standard
+views (e.g., top; az 35, el 25; etc.) as well as at least one
+arbitrary or randomly selected view (e.g., az 72, el 23).</p>
+</li>
+<li>
+<p><em>Set the proper eye point:</em> It is also possible for a user to miss
+detecting overlaps when the eye point is set in the middle or front
+of an object (e.g., when Z clipping is turned on). This does not
+mean that rtcheck is not catching them; it just means that they are
+not being displayed. So, before an evaluation is run, it is
+recommended that Z clipping be turned off and the eye point be
+sufficiently offset from the geometry so that the rays intersect the
+entire breadth of geometry or portion of geometry the modeler wants
+to evaluate and display.</p>
+</li>
+<li>
+<p><em>Chunk big problems into smaller problems:</em> Experienced modelers in
+BRL-CAD know that "killing" overlaps is simply a part of the
+modeling process. However, dealing with large amounts of overlaps
+can be overwhelming, especially to a new modeler or a modeler who
+has carefully built each piece and expects rtcheck to find few, if
+any, problems. Fortunately, in many cases, what appears to be
+extensive overlapping might just be one section of geometry (e.g., a
+wall of buttons and switches) that is slightly out of position, and
+a simple translation or rotation can simultaneously fix many
+problems. In other cases, overlaps are the result of simple
+miscalculations (e.g., a 2-in vs. a 1.5-in radius) that are not
+likely to be noticed until positioned with surrounding
+geometry. Whatever the case, the best approach to extensive overlaps
+is not to try to fix them all at once but to divide the problem into
+smaller problems, concentrate on individual pieces, and use the
+display to help identify and fix errors. For example, rather than
+starting with "all," start with, say, "engine," and then add
+"chassis." One can then continue this process and work up to
+evaluating the entire model.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="chapter5.html">5. Developing Geometry</a></span>
+  <span class="next"><a href="chapter7.html">7. Logging Documentation</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../ui/js/site.js"></script>
+<script src="../../../ui/js/vendor/lunr.js"></script>
+<script src="../../../ui/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/docs/tutorials/modeling/chapter6.html"></script>
+<script async src="../../../ui/../search-index.js"></script>
+<script async src="../../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

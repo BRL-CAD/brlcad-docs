@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>The Geometry Conversion Library :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/docs/articles/gcv.html">
+    <link rel="prev" href="ebm_primitive.html">
+    <link rel="next" href="ged.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../ui/css/site.css">
+    <link rel="stylesheet" href="../../ui/css/search.css">
+    <link rel="stylesheet" href="../../ui/css/custom.css">
+    <script>var uiRootPath = '../../ui'</script>
+    <link rel="icon" href="../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../about.html">About</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lessons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../lessons/mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/01_creating_primitive_shapes.html">1. Creating Primitive Shapes in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/02_learning_viewing_options.html">2. Learning Viewing Options in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/03_using_insert_command.html">3. Using the Insert Command in MGED to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/04_assign_mat_prop_rt.html">4. Assigning Material Properties and Raytracing in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/05_learning_boolean_expressions.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/06_creating_a_goblet.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/07_goblet_material_properties.html">7. Assigning Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/08_goblet_material_properties2.html">8. Assigning More Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/09_globe_in_display_box.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/10_creating_mug.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/11_refining_mug.html">11. Refining a Mug Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/12_mug_through_gui.html">12. Creating a Mug Model using the MGED Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/13_placing_shapes_in_3d.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/14_placing_shapes_in_3d_2.html">14. Additional Exercises Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/15_creating_a_toy_truck.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/16_mod_tech_struct.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Books</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../hacking/index.html">Hacking BRL-CAD</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting Started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part1/chapter1.html">A Call to Arms (and Contributors)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part1/chapter2.html">Feature Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developers</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part2/chapter3.html">Working with Our Code</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part2/chapter4.html">What Code to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part2/chapter5.html">Contributing Code</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Documenters</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part3/chapter6.html">Working with Our Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part3/chapter7.html">Types of Documentation We Maintain</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part3/chapter8.html">What Documentation to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part3/chapter9.html">Contributing Documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Other Contributors</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part4/chapter10.html">You Can Help Too</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendix: Resources and Examples</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix1.html">Further References and Resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix2.html">Doc Template: New MGED Command</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix3.html">Code Example: Shooting Rays</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix4.html">Code Example: Walking Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix5.html">Code Example: Command Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix6.html">Example Code: Root Solving</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials/index.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tutorials/overview.html">I. An Overview of BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials/mged-intro.html">II. Introduction to MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/preface1.html">Preface</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/preface2.html">Acknowledgments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter1.html">1. Creating Primitive Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter2.html">2. Learning the Viewing Options</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter3.html">3. Using the Insert Command to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter4.html">4. Assigning Material Properties and Raytracing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter5.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter6.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter7.html">7. Assigning Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter8.html">8. Assigning More Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter9.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter10.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter11.html">11. Refining the Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter12.html">12. Creating the Mug Through the GUI</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter13.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter14.html">14. Gaining More Practice Placing Shapes in Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter15.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter16.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/appendix1.html"><code class="app">MGED</code> Commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials/modeling.html">III. Modeling</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter2.html">2. The Model Process</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter3.html">3. Measuring data</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter4.html">4. Organizing the Structure</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter5.html">5. Developing Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter6.html">5. Evaluating Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter7.html">7. Logging Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendices</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix1.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix2.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix3.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix4.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix5.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix6.html">Using the build_region Command</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials/converting.html">IV. Converting</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter2.html">2. Pertinent Characteristics of the BRL-CAD Format</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter3.html">3. Converting From/to ASCII</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter4.html">4. Converting to BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter5.html">5. Converting From BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter6.html">6. Building a New Converter</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter7.html">7. Postconversion Issues</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">Articles</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="build_pattern.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="build_region.html">Using the build_region Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="camo_shader.html">Camouflage shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="ebm_primitive.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="gcv.html">The Geometry Conversion Library</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="ged.html">GED: An Interactive Solid Modeling System</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="mged/index.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/tutorial.html">Tutorial</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/gui.html">Graphical User Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/command-line-editing.html">Command Line Editing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/user-commands.html">User Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/developer-commands.html">Developer Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/tcl-variables.html">Tcl Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/env.html">Environment Variable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/callback.html">Callback</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/brlcad-solid.html">BRL-CAD Solid</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="mgedrc.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="nirt.html">Interactive Raytracing: The nirt Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="overlap_tool.html">The Overlap Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="oed.html">Object Editing - the oed Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="pipes.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="projection_shader.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="tire.html">Vehicle Tire and Wheel Creation in BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="TEMPLATE.html">TEMPLATE</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Misc</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Dev Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../devguides/bool_eval_development.html">NURBS Boolean Evaluation Development Guide</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Presentations</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../presentations/brlcad-app-devel.html">Application Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="presentations:_attachments/brlcad-app-devel.html">brlcad-app-devel</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../presentations/intro-to-tcltk.html">Introduction to Tcl/Tk</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../specifications/BRL_CAD_g_format_V5.html">BRL-CAD Database Format</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Manual Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../man/1.html">man1</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../man/3.html">man3</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../man/5.html">man5</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../man/n.html">mann</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Wiki Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">page-1</span>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">BRL-CAD</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../es/index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../es/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">BRL-CAD</a></li>
+    <li><a href="index.html">Articles</a></li>
+    <li><a href="gcv.html">The Geometry Conversion Library</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/docs/modules/articles/pages/gcv.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">The Geometry Conversion Library</h1>
+<div class="sect1">
+<h2 id="_introduction"><a class="anchor" href="#_introduction"></a>Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Geometry Conversion Library (GCV or libgcv) provides a unified API
+for geometry conversion capabilities under a plugin-based
+architecture.</p>
+</div>
+<div class="paragraph">
+<p>The GCV public API is declared in C headers located within
+<code>include/gcv/</code>.  The single <code>include/gcv.h</code> header includes the entire
+GCV public API.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_architecture"><a class="anchor" href="#_architecture"></a>Architecture</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Geometry Conversion Library consists of a stream-based API for
+geometry conversion and associated operations.  Input and output are
+provided by "reader" and "writer" converters (provided by
+plugins). Intermediate operations are provided by "filters". Readers
+and writers are types of filters that provide input and output support
+for model formats, while basic filters apply transformations to models
+and geometry.</p>
+</div>
+<div class="paragraph">
+<p>Geometry is stored in an in-memory BRL-CAD database (<code>struct db_i</code> in
+<code>include/rt/db_instance.h</code>) during the intermediate steps of
+conversion.  For writer filters, this database is marked read-only and
+its geometry should not be modified.  All names within a BRL-CAD
+database must be unique.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/gcv_architecture.png" alt="gcv architecture">
+</div>
+<div class="title">Figure 1. GCV architecture</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_building_gcv"><a class="anchor" href="#_building_gcv"></a>Building GCV</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>GCV can be built in a similar manner as other BRL-CAD libraries.
+After configuring with CMake, building the <code>libgcv</code> target will
+produce a dynamic library.  For Unix-based systems, the procedure
+should be similar to the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><span class="prompt">$</span> <span class="cmd">cd brlcad</span>
+<span class="prompt">$</span> <span class="cmd">mkdir build</span>
+<span class="prompt">$</span> <span class="cmd">cd build</span>
+<span class="prompt">$</span> <span class="cmd">cmake ..</span>
+<span class="prompt">$</span> <span class="cmd">make libgcv</span></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Plugins can be built under <code>gcv_plugin_name</code> targets, or collectively
+under the <code>gcv_plugins</code> target.</p>
+</div>
+<div class="paragraph">
+<p>The command-line utility can be built under the <code>gcv</code> target.  At this
+time, the <code>gcv</code> program is not installed automatically; the binary
+will be placed into <code>build/src/conv/gcv/</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_example_using_gcv_in_an_application"><a class="anchor" href="#_example_using_gcv_in_an_application"></a>Example: Using GCV in an application</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following code illustrates a basic use of GCV from within an
+application.  Note that there may be multiple filters providing
+import/export capabilities for a given format; the below code simply
+selects the first matching filter encountered.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 1. gcv_app.c</div>
+<div class="content">
+TODO: embedded code
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_gcv_public_api"><a class="anchor" href="#_gcv_public_api"></a>GCV Public API</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The public API for interacting with GCV filter plugins is summarized
+below.</p>
+</div>
+<table class="tableblock frame-none grid-all stretch">
+<caption class="title">Table 1. GCV public filter API</caption>
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>struct gcv_context</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Stores the conversion state. Plugins may store messages in the
+ <code>bu_avs_t</code> member <code>messages</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gcv_context_init()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Initialize a <code>struct gcv_context</code>. Creates an in-memory <code>struct
+ db_i</code> for conversion data.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gcv_context_destroy()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Frees memory associated with a <code>struct gcv_context</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>struct gcv_filter</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Stores characteristics of a filter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>struct gcv_opts</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Store generic options applying to all filters.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gcv_opts_default()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Initialize a <code>struct gcv_opts</code> with default values.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gcv_list_filters()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns a pointer to a <code>const struct bu_ptbl</code> containing all
+ registered filters as <code>const struct gcv_filter</code> pointers.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gcv_execute()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Perform a filter operation on a <code>struct gcv_context</code>. Returns <code>1</code>
+ on success and <code>0</code> on failure. If <code>gcv_options</code> is <code>NULL</code>, the
+ defaults will be used as set by <code>gcv_opts_default()</code>. The
+ parameters <code>argc</code> and <code>argv</code> are used for option parsing as specified
+ by the struct gcv_filter.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_internal_plugin_api"><a class="anchor" href="#_the_internal_plugin_api"></a>The Internal Plugin API</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The GCV plugin API is declared in <code>include/gcv/api.h</code>.  Plugins
+provide an externally-visible <code>const struct gcv_plugin</code> defining their
+filters, which are described by <code>struct gcv_filter</code>.</p>
+</div>
+<table class="tableblock frame-none grid-all stretch">
+<caption class="title">Table 2. The gcv_filter struct</caption>
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies a unique name for the filter, allowing it to be identified
+ by application code.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>filter_type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies the type of filter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>create_opts_fn</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional pointer to a function that allocates and initializes <code>struct
+ bu_opt_desc</code> data and an opaque pointer for storing the option
+ data. If non-<code>NULL</code>, <code>free_opts_fn</code> must also be specified. This
+ member is private for use by libgcv and the associated plugin.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>free_opts_fn</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional pointer to a function that frees any opaque pointer
+ allocated by <code>create_opts_fn</code>. This member is private for use by
+ libgcv and the associated plugin.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>filter_fn</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pointer to a function which performs the filter operation. The <code>db_i</code>
+ passed to a writer function within a <code>gcv_context</code> is marked
+ read-only (the pointer is to a non-<code>const</code> struct due to in-memory
+ data that may be modified). Filters of type <code>GCV_FILTER_FILTER</code>
+ receive a <code>NULL</code> value for <code>target</code>. Must return <code>1</code> on success and
+ <code>0</code> on failure. This member is private for use by libgcv and the
+ associated plugin.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>As shown in the above table, filters may initialize data structures
+for processing command-line style option strings via <code>bu_opt</code>.
+Please refer to <code>include/bu/opt.h</code> for full documentation on the
+<code>bu_opt</code> API.</p>
+</div>
+<div class="sect2">
+<h3 id="_utility_functions"><a class="anchor" href="#_utility_functions"></a>Utility Functions</h3>
+<div class="paragraph">
+<p>In addition to availability of the rest of the BRL-CAD API, the
+Geometry Conversion Library provides a number of utility functions
+that may be useful during plugin development.</p>
+</div>
+<table class="tableblock frame-none grid-all stretch">
+<caption class="title">Table 3. GCV utility functions</caption>
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gcv_bot_is_solid()</code>, <code>gcv_bot_is_closed()</code>, <code>gcv_bot_is_orientable()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Performs topological tests for determining whether a given triangular
+ mesh is a manifold, orientable, closed fan satisfying requisite
+ conditions for object solidity. <code>gcv_bot_is_solid()</code> is equivalent to
+ <code>gcv_bot_is_closed &amp;&amp; gcv_bot_is_orientable()</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gcv_facetize()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Produces a triangular mesh tessellation of the object at the given
+ database path using the specified tolerances. Note that if the object
+ at the given path is a combination, a single mesh will be produced
+ from all objects within its tree, and so calling gcv_facetize() on a
+ tree unnecessarily high in the hierarchy and containing many objects
+ is more likely to fail during Boolean evaluation.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>There are also many relevant functions provided by the BRL-CAD API,
+including a new mesh decimation function.</p>
+</div>
+<table class="tableblock frame-none grid-all stretch">
+<caption class="title">Table 4. BRL-CAD mesh decimation API</caption>
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>rt_bot_decimate_gct()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fast implementation of an iterative mesh decimation algorithm.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_developing_a_minimal_plugin"><a class="anchor" href="#_developing_a_minimal_plugin"></a>Developing a Minimal Plugin</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_basic_code"><a class="anchor" href="#_basic_code"></a>Basic Code</h3>
+<div class="paragraph">
+<p>The following steps will implement a minimal plugin providing a reader
+filter.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Add the following line to <code>misc/mime_cad.types</code>. This file is used
+to generate <code>include/bu/mime.h</code>:</p>
+<div class="listingblock">
+<div class="content">
+<pre>model/foo               bar</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will associate the file extension <code>.bar</code> with a new
+<code>BU_MIME_MODEL_FOO</code> value of <code>bu_mime_model_t</code>.</p>
+</div>
+</li>
+<li>
+<p>Create the following file at <code>src/libgcv/plugins/foo/CMakeLists.txt</code>:</p>
+<div class="exampleblock">
+<div class="title">Example 2. CMakeLists.txt</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre>LIBGCV_ADD_PLUGIN(foo "foo_read.c" "librt;libbu")</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Create the following file at <code>src/libgcv/plugins/foo/foo_read.c</code>:</p>
+<div class="exampleblock">
+<div class="title">Example 3. foo_read.c</div>
+<div class="content">
+TODO: embedded code
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_traversing_the_database"><a class="anchor" href="#_traversing_the_database"></a>Traversing the Database</h3>
+<div class="paragraph">
+<p>BRL-CAD provides the <code>db_walk_tree()</code> function for traversing the
+database in hierarchical order.  You can specify your own visitor
+callbacks as documented in <code>include/rt/tree.h</code>, or use the
+region-end functions provided by GCV <code>`include/gcv/util.h</code>) to
+tessellate geometry at the region level.</p>
+</div>
+<table class="tableblock frame-none grid-all stretch">
+<caption class="title">Table 5. GCV region-end tessellation callbacks</caption>
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gcv_region_end()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Apply Boolean evaluation to region-level tessellated meshes using the
+ default NMG Boolean evaluator, replacing each region-level node and
+ its subtree of tessellated leaf meshes with a single BoT structure
+ that is then passed to the specified callback. The <code>client_data</code>
+ pointer should point to a <code>struct gcv_region_end_data</code>. The
+ individual leaf nodes must already be tessellated into BoTs. This can
+ be done by specifying a <code>leaf_func</code> such as
+ <code>nmg_booltree_leaf_tess()</code>. In the case of failure, an error message
+ is emitted via <code>bu_log()</code> and the callback is not invoked. Any use of
+ <code>bu_bomb()</code> produced by the callback is trapped and an error message
+ is displayed while continuing the tree walk.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gcv_bottess_region_end()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Boolean evaluator roughly based on UnBBoolean&#8217;s j3dbool (and
+ associated papers). Does not take a callback.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gcv_region_end_mc()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Experimental variant of <code>gcv_region_end()</code> based on the
+ marching-cubes algorithm. Tessellates leaves internally and does not
+ require a <code>leaf_func</code>.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The following example implements a filter that tessellates all
+geometry into BoT mesh objects and counts the total number of faces.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 4. tessellation_statistics.c</div>
+<div class="content">
+TODO: embedded code
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_converting_unsupported_entities"><a class="anchor" href="#_converting_unsupported_entities"></a>Converting Unsupported Entities</h3>
+<div class="paragraph">
+<p>Although BRL-CAD supports a wide array of common geometric primitives,
+you may encounter objects that can&#8217;t be directly imported or exported
+into an analogous entity.  In these cases, conversion filters usually
+tessellate the incompatible geometry (typically during export) or
+convert it into an approximation or a composite of several other
+primitives (often during import).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/gcv_unsupported_tessellation.png" alt="gcv unsupported tessellation">
+</div>
+<div class="title">Figure 2. Tessellation of incompatible entities</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_comparing_geometry"><a class="anchor" href="#_comparing_geometry"></a>Comparing Geometry</h3>
+<div class="paragraph">
+<p>When developing a filter, it is often useful to be able to compare
+different models during testing.  This capability is provided by the
+<code>gdiff</code> tool.  There are two versions of <code>gdiff</code>: the standalone
+command-line version and the <code>gdiff</code> provided within the MGED
+interface.</p>
+</div>
+<div class="paragraph">
+<p>The command-line <code>gdiff</code> quickly produces a textual summary for a two-
+or three- way diff of several BRL-CAD databases.  Documentation for
+this utility is available under <code>brlman gdiff</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>gdiff</code> command available within the MGED interface provides a
+different capability.  It uses BRL-CAD&#8217;s ray tracer to produce a
+visual display of the differences between two objects within the same
+database.  To compare geometry from separate databases, you can first
+merge the databases using the <code>dbconcat</code> command from within MGED.
+See <code>brlman dbconcat</code> for full documentation.</p>
+</div>
+<table class="tableblock frame-none grid-all stretch">
+<caption class="title">Table 6. Usage of MGED&#8217;s gdiff utility</caption>
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Usage: <code><span class="cmd">gdiff</span> [<span class="opt">OPTION</span>]&#8230;&#8203; <span class="rep">obj1</span> <span class="rep">obj2</span></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="opt">--tol=<mark></code>, <code class="opt">-t</mark></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tolerance in millimeters.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="opt">--ray-diff</code>, <code class="opt">-R</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Test for differences with raytracing.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="opt">--view-left</code>, <code class="opt">-l</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Visualize volumes added only by left object.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="opt">--view-both</code>, <code class="opt">-b</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Visualize volumes common to both objects.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="opt">--view-right</code>, <code class="opt">-r</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Visualize volumes added only by right object.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="opt">--grazing</code>, <code class="opt">-G</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Report differences in grazing hits (raytracing mode).</p></td>
+</tr>
+</tbody>
+</table>
+<div class="imageblock">
+<div class="content">
+<img src="_images/gcv_using_gdiff.png" alt="gcv using gdiff">
+</div>
+<div class="title">Figure 3. Using MGED&#8217;s gdiff utility</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_creating_unit_tests"><a class="anchor" href="#_creating_unit_tests"></a>Creating Unit Tests</h3>
+<div class="paragraph">
+<p>BRL-CAD provides a library of standard models that may be used for
+unit tests, located under <code>$BRLCAD_ROOT/share/db/</code> (note that these
+files are generated during the build process). Unit tests can be
+integrated into the build system using the <code>add_test</code> CMake command.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_example_extending_an_application"><a class="anchor" href="#_example_extending_an_application"></a>Example: Extending an Application</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following example will leverage the filter in the above plugin
+example, <code>tessellation_statistics.c</code>, to implement a function that
+counts the number of faces in a model after tessellation.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 5. gcv_embedded.c</div>
+<div class="content">
+TODO: embedded code
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_gcv_frontend"><a class="anchor" href="#_the_gcv_frontend"></a>The GCV Frontend</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>GCV includes a command-line front-end utility, <code>gcv</code>, implemented in
+<code>src/conv/gcv/gcv.c</code>.  Full documentation is available under <code>brlman
+gcv</code> and <code>gcv --help</code>.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 6. Basic usage of the gcv utility</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre><span class="prompt">$</span> <span class="cmd">gcv --input=a.stl --output=b.fg4</span>
+<span class="output">Input file format: BU_MIME_MODEL_STL
+Output file format: BU_MIME_MODEL_VND_FASTGEN
+Input file path: a.stl
+Output file path: b.fg4
+    Converting Part: all_cpu_cpw6_cw_cpubox_cpubox.a
+    Using solid name: s.all_cpu_cpw6_cw_cpubox_cpubox.a
+    Making region (all_cpu_cpw6_cw_cpubox_cpubox.a)
+...</span></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 7. Generic options</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre><span class="prompt">$</span> <span class="cmd">gcv --input=a.fg4 --output=b.vrml \
+      --input-and-output-opts --verbosity=1 \
+      --output-only-opts --objects=comp_0001.r</span></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 8. Filter-specific options</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre><span class="prompt">$</span> <span class="cmd">gcv --input=a.fg4 --output=b.obj \
+      --input-only-opts --colors=a.fg4.colors \
+      --output-only-opts --vertex-normals</span></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 9. Specifying conversion formats</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre><span class="prompt">$</span> <span class="cmd">gcv --input=infile.txt --output=outfile.obj --input-format=stl</span></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_conversion_filters"><a class="anchor" href="#_conversion_filters"></a>Conversion Filters</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>GCV currently contains support for import and export into five model
+formats, detailed below.</p>
+</div>
+<table class="tableblock frame-none grid-all stretch">
+<caption class="title">Table 7. Conversion formats supported by GCV</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Format</th>
+<th class="tableblock halign-left valign-top">File Extension</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BRL-CAD</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.g</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FASTGEN4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.fg4</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WaveFront Object</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.obj</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">StereoLithography</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.stl</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Virtual Reality Modeling Language</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.vrml</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="_common_conversion_options"><a class="anchor" href="#_common_conversion_options"></a>Common Conversion Options</h3>
+<div class="paragraph">
+<p>The <code>gcv_opts</code> struct stores generic options applying to many filters,
+detailed below.  Not all options may be applicable to or respected by
+every filter.</p>
+</div>
+<table class="tableblock frame-none grid-all stretch">
+<caption class="title">Table 8. Conversion formats supported by GCV</caption>
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>debug_mode</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Print debugging info if set to <code>1</code>. Default is <code>0</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>verbosity_level</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verbosity level. The default, level <code>0</code>, is "quiet" (only error
+ messages are produced).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>scale_factor</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify the scale factor to be applied during import or export, as
+ units per mm. Default is <code>1.0</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>calculational_tolerance</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Calculational tolerance. Defaults to the RT defaults. If you use a
+ non-default value, you should set the ray tracer tolerance to match
+ it when using the resulting model.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tessellation_tolerance</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tessellation tolerance. The default value is:</p>
+<p class="tableblock">  <code>abs = 0.0</code></p>
+<p class="tableblock">  <code>rel = 1.0e-2</code></p>
+<p class="tableblock">  <code>norm = 0.0</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tessellation_algorithm</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify use of either the default, marching-cubes, or bottess-based
+ tessellation algorithm.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>max_cpus</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Maximum number of processors to utilize where possible. Default is
+ <code>0</code>, specifying the maximum available during execution.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>num_objects</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of objects to convert. If <code>0</code> (the default), all top-level
+ objects will be converted.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>object_names</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Names of objects to convert (must have <code>num_objects</code>
+ elements). Default is <code>NULL</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>default_name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name assigned to objects without names. Defaults to &#8220;unnamed&#8221;.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bu_debug_flag</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Debug flag for libbu (see <code>include/bu/debug.h</code>), applied via
+ bitwise-OR with the original value. The original debug flag will be
+ restored after conversion. Defaults to <code>0</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>rt_debug_flag</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Debug flag for librt (see <code>include/rt/debug.h</code>), applied via
+ bitwise-OR with the original value. The original debug flag will be
+ restored after conversion. Defaults to <code>0</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>nmg_debug_flag</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Debug flag for libnmg (see <code>include/nmg.h</code>), applied via bitwise-OR
+ with the original value. The original debug flag will be restored
+ after conversion. Defaults to <code>0</code>.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="exampleblock">
+<div class="title">Example 10. Using struct gcv_opts</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">static int
+apply_filter_with_options(struct gcv_context *context,
+                          const struct gcv_filter *filter,
+			  const char *target)
+{
+    struct gcv_opts options;
+    const char *argv[] = { "--colors=colors.dat", "--continue" };
+    const size_t argc = sizeof(argv) / sizeof(argv[0]);
+
+    gcv_opts_default(&amp;options);
+    options-&gt;debug_mode = 1;
+
+    return gcv_execute(context, filter, &amp;options, argc, argv, target);
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fastgen4_reader"><a class="anchor" href="#_fastgen4_reader"></a>FASTGEN4 Reader</h3>
+<table class="tableblock frame-none grid-all stretch">
+<caption class="title">Table 9. FASTGEN4 reader options</caption>
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--colors=<span class="rep">path</span></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Path to a file specifying component colors.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--muves=<span class="rep">path</span></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a MUVES input file containing any CHGCOMP and CBACKING
+ components.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--plot=<span class="rep">path</span></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a libplot3 plot file of all CTRI and CQUAD elements processed.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="nowrap">--sections=<span class="rep">list</span></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Process only a list (<code>3001, 4082, 5347</code>) or a range (<code>2315 - 3527</code>)
+ of section IDs.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_fastgen4_writer"><a class="anchor" href="#_fastgen4_writer"></a>FASTGEN4 Writer</h3>
+<div class="paragraph">
+<p>At this time, the FASTGEN4 writer plugin does not make use of any
+filter-specific options.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_obj_reader"><a class="anchor" href="#_obj_reader"></a>OBJ Reader</h3>
+<table class="tableblock frame-none grid-all stretch">
+<caption class="title">Table 10. OBJ reader options</caption>
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--continue</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Continue processing on nmg-bomb. Conversion will fall back to native
+ BoT mode if a fatal error occurs when using the nmg or BoT-via-nmg
+ modes.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--fuse-vertices</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fuse vertices that are near enough to be considered identical. Can
+ make the solidity detection more reliable, but may significantly
+ increase processing time during the conversion.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--grouping=<span class="rep">mode</span></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Select which OBJ face grouping is used to create BRL-CAD primitives.</p>
+<p class="tableblock"><code>group</code> = group (default)</p>
+<p class="tableblock"><code>material</code> = material</p>
+<p class="tableblock"><code>none</code> = none</p>
+<p class="tableblock"><code>object</code> = object</p>
+<p class="tableblock"><code>texture</code> = texture</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--conversion-mode=<span class="rep">mode</span></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Select the conversion mode.</p>
+<p class="tableblock"><code>bot</code> = native BoT (default)</p>
+<p class="tableblock"><code>nmg</code> = NMG</p>
+<p class="tableblock"><code>nmgbot</code> = BoT via NMG</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="nowrap">--bot-plate-thickness=<span class="rep">thickness</span></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Thickness (mm) used when a BoT is not a closed volume and it&#8217;s
+ converted as a plate or plate-nocos BoT.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--bot-ignore-normals</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ignore the normals defined in the input file when using native BoT
+ conversion mode.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--bot-open-type=<span class="rep">type</span></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Select the type used for BoTs that aren&#8217;t closed volumes.</p>
+<p class="tableblock"><code>surface</code> = surface (default)</p>
+<p class="tableblock"><code>plate</code> = plate</p>
+<p class="tableblock"><code>nocos</code> = plate-nocos</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--bot-plot</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Creates a plot/overlay (<code>.plot3</code>) file of open edges for BoTs that
+ aren&#8217;t closed volumes. <code><span class="rep">bot_name</span>.plot3</code> will be
+ created in the current directory and will overwrite any existing file
+ with the same name.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--bot-orientation=<span class="rep">mode</span></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Select the BoT orientation mode.</p>
+<p class="tableblock"><code>unoriented</code> = unoriented (default)</p>
+<p class="tableblock"><code>ccw</code> = counterclockwise</p>
+<p class="tableblock"><code>cw</code> = clockwise</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_obj_writer"><a class="anchor" href="#_obj_writer"></a>OBJ Writer</h3>
+<table class="tableblock frame-none grid-all stretch">
+<caption class="title">Table 11. OBJ writer options</caption>
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="nowrap">--vertex-normals</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Output vertex normals.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--usemtl</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Place <code>usemtl</code> statements in the output file. These statements are
+ fictional (they do not refer to any material database). The materials
+ named provide information about the material codes assigned to the
+ objects in the BRL-CAD database. The material names will be of the
+ form
+ <code><span class="rep">aircode</span>_<span class="rep">los</span>_<span class="rep">material</span></code>,
+ where <code><span class="rep">aircode</span></code> is the code number for the air
+ represented by that region, if it does represent air; otherwise, this
+ will be <code>0</code>. The <code><span class="rep">los</span></code> is the Line Of Sight thickness
+ (<code>0</code> to <code>100</code>) assigned to the region, and <code><span class="rep">material</span></code>
+ is the material code number assigned.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_stl_reader"><a class="anchor" href="#_stl_reader"></a>STL Reader</h3>
+<table class="tableblock frame-none grid-all stretch">
+<caption class="title">Table 12. STL reader options</caption>
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--binary</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify that the input file is in binary STL format (the default
+ assumes ASCII).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="nowrap">--starting-ident=<span class="rep">number</span></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify the starting ident for the regions created. The default is
+ <code>1000</code>. This number will be incremented for each region, unless
+ <code>--constant-ident</code> is specified.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--constant-ident</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify that the starting ident should remain constant.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--material=<span class="rep">code</span></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify the material code that will be assigned to all created
+ regions (the default is <code>1</code>).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_stl_writer"><a class="anchor" href="#_stl_writer"></a>STL Writer</h3>
+<table class="tableblock frame-none grid-all stretch">
+<caption class="title">Table 13. STL writer options</caption>
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--binary</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Write output as a binary STL file. The default is ASCII. In the case
+ of ASCII output, the region name is specified on the "solid" line of
+ the STL file. In the case of binary output, all the regions are
+ output as a single STL part.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="nowrap">--output-dir</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify that the output path should be a directory. Each region
+ converted is written to a separate file. File names are constructed
+ from the full path names of each region (the path from the specified
+ object to the region).  Any &#8220;<code>/</code>&#8221; characters in the path name are
+ replaced by &#8220;<code>@</code>&#8221; characters and &#8220;<code>.</code>&#8221; and white space are
+ replaced by &#8220;<code>_</code>&#8221; characters.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_vrml_reader"><a class="anchor" href="#_vrml_reader"></a>VRML Reader</h3>
+<div class="paragraph">
+<p>At this time, the VRML reader plugin does not make use of any
+filter-specific options.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_vrml_writer"><a class="anchor" href="#_vrml_writer"></a>VRML Writer</h3>
+<table class="tableblock frame-none grid-all stretch">
+<caption class="title">Table 14. VRML writer options</caption>
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--bot-dump</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BoT dump. Mutually exclusive with <code>--evaluate-all</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--evaluate-all</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Evaluate all, CSG and BoTs. Mutually exclusive with <code>--bot-dump</code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="ebm_primitive.html">Using the Extruded Bitmap Primitive</a></span>
+  <span class="next"><a href="ged.html">GED: An Interactive Solid Modeling System</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../ui/js/site.js"></script>
+<script src="../../ui/js/vendor/lunr.js"></script>
+<script src="../../ui/js/vendor/search.js" id="search-script" data-base-path="../.." data-page-path="/docs/articles/gcv.html"></script>
+<script async src="../../ui/../search-index.js"></script>
+<script async src="../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

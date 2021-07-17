@@ -1,0 +1,2265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>BRL-CAD Database Format :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/docs/specifications/BRL_CAD_g_format_V5.html">
+    <link rel="prev" href="../presentations/intro-to-tcltk.html">
+    <link rel="next" href="../man/1.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../ui/css/site.css">
+    <link rel="stylesheet" href="../../ui/css/search.css">
+    <link rel="stylesheet" href="../../ui/css/custom.css">
+    <script>var uiRootPath = '../../ui'</script>
+    <link rel="icon" href="../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../about.html">About</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lessons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../lessons/mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/01_creating_primitive_shapes.html">1. Creating Primitive Shapes in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/02_learning_viewing_options.html">2. Learning Viewing Options in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/03_using_insert_command.html">3. Using the Insert Command in MGED to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/04_assign_mat_prop_rt.html">4. Assigning Material Properties and Raytracing in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/05_learning_boolean_expressions.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/06_creating_a_goblet.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/07_goblet_material_properties.html">7. Assigning Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/08_goblet_material_properties2.html">8. Assigning More Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/09_globe_in_display_box.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/10_creating_mug.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/11_refining_mug.html">11. Refining a Mug Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/12_mug_through_gui.html">12. Creating a Mug Model using the MGED Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/13_placing_shapes_in_3d.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/14_placing_shapes_in_3d_2.html">14. Additional Exercises Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/15_creating_a_toy_truck.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/16_mod_tech_struct.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Books</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../hacking/index.html">Hacking BRL-CAD</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting Started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part1/chapter1.html">A Call to Arms (and Contributors)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part1/chapter2.html">Feature Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developers</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part2/chapter3.html">Working with Our Code</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part2/chapter4.html">What Code to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part2/chapter5.html">Contributing Code</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Documenters</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part3/chapter6.html">Working with Our Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part3/chapter7.html">Types of Documentation We Maintain</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part3/chapter8.html">What Documentation to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part3/chapter9.html">Contributing Documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Other Contributors</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part4/chapter10.html">You Can Help Too</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendix: Resources and Examples</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix1.html">Further References and Resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix2.html">Doc Template: New MGED Command</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix3.html">Code Example: Shooting Rays</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix4.html">Code Example: Walking Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix5.html">Code Example: Command Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix6.html">Example Code: Root Solving</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials/index.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tutorials/overview.html">I. An Overview of BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials/mged-intro.html">II. Introduction to MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/preface1.html">Preface</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/preface2.html">Acknowledgments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter1.html">1. Creating Primitive Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter2.html">2. Learning the Viewing Options</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter3.html">3. Using the Insert Command to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter4.html">4. Assigning Material Properties and Raytracing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter5.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter6.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter7.html">7. Assigning Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter8.html">8. Assigning More Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter9.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter10.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter11.html">11. Refining the Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter12.html">12. Creating the Mug Through the GUI</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter13.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter14.html">14. Gaining More Practice Placing Shapes in Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter15.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter16.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/appendix1.html"><code class="app">MGED</code> Commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials/modeling.html">III. Modeling</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter2.html">2. The Model Process</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter3.html">3. Measuring data</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter4.html">4. Organizing the Structure</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter5.html">5. Developing Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter6.html">5. Evaluating Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter7.html">7. Logging Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendices</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix1.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix2.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix3.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix4.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix5.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix6.html">Using the build_region Command</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials/converting.html">IV. Converting</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter2.html">2. Pertinent Characteristics of the BRL-CAD Format</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter3.html">3. Converting From/to ASCII</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter4.html">4. Converting to BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter5.html">5. Converting From BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter6.html">6. Building a New Converter</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter7.html">7. Postconversion Issues</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../articles/index.html">Articles</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/build_pattern.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/build_region.html">Using the build_region Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/camo_shader.html">Camouflage shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/ebm_primitive.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/gcv.html">The Geometry Conversion Library</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/ged.html">GED: An Interactive Solid Modeling System</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../articles/mged/index.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../articles/mged/tutorial.html">Tutorial</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../articles/mged/gui.html">Graphical User Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../articles/mged/command-line-editing.html">Command Line Editing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../articles/mged/user-commands.html">User Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../articles/mged/developer-commands.html">Developer Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../articles/mged/tcl-variables.html">Tcl Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../articles/mged/env.html">Environment Variable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../articles/mged/callback.html">Callback</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../articles/mged/glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../articles/mged/brlcad-solid.html">BRL-CAD Solid</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/mgedrc.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/nirt.html">Interactive Raytracing: The nirt Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/overlap_tool.html">The Overlap Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/oed.html">Object Editing - the oed Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/pipes.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/projection_shader.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/tire.html">Vehicle Tire and Wheel Creation in BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/TEMPLATE.html">TEMPLATE</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Misc</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Dev Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../devguides/bool_eval_development.html">NURBS Boolean Evaluation Development Guide</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Presentations</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../presentations/brlcad-app-devel.html">Application Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="presentations:_attachments/brlcad-app-devel.html">brlcad-app-devel</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../presentations/intro-to-tcltk.html">Introduction to Tcl/Tk</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="BRL_CAD_g_format_V5.html">BRL-CAD Database Format</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Manual Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../man/1.html">man1</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../man/3.html">man3</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../man/5.html">man5</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../man/n.html">mann</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Wiki Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">page-1</span>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">BRL-CAD</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../es/index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../es/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">BRL-CAD</a></li>
+    <li>Misc</li>
+    <li>Specifications</li>
+    <li><a href="BRL_CAD_g_format_V5.html">BRL-CAD Database Format</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/docs/modules/specifications/pages/BRL_CAD_g_format_V5.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">BRL-CAD Database Format</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_background_and_terminology">1. Background and Terminology</a>
+<ul class="sectlevel2">
+<li><a href="#_format_of_data_elementsdatabase_external_format">1.1. Format of Data Elements/Database External Format</a></li>
+</ul>
+</li>
+<li><a href="#_definition_of_a_single_generic_database_object">2. Definition of a Single, Generic Database Object</a>
+<ul class="sectlevel2">
+<li><a href="#_object_structure">2.1. Object Structure</a></li>
+<li><a href="#_flags">2.2. Flags</a>
+<ul class="sectlevel3">
+<li><a href="#_wid_flags">2.2.1. Wid Flags</a></li>
+<li><a href="#_r_bits">2.2.2. "r" Bits</a></li>
+<li><a href="#_hflags_the_dli_flag">2.2.3. HFlags - the DLI Flag</a></li>
+<li><a href="#_hflags_the_np_bit">2.2.4. HFlags - the NP Bit</a></li>
+<li><a href="#_aflagsbflags_the_apbp_bit">2.2.5. AFlags/BFlags - the AP/BP Bit</a></li>
+<li><a href="#_aflagsbflags_the_azbz_flag">2.2.6. AFlags/BFlags - the AZ/BZ Flag</a></li>
+</ul>
+</li>
+<li><a href="#_object_type">2.3. Object Type</a>
+<ul class="sectlevel3">
+<li><a href="#_major_type">2.3.1. Major_Type = 0: Reserved</a></li>
+<li><a href="#_major_type_1_brl_cad_nongeometry_objects">2.3.2. Major_Type = 1: BRL-CAD Nongeometry Objects</a></li>
+<li><a href="#_major_type_2_brl_cad_geometry_objects">2.3.3. Major_Type = 2: BRL-CAD Geometry Objects</a></li>
+<li><a href="#_major_type_3_attribute_only_objects">2.3.4. Major_Type = 3: Attribute-Only Objects</a></li>
+<li><a href="#_bulk_binary_objects">2.3.5. Bulk Binary Objects (Major_Types 8-31)</a></li>
+<li><a href="#_major_type_255_database_layer_internal_objects">2.3.6. Major_Type = 255: Database Layer Internal Objects</a></li>
+</ul>
+</li>
+<li><a href="#_object_length">2.4. Object Length</a></li>
+<li><a href="#_object_name">2.5. Object Name</a></li>
+<li><a href="#_object_attributes">2.6. Object Attributes</a></li>
+<li><a href="#_object_body">2.7. Object Body</a></li>
+<li><a href="#_padding_and_length_rounding">2.8. Padding and Length Rounding</a></li>
+<li><a href="#_how_objects_are_grouped_into_a_database">2.9. How Objects Are Grouped into a Database</a></li>
+<li><a href="#_details_of_brl_cad_specific_nongeometric_database_object_types">2.10. Details of BRL-CAD-Specific Nongeometric Database Object Types</a></li>
+<li><a href="#_details_of_brl_cad_specific_geometric_database_object_types">2.11. Details of BRL-CAD-Specific Geometric Database Object Types</a></li>
+<li><a href="#_extensions_for_deferred_implementation">2.12. Extensions for Deferred Implementation</a></li>
+<li><a href="#_community_feedback_on_the_proposal">2.13. Community Feedback on the Proposal</a></li>
+<li><a href="#_database_library_application_programming_interface">2.14. Database Library Application Programming Interface (API)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="_background_and_terminology"><a class="anchor" href="#_background_and_terminology"></a>1. Background and Terminology</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>BRL-CAD is a constructive solid geometry (CSG) modeling system.
+Primitive solid shapes are combined using boolean operations to form
+regions of homogeneous material.</p>
+</div>
+<div class="paragraph">
+<p>The database is organized as a <em>directed acyclic graph</em> (DAG), which
+is comprised of:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>primitive <em>solids</em> - the minimal elements of the DAG.</p>
+</li>
+<li>
+<p><em>combinations</em> - the non-minimal elements of the DAG, some of which
+are specially marked as regions. The maximal elements of the DAG are
+called tops.</p>
+</li>
+<li>
+<p><em>arcs</em> - containing boolean operators and 4x4 homogeneous
+transformation matrices.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In a slight abuse of terminology, the DAG is often spoken of as a tree
+or collection of trees.  In this context, the solids are also called
+<em>leaves</em>.</p>
+</div>
+<div class="sect2">
+<h3 id="_format_of_data_elementsdatabase_external_format"><a class="anchor" href="#_format_of_data_elementsdatabase_external_format"></a>1.1. Format of Data Elements/Database External Format</h3>
+<div class="paragraph">
+<p>The external format has several important properties, especially with
+regard to the <em>Object_Body</em>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Numbers are stored in binary for storage efficiency, for speed of
+reading and writing, and for preventing errors from creeping in due
+to repetitive conversion between binary and an ASCII string
+representation. This eliminates the need to use the old g2asc and
+asc2g to move databases between machines of different architectures.</p>
+</li>
+<li>
+<p>All data in the object wrapper are stored in a machine-independent
+format, as follows:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>All floating point numbers are stored as IEEE double-precision, in
+big-endian order, where byte 0 is on the left end of the word.</p>
+</li>
+<li>
+<p>All integers are stored as either <em>unsigned</em> or <em>twos-complement
+signed</em> binary numbers in either 8, 16, 32, or 64 bits, in
+big-endian order.</p>
+</li>
+<li>
+<p>All character strings are stored in the ASCII 8-bit
+character set. A string is stored as an integer followed by an
+array of 8-bit characters. The last character in the array is
+always a null byte. The integer indicates the number of bytes in
+the array including the terminating null.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_definition_of_a_single_generic_database_object"><a class="anchor" href="#_definition_of_a_single_generic_database_object"></a>2. Definition of a Single, Generic Database Object</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The database access library stores <em>objects</em> as a collection of data
+with a globally unique name and places no interpretation on the
+content of those data.  The <em>object</em> is the smallest granularity of an
+item in the database; objects must be read from and written to the
+database in a single atomic operation.</p>
+</div>
+<div class="paragraph">
+<p>In the case of librt, each database object will contain exactly one
+combination node or leaf (solid) node.</p>
+</div>
+<div class="sect2">
+<h3 id="_object_structure"><a class="anchor" href="#_object_structure"></a>2.1. Object Structure</h3>
+<div class="paragraph">
+<p>All objects share certain common properties, which are stored in a
+standardized <em>object wrapper</em> consisting of an Object Header and an
+Object Footer.</p>
+</div>
+<div class="paragraph">
+<p>The Object Header consists of:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>An 8-bit Magic1 element that holds a specific magic number value
+used for database integrity checking.</p>
+</li>
+<li>
+<p>A 16-bit Flags element consisting of three 8-bit fields: HFlags,
+AFlags, and BFlags, described later.</p>
+</li>
+<li>
+<p>A 16-bit Object_Type element organized into two 8-bit-wide fields:
+the Major_Type and the Minor_Type.</p>
+</li>
+<li>
+<p>An Object_Length element that indicates the total number of bytes
+required for this object, including the magic numbers.</p>
+</li>
+<li>
+<p>An Object_Name element that is a string holding a name unique to
+that object and drawn from a name space that is global to the
+database. Like other strings, it consists of two fields, Length and
+Data. In the case of the Object_Name element, these are referred to
+as Name_Length and Name_Data, respectively. Note: The Object_Name
+element is mandatory for all allocated storage in the
+database. Database free-space management objects are the only
+objects for which the Object_Name element is optional.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The Object Footer consists of:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Any padding bytes necessary to bring the total size of the object in
+bytes to an integral multiple of 8.</p>
+</li>
+<li>
+<p>An 8-bit Magic2 element that holds a specific magic number value
+used for database integrity checking.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Objects may store application-specific information in an Object
+Interior.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>An object may optionally have an Object_Attributes element
+consisting of a pair of fields: Attribute_Length and
+Attribute_Data. From the point of view of the database interface
+specification, the names and values of these attributes are opaque
+(but a standardized import and export encoding API is provided).</p>
+</li>
+<li>
+<p>An object may optionally have an Object_Body element consisting of a
+pair of fields, Body_Length and Body_Data. From the point of view of
+the database interface specification, the format of the data is
+opaque.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Note that an object can now have (1) either an attribute or a body,
+(2) both an attribute and a body, or (3) neither an attribute nor a
+body.</p>
+</div>
+<div class="paragraph">
+<p>The on-disk version of each object consists of three distinct parts:
+Object Header, Object Interior, and Object Footer.  This is called the
+external format of the object.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. On-Disk BRL-CAD Object Structure</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-middle">Part</th>
+<th class="tableblock halign-center valign-middle">Element</th>
+<th class="tableblock halign-center valign-middle">Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle" rowspan="5"><p class="tableblock">Object Header:</p>
+<p class="tableblock">(not compressible)</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Magic1</p></td>
+<td class="tableblock halign-center valign-middle" rowspan="3"><p class="tableblock">Required</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">HFlags, AFlags, BFlags</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Object_Type</p>
+<p class="tableblock">(Major_Type, Minor_Type)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Object_Length</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Required</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><div class="content"><table class="tableblock frame-none grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">Object Name:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name_Length</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name_Data</p></td>
+</tr>
+</tbody>
+</table></div></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Conditional on flag bit N</p>
+<p class="tableblock">Required for Application Data</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle" rowspan="2"><p class="tableblock">Object Interior:</p>
+<p class="tableblock">(individually compressible)</p></td>
+<td class="tableblock halign-center valign-middle"><div class="content"><table class="tableblock frame-none grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">Object Attributes:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Attribute_Length</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Attribute_Data</p></td>
+</tr>
+</tbody>
+</table></div></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Conditional on flag bit A</p>
+<p class="tableblock">(ZZZ compression)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><div class="content"><table class="tableblock frame-none grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">Object Body:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Body_Length</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Body_Data</p></td>
+</tr>
+</tbody>
+</table></div></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Conditional on flag bit B</p>
+<p class="tableblock">(ZZZ compression)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle" rowspan="2"><p class="tableblock">Object Footer:</p>
+<p class="tableblock">(not compressible)</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Padding</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">As required to maintain 8-byte object boundaries</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Magic2</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Required</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The routines rt_db_get_internal() and rt_db_put_internal() are used to
+move objects between their format in the database disk file and their
+internal format in memory.  The routines are defined in <code>librt</code>.)</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_flags"><a class="anchor" href="#_flags"></a>2.2. Flags</h3>
+<div class="paragraph">
+<p>The Flags element consists of three 8-bit fields: HFlags, AFlags, and
+BFlags.  The HFlags field is 1 byte containing flag bits that pertain
+to the noncompressible basic header and the database object as a
+whole.  The AFlags and BFlags fields are each single bytes containing
+flag bits that pertain to the (potentially compressed) attributes and
+body, respectively, in the object interior.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. BRL-CAD Flags Structure</caption>
+<colgroup>
+<col style="width: 3.8461%;">
+<col style="width: 3.8461%;">
+<col style="width: 3.8461%;">
+<col style="width: 3.8461%;">
+<col style="width: 3.8461%;">
+<col style="width: 3.8461%;">
+<col style="width: 3.8461%;">
+<col style="width: 3.8461%;">
+<col style="width: 3.8461%;">
+<col style="width: 3.8461%;">
+<col style="width: 3.8461%;">
+<col style="width: 3.8461%;">
+<col style="width: 3.8461%;">
+<col style="width: 3.8461%;">
+<col style="width: 3.8461%;">
+<col style="width: 3.8461%;">
+<col style="width: 3.8461%;">
+<col style="width: 3.8461%;">
+<col style="width: 3.8461%;">
+<col style="width: 3.8461%;">
+<col style="width: 3.8461%;">
+<col style="width: 3.8461%;">
+<col style="width: 3.8461%;">
+<col style="width: 3.8461%;">
+<col style="width: 3.8461%;">
+<col style="width: 3.8475%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="8">HFlags</th>
+<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top" colspan="8">AFlags</th>
+<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top" colspan="8">BFlags</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock">OWid</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">NP</p></td>
+<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock">NWid</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">r</p></td>
+<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock">DLI</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock">AWid</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">AP</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">r</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">r</p></td>
+<td class="tableblock halign-center valign-top" colspan="3"><p class="tableblock">AZ</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock">BWid</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">BP</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">r</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">r</p></td>
+<td class="tableblock halign-center valign-top" colspan="3"><p class="tableblock">BZ</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="_wid_flags"><a class="anchor" href="#_wid_flags"></a>2.2.1. Wid Flags</h4>
+<div class="paragraph">
+<p>The length of an object or sub-element in the database is recorded
+using an unsigned integer.  These are variable-width fields based on
+the magnitude of the maximum number needed.  The Wid bits specify the
+size of the unsigned integer employed in each instance.  There are
+four 2-bit width (Wid) flags: Object_Wid (OWid) and Name_Wid (NWid)
+(stored in HFlags), Attribute_Wid (AWid) (stored in AFlags), and
+Body_Wid (BWid) (stored in BFlags). The Wid fields are interpreted in
+this manner:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 3. Wid Flag Definitions</caption>
+<colgroup>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Wid Bits</th>
+<th class="tableblock halign-center valign-top">Width (in bits) of Associated Length Fields</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">00</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">8</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">01</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">16</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">32</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">11</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">64</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The OWid flag, at the high end of HFlags, encodes the width of the
+Object_Length field.  The NWid flag, in bits 3 and 4 of HFlags,
+encodes the width of the Name_Length field (when the name element is
+present; see the N bit, shown later). AWid (or BWid, as the case may
+be) encodes the width of the Attribute_Length field (when the
+Object_Attributes or Object_Body element is present; see the AP and BP
+bits below).</p>
+</div>
+<div class="paragraph">
+<p>(See the original draft at
+[<a href="http://ftp.arl.mil/~mike/papers/brlcad5.0/newdb.html" class="bare">http://ftp.arl.mil/~mike/papers/brlcad5.0/newdb.html</a>].)</p>
+</div>
+<div class="paragraph">
+<p>The rationale for allowing the width of the Object_Length field to be
+specified independently of the other widths is to save space on
+objects in which the values in many of the length fields nearly
+overflow the specified field width, so that their sum requires a wider
+field.  For example, for four 255-byte interior fields, the
+corresponding length fields need be no more than 8 bits wide, so the
+choice Interior_Wid=00 suffices, but their combined length of 1020
+bytes would require Object_Wid=01.  Because all of the length fields
+besides Object_Length must have the same width (FIXME: is that true?),
+the largest of the values stored in these length fields determines the
+value of Interior_Wid required.  Both Object_Wid and Interior_Wid may
+vary from object to object.  It is expected that the routines that
+write an object to the disk will use the narrowest width possible for
+each object.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_r_bits"><a class="anchor" href="#_r_bits"></a>2.2.2. "r" Bits</h4>
+<div class="paragraph">
+<p>The bits labeled as "r" in all three flags are reserved for future
+design work assigning additional optional fields in the object.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_hflags_the_dli_flag"><a class="anchor" href="#_hflags_the_dli_flag"></a>2.2.3. HFlags - the DLI Flag</h4>
+<div class="paragraph">
+<p>The DLI flag is a 2-bit flag that indicates whether the object is an
+Application Data Object or a Database Layer Internal Object.  The bits
+are interpreted as follows:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 4. DLI Flag Structure</caption>
+<colgroup>
+<col style="width: 1%;">
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top"><span class="nowrap">DLI Bits</span></th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">00</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Application Data Object</p>
+</div>
+<div class="paragraph">
+<p>The object contains application-specific data.  N must be 1.  A and B
+are determined by what the application presents for storage in the
+object; both may be 0 (empty Object_Interior).</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">01</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Database Layer Internal, Header Object</p>
+</div>
+<div class="paragraph">
+<p>A Header Object must be the first object encountered in the database.
+In order to support direct concatenation of two existing databases
+into one new database, additional header objects may appear elsewhere
+in the database The header object has no object name, object
+attributes, or object body (e.g., NP=0, AP=0,
+BP=0). Major_Type=RESERVED, Minor_Type=0.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Database Layer Internal, Free Storage.</p>
+</div>
+<div class="paragraph">
+<p>Unused space in the database is kept using a special Free DB Storage
+object that has no object name or object attributes.  The object body
+is null-filled and of the proper size for the storage to be
+represented.  Like all other objects, the total length of the object
+will be a multiple of 8 bytes.  NP=0, AP=0, BP=1.
+Major_Type=RESERVED, Minor_Type=0.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">11</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Database Layer Internal, Reserved</p>
+</div>
+<div class="paragraph">
+<p>This value is reserved for future use.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The DLI flag is not available to the higher database access layers.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Implementation note: Before writing a new object into the database in
+a free area, the library should read the object header from the
+database and confirm that the space is indeed free.  Similarly,
+additions to the end should be checked by ensuring that the file
+hasn&#8217;t been extended.  In case the check fails, the database write
+should fail, the user should be notified, and the internal library
+mode (not the operating system file access permissions) should be
+changed over to read-only access so that no further attempts to write
+will be issued.  These checks will provide protection against two or
+more users trying to modify the same database simultaneously and
+accidentally stepping on each other.  In the NFS world, file locking
+isn&#8217;t a strong enough assurance.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_hflags_the_np_bit"><a class="anchor" href="#_hflags_the_np_bit"></a>2.2.4. HFlags - the NP Bit</h4>
+<div class="paragraph">
+<p>The "NP" bit indicates whether the Name element (consisting of
+Name_Length and Object_Name fields) is present (1) or absent (0) in
+the noncompressible basic header immediately following the
+Object_Length field.  The width of the Name_Length field is specified
+by the Name_Wid field.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_aflagsbflags_the_apbp_bit"><a class="anchor" href="#_aflagsbflags_the_apbp_bit"></a>2.2.5. AFlags/BFlags - the AP/BP Bit</h4>
+<div class="paragraph">
+<p>The "(A|B)P" bit indicates whether the Attributes (or, alternatively,
+Body) element consisting of Attribute_Length and Attribute_Data (or
+Body_Length and Body_Data) fields, is present (1) or absent (0) in the
+Object_Interior.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_aflagsbflags_the_azbz_flag"><a class="anchor" href="#_aflagsbflags_the_azbz_flag"></a>2.2.6. AFlags/BFlags - the AZ/BZ Flag</h4>
+<div class="paragraph">
+<p>The 3-bit "(A|B)Z" flag indicates the compression, if any, of the
+object Attributes (or Body):</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 5. AZ/BZ Flag Definitions</caption>
+<colgroup>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">AZ/BZ Bits</th>
+<th class="tableblock halign-center valign-top">Compression Algorithm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">000</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">None</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">001</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">GNU GZIP</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">010</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Burroughs-Wheeler</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">011</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Reserved</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">100</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Reserved</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">101</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Reserved</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">110</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Reserved</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">111</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Reserved</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_object_type"><a class="anchor" href="#_object_type"></a>2.3. Object Type</h3>
+<div class="paragraph">
+<p>The Object_Type element is always 16 bits wide, organized into two
+8-bit-wide fields: the Major_Type and the Minor_Type.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 6. Object_Type Element Structure</caption>
+<colgroup>
+<col style="width: 6.25%;">
+<col style="width: 6.25%;">
+<col style="width: 6.25%;">
+<col style="width: 6.25%;">
+<col style="width: 6.25%;">
+<col style="width: 6.25%;">
+<col style="width: 6.25%;">
+<col style="width: 6.25%;">
+<col style="width: 6.25%;">
+<col style="width: 6.25%;">
+<col style="width: 6.25%;">
+<col style="width: 6.25%;">
+<col style="width: 6.25%;">
+<col style="width: 6.25%;">
+<col style="width: 6.25%;">
+<col style="width: 6.25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="16">Object_Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top" colspan="8"><p class="tableblock">Major Type</p></td>
+<td class="tableblock halign-center valign-top" colspan="8"><p class="tableblock">Minor Type</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Each different Major_Type value is assigned to a different class of
+database objects.  The following values are defined in this
+specification:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 7. Major_Type Values and Meanings</caption>
+<colgroup>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Value</th>
+<th class="tableblock halign-center valign-top">Object Class</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Reserved</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">BRL-CAD Nongeometry Objects</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">BRL-CAD Geometry Objects</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Attribute-Only Objects</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">8</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Experimental Binary Objects (Unrecorded Structure) (Minor Type Unspecified)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">9</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Uniform Array Binary Objects, (Type Described in Minor Type)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">MIME_Typed Binary Objects (Attribute "mime_type" Describes Format)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">16-31</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Registered-Type Binary Objects</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">128</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">First Non-ARL Type Begins Here</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The remainder are available for extending the types of objects that
+may be stored in the database, allowing BRL-CAD users to extend the
+database for their own particular purposes far beyond what the
+"attribute" method permits.</p>
+</div>
+<div class="sect3">
+<h4 id="_major_type"><a class="anchor" href="#_major_type"></a>2.3.1. Major_Type = 0: Reserved</h4>
+<div class="paragraph">
+<p>Major Type 0 is illegal.  The rationale is to provide the library an
+opportunity to detect incompletely filled in data structures.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_major_type_1_brl_cad_nongeometry_objects"><a class="anchor" href="#_major_type_1_brl_cad_nongeometry_objects"></a>2.3.2. Major_Type = 1: BRL-CAD Nongeometry Objects</h4>
+<div class="paragraph">
+<p>This class of objects is private to librt and concerns all
+nongeometric objects needed by the library.  For this Major_Type, the
+following Minor_Type values are defined:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 8. Major_Type = 1:  Minor_Type Values and Meanings</caption>
+<colgroup>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Minor_Type Value</th>
+<th class="tableblock halign-center valign-top">Object Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Reserved for sanity check</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Combination</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Grip (Nongeometric)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Joint (Nongeometric)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>All other values reserved for future expansion.</p>
+</div>
+<div class="paragraph">
+<p>?????Should "Grip" and "Joint" objects be of this type, or
+Major_Type = 2?</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_major_type_2_brl_cad_geometry_objects"><a class="anchor" href="#_major_type_2_brl_cad_geometry_objects"></a>2.3.3. Major_Type = 2: BRL-CAD Geometry Objects</h4>
+<div class="paragraph">
+<p>This class of objects is private to librt and concerns all geometric
+objects needed by the library.  Typically, there will be one xxx/xxx.c
+module in librt for each minor type.  For this Major_Type, the
+following Minor_Type values are defined:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 9. Major_Type = 2:  Minor_Type Values and Meanings</caption>
+<colgroup>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Minor_Type Value</th>
+<th class="tableblock halign-center valign-top">Object Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Reserved for sanity check</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Torus (TOR)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Truncated General Cone (TGC)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Ellipsoid (ELL)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Generalized ARB.  V + 7 vectors</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">ARS</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Half-Space (HALF)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Right Elliptical Cylinder (REC) (TGC special case)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">8</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Polygonal faceted object (Polysolid)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">9</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">B-Spline Solid</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Sphere (ELL Special Case)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">11</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">n-Manifold Geometry (NMG) solid</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">12</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Extruded bitmap solid</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">13</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Volume (VOL)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">14</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">ARB with N faces (ARBN)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">15</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Pipe (wire) solid (PIPE)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">16</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Particle system solid (PART)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">17</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Right Parabolic Cylinder (RPC)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">18</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Right Hyperbolic Cylinder (RHC)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">19</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Elliptical Paraboloid (EPA)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">20</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Elliptical Hyperboloid (EHY)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">21</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Elliptical Torus (ETO)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">22</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Grip Nongeometric</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">23</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Joint Nongeometric</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">24</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Height Field (HF)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">25</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Displacement Map (DSP)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">26</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2D Sketch (SKETCH)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">27</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Solid of extrusion (EXTRUDE)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">28</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Instanced submodel</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">29</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">FASTGEN4 CLINE solid</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">30</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Bag o' triangles (BOT)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">31</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Combination Record</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">32</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Experimental binary</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">33</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Uniform-array binary</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">34</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">MIME-typed binary</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">35</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Superquadratic ellipsoid</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">36</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Metaball</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">37</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Brep object</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">38</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Hyperboloid of one sheet (HYP)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">39</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Constraint object</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">40</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Solid of revolution</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">41</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Collection of points (PNTS)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The details of these Minor_Types are provided in Section IV.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_major_type_3_attribute_only_objects"><a class="anchor" href="#_major_type_3_attribute_only_objects"></a>2.3.4. Major_Type = 3: Attribute-Only Objects</h4>
+<div class="paragraph">
+<p>This type of object stores only attributes in the object interior
+section; it has no object body elements.</p>
+</div>
+<div class="paragraph">
+<p>For example, if several objects need to have the same shader
+parameters, it would be possible to create one attribute-only object
+to hold these common attributes and serve as a simple form of
+"macro". Objects that needed to share these attributes could all
+reference the same attribute object.  If the attribute object is
+altered, then all of the objects that reference it would be updated
+together.  Without this capability, the user would have to update each
+element individually to alter the attributes.</p>
+</div>
+<div class="paragraph">
+<p>Conventions will have to be established regarding which attributes of
+an attribute-only object will be used when a macro reference is
+performed.  For example, rt shaders will only be interested in the
+value of the "oshader=" attribute, while librt&#8217;s tree-walker might
+also be interested in the "rgb=", "giftmater=", "nsn=", "material=",
+and "los=" attributes (assuming that a convention was developed so
+that a combination could macro-reference an attribute-only object
+too).</p>
+</div>
+<div class="paragraph">
+<p>An attribute-only object may not have an object body; thus, flag bit B
+must always be zero for this type of object.</p>
+</div>
+<div class="paragraph">
+<p>As used by the rt family of applications codes, these attribute-only
+objects will contain "macros" for shaders.  The shader name and its
+parameters shall be encoded as a single ASCII string, which is the
+value of the "oshader=" attribute.  An rt shader named "macro" (or
+equivalent) would take a single parameter "obj=", which would specify
+the name of the attribute-only object in the database from which the
+actual shader and shader parameter information would be extracted.</p>
+</div>
+<div class="paragraph">
+<p>There will be one attribute-only object with a reserved object name of
+"_GLOBAL" that will be used to contain various kinds of states that
+are global to the entire ".g" database and that had previously been
+found in the database header itself.  There will be the following
+BRL-CAD-specific attributes whose meaning is predefined for the
+_GLOBAL object:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>title = The database "title" string previously found in the database
+header.</p>
+</li>
+<li>
+<p>units = The most recent editing units, specified as an ASCII string
+with a floating point conversion factor. For example, the conversion
+factor for inches to millimeters would be 25.4.</p>
+</li>
+<li>
+<p>regionid_colortable = A string that contains a collection of all the
+information previously found in "struct material_rec ID_MATERIAL"
+records. Exact encoding yet to be determined; it&#8217;s a collection of
+integer 5-tuples of the form: {low, high, r, g, b}.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In addition, the "comment=" attribute of the "_GLOBAL" object may be
+used to store human-readable remarks about the database that are not
+more properly associated with a specific database item.  These might
+include remarks about data sources, model evolution, security
+classification, and release restrictions.  In the absence of some
+outboard revision-control system, this might also be a place to record
+modification history, although such use is discouraged.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_bulk_binary_objects"><a class="anchor" href="#_bulk_binary_objects"></a>2.3.5. Bulk Binary Objects (Major_Types 8-31)</h4>
+<div class="paragraph">
+<p>This class of objects contains various "bulk" binary data that might
+otherwise have been placed in auxiliary files.</p>
+</div>
+<div class="paragraph">
+<p>MGED and stand-alone commands must be built to store/extract these
+opaque binary objects between a ".g" file and other files.  A user
+might want to use those same MGED commands to store or extract the
+binary object body of any object for external processing.  An easy
+example to imagine is the importing and exporting of texture maps for
+external processing, but the same commands could be used for importing
+and exporting solid parameters in their external binary form.</p>
+</div>
+<div class="paragraph">
+<p>These objects may be referenced in combination nodes, for
+organizational purposes, but they cannot be drawn in MGED or
+raytraced, and doing so would result in a warning message being
+printed by the tree walker as that arc is traversed.  This class may
+be used by all applications and layers.</p>
+</div>
+<div class="paragraph">
+<p>The data&#8217;s purpose may be placed in the "purpose=" attribute.
+(????????Need a table/registry of presently known values for this
+attribute.)</p>
+</div>
+<div class="paragraph">
+<p>Routines that retrieve bulk binary objects should check the minor type
+and the "purpose=" attribute and send a warning message in the event
+of a mismatch, but best-effort processing of the object should
+continue.  This will permit some degree of error checking, which
+should benefit novice users without standing in the way of
+"creatively" reusing one set of data, (e.g., using one array of values
+as both a height field and a bwtexture). This allows common data
+perversion practices, such as interpreting an array of floats as an
+array of bytes, to continue.</p>
+</div>
+<div class="paragraph">
+<p>Each application will need to have its own syntax for the user to
+specify whether the data source is an outboard file or a raw-binary
+object.  For example, the current RT sh_texture module uses the
+keyword file="name" to indicate an outboard file; that might be
+supplemented with an additional obj="name" possibility for retrieving
+from an inboard raw-binary object.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Major_Type = 8: Experimental Binary Objects </dt>
+<dd>
+<p>This class of objects
+contains bulk binary data and is intended for experimental use by
+applications developers.  Each time a database containing objects of
+this type is opened, BRL-CAD will issue a user-visible warning.
+Production software and databases should not use these objects.
+Developers should obtain registered 16-bit object types from the
+website in order to avoid collisions with other applications.</p>
+</dd>
+<dt class="hdlist1">Major_Type = 9: Uniform Array Binary Objects </dt>
+<dd>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>This class of objects contain various "bulk" binary data that might
+otherwise have been placed in an auxiliary file.</p>
+</div>
+<div class="paragraph">
+<p>Point of Discussion?????Has ramifications&#8230;&#8203; we have to implement type
+advising, so that applications that use these data can compare the
+type provided in the minor type code with the type that they&#8217;re
+expecting and advise the user (with a warning message) that there is a
+potential type mismatch.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 10. Uniform Array Binary Objects Minor_Type Structure</caption>
+<colgroup>
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="8">Minor_Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">r</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">r</p></td>
+<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock">Wid</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">S</p></td>
+<td class="tableblock halign-center valign-top" colspan="3"><p class="tableblock">Atom</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The 3-bit "Atom" flag indicates the fundamental data type of the
+atomic elements in the array according to the following scheme:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 11. Atom Flag Definitions</caption>
+<colgroup>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Atom Bits</th>
+<th class="tableblock halign-center valign-top">Data Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">000</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Reserved for sanity check</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">001</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Reserved</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">010</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">float (IEEE, network order)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">011</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">double (IEEE, network order)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">100</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">8-bit int</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">101</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">16-bit int</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">110</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">32-bit int</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">111</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">64-bit int</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The "S" bit indicates whether an integer type is signed (1) or unsigned (0). Floats and doubles (i.e., atomic types with the highest atom bit equal to 0) are explicitly signed, so they will have the "S" bit equal to 1.
+(The bit patterns corresponding to unsigned floats and doubles are reserved for possible other use.)</p>
+</div>
+<div class="paragraph">
+<p>The 2-bit "Wid" flag specifies the length (in atomic elements) of the array elements:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 12. Wid Flag Definitions</caption>
+<colgroup>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Wid Bits</th>
+<th class="tableblock halign-center valign-top">Atoms per Array Element</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">00</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">01</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">11</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">4</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The remaining Minor_Type bits "r" are reserved for the design
+committee to use for other purposes, possibly including extensions of
+the "Atom" and/or "Wid" flags.</p>
+</div>
+<div class="paragraph">
+<p>As examples, data in PIX(5) format, which might be used for a texture
+map, would have Minor_Type "0010 0100", indicating a triple of
+unsigned char, and CMYK data might be stored with Minor_Type "0011
+1011", indicating a quadruple of doubles.</p>
+</div>
+<div class="paragraph">
+<p>The data&#8217;s purpose (e.g., height field, texture, bump, displacement,
+etc.) may be placed in the "purpose=" attribute.  ????? Point of
+Discussion ???(Need a table/registry of presently known values for
+this attribute.)</p>
+</div>
+</div>
+</div>
+</dd>
+<dt class="hdlist1">Major_Type = 10: MIME-Typed Binary Objects </dt>
+<dd>
+<p>This class of objects
+contains data, the format of which is specified in the attribute
+"mime_type". The Minor_Type of these objects should always be zero.</p>
+</dd>
+<dt class="hdlist1">Major_Type = 16-31: Registered-Type Binary Objects </dt>
+<dd>
+<p>This class of
+objects contains application-specific bulk binary data and is intended
+for use in production software and databases.  Developers can obtain
+registered 16-bit object types from the website to identify these
+objects.  The data&#8217;s purpose, (e.g., height field, texture, bump,
+displacement, etc.) may be placed in the "purpose=" attribute.  (Need
+a table/registry of presently known values for this attribute).</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_major_type_255_database_layer_internal_objects"><a class="anchor" href="#_major_type_255_database_layer_internal_objects"></a>2.3.6. Major_Type = 255: Database Layer Internal Objects</h4>
+<div class="paragraph">
+<p>A Minor_Type of 1 indicates that this is a contiguous block of free
+storage.</p>
+</div>
+<div class="paragraph">
+<p>A Minor_Type of 2 indicates that this is a database header.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_object_length"><a class="anchor" href="#_object_length"></a>2.4. Object Length</h3>
+<div class="paragraph">
+<p>The Object Length specifies the number of 8-byte chunks used to store
+an object.  This includes all bytes from Magic1 through Magic2,
+inclusive.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_object_name"><a class="anchor" href="#_object_name"></a>2.5. Object Name</h3>
+<div class="paragraph">
+<p>The Object_Name element is a string that holds a name unique to that
+object and drawn from a name space that is global to the database.
+The Object_Name element is mandatory for all allocated storage in the
+database.  Database free-space management objects are the only objects
+for which the Object_Name element is optional.</p>
+</div>
+<div class="paragraph">
+<p>The name is specified in 8-bit ASCII.  There is no support for
+UNICODE.  The name is null-terminated, and the null byte is included
+in Name_Length.</p>
+</div>
+<div class="paragraph">
+<p>See the section on DLI flags.  In the case of Free objects, the name
+is not retained.  Undeleted objects have a different DLI flag code.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_object_attributes"><a class="anchor" href="#_object_attributes"></a>2.6. Object Attributes</h3>
+<div class="paragraph">
+<p>An object may optionally have an Object_Attributes element which
+stores an association list (key=value) binding attributes to values:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>aname1=value1, aname2=value2, ..., anameN=valueN</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The keys are ASCII strings of unlimited length.  These attributes are
+intended for direct use by programs.  There will be a WWW registry of
+attribute names presently in use to prevent two application developers
+from using the same attribute name for different purposes.</p>
+</div>
+<div class="paragraph">
+<p>For attribute names and ASCII attribute values, The decision was taken
+to support 8-bit ASCII only.  The on-disk encoding of this will simply
+be:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>aname1 NULL value1 NULL ... anameN NULL valueN NULL NULL</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>where NULL represents a byte with all bits zero.
+The NULL in place of anameN+1 signals the end of the ASCII attribute data.</p>
+</div>
+<div class="paragraph">
+<p>PROPOSED: A second type of attribute has an ASCII key but a binary
+value. Such attributes follow the ASCII-valued ones after the double
+NULLs:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>anameN+1 NULL uintN &lt;uintN binary bytes&gt; [...0 or more binary attribute pairs]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>where, for each binary attribute pair, the uintN is of size AWid and
+is the length of the binary value for its ASCII key.</p>
+</div>
+<div class="paragraph">
+<p>Every object in the database may have zero or more attributes attached
+to it; the meaning of these attributes will vary depending on which
+application or library processes them.</p>
+</div>
+<div class="paragraph">
+<p>There are several aname conventions that all BRL-CAD applications are
+expected to respect.  There will be a WWW extendable registry of
+"in-use" anames, so that independent applications developers may
+select aname strings for their own use without fear of name conflicts
+later.  The initial registry would include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>comment = Every object may optionally have a comment that contains a
+string of an arbitrary number of newline-terminated lines of
+text. These are strings for use by humans only. None of the BRL-CAD
+software may parse or interpret these strings other than to print
+them and edit them when requested by the user. They are provided for
+the modeler to place notes in.</p>
+</li>
+<li>
+<p>nsn = The American National Stock Number (NSN) for this part, when
+known.</p>
+</li>
+<li>
+<p>material = The format of this string is not currently defined as
+there are conflicting naming/coding conventions employed by the
+various standards organizations (e.g., ISO, ASME, etc.).</p>
+</li>
+<li>
+<p>region = For combinations, indicates this combination is a
+region. Boolean.</p>
+</li>
+<li>
+<p>inherit = For combinations, indicates whether attributes from lower
+combinations in tree will replace higher ones. Boolean, default=0.</p>
+</li>
+<li>
+<p>oshader = For combinations, read by the "rt" program, optical shader
+name and parameter string (separated from each other by white
+space). Meaningful only at or above a region node, and only on a
+combination, or in an attribute-only "macro".</p>
+</li>
+<li>
+<p>rgb = For combinations, when present indicates optical rgb color is
+specified.</p>
+</li>
+<li>
+<p>region_id = For regions, GIFT compatibility. Integer.</p>
+</li>
+<li>
+<p>giftmater = For regions, GIFT compatibility. Integer. (Point of
+Discussion?????Should we use negative values for air codes, positive
+for non-air, so we can eliminate air codes?)</p>
+</li>
+<li>
+<p>aircode = For regions, air code. Integer. 0 is the same as attribute
+not specified. (Point of Discussion?????Possibly eliminated in favor
+of negative giftmater values).</p>
+</li>
+<li>
+<p>los = For regions, GIFT compatibility. Integer.</p>
+</li>
+<li>
+<p>component = For regions, the name of the MUVES component containing
+this object.</p>
+</li>
+<li>
+<p>rlist = The proposed BRL-CAD "replacement list" field would be
+stored on a binary-block attribute ("rlist="). [deferred
+implementation]</p>
+</li>
+<li>
+<p>macro = If present, specifies name of an attribute-only object to be
+consulted for additional attribute values.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>All other attributes, from whatever source, would be stored similarly,
+including application-specific and end-user-created attributes.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_object_body"><a class="anchor" href="#_object_body"></a>2.7. Object Body</h3>
+<div class="paragraph">
+<p>The contents of the Object Body are opaque?? to the database layer.
+The contents of this element are interpreted based upon the
+Object_Type.  The Object_Body is not constrained to start on a chunk
+boundary.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_padding_and_length_rounding"><a class="anchor" href="#_padding_and_length_rounding"></a>2.8. Padding and Length Rounding</h3>
+<div class="paragraph">
+<p>The minimal object is a Free object (with no name) 8 bytes long:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Magic1 (1 byte)
+HFlags = 000xxxxx (1 byte)
+AFlags = 0000xx00 (1 byte)
+BFlags = 0000xx00 (1 byte)
+ObjType = Free (2 bytes)
+ObjLen = 8 (1 byte)
+Magic2 (1 byte)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is why we have chosen the 8-bit size for our chunks.  Pad bytes
+are inserted as necessary in the Object Footer immediately before the
+second magic number so that the final byte of the object is the Magic2
+byte.  The pad bytes are not counted as part of the Body_Length, but
+are counted as part of the Object_Length.</p>
+</div>
+<div class="paragraph">
+<p>The minimal valid object is thus the following Free object:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Magic1 (1 byte)
+HFlags = 00000x10 (1 byte), OWid=00, NP=0, NWid=00, DLI=10
+AFlags = 000xx000 (1 byte), AWid=00, AP=0, AZ=000
+BFlags = 000xx000 (1 byte), BWid=00, BP=0, BZ=000
+Object_Type = RESERVED (2 bytes)
+Object_Length = 8 (1 byte)
+Magic2 (1 byte)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The header of the database will always look like this:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Magic1 (1 byte)
+HFlags = 000xxx01 (1 byte), HWid=00, NP=0, DLI=01
+AFlags = 00000000 (1 byte), AWid=00, AP=0, AZ=000
+BFlags = 00000000 (1 byte), BWid=00, BP=0, BZ=000
+Object_Type = RESERVED (2 bytes)
+Object_Length = 8 (1 byte)
+Magic2 (1 byte)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The hex and ASCII dump of this object would look something this:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>76 01 00 00 00 01 00 35 |v......5|</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The minimal valid allocated database storage object (with an
+Object_Name, no Object_Attributes or Object_Body) would thus be:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Magic1 (1 byte)
+HFlags = 00100x00 (1 byte), OWid=00, NP=1, NWid=00, DLI=00
+AFlags = 000xx000 (1 byte), AWid=00, AP=0, AZ=000
+BFlags = 000xx000 (1 byte), BWid=00, BP=0, BZ=000
+Object_Type = OPAQUE?????_BINARY (2 bytes)
+Object_Length = 16 (1 byte)
+Name_Length = 2 (1 byte)
+Object Name (1 character + null byte) (2 bytes)
+Pad (5 bytes)
+Magic2 (1 byte)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Without the padding, that (rather useless) object would be 11 bytes
+long.  Given the rounding requirements, it is clear that all allocated
+storage objects in the database must be at least 16 bytes long.  A
+database object with a minimal Object_Body would need 12 bytes, which
+would need to be padded out to 16 bytes as well:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Magic1 (1 byte)
+HFlags = 001xxxxx (1 byte)
+?? correctly xfer these data to A/B flags: IFlags???? = 00x1xxxx (1 byte)
+AFlags = 00000000 (1 byte), AWid=00, AP=0, AZ=000
+BFlags = 00000000 (1 byte), BWid=00, BP=0, BZ=000
+Object Type (2 bytes)
+Object Length = 16 (1 byte)
+Name Length = 2 (1 byte)
+Object Name (1 character + null byte) (2 bytes)
+Body Length = 1 (1 byte)
+Body Data (1 byte)
+Pad (4 bytes)
+Magic2 (1 byte)</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_how_objects_are_grouped_into_a_database"><a class="anchor" href="#_how_objects_are_grouped_into_a_database"></a>2.9. How Objects Are Grouped into a Database</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_details_of_brl_cad_specific_nongeometric_database_object_types"><a class="anchor" href="#_details_of_brl_cad_specific_nongeometric_database_object_types"></a>2.10. Details of BRL-CAD-Specific Nongeometric Database Object Types</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_details_of_brl_cad_specific_geometric_database_object_types"><a class="anchor" href="#_details_of_brl_cad_specific_geometric_database_object_types"></a>2.11. Details of BRL-CAD-Specific Geometric Database Object Types</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_extensions_for_deferred_implementation"><a class="anchor" href="#_extensions_for_deferred_implementation"></a>2.12. Extensions for Deferred Implementation</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_community_feedback_on_the_proposal"><a class="anchor" href="#_community_feedback_on_the_proposal"></a>2.13. Community Feedback on the Proposal</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_database_library_application_programming_interface"><a class="anchor" href="#_database_library_application_programming_interface"></a>2.14. Database Library Application Programming Interface (API)</h3>
+
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="../presentations/intro-to-tcltk.html">Introduction to Tcl/Tk</a></span>
+  <span class="next"><a href="../man/1.html">man1</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../ui/js/site.js"></script>
+<script src="../../ui/js/vendor/lunr.js"></script>
+<script src="../../ui/js/vendor/search.js" id="search-script" data-base-path="../.." data-page-path="/docs/specifications/BRL_CAD_g_format_V5.html"></script>
+<script async src="../../ui/../search-index.js"></script>
+<script async src="../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

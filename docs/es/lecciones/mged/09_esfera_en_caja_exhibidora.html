@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>9. Crear una esfera en una caja exhibidora transparente :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/es/lecciones/mged/09_esfera_en_caja_exhibidora.html">
+    <link rel="prev" href="08_prop_materiales_copa2.html">
+    <link rel="next" href="10_crear_taza.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../ui-es/css/site.css">
+    <link rel="stylesheet" href="../../../ui-es/css/search.css">
+    <link rel="stylesheet" href="../../../ui-es/css/custom.css">
+    <script>var uiRootPath = '../../../ui-es'</script>
+    <link rel="icon" href="../../../ui-es/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../../ui-es/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="es" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lecciones</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01_crear_figuras_primitivas.html">1. Crear Figuras Primitivas with MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02_opciones_vistas.html">2. Reconocer las opciones de vistas en MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03_utilizar_comando_in.html">3. Usar el comando Insert en MGED para dimensionar y ubicar figuras</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="04_prop_materiales.html">4. Asignación de propiedades de los materiales y trazado de rayos (Raytracing) en MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="05_expresiones_booleanas.html">5. Expresiones Booleanas</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="06_crear_una_copa.html">6. Crear una copa</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="07_prop_materiales_copa.html">7. Asignar propiedades de los materiales a una copa</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="08_prop_materiales_copa2.html">8. Asignar más propiedades de los materiales a la copa</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="09_esfera_en_caja_exhibidora.html">9. Crear una esfera en una caja exhibidora transparente</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="10_crear_taza.html">10. Crear una taza</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="11_refinar_taza.html">11. Refinando el modelo de la taza</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="12_taza_desde_gui.html">12. Crear el modelo de una taza utilizando la interfaz de MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="13_ubicar_figuras_en_3d.html">13. Ubicar figuras en espacios 3-D</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="14_ubicar_figuras_en_3d_2.html">14. Ejercicios adicionales de ubicación de imágenes en espacios 3-D</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="15_crear_camion_de_juguete.html">15. Crear un camión de juguete</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="16_mod_tech_struct.html">16. Aprender técnicas de modelado y estructuras</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Spanish</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../../index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">Spanish</a></li>
+    <li>Lecciones</li>
+    <li><a href="../mged.html">MGED</a></li>
+    <li><a href="09_esfera_en_caja_exhibidora.html">9. Crear una esfera en una caja exhibidora transparente</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/translations/es/modules/lecciones/pages/mged/09_esfera_en_caja_exhibidora.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">9. Crear una esfera en una caja exhibidora transparente</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>En este tutorial aprenderá a:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Utilizar la GUI para crear una caja exhibidora usando formas arb8.</p>
+</li>
+<li>
+<p>Crear una esfera dentro de la caja exhibidora.</p>
+</li>
+<li>
+<p>Asignar propiedades del material para hacer que los objetos parezcan
+más reales.</p>
+</li>
+<li>
+<p>Rotar un objeto 180'0 usando la opción Rotate (Rotación) del menú
+Edit (Editar)</p>
+</li>
+<li>
+<p>Utilizar la opción de color del Combination Editor para producir
+colores personalizados.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_globe_in_display_newdb"><a class="anchor" href="#_globe_in_display_newdb"></a>1. Crear una nueva base de datos</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Comience creando una nueva base de datos llamada cube.g.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_globe_create_display_box"><a class="anchor" href="#_globe_create_display_box"></a>2. Creando la caja exhibidora</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vaya al menú Create (Crear), seleccione la categoría Arbs, y luego
+seleccione un arb8 (polihedro arbitrario convexo de ocho
+vértices). Cuando se le pregunte por un nombre para el arb8, nómbrelo
+cube1.s.  Cliquee en Apply (Aplicar). Vaya al menú Edit (Editar) y
+cliquee en Accept (Aceptar). Ahora tiene un cubo para el exterior de
+la caja, como se muestra en la siguiente figura:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/09_globe_outside_display_box.png" alt="09 globe outside display box">
+</div>
+<div class="title">Figure 1. El exterior de la caja exhibidora</div>
+</div>
+<div class="paragraph">
+<p>Repita la primera parte de este proceso para producir otro arb8, esta
+vez llame esta forma cube2.s.  Vaya al menú Edit (Editar) y cliquee en
+Scale (Escala). Coloque el puntero del mouse en la mitad inferior de
+la ventana gráfica y cliquee el botón central del mouse hasta que el
+segundo cubo sea apenas menor que el primero, como el siguiente:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/09_globe_inside_outside_box.png" alt="09 globe inside outside box">
+</div>
+<div class="title">Figure 2. El interior y exterior de la caja exhibidora</div>
+</div>
+<div class="paragraph">
+<p>En el menu View (Vista) y cambie la vista a Front (Frontal). Luego, en
+el menú Edit (Editar) cliquee en Translate (Traslación). Mantenga
+apretada la tecla SHIFT y arrastre el cubo interior hacia la posición
+en el centro del cubo exterior.  Repita este proceso desde la vista
+superior e izquierda hasta que el cubo más pequeño este ubicado en el
+centro del cubo exterior viéndolo desde todas las perspectivas.
+Cuando haya terminado, regrese a Edit (Editar) y cliquee en Accept
+(Aceptar).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_create_globe_in_box"><a class="anchor" href="#_create_globe_in_box"></a>3. Crear una esfera dentro de la caja exhibidora</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vaya al menú Create (Crear) y seleccione sph de la lista Ellipsoid
+(Elipsoides). Nombre la forma como globe1.s y cliquee en Apply
+(Aplicar).</p>
+</div>
+<div class="paragraph">
+<p>Una esfera debería aparecer dentro del cubo en la Graphics Window.
+Cambie a la vista frontal.</p>
+</div>
+<div class="paragraph">
+<p>Vaya al menú Edit (Editar) y seleccione Scale (Escalar). Reduzca el
+tamaño de la esfera hasta que se ajuste dentro del cubo y luego
+arrástrela hacia el centro del cubo.  Vaya a Edit y Acepte los
+cambios.  La esfera y la caja deberían ser similares a la siguiente
+imagen, en una vista az35 y el25:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/09_globe_wireframe.png" alt="09 globe wireframe">
+</div>
+<div class="title">Figure 3. Representaci&#xF3;n en malla de alambre de la</div>
+</div>
+<div class="paragraph">
+<p>Para ver el contenido de la base de datos, tipee en el prompt de la
+línea de comandos:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">ls <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Debería ver listados a cube1.s, cube2.s y globe1.s, que son las formas
+que ha creado.  Para hacer regiones con estas formas, tipee en el
+prompt:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r cube1.r u cube1.s - cube2.s <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r globe1.r u globe1.s <kbd>Enter</kbd></code></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_globe_assign_mater_prop"><a class="anchor" href="#_globe_assign_mater_prop"></a>4. Utilizar el Combination Editor para asignar propiedades de losmateriales que hacen a los objetos parecer más reales</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>En el menú Edit (Editar) seleccione Combination Editor (Editor de
+combinaciones). En la caja de diálogo, cliquee el botón al lado de la
+caja de ingreso del Nombre.  Seleccione globe1.r desde Select From All
+o Select From All Regions (Seleccionar de todas las regiones). Haga un
+doble click sobre el nombre globe1.r.  Asigne a esta región un
+sombreado de nube.  Chequee la caja de entrada de expresiones
+booleanas para asegurarse que la región está hecha de u globe1.s.
+Cliquee en Apply para aceptar su elección.  Cambie la vista en el menú
+View a az35, el25.</p>
+</div>
+<div class="paragraph">
+<p>Regrese a Name (Nombre) y seleccione cube1.r desde el menú Select
+From All.  Asigne a esta región un sombreado de vidrio.  El sombreado
+de vidrio es un acceso directo para cambiar individualmente los
+atributos del sombreado plástico para que se parezca al del vidrio.</p>
+</div>
+<div class="paragraph">
+<p>Vaya a la opción Color e ingrese lo valores 244 255 255.  Esto le dará
+a su caja de vidrio un color de luz cian.  Cliquee en Apply para
+aceptar los cambios.</p>
+</div>
+<div class="paragraph">
+<p>Antes que pueda generar el Raytrace de su diseño, necesitará limpiar
+la ventana gráfica tipenado Z en el prompt de la ventana de comandos.
+Ambas formas y regiones son mostradas en este punto.  Luego, tipee en
+la ventana de comandos:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">draw cube1.r globe1.r <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>La caja y la esfera deberían reaparecer en la ventana gráfica.  En el
+menú File (Archivo) seleccione Raytrace.  Luego, seleccione la opción
+blanca para el Background Color (Color de fondo). Cliquee en Raytrace.</p>
+</div>
+<div class="paragraph">
+<p>Su diseño debería mostrar un cubo de vidrio cian claro con una esfera
+azul dentro.  Diríjase a Framebuffer (en el Raytrace Panel) y
+seleccione Overlay (Superposición), para quitar la vista en malla de
+alambre.  La pantalla debería parecerse a la de la siguiente
+ilustración:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/09_globe_raytraced.png" alt="09 globe raytraced">
+</div>
+<div class="title">Figure 4. Trazado de la caja y la esfera</div>
+</div>
+<div class="paragraph">
+<p>Para hacer este diseño más interesante, puede colocar la esfera sobre
+una base.  Regrese a Framebuffer y cliquee en Active para
+desactivarlo.  Luego, en el menú Create (Crear), en la categoría Cones
+and Cylinders (Conos y cilindros) seleccione el trc (cono truncado
+recto). Nombre la forma como base1.s.  Trabajando desde una vista
+frontal, vaya al menú Edit (Editar) y seleccione Scale
+(Escala). Cliquee el botón central del mouse para reducir el trc a un
+tamaño apropiado, acorde a la base de la esfera.  (Puede necesitar
+incrementar el tamaño de la ventana gráfica o disminuir la vista de la
+figura para ver la parte inferior del trc). A continuación reduzca la
+altura seleccionando Set H en el menú Edit (Editar) y cliquee con el
+botón central del mouse.  Es probable que tenga que alternar entre
+estas dos opciones varias veces para obtener el tamaño adecuado.
+Cuando haya terminado no haga clic en Accept aún, ya que debemos hacer
+más cambios.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_globe_move_rotate"><a class="anchor" href="#_globe_move_rotate"></a>5. Mover y rotar un objeto</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Así junto a otras características en <code class="app">MGED</code>, mover y rotar
+objetos puede ser realizado de distintas maneras, de acuerdo a la
+precisión deseada.  Como fue descripto previamente, las funciones
+Shift Grip (Arrastrar utilizando el mouse) pueden ser usadas como una
+manera rápida para cambiar un objeto cuando su ángulo exacto y
+localización no son importantes.  Alternativamente, para alcanzar una
+mayor precisión, pueden aplicarse los comandos Translate (Traslación)
+y Rotate (Rotación) del menú Edit (Editar), ingresando los números de
+los parámetros específicos en la línea de comandos.  En este tutorial,
+experimentaremos con ambos métodos.</p>
+</div>
+<div class="paragraph">
+<p>Con su trc aún en modo de edición y con una vista frontal, use la
+tecla SHIFT y el botón izquierdo del mouse para arrastrar la forma
+hasta situarla en el piso del cubo, apenas tocando la caja interior.
+Note que podría haber seleccionado Translate (Trasladar) desde el menú
+Edit (Editar) ingresando los parámetros en la línea de comandos para
+mover el trc a un lugar exacto; sin embargo, en este caso es
+suficiente alinear la forma con el método de arrastrar-y-soltar.  En
+este punto, ud puede notar que su trc necesita ser apenas
+redimensionado para ajustarse mejor a la esfera.  Use Scale (Escalar)
+y Set H (Ajuste h) de ser necesario y luego acepte los cambios.</p>
+</div>
+<div class="paragraph">
+<p>Ahora necesitamos hacer un segundo trc llamado base2.s, el cual
+usaremos para el techo de la base.  En el prompt de la línea de
+comandos, tipee:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">cp base1.s base2.s</code></p>
+</div>
+<div class="paragraph">
+<p>El segundo trc aparecerá directamente encima del primer trc.
+Utilizaremos el Primitive Selection (Selección de primitivos) desde el
+menú Edit (Editar) para nombrarlo base2.s, girarlo y posicionarlo
+sobre el trc previamente creado.</p>
+</div>
+<div class="paragraph">
+<p>Para ello, podemos utilizar las teclas CTRL y ALT (para limitar la
+rotación) y el botón izquierdo del mouse moviéndolo hacia arriba y
+abajo hasta que el trc quede invertido.  (Si utiliza este método,
+tenga en cuenta que puede soltar el botón del ratón y liberar el
+objeto, tomándolo nuevamente para posicionarlo como sea deseado). Sin
+embargo, como sabemos que queremos rotar la forma en un valor exacto
+de 180'0 sobre el eje x, utilizaremos un método más preciso para
+rotarla.  Seleccione Rotate (Rotación) desde el menú Edit (Editar) y
+luego tipee los parámetros (abreviado con la p) en la línea de
+comandos, como se muestra a continuación:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">p 180 0 0 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Nuestra forma debería haberse dado vuelta y pasado a la parte inferior
+de la primera trc.  (Los dos ceros que ingresó indican que no hay
+rotación a lo largo de los ejes Y y Z). Ahora presione la tecla SHIFT
+y el botón izquierdo del mouse para arrastrar base2.s y apoyarla en la
+parte superior de base1.s.  Las dos formas deberían constituir una
+base para sostener su globo.  Compruebe la alineación utilizando
+múltiples vistas y luego acepte los cambios.</p>
+</div>
+<div class="paragraph">
+<p>En el menú Edit (Editar) y diríjase al Primitive Selection (Selección
+de primitivos) y cliquee en globe1.r/globe1.s.  Como hizo con las
+formas trc, arrastre la esfera con el mouse y la tecla SHIFT hacia
+abajo hasta que esté en su lugar sobre la base.  Regrese a Edit
+(Editar) y cliquee en Accept (Aceptar). Su diseño debería verse como
+el siguiente:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/09_globe_base_box_wireframe.png" alt="09 globe base box wireframe">
+</div>
+<div class="title">Figure 5. Representaci&#xF3;n en malla de alambre de</div>
+</div>
+<div class="paragraph">
+<p>Para hacer la región de la base, tipee en el prompt de la línea de
+comandos:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r base1.r u base1.s u base2.s <kbd>Enter</kbd></code></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_globe_use_color_tool"><a class="anchor" href="#_globe_use_color_tool"></a>6. Utilizar el Color Tool (Herramientas de color) del CombinationEditor (Editor de combinaciones) para producir colores personalizados.</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>En la ventana del editor de combinaciones, cliquee sobre la caja de
+texto a la derecha de Nombre y luego desde Select From All elija
+base1.r.  Asigne a la base una textura de plástico.  En la caja de
+color, ingrese los números:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">217 217 217</code></p>
+</div>
+<div class="paragraph">
+<p>Aplique sus cambios.  Antes que pueda generar el Raytrace de su diseño
+completo, deberá despejar primero la ventana gráfica y reconstruir su
+diseño tipeando en el prompt de la línea de comandos:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">Z <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">draw cube1.r globe1.r base1.r <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Cambie la vista a az35, el25 y luego genere el Raytrace, el cual
+deberá ser similar al siguiente:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/09_globe_base_box_raytraced.png" alt="09 globe base box raytraced">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_globe_in_display_box_review"><a class="anchor" href="#_globe_in_display_box_review"></a>7. Repasemos&#8230;&#8203;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>En este tutorial aprendió a:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Utilizar la GUI para crear una caja usando las formas arb8.</p>
+</li>
+<li>
+<p>Crear una esfera dentro de la caja.</p>
+</li>
+<li>
+<p>Utilizar el Combination Editor para asignar propiedades de los
+materiales que hacen a los objetos parecer más reales.</p>
+</li>
+<li>
+<p>Rotar un objeto 180'0 usando la opción rotar del menú Edit.</p>
+</li>
+<li>
+<p>Utilizar la opción de color del Combination Editor para producir
+colores personalizados.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="08_prop_materiales_copa2.html">8. Asignar más propiedades de los materiales a la copa</a></span>
+  <span class="next"><a href="10_crear_taza.html">10. Crear una taza</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../ui-es/js/site.js"></script>
+<script src="../../../ui-es/js/vendor/lunr.js"></script>
+<script src="../../../ui-es/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/es/lecciones/mged/09_esfera_en_caja_exhibidora.html"></script>
+<script async src="../../../ui-es/../search-index.js"></script>
+<script async src="../../../ui-es/js/vendor/highlight.js"></script>
+  </body>
+</html>

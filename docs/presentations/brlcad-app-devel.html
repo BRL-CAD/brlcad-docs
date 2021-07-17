@@ -1,0 +1,1946 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Application Development :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/docs/presentations/brlcad-app-devel.html">
+    <link rel="prev" href="../devguides/bool_eval_development.html">
+    <link rel="next" href="intro-to-tcltk.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../ui/css/site.css">
+    <link rel="stylesheet" href="../../ui/css/search.css">
+    <link rel="stylesheet" href="../../ui/css/custom.css">
+    <script>var uiRootPath = '../../ui'</script>
+    <link rel="icon" href="../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../about.html">About</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lessons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../lessons/mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/01_creating_primitive_shapes.html">1. Creating Primitive Shapes in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/02_learning_viewing_options.html">2. Learning Viewing Options in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/03_using_insert_command.html">3. Using the Insert Command in MGED to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/04_assign_mat_prop_rt.html">4. Assigning Material Properties and Raytracing in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/05_learning_boolean_expressions.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/06_creating_a_goblet.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/07_goblet_material_properties.html">7. Assigning Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/08_goblet_material_properties2.html">8. Assigning More Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/09_globe_in_display_box.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/10_creating_mug.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/11_refining_mug.html">11. Refining a Mug Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/12_mug_through_gui.html">12. Creating a Mug Model using the MGED Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/13_placing_shapes_in_3d.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/14_placing_shapes_in_3d_2.html">14. Additional Exercises Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/15_creating_a_toy_truck.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/16_mod_tech_struct.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Books</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../hacking/index.html">Hacking BRL-CAD</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting Started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part1/chapter1.html">A Call to Arms (and Contributors)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part1/chapter2.html">Feature Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developers</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part2/chapter3.html">Working with Our Code</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part2/chapter4.html">What Code to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part2/chapter5.html">Contributing Code</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Documenters</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part3/chapter6.html">Working with Our Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part3/chapter7.html">Types of Documentation We Maintain</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part3/chapter8.html">What Documentation to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part3/chapter9.html">Contributing Documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Other Contributors</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part4/chapter10.html">You Can Help Too</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendix: Resources and Examples</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix1.html">Further References and Resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix2.html">Doc Template: New MGED Command</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix3.html">Code Example: Shooting Rays</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix4.html">Code Example: Walking Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix5.html">Code Example: Command Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix6.html">Example Code: Root Solving</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials/index.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tutorials/overview.html">I. An Overview of BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials/mged-intro.html">II. Introduction to MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/preface1.html">Preface</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/preface2.html">Acknowledgments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter1.html">1. Creating Primitive Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter2.html">2. Learning the Viewing Options</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter3.html">3. Using the Insert Command to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter4.html">4. Assigning Material Properties and Raytracing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter5.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter6.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter7.html">7. Assigning Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter8.html">8. Assigning More Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter9.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter10.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter11.html">11. Refining the Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter12.html">12. Creating the Mug Through the GUI</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter13.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter14.html">14. Gaining More Practice Placing Shapes in Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter15.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter16.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/appendix1.html"><code class="app">MGED</code> Commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials/modeling.html">III. Modeling</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter2.html">2. The Model Process</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter3.html">3. Measuring data</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter4.html">4. Organizing the Structure</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter5.html">5. Developing Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter6.html">5. Evaluating Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter7.html">7. Logging Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendices</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix1.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix2.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix3.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix4.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix5.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix6.html">Using the build_region Command</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials/converting.html">IV. Converting</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter2.html">2. Pertinent Characteristics of the BRL-CAD Format</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter3.html">3. Converting From/to ASCII</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter4.html">4. Converting to BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter5.html">5. Converting From BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter6.html">6. Building a New Converter</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter7.html">7. Postconversion Issues</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../articles/index.html">Articles</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/build_pattern.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/build_region.html">Using the build_region Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/camo_shader.html">Camouflage shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/ebm_primitive.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/gcv.html">The Geometry Conversion Library</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/ged.html">GED: An Interactive Solid Modeling System</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../articles/mged/index.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../articles/mged/tutorial.html">Tutorial</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../articles/mged/gui.html">Graphical User Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../articles/mged/command-line-editing.html">Command Line Editing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../articles/mged/user-commands.html">User Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../articles/mged/developer-commands.html">Developer Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../articles/mged/tcl-variables.html">Tcl Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../articles/mged/env.html">Environment Variable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../articles/mged/callback.html">Callback</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../articles/mged/glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../articles/mged/brlcad-solid.html">BRL-CAD Solid</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/mgedrc.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/nirt.html">Interactive Raytracing: The nirt Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/overlap_tool.html">The Overlap Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/oed.html">Object Editing - the oed Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/pipes.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/projection_shader.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/tire.html">Vehicle Tire and Wheel Creation in BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/TEMPLATE.html">TEMPLATE</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Misc</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Dev Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../devguides/bool_eval_development.html">NURBS Boolean Evaluation Development Guide</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Presentations</span>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="brlcad-app-devel.html">Application Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="presentations:_attachments/brlcad-app-devel.html">brlcad-app-devel</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="intro-to-tcltk.html">Introduction to Tcl/Tk</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../specifications/BRL_CAD_g_format_V5.html">BRL-CAD Database Format</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Manual Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../man/1.html">man1</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../man/3.html">man3</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../man/5.html">man5</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../man/n.html">mann</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Wiki Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">page-1</span>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">BRL-CAD</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../es/index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../es/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">BRL-CAD</a></li>
+    <li>Misc</li>
+    <li>Presentations</li>
+    <li><a href="brlcad-app-devel.html">Application Development</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/docs/modules/presentations/pages/brlcad-app-devel.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Application Development</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="title">This a code-intensive presentation for Code Warriors only!</div>
+Non-programmers will need atropine, caffeine, and electro-shock
+therapy (run, do not walk, to the nearest exit).
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_introduction"><a class="anchor" href="#_introduction"></a>1. Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A suite of utilities capable of interactively displaying, editing, and
+interrogating geometric models is known as BRL-CAD.  BRL-CAD has
+become a powerful constructive solid geometry (CSG) modeling package.
+The package includes a large collection of tools and utilities
+including an interactive geometry editor, ray tracing and generic
+framebuffer libraries, a network-distributed image-processing and
+signal-processing capability, and an embedded scripting language.</p>
+</div>
+<div class="paragraph">
+<p>A particular strength of the package lies in its ability to build and
+analyze realistic models of complex objects using a relatively small
+set of "primitive shapes." Another strength of the package is the
+speed of its ray tracer, which is one of the fastest in existence.
+Finally, BRL-CAD users can accurately model objects on scales ranging
+from the subatomic through the galactic and get "all the details, all
+the time." BRL-CAD has been used for a wide variety of engineering and
+graphics applications.  BRL-CAD is basically a collection of
+libraries, tools, and utilities that work together to create,
+raytrace, and interrogate geometry and manipulate files and data.  In
+BRL-CAD library, Each library fits into one of three categories:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>creating and/or editing geometry,</p>
+</li>
+<li>
+<p>raytracing geometry</p>
+</li>
+<li>
+<p>image handling.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The application side of BRL-CAD also offers a number of tools and
+utilities.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>rt</code> </dt>
+<dd>
+<p>the main raytracer for rendering images in BRL-CAD.</p>
+</dd>
+<dt class="hdlist1"><code>nirt</code> </dt>
+<dd>
+<p>a package for firing rays interactively and getting
+information about what the rays run into.</p>
+</dd>
+<dt class="hdlist1"><code>remrt</code> </dt>
+<dd>
+<p>a network-distributed ray tracing package.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_overview"><a class="anchor" href="#_overview"></a>2. Overview</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Header files</p>
+</li>
+<li>
+<p>Shooting Rays</p>
+</li>
+<li>
+<p>Ray-Tracing User Interface Framework (RTUIF)</p>
+</li>
+<li>
+<p>Geometry Forms</p>
+</li>
+<li>
+<p>Creating Geometry</p>
+</li>
+<li>
+<p>Reading Geometry</p>
+</li>
+<li>
+<p>Modifying Geometry</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_header_files"><a class="anchor" href="#_header_files"></a>3. Header Files</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. The Big Six</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Header</th>
+<th class="tableblock halign-left valign-top">Library</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bu.h</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">libbu</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bn.h</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">libbn</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">raytrace.h</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">librt</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rtgeom.h</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">librt / libwdb</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wdb.h</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">libwdb</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">vmath.h</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(data types)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prototype_application_rtexample_c"><a class="anchor" href="#_prototype_application_rtexample_c"></a>4. Prototype Application: rtexample.c</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Opens a database</p>
+</li>
+<li>
+<p>Retrieves geometry</p>
+</li>
+<li>
+<p>Prepares geometry for raytrace</p>
+</li>
+<li>
+<p>Performs raytrace</p>
+</li>
+<li>
+<p>See source tree: <code class="path">rt/rtexample.c</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_necessary_headers"><a class="anchor" href="#_necessary_headers"></a>5. Necessary Headers</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">#include "conf.h"       /* compilation macros           */
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+#include "machine.h"    /* machine specific definitions */
+#include "vmath.h"      /* vector math macros           */
+#include "raytrace.h"   /* librt interface definitions  */</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The conf.h and machine.h are ubiquitous in almost all BRLCAD apps</p>
+</li>
+<li>
+<p>The raytrace.h is present for geometry programs</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Includes some additional headers</p>
+</li>
+<li>
+<p>Contains most ray-tracing data structure definitions</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_opening_the_database"><a class="anchor" href="#_opening_the_database"></a>6. Opening the Database</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">static struct rt_i *rtip; /* librt Instance structure */
+/* rt_dirbuild() performs many functions for us */
+rtip = rt_dirbuild(argv[1], buf, sizeof(buf));
+if (rtip == RTI_NULL) {
+    fprintf(stderr,"rtexample: rt_dirbuild failure\n");
+    exit(2);
+}</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Opens database file</p>
+</li>
+<li>
+<p>Builds a directory of objects in the database</p>
+</li>
+<li>
+<p>Allows us to retrieve individual objects</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_reading_geometry"><a class="anchor" href="#_reading_geometry"></a>7. Reading Geometry</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">if (rt_gettree(rtip, argv[2]) &lt; 0)
+    fprintf(stderr,"rt_gettree(%s) FAILED\n", argv[2]);</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Retrieves tree top specified by argv[2] into a working set used by
+librt</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_preparing_geometry_for_raytracing"><a class="anchor" href="#_preparing_geometry_for_raytracing"></a>8. Preparing Geometry for Raytracing</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">rt_prep_parallel(rtip, 1);</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pre-computes useful terms for each primitive, e.g.,triangle normals,
+function roots, trig terms.</p>
+</li>
+<li>
+<p>Builds space partition tree to accelerate ray-trace</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_application_struct_and_shot"><a class="anchor" href="#_application_struct_and_shot"></a>9. Application Struct and Shot</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">struct application ap;
+ap.a_rt_i = rtip;
+VSET(ap.a_ray.r_pt, 0, 0, 10000);
+VSET(ap.a_ray.r_dir, 0, 0, -1);
+ap.a_hit = hit;	          /* where to go on a hit */
+ap.a_miss = miss;         /* where to go on a miss */
+
+(void)rt_shootray(&amp;); /* do it */</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The application struct contains information about the ray that is to
+be computed and what should be done with the results.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_application_struct"><a class="anchor" href="#_application_struct"></a>10. Application Struct</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Excerpts of application struct from raytrace.h:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">struct application {
+
+    struct xray  a_ray;	/* Actual ray to be shot */
+    int          (*a_hit)(struct application *,
+                          struct partition *,
+                          struct seg *);
+    int          (*a_miss) (struct application *);
+    int          a_onehit; /* flag to stop on first hit */
+
+    struct rt_i  *a_rt_i;  /* this librt instance *
+    /* ... */
+};/</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_miss_routine"><a class="anchor" href="#_miss_routine"></a>11. Miss Routine</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">int
+miss(register struct application *ap)
+{
+    bu_log("missed\n");
+    return (0); /* Value returned by rt_shootray() */
+}</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Called when ray does not hit any geometry.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_hit_routine"><a class="anchor" href="#_hit_routine"></a>12. Hit Routine</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">int
+hit(register struct application *ap, /* see raytrace.h */
+    struct partition *PartHeadp)     /* see raytrace.h */
+{
+    register struct partition *pp;
+    register struct hit *hitp;
+    point_t pt;
+    for (pp = PartHeadp-&gt;pt_forw;
+         pp != PartHeadp;
+         pp = pp-&gt;pt_forw ) {
+        hitp = pp-&gt;pt_inhit;
+        VJOIN1( pt, ap-&gt;a_ray.r_pt, hitp-&gt;hit_dist, ap-&gt;a_ray.r_dir);
+        VPRINT(Hit Point, pt);
+    }
+    return 1; /* value returned by rt_shootray();
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_hit_routine_breakdown"><a class="anchor" href="#_hit_routine_breakdown"></a>13. Hit Routine Breakdown</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">int
+hit(register struct application *ap,
+    struct partition *PartHeadp)
+{
+    register struct partition *pp;
+    register struct hit *hitp;
+    point_t         pt;
+    /* ... */
+}</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Partition Structure contains information about intervals of the ray
+which pass through geometry</p>
+</li>
+<li>
+<p>Hit structure contains information about an individual boundary/ray
+intersection</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_partition_structure"><a class="anchor" href="#_partition_structure"></a>14. Partition Structure</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">struct partition {
+    long              pt_magic;       /* sanity check               */
+    struct partition *pt_forw;        /* forwards link              */
+    struct partition *pt_back;        /* backwards link             */
+    struct seg       *pt_inseg;       /* IN seg ptr (gives stp)     */
+    struct hit       *pt_inhit;       /* IN hit pointer             */
+    struct seg       *pt_outseg;      /* OUT seg pointer            */
+    struct hit       *pt_outhit;      /* OUT hit ptr                */
+    struct region    *pt_regionp;     /* ptr to containing region   */
+    char              pt_inflip;      /* flip inhit-&gt;hit_normal     */
+    char              pt_outflip;     /* flip outhit-&gt;hit_normal    */
+    struct region   **pt_overlap_reg; /* NULL-terminated array of
+                                       * overlapping regions.
+                                       * NULL if no overlap.
+                                       */
+    struct bu_ptbl  pt_seglist;       /* all segs in this partition */
+};</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>From <code class="path">h/raytrace.h</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_hit_structure"><a class="anchor" href="#_hit_structure"></a>15. Hit Structure</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">struct hit {
+    long         hit_magic;
+    fastf_t      hit_dist;    /* dist from r_pt to hit_point      */
+    point_t      hit_point;   /* Intersection point               */
+    vect_t       hit_normal;  /* Surface Normal at hit_point      */
+    vect_t       hit_vpriv;   /* PRIVATE vector for xxx_*()       */
+    void        *hit_private; /* PRIVATE handle for xxx_shot()    */
+    int          hit_surfno;  /* solid-specific surface indicator */
+    struct xray *hit_rayp;    /* pointer to defining ray          */
+};</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>From <code class="path">raytrace.h</code>.</p>
+</li>
+<li>
+<p>Holds information about a single ray/surface intersection.</p>
+</li>
+<li>
+<p>(Note: Only <code class="path">hit_dist</code> is filled in by <code class="path">librt</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_hit_routine_again"><a class="anchor" href="#_hit_routine_again"></a>16. Hit Routine (Again)</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">int
+hit(register struct application *ap, /* see raytrace.h */
+    struct partition *PartHeadp)     /* see raytrace.h */
+{
+    register struct partition *pp;
+    register struct hit *hitp;
+    point_t pt;
+    for (pp = PartHeadp-&gt;pt_forw;
+         pp != PartHeadp;
+         pp = pp-&gt;pt_forw ) {
+        hitp = pp-&gt;pt_inhit;
+        VJOIN1(pt, ap-&gt;a_ray.r_pt, hitp-&gt;hit_dist, ap-&gt;a_ray.r_dir);
+        VPRINT(Hit Point, pt);
+    }
+    return 1; /* value returned by rt_shootray();
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_the_rtuif"><a class="anchor" href="#_using_the_rtuif"></a>17. Using the RTUIF</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Makes shooting grids of rays easy.</p>
+</li>
+<li>
+<p>Uses the same command line interface as rt.</p>
+</li>
+<li>
+<p>Foundation for: rt, rtweight, rthide, and other raytracing based
+applications.</p>
+</li>
+<li>
+<p>Simplest example shown in rt/viewdummy.c in source tree</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_5_rtuif_functions"><a class="anchor" href="#_the_5_rtuif_functions"></a>18. The 5 RTUIF Functions</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>view_init</p>
+</li>
+<li>
+<p>view_setup</p>
+</li>
+<li>
+<p>view_2init</p>
+</li>
+<li>
+<p>view_pixel</p>
+</li>
+<li>
+<p>view_end</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_rtuif_routines"><a class="anchor" href="#_rtuif_routines"></a>19. RTUIF Routines</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">int view_init(struct application *ap, char *file,
+              char *obj, int minus_o);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Called by <code>main()</code> at the start of a run.  Returns 1 if framebuffer
+should be opened, else 0.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">void view_setup(struct rt_i *rtip);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Called by <code>do_prep()</code>, just before <code>rt_prep()</code> is called, in do.c.
+This allows the lighting model to get set up for this frame, e.g.,
+generate lights, associate materials routines, etc.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">void view_2init(struct application *ap);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Called at the beginning of a frame.  Called by <code>do_frame()</code> just
+before raytracing starts.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_rtuif_routines_2"><a class="anchor" href="#_rtuif_routines_2"></a>20. RTUIF Routines 2</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">int rayhit(struct application *ap, struct partition *PartHeadp);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Called via a_hit linkage from <code>rt_shootray()</code> when ray hits.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">int raymiss(struct application *ap);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Called via a_miss linkage from <code>rt_shootray()</code> when ray misses.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_rtuif_3_routines_3"><a class="anchor" href="#_rtuif_3_routines_3"></a>21. RTUIF 3 Routines 3</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">void view_pixel(struct application *ap);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Called by <code>worker()</code> after the end of processing for each pixel.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">void view_end(struct application *ap);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Called in <code>do_frame()</code> at the end of a frame, just after raytracing
+completes.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_thinking_about_geometry"><a class="anchor" href="#_thinking_about_geometry"></a>22. Thinking About Geometry</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>How to create it</p>
+</li>
+<li>
+<p>How to read it</p>
+</li>
+<li>
+<p>Doing something useful with it</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_geometric_representation"><a class="anchor" href="#_geometric_representation"></a>23. Geometric Representation</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>BRL-CAD geometry has 3 forms:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>External (Disk/DB)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Space efficient</p>
+</li>
+<li>
+<p>Network integers (Big-Endian)</p>
+</li>
+<li>
+<p>IEEE double-precision floating point (Big-Endian)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Internal (Editing)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Convenient parameter editing</p>
+</li>
+<li>
+<p>Host float/int representation</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Prepped (Raytrace)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Fast ray/primitive intersections</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_on_disk_representation"><a class="anchor" href="#_on_disk_representation"></a>24. On-Disk Representation</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Space Efficient</p>
+</li>
+<li>
+<p>Machine independent</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Only in new database format</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Database access is separate from object retrieval.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Database layer returns named objects.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Does not understand content.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Primitive objects get Bag-o-Bytes to turn into in-memory
+representation.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Have no knowledge of data origins</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_internal_representation"><a class="anchor" href="#_internal_representation"></a>25. Internal Representation</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Convenient editing form</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Host format floating point and integers</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Must be exported to be written to disk</p>
+</li>
+<li>
+<p>Primitive shape data structures defined in h/rtgeom.h</p>
+</li>
+<li>
+<p>Combination (and hence region) structure defined in raytrace.h</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prepped_representation"><a class="anchor" href="#_prepped_representation"></a>26. Prepped Representation</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>The form that is actually raytraced</p>
+</li>
+<li>
+<p>Created from internal form by <code>rt_prep()</code> call</p>
+</li>
+<li>
+<p>May not include internal form</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Saves memory</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>May include additional fields</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pre-computed values, additional data</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_simple_database_application"><a class="anchor" href="#_simple_database_application"></a>27. Simple Database Application</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Necessary headers</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">#include "conf.h"
+#include &lt;stdio.h&gt;
+#include "machine.h"
+#include "vmath.h"
+#include "raytrace.h"
+#include "rtgeom.h"
+#include "wdb.h"</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_opening_the_database_2"><a class="anchor" href="#_opening_the_database_2"></a>28. Opening The Database</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">struct rt_wdb *wdbp;
+struct db_i *dbip = DBI_NULL;
+
+/* open first, to avoid clobbering existing databases */
+if ((dbip = db_open(argv[1], "r+w")) != DBI_NULL) {
+    /* build a wdbp structure for convenient read/write */
+    wdbp = wdb_dbopen(dbip, RT_WDB_TYPE_DB_DISK);
+
+    if (db_dirbuild(dbip) &lt; 0 ) {
+        /* create directory database contents */
+        bu_log("Error building directory for %s\n",
+               argv[1]);
+        exit(-1);
+    }
+} else {
+    /* it doesn't exist, so we create one */
+    bu_log("doing wdb_fopen()\n");
+    wdbp = wdb_fopen(argv[1]); /* force create */
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_creating_geometry"><a class="anchor" href="#_creating_geometry"></a>29. Creating Geometry</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Note: All db units are in mm</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Set mk_conv2mm global for other units</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">point_t lo, hi;
+/* ... */
+/* add an axis-aligned ARB8 */
+VSETALL(lo, 0.0);
+VSETALL(hi, 2.0);
+if (mk_rpp(wdbp, "mybox", lo, hi)) /* see libwdb for APIs */
+    return -1;
+
+/* add a sphere (really ellipse special case) */
+if (mk_sph(wdbp, "myball", hi, 0.5)) /* see libwdb for APIs */
+    return -1;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_getting_geometry"><a class="anchor" href="#_getting_geometry"></a>30. Getting Geometry</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>To retrieve geometry, we have to get an internal representation.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">struct rt_db_internal ip;
+/* ... */
+RT_INIT_DB_INTERNAL(&amp;ip);
+cond = rt_db_lookup_internal(wdbp-&gt;dbip, "mybox", &amp;dp, &amp;ip,
+                             LOOKUP_QUIET, &amp;rt_uniresource);
+if (!cond) {
+    bu_log("couldn't find %s\n", "mybox");
+    exit(0);
+}
+if (ip.idb_major_type == DB5_MAJORTYPE_BRLCAD /* see db5.h */
+    &amp;&amp; ip.idb_minor_type == ID_ARB8 /* see raytrace.h */) {
+
+    struct rt_arb_internal *arb; /* see rtgeom.h */
+    arb = (struct rt_arb_internal *)ip.idb_ptr;
+    RT_ARB_CK_MAGIC(arb);
+    VPRINT("First Point", arb-&gt;pt[0]);
+    /* ... */
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_primitive_methods"><a class="anchor" href="#_primitive_methods"></a>31. Primitive Methods</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Retrieved geometry has a specific set of defined operations and
+methods available.</p>
+</li>
+<li>
+<p>See <code class="path">h/raytrace.h</code> for a description of <code class="path">struct
+rt_functab</code>.</p>
+</li>
+<li>
+<p>Primitives should implement every method, but some do not. See
+librt/table.c for specifics.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_putting_geometry_back"><a class="anchor" href="#_putting_geometry_back"></a>32. Putting Geometry Back</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Database I/O layer converts from internal to external format.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">wdb_export(wdbp, "mybox", arb, ID_ARB8, mk_conv2mm);</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_building_boolean_trees"><a class="anchor" href="#_building_boolean_trees"></a>33. Building Boolean Trees</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Regions/combinations used to store boolean trees.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Both are same type of database record</p>
+</li>
+<li>
+<p>old GIFT form detailed here</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Simple boolean tree that contains</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Names of objects</p>
+</li>
+<li>
+<p>Boolean operations.</p>
+</li>
+<li>
+<p>Matrix transformations</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Database record contains no actual geometry.</p>
+</li>
+<li>
+<p>Example code taken from</p>
+<div class="ulist">
+<ul>
+<li>
+<p>libwdb/wdb_example.c</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_constructing_boolean_list"><a class="anchor" href="#_constructing_boolean_list"></a>34. Constructing Boolean List</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Build the list of elements first:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">struct wmember wm_hd; /* defined in wdb.h */
+BU_LIST_INIT(&amp;wm_hd.l);
+
+/* see h/wdb.h or libwdb/reg.c for API conv or proc-db
+ * for examples
+ */
+(void)mk_addmember("mybox", &amp;wm_hd.l, NULL, WMOP_UNION);
+
+/* If we wanted a transformation matrix for this element, we could
+ * have passed the matrix in to mk_addmember as an argument or we
+ * could add the following code:
+ */
+
+memcpy(wm_hd-&gt;wm_mat, trans_matrix, sizeof(mat_t));
+/* Remember that values in the database are stored in millimeters,
+ * so the values in the matrix must take this into account.
+ */
+(void)mk_addmember("myball", &amp; wm_hd.l, NULL, WMOP_SUBTRACT);</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_regionscombinations"><a class="anchor" href="#_regionscombinations"></a>35. Regions/Combinations</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Constructing the actual combination record</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Note: use mk_lcomb/mk_comb for initial creation only!</p>
+<div class="ulist">
+<ul>
+<li>
+<p>caveat: can use to update boolean tree under special conditions</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">int is_region = 1;
+VSET(rgb, 64, 180, 96); /* a nice green */
+
+/* mk_lcomb is a macro using mk_comb.
+ * See libwdb/mk_comb() for full form
+ */
+mk_lcomb(wdbp,
+         "box_n_ball.r", /* Name of the db element created          */
+         &amp;wm_hd,         /* list of elements and boolean operations */
+         is_region,      /* Flag:  This is a region                 */
+         "plastic",      /* optical shader                          */
+         "di=.8 sp=.2",  /* shader parameters                       */
+         rgb,            /* item color                              */
+         0);             /* inherit (override) flag                 */</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_retrieving_a_combination"><a class="anchor" href="#_retrieving_a_combination"></a>36. Retrieving A Combination</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Simple retrieval only gets:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>List of elements</p>
+</li>
+<li>
+<p>Boolean operations</p>
+</li>
+<li>
+<p>Matrix transformations.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">struct rt_comb_internal *comb; /* see raytrace.h */
+/* ... */
+rt_db_lookup_internal(wdbp-&gt;dbip, "box_n_ball.r", &amp;dp, &amp;ip,
+                      LOOKUP_QUIET, &amp;rt_uniresource);
+
+if (ip.idb_major_type != DB5_MAJORTYPE_BRLCAD /* see db5.h */
+    || ip.idb_minor_type != ID_COMBINATION /* see raytrace.h */ ) {
+    bu_bomb("gack\n");
+}
+comb = (struct rt_comb_internal *)ip.idb_ptr;
+RT_CK_COMB(comb);</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_combination_write_back"><a class="anchor" href="#_combination_write_back"></a>37. Combination Write-Back</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Modify the boolean tree</p>
+</li>
+<li>
+<p>Write back out to db</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">/* Modify the combination we retrieved */
+BU_GET(a, union tree);
+RT_TREE_INIT(a);
+BU_GET(b, union tree);
+RT_TREE_INIT(b);
+
+a-&gt;tr_l.tl_name = bu_strdup("newball");
+a-&gt;tr_l.tl_op = OP_DB_LEAF;
+a-&gt;tr_l.tl_mat = (matp_t)NULL;
+a-&gt;tr_l.magic = RT_TREE_MAGIC;
+
+b-&gt;tr_b.magic = RT_TREE_MAGIC;
+b-&gt;tr_b.tb_left = comb-&gt;tree;
+b-&gt;tr_b.tb_right = a;
+b-&gt;tr_b.tb_op = OP_UNION;
+
+comb-&gt;tree = b;
+wdb_export(wdbp, "box_n_ball.r", comb, ID_COMBINATION, 1.0);</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_combination_tree_info"><a class="anchor" href="#_combination_tree_info"></a>38. Combination Tree Info</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Need to prep the tree to obtain geometry</p>
+<div class="ulist">
+<ul>
+<li>
+<p>First, create rt instance struct rt_i object</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">struct rt_i *rtip; /* see raytrace.h */
+
+/* if we've been doing db I/O */
+rtip = rt_new_rti(wdbp-&gt;dbip);
+
+/* if not already doing db I/O */
+rtip=rt_dirbuild(filename, idbuf, sizeof(idbuf));</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_processing_combination_tree"><a class="anchor" href="#_processing_combination_tree"></a>39. Processing combination tree</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Now to retrieve a treetop and prep:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">rt_gettree(rtip, "box_n_ball.r");
+rt_prep(rtip);   /* now rtip has valid information */</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>This could have been any level in the tree, not just a region.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_accessing_prepped_regions"><a class="anchor" href="#_accessing_prepped_regions"></a>40. Accessing Prepped Regions</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>rtip has list of regions</p>
+</li>
+<li>
+<p>Access as a linked list</p>
+</li>
+<li>
+<p>Example: getting bounding box of regions</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">struct region *rp; /* see raytrace.h */
+
+for (BU_LIST_FOR(rp, region, &amp;rtip-&gt;HeadRegion)) {
+    point_t tree_min, tree_max;
+    VSETALL(tree_max, MAX_FASTF);
+    VREVERSE(tree_min, tree_max);
+    if (rt_bound_tree(rp-&gt;reg_treetop, tree_min, tree_max)) {
+    	bu_bomb("choke\n");
+    }
+    VPRINT("tree_min", tree_min); /* VPRINT is a macro from vmath.h */
+    VPRINT("tree_max", tree_max);
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_making_temporary_changes"><a class="anchor" href="#_making_temporary_changes"></a>41. Making Temporary Changes</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Changes that only last for 1 application run</p>
+</li>
+<li>
+<p>Changes do not reside in on-disk database</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_dynamic_geometry"><a class="anchor" href="#_dynamic_geometry"></a>42. Dynamic Geometry</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Involves special inmem database</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Contains only modifications</p>
+</li>
+<li>
+<p>Akin to union filesystem of Unix</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Directory structure tracks whether current version of object is on
+disk or in inmem database</p>
+</li>
+<li>
+<p>Object retrieval gets most current version</p>
+</li>
+<li>
+<p>Writes to inmem arranged though special <code>wdb_dbopen()</code> call</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_accessing_inmem_database"><a class="anchor" href="#_accessing_inmem_database"></a>43. Accessing inmem database</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>small difference in wdb_dbopen call</p>
+</li>
+<li>
+<p>all writes to this rt_wdb will go to memory database only</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">struct rt_wdb *wdb_memp;
+struct db_i *dbip = DBI_NULL;
+
+if ((dbip = db_open(argv[1], "r+w")) != DBI_NULL) {
+    /*  The "INMEM" specifies that changes are to be made
+     * ONLY in memory.  Reads still come from disk for non-mem obj
+     */
+    wdb_memp = wdb_dbopen(dbip, RT_WDB_TYPE_DB_INMEM);
+
+    if( db_dirbuild( dbip ) &lt; 0 ) { /* create database content directory */
+        bu_log( "Error building directory for %s\n", argv[1] ); exit(-1);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_closing_the_database"><a class="anchor" href="#_closing_the_database"></a>44. Closing the Database</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Important to flush data and purge data structures!</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">wdb_close(wdbp);</code></pre>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="../devguides/bool_eval_development.html">NURBS Boolean Evaluation Development Guide</a></span>
+  <span class="next"><a href="intro-to-tcltk.html">Introduction to Tcl/Tk</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../ui/js/site.js"></script>
+<script src="../../ui/js/vendor/lunr.js"></script>
+<script src="../../ui/js/vendor/search.js" id="search-script" data-base-path="../.." data-page-path="/docs/presentations/brlcad-app-devel.html"></script>
+<script async src="../../ui/../search-index.js"></script>
+<script async src="../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

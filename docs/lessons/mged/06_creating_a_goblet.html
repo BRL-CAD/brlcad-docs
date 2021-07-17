@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>6. Creating a Goblet :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/docs/lessons/mged/06_creating_a_goblet.html">
+    <link rel="prev" href="05_learning_boolean_expressions.html">
+    <link rel="next" href="07_goblet_material_properties.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../ui/css/site.css">
+    <link rel="stylesheet" href="../../../ui/css/search.css">
+    <link rel="stylesheet" href="../../../ui/css/custom.css">
+    <script>var uiRootPath = '../../../ui'</script>
+    <link rel="icon" href="../../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lessons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01_creating_primitive_shapes.html">1. Creating Primitive Shapes in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02_learning_viewing_options.html">2. Learning Viewing Options in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03_using_insert_command.html">3. Using the Insert Command in MGED to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="04_assign_mat_prop_rt.html">4. Assigning Material Properties and Raytracing in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="05_learning_boolean_expressions.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="06_creating_a_goblet.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="07_goblet_material_properties.html">7. Assigning Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="08_goblet_material_properties2.html">8. Assigning More Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="09_globe_in_display_box.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="10_creating_mug.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="11_refining_mug.html">11. Refining a Mug Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="12_mug_through_gui.html">12. Creating a Mug Model using the MGED Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="13_placing_shapes_in_3d.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="14_placing_shapes_in_3d_2.html">14. Additional Exercises Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="15_creating_a_toy_truck.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="16_mod_tech_struct.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Books</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../hacking/index.html">Hacking BRL-CAD</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting Started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter1.html">A Call to Arms (and Contributors)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter2.html">Feature Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developers</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter3.html">Working with Our Code</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter4.html">What Code to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter5.html">Contributing Code</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Documenters</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter6.html">Working with Our Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter7.html">Types of Documentation We Maintain</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter8.html">What Documentation to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter9.html">Contributing Documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Other Contributors</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part4/chapter10.html">You Can Help Too</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendix: Resources and Examples</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix1.html">Further References and Resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix2.html">Doc Template: New MGED Command</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix3.html">Code Example: Shooting Rays</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix4.html">Code Example: Walking Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix5.html">Code Example: Command Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix6.html">Example Code: Root Solving</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/index.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../tutorials/overview.html">I. An Overview of BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/mged-intro.html">II. Introduction to MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/preface1.html">Preface</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/preface2.html">Acknowledgments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter1.html">1. Creating Primitive Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter2.html">2. Learning the Viewing Options</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter3.html">3. Using the Insert Command to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter4.html">4. Assigning Material Properties and Raytracing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter5.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter6.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter7.html">7. Assigning Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter8.html">8. Assigning More Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter9.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter10.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter11.html">11. Refining the Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter12.html">12. Creating the Mug Through the GUI</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter13.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter14.html">14. Gaining More Practice Placing Shapes in Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter15.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter16.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/appendix1.html"><code class="app">MGED</code> Commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/modeling.html">III. Modeling</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter2.html">2. The Model Process</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter3.html">3. Measuring data</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter4.html">4. Organizing the Structure</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter5.html">5. Developing Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter6.html">5. Evaluating Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter7.html">7. Logging Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendices</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix1.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix2.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix3.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix4.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix5.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix6.html">Using the build_region Command</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/converting.html">IV. Converting</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter2.html">2. Pertinent Characteristics of the BRL-CAD Format</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter3.html">3. Converting From/to ASCII</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter4.html">4. Converting to BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter5.html">5. Converting From BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter6.html">6. Building a New Converter</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter7.html">7. Postconversion Issues</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/index.html">Articles</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_pattern.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_region.html">Using the build_region Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/camo_shader.html">Camouflage shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ebm_primitive.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/gcv.html">The Geometry Conversion Library</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ged.html">GED: An Interactive Solid Modeling System</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/mged/index.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tutorial.html">Tutorial</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/gui.html">Graphical User Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/command-line-editing.html">Command Line Editing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/user-commands.html">User Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/developer-commands.html">Developer Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tcl-variables.html">Tcl Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/env.html">Environment Variable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/callback.html">Callback</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/brlcad-solid.html">BRL-CAD Solid</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/mgedrc.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/nirt.html">Interactive Raytracing: The nirt Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/overlap_tool.html">The Overlap Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/oed.html">Object Editing - the oed Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/pipes.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/projection_shader.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/tire.html">Vehicle Tire and Wheel Creation in BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/TEMPLATE.html">TEMPLATE</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Misc</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Dev Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../devguides/bool_eval_development.html">NURBS Boolean Evaluation Development Guide</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Presentations</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/brlcad-app-devel.html">Application Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="presentations:_attachments/brlcad-app-devel.html">brlcad-app-devel</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/intro-to-tcltk.html">Introduction to Tcl/Tk</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../specifications/BRL_CAD_g_format_V5.html">BRL-CAD Database Format</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Manual Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/1.html">man1</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/3.html">man3</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/5.html">man5</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/n.html">mann</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Wiki Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">page-1</span>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">BRL-CAD</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../../index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../es/index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../es/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">BRL-CAD</a></li>
+    <li>Lessons</li>
+    <li><a href="../mged.html">MGED</a></li>
+    <li><a href="06_creating_a_goblet.html">6. Creating a Goblet</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/docs/modules/lessons/pages/mged/06_creating_a_goblet.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">6. Creating a Goblet</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this lesson, you will:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Create a new database.</p>
+</li>
+<li>
+<p>Create, edit, and copy primitive shapes to make the parts of the
+goblet.</p>
+</li>
+<li>
+<p>Make regions of the parts.</p>
+</li>
+<li>
+<p>Make a combination of the regions.</p>
+</li>
+<li>
+<p>View a data tree.</p>
+</li>
+<li>
+<p>Raytrace your completed goblet.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In this lesson, you will create a goblet similar to the one in the
+following example.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/06_rtgoblet.png" alt="06 rtgoblet">
+</div>
+<div class="title">Figure 1. Raytraced Goblet</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_goblet_new_database"><a class="anchor" href="#_goblet_new_database"></a>1. Creating a New Database</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>First, start <code class="app">MGED</code> from the shell prompt.  Select File from the
+menu bar and then New.  A dialog box will appear, and it will ask you
+for a new database name.  Type in goblet.g at the end of the path name
+and select OK to create the new database.  The program should tell you
+that the database was successfully created and it is using millimeters
+for its unit of measure.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_create_edit_copy_goblet"><a class="anchor" href="#_create_edit_copy_goblet"></a>2. Creating, Editing, and Copying the Parts of the Goblet</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_creating_the_goblet_base"><a class="anchor" href="#_creating_the_goblet_base"></a>2.1. Creating the Goblet Base</h3>
+<div class="paragraph">
+<p>Go to the menu bar, select the Cones and Cylinders category, and then
+select rcc for right circular cylinder.  A dialog box will appear
+asking you to name the rcc.  Type in base1.s and then select Apply (or
+press ENTER). A tall cylinder will appear in the Graphics Window that
+is ready for you to edit.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_editing_the_base"><a class="anchor" href="#_editing_the_base"></a>2.2. Editing the Base</h3>
+<div class="paragraph">
+<p>Go to the menu bar and select Edit and then Set H.  Place the mouse
+pointer in the lower half of the Graphics Window and click on the
+middle mouse button several times.  The cylinder will become shorter
+as you click.  (Note that the closer your pointer is to the midpoint
+of the Graphics Window, the smaller the change will be.  As you click
+farther away from the middle, the changes will be greater.) Continue
+clicking until the cylinder looks like a flat disk, as shown in the
+following figure.  Click on Accept on the Edit menu when done.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/06_gobletbase.png" alt="06 gobletbase">
+</div>
+<div class="title">Figure 2. The rcc Goblet Base</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_creating_the_goblet_stem"><a class="anchor" href="#_creating_the_goblet_stem"></a>2.3. Creating the Goblet Stem</h3>
+<div class="paragraph">
+<p>Go to the menu bar, select Create, select Ellipsoids, and then select
+sph to create a sphere.  You will be asked to provide a name for the
+sphere.  Type ball1.s in the name box and then select Apply.  A large
+sphere will appear in your Graphics Window.</p>
+</div>
+<div class="paragraph">
+<p>Go to the Edit menu and select Scale.  Place the mouse cursor/pointer
+in the lower half of the Graphics Window and click the middle mouse
+button until your sphere is about one-quarter the diameter of the
+base, as shown in the illustration that follows.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/06_goblet1stsphere.png" alt="06 goblet1stsphere">
+</div>
+<div class="title">Figure 3. First Sphere on Goblet Stem</div>
+</div>
+<div class="paragraph">
+<p>To move the ball on top of the goblet base, press the SHIFT key and
+left mouse button to drag the sphere into place.  You can check your
+placement by going to the View option of the menu bar and selecting a
+Front view.  In this view, you can align the center line of the sphere
+with the center line of the rcc.  Repeat this process from a Left
+view.  When you believe the sphere is correctly aligned with the rcc,
+go back to the Edit menu and select Accept.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_adding_additional_balls"><a class="anchor" href="#_adding_additional_balls"></a>2.4. Adding Additional Balls to the Goblet Stem</h3>
+<div class="paragraph">
+<p>The next step is to add more spheres to your goblet stem.  An easy way
+to do this is to go to the Edit menu and select Primitive Editor.  A
+dialog box will appear.  Enter the name for the first sphere you
+created, ball1.s.  Next, select Reset (to reset the values of the
+dialog box to those of ball1.s) or hit return in the Name box.  Again
+in the Name box, change ball1.s to ball2.s by using the BACKSPACE key
+to erase the 1.  Type in a 2 and then select Apply.</p>
+</div>
+<div class="paragraph">
+<p>Repeat this process with an sph named ball3.s.  When you are done,
+select OK to close the Primitive Editor box.  You now have three balls
+for your stem, but you won&#8217;t be able to see them until you edit them
+because they are in the same place.</p>
+</div>
+<div class="paragraph">
+<p>An even easier way to make the copies is to use the cp (copy) command
+as follows:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">cp ball1.s ball2.s <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">cp ball1.s ball3.s <kbd>Enter</kbd></code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_editing_the_base_goblet"><a class="anchor" href="#_editing_the_base_goblet"></a>2.5. Editing the Balls of the Goblet Stem</h3>
+<div class="paragraph">
+<p>To edit the new balls you have created, go to the Edit menu and select
+Primitive Selection.  A box will appear with the names of your base
+and balls.  Double click on ball2.s to select it.  You will see the
+first ball change color to white.  Use the SHIFT key and any mouse
+button to drag this ball (which is really ball2.s) so that it rests on
+top of (and slightly overlaps) ball1.s . Check your views to align the
+ball as you did with the first ball.  (Note that this alignment is
+even easier if you drag using the SHIFT and ALT keys and the right
+mouse button, which will constrain the movement of the ball to the Z
+direction.) Click on Accept under the Edit menu when finished.</p>
+</div>
+<div class="paragraph">
+<p>If you were modeling a real goblet, you would want the balls of the
+stem to overlap slightly.  If they barely touch, the stem would be
+very weak.  If they do not touch, then the stem would be made of
+separate pieces of material suspended in space.</p>
+</div>
+<div class="paragraph">
+<p>Repeat these steps to move ball3.s into position.  When you are
+finished, your goblet should look as follows from a front view:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/06_gobletstem.png" alt="06 gobletstem">
+</div>
+<div class="title">Figure 4. Goblet with Ball Stem</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_making_goblet_basin"><a class="anchor" href="#_making_goblet_basin"></a>2.6. Making the Goblet Basin</h3>
+<div class="paragraph">
+<p>The next step is to make the goblet&#8217;s basin.  Go to the Create menu
+and select eto to create an elliptical torus.  Name the torus
+basin1.s.  Click on Apply.  A large eto will appear in your Graphics
+Window.</p>
+</div>
+<div class="paragraph">
+<p>Go to the Edit menu and select Set C.  Place the mouse arrow in the
+upper half of the Graphics Window and click on the middle mouse button
+until your eto is approximately the size of the one in the following
+figure.  If you need to, use Scale to make the basin more proportional
+to the rest object and use the Shift Grips and multiple views to
+position the basin.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/06_gobletbasestembasin.png" alt="06 gobletbasestembasin">
+</div>
+<div class="title">Figure 5. Goblet Base, Stem, and Basin - Front View</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_making_goblet_regions"><a class="anchor" href="#_making_goblet_regions"></a>3. Making Regions of the Goblet&#8217;s Base, Stem, and Basin</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In order for <code class="app">MGED</code> to know what primitives to raytrace, you must
+first designate these areas through Boolean operations.  In this
+example, the two Boolean operations used will be the union (u) and the
+subtraction (-).</p>
+</div>
+<div class="paragraph">
+<p>To make the stem a region, type at the Command Window prompt:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r stem1.r u ball1.s u ball2.s u ball3.s <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>To make the base a region, type at the prompt:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r base1.r u base1.s - ball1.s <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>To make the basin a region, type at the prompt:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r basin1.r u basin1.s - stem1.r <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Note that when creating base1.r, we subtracted a primitive shape from
+another primitive shape.  When creating basin1.r, we subtracted an
+entire region from a primitive shape.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_making_goblet_region_comb"><a class="anchor" href="#_making_goblet_region_comb"></a>4. Making a Combination of the Regions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To combine all the regions into one object, you will need to perform
+one last Boolean operation.  At the prompt in the Command Window,
+type:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">comb goblet1.c u basin1.r u stem1.r u base1.r <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>This operation tells the <code class="app">MGED</code> program to:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">comb</th>
+<th class="tableblock halign-center valign-top">goblet1.c</th>
+<th class="tableblock halign-center valign-top">u</th>
+<th class="tableblock halign-center valign-top">basin1.r</th>
+<th class="tableblock halign-center valign-top">u</th>
+<th class="tableblock halign-center valign-top">stem1.r</th>
+<th class="tableblock halign-center valign-top">u</th>
+<th class="tableblock halign-center valign-top">base1.r</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Make a combination</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Name it goblet1.c</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">The combination will be made of a union of</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">the region basin1.r</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">and</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">the region stem1.r</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">and</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">the region base1.r</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_goblet_view_data_tree"><a class="anchor" href="#_goblet_view_data_tree"></a>5. Viewing a Data Tree</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code class="app">MGED</code> requires a certain logical order to the model data tree so
+it knows how to raytrace the various elements.  In the goblet, the
+base and basin consist of regions composed of only one primitive shape
+each.  The stem, in contrast, consists of a region composed of the
+union of three spheres.  The three regions were combined to form a
+complex object.</p>
+</div>
+<div class="paragraph">
+<p>To view the data tree for this combination, type at the Command Window
+prompt:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">tree goblet1.c <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p><code class="app">MGED</code> will respond with:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>   goblet1.c/
+   u basin1.r/R
+   u basin1.s
+   - stem1.r/R
+   u ball1.s
+   u ball2.s
+   u ball3.s
+   u stem1.r/R
+   u ball1.s
+   u ball2.s
+   u ball3.s
+   u base1.r/R
+   u base1.s
+   - ball1.s</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The name of the overall combination of this design is goblet1.c.  It
+is composed of the three regions: base1.r, stem1.r, and basin1.r.  The
+region base1.r is composed of the primitive shape named base1.s minus
+ball1.s.  The region stem1.r is composed of three primitive shapes
+named ball1.s, ball2.s, and ball3.s.  The region basin1.r is composed
+of the primitive shape named basin1.s minus the region stem1.r.</p>
+</div>
+<div class="paragraph">
+<p>Remember that regions define volumes of uniform material.  In the real
+world (and in <code class="app">BRL-CAD</code>), no two objects can occupy the same
+space.  If two regions occupy the same space, they are said to
+overlap.  To avoid having the base and stem overlap, we subtract
+ball1.s from base1.s when we create base1.r.  We also subtract the
+stem1.r from basin1.s when we create basin1.r.  This removes material
+from one region that would otherwise create an overlap with another.
+The following figure shows the overlap between ball1.s and base1.s in
+blue.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/06_base_subtracted_vol.png" alt="06 base subtracted vol">
+</div>
+<div class="title">Figure 6. This is the volume that is removed from base1.r.</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_raytracing_goblet"><a class="anchor" href="#_raytracing_goblet"></a>6. Raytracing the Goblet</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To raytrace the goblet using the default material properties of gray
+plastic, go to the File menu and select Raytrace.  When the Raytrace
+Control Panel appears, change the color of the background by clicking
+on the button to the right of the Background Color box and then
+clicking on the white option in the drop-down menu.  Next, select
+Raytrace.</p>
+</div>
+<div class="paragraph">
+<p>When you have finished viewing the goblet from the front view, go to
+the View option of the menu bar and select az35, el25 and then
+raytrace.  If you want to view the goblet without the wireframe, go to
+the Framebuffer option of the Raytrace Control Panel and select
+Overlay.  The goblet should look similar to the following
+illustration:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/06_rtgobletaz_35_el_25.png" alt="06 rtgobletaz 35 el 25">
+</div>
+<div class="title">Figure 7. The Raytraced Goblet from an az35, el25 View</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_creating_goblet_review"><a class="anchor" href="#_creating_goblet_review"></a>7. Review</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this lesson, you:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Created a new database.</p>
+</li>
+<li>
+<p>Created, edited, and copied primitive shapes to make the parts of
+the goblet.</p>
+</li>
+<li>
+<p>Made regions of the parts.</p>
+</li>
+<li>
+<p>Made a combination of the regions.</p>
+</li>
+<li>
+<p>Viewed a data tree.</p>
+</li>
+<li>
+<p>Raytraced your completed goblet.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="05_learning_boolean_expressions.html">5. Learning About Boolean Expressions</a></span>
+  <span class="next"><a href="07_goblet_material_properties.html">7. Assigning Material Properties to a Goblet</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../ui/js/site.js"></script>
+<script src="../../../ui/js/vendor/lunr.js"></script>
+<script src="../../../ui/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/docs/lessons/mged/06_creating_a_goblet.html"></script>
+<script async src="../../../ui/../search-index.js"></script>
+<script async src="../../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

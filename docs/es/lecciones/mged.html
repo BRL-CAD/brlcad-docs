@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Lecciones MGED :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/es/lecciones/mged.html">
+    <link rel="prev" href="../index.html">
+    <link rel="next" href="mged/01_crear_figuras_primitivas.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../ui-es/css/site.css">
+    <link rel="stylesheet" href="../../ui-es/css/search.css">
+    <link rel="stylesheet" href="../../ui-es/css/custom.css">
+    <script>var uiRootPath = '../../ui-es'</script>
+    <link rel="icon" href="../../ui-es/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../ui-es/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="es" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lecciones</span>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/01_crear_figuras_primitivas.html">1. Crear Figuras Primitivas with MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/02_opciones_vistas.html">2. Reconocer las opciones de vistas en MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/03_utilizar_comando_in.html">3. Usar el comando Insert en MGED para dimensionar y ubicar figuras</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/04_prop_materiales.html">4. Asignación de propiedades de los materiales y trazado de rayos (Raytracing) en MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/05_expresiones_booleanas.html">5. Expresiones Booleanas</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/06_crear_una_copa.html">6. Crear una copa</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/07_prop_materiales_copa.html">7. Asignar propiedades de los materiales a una copa</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/08_prop_materiales_copa2.html">8. Asignar más propiedades de los materiales a la copa</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/09_esfera_en_caja_exhibidora.html">9. Crear una esfera en una caja exhibidora transparente</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/10_crear_taza.html">10. Crear una taza</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/11_refinar_taza.html">11. Refinando el modelo de la taza</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/12_taza_desde_gui.html">12. Crear el modelo de una taza utilizando la interfaz de MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/13_ubicar_figuras_en_3d.html">13. Ubicar figuras en espacios 3-D</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/14_ubicar_figuras_en_3d_2.html">14. Ejercicios adicionales de ubicación de imágenes en espacios 3-D</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/15_crear_camion_de_juguete.html">15. Crear un camión de juguete</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/16_mod_tech_struct.html">16. Aprender técnicas de modelado y estructuras</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Spanish</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Spanish</a></li>
+    <li>Lecciones</li>
+    <li><a href="mged.html">MGED</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/translations/es/modules/lecciones/pages/mged.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Lecciones MGED</h1>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="mged/01_crear_figuras_primitivas.html" class="page">1. Crear Figuras Primitivas with MGED</a></p>
+</li>
+<li>
+<p><a href="mged/02_opciones_vistas.html" class="page">2. Reconocer las opciones de vistas en MGED</a></p>
+</li>
+<li>
+<p><a href="mged/03_utilizar_comando_in.html" class="page">3. Usar el comando Insert en MGED para dimensionar y ubicar figuras</a></p>
+</li>
+<li>
+<p><a href="mged/04_prop_materiales.html" class="page">4. Asignación de propiedades de los materiales y trazado de rayos (Raytracing) en MGED</a></p>
+</li>
+<li>
+<p><a href="mged/05_expresiones_booleanas.html" class="page">5. Expresiones Booleanas</a></p>
+</li>
+<li>
+<p><a href="mged/06_crear_una_copa.html" class="page">6. Crear una copa</a></p>
+</li>
+<li>
+<p><a href="mged/07_prop_materiales_copa.html" class="page">7. Asignar propiedades de los materiales a una copa</a></p>
+</li>
+<li>
+<p><a href="mged/08_prop_materiales_copa2.html" class="page">8. Asignar más propiedades de los materiales a la copa</a></p>
+</li>
+<li>
+<p><a href="mged/09_esfera_en_caja_exhibidora.html" class="page">9. Crear una esfera en una caja exhibidora transparente</a></p>
+</li>
+<li>
+<p><a href="mged/10_crear_taza.html" class="page">10. Crear una taza</a></p>
+</li>
+<li>
+<p><a href="mged/11_refinar_taza.html" class="page">11. Refinando el modelo de la taza</a></p>
+</li>
+<li>
+<p><a href="mged/12_taza_desde_gui.html" class="page">12. Crear el modelo de una taza utilizando la interfaz de MGED</a></p>
+</li>
+<li>
+<p><a href="mged/13_ubicar_figuras_en_3d.html" class="page">13. Ubicar figuras en espacios 3-D</a></p>
+</li>
+<li>
+<p><a href="mged/14_ubicar_figuras_en_3d_2.html" class="page">14. Ejercicios adicionales de ubicación de imágenes en espacios 3-D</a></p>
+</li>
+<li>
+<p><a href="mged/15_crear_camion_de_juguete.html" class="page">15. Crear un camión de juguete</a></p>
+</li>
+<li>
+<p><a href="mged/16_mod_tech_struct.html" class="page">16. Aprender técnicas de modelado y estructuras</a></p>
+</li>
+</ul>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="../index.html">Spanish</a></span>
+  <span class="next"><a href="mged/01_crear_figuras_primitivas.html">1. Crear Figuras Primitivas with MGED</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../ui-es/js/site.js"></script>
+<script src="../../ui-es/js/vendor/lunr.js"></script>
+<script src="../../ui-es/js/vendor/search.js" id="search-script" data-base-path="../.." data-page-path="/es/lecciones/mged.html"></script>
+<script async src="../../ui-es/../search-index.js"></script>
+<script async src="../../ui-es/js/vendor/highlight.js"></script>
+  </body>
+</html>

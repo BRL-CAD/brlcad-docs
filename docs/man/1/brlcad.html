@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>BRLCAD(1) :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/docs/man/1/brlcad.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../ui/css/site.css">
+    <link rel="stylesheet" href="../../../ui/css/search.css">
+    <link rel="stylesheet" href="../../../ui/css/custom.css">
+    <script>var uiRootPath = '../../../ui'</script>
+    <link rel="icon" href="../../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article manpage">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lessons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../lessons/mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/01_creating_primitive_shapes.html">1. Creating Primitive Shapes in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/02_learning_viewing_options.html">2. Learning Viewing Options in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/03_using_insert_command.html">3. Using the Insert Command in MGED to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/04_assign_mat_prop_rt.html">4. Assigning Material Properties and Raytracing in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/05_learning_boolean_expressions.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/06_creating_a_goblet.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/07_goblet_material_properties.html">7. Assigning Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/08_goblet_material_properties2.html">8. Assigning More Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/09_globe_in_display_box.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/10_creating_mug.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/11_refining_mug.html">11. Refining a Mug Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/12_mug_through_gui.html">12. Creating a Mug Model using the MGED Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/13_placing_shapes_in_3d.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/14_placing_shapes_in_3d_2.html">14. Additional Exercises Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/15_creating_a_toy_truck.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/16_mod_tech_struct.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Books</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../hacking/index.html">Hacking BRL-CAD</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting Started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter1.html">A Call to Arms (and Contributors)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter2.html">Feature Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developers</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter3.html">Working with Our Code</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter4.html">What Code to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter5.html">Contributing Code</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Documenters</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter6.html">Working with Our Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter7.html">Types of Documentation We Maintain</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter8.html">What Documentation to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter9.html">Contributing Documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Other Contributors</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part4/chapter10.html">You Can Help Too</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendix: Resources and Examples</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix1.html">Further References and Resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix2.html">Doc Template: New MGED Command</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix3.html">Code Example: Shooting Rays</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix4.html">Code Example: Walking Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix5.html">Code Example: Command Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix6.html">Example Code: Root Solving</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/index.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../tutorials/overview.html">I. An Overview of BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/mged-intro.html">II. Introduction to MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/preface1.html">Preface</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/preface2.html">Acknowledgments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter1.html">1. Creating Primitive Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter2.html">2. Learning the Viewing Options</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter3.html">3. Using the Insert Command to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter4.html">4. Assigning Material Properties and Raytracing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter5.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter6.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter7.html">7. Assigning Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter8.html">8. Assigning More Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter9.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter10.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter11.html">11. Refining the Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter12.html">12. Creating the Mug Through the GUI</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter13.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter14.html">14. Gaining More Practice Placing Shapes in Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter15.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter16.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/appendix1.html"><code class="app">MGED</code> Commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/modeling.html">III. Modeling</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter2.html">2. The Model Process</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter3.html">3. Measuring data</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter4.html">4. Organizing the Structure</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter5.html">5. Developing Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter6.html">5. Evaluating Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter7.html">7. Logging Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendices</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix1.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix2.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix3.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix4.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix5.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix6.html">Using the build_region Command</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/converting.html">IV. Converting</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter2.html">2. Pertinent Characteristics of the BRL-CAD Format</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter3.html">3. Converting From/to ASCII</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter4.html">4. Converting to BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter5.html">5. Converting From BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter6.html">6. Building a New Converter</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter7.html">7. Postconversion Issues</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/index.html">Articles</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_pattern.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_region.html">Using the build_region Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/camo_shader.html">Camouflage shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ebm_primitive.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/gcv.html">The Geometry Conversion Library</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ged.html">GED: An Interactive Solid Modeling System</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/mged/index.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tutorial.html">Tutorial</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/gui.html">Graphical User Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/command-line-editing.html">Command Line Editing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/user-commands.html">User Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/developer-commands.html">Developer Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tcl-variables.html">Tcl Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/env.html">Environment Variable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/callback.html">Callback</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/brlcad-solid.html">BRL-CAD Solid</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/mgedrc.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/nirt.html">Interactive Raytracing: The nirt Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/overlap_tool.html">The Overlap Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/oed.html">Object Editing - the oed Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/pipes.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/projection_shader.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/tire.html">Vehicle Tire and Wheel Creation in BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/TEMPLATE.html">TEMPLATE</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Misc</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Dev Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../devguides/bool_eval_development.html">NURBS Boolean Evaluation Development Guide</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Presentations</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/brlcad-app-devel.html">Application Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="presentations:_attachments/brlcad-app-devel.html">brlcad-app-devel</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/intro-to-tcltk.html">Introduction to Tcl/Tk</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../specifications/BRL_CAD_g_format_V5.html">BRL-CAD Database Format</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Manual Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../1.html">man1</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../3.html">man3</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../5.html">man5</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../n.html">mann</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Wiki Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">page-1</span>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">BRL-CAD</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../../index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../es/index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../es/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">BRL-CAD</a></li>
+    <li><a href="brlcad.html">BRLCAD(1)</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/docs/modules/man/pages/1/brlcad.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">BRLCAD(1)</h1>
+<div class="sect1">
+<h2 id="_name"><a class="anchor" href="#_name"></a>NAME</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>brlcad - BRL-CAD programs for solid modeling, raytracing, graphics,
+and image processing</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description"><a class="anchor" href="#_description"></a>DESCRIPTION</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The BRL-CAD Distribution contains many directories of materials
+(programs, man pages, documents, libraries, etc.). The major
+categories of programs are:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><em>mged</em> </dt>
+<dd>
+<p>A multi-device interactive editor for constructing and
+updating combinatorial solid geometry (CSG) models. See
+<a href="mged.html" class="page"><strong>mged</strong>(1)</a>, and see also <em>Understanding the
+Preparation and Analysis of Solid Models</em> by Michael John Muuss
+(enclosed, in the "paper" directory).</p>
+</dd>
+<dt class="hdlist1"><em>librt</em> </dt>
+<dd>
+<p>A library of functions suitable for interrogation of a CSG
+solid model, utilizing ray-tracing techniques. See
+<a href="../3/librt.html" class="page"><strong>librt</strong>(3)</a>.</p>
+</dd>
+<dt class="hdlist1"><em>rt</em> </dt>
+<dd>
+<p>A ray-tracing lighting model, for rendering pictures of
+<a href="mged.html" class="page"><strong>mged</strong>(1)</a> CSG models. See
+<a href="rt.html" class="page"><strong>rt</strong>(1)</a>, <a href="#man:1/rtray.adoc" class="page unresolved"><strong>rtray</strong>(1)</a>,
+<a href="#man:1/rtpp.adoc" class="page unresolved"><strong>rtpp</strong>(1)</a>.</p>
+</dd>
+<dt class="hdlist1"><em>conv</em> </dt>
+<dd>
+<p>Programs to convert <a href="mged.html" class="page"><strong>mged</strong>(1)</a> and
+<a href="#man:3/pix.adoc" class="page unresolved"><strong>pix</strong>(3)</a> format binary files to a portable ASCII
+form, and back again. See <a href="asc2g.html" class="page"><strong>asc2g</strong>(1)</a>,
+<a href="#man:1/asc2pix.adoc" class="page unresolved"><strong>asc2pix</strong>(1)</a>,
+<a href="conv-vg2g.html" class="page"><strong>conv-vg2g</strong>(1)</a>,
+<a href="g2asc.html" class="page"><strong>g2asc</strong>(1)</a>,
+<a href="pix2asc.html" class="page"><strong>pix2asc</strong>(1)</a>.</p>
+</dd>
+<dt class="hdlist1"><em>libpkg</em> </dt>
+<dd>
+<p>A "message-passing" interface layered on top of TCP
+network links, to ease construction of network-distributed
+applications.</p>
+</dd>
+<dt class="hdlist1"><em>libfb</em> </dt>
+<dd>
+<p>A generic frame-buffer library which includes support for a
+number of display devices, as well as file, network, and debugging
+interfaces. Most programs which use this library have the letters "fb"
+in their names.  To override your system default frame-buffer, the
+environment variable <code class="var">FB_FILE</code> can be set.  In addition, some
+commands also support a <strong class="opt">-F</strong> <em class="rep">framebuffer</em> option. Note that
+the disk file format of <em>libfb</em> is that of
+<a href="../5/pix.html" class="page"><strong>pix</strong>(5)</a>, allowing "framebuffer" files to be
+later processed by any of the "pix" family of programs. See
+<a href="../3/libfb.html" class="page"><strong>libfb</strong>(3)</a>,
+<a href="#man:3/pix-fb.adoc" class="page unresolved"><strong>pix-fb</strong>(3)</a>,
+<a href="../5/pix.html" class="page"><strong>pix</strong>(5)</a>, etc.</p>
+</dd>
+<dt class="hdlist1"><em>fbserv</em> </dt>
+<dd>
+<p>TCP-based network server which implements remote
+frame-buffer services.</p>
+</dd>
+<dt class="hdlist1"><em>libtermio</em> </dt>
+<dd>
+<p>A library to handle terminal mode setting on both
+Berkeley or SystemV machines.</p>
+</dd>
+<dt class="hdlist1"><em>libplot3</em> </dt>
+<dd>
+<p>A public-domain version of the UNIX-Plot library which
+differs from that of the standard
+<a href="#man:3/libplot.adoc" class="page unresolved"><strong>libplot</strong>(3)</a>, by the addition of 3-D
+primitives, color, floating point coordinate routines, and the use of
+a file pointer parameter. See <a href="../3/libplot3.html" class="page"><strong>libplot3</strong>(3)</a>,
+<a href="../5/plot3.html" class="page"><strong>plot3</strong>(5)</a>.</p>
+</dd>
+<dt class="hdlist1"><em>librle</em> </dt>
+<dd>
+<p>A Run-Length-Encoding (RLE) library, providing functions
+originally from the University of Utah in a library package. Note that
+the current version of this library reads Edition-3 RLE files. See
+<a href="#man:1/rle-fb.adoc" class="page unresolved"><strong>rle-fb</strong>(1)</a>,
+<a href="#man:1/fb-rle.adoc" class="page unresolved"><strong>fb-rle</strong>(1)</a>,
+<a href="#man:1/rle-pix.adoc" class="page unresolved"><strong>rle-pix</strong>(1)</a>,
+<a href="#man:1/pix-rle.adoc" class="page unresolved"><strong>pix-rle</strong>(1)</a>,
+<a href="#man:3/librle.adoc" class="page unresolved"><strong>librle</strong>(3)</a>.</p>
+</dd>
+<dt class="hdlist1"><em>util</em> </dt>
+<dd>
+<p>A collection of image-handling utilities, each constructed
+as individual tools intended to be used in combination. See
+<a href="ap-pix.html" class="page"><strong>ap-pix</strong>(1)</a>,
+<a href="bw-fb.html" class="page"><strong>bw-fb</strong>(1)</a>,
+<a href="#man:1/bw-imp.adoc" class="page unresolved"><strong>bw-imp</strong>(1)</a>,
+<a href="bw-pix.html" class="page"><strong>bw-pix</strong>(1)</a>,
+<a href="#man:1/bw3-pix.adoc" class="page unresolved"><strong>bw3-pix</strong>(1)</a>,
+<a href="bwcrop.html" class="page"><strong>bwcrop</strong>(1)</a>,
+<a href="bwdiff.html" class="page"><strong>bwdiff</strong>(1)</a>,
+<a href="bwfilter.html" class="page"><strong>bwfilter</strong>(1)</a>,
+<a href="bwhist.html" class="page"><strong>bwhist</strong>(1)</a>,
+<a href="bwmod.html" class="page"><strong>bwmod</strong>(1)</a>,
+<a href="bwrect.html" class="page"><strong>bwrect</strong>(1)</a>,
+<a href="bwrot.html" class="page"><strong>bwrot</strong>(1)</a>,
+<a href="bwscale.html" class="page"><strong>bwscale</strong>(1)</a>,
+<a href="bwstat.html" class="page"><strong>bwstat</strong>(1)</a>,
+<a href="#man:1/dunncolor.adoc" class="page unresolved"><strong>dunncolor</strong>(1)</a>,
+<a href="#man:1/dunnsnap.adoc" class="page unresolved"><strong>dunnsnap</strong>(1)</a>,
+<a href="fb-bw.html" class="page"><strong>fb-bw</strong>(1)</a>,
+<a href="fb-pix.html" class="page"><strong>fb-pix</strong>(1)</a>,
+<a href="#man:1/fb-rle.adoc" class="page unresolved"><strong>fb-rle</strong>(1)</a>,
+<a href="#man:1/fbanim.adoc" class="page unresolved"><strong>fbanim</strong>(1)</a>,
+<a href="fbclear.html" class="page"><strong>fbclear</strong>(1)</a>,
+<a href="fbcmap.html" class="page"><strong>fbcmap</strong>(1)</a>,
+<a href="#man:1/fbcmrot.adoc" class="page unresolved"><strong>fbcmrot</strong>(1)</a>,
+<a href="fbcolor.html" class="page"><strong>fbcolor</strong>(1)</a>,
+<a href="fbframe.html" class="page"><strong>fbframe</strong>(1)</a>,
+<a href="fbgrid.html" class="page"><strong>fbgrid</strong>(1)</a>,
+<a href="fbpoint.html" class="page"><strong>fbpoint</strong>(1)</a>,
+<a href="fbzoom.html" class="page"><strong>fbzoom</strong>(1)</a>,
+<a href="gencolor.html" class="page"><strong>gencolor</strong>(1)</a>,
+<a href="loop.html" class="page"><strong>loop</strong>(1)</a>,
+<a href="pix-bw.html" class="page"><strong>pix-bw</strong>(1)</a>,
+<a href="#man:1/pix-bw3.adoc" class="page unresolved"><strong>pix-bw3</strong>(1)</a>,
+<a href="pix-fb.html" class="page"><strong>pix-fb</strong>(1)</a>,
+<a href="pixbackgnd.html" class="page"><strong>pixbackgnd</strong>(1)</a>,
+<a href="pixbustup.html" class="page"><strong>pixbustup</strong>(1)</a>,
+<a href="pixdiff.html" class="page"><strong>pixdiff</strong>(1)</a>,
+<a href="pixfilter.html" class="page"><strong>pixfilter</strong>(1)</a>,
+<a href="pixhist.html" class="page"><strong>pixhist</strong>(1)</a>,
+<a href="pixhist3d-plot3.html" class="page"><strong>pixhist3d-plot3</strong>(1)</a>,
+<a href="pixhist3d.html" class="page"><strong>pixhist3d</strong>(1)</a>,
+<a href="pixinterp2x.html" class="page"><strong>pixinterp2x</strong>(1)</a>,
+<a href="pixrect.html" class="page"><strong>pixrect</strong>(1)</a>,
+<a href="pixrot.html" class="page"><strong>pixrot</strong>(1)</a>,
+<a href="pixscale.html" class="page"><strong>pixscale</strong>(1)</a>,
+<a href="pixstat.html" class="page"><strong>pixstat</strong>(1)</a>,
+<a href="pixtile.html" class="page"><strong>pixtile</strong>(1)</a>,
+<a href="plot3-fb.html" class="page"><strong>plot3-fb</strong>(1)</a>,
+<a href="pp-fb.html" class="page"><strong>pp-fb</strong>(1)</a>,
+<a href="#man:1/rle-fb.adoc" class="page unresolved"><strong>rle-fb</strong>(1)</a>,
+<a href="#man:1/rle-pix.adoc" class="page unresolved"><strong>rle-pix</strong>(1)</a>,
+<a href="wavelet.html" class="page"><strong>wavelet</strong>(1)</a>,
+<a href="../5/bw.html" class="page"><strong>bw</strong>(5)</a>,
+<a href="../5/pix.html" class="page"><strong>pix</strong>(5)</a>,
+<a href="../5/plot3.html" class="page"><strong>plot3</strong>(5)</a>.</p>
+</dd>
+<dt class="hdlist1"><em>fbed</em> </dt>
+<dd>
+<p>An interactive, termcap-based frame-buffer image editor. See
+<a href="fbed.html" class="page"><strong>fbed</strong>(1)</a>.</p>
+</dd>
+<dt class="hdlist1"><em>vdeck</em> </dt>
+<dd>
+<p>A program to convert <em>mged(1)</em> models to <em>gift(1)</em> format
+card deck files. See <a href="vdeck.html" class="page"><strong>vdeck</strong>(1)</a>.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_fb_file"><a class="anchor" href="#_fb_file"></a>FB_FILE</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Whenever a framebuffer is needed, and the <strong class="opt">-F</strong> option has not
+been specified, the environment variable <code class="var">FB_FILE</code> is checked for
+the device to use.  The format of this variable is either
+<em>[hostname:]/dev/device_name[num]</em> or <em>UNIX_path</em>, the pathname of a
+disk file to be used as a "virtual framebuffer". <em>Hostname</em> is the
+name of a remote machine if the remote framebuffer interface is being
+used. When a local display device is being specified, the <em>hostname</em>
+should not be specified, for performance reasons; just the special
+string <em>device_name</em> is used to select a particular type of
+framebuffer. <em>Num</em> is type dependent and can either mean a display
+number or select some options for that type. Note that for security
+reasons, it is not permitted to access a disk file via the remote
+interface.</p>
+</div>
+<div class="paragraph">
+<p>If <code class="var">FB_FILE</code> is not set, the default for your system will be
+used.</p>
+</div>
+<div class="paragraph">
+<p>The use of <em class="path">/dev/</em> before the <em>device_name</em> is simply to
+distinguish them from filenames.  See the end of the
+<a href="../3/libfb.html" class="page"><strong>libfb</strong>(3)</a> manual page for a list of the device
+names and the meanings of any <em>num</em> parameters they may take, and for
+a more detailed discussion.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_options"><a class="anchor" href="#_options"></a>OPTIONS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A convention exists for the options used on most of the utilities
+provided. Random options are usually lower case. Options which could
+specify either a screen or file size are, by convention, lower case
+for file information, and upper case for screen information. Here&#8217;s a
+list of some of the common options you may encounter:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>-i</strong> </dt>
+<dd>
+<p>Inverse flag.  Pretend origin is in upper left corner of
+screen, for that good old-fashioned fourth-quadrant behavior.</p>
+</dd>
+<dt class="hdlist1"><strong>-c</strong> </dt>
+<dd>
+<p>Various.  Typically means clear the screen first.</p>
+</dd>
+<dt class="hdlist1"><strong>-z</strong> </dt>
+<dd>
+<p>Various.  Typically means zoom-in on current area of display.</p>
+</dd>
+<dt class="hdlist1"><strong>-s</strong> <em>square_file_size</em> </dt>
+<dd>
+<p><em>WARNING:</em> Behavior is undefined when the
+<strong class="opt">-s</strong> flag is used in conjunction with the <strong class="opt">-w</strong> or <strong class="opt">-n</strong>
+flags.</p>
+</dd>
+<dt class="hdlist1"><strong>-w</strong> <em>file_width</em> </dt>
+<dd>
+<p><em>WARNING:</em> Behavior is undefined when the
+<strong class="opt">-S</strong> flag is used in conjunction with the <strong class="opt">-W</strong> or <strong class="opt">-N</strong>
+flags.</p>
+</dd>
+<dt class="hdlist1"><strong>-W</strong> <em>screen_width</em> </dt>
+<dd>
+<p>specifies the number of bytes per sample, where
+the flag, where the <em>\#</em> character is a literal "pound" or "sharp"
+sign character, typically found over the numeral "3" on ANSI
+keyboards. Several programs (like pixrect) can operate on data samples
+of arbitrary width. For example, a <a href="../5/pix.html" class="page"><strong>pix</strong>(5)</a>
+format file can often be treated like a <a href="../5/bw.html" class="page"><strong>bw</strong>(5)</a>
+format file with a width of three bytes per sample.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tape_format"><a class="anchor" href="#_tape_format"></a>TAPE FORMAT</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When dealing with large collections of images, as might be needed for
+making a movie, it frequently becomes desirable to deal with magnetic
+tapes. Some of the early <a href="../5/pix.html" class="page"><strong>pix</strong>(5)</a> tools contained
+built-in knowledge of the tape format. While this aberrant early
+design has been corrected in favor of using tape-oriented programs
+such as <a href="#man:1/dd.adoc" class="page unresolved"><strong>dd</strong>(1)</a> in pipelines with the image tools,
+our "standard" image format remains.</p>
+</div>
+<div class="paragraph">
+<p>Regardless of image resolution, all tape records are 24k bytes
+long. If an image does not occupy an integral number of tape records,
+the last record is padded out. For example, NTSC images in 640x480
+format use 37.5 records per image. The
+<a href="#man:1/files-tape.adoc" class="page unresolved"><strong>files-tape</strong>(1)</a> utility is helpful in
+performing this function.</p>
+</div>
+<div class="paragraph">
+<p>The capacity of an average 2400 foot reel of tape at 6250 is 6144
+records of 24k bytes each. For the various combinations of density and
+image resolution, a convention for the number of frames/reel exists:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top"><strong>Density</strong></th>
+<th class="tableblock halign-center valign-top"><strong>Resolution</strong></th>
+<th class="tableblock halign-center valign-top"><strong>Frames/reel</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">6250</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1k</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">48</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">6250</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">640x480</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">160</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">6250</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">512</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">192</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1600</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1k</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">12</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1600</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">512</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">48</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_author"><a class="anchor" href="#_author"></a>AUTHOR</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>BRL-CAD Team</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright"><a class="anchor" href="#_copyright"></a>COPYRIGHT</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This software is Copyright (c) 1989-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bug_reports"><a class="anchor" href="#_bug_reports"></a>BUG REPORTS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Reports of bugs or problems should be submitted via electronic mail to
+<a href="mailto:devs@brlcad.org">devs@brlcad.org</a></p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../ui/js/site.js"></script>
+<script src="../../../ui/js/vendor/lunr.js"></script>
+<script src="../../../ui/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/docs/man/1/brlcad.html"></script>
+<script async src="../../../ui/../search-index.js"></script>
+<script async src="../../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

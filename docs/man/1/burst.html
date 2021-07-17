@@ -1,0 +1,1708 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>BURST(1) :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/docs/man/1/burst.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../ui/css/site.css">
+    <link rel="stylesheet" href="../../../ui/css/search.css">
+    <link rel="stylesheet" href="../../../ui/css/custom.css">
+    <script>var uiRootPath = '../../../ui'</script>
+    <link rel="icon" href="../../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article manpage">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lessons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../lessons/mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/01_creating_primitive_shapes.html">1. Creating Primitive Shapes in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/02_learning_viewing_options.html">2. Learning Viewing Options in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/03_using_insert_command.html">3. Using the Insert Command in MGED to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/04_assign_mat_prop_rt.html">4. Assigning Material Properties and Raytracing in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/05_learning_boolean_expressions.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/06_creating_a_goblet.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/07_goblet_material_properties.html">7. Assigning Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/08_goblet_material_properties2.html">8. Assigning More Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/09_globe_in_display_box.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/10_creating_mug.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/11_refining_mug.html">11. Refining a Mug Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/12_mug_through_gui.html">12. Creating a Mug Model using the MGED Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/13_placing_shapes_in_3d.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/14_placing_shapes_in_3d_2.html">14. Additional Exercises Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/15_creating_a_toy_truck.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/16_mod_tech_struct.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Books</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../hacking/index.html">Hacking BRL-CAD</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting Started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter1.html">A Call to Arms (and Contributors)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter2.html">Feature Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developers</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter3.html">Working with Our Code</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter4.html">What Code to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter5.html">Contributing Code</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Documenters</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter6.html">Working with Our Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter7.html">Types of Documentation We Maintain</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter8.html">What Documentation to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter9.html">Contributing Documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Other Contributors</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part4/chapter10.html">You Can Help Too</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendix: Resources and Examples</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix1.html">Further References and Resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix2.html">Doc Template: New MGED Command</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix3.html">Code Example: Shooting Rays</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix4.html">Code Example: Walking Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix5.html">Code Example: Command Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix6.html">Example Code: Root Solving</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/index.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../tutorials/overview.html">I. An Overview of BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/mged-intro.html">II. Introduction to MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/preface1.html">Preface</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/preface2.html">Acknowledgments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter1.html">1. Creating Primitive Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter2.html">2. Learning the Viewing Options</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter3.html">3. Using the Insert Command to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter4.html">4. Assigning Material Properties and Raytracing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter5.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter6.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter7.html">7. Assigning Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter8.html">8. Assigning More Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter9.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter10.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter11.html">11. Refining the Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter12.html">12. Creating the Mug Through the GUI</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter13.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter14.html">14. Gaining More Practice Placing Shapes in Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter15.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter16.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/appendix1.html"><code class="app">MGED</code> Commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/modeling.html">III. Modeling</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter2.html">2. The Model Process</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter3.html">3. Measuring data</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter4.html">4. Organizing the Structure</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter5.html">5. Developing Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter6.html">5. Evaluating Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter7.html">7. Logging Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendices</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix1.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix2.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix3.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix4.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix5.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix6.html">Using the build_region Command</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/converting.html">IV. Converting</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter2.html">2. Pertinent Characteristics of the BRL-CAD Format</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter3.html">3. Converting From/to ASCII</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter4.html">4. Converting to BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter5.html">5. Converting From BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter6.html">6. Building a New Converter</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter7.html">7. Postconversion Issues</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/index.html">Articles</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_pattern.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_region.html">Using the build_region Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/camo_shader.html">Camouflage shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ebm_primitive.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/gcv.html">The Geometry Conversion Library</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ged.html">GED: An Interactive Solid Modeling System</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/mged/index.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tutorial.html">Tutorial</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/gui.html">Graphical User Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/command-line-editing.html">Command Line Editing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/user-commands.html">User Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/developer-commands.html">Developer Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tcl-variables.html">Tcl Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/env.html">Environment Variable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/callback.html">Callback</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/brlcad-solid.html">BRL-CAD Solid</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/mgedrc.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/nirt.html">Interactive Raytracing: The nirt Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/overlap_tool.html">The Overlap Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/oed.html">Object Editing - the oed Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/pipes.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/projection_shader.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/tire.html">Vehicle Tire and Wheel Creation in BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/TEMPLATE.html">TEMPLATE</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Misc</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Dev Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../devguides/bool_eval_development.html">NURBS Boolean Evaluation Development Guide</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Presentations</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/brlcad-app-devel.html">Application Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="presentations:_attachments/brlcad-app-devel.html">brlcad-app-devel</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/intro-to-tcltk.html">Introduction to Tcl/Tk</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../specifications/BRL_CAD_g_format_V5.html">BRL-CAD Database Format</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Manual Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../1.html">man1</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../3.html">man3</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../5.html">man5</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../n.html">mann</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Wiki Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">page-1</span>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">BRL-CAD</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../../index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../es/index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../es/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">BRL-CAD</a></li>
+    <li><a href="burst.html">BURST(1)</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/docs/modules/man/pages/1/burst.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">BURST(1)</h1>
+<div class="sect1">
+<h2 id="_name"><a class="anchor" href="#_name"></a>NAME</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>burst - Prepare shotline and burst point library inputs for PDAM.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_synopsis"><a class="anchor" href="#_synopsis"></a>SYNOPSIS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>burst</strong> [-P] [input_file]</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description"><a class="anchor" href="#_description"></a>DESCRIPTION</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong class="cmd">burst</strong> uses LIBRT raytracing to prepare inputs to the Point
+Burst Damage Assessment Model (PDAM) in the form of shotline files and
+burst point library files.  For more information about PDAM, see
+<a href="http://www.dtic.mil/docs/citations/ADA273171">ARL-CR-69: A Guide to
+FASTGEN Target Geometric Modeling</a>.</p>
+</div>
+<div class="paragraph">
+<p>The <strong class="cmd">burst</strong> program is designed to allow many options to be
+configured before any outputs are calculated. Unless otherwise stated
+in the individual command descriptions, a given command will nullify
+any previous occurrence of the same directive until an <strong class="cmd">execute</strong>
+command is given. For instance, the command <strong class="cmd">target-file</strong> <em>tank1</em>
+followed by <strong class="cmd">target-file</strong> <em>tank2</em> will nullify the reference to
+tank1. It is also important to remember that the <strong class="cmd">units</strong> command
+impacts how subsequent physical quantities are read by other commands,
+and the output from an <strong class="cmd">execute</strong> command will use whatever units
+are current. Once the input parameters are specified, the
+<strong class="cmd">execute</strong> command will start a run.  Output will be reported
+using the current setting for <strong class="cmd">units</strong> at the time the
+<strong class="cmd">execute</strong> is run.  Many runs may occur during an instance of the
+<strong class="cmd">burst</strong> program. One such instance is referred to as a session.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_options"><a class="anchor" href="#_options"></a>OPTIONS</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>-p</strong> </dt>
+<dd>
+<p>Plot points (default).</p>
+</dd>
+<dt class="hdlist1"><strong>-P</strong> </dt>
+<dd>
+<p>Plot lines.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_commands"><a class="anchor" href="#_commands"></a>COMMANDS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Commands are defined via an input file and passed to burst when it is
+first invoked. All commands to burst are composed of one or more words
+connected by hyphens and each command may require one or more
+arguments that must be separated by either spaces or tabs. A line that
+begins with the "#" symbol is considered a comment and will be
+ignored. The following table provides a brief overview of the
+available commands, with subsequent sections covering key areas in
+more detail.  In the table, flag arguments have yes or no values, an
+angle is expressed in degrees as a floating-point quantity, distances
+and coordinates such as X, Y, Z, left, right, etc. are also
+floating-point numbers, and count represents an integer. Square
+brackets delimit optional arguments.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Burst Commands</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Command</th>
+<th class="tableblock halign-left valign-top">Arguments</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="cmd">attack-direction</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>azim_angle</code> <code>elev_angle</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">specify azimuth and elevation of attack relative to target</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="cmd">burst-air-file</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>file</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">input burst air idents from file</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="cmd">burst-armor-file</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>file</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">input burst armor idents from file</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="cmd">burst-coordinates</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>X</code> <code>Y</code> <code>Z</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">input single burst point location in target coordinates</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="cmd">burst-distance</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>distance</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">offset burst point along shotline</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="cmd">burst-file</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>file</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">output burst point library to file</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="cmd">cell-size</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>distance</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">specify shotline separation (equidistant horizontal and vertical)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="cmd">color-file</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>file</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">input ident to color mapping from file (for graphics)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="cmd">cone-half-angle</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>angle</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">specify limiting angle for spall ray generation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="cmd">critical-comp-file</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>file</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">input critical component idents from file</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="cmd">deflect-spall-cone</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>flag</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">deflect axis of spall cone half way towards exit normal</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="cmd">dither-cells</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>flag</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">if yes, randomly offset shotline within grid cell</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="cmd">enclose-target</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">generate rectangular grid of shotlines for full target envelope</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="cmd">enclose-portion</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>left</code> <code>right</code> <code>bottom</code> <code>top</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">generate partial envelope by specifying grid boundaries</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="cmd">error-file</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>file</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">divert all diagnostics to file</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="cmd">execute</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">initiate a run (no output produced without this command)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="cmd">grid-file</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>file</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">save shotline locations (Y' Z') in file</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="cmd">ground-plane</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>flag [Z +X -X +Y -Y]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">if yes, burst on ground</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="cmd">help</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">display a list of available commands</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="cmd">histogram-file</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>file</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">write hit frequency histogram to file</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="cmd">image-file</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>file</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">generate frame buffer image on a specified file or device</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="cmd">input-2d-shot</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Y'</code> <code>Z'</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">input single shotline location as grid offsets</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="cmd">input-3d-shot</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>X</code> <code>Y</code> <code>Z</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">input single shotline location in target coordinates</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="cmd">max-barriers</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>count</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">specify the maximum number of components to report along spall ray</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="cmd">max-spall-rays</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>count</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">specify the desired number of spall rays generated per burst point</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="cmd">plot-file</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>file</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">generate plot data in file</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="cmd">quit</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quit the application</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="cmd">read-2d-shot-file</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>file</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">read shot locations from file as grid offsets (see <strong class="cmd">input-2d-shot</strong>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="cmd">read-3d-shot-file</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>file</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">read shot locations from file in target coordinates (see <strong class="cmd">input-3d-shot</strong>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="cmd">read-burst-file</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>file</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">read burst point locations from file (see <strong class="cmd">burst-coordinates</strong>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="cmd">read-input-file</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>file</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">read key word commands from file</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="cmd">report-overlaps</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>flag</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">if yes, log overlap diagnostics</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="cmd">shotline-burst</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>flag</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">if yes, generate burst points along shotlines</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="cmd">shotline-file</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>file</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">output shot line data to file</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="cmd">target-file</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>file</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">read BRL-CAD database from file</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="cmd">target-objects</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>object0</code> <code>[object1 object2 &#8230;&#8203;]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">list objects from BRL-CAD database to interrogate</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="cmd">units</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">linear units (inches, feet, millimeters, centimeters,meters)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="cmd">write-input-file</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>file</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">save script of commands in file</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">#</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">any line beginning with the '#' character is a comment</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_burst_user_preferences"><a class="anchor" href="#_burst_user_preferences"></a>User Preferences</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_burst_units"><a class="anchor" href="#_burst_units"></a>Units of Measure</h3>
+<div class="paragraph">
+<p>The <strong class="cmd">units</strong> command will set the linear units for input and
+output. This command should be used before any scalar quantities such
+as coordinates, distances, or sizes are input. The units may be
+changed to accommodate input files of differing units, but the output
+from a particular run will reflect whatever the units were set to when
+the <strong class="cmd">execute</strong> command was given. One argument is expected out of
+the following list and must be spelled correctly: millimeters,
+centimeters, meters, inches and feet. The default units are
+millimeters.</p>
+</div>
+<div class="paragraph">
+<p>Note that when specifying angles as options to commands angles are
+always expressed in degrees, not radians.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_burst_report_overlaps"><a class="anchor" href="#_burst_report_overlaps"></a>Region Overlap Reporting</h3>
+<div class="paragraph">
+<p>It is considered an error if two regions in a BRL-CAD .g file occupy
+the same space; we call this an overlap. The ray tracing library
+(librt) will report overlapping regions that are intersected by
+shotlines or burst rays to the burst application and the program will,
+by default, print out any that have a line of sight thickness of at
+least 0.25 millimeters (see <a href="#_burst_of_7">Error Log</a>). Although a
+target may only have a small number of overlapping regions, an error
+will be reported for each ray that intersects one of them.  Generally
+this results in the messages being repetitious. Although these
+diagnostics are important for fixing problems in the geometric
+description of the target, the user may wish to proceed with a
+production run and the printing of these errors can slow the execution
+time considerably. A yes or no argument to the <strong class="cmd">report-overlaps</strong>
+command will turn the diagnostics on or off. Regardless of whether or
+not individual overlaps are reported, the total number detected will
+be logged.</p>
+</div>
+<div class="paragraph">
+<p>When overlap reporting is enabled, the full path name of both regions
+is printed as seen in the following example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>OVERLAP:
+reg=/component/turret/tur.ext/tur.armor/tur.bot{{0}} isol=s2,
+reg=/component/hull/hull.ext/hull.armor/r1.top{{0}} osol=ss4,
+depth 544.21mm at (-471.784,812.8,0) x-2 y1 lvl0 purpose=shotline
+OVERLAP:
+reg=/component/turret/tur.ext/tur.ring{{0}} isol=ss2,
+reg=/component/turret/tur.ext/tur.armor/tur.bot{{0}} osol=s2,
+depth 25.39mm at (-418.907,812.8,0) x-2 y1 lvl1 purpose=normal thickness
+OVERLAP:
+reg=/component/turret/tur.ext/tur.ring{{0}} isol=ss2,
+reg=/component/turret/tur.ext/tur.armor/tur.bot{{0}} osol=s2,
+depth 52.88mm at (-418.907,-812.8,0) x-2 y1 lvl1 purpose=spall ray</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The zero enclosed in double curly brackets is intended to discriminate
+between instances. Theoretically, isol and osol are the names of the
+starting and ending solids associated with the boolean operations on
+the overlapping partition. In practice these solid names are typically
+not helpful in diagnosing the problem, but the region names should be
+sufficient. The depth is the line-of-sight thickness of the
+overlapping partition in millimeters. In parentheses, are printed the
+target coordinates of the intersection of the ray with the
+overlap. The x-2 and y1 reveal that the grid indices of the shotline
+are -2, 1; this means that the shotline was 2 cells to the left, and
+one cell above the grid origin. If lvl (meaning ray tracing recursion
+level) is zero, then the overlap resulted from a shotline, but if it
+is one, it could represent either a burst ray intersection or a probe
+to calculate the normal thickness of a component intersected by the
+shotline. The real purpose of the ray is stated last.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_burst_shotlining_options"><a class="anchor" href="#_burst_shotlining_options"></a>Shotlining Options</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Shotlining is a technique whereby lines are described in the target
+coordinate system and information is requested about the geometry that
+intersects those lines in 3-space. This technique is useful for
+analysis programs that must simulate threat/target interactions, and
+therefore must sample the geometry along the threat path. Typically
+the lines are specified discretely, by a point and a direction, or a
+grid of lines is generated that is oriented perpendicular to the
+direction of attack. A grid is rectangular, but is subdivided along
+its height and width uniformly resulting in square cells. Gridding
+techniques include passing a line called a shotline through the center
+of each cell, or alternatively, dithering each shotline&#8217;s position
+within its respective cell&#8217;s boundaries (see <a href="#_burst_sh_4">Dithering
+Shotlines</a>).</p>
+</div>
+<div class="paragraph">
+<p>The user is faced with several choices for generating shotlines;
+full-target envelope, partial envelopes, or discrete shots. No matter
+what shotlining method is used, a grid always exists as a frame of
+reference for specifying 2-dimensional coordinates in the plane normal
+to the direction of attack. This 2-dimensional coordinate system is a
+projection of the shotline coordinate system (also referred to as the
+primed coordinate system). For the simple case of a zero azimuth, zero
+elevation attack, the X', Y', and Z' axes in the shotline coordinate
+system coincide with the X, Y, and Z axes of the target coordinate
+system and the shotline direction is parallel to the X' axis and
+headed toward decreasing coordinates. Other orientations are described
+by rotating the X', Y', and Z' axes to keep the shotline direction
+always down the X' axis. This transformation involves two rotations;
+first a rotation of the primed coordinate system about the coincident
+Z and Z' axes by the specified azimuthal angle, followed by a rotation
+about the new Y' axis by the specified elevation angle. Since the grid
+is a 2-d projection of the shotline coordinate system, it has no X
+coordinate; if the user&#8217;s viewpoint is from the direction of attack,
+the Y' axis can be thought of as horizontal with increasing
+coordinates to the right, and the Z' axis as vertical and increasing
+in the upward direction.</p>
+</div>
+<div class="sect2">
+<h3 id="_burst_sh_1"><a class="anchor" href="#_burst_sh_1"></a>Attack Direction</h3>
+<div class="paragraph">
+<p>The orientation of shotlines with respect to the coordinate system of
+the target are described by azimuth and elevation angles. These angles
+must be specified in degrees as floating-point numbers via the
+<strong class="cmd">attack-direction</strong>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_burst_sh_2"><a class="anchor" href="#_burst_sh_2"></a>Gridding</h3>
+<div class="paragraph">
+<p>An envelope refers to a grid that is dimensioned such that its
+rectangular area, projected normal to the grid, will cover optionally
+all or part of the target. The <strong class="cmd">enclose-target</strong> option will
+generate a grid that is guaranteed to cover the entire target. Since
+BRL-CAD uses combinatorial solid geometry as one of its shape
+representation methods, the dimensions of the target are not known in
+advance. Therefore, a worst case bounding rectangular parallel piped
+(RPP) is used to generate the grid and the grid may be larger than
+necessary. In addition, depending on the attack aspect, the presented
+area of some targets may not fill up a rectangular grid well. This
+should not be a problem since ray tracing outside the target
+boundaries is cheap, but if desired the grid can be trimmed down with
+the partial envelope option <strong class="cmd">enclose-portion</strong>. The grid origin is
+always aligned with the target origin.</p>
+</div>
+<div class="paragraph">
+<p>The <strong class="cmd">enclose-portion</strong> option allows the user to generate a
+sub-grid by specifying the distances from the grid origin to the
+sub-grid&#8217;s left, right, top, and bottom boundaries.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_burst_sh_3"><a class="anchor" href="#_burst_sh_3"></a>Cell Size</h3>
+<div class="paragraph">
+<p>The dimensions of a grid cell are input as floating-point values that
+represent the distances between the centers of adjacent
+cells. <strong class="cmd">cell-size</strong> also expresses the projected area of influence
+associated with a shotline or burst ray. Therefore, <strong class="cmd">cell-size</strong>
+must be specified even when a grid will not be generated, such as with
+discrete shot or discrete burst point selection (see
+<a href="#_burst_sh_5">Input Discrete Shots</a> and <a href="#_bursting_1_1">Input
+Discrete Burst Points</a>).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_burst_sh_4"><a class="anchor" href="#_burst_sh_4"></a>Dithering Shotlines</h3>
+<div class="paragraph">
+<p>When gridding, shotlines normally pass through the center of each
+cell, however, they may be also be dithered via the
+<strong class="cmd">dither-cells</strong> command. If the user chooses the latter, 2 random
+numbers are selected for each cell that are used to offset the
+shotline in both parametric directions of the grid plane, but within
+the respective cell&#8217;s boundaries.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_burst_sh_5"><a class="anchor" href="#_burst_sh_5"></a>Input Discrete Shots</h3>
+<div class="paragraph">
+<p>If the user wants to fire at a known point on the target, he or she
+may wish to describe the shotline location in target coordinates. When
+coupled with the attack direction, each 3-dimensional coordinate
+uniquely specifies a shotline.  The <strong class="cmd">input-3d-shot</strong> command
+allows the user to type in a single shot location as an X, Y, and Z
+coordinate that is run when the <strong class="cmd">execute</strong> command is given, but
+remember that no queueing of shots occurs in this mode; the last set
+of coordinates entered will be used.  For inputing multiple shots,
+<strong class="cmd">read-3d-shot-file</strong> can be used to loop through every set of
+target coordinates in the named file after the <strong class="cmd">execute</strong> command
+is run. The file should contain three floating-point numbers on each
+line separated by white space (blanks or tabs).</p>
+</div>
+<div class="paragraph">
+<p>Another way to describe a shot location is in the shotline coordinate
+system. Since the X' location of the shot is irrelevant (the shotline
+is parallel to the X' axis) a shot may be specified as a Y' and Z'
+coordinate. These coordinates can also be referred to as horizontal
+and vertical grid offsets.  The <strong class="cmd">input-2d-shot</strong> option allows the
+user to type in a single shot location as a Y', and Z' coordinate
+which will be run when the <strong class="cmd">execute</strong> command is given, but like
+the 3d case no queueing of shots occurs in this mode and only the last
+set of grid offsets entered will be used.  To input multiple shots,
+the <strong class="cmd">read-2d-shot-file</strong> can be used; <strong class="cmd">execute</strong> will loop
+through every set of grid offsets in the named file. The file should
+contain three floating-point numbers on each line separated by white
+space (blanks or tabs).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_burst_bursting_options"><a class="anchor" href="#_burst_bursting_options"></a>Bursting Options</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Bursting is a technique for sampling a target&#8217;s geometry with the use
+of ray tracing. As opposed to shotlining involving parallel rays,
+bursting employs a distribution of rays that emanate from a single
+point. The burst program generates rays that approximate a uniform
+distribution over a user-specified solid angle (see
+<a href="#_bursting_2_2">Sampling Cone Half Angle</a>) and having a density (see
+<a href="#_busrting_2_4">Number of Sampling Rays</a>) that is also under control
+of the user. The user also has a choice between several mechanisms for
+setting up burst point locations depending on the particular threat he
+is attempting to emulate.</p>
+</div>
+<div class="sect2">
+<h3 id="_bursting_1"><a class="anchor" href="#_bursting_1"></a>Method of Locating Burst Point</h3>
+<div class="paragraph">
+<p>Depending on threat type, burst points may be located using two basic
+techniques. The first technique is simply to input the burst point
+coordinates. This method can be used to compare vulnerability analysis
+results with empirical results from the firing range or combat
+field. The second technique available to the user is to burst along a
+shotline. This option is used more for predicting the burst point
+location based on target geometry, given certain parameters that
+describe the target/threat interactions.</p>
+</div>
+<div class="sect3">
+<h4 id="_bursting_1_1"><a class="anchor" href="#_bursting_1_1"></a>Input Discrete Burst Points</h4>
+<div class="paragraph">
+<p>The input of explicit burst point coordinates can be accomplished
+either by typing them in one at a time or by reading a file of target
+X, Y, and Z coordinates.</p>
+</div>
+<div class="paragraph">
+<p>The <strong class="cmd">burst-coordinates</strong> command allows the user to type in a
+single burst point location as an X, Y, and Z coordinate. When the
+<strong class="cmd">execute</strong> command is given, that one burst point will be run. No
+queueing of burst points occurs in this mode, the last set of
+coordinates entered will be used.</p>
+</div>
+<div class="paragraph">
+<p>The <strong class="cmd">read-burst-file</strong> command allows the user to specify a number
+of burst points from a file; this option will, after submission of an
+execute directive, loop through every set of target coordinates in the
+named file. The file should contain three numbers on each line
+separated by white space (blanks or tabs).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_bursting_1_2"><a class="anchor" href="#_bursting_1_2"></a>Burst on Contact</h4>
+<div class="paragraph">
+<p>The <strong class="cmd">shotline-burst</strong> command can be given a yes or no argument to
+either enable or disable this method of generating burst points. When
+a yes argument is given, a second yes or no argument is also required
+(see <a href="#_bursting_1_2_1">Burst on Armor</a>). Bursting along a shotline
+can be done different ways depending on the combination of several
+options. The location of the burst point is based on the triggering
+mechanism that is selected with the burst distance parameter.</p>
+</div>
+<div class="sect4">
+<h5 id="_bursting_1_2_1"><a class="anchor" href="#_bursting_1_2_1"></a>Burst on Armor</h5>
+<div class="paragraph">
+<p>If the <strong class="cmd">burst-distance</strong> paramter is set to a negative or zero
+value, then interior burst points will be generated (see
+<a href="#_bursting_2_1">Burst Distance</a>). This method of bursting requires
+the input of burst armor idents and, by default, burst air idents are
+also required. If the user does not want to require that certain air
+be present to trigger a burst point, the shotline-burst command has a
+second argument. When this second argument is set to no, bursting will
+occur as long as burst armor is followed by any air or void (empty
+space), and the burst air file is not required. For more information
+see <a href="#_bursting_io_1_2_1">Burst Armor and Burst Air Ident Files</a>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_bursting_1_2_2"><a class="anchor" href="#_bursting_1_2_2"></a>Ground Plane Bursting</h5>
+<div class="paragraph">
+<p>Ground plane bursting is a vehicle for evaluating the effect of
+fragmenting warheads on light-armored vehicles when they strike the
+ground in close proximity to the target. The <strong class="cmd">ground-plane</strong>
+command is only relevant when bursting along a shotline is
+selected. The ground is modeled as a rectangle lying in a plane
+parallel to the target X-Y plane with edges parallel to the X and Y
+axes. The grid will be enlarged to include the ground plane; it is
+important for efficiency to limit the size of the ground plane to
+match the range of the fragments that may be generated by the
+particular threat being modeled. When enabling this option, the
+<strong class="cmd">ground-plane</strong> command is given a yes argument followed by the
+height of the target above the ground, and the distances that the
+ground rectangle extends out positive X, negative X, positive Y, and
+negative Y axes.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_bursting_2"><a class="anchor" href="#_bursting_2"></a>Bursting Parameters</h3>
+<div class="paragraph">
+<p>The following parameters influence both the triggering mechanism for
+burst points, as well as the characteristics of the cone of rays
+generated from each point.</p>
+</div>
+<div class="sect3">
+<h4 id="_bursting_2_1"><a class="anchor" href="#_bursting_2_1"></a>Burst Distance</h4>
+<div class="paragraph">
+<p>The <strong class="cmd">burst-distance</strong> parameter is modeled after the BDIST
+parameter used by the Air Force&#8217;s PGEN code. The role of this
+parameter is overloaded, however it was retained to aid PGEN users in
+transitioning to the <strong class="cmd">burst</strong> program. If it is zero or negative,
+then interior bursting is enabled, otherwise, if it is greater than
+zero, exterior bursting will occur, subject to certain conditions (see
+below). The magnitude of this parameter is used to offset the burst
+point location along the shotline relative to the geometry that
+triggered the burst.</p>
+</div>
+<div class="sect4">
+<h5 id="_bursting_2_1_1"><a class="anchor" href="#_bursting_2_1_1"></a>Interior Bursting</h5>
+<div class="paragraph">
+<p>Burst armor refers to a component whose ident code is found in the
+list input by the <strong class="cmd">burst-armor-file</strong> command. Similarly, burst
+air refers to a component whose ident code is found in the list input
+by the <strong class="cmd">burst-air-file</strong> directive. If interior bursting is
+enabled and a burst armor component is encountered along a shotline
+that is immediately followed by burst air, then a burst point will be
+located the absolute value of burst distance beyond the exit of the
+shotline from the component. This means that if burst distance is
+zero, the burst point will lie at the burst armor/air interface, and
+if it&#8217;s -5.5, the burst point will lie 5.5 units inside the air
+compartment from the back surface of the armor.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_bursting_2_1_2"><a class="anchor" href="#_bursting_2_1_2"></a>Exterior Bursting</h5>
+<div class="paragraph">
+<p>If burst distance is greater than zero, the first component
+encountered along the shotline will trigger a burst point, regardless
+of its ident code, that will be located burst distance in front of the
+shotline entry point. This technique simulates the behavior of a
+fragmenting munition with a standoff fuzing such that detonation is
+triggered before the collision of the warhead with the target. The
+burst distance is set to imitate the built in standoff of the
+warhead. When employing exterior bursting methods, burst armor and
+burst air are not used.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_bursting_2_2"><a class="anchor" href="#_bursting_2_2"></a>Sampling Cone Half Angle</h4>
+<div class="paragraph">
+<p>To limit the solid angle within which burst rays will be generated,
+the user may specify a cone half angle. This angle represents the
+degrees (in floating point) from the axis of the cone to its limiting
+surface. The default value for the cone half angle is 45 degrees.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_bursting_2_3"><a class="anchor" href="#_bursting_2_3"></a>Deflected Sampling Cone</h4>
+<div class="paragraph">
+<p>The spall cone axis is, by default, aligned with the shotline. In
+reality, the center of mass of the spall cloud would be between the
+shotline direction and the exit normal of the shotline from the
+spalling component. By aligning the spall cone axis with a vector
+halfway between the shotline and the exit normal, a narrower cone half
+angle can be used and still sample within the solid angle of
+interest. This technique can therefore be used to cut down on the
+number of rays calculated without lowering the sampling density. The
+<strong class="cmd">deflect-spall-cone</strong> command takes a yes or no argument about
+whether or not to divert the cone axis.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_bursting_2_4"><a class="anchor" href="#_bursting_2_4"></a>Number of Sampling Rays</h4>
+<div class="paragraph">
+<p>The sampling ray density within the spall cone is controlled by
+specifying the maximum number of rays desired with the
+<strong class="cmd">max-spall-rays</strong> command. Due to the uniform distribution
+algorithm employed, the number of rays calculated will be slightly
+less.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_bursting_2_5"><a class="anchor" href="#_bursting_2_5"></a>Maximum Barriers</h4>
+<div class="paragraph">
+<p>For munitions known to have limited penetration capability, the user
+may set a limit on the number of burst ray intersections reported with
+the <strong class="cmd">max-barriers</strong> command. The effect of setting this parameter
+is to reduce the size of the burst point library (see
+<a href="#_burst_of_1">Burst Point Library</a>) by limiting the number of
+components that will be reported per burst ray. By default, up to 100
+components are reported, as it is not expected that this number will
+be reached under normal circumstances.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_burst_input_file_options"><a class="anchor" href="#_burst_input_file_options"></a>Input File Options</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_bursting_io_1"><a class="anchor" href="#_bursting_io_1"></a>Target-Related Input Files</h3>
+<div class="paragraph">
+<p>This group of commands is for specification of target-specific input
+files.</p>
+</div>
+<div class="sect3">
+<h4 id="_bursting_io_1_1"><a class="anchor" href="#_bursting_io_1_1"></a>Target Data Base File</h4>
+<div class="paragraph">
+<p>The input of the target&#8217;s BRL-CAD .g file is accomplished with the
+<strong class="cmd">target-file</strong> command. Note that only one data base may be read
+in during a given session. If the user wishes to change the target
+once the execute command has been given, they must exit the burst
+program and start a new session.</p>
+</div>
+<div class="paragraph">
+<p>After specifying the BRL-CAD .g file, the user must list all of the
+objects in the .g hierarchy that they wish to include in the analysis
+with the <strong class="cmd">target-objects</strong> command. The objects must be listed as
+arguments to one <strong class="cmd">target-objects</strong> command with spaces or tabs as
+separators. Note that only one list of objects may be loaded per
+session, however, they do not get loaded until the <strong class="cmd">execute</strong>
+command is given.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_bursting_io_1_2"><a class="anchor" href="#_bursting_io_1_2"></a>Ident List Input Files</h4>
+<div class="paragraph">
+<p>Idents refer to the region ident code from the BRL-CAD .g file. Lists
+of idents may be specified singly or as ranges. Individual idents must
+appear as one per line, but ranges are specified by two numbers on a
+line that are separated by one or more of the following characters:
+comma, hyphen, colon, semicolon, space, or tab. For example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>600-999
+1011
+4002-4050
+8000
+9001
+9004
+9005</pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_bursting_io_1_2_1"><a class="anchor" href="#_bursting_io_1_2_1"></a>Burst-Armor and Burst-Air Ident Files</h5>
+<div class="paragraph">
+<p>When interior burst points are to be generated along a shotline (see
+<a href="#_bursting_2_1_1">Interior Bursting</a>) a file of burst armor idents
+must be specified with the <strong class="cmd">burst-armor-file</strong>
+command. Additionally a burst air idents file must be specified with
+the <strong class="cmd">burst-air-file</strong> command. If a shotline intersects a
+component whose ident has been input as a burst armor and it is
+immediately followed by burst air a burst point will be triggered.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_bursting_io_1_2_2"><a class="anchor" href="#_bursting_io_1_2_2"></a>Critical Component Idents</h5>
+<div class="paragraph">
+<p>Whether interior or exterior bursting is being employed, information
+about components hit by burst rays will only be output for rays that
+hit critical components. The file name containing a list of critical
+component idents must therefore be specified by the
+<strong class="cmd">critical-comp-file</strong> command if burst points are to be generated.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_bursting_1_3"><a class="anchor" href="#_bursting_1_3"></a>Color Mapping Input Files</h4>
+<div class="paragraph">
+<p>The <strong class="cmd">color-file</strong> command allows users to assign colors to
+component idents for graphics options, in particular, the
+<strong class="cmd">image-file</strong> and <strong class="cmd">plot-file</strong> commands. The format of this
+file is 5 numbers per line separated by blanks or tabs. The first
+number is the low end of an ident range and the second number is the
+high end of the range (both numbers are inclusive). This range is
+mapped to the color specified by the last 3 numbers on the line that
+are red, green, and blue components of the color (values for these
+components must be between 0 and 255 inclusive).  For example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>4001 4003   255 255 0     # Fuel
+4050 4050   255 255 0     # Fuel
+8000 8001   255 100 255   # Ammo
+100 165     150 255 100   # Hull armor
+610 619     220 150 100   # Commander
+720 729     220 150 100   # Gunner
+830 839     220 150 100   # Loader
+940 949     220 150 100   # Driver</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_bursting_io_2"><a class="anchor" href="#_bursting_io_2"></a>Project-Related Input Files</h3>
+<div class="sect3">
+<h4 id="_bursting_io_2_1"><a class="anchor" href="#_bursting_io_2_1"></a>Reading Session Files</h4>
+<div class="paragraph">
+<p>The <strong class="cmd">read-input-file</strong> command reads an input file of
+commands. These files can be generated manually by using a text editor
+or saved from a session file with the <strong class="cmd">write-input-file</strong> command.
+See <a href="#_burst_commands">Command Input</a> for the format of this file.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_bursting_io_2_2"><a class="anchor" href="#_bursting_io_2_2"></a>Shotline and Burst Point Input Files</h4>
+<div class="paragraph">
+<p>For an explanation of commands for reading in files of shotline or
+burst point coordinates, see <a href="#_burst_sh_5">Input Discrete Shots</a> and
+<a href="#_bursting_1_1">Input Discrete Burst Points</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_burst_output_file_options"><a class="anchor" href="#_burst_output_file_options"></a>Output File Options</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following commands will turn on optional output. By default, no
+output is produced except error logging (see <a href="#_burst_of_7">Error
+Log</a>), unless an output file is specified with the appropriate
+command. Any combination of output options may be specified for a
+particular run. Note that specifying an output file will cause an
+existing file with that name to be truncated to zero
+length. Therefore, only one such command should be entered per session
+for a particular file name. Multiple runs during a session will append
+to the same files if intervening commands to change the output file
+name are not given, except for the graphics files as explained
+below. Note that there is no way to append to a file created by a
+previous session of the burst program, but these files may be
+concatenated after the fact.</p>
+</div>
+<div class="sect2">
+<h3 id="_burst_of_1"><a class="anchor" href="#_burst_of_1"></a>Burst Point Library File</h3>
+<div class="paragraph">
+<p>The <strong class="cmd">burst-file</strong> command will open the named file for creating a
+burst point library. If the file exists, it will be truncated by this
+command.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_burst_of_2"><a class="anchor" href="#_burst_of_2"></a>Shotline File</h3>
+<div class="paragraph">
+<p>The <strong class="cmd">shotline-file</strong> command will open the named file for creating
+a shotline file. If the file exists, it will be truncated by this
+command.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_burst_of_3"><a class="anchor" href="#_burst_of_3"></a>Plot File</h3>
+<div class="paragraph">
+<p>The <strong class="cmd">plot-file</strong> command generates a plot file, using BRL-CAD
+extensions to the standard format. This option is useful for examining
+the shotline and burst ray information graphically as a
+three-dimensional vector plot. Due to constraints inherent in the plot
+format, these plots must be displayed as a post-process step by using
+a BRL-CAD plotting utility such as <strong class="cmd">pl-fb</strong>. Because some of these
+display programs do not support multiple plots per file, the file name
+should be changed between runs. The following table describes the
+color mapping associated with these plots:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. Color Key for Plots</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Color</th>
+<th class="tableblock halign-center valign-top">R</th>
+<th class="tableblock halign-center valign-top">G</th>
+<th class="tableblock halign-center valign-top">B</th>
+<th class="tableblock halign-center valign-top">Representation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">yellow</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">255</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">255</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">grid cell centers</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">red</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">255</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">burst cone</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">blue</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">255</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">default component intersection</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">lt blue</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">100</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">100</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">255</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">default outside air intersection</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">lt green</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">100</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">255</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">100</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">default inside air intersection</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">purple</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">255</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">255</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">default critical component intersection</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>If the user has specified a color mapping file with the
+<strong class="cmd">color-file</strong> command, then those colors will be used rather than
+the above colors for all shotline/ray intersections.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_burst_of_4"><a class="anchor" href="#_burst_of_4"></a>Frame Buffer Image</h3>
+<div class="paragraph">
+<p>The <strong class="cmd">image-file</strong> command will generate a color image that
+provides the user with immediate feedback about a run. The grid is
+displayed graphically and each cell location is dynamically color
+coded to show its current status. The following table describes the
+color mapping associated with the grid:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 3. Color Key for Frame Buffer Image</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Color</th>
+<th class="tableblock halign-center valign-top">R</th>
+<th class="tableblock halign-center valign-top">G</th>
+<th class="tableblock halign-center valign-top">B</th>
+<th class="tableblock halign-center valign-top">Representation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">red</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">255</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">axis of grid</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">black</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">grid cell boundaries</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">blue</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">255</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">outside of grid</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">lt grey</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">200</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">200</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">200</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">shot missed target</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">white</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">255</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">255</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">255</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">shot hit target</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">lt green</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">200</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">255</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">200</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">burst occurred but hit no critical components</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">pink</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">255</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">200</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">200</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">burst occurred and hit some critical components</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">purple</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">255</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">255</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">a ground burst occurred</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>In addition to the above cell colors, hits on critical components by
+burst rays are depicted as a colored pixel projected into grid space
+from the intersection point where the ray enters the component. Colors
+for the components are mapped from ident numbers according to the
+table specified by the user with the <strong class="cmd">color-file</strong> command and
+shaded using a lighting model illuminated from the viewing direction.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_burst_of_5"><a class="anchor" href="#_burst_of_5"></a>Grid File</h3>
+<div class="paragraph">
+<p>The <strong class="cmd">grid-file</strong> command will store each shotline coordinate
+generated during the run as grid offsets. These files can later be
+read in to replicate a previous run&#8217;s grid or discrete shots by using
+the <strong class="cmd">read-2d-shot-file</strong> command. This capability is especially
+useful when dithered shotlines have been used and it is desired that
+the same shotlines be used in another run. Note that the shotline
+intersection information is not saved, just the grid offsets for each
+shotline.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_burst_of_6"><a class="anchor" href="#_burst_of_6"></a>Script File</h3>
+<div class="paragraph">
+<p>During a session, all commands are saved in a temporary file. The
+<strong class="cmd">write-input-file</strong> command will create a snapshot of this session
+file, that can later be used to recreate the current session up to the
+point when the file was written. The session or input files can later
+be used in one of two ways: either read in with the
+<strong class="cmd">read-input-file</strong> command, or supplied on the standard input of
+the <strong class="cmd">burst</strong> program. Note that the <strong class="cmd">write-input-file</strong> and
+<strong class="cmd">read-input-file</strong> commands will not be included in the input
+files, but the commands read in by the latter will.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_burst_of_7"><a class="anchor" href="#_burst_of_7"></a>Error Log</h3>
+<div class="paragraph">
+<p>The <strong class="cmd">error-file</strong> command is useful to save errors in a log file
+and prevent copious ray tracer diagnostics from scrolling by on the
+screen. This option is especially useful if using the batch mode of
+execution so that the terminal is not tied up by program output. If no
+error log is specified, diagnostic messages will appear in the
+scrolling window or, if in batch mode, on the <strong class="cmd">burst</strong> program&#8217;s
+standard error output.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_burst_of_8"><a class="anchor" href="#_burst_of_8"></a>Histogram File</h3>
+<div class="paragraph">
+<p>The <strong class="cmd">histogram-file</strong> command generates a frequency histogram to
+the named file. The file format is simply one number per line; each
+number is a count of critical components hit by an individual
+burst ray. This file can easily be post-processed to display a
+histogram, for instance, how many rays hit zero, one, two,
+three, etc. components.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also"><a class="anchor" href="#_see_also"></a>SEE ALSO</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="../5/burst_point_library.html" class="page"><strong>burst_point_library</strong>(5)</a>,
+<a href="../5/burst_shotline_files.html" class="page"><strong>burst_shotline_files</strong>(5)</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_author"><a class="anchor" href="#_author"></a>AUTHOR</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>BRL-CAD Team</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright"><a class="anchor" href="#_copyright"></a>COPYRIGHT</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This software is Copyright (c) 1989-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bug_reports"><a class="anchor" href="#_bug_reports"></a>BUG REPORTS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Reports of bugs or problems should be submitted via electronic mail to
+<a href="mailto:devs@brlcad.org">devs@brlcad.org</a></p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../ui/js/site.js"></script>
+<script src="../../../ui/js/vendor/lunr.js"></script>
+<script src="../../../ui/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/docs/man/1/burst.html"></script>
+<script async src="../../../ui/../search-index.js"></script>
+<script async src="../../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>FBED(1) :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/docs/man/1/fbed.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../ui/css/site.css">
+    <link rel="stylesheet" href="../../../ui/css/search.css">
+    <link rel="stylesheet" href="../../../ui/css/custom.css">
+    <script>var uiRootPath = '../../../ui'</script>
+    <link rel="icon" href="../../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article manpage">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lessons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../lessons/mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/01_creating_primitive_shapes.html">1. Creating Primitive Shapes in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/02_learning_viewing_options.html">2. Learning Viewing Options in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/03_using_insert_command.html">3. Using the Insert Command in MGED to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/04_assign_mat_prop_rt.html">4. Assigning Material Properties and Raytracing in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/05_learning_boolean_expressions.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/06_creating_a_goblet.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/07_goblet_material_properties.html">7. Assigning Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/08_goblet_material_properties2.html">8. Assigning More Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/09_globe_in_display_box.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/10_creating_mug.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/11_refining_mug.html">11. Refining a Mug Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/12_mug_through_gui.html">12. Creating a Mug Model using the MGED Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/13_placing_shapes_in_3d.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/14_placing_shapes_in_3d_2.html">14. Additional Exercises Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/15_creating_a_toy_truck.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/16_mod_tech_struct.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Books</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../hacking/index.html">Hacking BRL-CAD</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting Started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter1.html">A Call to Arms (and Contributors)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter2.html">Feature Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developers</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter3.html">Working with Our Code</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter4.html">What Code to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter5.html">Contributing Code</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Documenters</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter6.html">Working with Our Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter7.html">Types of Documentation We Maintain</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter8.html">What Documentation to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter9.html">Contributing Documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Other Contributors</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part4/chapter10.html">You Can Help Too</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendix: Resources and Examples</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix1.html">Further References and Resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix2.html">Doc Template: New MGED Command</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix3.html">Code Example: Shooting Rays</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix4.html">Code Example: Walking Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix5.html">Code Example: Command Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix6.html">Example Code: Root Solving</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/index.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../tutorials/overview.html">I. An Overview of BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/mged-intro.html">II. Introduction to MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/preface1.html">Preface</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/preface2.html">Acknowledgments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter1.html">1. Creating Primitive Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter2.html">2. Learning the Viewing Options</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter3.html">3. Using the Insert Command to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter4.html">4. Assigning Material Properties and Raytracing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter5.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter6.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter7.html">7. Assigning Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter8.html">8. Assigning More Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter9.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter10.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter11.html">11. Refining the Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter12.html">12. Creating the Mug Through the GUI</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter13.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter14.html">14. Gaining More Practice Placing Shapes in Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter15.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter16.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/appendix1.html"><code class="app">MGED</code> Commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/modeling.html">III. Modeling</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter2.html">2. The Model Process</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter3.html">3. Measuring data</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter4.html">4. Organizing the Structure</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter5.html">5. Developing Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter6.html">5. Evaluating Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter7.html">7. Logging Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendices</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix1.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix2.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix3.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix4.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix5.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix6.html">Using the build_region Command</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/converting.html">IV. Converting</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter2.html">2. Pertinent Characteristics of the BRL-CAD Format</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter3.html">3. Converting From/to ASCII</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter4.html">4. Converting to BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter5.html">5. Converting From BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter6.html">6. Building a New Converter</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter7.html">7. Postconversion Issues</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/index.html">Articles</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_pattern.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_region.html">Using the build_region Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/camo_shader.html">Camouflage shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ebm_primitive.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/gcv.html">The Geometry Conversion Library</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ged.html">GED: An Interactive Solid Modeling System</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/mged/index.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tutorial.html">Tutorial</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/gui.html">Graphical User Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/command-line-editing.html">Command Line Editing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/user-commands.html">User Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/developer-commands.html">Developer Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tcl-variables.html">Tcl Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/env.html">Environment Variable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/callback.html">Callback</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/brlcad-solid.html">BRL-CAD Solid</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/mgedrc.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/nirt.html">Interactive Raytracing: The nirt Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/overlap_tool.html">The Overlap Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/oed.html">Object Editing - the oed Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/pipes.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/projection_shader.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/tire.html">Vehicle Tire and Wheel Creation in BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/TEMPLATE.html">TEMPLATE</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Misc</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Dev Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../devguides/bool_eval_development.html">NURBS Boolean Evaluation Development Guide</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Presentations</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/brlcad-app-devel.html">Application Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="presentations:_attachments/brlcad-app-devel.html">brlcad-app-devel</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/intro-to-tcltk.html">Introduction to Tcl/Tk</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../specifications/BRL_CAD_g_format_V5.html">BRL-CAD Database Format</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Manual Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../1.html">man1</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../3.html">man3</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../5.html">man5</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../n.html">mann</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Wiki Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">page-1</span>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">BRL-CAD</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../../index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../es/index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../es/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">BRL-CAD</a></li>
+    <li><a href="fbed.html">FBED(1)</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/docs/modules/man/pages/1/fbed.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">FBED(1)</h1>
+<div class="sect1">
+<h2 id="_name"><a class="anchor" href="#_name"></a>NAME</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>fbed - frame buffer editor</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_synopsis"><a class="anchor" href="#_synopsis"></a>SYNOPSIS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>fbed</strong> [-pH]</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description"><a class="anchor" href="#_description"></a>DESCRIPTION</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong class="cmd">fbed</strong> is an editor for frame buffer images, designed to
+facilitate the manipulation of existing images for the preparation of
+presentation quality graphics.  Although it does have the potential to
+generate fairly complex images, it is meant mainly for touching up
+existing images; adding titles, captions or other labels; cutting and
+pasting of one or more images; and reducing images or portions
+thereof. <strong class="cmd">fbed</strong> uses the frame buffer library
+<a href="../3/libfb.html" class="page"><strong>libfb</strong>(3)</a> and therefore is available on all
+graphics devices which are supported by this package.  On start up,
+the program always attempts to open the default frame buffer.  This
+device is specified by the frame buffer library, and is configurable
+on a per system basis.  Often the user will want to override this
+default by setting the environment variable <code class="var">FB_FILE</code> (see
+<a href="brlcad.html" class="page"><strong>brlcad</strong>(1)</a>). The <strong class="opt">-H</strong> option is for
+editing 1024x1024 or high resolution (<em>HIRES</em>) images; the default is
+low resolution, 512x512 (<em>LORES</em>). The frame buffer&#8217;s state can be
+toggled back and forth between <code>HIRES</code> and <code>LORES</code> at any time during
+execution of the program.</p>
+</div>
+<div class="paragraph">
+<p>The <strong class="opt">-p</strong> option turns on the "pad" flag.</p>
+</div>
+<div class="paragraph">
+<p><strong class="cmd">fbed</strong> allows function-to-key bindings and macro definition
+facilities in a fashion similar to some of the more versatile
+EMACS-style screen editors, such as <a href="#man:1/jove.adoc" class="page unresolved"><strong>jove</strong>(1)</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="_cursor_movement"><a class="anchor" href="#_cursor_movement"></a>Cursor Movement</h3>
+<div class="paragraph">
+<p>When <strong class="cmd">fbed</strong> is running on a graphics device, a cursor will appear
+on the screen. The position of the cursor points to the <em>current
+pixel</em>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_terminal_display"><a class="anchor" href="#_terminal_display"></a>Terminal Display</h3>
+<div class="paragraph">
+<p>When run interactively, with the standard input attached to a
+terminal, the screen will be divided into 5 areas: the top line will
+be referred to as the <em>option line</em>; the second line from the top will
+be called the <em>header line</em>; the bottom line of the screen will be the
+<em>status line</em>; the second line from the bottom will by the <em>prompt
+line</em>; and the rest of the screen is devoted to scrolling text
+output. The <em>option line</em> contains the current <em>pixel</em> color and
+<em>paint</em> color, <em>stride</em> and <em>brush size</em>. Colors are expressed as a
+combination of red, green, and blue intensity values; ranging from 0
+to 255.  The <em>pixel</em> color refers to the <em>current pixel</em> which is
+pointed to by the cursor on the graphics device. <em>paint</em> color is used
+by functions that require a color rather than prompting for it every
+time. The <em>stride</em> indicates how many pixels the cursor will move per
+keystroke during key-activated cursor movement.  Finally, <em>brush size</em>
+refers to the size of the square of pixels filled in by the
+<em>put-pixel</em> command. The <em>header line</em> is displayed in reversed video,
+and contains the program name and version number as well as the
+current cursor position. The <em>prompt line</em> is where the user will see
+prompts when the program requires information. The <em>status line</em> is
+used to print messages, indicating to the user that an operation is
+on-going.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_modes_of_input"><a class="anchor" href="#_modes_of_input"></a>Modes of Input</h3>
+<div class="paragraph">
+<p>The user interface consists of a list of provided commands, referred
+to as <em>functions</em>; and user-defined commands, called <em>macros</em>. In
+general, every key-stroke will immediately be processed (this is often
+popularly called <em>raw</em> mode input) and therefore, virtually every
+function or macro is executed by striking a particular key, without
+having to enter it by hitting <code>RETURN</code>. The key that activates a
+particular function or macro is said to be <em>bound</em> to that operation.</p>
+</div>
+<div class="paragraph">
+<p>Many of the functions will require the user to type some additional
+information or <em>arguments</em>, and a prompt will appear in the lower left
+corner of the screen. When responding to such prompts, the style of
+input resembles that of Bourne and C Shell derivatives with in-line
+EMACS-style editing. This means that the following <em>control</em> keys have
+special meaning:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 1%;">
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><em>key</em></th>
+<th class="tableblock halign-left valign-top">editing function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">^A</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cursor to beginning of line</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">^B</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cursor back one character</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">^D</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delete character under cursor</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">^E</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cursor to end of line</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">^F</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cursor forward one character</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">^G</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">abort this function</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">^K</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">erase from cursor to end of line</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">^P</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fetch last input typed to this prompt</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">^U</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">erase from start of line to cursor</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">^R</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">redraw line as it currently exists</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">^V</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">escape special meaning of next character typed</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Back Space</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">move cursor backward one character</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Delete</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delete character behind cursor</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>When attempting to fetch the last input typed, the user should keep in
+mind that this is specific to the particular function which is doing
+the prompting and to that particular question being asked by that
+function. Most of the prompts are intended to appear self-explanatory,
+but there are a couple of exceptions. The <em>execute-function-or-macro</em>
+function places the user in the prompted mode of input for the purpose
+of typing the name of the command. This is useful when the key binding
+is not known off-hand or a key binding does not exist, but the name of
+the command is known (or can be guessed at). In any case, it is an
+alternative to key-activated execution of a function or macro. When
+entering the prompted mode of command input, a ':' will appear in the
+bottom left of the terminal screen and the terminal&#8217;s cursor will
+appear just ahead of it. Now, all of the above control key functions
+are in force, and command-completion is implemented as well. At any
+time while typing the name of the function or macro, the space bar may
+be hit to attempt command-completion. The command-completion logic
+will look at what has been typed, and if it represents the beginning
+of an existing function or macro, the remainder of that name which can
+be uniquely matched will appear. If there is no match, the portion of
+the name that has been typed that does not match will be deleted,
+starting at the end and working back. In other words, the user only
+needs to type the unambiguous root of the name. If the user has done
+so, hitting the space bar will show the complete name, or hitting the
+<code>RETURN</code> key will enter the command. If the <code>RETURN</code> key is struck,
+and there is no unique match, nothing will happen. Whenever the user
+is prompted for the name of a function or macro, and there are other
+functions that prompt for this specifically, then command-completion
+is provided. Another atypical prompt is generated by the
+<em>argument-count</em> function, and looks like <em>M-</em>. The cursor will appear
+right after the hyphen, and the user is expected to type a number
+(sequence of digits). This sequence of digits must be terminated by a
+command key-stroke. This number represents an count of how many times
+to execute the command bound to that final key-stroke. If a digit is
+bound to a function or macro, it will not be recognized by the
+<em>argument-count</em> function.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_user_defined_macros_and_key_bindings"><a class="anchor" href="#_user_defined_macros_and_key_bindings"></a>User-defined Macros and Key Bindings</h3>
+<div class="paragraph">
+<p>The user may define a macro as a series of key-strokes. This is
+initiated by executing the <em>start-macro-definition</em> function. The
+message "Remembering&#8230;&#8203;" will appear on the <em>status line</em>, and the
+user then types the key-strokes which will represent the macro
+definition. These key-strokes will be executed as the macro is
+defined. To end the macro definition, the user executes the
+<em>stop-macro-definition</em> function. Sometimes, the user will want to
+defer specifying the answers to prompts when defining a macro, so that
+he can supply the information when the macro is executed. In order to
+incorporate this into his macro, the user would type a '@' at the
+prompt. This will cause the function to fail while the user is
+defining the macro, but this will hopefully not cause any fatal
+side-effects. Immediately after defining the macro, or before defining
+another, the user should enable its execution by giving it a name with
+the <em>name-keyboard-macro</em> function. If the user desires, he may bind
+it to a key with the <em>bind-macro-to-key</em> function, or it may be
+executed by name only.</p>
+</div>
+<div class="paragraph">
+<p>Another way of customizing the frame buffer editor is to change the
+binding of keys to functions. This is done by executing either
+<em>bind-key-to-name</em> or <em>bind-key-to-key</em>. The former will bind a key to
+either a function or macro by specifying its name, and the latter
+refers to the function or macro by a key that is currently bound
+to it.</p>
+</div>
+<div class="paragraph">
+<p>Both key bindings and macro definitions can be saved in a file using
+<em>write-macros-to-file</em> and read back with
+<em>read-macros-from-file</em>. Whenever the frame buffer editor starts up,
+it looks for a file called <em class="path">.fbed_macros</em> in the user&#8217;s home
+directory, and reads it if it exists. A list of functions and macros
+and their key bindings can be obtained by executing the
+<em>print-bindings</em> function which is bound to '?' by default. Here is
+the standard listing:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 1%;">
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">key</th>
+<th class="tableblock halign-left valign-top">function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">^H</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">move-window-left</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">^J</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">move-window-down</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">^K</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">move-window-up</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">^L</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">move-window-right</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Return</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">reset-view</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">^R</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">redraw-tty-screen</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">^X</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">execute-function-or-macro</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">^Z</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">stop-program</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Esc</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">argument-count</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock"><em>space</em></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pick-point</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">,</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">decrement-brush-size</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">&lt;</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">decrement-step-size</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">&gt;</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">increment-step-size</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">?</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print-bindings</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">A</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">start-macro-definition</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">B</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bind-macro-to-key</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">C</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">shrink-image-by-half</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">E</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clear-framebuffer-memory</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">F</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">flip-framebuffer-resolution</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 1%;">
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">key</th>
+<th class="tableblock halign-left valign-top">function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">G</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">get-current-rectangle</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">H</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jump-cursor-left</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">J</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jump-cursor-down</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">K</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jump-cursor-up</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">L</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jump-cursor-right</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">N</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name-keyboard-macro</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">P</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">put-saved-rectangle</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">R</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">read-rle-fle</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">S</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">write-rle-file</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">T</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">replace-pixel-current-rectangle</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">U</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">write-macros-to-file</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">V</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fill-bounded-region</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">W</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fill-current-rectangle</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">X</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bind-key-to-key</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Y</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bind-key-to-name</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Z</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">stop-macro-definition</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">a</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enter-macro-definition</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">b</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">set-current-rectangle</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">c</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">window-center</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">d</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">draw-line</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">f</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">read-font</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">g</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">set-paint-to-current-pixel</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">h</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">move-cursor-left</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">i</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zoom-in</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">j</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">move-cursor-down</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">k</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">move-cursor-up</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">l</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">move-cursor-right</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">m</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">set-monitor</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">n</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">set-tolerance-color-match</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">o</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zoom-out</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">p</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">set-paint-from-key</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">q</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quit</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">r</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">read-framebuffer</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">s</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">put-string</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">t</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">change-region-color</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">u</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">read-macros-from-file</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">v</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">draw-rectangle</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">w</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">put-pixel</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">x</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">set-cursor-y-pos</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">y</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">set-cursor-x-pos</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Macros and functions which are not bound to a key will not be
+displayed.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_hints"><a class="anchor" href="#_hints"></a>HINTS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This program may require a little practice; be sure to save a copy of
+the input files until you are confident. If you are using the program
+for the first time, you should start by listing the menu, finding the
+command for saving your image, and using such command if you don&#8217;t
+already have a copy.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_files"><a class="anchor" href="#_files"></a>FILES</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><em>/usr/lib/vfont/*</em></dt>
+<dd>
+<p>Berkeley font files</p>
+</dd>
+<dt class="hdlist1"><em>$HOME/.fbed_macros</em></dt>
+<dd>
+<p>Startup configuration file</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also"><a class="anchor" href="#_see_also"></a>SEE ALSO</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="#man:1/fb-rle.adoc" class="page unresolved"><strong>fb-rle</strong>(1)</a>,
+<a href="#man:1/rle-fb.adoc" class="page unresolved"><strong>rle-fb</strong>(1)</a>, <a href="../3/libfb.html" class="page"><strong>libfb</strong>(3)</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_known_bugs"><a class="anchor" href="#_known_bugs"></a>KNOWN BUGS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This program is currently under development.</p>
+</div>
+<div class="paragraph">
+<p>It is known that aborting the execution of the certain functions will
+at times display bogus messages like "I seem to have lost my
+bindings."</p>
+</div>
+<div class="paragraph">
+<p>There is currently a hard limit of 10 times <code>BUFSIZ</code> (defined in
+<em>stdio.h</em>) for the length of the macro startup file.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_author"><a class="anchor" href="#_author"></a>AUTHOR</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>BRL-CAD Team</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright"><a class="anchor" href="#_copyright"></a>COPYRIGHT</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This software is Copyright (c) 1989-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bug_reports"><a class="anchor" href="#_bug_reports"></a>BUG REPORTS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Reports of bugs or problems should be submitted via electronic mail to
+<a href="mailto:devs@brlcad.org">devs@brlcad.org</a></p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../ui/js/site.js"></script>
+<script src="../../../ui/js/vendor/lunr.js"></script>
+<script src="../../../ui/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/docs/man/1/fbed.html"></script>
+<script async src="../../../ui/../search-index.js"></script>
+<script async src="../../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>GDIFF(1) :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/docs/man/1/gdiff.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../ui/css/site.css">
+    <link rel="stylesheet" href="../../../ui/css/search.css">
+    <link rel="stylesheet" href="../../../ui/css/custom.css">
+    <script>var uiRootPath = '../../../ui'</script>
+    <link rel="icon" href="../../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article manpage">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lessons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../lessons/mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/01_creating_primitive_shapes.html">1. Creating Primitive Shapes in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/02_learning_viewing_options.html">2. Learning Viewing Options in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/03_using_insert_command.html">3. Using the Insert Command in MGED to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/04_assign_mat_prop_rt.html">4. Assigning Material Properties and Raytracing in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/05_learning_boolean_expressions.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/06_creating_a_goblet.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/07_goblet_material_properties.html">7. Assigning Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/08_goblet_material_properties2.html">8. Assigning More Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/09_globe_in_display_box.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/10_creating_mug.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/11_refining_mug.html">11. Refining a Mug Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/12_mug_through_gui.html">12. Creating a Mug Model using the MGED Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/13_placing_shapes_in_3d.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/14_placing_shapes_in_3d_2.html">14. Additional Exercises Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/15_creating_a_toy_truck.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/16_mod_tech_struct.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Books</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../hacking/index.html">Hacking BRL-CAD</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting Started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter1.html">A Call to Arms (and Contributors)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter2.html">Feature Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developers</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter3.html">Working with Our Code</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter4.html">What Code to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter5.html">Contributing Code</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Documenters</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter6.html">Working with Our Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter7.html">Types of Documentation We Maintain</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter8.html">What Documentation to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter9.html">Contributing Documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Other Contributors</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part4/chapter10.html">You Can Help Too</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendix: Resources and Examples</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix1.html">Further References and Resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix2.html">Doc Template: New MGED Command</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix3.html">Code Example: Shooting Rays</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix4.html">Code Example: Walking Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix5.html">Code Example: Command Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix6.html">Example Code: Root Solving</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/index.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../tutorials/overview.html">I. An Overview of BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/mged-intro.html">II. Introduction to MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/preface1.html">Preface</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/preface2.html">Acknowledgments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter1.html">1. Creating Primitive Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter2.html">2. Learning the Viewing Options</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter3.html">3. Using the Insert Command to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter4.html">4. Assigning Material Properties and Raytracing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter5.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter6.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter7.html">7. Assigning Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter8.html">8. Assigning More Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter9.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter10.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter11.html">11. Refining the Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter12.html">12. Creating the Mug Through the GUI</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter13.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter14.html">14. Gaining More Practice Placing Shapes in Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter15.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter16.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/appendix1.html"><code class="app">MGED</code> Commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/modeling.html">III. Modeling</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter2.html">2. The Model Process</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter3.html">3. Measuring data</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter4.html">4. Organizing the Structure</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter5.html">5. Developing Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter6.html">5. Evaluating Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter7.html">7. Logging Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendices</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix1.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix2.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix3.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix4.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix5.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix6.html">Using the build_region Command</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/converting.html">IV. Converting</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter2.html">2. Pertinent Characteristics of the BRL-CAD Format</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter3.html">3. Converting From/to ASCII</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter4.html">4. Converting to BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter5.html">5. Converting From BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter6.html">6. Building a New Converter</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter7.html">7. Postconversion Issues</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/index.html">Articles</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_pattern.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_region.html">Using the build_region Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/camo_shader.html">Camouflage shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ebm_primitive.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/gcv.html">The Geometry Conversion Library</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ged.html">GED: An Interactive Solid Modeling System</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/mged/index.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tutorial.html">Tutorial</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/gui.html">Graphical User Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/command-line-editing.html">Command Line Editing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/user-commands.html">User Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/developer-commands.html">Developer Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tcl-variables.html">Tcl Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/env.html">Environment Variable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/callback.html">Callback</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/brlcad-solid.html">BRL-CAD Solid</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/mgedrc.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/nirt.html">Interactive Raytracing: The nirt Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/overlap_tool.html">The Overlap Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/oed.html">Object Editing - the oed Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/pipes.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/projection_shader.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/tire.html">Vehicle Tire and Wheel Creation in BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/TEMPLATE.html">TEMPLATE</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Misc</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Dev Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../devguides/bool_eval_development.html">NURBS Boolean Evaluation Development Guide</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Presentations</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/brlcad-app-devel.html">Application Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="presentations:_attachments/brlcad-app-devel.html">brlcad-app-devel</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/intro-to-tcltk.html">Introduction to Tcl/Tk</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../specifications/BRL_CAD_g_format_V5.html">BRL-CAD Database Format</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Manual Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../1.html">man1</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../3.html">man3</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../5.html">man5</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../n.html">mann</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Wiki Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">page-1</span>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">BRL-CAD</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../../index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../es/index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../es/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">BRL-CAD</a></li>
+    <li><a href="gdiff.html">GDIFF(1)</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/docs/modules/man/pages/1/gdiff.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">GDIFF(1)</h1>
+<div class="sect1">
+<h2 id="_name"><a class="anchor" href="#_name"></a>NAME</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>gdiff - a BRL-CAD differential geometry comparator</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_synopsis"><a class="anchor" href="#_synopsis"></a>SYNOPSIS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>gdiff</strong> [<em>options</em>]&#8230;&#8203; <em>left_model.g</em> [<em>ancestor_model.g</em>] <em>right_model.g</em></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description"><a class="anchor" href="#_description"></a>DESCRIPTION</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong class="cmd">gdiff</strong> compares BRL-CAD models specified on the command line,
+reporting differences according to the specified options.  It supports
+a plain "diff" comparison between two files, as well as a "3-way"
+comparison that accepts a third file with "ancestral" information that
+provides a context for the left and right files.</p>
+</div>
+<div class="paragraph">
+<p>The following options are recognized:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>-a</strong></dt>
+<dd>
+<p>(two-way diff) Report objects added in right_model.g</p>
+<div class="paragraph">
+<p>(three-way diff) Report objects added in left_model.g and/or right_model.g</p>
+</div>
+</dd>
+<dt class="hdlist1"><strong>-d</strong></dt>
+<dd>
+<p>(two-way diff) Report objects deleted in right_model.g</p>
+<div class="paragraph">
+<p>(three-way diff) Report objects deleted in left_model.g and/or
+right_model.g</p>
+</div>
+</dd>
+<dt class="hdlist1"><strong>-m</strong></dt>
+<dd>
+<p>(two-way diff) Report objects modified in right_model.g</p>
+<div class="paragraph">
+<p>(three-way diff) Report objects that are different in left_model.g
+and/or right_model.g relative to ancestor.g</p>
+</div>
+</dd>
+<dt class="hdlist1"><strong>-q</strong></dt>
+<dd>
+<p>Decrease the verbosity of the output.  Additional
+specifications will further decrease the output provided.  (Opposite
+effect of <strong class="opt">v</strong> option.) All settings for this option will respect
+other constraints applied to the reporting output.</p>
+</dd>
+<dt class="hdlist1"><strong>-u</strong></dt>
+<dd>
+<p>(two-way diff) Report objects that are identical in
+left_model.g and right_model.g</p>
+<div class="paragraph">
+<p>(three-way diff) Report objects that are identical in
+ancestor_model.g, left_model.g and right_model.g</p>
+</div>
+</dd>
+<dt class="hdlist1"><strong>-v</strong></dt>
+<dd>
+<p>Increase the verbosity of the output.  Additional
+specifications will further increase the output provided.  (Opposite
+effect of <strong class="opt">q</strong> option.) All settings for this option will respect
+other constraints applied to the reporting output.</p>
+</dd>
+<dt class="hdlist1"><strong>-t #</strong></dt>
+<dd>
+<p>Set a numerical comparison tolerance used to compare
+numerical properties.  Default value is RT_LEN_TOL, but be aware that
+this comparison is not aware of units.</p>
+</dd>
+<dt class="hdlist1"><strong>-F "filter_string"</strong></dt>
+<dd>
+<p>Apply filters to the diff output, using the
+same set of filters available in the <strong class="cmd">search</strong> command&#8217;s search.
+See the <strong class="cmd">search</strong> manual page for more details.</p>
+</dd>
+<dt class="hdlist1"><strong>-M merged_file.g</strong></dt>
+<dd>
+<p>Merge the files being diffed into one output
+file.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>The program returns 0 if the files being compared have no differences
+that satisfy the user-supplied options, otherwise it returns the total
+number of differing objects that do satisfy the supplied options.
+Default is to report all differences that rise above RT_LEN_TOL.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_example"><a class="anchor" href="#_example"></a>EXAMPLES</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="title">Example 1. Default Diffing Results</div>
+<div class="content">
+<div class="paragraph">
+<p>Running the default options on two pre-prepared examples of Moss World
+gives us a summary of the status of various objects:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>~: gdiff moss.g moss2.g
+M platform.r
+M ellipse.s
+M light.r
+M _GLOBAL
+M cone.s
+M cone.r
+M box.s
+M tor.r
+D LIGHT
+A tgc_new.s
+A eto.s</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>'M' denotes an object that was modified, 'D' is an object that was
+deleted, and 'A' is an object that was added.</p>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 2. Alternate Diffing Result Outputs</div>
+<div class="content">
+<div class="paragraph">
+<p>The <strong class="opt">v</strong> and <strong class="opt">q</strong> options provide various styles of output, as
+follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong class="opt">-qq</strong> (no output except the return code):</p>
+<div class="literalblock">
+<div class="content">
+<pre>~: gdiff -qq moss.g moss2.g</pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong class="opt">-q</strong>:</p>
+<div class="literalblock">
+<div class="content">
+<pre>~: gdiff -q moss.g moss2.g
+Added:
+tgc_new.s, eto.s
+
+Removed:
+LIGHT
+
+Changed:
+platform.r, ellipse.s, light.r, _GLOBAL, cone.s, cone.r, box.s, tor.r</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Objects are reported in lists, categorized by their status.</p>
+</div>
+</li>
+<li>
+<p>(default):</p>
+<div class="literalblock">
+<div class="content">
+<pre>~: gdiff moss.g moss2.g
+M platform.r
+M ellipse.s
+M light.r
+M _GLOBAL
+M cone.s
+M cone.r
+M box.s
+M tor.r
+D LIGHT
+A tgc_new.s
+A eto.s</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If verbosity is not specified, this is the default output.</p>
+</div>
+</li>
+<li>
+<p><strong class="opt">-v</strong>:</p>
+<div class="literalblock">
+<div class="content">
+<pre>~: gdiff -v moss.g moss2.g
+- "platform.r" tree(p): l platform.s
++ "platform.r" tree(p): - {l platform.s} {l cone.s}
+- "ellipse.s" C(p): 0 8.980256080627000869753829 8.980256080627000869753829
++ "ellipse.s" C(p): 0 1.561016355403846755933728 1.561016355403846755933728
+- "ellipse.s" A(p): 14.87607192992999927128039 0 0
++ "ellipse.s" A(p): 5.559274328313033919357622 0 0
+- "light.r" tree(p): l LIGHT
++ "light.r" tree(p): u {l eto.s} {l cone.s}
+- "_GLOBAL" title(a): Gary Moss's "World on a Platter"
++ "_GLOBAL" title(a): Gary Moss's "World on a Platter" - diff 01
+- "cone.s" H(p): 0 0 26.44671630858999833435519
++ "cone.s" H(p): 0 0 37.49945872348094155768194
+- "cone.s" V(p): 16.87542724608999833435519 -34.74353027344000111042988 -16.37908935547000055521494
++ "cone.s" V(p): -23.07777996602787595747941 -46.52170066332633524552875 -19.26697361191882151842947
+- "cone.r" tree(p): l cone.s
++ "cone.r" tree(p): l cone.s {1 0 0 53.2994  0 1 0 10.1428  0 0 1 0  0 0 0 1}
+- "box.s" V4(p): 30.0283355712900004164112 -5.211529731749999783119165 10.41366577147999805674772
++ "box.s" V4(p): 29.46579237282375984818827 -5.211529731749999783119165 10.41366577147999805674772
+- "box.s" V3(p): 30.0283355712900004164112 21.58122539520000060520033 10.41366577147999805674772
++ "box.s" V3(p): 29.46579237282375984818827 21.58122539520000060520033 10.41366577147999805674772
+- "box.s" V2(p): 30.0283355712900004164112 21.58122539520000060520033 -16.37908935547000055521494
++ "box.s" V2(p): 29.46579237282375984818827 21.58122539520000060520033 -16.37908935547000055521494
+- "box.s" V1(p): 30.0283355712900004164112 -5.211529731749999783119165 -16.37908935547000055521494
++ "box.s" V1(p): 29.46579237282375984818827 -5.211529731749999783119165 -16.37908935547000055521494
+- "tor.r" tree(p): l tor
++ "tor.r" tree(p): l tor {1 0 0 8.44652  0 1 0 -56.3571  0 0 1 54.4836  0 0 0 2.71809}
+D LIGHT
+A tgc_new.s
+A eto.s</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The first elevated verbosity level is a more detailed version of the
+previous setting, with each parameter in the modified objects reported
+in detail.  '-' lines show what was removed for a given attribute or
+parameter, and '+' lines contain the data that replaced them.</p>
+</div>
+</li>
+<li>
+<p><strong class="opt">-vv</strong>:</p>
+<div class="literalblock">
+<div class="content">
+<pre>~: gdiff -vv moss.g moss2.g
+- "platform.r" tree(p): l platform.s
++ "platform.r" tree(p): - {l platform.s} {l cone.s}
+- "ellipse.s" C(p): 0 8.980256080627000869753829 8.980256080627000869753829
++ "ellipse.s" C(p): 0 1.561016355403846755933728 1.561016355403846755933728
+- "ellipse.s" A(p): 14.87607192992999927128039 0 0
++ "ellipse.s" A(p): 5.559274328313033919357622 0 0
+- "light.r" tree(p): l LIGHT
++ "light.r" tree(p): u {l eto.s} {l cone.s}
+- "_GLOBAL" title(a): Gary Moss's "World on a Platter"
++ "_GLOBAL" title(a): Gary Moss's "World on a Platter" - diff 01
+- "cone.s" H(p): 0 0 26.44671630858999833435519
++ "cone.s" H(p): 0 0 37.49945872348094155768194
+- "cone.s" V(p): 16.87542724608999833435519 -34.74353027344000111042988 -16.37908935547000055521494
++ "cone.s" V(p): -23.07777996602787595747941 -46.52170066332633524552875 -19.26697361191882151842947
+- "cone.r" tree(p): l cone.s
++ "cone.r" tree(p): l cone.s {1 0 0 53.2994  0 1 0 10.1428  0 0 1 0  0 0 0 1}
+- "box.s" V4(p): 30.0283355712900004164112 -5.211529731749999783119165 10.41366577147999805674772
++ "box.s" V4(p): 29.46579237282375984818827 -5.211529731749999783119165 10.41366577147999805674772
+- "box.s" V3(p): 30.0283355712900004164112 21.58122539520000060520033 10.41366577147999805674772
++ "box.s" V3(p): 29.46579237282375984818827 21.58122539520000060520033 10.41366577147999805674772
+- "box.s" V2(p): 30.0283355712900004164112 21.58122539520000060520033 -16.37908935547000055521494
++ "box.s" V2(p): 29.46579237282375984818827 21.58122539520000060520033 -16.37908935547000055521494
+- "box.s" V1(p): 30.0283355712900004164112 -5.211529731749999783119165 -16.37908935547000055521494
++ "box.s" V1(p): 29.46579237282375984818827 -5.211529731749999783119165 -16.37908935547000055521494
+- "tor.r" tree(p): l tor
++ "tor.r" tree(p): l tor {1 0 0 8.44652  0 1 0 -56.3571  0 0 1 54.4836  0 0 0 2.71809}
+D "LIGHT" C(p): 0 0 2.539999961852999810218989
+D "LIGHT" B(p): 0 2.539999961852999810218989 0
+D "LIGHT" A(p): 2.539999961852999810218989 0 0
+D "LIGHT" V(p): 20.15756225586000027760747 -13.52595329284999969843284 5.034742355347000319909512
+D "LIGHT" DB5_MINORTYPE(p): ell
+A "tgc_new.s" D(p): 0 500 0
+A "tgc_new.s" C(p): 250 0 0
+A "tgc_new.s" B(p): 0 250 0
+A "tgc_new.s" A(p): 500 0 0
+A "tgc_new.s" H(p): 0 0 2000
+A "tgc_new.s" V(p): 0 0 -1000
+A "tgc_new.s" DB5_MINORTYPE(p): tgc
+A "eto.s" r_d(p): 1.724149328000026404339451
+A "eto.s" r(p): 13.79319462400021123471561
+A "eto.s" C(p): 3.448298656000062134552309 0 3.448298656000062134552309
+A "eto.s" N(p): 0 0 0.01724149328000028000285049
+A "eto.s" V(p): 8.533195938359670051909234 -11.04524849332910996224655 -1.403988582132086548881489
+A "eto.s" DB5_MINORTYPE(p): eto</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The second elevation of the verbosity level is a fully detailed diff
+that contains all information added or removed.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 3. Filtering Based on Difference Type</div>
+<div class="content">
+<div class="paragraph">
+<p>The options <strong class="opt">a</strong>, <strong class="opt">d</strong>, <strong class="opt">m</strong>, and <strong class="opt">u</strong> control which
+categories of diff results (added, deleted, modified, and unchanged)
+are reported. By default added, deleted and modified items are
+reported, but once one of these four options is specified only those
+specified are reported:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Report only objects added:</p>
+<div class="literalblock">
+<div class="content">
+<pre>~: gdiff -a moss.g moss2.g
+A tgc_new.s
+A eto.s</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Report only objects deleted:</p>
+<div class="literalblock">
+<div class="content">
+<pre>~: gdiff -d moss.g moss2.g
+D LIGHT</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Report both added and deleted objects, but not modified objects:</p>
+<div class="literalblock">
+<div class="content">
+<pre>~: gdiff -a -d moss.g moss2.g
+D LIGHT
+A tgc_new.s
+A eto.s</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Report unmodified objects:</p>
+<div class="literalblock">
+<div class="content">
+<pre>~: gdiff -u moss.g moss2.g
+ellipse.r
+box.r
+all.g</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 4. Filtering Results With Tolerance</div>
+<div class="content">
+<div class="paragraph">
+<p>To eliminate differences in modifications that are too small to be of
+interest, the <strong class="opt">t</strong> is used.  What difference constitutes "too
+small" is up to the user - in this example, we will use 30
+millimeters:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>~: gdiff -v -t 30.0 moss.g moss2.g
+- "platform.r" tree(p): l platform.s
++ "platform.r" tree(p): - {l platform.s} {l cone.s}
+- "light.r" tree(p): l LIGHT
++ "light.r" tree(p): u {l eto.s} {l cone.s}
+- "_GLOBAL" title(a): Gary Moss's "World on a Platter"
++ "_GLOBAL" title(a): Gary Moss's "World on a Platter" - diff 01
+- "cone.s" V(p): 16.87542724608999833435519 -34.74353027344000111042988 -16.37908935547000055521494
++ "cone.s" V(p): -23.07777996602787595747941 -46.52170066332633524552875 -19.26697361191882151842947
+- "cone.r" tree(p): l cone.s
++ "cone.r" tree(p): l cone.s {1 0 0 53.2994  0 1 0 10.1428  0 0 1 0  0 0 0 1}
+- "tor.r" tree(p): l tor
++ "tor.r" tree(p): l tor {1 0 0 8.44652  0 1 0 -56.3571  0 0 1 54.4836  0 0 0 2.71809}
+D LIGHT
+A tgc_new.s
+A eto.s</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Notice that ellipse.s, which was on earlier lists, is now
+filtered out.  cone.s has a difference in the x coordinates of the
+parameter V that is large enough to satisfy the tolerance filter, so
+that parameter stays in.  Parameters that are not strictly numerical
+comparisons, or those that are part of added or deleted objects,
+remain in the report.</p>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 5. Filtering Results With Search Filters</div>
+<div class="content">
+<div class="paragraph">
+<p>The <em>search</em> filtering technique can be used to select specific
+subsets of the database to see in reports, using the <strong class="opt">F</strong> option.
+For example, limiting the diff report to only objects of type
+elliptical torus:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>~: gdiff -F "-type eto" moss.g moss2.g
+A eto.s</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that this option will work at all levels of verbosity:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>~: gdiff -vv -F "-type eto" moss.g moss2.g
+A "eto.s" r_d(p): 1.724149328000026404339451
+A "eto.s" r(p): 13.79319462400021123471561
+A "eto.s" C(p): 3.448298656000062134552309 0 3.448298656000062134552309
+A "eto.s" N(p): 0 0 0.01724149328000028000285049
+A "eto.s" V(p): 8.533195938359670051909234 -11.04524849332910996224655 -1.403988582132086548881489
+A "eto.s" DB5_MINORTYPE(p): eto</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 6. Combining Multiple Filters</div>
+<div class="content">
+<div class="paragraph">
+<p>The various diff filters can be used together.  For example, repeating
+the search filter with ell types added to the accepted list produces
+the following:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>~: gdiff -vv -F "-type eto -or -type ell" moss.g moss2.g
+- "ellipse.s" C(p): 0 8.980256080627000869753829 8.980256080627000869753829
++ "ellipse.s" C(p): 0 1.561016355403846755933728 1.561016355403846755933728
+- "ellipse.s" A(p): 14.87607192992999927128039 0 0
++ "ellipse.s" A(p): 5.559274328313033919357622 0 0
+D "LIGHT" C(p): 0 0 2.539999961852999810218989
+D "LIGHT" B(p): 0 2.539999961852999810218989 0
+D "LIGHT" A(p): 2.539999961852999810218989 0 0
+D "LIGHT" V(p): 20.15756225586000027760747 -13.52595329284999969843284 5.034742355347000319909512
+D "LIGHT" DB5_MINORTYPE(p): ell
+A "eto.s" r_d(p): 1.724149328000026404339451
+A "eto.s" r(p): 13.79319462400021123471561
+A "eto.s" C(p): 3.448298656000062134552309 0 3.448298656000062134552309
+A "eto.s" N(p): 0 0 0.01724149328000028000285049
+A "eto.s" V(p): 8.533195938359670051909234 -11.04524849332910996224655 -1.403988582132086548881489
+A "eto.s" DB5_MINORTYPE(p): eto</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If we now add the tolerance filter, we see ellipse.s is filtered out:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>~: gdiff -vv -t 30.0 -F "-type eto -or -type ell" moss.g moss2.g
+D "LIGHT" C(p): 0 0 2.539999961852999810218989
+D "LIGHT" B(p): 0 2.539999961852999810218989 0
+D "LIGHT" A(p): 2.539999961852999810218989 0 0
+D "LIGHT" V(p): 20.15756225586000027760747 -13.52595329284999969843284 5.034742355347000319909512
+D "LIGHT" DB5_MINORTYPE(p): ell
+A "eto.s" r_d(p): 1.724149328000026404339451
+A "eto.s" r(p): 13.79319462400021123471561
+A "eto.s" C(p): 3.448298656000062134552309 0 3.448298656000062134552309
+A "eto.s" N(p): 0 0 0.01724149328000028000285049
+A "eto.s" V(p): 8.533195938359670051909234 -11.04524849332910996224655 -1.403988582132086548881489
+A "eto.s" DB5_MINORTYPE(p): eto</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>ellipse.s satisfies the search filter, but is filtered by virtue of
+having no differences larger than 30 in its parameters.</p>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 7. Three Way Differences</div>
+<div class="content">
+<div class="paragraph">
+<p>A "3-way" diff uses an ancestor file as a basis for evaluating the
+differences between two other files.  This ancestor provides a
+"context" in which it is possible to tell whether a difference between
+two files is a) the product of a change in one but not the other in
+comparison to the original or b) whether both have (incompatibly)
+changed in comparison to the original.  For example, if we compare
+moss2.g from the previous examples to a new file moss3.g:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>~: gdiff moss2.g moss3.g
+M platform.r
+M ellipse.s
+D ellipse.r
+M light.r
+M _GLOBAL
+M cone.s
+M cone.r
+M box.s
+M tor.r
+M eto.s
+M all.g
+M tor
+A ellipse2.r
+A LIGHT</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>All we can tell is that these objects differ from each other.  If,
+however, we add moss.g to the comparison as an ancestor file:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>~: gdiff moss2.g moss.g moss3.g
+M platform.r
+M ellipse.s
+D(R) ellipse.r
+M light.r
+M _GLOBAL
+M cone.s
+M cone.r
+M box.s
+M tor.r
+M all.g
+D(L) LIGHT
+M tor
+A(B) tgc_new.s
+C eto.s
+A(R) ellipse2.r</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We can now see that ellipse.r was deleted only from the right file
+(moss3.g) and was unchanged in moss2.g. Similarly, we can tell that
+LIGHT wsa deleted from moss2.g, ellipse2.r was added in moss3.g,
+tgc_new.s was added identically in both moss2.g and moss3.g, and eto.s
+is different in moss2.g and moss3.g in some fashion that the ancestor
+file moss.g cannot help gdiff resolve (a conflict, denoted by 'C'.)</p>
+</div>
+<div class="paragraph">
+<p>To delve deeper into the nature of the changes, we increase the
+verbosity with the <strong class="opt">v</strong> option:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>~: gdiff -v moss2.g moss.g moss3.g
+M(L) "platform.r" tree(p): - {l platform.s} {l cone.s}
+M(L) "ellipse.s" C(p): 0 1.561016355403846755933728 1.561016355403846755933728
+M(L) "ellipse.s" A(p): 5.559274328313033919357622 0 0
+D(R) ellipse.r
+M(L) "light.r" tree(p): u {l eto.s} {l cone.s}
+M(L) "_GLOBAL" title(p): Gary Moss's "World on a Platter" - diff 01
+M(L) "cone.s" H(p): 0 0 37.49945872348094155768194
+M(L) "cone.s" V(p): -23.07777996602787595747941 -46.52170066332633524552875 -19.26697361191882151842947
+M(L) "cone.r" tree(p): l cone.s {1 0 0 53.2994  0 1 0 10.1428  0 0 1 0  0 0 0 1}
+M(L) "box.s" V4(p): 29.46579237282375984818827 -5.211529731749999783119165 10.41366577147999805674772
+M(L) "box.s" V3(p): 29.46579237282375984818827 21.58122539520000060520033 10.41366577147999805674772
+M(L) "box.s" V2(p): 29.46579237282375984818827 21.58122539520000060520033 -16.37908935547000055521494
+M(L) "box.s" V1(p): 29.46579237282375984818827 -5.211529731749999783119165 -16.37908935547000055521494
+M(L) "tor.r" tree(p): l tor {1 0 0 8.44652  0 1 0 -56.3571  0 0 1 54.4836  0 0 0 2.71809}
+M(R) "all.g" tree(p): u {u {u {l platform.r} {l box.r {1 0 0 -23.6989  0 1 0 13.41  0 0 1 8.02399  0 0 0 1}}}
+{u {l cone.r {1 0 0 22.0492  0 1 0 12.2349  0 0 1 2.11125e-07  0 0 0 1}} {l ellipse2.r {1 0 0 14.6793  0 1 0
+-41.6077  0 0 1 38.7988  0 0 0 1}}}} {u {l tor.r} {l light.r}}
+D(R) "all.g" region_id(p): -1
+D(L) LIGHT
+M(R) "tor" r_h(p): 6.036279429344108216071163
+M(R) "tor" r_a(p): 30.18139425891995841766402
+A(B) tgc_new.s
+C(LA!=RA) eto.s
+A(R) ellipse2.r</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>At this level of verbosity, we can now see that most of the
+modifications are from the left (moss2.g) file.  M(L) denotes a change
+that is present only in the left file - the right (moss3.g) agrees
+with the ancestor.  Similarly, we can now see that the deletion of
+ellipse.r, the addition of ellipse2.r and the change to all.g come
+from moss3.g.  The conflict on eto.s is that two add operations (one
+in moss2.g, one in moss3.g) produced different eto.s primitives -
+there is no ancestor for eto.s in moss.g, so there is no way to
+identify one of the eto.s primitives as "correct" - they have equal
+standing, and manual intervention is needed to determine which eto.s
+is the "correct" version.</p>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 8. Complex Three Way Differences</div>
+<div class="content">
+<div class="paragraph">
+<p>Conflicts can arise from situations other than incompatible
+additions - an incompatible modification is also enough to trigger a
+conflict.  Consider three ellipsoids, one of which is an ancestor, one
+of which has had its A and B vectors modified, and the other of which
+has had its B and C vectors modified. A three-way diff of these files
+reports a conflict:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>~: gdiff ell_1.g ell_0.g ell_2.g
+C ell.s</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>However, closer inspection reveals that this conflict is different
+than the one reported above for the eto.s object:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>~: gdiff -v ell_1.g ell_0.g ell_2.g
+C(LM!=RM) ell.s</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This notation indicates that a modification in the left side (ell_1.g)
+does not match a modification made in ell_2.g. Unlike the eto.s, which
+reported an add conflict, this is a modification conflict triggered by
+incompatible, different parameters.  Indeed a full verbosity
+inspection:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>~: gdiff -vv ell_1.g ell_0.g ell_2.g
+M(R) "ell.s" C(p): 0 0 300
+C(A) "ell.s" B(p): 0 500 0
+C(L) "ell.s" B(p): 0 510 0
+C(R) "ell.s" B(p): 0 300 0
+M(L) "ell.s" A(p): 1100 0 0</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>reveals that the changes to the A and C parameters are <em>not</em> in
+conflict - it is the B parameter that is causing the problem.</p>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 9. Merging Files</div>
+<div class="content">
+<div class="paragraph">
+<p>The last and most powerful feature of <strong class="cmd">gdiff</strong> is to <em>merge</em> two
+or three different geometry files into a single output file.  This is
+most useful when an ancestor is available and a three way merge can be
+performed - in the two way case, the "ancestor" is an empty file and
+the results will tend to include many more conflicts.  For example,
+the three way merge of the moss examples earlier:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>~: gdiff -M moss_merged.g moss2.g moss0.g moss3.g
+M platform.r
+M ellipse.s
+D(R) ellipse.r
+M light.r
+M _GLOBAL
+M cone.s
+M cone.r
+M box.s
+M tor.r
+M all.g
+D(L) LIGHT
+M tor
+A(B) tgc_new.s
+C eto.s
+A(R) ellipse2.r
+Merging into moss_merged.g
+~: mged moss_merged.g ls
+CONFLICT(eto.s).left     cone.r/R                 platform.r/R
+CONFLICT(eto.s).right    cone.s                   platform.s
+all.g/                   ellipse.s                tgc_new.s
+box.r/R                  ellipse2.r/R             tor
+box.s                    light.r/R                tor.r/R</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The resulting file has only two conflict objects present - the same
+eto.s issue that was discussed earlier.  Trying to do the same merge
+<em>without</em> the ancestor file:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>~: gdiff -M moss_2way_merge.g moss2.g moss3.g
+M platform.r
+M ellipse.s
+D ellipse.r
+M light.r
+M _GLOBAL
+M cone.s
+M cone.r
+M box.s
+M tor.r
+M eto.s
+M all.g
+M tor
+A ellipse2.r
+A LIGHT
+Merging into moss_2way_merge.g
+~: mged moss_2way_merge.g ls
+CONFLICT(all.g).left/         CONFLICT(light.r).right/R
+CONFLICT(all.g).right/        CONFLICT(platform.r).left/R
+CONFLICT(box.s).left          CONFLICT(platform.r).right/R
+CONFLICT(box.s).right         CONFLICT(tor).left
+CONFLICT(cone.r).left/R       CONFLICT(tor).right
+CONFLICT(cone.r).right/R      CONFLICT(tor.r).left/R
+CONFLICT(cone.s).left         CONFLICT(tor.r).right/R
+CONFLICT(cone.s).right        LIGHT
+CONFLICT(ellipse.s).left      box.r/R
+CONFLICT(ellipse.s).right     ellipse.r/R
+CONFLICT(eto.s).left          ellipse2.r/R
+CONFLICT(eto.s).right         platform.s
+CONFLICT(light.r).left/R      tgc_new.s</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The result is far less clean, although the merge was still performed -
+in this latter case, the end user will have to resolve many more
+conflicting object states manually.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also"><a class="anchor" href="#_see_also"></a>SEE ALSO</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="../n/search.html" class="page"><strong>search</strong>(n)</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_author"><a class="anchor" href="#_author"></a>AUTHOR</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>BRL-CAD Team</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright"><a class="anchor" href="#_copyright"></a>COPYRIGHT</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This software is Copyright (c) 1989-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bug_reports"><a class="anchor" href="#_bug_reports"></a>BUG REPORTS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Reports of bugs or problems should be submitted via electronic mail to
+<a href="mailto:devs@brlcad.org">devs@brlcad.org</a></p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../ui/js/site.js"></script>
+<script src="../../../ui/js/vendor/lunr.js"></script>
+<script src="../../../ui/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/docs/man/1/gdiff.html"></script>
+<script async src="../../../ui/../search-index.js"></script>
+<script async src="../../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

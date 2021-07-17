@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>13. Ubicar figuras en espacios 3-D :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/es/lecciones/mged/13_ubicar_figuras_en_3d.html">
+    <link rel="prev" href="12_taza_desde_gui.html">
+    <link rel="next" href="14_ubicar_figuras_en_3d_2.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../ui/css/site.css">
+    <link rel="stylesheet" href="../../../ui/css/search.css">
+    <link rel="stylesheet" href="../../../ui/css/custom.css">
+    <script>var uiRootPath = '../../../ui'</script>
+    <link rel="icon" href="../../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="es" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lecciones</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01_crear_figuras_primitivas.html">1. Crear Figuras Primitivas with MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02_opciones_vistas.html">2. Reconocer las opciones de vistas en MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03_utilizar_comando_in.html">3. Usar el comando Insert en MGED para dimensionar y ubicar figuras</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="04_prop_materiales.html">4. Asignación de propiedades de los materiales y trazado de rayos (Raytracing) en MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="05_expresiones_booleanas.html">5. Expresiones Booleanas</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="06_crear_una_copa.html">6. Crear una copa</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="07_prop_materiales_copa.html">7. Asignar propiedades de los materiales a una copa</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="08_prop_materiales_copa2.html">8. Asignar más propiedades de los materiales a la copa</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="09_esfera_en_caja_exhibidora.html">9. Crear una esfera en una caja exhibidora transparente</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="10_crear_taza.html">10. Crear una taza</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="11_refinar_taza.html">11. Refinando el modelo de la taza</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="12_taza_desde_gui.html">12. Crear el modelo de una taza utilizando la interfaz de MGED</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="13_ubicar_figuras_en_3d.html">13. Ubicar figuras en espacios 3-D</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="14_ubicar_figuras_en_3d_2.html">14. Ejercicios adicionales de ubicación de imágenes en espacios 3-D</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="15_crear_camion_de_juguete.html">15. Crear un camión de juguete</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="16_mod_tech_struct.html">16. Aprender técnicas de modelado y estructuras</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Spanish</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs/index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../../index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">Spanish</a></li>
+    <li>Lecciones</li>
+    <li><a href="../mged.html">MGED</a></li>
+    <li><a href="13_ubicar_figuras_en_3d.html">13. Ubicar figuras en espacios 3-D</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/translations/es/modules/lecciones/pages/mged/13_ubicar_figuras_en_3d.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">13. Ubicar figuras en espacios 3-D</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>En este tutorial usted aprenderá a:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Crear, editar y ubicar figuras en espacios 3-D.</p>
+</li>
+<li>
+<p>Crear customizaciones de color utilizando el editor de combinaciones
+(Combination Editor).</p>
+</li>
+<li>
+<p>Identificar los atributos del corrector de sombras.</p>
+</li>
+<li>
+<p>Comprender cómo se crean los colores RGB.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>En los tutoriales anteriores ha creado y editado formas.  También ha
+colocado objetos en el espacio tridimensional.  En este tutorial se
+ofrece una práctica más avanzada en la creación y edición de formas y
+su colocación en el espacio 3-D.</p>
+</div>
+<div class="paragraph">
+<p>El diseño que usted hará en este tutorial es una simple vela en un
+candelabro apoyado sobre una mesa (como se muestraen la figura
+siguiente). En los próximos tutoriales, agregará decoración e
+iluminación para hacer el diseño más realista.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/13_candle_design.png" alt="13 candle design">
+</div>
+<div class="title">Figure 1. Dise&#xF1;o de un candelabro</div>
+</div>
+<div class="paragraph">
+<p>Comience creando una nueva base de datos llamada candle.g.  Titule su
+base de datos Candle Tutorial.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_candle_create_tabletop"><a class="anchor" href="#_candle_create_tabletop"></a>1. Crear una mesa</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cree un arb8 desde el GUI.  Nombre a la figura arb8.s.  En el menú
+View (Vista) seleccione la opción Front (Frente).</p>
+</div>
+<div class="paragraph">
+<p>Diríjase a la opción Editar de la barra de menús.  El arb8 necesita
+ser más grande, para lo que deberá ir al menú Edit (Edición), y
+seleccionar Scale (Escala). Para hacer más grande arb8 coloque el
+puntero del mouse en la parte media superior de la pantalla y haga
+clic en el botón del medio hasta que los lados del arb8 toquen cada
+lado de la pantalla.  Utilice la tecla SHIFT y el botón izquierdo del
+mouse para arrastrar el arb a su posición, de ser necesario.</p>
+</div>
+<div class="paragraph">
+<p>En el menú Edit (Edición), seleccione Move Faces (Mover caras) y luego
+Move face 4378 (Mover Cara 4378). Coloque el puntero del mouse en la
+mitad inferior de la pantalla y haga clic con el botón del medio hasta
+que el arb8 sea aproximadamente del grosor de una mesa.  Volver a Edit
+(Edición) para aceptar los cambios, y luego usar el SHIFT y cualquier
+botón del mouse para posicionar la mesa hasta que se vea similar a la
+siguiente imagen:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/13_candle_tabletop_wireframe_front.png" alt="13 candle tabletop wireframe front">
+</div>
+<div class="title">Figure 2. Dise&#xF1;o en malla de alambre para la</div>
+</div>
+<div class="paragraph">
+<p>Hacer una región de la mesa mediante la ventana de comandos</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r table1.r u arb8.s <kbd>Enter</kbd></code></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_candle_create_base"><a class="anchor" href="#_candle_create_base"></a>2. Crear la base del candelabro</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cree un eto y nómbrelo eto1.s.  Para crear la parte superior de la
+base del candelabro, necesitará rotar el eto 180'0.  Tipee en la
+ventana de comandos:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">rot 0 180 0 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Esto le dice a <code class="app">MGED</code> que gire la forma 180'0 a lo largo del
+eje y.  A continuación, seleccione Scale (Escala) y reduzca un poco el
+tamaño predeterminado de su eto.  Coloque el eto sobre la mesa con el
+botón izquierdo del ratón y la tecla SHIFT.</p>
+</div>
+<div class="paragraph">
+<p>Vea su diseño desde diferentes ángulos para asegurarse de que el eto
+se sitúa en el centro de la mesa.  Haga clic en Aceptar cuando esté
+satisfecho con su tamaño y posición.  Su base debe ser similar a la
+que se muestra en la siguiente imagen:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/13_candle_tabletop_eto1_wireframe_front.png" alt="13 candle tabletop eto1 wireframe front">
+</div>
+<div class="title">Figure 3. Dise&#xF1;o en malla de alambre para la representaci&#xF3;n</div>
+</div>
+<div class="paragraph">
+<p>A continuación, cree la base del candelabro con un cilindro circular
+recto (rcc). Nombre a la figura rcc1.s.</p>
+</div>
+<div class="paragraph">
+<p>En el menú Edit (Edición). Además de los comandos estándar, se le
+presentará un menú de trece formas específicas de edición de esta
+forma.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>Set H
+Set H (Move V)
+Set A
+Set B
+Set c
+Set d</pre></div></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>Set A,B
+Set C,D
+Set A,B,C,D
+Rotate H
+Rotate AxB
+Move End H(rt)
+Move End H</pre></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Escale la forma hasta que sea ligeramente más grande en diámetro que
+la parte superior de la eto1.s (se puede comprobar esto cambiando a
+una vista superior). Vuelva a Edit (Edición) y seleccione Set H.
+Reduzca la altura de la forma hasta que el ccr sea cerca de dos veces
+más alto que la eto1.s.  Coloque el cilindro en la base del soporte
+del candelabro.  Compruebe la colocación del rcc desde la parte
+superior, izquierda y frontal para asegurarse de que está centrado en
+el eto.  Asegúrese de que la parte superior del rcc no toque
+totalmente la mesa.  Acepte los cambios.  Cuando esté terminado, su
+diseño debe tener el siguiente aspecto:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/13_candle_tabletop_eto1_rcc_wireframe_front.png" alt="13 candle tabletop eto1 rcc wireframe front">
+</div>
+<div class="title">Figure 4. Dise&#xF1;o en malla de alambre para la representaci&#xF3;n</div>
+</div>
+<div class="paragraph">
+<p>Para finalizar la base de la vela cree otro eto y nómbrelo eto2.s.
+Edite esta forma como lo hizo con el eto anterior y colóquelo sobre el
+rcc, como se muestra en la siguiente imagen.  Acepte los cambios
+cuando haya terminado.  Su candelabro ya debería tener este aspecto:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/13_candle_tabletop_base_front.png" alt="13 candle tabletop base front">
+</div>
+<div class="title">Figure 5. Dise&#xF1;o en malla de alambre para la</div>
+</div>
+<div class="paragraph">
+<p>Cree una región con las tres figuras de la base.  Nómbrela base1.r.
+La expresión booleana debería ser:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r base1.r u eto1.s u rcc1.s u eto2.s</code></p>
+</div>
+<div class="paragraph">
+<p>Note que podría haber sido escrita también de la siguiente
+forma:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r base1.r u eto1.s u eto2.s u rcc1.s</code></p>
+</div>
+<div class="paragraph">
+<p>pero la primera expresión es preferible ya que es más coherente con el
+orden del ejemplo siguiente.  En un momento querremos quitar parte de
+eto2.s.  Si colocamos a eto2.s al final de la lista, podemos realizar
+esta eliminación sencillamente.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_candle_create_candle"><a class="anchor" href="#_candle_create_candle"></a>3. Crear la vela</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cree un rcc y nómbrelo rcc2.s.  Modifique la forma como lo hizo con el
+anterior rcc.  Cuando haya terminado, debería verse similar a la
+siguiente ilustración.  (Nota: Después de haber aceptado los cambios,
+usted puede llevar tanto la mesa como vela a la ventana gráfica,
+utilizando la tecla SHIFT y el botón izquierdo del mouse para mover la
+vista del diseño.)</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/13_candle_tabletop_base_candle_front.png" alt="13 candle tabletop base candle front">
+</div>
+<div class="title">Figure 6. Dise&#xF1;o en malla de alambre para la representaci&#xF3;n</div>
+</div>
+<div class="paragraph">
+<p>Cree una región del candelabro.  La expresión booleana debería ser:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r candle1.r u rcc2.s</code></p>
+</div>
+<div class="paragraph">
+<p>Ahora haremos un corte cilíndrico en la base del candelabro.  Para
+esto utilice el cilindro del candelabro de la siguiente manera:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r base1.r - rcc2.s</code></p>
+</div>
+<div class="paragraph">
+<p>Anteriormente habíamos dicho que íbamos a necesitar remover un poco de
+material del eto2.s.  Ahora ya lo hemos hecho.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_candle_create_flame"><a class="anchor" href="#_candle_create_flame"></a>4. Crear la llama de la vela</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cree una partícula (part) y nómbrela part1.s.  Edite y posicione la
+figura hasta que su diseño se vea como el siguiente:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/13_candle_complete_front.png" alt="13 candle complete front">
+</div>
+<div class="title">Figure 7. Dise&#xF1;o en malla de alambre del candelabro completo</div>
+</div>
+<div class="paragraph">
+<p>Haga de la llama una región tipeando en el prompt de la ventana de
+comandos:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r flame1.r u part1.s <kbd>Enter</kbd></code></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_candle_create_combination"><a class="anchor" href="#_candle_create_combination"></a>5. Hacer una combinación del candelabro, la vela y la llama</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Para hacer una combinación con las partes del candelabro, tipee en el
+prompt de la ventana de comandos:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">comb candle1.c u base1.r u candle1.r u flame1.r <kbd>Enter</kbd></code></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_candle_check_data_tree"><a class="anchor" href="#_candle_check_data_tree"></a>6. Controlar el árbol de datos</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ahora que usted ha hecho una serie de regiones y una combinación,
+sería un buen momento para revisar su árbol de datos y asegurarse de
+que está de acuerdo con el siguiente árbol.  Si detecta algún error en
+cualquiera de las partes del árbol, puede solucionarlo desde la caja
+Boolean Expression (Expression booleana) del editor de combinaciones
+(ver tutorial 5). En la línea de comandos tipee:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">tree candle1.c <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Su expresión booleana debería ser:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>   candle1.c/
+   u base1.r/R
+   u eto1.s
+   u rcc1.s
+   u eto2.s
+   - rcc2.s
+   u candle1.r/R
+   u rcc2.s
+   u flame1.r/R
+   u part1.s</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_candle_assign_mater_prop"><a class="anchor" href="#_candle_assign_mater_prop"></a>7. Asignar propiedades de los materiales a los elementos del diseño</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Para asignar las propiedades del material a su diseño, vaya al menú
+Edit (Edición) y seleccione Combination Editor (Editor de
+Combinaciones). Asignar las siguientes propiedades de material a cada
+uno de los elementos:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Element</th>
+<th class="tableblock halign-center valign-top">Shader</th>
+<th class="tableblock halign-center valign-top">Color(s)</th>
+<th class="tableblock halign-center valign-top">Other</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Tabletop</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Checker</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Red (255 0 0); White (255 255 255)</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Scale (10)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Candle Base</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Plastic</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Medium Gray (128 130 144)</p></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Candle</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Plastic</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Light Blue (0 166 255)</p></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Flame</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Plastic</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Light Yellow (255 255 190)</p></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Observe que el corrector de sombreado de la mesa incluye dos valores
+de color y un valor de escala.  Tipee los valores de rojo, blanco y de
+escala en las cajas de texto, de la siguiente manera:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/13_candle_comb_ed_checker.png" alt="13 candle comb ed checker">
+</div>
+<div class="title">Figure 8. Ventana del editor de combinaciones,</div>
+</div>
+<div class="paragraph">
+<p>Para el resto de los elementos del diseño, utilice el Color Tool
+(Herramienta de color) para hacer visibles los colores o simplemente
+escriba en el cuadro de texto de Color, recordando dejar un espacio
+entre cada conjunto de números.</p>
+</div>
+<div class="paragraph">
+<p>Nota: Como se ha dicho, un color se compone de tres números, que van
+de 0 a 255.  El primer número representa la cantidad de rojo, el
+segundo la cantidad de verde, y el tercero la cantidad de azul
+utilizado para hacer el color.  El color 0 0 0 es el negro, y el 255
+255 255 es el blanco.  Este método de crear los colores es diferente
+de los colores utilizados en la mezcla de pigmentos de pintura, ya que
+en esos casos se tratabaja con la luz.  Si bien puede parecer extraño
+al principio, la mayoría de los usuarios de las aplicaciones de
+<code class="app">MGED</code> usuarios se convierten rápidamente en expertos en la
+creación de colores RGB.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_candle_raytrace"><a class="anchor" href="#_candle_raytrace"></a>8. Hacer el trazado de rayos de su diseño (Raytrace)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Antes de hacer el Raytrace, cambie la vista a az35, el25 para tener
+una visión mejor del diseño terminado y luego quite el diseño anterior
+con el comando Blast tipeando lo siguiente en el prompt de la ventana
+de comandos:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">B table1.r candle1.c <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Este comando le dice al programa <code class="app">MGED</code> que:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">B</th>
+<th class="tableblock halign-center valign-top">table1.r</th>
+<th class="tableblock halign-center valign-top">candle1.c</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Despeje la ventana gráfica</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Dibuje la región llamada table1.r</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Dibuje la combinación llamada candle1.c</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Para proporcionar más luz a su diseño, use un fondo de color blanco.
+La imagen de su vela debería ser similar a la siguiente:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/13_candle_raytraced_overlay.png" alt="13 candle raytraced overlay">
+</div>
+<div class="title">Figure 9. Trazado de rayos del candelabro en forma superpuesta</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_placing_shapes_in_3d_review"><a class="anchor" href="#_placing_shapes_in_3d_review"></a>9. Repasemos&#8230;&#8203;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>En este tutorial usted aprendió a:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Crear, editar y ubicar figuras en espacios 3-D.</p>
+</li>
+<li>
+<p>Crear customizaciones de color utilizando el editor de combinaciones
+(Combination Editor).</p>
+</li>
+<li>
+<p>Identificar los atributos del corrector de sombras.</p>
+</li>
+<li>
+<p>Comprender cómo se crean los colores RGB.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="12_taza_desde_gui.html">12. Crear el modelo de una taza utilizando la interfaz de MGED</a></span>
+  <span class="next"><a href="14_ubicar_figuras_en_3d_2.html">14. Ejercicios adicionales de ubicación de imágenes en espacios 3-D</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../ui/js/site.js"></script>
+<script src="../../../ui/js/vendor/lunr.js"></script>
+<script src="../../../ui/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/es/lecciones/mged/13_ubicar_figuras_en_3d.html"></script>
+<script async src="../../../ui/../search-index.js"></script>
+<script async src="../../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

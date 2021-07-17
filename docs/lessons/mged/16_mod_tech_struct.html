@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>16. Learning Modeling Techniques and Structures :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/docs/lessons/mged/16_mod_tech_struct.html">
+    <link rel="prev" href="15_creating_a_toy_truck.html">
+    <link rel="next" href="../../hacking/index.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../ui/css/site.css">
+    <link rel="stylesheet" href="../../../ui/css/search.css">
+    <link rel="stylesheet" href="../../../ui/css/custom.css">
+    <script>var uiRootPath = '../../../ui'</script>
+    <link rel="icon" href="../../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lessons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01_creating_primitive_shapes.html">1. Creating Primitive Shapes in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02_learning_viewing_options.html">2. Learning Viewing Options in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03_using_insert_command.html">3. Using the Insert Command in MGED to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="04_assign_mat_prop_rt.html">4. Assigning Material Properties and Raytracing in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="05_learning_boolean_expressions.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="06_creating_a_goblet.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="07_goblet_material_properties.html">7. Assigning Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="08_goblet_material_properties2.html">8. Assigning More Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="09_globe_in_display_box.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="10_creating_mug.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="11_refining_mug.html">11. Refining a Mug Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="12_mug_through_gui.html">12. Creating a Mug Model using the MGED Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="13_placing_shapes_in_3d.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="14_placing_shapes_in_3d_2.html">14. Additional Exercises Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="15_creating_a_toy_truck.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="16_mod_tech_struct.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Books</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../hacking/index.html">Hacking BRL-CAD</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting Started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter1.html">A Call to Arms (and Contributors)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter2.html">Feature Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developers</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter3.html">Working with Our Code</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter4.html">What Code to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter5.html">Contributing Code</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Documenters</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter6.html">Working with Our Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter7.html">Types of Documentation We Maintain</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter8.html">What Documentation to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter9.html">Contributing Documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Other Contributors</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part4/chapter10.html">You Can Help Too</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendix: Resources and Examples</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix1.html">Further References and Resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix2.html">Doc Template: New MGED Command</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix3.html">Code Example: Shooting Rays</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix4.html">Code Example: Walking Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix5.html">Code Example: Command Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix6.html">Example Code: Root Solving</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/index.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../tutorials/overview.html">I. An Overview of BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/mged-intro.html">II. Introduction to MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/preface1.html">Preface</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/preface2.html">Acknowledgments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter1.html">1. Creating Primitive Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter2.html">2. Learning the Viewing Options</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter3.html">3. Using the Insert Command to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter4.html">4. Assigning Material Properties and Raytracing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter5.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter6.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter7.html">7. Assigning Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter8.html">8. Assigning More Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter9.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter10.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter11.html">11. Refining the Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter12.html">12. Creating the Mug Through the GUI</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter13.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter14.html">14. Gaining More Practice Placing Shapes in Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter15.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter16.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/appendix1.html"><code class="app">MGED</code> Commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/modeling.html">III. Modeling</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter2.html">2. The Model Process</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter3.html">3. Measuring data</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter4.html">4. Organizing the Structure</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter5.html">5. Developing Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter6.html">5. Evaluating Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter7.html">7. Logging Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendices</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix1.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix2.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix3.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix4.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix5.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix6.html">Using the build_region Command</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/converting.html">IV. Converting</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter2.html">2. Pertinent Characteristics of the BRL-CAD Format</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter3.html">3. Converting From/to ASCII</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter4.html">4. Converting to BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter5.html">5. Converting From BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter6.html">6. Building a New Converter</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter7.html">7. Postconversion Issues</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/index.html">Articles</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_pattern.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_region.html">Using the build_region Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/camo_shader.html">Camouflage shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ebm_primitive.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/gcv.html">The Geometry Conversion Library</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ged.html">GED: An Interactive Solid Modeling System</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/mged/index.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tutorial.html">Tutorial</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/gui.html">Graphical User Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/command-line-editing.html">Command Line Editing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/user-commands.html">User Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/developer-commands.html">Developer Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tcl-variables.html">Tcl Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/env.html">Environment Variable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/callback.html">Callback</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/brlcad-solid.html">BRL-CAD Solid</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/mgedrc.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/nirt.html">Interactive Raytracing: The nirt Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/overlap_tool.html">The Overlap Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/oed.html">Object Editing - the oed Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/pipes.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/projection_shader.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/tire.html">Vehicle Tire and Wheel Creation in BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/TEMPLATE.html">TEMPLATE</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Misc</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Dev Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../devguides/bool_eval_development.html">NURBS Boolean Evaluation Development Guide</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Presentations</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/brlcad-app-devel.html">Application Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="presentations:_attachments/brlcad-app-devel.html">brlcad-app-devel</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/intro-to-tcltk.html">Introduction to Tcl/Tk</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../specifications/BRL_CAD_g_format_V5.html">BRL-CAD Database Format</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Manual Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/1.html">man1</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/3.html">man3</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/5.html">man5</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/n.html">mann</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Wiki Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">page-1</span>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">BRL-CAD</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../../index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../es/index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../es/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">BRL-CAD</a></li>
+    <li>Lessons</li>
+    <li><a href="../mged.html">MGED</a></li>
+    <li><a href="16_mod_tech_struct.html">16. Learning Modeling Techniques and Structures</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/docs/modules/lessons/pages/mged/16_mod_tech_struct.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">16. Learning Modeling Techniques and Structures</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this lesson, you will be:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Making the shapes of the walkie-talkie radio into regions.</p>
+</li>
+<li>
+<p>Gathering the regions into an assembly combination.</p>
+</li>
+<li>
+<p>Assigning material properties to the regions.</p>
+</li>
+<li>
+<p>Adding internal components to the radio.</p>
+</li>
+<li>
+<p>Creating specialty models of the radio.</p>
+</li>
+<li>
+<p>Redefining the structure of the radio.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In Lesson 2, we made the basic shapes of a walkie-talkie radio to gain
+experience in viewing objects.  Now that we have successfully modeled
+a few simple objects, let&#8217;s return to the radio to make it more
+realistic and, in so doing, discuss logical techniques and structures
+in modeling.  When finished, our radio should look as follows:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/16_radio_new_design.png" alt="16 radio new design">
+</div>
+<div class="title">Figure 1. Walkie-Talkie Radio</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_radio_shapes_to_regions"><a class="anchor" href="#_radio_shapes_to_regions"></a>1. Making the Shapes into Regions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Open the database radio.g that you created in Lesson 2.  In the
+Command Window, use the ls command to list all the contents of your
+radio.  It should read as follows:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>   ant.s btn.s knob.s
+   body.s btn2.s spkr.s</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now what does this list really contain? Parts to a model radio? Not
+really.  What the list actually comprises is just a collection of
+shapes (which we have hinted at by using a .s suffix) that (1) do not
+have material properties, and therefore (2) do not occupy space.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Remember, in <code class="app">MGED</code> no shape truly becomes an object until it is
+included in a region, which, by definition, is an object or collection
+of objects that has a common material type.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>So our first order of business is to identify the major parts of the
+radio so we can properly define the regions.  So far, our choices are
+fairly simple.  The radio basically consists of (1) a body, which
+houses the speaker and all of the internal parts; (2) an antenna; (3)
+a volume control knob, and (4) a talk button.  These should be our
+four regions.</p>
+</div>
+<div class="paragraph">
+<p>Most of these shapes were fairly straightforward to create, with each
+item consisting of just one or two primitive shapes.  However, if we
+think of the radio as a real-world object, the body of the radio is
+actually more complex than just a solid box with a few shapes glued to
+its surface.  (Remember that all objects are solid unless constructed
+to be otherwise.) Therefore, let&#8217;s start with the main component of
+the radio-the body.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_body_of_radio"><a class="anchor" href="#_body_of_radio"></a>2. The Body of the Radio</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If we think about it, the body of a radio is actually a hollow case.
+So, the first thing we need to do is hollow out the case&#8217;s interior to
+make room for internal components.  To do this, we can use the inside
+command to create a shape, which we&#8217;ll call cavity.s:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">inside body.s cavity.s 1 1 1 1 1 1 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Now, we&#8217;ll make a region called case.r and define it as what&#8217;s left of
+body.s after cavity.s has been subtracted out.  The command should
+look like this:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r case.r u body.s - cavity.s <kbd>Enter</kbd></code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Remember that the inside command was originally created to hollow out
+objects such as gas tanks and boxes; however, it can also be used to
+create any new cutaway shape that has some relationship to a
+pre-existing shape.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>With our case now made, we can proceed to cut several holes through
+this structure to accommodate the antenna, the volume control knob,
+and the talk button.  To do this, we must subtract the three shapes
+from the case as follows:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r case.r - ant.s - knob.s - btn.s <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Finally, we need to "glue" the lip around the speaker to the case&#8217;s
+front face by typing</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r case.r u spkr.s <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Our body is now finished.  Note that an experienced modeler would
+probably have combined the preceding three Boolean functions into a
+single command as follows:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r case.r u body.s - cavity.s - ant.s - knob.s - btn.s u spkr.s <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>If we were to raytrace case.r at this point, we would see the
+following:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/16_radio_default_components_props.png" alt="16 radio default components props">
+</div>
+<div class="title">Figure 2. Radio with Component Cutouts and Default Material Properties</div>
+</div>
+<div class="paragraph">
+<p>Note the hole for the antenna in the top of the case and the hole for
+the talk button on the side of the case.  We will now fill these holes
+with their respective components.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Precedence Review</p>
+</div>
+<div class="paragraph">
+<p>The order in which these primitives were unioned and subtracted is
+important.  We unioned in spkr.  s last so that all the subtractions
+would apply to body.s.  The rules of precedence for Boolean operators
+indicate that subtraction and intersection have a higher priority than
+union (meaning that they are performed first).</p>
+</div>
+<div class="paragraph">
+<p>Although the following operation is not in proper <code class="app">MGED</code> syntax,
+it does illustrate the implied parentheses that precede and follow the
+union operators in our last command:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r case.r u (body.s - cavity.s - ant.s - knob.s - btn.s) u (spkr.s) <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Optionally, we could&#8217;ve unioned in spkr.s before body.s as follows:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r case.r u spkr.s u body.s - cavity.s - ant.s - knob.s - btn.s <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s consider, however, what would have happened if we had done the
+following:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r case.r u body.s u spkr.s - cavity.s - ant.s - knob.s - btn.s <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>In this last case, operator precedence would have caused the program
+to subtract cavity.s, ant.s, knob.s, and btn.s from spkr.s.  Nothing
+would have been subtracted from body.s.  Therefore, the holes in the
+case would not have been created.</p>
+</div>
+<div class="paragraph">
+<p>Subtracting cavity.s, ant.s, knobs, and btn.s from spkr.s would have
+produced no apparent effect because they do not overlap the volume of
+spkr.s.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_radio_other_regions"><a class="anchor" href="#_radio_other_regions"></a>3. The Other Regions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Making the talk button is simpler than making the case.  The button
+consists of the union of two primitive shapes.  To make them into a
+region, type</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r button.r u btn.s u btn2.s <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>The volume knob and antenna are even simpler.  They are single
+primitive shapes that can be made into regions by typing</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r knob.r u knob.s <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r ant.r u ant.s <kbd>Enter</kbd></code></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_radio_assembly_comb"><a class="anchor" href="#_radio_assembly_comb"></a>4. Gathering the Regions into an Assembly Combination</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now let&#8217;s take all of the regions we have made so far and gather them
+into an assembly (or group) combination called radio.c so that we can
+keep all of these parts together.  There are several ways to do this.
+One way would be to use a similar method to the one we used to make
+the regions:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">comb radio.c u case.r u button.r u knob.r u ant.r <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>A shortcut, however, would be to use the g (group) command as follows:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">g radio.c case.r button.r knob.r ant.r <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Unlike the comb command, the g command assumes that all of the items
+specified will be unioned together, and so no Boolean operators need
+to be specified.</p>
+</div>
+<div class="paragraph">
+<p>A final improvement would include using the database name wildcard *.r
+to quickly and easily specify all of the regions in the database:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">g radio.c *.r <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>If we now tree radio.c, we should get the following output in the
+Command Window.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>   radio.c/
+   u case.r/R
+   u body.s
+   - cavity.s
+   - ant.s
+   - knob.s
+   - btn.s
+   u spkr.s
+   u button.r/R
+   u btn.s
+   u btn2.s
+   u knob.r/R
+   u knob.s
+   u ant.r/R
+   u ant.s</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_radio_assign_mater_props"><a class="anchor" href="#_radio_assign_mater_props"></a>5. Assigning Material Properties to the Regions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Thus far, the objects we have created have no material properties
+other than the gray plastic that <code class="app">MGED</code> assigns by default to any
+object without assigned material values.  Now let&#8217;s improve our design
+by assigning other material properties to the components.</p>
+</div>
+<div class="paragraph">
+<p>We&#8217;ll give the antenna a realistic look by opening the Combination
+Editor, choosing ant.r from the drop-down Name menu, selecting mirror
+from the drop-down Shader menu, and clicking on Apply.</p>
+</div>
+<div class="paragraph">
+<p>We&#8217;ll let the other components remain with the default plastic, but
+we&#8217;ll assign them different colors.  With the Combination Editor still
+open, select case.r from the drop-down Name menu, select the magenta
+option from the drop-down Color menu, and then click Apply.  Use the
+same method to assign the volume control knob (knob.r) a blue color.
+For the talk button (button.r), let&#8217;s keep it gray by leaving the
+default values in place.  The design should appear similar to the
+following when raytraced in Underlay mode:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/16_radio_with_mater_props.png" alt="16 radio with mater props">
+</div>
+<div class="title">Figure 3. Radio with Material Properties Assigned</div>
+</div>
+<div class="paragraph">
+<p>As we look at our radio now, we can see that the antenna looks a
+little bit like a straw.  In reality, it should have a small cap on
+the end so that we can raise and lower the antenna.  We can
+approximate this shape by creating an ellipsoid (which we&#8217;ll call
+ant2.s) and unioning it in with the rest of the antenna as follows:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">in ant2.s ell1 2 2 94 0 0 1 3 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r ant.r u ant2.s <kbd>Enter</kbd></code></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_radio_internal_components"><a class="anchor" href="#_radio_internal_components"></a>6. Adding Internal Components</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Our radio is looking more and more realistic; however, it is still
+just a hollow shell.  Let&#8217;s further improve it by making a circuit
+board to go inside the case.  To do this, type:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">in board.s rpp 3 4 1 31 1 47 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r board.r u board.s <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s give the board a green semi-shiny color.  The easiest way to do
+this is via the Combination Editor, but this time let&#8217;s use the
+Command Line approach.  Type:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">mater board.r "plastic sh=4" 0 198 0 1 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Diagrammed, this command says to:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">mater</th>
+<th class="tableblock halign-center valign-top">board.r</th>
+<th class="tableblock halign-center valign-top">"plastic sh=4"</th>
+<th class="tableblock halign-center valign-top">0 198 0</th>
+<th class="tableblock halign-center valign-top">1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Assign material properties to</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">the region called board.r.</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Apply the plastic shader with a shininess of 4</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Give it a green color</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Inherit color material type</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Finally, we&#8217;ll include the board with the rest of the components in
+radio.c as follows:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">g radio.c board.r <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Our radio should now look like the following:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/16_radio_wireframe_circ_board.png" alt="16 radio wireframe circ board">
+</div>
+<div class="title">Figure 4. Wireframe Radio with Circuit Board Added</div>
+</div>
+<div class="paragraph">
+<p>In addition, the tree for radio.c should now look as follows:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>   radio.c/
+   u case.r/R
+   u body.s
+   - cavity.s
+   - ant.s
+   - knob.s
+   - btn.s
+   u spkr.s
+   u button.r/R
+   u btn.s
+   u btn2.s
+   u knob.r/R
+   u knob.s
+   u ant.r/R
+   u ant.s
+   u ant2.s
+   u board.r/R
+   u board.s</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_radio_specialty_models"><a class="anchor" href="#_radio_specialty_models"></a>7. Making Specialty Models of the Radio</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now, what would happen to the circuit board if we were to raytrace the
+radio at this point? It would disappear because it lies within the
+case.  So how can we make the circuit board visible outside of the
+case?</p>
+</div>
+<div class="paragraph">
+<p>There are two common ways to do this: a transparent view and a cutaway
+view.  Each method has its advantages and disadvantages.  With the
+transparent view, the Boolean operations remain unchanged, but some of
+the material properties of the "outside shell" are altered to better
+view interior parts of the model.  With the cutaway view, the material
+properties remain unchanged, but some of the Boolean operations are
+altered to remove parts of the model that are obstructing our view of
+other parts.  We will try both ways to view the inside of our radio.</p>
+</div>
+<div class="paragraph">
+<p>Different Approaches to Creating Specialty Models</p>
+</div>
+<div class="paragraph">
+<p>An important point to note here is that the transparent and cutaway
+views are specialty models.  They are similar in nature to items a
+manufacturer might make for special purposes.  For example, an
+automobile manufacturer makes cars for everyday use, but also makes
+modified versions for display at certain events.  The body panels
+might be replaced with a transparent material or be partially cut away
+to reveal interior components.</p>
+</div>
+<div class="paragraph">
+<p>Good modeling practice follows the same pattern.  The actual model of
+an item should not have to be changed in order to create a specialty
+view of it.  Instead, a modified version of the item should be
+created.  Thus, the modeler will not have to worry about remembering
+to return the model to the original condition after its
+special-purpose use, and the modeler can also retain the "display
+model" for future use.</p>
+</div>
+<div class="paragraph">
+<p>There are two common approaches to making these specialty models:
+First, the modeler can copy the original and replace components with
+modified versions.  Second, the modeler can create new, unique parts
+from scratch and construct the modified item.  The method chosen is a
+matter of personal choice and is usually determined by the extent of
+the modifications being done and the complexity of the original
+object.</p>
+</div>
+<div class="sect2">
+<h3 id="_transparent_view"><a class="anchor" href="#_transparent_view"></a>7.1. Transparent View</h3>
+<div class="paragraph">
+<p>Making a specialty radio with a transparent case would probably be the
+easiest way to view the circuit board inside.  All we have to do is
+make a copy of our present radio case and modify its material
+properties.  We&#8217;ll call the specialty case case_clear.r.  Type</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">cp case.r case_clear.r <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>We can now use the Combination Editor to set the material properties
+on this case without affecting the "master" design of the radio.  When
+this has been done, we can combine this modified case with the other
+unchanged radio components and group them as a new specialty radio
+named radio_clear.c.</p>
+</div>
+<div class="paragraph">
+<p>To set the material properties of case_clear.r, choose plastic from
+the drop-down menu to the right of the Shader entry box in the
+Combination Editor.  (Although this is the shader that is used by
+default, we want to explicitly select it in order to change one of its
+values.) Now change the Transparency of the case to a value of .8.
+Apply the change and close the Combination Editor.</p>
+</div>
+<div class="paragraph">
+<p>Finally, create the specialty radio combination by typing:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">g radio_clear.c case_clear.r button.r knob.r ant.r board.r <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>and then Blast the display with</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">B radio_clear.c <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Now raytrace your design to view the resulting effect.  The new
+transparent case should appear similar to the following:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/16_radio_transparent.png" alt="16 radio transparent">
+</div>
+<div class="title">Figure 5. Transparent View of the Radio</div>
+</div>
+<div class="paragraph">
+<p>As shown in the following tree diagram, the structure of this
+specialty radio_clear.c is not much different than that of the regular
+radio.c.  The only difference is that case.c has been replaced with
+case_clear.c.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>   radio_clear.c/
+   u case_clear.r/R
+   u body.s
+   - cavity.s
+   - ant.s
+   - knob.s
+   - btn.s
+   u spkr.s
+   u button.r/R
+   u btn.s
+   u btn2.s
+   u knob.r/R
+   u knob.s
+   u ant.r/R
+   u ant.s
+   u ant2.s
+   u board.r/R
+   u board.s</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Notice in the preceding figure that the color chosen for the
+transparent case does influence the appearance of the internal
+objects.  Although we made the circuit board green, the filter effect
+of the transparent magenta case-which allows no green light to enter
+or exit the case-causes the board to appear to be dark purple.  This
+is okay in our situation.  However, if accuracy in color is important
+in a model, the modeler should remember to select a neutral color
+(such as white or light gray) for the transparent object.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_cutaway_view"><a class="anchor" href="#_cutaway_view"></a>7.2. Cutaway View</h3>
+<div class="paragraph">
+<p>Another way we can make the interior components of the radio visible
+is to create a cutaway view.  Although it is a little more complex to
+make than the transparent view was, the cutaway view offers a
+particularly interesting way to view geometry.</p>
+</div>
+<div class="paragraph">
+<p>There are several ways to make the cutaway view.  Probably the easiest
+way is to use the "chainsaw" method to cut off part of the radio and
+reveal what is inside.</p>
+</div>
+<div class="paragraph">
+<p>To do this, create an arb8 called cutaway.s, which will be used to cut
+off the front corner of the radio.  Because this is a cutting shape
+(i.e., it is simply used to erase a portion of another shape and will
+not actually be viewed), the dimensions of the arb8 are not critical.
+The only concern is that cutaway.s be as tall as the case so that it
+completely removes a corner from it.</p>
+</div>
+<div class="paragraph">
+<p>Use the Shift Grips and multiple views (especially the Top view) to
+align cutaway.s so that it angles diagonally across the top of the
+radio (as shown in the following wireframe representation). When
+you&#8217;ve aligned the shape the way you want it, create the following
+radio_cutaway.c combination that unions in radio.c and subtracts out
+the shape (cutaway.s) that is covering what you want to see (board.r):</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">comb radio_cutaway.c u radio.c - cutaway.s <kbd>Enter</kbd></code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/16_radio_cut_wireframe.png" alt="16 radio cut wireframe">
+</div>
+<div class="title">Figure 6. Multipane View of Cutting Primitive</div>
+</div>
+<div class="paragraph">
+<p>Blast the radio_cutaway.c combination onto the display and raytrace.
+Depending on how your arb8 intersected the radio, the cutaway should
+look similar to the following:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/16_radio_cut_raytrace.png" alt="16 radio cut raytrace">
+</div>
+<div class="title">Figure 7. Cutaway View of Radio with Circuit Board Cut Off</div>
+</div>
+<div class="paragraph">
+<p>Notice in the preceding figures that cutaway.s removes everything it
+overlaps (including part of the circuit board). This is okay if we
+just want to see inside the case.  However, if we want to see all of
+the circuit board and any other component overlapped by cutaway.s
+(e.g., button.r), we would have to adjust our Boolean operations a
+little so that the cutaway is subtracted only from our case.</p>
+</div>
+<div class="paragraph">
+<p>To do this, we basically have two options: (1) we could move cutaway.s
+in the structure so that it is subtracted from only case.r, or (2) we
+could move cutaway.s in the structure so that it is subtracted from
+both body.s and spkr.s, the two components that make up case.r.  While
+both of these options would produce the same effect, the first method
+requires just one subtraction, whereas the second method potentially
+provides more control by having the user select the individual
+components that will subtract out the cutting shape.</p>
+</div>
+<div class="paragraph">
+<p>Take a minute and compare the following trees for the cutaways we have
+discussed so far.  Especially note the position of cutaway.s in the
+different structures.  Also, note that when cutaway.s was subtracted
+from a particular region or combination, the name of that region or
+combination was changed.  The reasoning behind this goes back to our
+original discussion of specialty models.  Remember that our purpose is
+to create a new special-purpose model, not change the existing model.
+So, we must change the name of any region or combination that contains
+any modified components or structures.  If we don&#8217;t, the master model
+will also be changed.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/16_radio_cutaways.png" alt="16 radio cutaways">
+</div>
+<div class="title">Figure 8. Cutaway Subtractions.</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_radio_structure_redefinition"><a class="anchor" href="#_radio_structure_redefinition"></a>8. Redefining the Structure of the Radio</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As shapes are added in a design, the modeler often finds that the
+structure or association of components needs to change.  Thus, we
+should pause at this point and consider how our radio is structured.
+While there are many ways to structure a model, two common modeling
+categories are location and functionality.  For our radio, we have so
+far grouped everything together under the general category of Radio,
+as shown in the following:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/16_radio_structure_1.png" alt="16 radio structure 1">
+</div>
+<div class="title">Figure 9. Current Radio Structure</div>
+</div>
+<div class="paragraph">
+<p>If we wanted to categorize our components according to location,
+however, we might structure the model as follows:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/16_radio_structure_2.png" alt="16 radio structure 2">
+</div>
+<div class="title">Figure 10. Location-Based Structure of Radio</div>
+</div>
+<div class="paragraph">
+<p>If we wanted to define our components according to functionality, we
+might structure the model another way.  For instance, to repair an
+actual radio, we would open the case, take out the circuit board, fix
+it, and put it back in.  When taking out the board, however, the knob
+and button would probably be attached to it in some way, and so they
+too would need to come out.  Accordingly, our structure should be
+changed as shown in the following diagram to associate the knob and
+button with the circuit board.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/16_radio_structure_3.png" alt="16 radio structure 3">
+</div>
+<div class="title">Figure 11. Function-Based Structure of Radio</div>
+</div>
+<div class="paragraph">
+<p>To accomplish this restructuring according to functionality, create an
+assembly called electronics.c to hold these components together.
+Type:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">g electronics.c board.r knob.r button.r <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Of course, we now need to remove board.r, knob.r, and button.r from
+the radio.c assembly so that when electronics.c is added to the
+radio.c assembly, we won&#8217;t have the knob and button included twice in
+the model.  To do this, use the rm (remove) command:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">rm radio.c board.r knob.r button.r <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>and then union in the electronics assembly:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">g radio.c electronics.c <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Now the tree for radio.c should appear as follows:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>   radio.c/
+   u case.r/R
+   u body.s
+   - cavity.s
+   - ant.s
+   - knob.s
+   - btn.s
+   u spkr.s
+   u ant.r/R
+   u ant.s
+   u ant2.s
+   u electronics.c/
+   u board.r/R
+   u board.s
+   u knob.r/R
+   u knob.s
+   u button.r/R
+   u btn.s
+   u btn2.s</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s remake our cutaway view.  This time, let&#8217;s do what we
+discussed earlier and make the cutaway remove material from only the
+case, showing all the other components.</p>
+</div>
+<div class="paragraph">
+<p>First, we need to get rid of the old radio_cutaway.c, which was based
+on our previous structure.  To do this, type</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">kill radio_cutaway.c <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>and then remake the combination by typing</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">comb radio_cutaway.c u case.r - cutaway.s u electronics.c u ant.r <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Now when we Blast the display and raytrace radio_cutaway.c, we should
+see the following:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/16_radio_casecut_raytrace.png" alt="16 radio casecut raytrace">
+</div>
+<div class="title">Figure 12. View of Radio with Just the Case Cut Away</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_modeling_techniques_and_structures_review"><a class="anchor" href="#_modeling_techniques_and_structures_review"></a>9. Review</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this lesson, you:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Made the shapes of the walkie-talkie radio into regions.</p>
+</li>
+<li>
+<p>Gathered the regions into an assembly combination.</p>
+</li>
+<li>
+<p>Assigned material properties to the regions.</p>
+</li>
+<li>
+<p>Added internal components to the radio.</p>
+</li>
+<li>
+<p>Created specialty models of the radio.</p>
+</li>
+<li>
+<p>Redefined the structure of the radio.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="15_creating_a_toy_truck.html">15. Creating a Toy Truck</a></span>
+  <span class="next"><a href="../../hacking/index.html">Hacking BRL-CAD</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../ui/js/site.js"></script>
+<script src="../../../ui/js/vendor/lunr.js"></script>
+<script src="../../../ui/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/docs/lessons/mged/16_mod_tech_struct.html"></script>
+<script async src="../../../ui/../search-index.js"></script>
+<script async src="../../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

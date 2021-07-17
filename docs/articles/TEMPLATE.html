@@ -1,0 +1,1673 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Article Title :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/docs/articles/TEMPLATE.html">
+    <link rel="prev" href="tire.html">
+    <link rel="next" href="../devguides/bool_eval_development.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../ui/css/site.css">
+    <link rel="stylesheet" href="../../ui/css/search.css">
+    <link rel="stylesheet" href="../../ui/css/custom.css">
+    <script>var uiRootPath = '../../ui'</script>
+    <link rel="icon" href="../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../about.html">About</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lessons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../lessons/mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/01_creating_primitive_shapes.html">1. Creating Primitive Shapes in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/02_learning_viewing_options.html">2. Learning Viewing Options in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/03_using_insert_command.html">3. Using the Insert Command in MGED to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/04_assign_mat_prop_rt.html">4. Assigning Material Properties and Raytracing in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/05_learning_boolean_expressions.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/06_creating_a_goblet.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/07_goblet_material_properties.html">7. Assigning Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/08_goblet_material_properties2.html">8. Assigning More Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/09_globe_in_display_box.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/10_creating_mug.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/11_refining_mug.html">11. Refining a Mug Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/12_mug_through_gui.html">12. Creating a Mug Model using the MGED Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/13_placing_shapes_in_3d.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/14_placing_shapes_in_3d_2.html">14. Additional Exercises Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/15_creating_a_toy_truck.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/16_mod_tech_struct.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Books</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../hacking/index.html">Hacking BRL-CAD</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting Started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part1/chapter1.html">A Call to Arms (and Contributors)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part1/chapter2.html">Feature Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developers</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part2/chapter3.html">Working with Our Code</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part2/chapter4.html">What Code to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part2/chapter5.html">Contributing Code</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Documenters</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part3/chapter6.html">Working with Our Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part3/chapter7.html">Types of Documentation We Maintain</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part3/chapter8.html">What Documentation to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part3/chapter9.html">Contributing Documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Other Contributors</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part4/chapter10.html">You Can Help Too</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendix: Resources and Examples</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix1.html">Further References and Resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix2.html">Doc Template: New MGED Command</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix3.html">Code Example: Shooting Rays</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix4.html">Code Example: Walking Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix5.html">Code Example: Command Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix6.html">Example Code: Root Solving</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials/index.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tutorials/overview.html">I. An Overview of BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials/mged-intro.html">II. Introduction to MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/preface1.html">Preface</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/preface2.html">Acknowledgments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter1.html">1. Creating Primitive Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter2.html">2. Learning the Viewing Options</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter3.html">3. Using the Insert Command to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter4.html">4. Assigning Material Properties and Raytracing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter5.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter6.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter7.html">7. Assigning Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter8.html">8. Assigning More Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter9.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter10.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter11.html">11. Refining the Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter12.html">12. Creating the Mug Through the GUI</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter13.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter14.html">14. Gaining More Practice Placing Shapes in Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter15.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter16.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/appendix1.html"><code class="app">MGED</code> Commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials/modeling.html">III. Modeling</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter2.html">2. The Model Process</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter3.html">3. Measuring data</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter4.html">4. Organizing the Structure</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter5.html">5. Developing Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter6.html">5. Evaluating Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter7.html">7. Logging Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendices</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix1.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix2.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix3.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix4.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix5.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix6.html">Using the build_region Command</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials/converting.html">IV. Converting</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter2.html">2. Pertinent Characteristics of the BRL-CAD Format</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter3.html">3. Converting From/to ASCII</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter4.html">4. Converting to BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter5.html">5. Converting From BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter6.html">6. Building a New Converter</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter7.html">7. Postconversion Issues</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">Articles</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="build_pattern.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="build_region.html">Using the build_region Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="camo_shader.html">Camouflage shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="ebm_primitive.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="gcv.html">The Geometry Conversion Library</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="ged.html">GED: An Interactive Solid Modeling System</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="mged/index.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/tutorial.html">Tutorial</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/gui.html">Graphical User Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/command-line-editing.html">Command Line Editing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/user-commands.html">User Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/developer-commands.html">Developer Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/tcl-variables.html">Tcl Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/env.html">Environment Variable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/callback.html">Callback</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/brlcad-solid.html">BRL-CAD Solid</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="mgedrc.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="nirt.html">Interactive Raytracing: The nirt Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="overlap_tool.html">The Overlap Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="oed.html">Object Editing - the oed Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="pipes.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="projection_shader.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="tire.html">Vehicle Tire and Wheel Creation in BRL-CAD</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="TEMPLATE.html">TEMPLATE</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Misc</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Dev Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../devguides/bool_eval_development.html">NURBS Boolean Evaluation Development Guide</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Presentations</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../presentations/brlcad-app-devel.html">Application Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="presentations:_attachments/brlcad-app-devel.html">brlcad-app-devel</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../presentations/intro-to-tcltk.html">Introduction to Tcl/Tk</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../specifications/BRL_CAD_g_format_V5.html">BRL-CAD Database Format</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Manual Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../man/1.html">man1</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../man/3.html">man3</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../man/5.html">man5</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../man/n.html">mann</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Wiki Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">page-1</span>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">BRL-CAD</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../es/index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../es/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">BRL-CAD</a></li>
+    <li><a href="index.html">Articles</a></li>
+    <li><a href="TEMPLATE.html">TEMPLATE</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/docs/modules/articles/pages/TEMPLATE.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Article Title</h1>
+<div class="sect1">
+<h2 id="_some_descriptive_tag"><a class="anchor" href="#_some_descriptive_tag"></a>1. Unknown Title!</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>First paragraph goes here.</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">benchmark TIMEFRAME=1 run</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The preceding <code class="app">benchmark</code> command example can get a lot more
+complex.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>When you run the <code>benchmark</code> with the <code class="option">help</code> option, you
+might see this output:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre><span class="prompt">sean@gcc1-power7 bin]$</span> <span class="cmd">benchmark help</span>
+<span class="output">Usage: ./benchmark [command(s)] [OPTION=value] [RT_OPTIONS]
+
+Available commands:
+clean
+...</span></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Another paragraph with embedded list is shown here.  Each paragraph
+gets its own para and should be wrapped for readability and localized
+context diff comparisons.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Bullet item 1.</p>
+</li>
+<li>
+<p>Bullet item 2.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_another_tag_for_main_body"><a class="anchor" href="#_another_tag_for_main_body"></a>2. Breaking up the flow into sections</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can use sections to group sections of your document together, but
+they are not necessary.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="http://brlcad.org/images/logo/Attic/BRL-CAD_gear_logo_w_name_256.png" alt="BRL CAD gear logo w name 256">
+</div>
+<div class="title">Figure 1. Example embedded image text.</div>
+</div>
+<div class="paragraph">
+<p>Another image, but rendered inline
+<span class="image"><img src="http://brlcad.org/images/logo/Attic/BRL-CAD_gear_logo_64x64.png" alt="BRL CAD gear logo 64x64"></span>
+with the paragraph text.</p>
+</div>
+<div class="paragraph">
+<p>More paragraphs&#8230;&#8203;</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ell</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Generalized Ellipsoid</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>arb8</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Arbitrary Regular Polyhedron with up to 8 vertices</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="title">Unknown Title!</div>
+<div class="paragraph">
+<p>There&#8217;s a lot more you can do with AsciiDoc.  Search the web for
+references and examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.asciidoctor.org/asciidoc/latest/" class="bare">https://docs.asciidoctor.org/asciidoc/latest/</a></p>
+</li>
+<li>
+<p><a href="https://www.vogella.com/tutorials/AsciiDoc/article.html" class="bare">https://www.vogella.com/tutorials/AsciiDoc/article.html</a></p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_asciidoc_examples"><a class="anchor" href="#_asciidoc_examples"></a>3. AsciiDoc Examples</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>These examples demonstrate some styles and patterns that are used in
+the BRL-CAD docs. They might help new doc writers and contributors by
+suggesting them what can be used, but they are not meant to be
+complete or restrictive.</p>
+</div>
+<div class="sect2">
+<h3 id="_monospace_and_application"><a class="anchor" href="#_monospace_and_application"></a>3.1. Monospace and application</h3>
+<div class="literalblock">
+<div class="content">
+<pre>The `oed` command in [app]`MGED` is used to ...</pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>The <code>oed</code> command in <code class="app">MGED</code> is used to &#8230;&#8203;</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_organization"><a class="anchor" href="#_organization"></a>3.2. Organization</h3>
+<div class="literalblock">
+<div class="content">
+<pre>Notable aerospace firms and support organizations that use FASTGEN
+include [org]_Lockheed Martin_, [org]#Boeing#, [org]`Bell Helicopter`
+, [org]*Northrop Grumman* , [org]_Pratt &amp;amp; Whitney_ , [org]_General
+Electric_ , [org]_KETRON_ , [org]_ITT_ , [org]_BAH_ , [org]_SURVICE
+Engineering_ , and [org]_ASI_ .</pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Notable aerospace firms and support organizations that use FASTGEN
+include <em class="org">Lockheed Martin</em>, <span class="org">Boeing</span>, <code class="org">Bell Helicopter</code>
+, <strong class="org">Northrop Grumman</strong> , <em class="org">Pratt &amp; Whitney</em> , <em class="org">General
+Electric</em> , <em class="org">KETRON</em> , <em class="org">ITT</em> , <em class="org">BAH</em> , <em class="org">SURVICE
+Engineering</em> , and <em class="org">ASI</em> .</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_path_and_command"><a class="anchor" href="#_path_and_command"></a>3.3. Path and command</h3>
+<div class="ulist">
+<ul>
+<li>
+<p></p>
+<div class="literalblock">
+<div class="content">
+<pre>[path]`input.asc` is a file created using [cmd]`g2asc`</pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><code class="path">input.asc</code> is a file created using <code class="cmd">g2asc</code></p>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p></p>
+<div class="literalblock">
+<div class="content">
+<pre>[cmd]`draw sph1.s kbd:[Enter]`</pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><code class="cmd">draw sph1.s <kbd>Enter</kbd></code></p>
+</div>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+For <code>kbd:[]</code> macro to work, you need to add the attribute
+<code>:experimental:</code> at the top of the page.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p></p>
+<div class="literalblock">
+<div class="content">
+<pre>`[cmd]*g2asc* &lt; [path]#input.g# &gt; [path]#output.g#`</pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><code><strong class="cmd">g2asc</strong> &lt; <span class="path">input.g</span> &gt; <span class="path">output.g</span></code></p>
+</div>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_gui_labels"><a class="anchor" href="#_gui_labels"></a>3.4. Gui labels</h3>
+<div class="literalblock">
+<div class="content">
+<pre>The following list provides a description of the use and functionality
+of the primary elements in the dialog box.
+
+* [label]#Output File Name# -- This is the name of the file to receive
+  the ASCII output.
+* [label]#Log File Name# -- If provided, verbose status logging will
+  be written to that file.</pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>The following list provides a description of the use and functionality
+of the primary elements in the dialog box.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="label">Output File Name</span>&#8201;&#8212;&#8201;This is the name of the file to receive
+the ASCII output.</p>
+</li>
+<li>
+<p><span class="label">Log File Name</span>&#8201;&#8212;&#8201;If provided, verbose status logging will
+be written to that file.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_inline_markup_inside_a_literal_block"><a class="anchor" href="#_inline_markup_inside_a_literal_block"></a>3.5. Inline markup inside a literal block</h3>
+<div class="literalblock">
+<div class="content">
+<pre>[subs="+quotes"]
+....
+[prompt]#mged&gt;# [cmd]#l tire#
+[output]#tire:  --
+   u tire-215-55R17.r
+   u air-215-55R17.r
+   u wheel-215-55R17.r#
+....</pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre><span class="prompt">mged&gt;</span> <span class="cmd">l tire</span>
+<span class="output">tire:  --
+   u tire-215-55R17.r
+   u air-215-55R17.r
+   u wheel-215-55R17.r</span></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The attribute <code>[subs="+quotes"]</code> is an instruction for replacing
+(substituting) the quoted strings inside the block.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_prompt_and_user_input_in"><a class="anchor" href="#_prompt_and_user_input_in"></a>3.6. Prompt and user input (<code>[in]</code>)</h3>
+<div class="literalblock">
+<div class="content">
+<pre>[subs="+quotes,+macros"]
+....
+[prompt]#Enter X, Y, Z of vertex:# [in]#0 0 0# kbd:[Enter]
+[prompt]#Enter X, Y, Z of height (H) vector:# [in]#0 0 3.5# kbd:[Enter]
+[prompt]#Enter radius:# [in]#1.75# kbd:[Enter]
+....</pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre><span class="prompt">Enter X, Y, Z of vertex:</span> <span class="in">0 0 0</span> <kbd>Enter</kbd>
+<span class="prompt">Enter X, Y, Z of height (H) vector:</span> <span class="in">0 0 3.5</span> <kbd>Enter</kbd>
+<span class="prompt">Enter radius:</span> <span class="in">1.75</span> <kbd>Enter</kbd></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_source_code_example"><a class="anchor" href="#_source_code_example"></a>3.7. Source code example</h3>
+<div class="literalblock">
+<div class="content">
+<pre>[source,c]
+----
+struct rt_wdb *wdbp;
+if( (wdbp=wdb_fopen( new_file_name ) ) == RT_WDB_NULL ) {
+    bu_exit(1, "Failed to open output file (%s)\n", new_file_name);
+}
+----</pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">struct rt_wdb *wdbp;
+if( (wdbp=wdb_fopen( new_file_name ) ) == RT_WDB_NULL ) {
+    bu_exit(1, "Failed to open output file (%s)\n", new_file_name);
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_explaining_the_usage_of_a_command_with_a_table"><a class="anchor" href="#_explaining_the_usage_of_a_command_with_a_table"></a>3.8. Explaining the usage of a command with a table</h3>
+<div class="literalblock">
+<div class="content">
+<pre>[%header, cols="^,^", frame="all"]
+|===
+|draw
+|sph1.s
+
+|Draw a previously created primitive shape
+|named sph1.s
+|===</pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">draw</th>
+<th class="tableblock halign-center valign-top">sph1.s</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Draw a previously created primitive shape</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">named sph1.s</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_another_more_complex_table"><a class="anchor" href="#_another_more_complex_table"></a>3.9. Another, more complex table</h3>
+<div class="literalblock">
+<div class="content">
+<pre>[%header, cols="10*^~", frame="all"]
+|===
+|in
+|?
+|rcc
+3+|?
+3+|?
+|?
+
+.2+|Insert a primitive shape
+.2+|Name of shape
+.2+|Type of shape is a right circular cylinder
+|Value of x
+|Value of y
+|Value of z
+|Value of x
+|Value of y
+|Value of z
+.2+|Radius of rcc
+
+3+|Vertex
+3+|Height vector
+|===</pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">in</th>
+<th class="tableblock halign-center valign-top">?</th>
+<th class="tableblock halign-center valign-top">rcc</th>
+<th class="tableblock halign-center valign-top" colspan="3">?</th>
+<th class="tableblock halign-center valign-top" colspan="3">?</th>
+<th class="tableblock halign-center valign-top">?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top" rowspan="2"><p class="tableblock">Insert a primitive shape</p></td>
+<td class="tableblock halign-center valign-top" rowspan="2"><p class="tableblock">Name of shape</p></td>
+<td class="tableblock halign-center valign-top" rowspan="2"><p class="tableblock">Type of shape is a right circular cylinder</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Value of x</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Value of y</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Value of z</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Value of x</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Value of y</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Value of z</p></td>
+<td class="tableblock halign-center valign-top" rowspan="2"><p class="tableblock">Radius of rcc</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" colspan="3"><p class="tableblock">Vertex</p></td>
+<td class="tableblock halign-center valign-top" colspan="3"><p class="tableblock">Height vector</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_tables_can_be_used_to_neatly_display_images"><a class="anchor" href="#_tables_can_be_used_to_neatly_display_images"></a>3.10. Tables can be used to neatly display images</h3>
+<div class="sect3">
+<h4 id="_resize_and_center_an_image"><a class="anchor" href="#_resize_and_center_an_image"></a>3.10.1. Resize and center an image</h4>
+<div class="literalblock">
+<div class="content">
+<pre>[cols="^a", frame="none"]
+|===
+|
+.Azimuth, Elevation, and the xyz Coordinate System
+image::lessons:mged/02_coordsys.png[width=35%]
+|===</pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<table class="tableblock frame-none grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../lessons/_images/mged/02_coordsys.png" alt="02 coordsys" width="35%">
+</div>
+<div class="title">Figure 2. Azimuth, Elevation, and the xyz Coordinate System</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_display_2_images_on_cells_of_equal_size"><a class="anchor" href="#_display_2_images_on_cells_of_equal_size"></a>3.10.2. Display 2 images on cells of equal size</h4>
+<div class="literalblock">
+<div class="content">
+<pre>[cols="2*^.&lt;a", frame="none"]
+|===
+|
+.Zoom In to View Details (small size of view)
+image::lessons:mged/02_flower_zoomin.png[width=400]
+|
+.Zoom Out to View Object in Relation to Environment (large size of view)
+image::lessons:mged/02_flower_zoomout.png[width=400]
+|===</pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<table class="tableblock frame-none grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../lessons/_images/mged/02_flower_zoomin.png" alt="02 flower zoomin" width="400">
+</div>
+<div class="title">Figure 3. Zoom In to View Details (small size of view)</div>
+</div></div></td>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../lessons/_images/mged/02_flower_zoomout.png" alt="02 flower zoomout" width="400">
+</div>
+<div class="title">Figure 4. Zoom Out to View Object in Relation to Environment (large size of view)</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_display_images_on_cells_of_flexible_width"><a class="anchor" href="#_display_images_on_cells_of_flexible_width"></a>3.10.3. Display images on cells of flexible width:</h4>
+<div class="literalblock">
+<div class="content">
+<pre>[cols="2*^~a", frame="none"]
+|===
+|
+.Front (az=0, el=0)
+image::lessons:mged/02_truck_front.png[]
+|
+.az=35, el=0
+image::lessons:mged/02_truck_35_0.png[]
+|===</pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<table class="tableblock frame-none grid-all stretch">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../lessons/_images/mged/02_truck_front.png" alt="02 truck front">
+</div>
+<div class="title">Figure 5. Front (az=0, el=0)</div>
+</div></div></td>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../lessons/_images/mged/02_truck_35_0.png" alt="02 truck 35 0">
+</div>
+<div class="title">Figure 6. az=35, el=0</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_using_a_table_to_explain_the_usage_of_a_command"><a class="anchor" href="#_using_a_table_to_explain_the_usage_of_a_command"></a>3.11. Using a table to explain the usage of a command</h3>
+<div class="literalblock">
+<div class="content">
+<pre>.Usage of MGED's gdiff utility
+[cols="2*~", frame="none", options="noheader"]
+|===
+2+| Usage: `[cmd]#gdiff# +++[+++[opt]#OPTION#]... [rep]#obj1# [rep]#obj2#`
+
+|[opt]`--tol=#`, [opt]`-t#`
+|Tolerance in millimeters.
+
+|[opt]`--ray-diff`, [opt]`-R`
+|Test for differences with raytracing.
+
+|[opt]`--view-left`, [opt]`-l`
+|Visualize volumes added only by left object.
+
+|[opt]`--view-both`, [opt]`-b`
+|Visualize volumes common to both objects.
+
+|[opt]`--view-right`, [opt]`-r`
+|Visualize volumes added only by right object.
+
+|[opt]`--grazing`, [opt]`-G`
+|Report differences in grazing hits (raytracing mode).
+|===</pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<table class="tableblock frame-none grid-all stretch">
+<caption class="title">Table 1. Usage of MGED&#8217;s gdiff utility</caption>
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Usage: <code><span class="cmd">gdiff</span> [<span class="opt">OPTION</span>]&#8230;&#8203; <span class="rep">obj1</span> <span class="rep">obj2</span></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="opt">--tol=<mark></code>, <code class="opt">-t</mark></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tolerance in millimeters.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="opt">--ray-diff</code>, <code class="opt">-R</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Test for differences with raytracing.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="opt">--view-left</code>, <code class="opt">-l</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Visualize volumes added only by left object.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="opt">--view-both</code>, <code class="opt">-b</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Visualize volumes common to both objects.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="opt">--view-right</code>, <code class="opt">-r</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Visualize volumes added only by right object.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="opt">--grazing</code>, <code class="opt">-G</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Report differences in grazing hits (raytracing mode).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_another_table_that_explains_some_options"><a class="anchor" href="#_another_table_that_explains_some_options"></a>3.12. Another table that explains some options</h3>
+<div class="literalblock">
+<div class="content">
+<pre>.STL reader options
+[cols="2*~", frame="none"]
+|===
+|`--binary`
+|Specify that the input file is in binary STL format (the default
+ assumes ASCII).
+
+|[nowrap]`--starting-ident=[rep]#number#`
+|Specify the starting ident for the regions created. The default is
+ `1000`. This number will be incremented for each region, unless
+ `--constant-ident` is specified.
+
+|`--constant-ident`
+|Specify that the starting ident should remain constant.
+
+|`--material=[rep]#code#`
+|Specify the material code that will be assigned to all created
+ regions (the default is `1`).
+|===</pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<table class="tableblock frame-none grid-all stretch">
+<caption class="title">Table 2. STL reader options</caption>
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--binary</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify that the input file is in binary STL format (the default
+ assumes ASCII).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="nowrap">--starting-ident=<span class="rep">number</span></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify the starting ident for the regions created. The default is
+ <code>1000</code>. This number will be incremented for each region, unless
+ <code>--constant-ident</code> is specified.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--constant-ident</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify that the starting ident should remain constant.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--material=<span class="rep">code</span></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify the material code that will be assigned to all created
+ regions (the default is <code>1</code>).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Because the columns of the table have flexible widths, it is
+possible that the options' column is too narrow and the option lines
+are broken. To prevent this we are using <code>[nowrap]</code> for the longest
+option.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_using_bibliography_references"><a class="anchor" href="#_using_bibliography_references"></a>3.13. Using bibliography references</h3>
+<div class="literalblock">
+<div class="content">
+<pre>The COMGEOM target descriptions are processed by the Geometric
+Information For Targets (GIFT &lt;&lt;r1&gt;&gt;,&lt;&lt;r2&gt;&gt;) code for use in follow-on
+vulnerability assessment codes.
+
+[bibliography]
+.References
+* [[[r1, 1]]] Lawrence W. Bain, Mathew J. Reisinger, "The GIFT Code User
+Manual; Vol I, Introduction and Input Requirements," BRL
+Report No. 1802, July 1975. (AD# B0060371)
+* [[[r2, 2]]] Gary G. Kuehl, Lawrence W. Bain, Mathew J. Reisinger, "The
+GIFT Code User Manual; Vol II, the Output Options," ARRADCOM Technical
+Report No. ARBRL-TR-02189, September 1979. (AD# A078364)</pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>The COMGEOM target descriptions are processed by the Geometric
+Information For Targets (GIFT <a href="#r1">[1]</a>,<a href="#r2">[2]</a>) code for use in follow-on
+vulnerability assessment codes.</p>
+</div>
+<div class="ulist bibliography">
+<div class="title">References</div>
+<ul class="bibliography">
+<li>
+<p><a id="r1"></a>[1] Lawrence W. Bain, Mathew J. Reisinger, "The GIFT Code User
+Manual; Vol I, Introduction and Input Requirements," BRL
+Report No. 1802, July 1975. (AD# B0060371)</p>
+</li>
+<li>
+<p><a id="r2"></a>[2] Gary G. Kuehl, Lawrence W. Bain, Mathew J. Reisinger, "The
+GIFT Code User Manual; Vol II, the Output Options," ARRADCOM Technical
+Report No. ARBRL-TR-02189, September 1979. (AD# A078364)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_another_table_example"><a class="anchor" href="#_another_table_example"></a>3.14. Another table example</h3>
+<div class="literalblock">
+<div class="content">
+<pre>[%header, cols="^h,~", frame="all"]
+|===
+|Event
+|Description
+
+|r
+|*Ray*.  A ray is cast.  The formatting associated with r will print
+ regardless of whether a region is encountered.
+
+|h
+|*Header*. First output after a ray hits anything.  Formatting at
+  *h* is output once per ray.
+
+|p
+|*Partition*.  Output for each region encountered by the ray.
+ Typically this will be where most of the information about a model is
+ reported.
+
+|f
+|*Footnote*.  Last output statement after a ray hits anything; a
+ "footnote" line after the ray has completed its evaluations; once
+ per ray.
+
+|g
+|*Gap*.  Output written once for each gap the ray may encounter.
+
+|m
+|*Miss*.  If triggered, prints a message that nothing was hit;
+ maximum once per ray.
+
+|o
+|*Overlap*.  Output written once for each overlap along the
+ ray.
+|===</pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 1%;">
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Event</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">r</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Ray</strong>.  A ray is cast.  The formatting associated with r will print
+ regardless of whether a region is encountered.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">h</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Header</strong>. First output after a ray hits anything.  Formatting at
+  <strong>h</strong> is output once per ray.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">p</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Partition</strong>.  Output for each region encountered by the ray.
+ Typically this will be where most of the information about a model is
+ reported.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">f</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Footnote</strong>.  Last output statement after a ray hits anything; a
+ "footnote" line after the ray has completed its evaluations; once
+ per ray.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">g</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Gap</strong>.  Output written once for each gap the ray may encounter.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">m</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Miss</strong>.  If triggered, prints a message that nothing was hit;
+ maximum once per ray.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">o</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Overlap</strong>.  Output written once for each overlap along the
+ ray.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_another_way_for_explaining_a_command"><a class="anchor" href="#_another_way_for_explaining_a_command"></a>3.15. Another way for explaining a command</h3>
+<div class="literalblock">
+<div class="content">
+<pre>[[_percent]]
+% :: Start a `/bin/sh` shell process for the user.  The
+[prompt]#mged># prompt will be replaced by a system prompt for the
+shell, and the user may perform any legal shell commands.  The `mged`
+process waits for the shell process to finish, which occurs when the
+user exits the shell.  This only works in a command window associated
+with a tty (i.e., the window used to start `mged` in classic mode).
++
+.Example:
+[subs="+quotes"]
+....
+[prompt]#mged># [cmd]#%#   <1>
+[prompt]#$# [cmd]#ls -al#  <2>
+[prompt]#$# [cmd]#exit#    <3>
+[prompt]#mged>#     <4>
+....
+<1> Start a new shell process.
+<2> Issue any shell commands.
+<3> Exit the shell.
+<4> Continue editing in `mged`.</pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div id="_percent" class="dlist">
+<dl>
+<dt class="hdlist1">% </dt>
+<dd>
+<p>Start a <code>/bin/sh</code> shell process for the user.  The
+<span class="prompt">mged&gt;</span> prompt will be replaced by a system prompt for the
+shell, and the user may perform any legal shell commands.  The <code>mged</code>
+process waits for the shell process to finish, which occurs when the
+user exits the shell.  This only works in a command window associated
+with a tty (i.e., the window used to start <code>mged</code> in classic mode).</p>
+<div class="literalblock">
+<div class="title">Example:</div>
+<div class="content">
+<pre><span class="prompt">mged&gt;</span> <span class="cmd">%</span>   <i class="conum" data-value="1"></i><b>(1)</b>
+<span class="prompt">$</span> <span class="cmd">ls -al</span>  <i class="conum" data-value="2"></i><b>(2)</b>
+<span class="prompt">$</span> <span class="cmd">exit</span>    <i class="conum" data-value="3"></i><b>(3)</b>
+<span class="prompt">mged&gt;</span>     <i class="conum" data-value="4"></i><b>(4)</b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Start a new shell process.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Issue any shell commands.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Exit the shell.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Continue editing in <code>mged</code>.</td>
+</tr>
+</table>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_displaying_the_info_of_a_book_or_article"><a class="anchor" href="#_displaying_the_info_of_a_book_or_article"></a>3.16. Displaying the info of a book or article</h3>
+<div class="literalblock">
+<div class="content">
+<pre>****
+[cols="&gt;h,&lt;", frame="all"]
+|===
+| AUTHORS:
+| Lee A. Butler +
+  Eric W. Edwards +
+  Betty J. Schueler +
+  Robert G. Parker +
+  John R. Anderson
+
+| ORGANIZATION:
+| *U.S. Army Research Laboratory* +
+  Aberdeen Proving Ground, MD  21005-5068
+
+| REPORT:
+| ARL-SR-102 +
+  April 2001
+|===
+****</pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="sidebarblock">
+<div class="content">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-right valign-top"><p class="tableblock">AUTHORS:</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lee A. Butler<br>
+  Eric W. Edwards<br>
+  Betty J. Schueler<br>
+  Robert G. Parker<br>
+  John R. Anderson</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-right valign-top"><p class="tableblock">ORGANIZATION:</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>U.S. Army Research Laboratory</strong><br>
+  Aberdeen Proving Ground, MD  21005-5068</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-right valign-top"><p class="tableblock">REPORT:</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ARL-SR-102<br>
+  April 2001</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_explaining_the_usage_of_a_command_with_definition_lists"><a class="anchor" href="#_explaining_the_usage_of_a_command_with_definition_lists"></a>3.17. Explaining the usage of a command with definition lists</h3>
+<div class="literalblock">
+<div class="content">
+<pre>The g-dxf command converts BRL-CAD objects to the previously mentioned
+AutoCAD DXF format.  The syntax for this command is as follows:
+
+`[cmd]*g-dxf* +++[+++[opt]_options_] [rep]#input.g# object(s)`
+
+The options for the g-dxf command are as follows:
+
+[opt]`-i` :: requests the output DXF file to be in inches (default is
+millimeters).
+[opt]`-o [rep]#output.dxf#` :: specifies the file to receive
+the DXF output (default is stdout).
+[opt]`-p` :: requests that the output DXF file consist of POLYFACE
+MESH entities (the default is 3DFACE entities).
+
+The command also accepts the [opt]`-v`, [opt]`-r`, [opt]`-a`,
+[opt]`-n`, [opt]`-x`, and [opt]`-X` options, which have been discussed
+in the import converters portion of this document
+(xref:tutorials:converting/chapter4.adoc#_sec_convert_to_brlcad[Converting
+to BRL-CAD]).</pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>The g-dxf command converts BRL-CAD objects to the previously mentioned
+AutoCAD DXF format.  The syntax for this command is as follows:</p>
+</div>
+<div class="paragraph">
+<p><code><strong class="cmd">g-dxf</strong> [<em class="opt">options</em>] <span class="rep">input.g</span> object(s)</code></p>
+</div>
+<div class="paragraph">
+<p>The options for the g-dxf command are as follows:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code class="opt">-i</code> </dt>
+<dd>
+<p>requests the output DXF file to be in inches (default is
+millimeters).</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-o <span class="rep">output.dxf</span></code> </dt>
+<dd>
+<p>specifies the file to receive
+the DXF output (default is stdout).</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-p</code> </dt>
+<dd>
+<p>requests that the output DXF file consist of POLYFACE
+MESH entities (the default is 3DFACE entities).</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>The command also accepts the <code class="opt">-v</code>, <code class="opt">-r</code>, <code class="opt">-a</code>,
+<code class="opt">-n</code>, <code class="opt">-x</code>, and <code class="opt">-X</code> options, which have been discussed
+in the import converters portion of this document
+(<a href="../tutorials/converting/chapter4.html#_sec_convert_to_brlcad" class="page">Converting
+to BRL-CAD</a>).</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="tire.html">Vehicle Tire and Wheel Creation in BRL-CAD</a></span>
+  <span class="next"><a href="../devguides/bool_eval_development.html">NURBS Boolean Evaluation Development Guide</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../ui/js/site.js"></script>
+<script src="../../ui/js/vendor/lunr.js"></script>
+<script src="../../ui/js/vendor/search.js" id="search-script" data-base-path="../.." data-page-path="/docs/articles/TEMPLATE.html"></script>
+<script async src="../../ui/../search-index.js"></script>
+<script async src="../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

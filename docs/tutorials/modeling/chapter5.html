@@ -1,0 +1,1999 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>5. Developing Geometry :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/docs/tutorials/modeling/chapter5.html">
+    <link rel="prev" href="chapter4.html">
+    <link rel="next" href="chapter6.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../ui/css/site.css">
+    <link rel="stylesheet" href="../../../ui/css/search.css">
+    <link rel="stylesheet" href="../../../ui/css/custom.css">
+    <script>var uiRootPath = '../../../ui'</script>
+    <link rel="icon" href="../../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lessons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../lessons/mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/01_creating_primitive_shapes.html">1. Creating Primitive Shapes in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/02_learning_viewing_options.html">2. Learning Viewing Options in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/03_using_insert_command.html">3. Using the Insert Command in MGED to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/04_assign_mat_prop_rt.html">4. Assigning Material Properties and Raytracing in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/05_learning_boolean_expressions.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/06_creating_a_goblet.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/07_goblet_material_properties.html">7. Assigning Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/08_goblet_material_properties2.html">8. Assigning More Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/09_globe_in_display_box.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/10_creating_mug.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/11_refining_mug.html">11. Refining a Mug Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/12_mug_through_gui.html">12. Creating a Mug Model using the MGED Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/13_placing_shapes_in_3d.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/14_placing_shapes_in_3d_2.html">14. Additional Exercises Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/15_creating_a_toy_truck.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/16_mod_tech_struct.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Books</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../hacking/index.html">Hacking BRL-CAD</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting Started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter1.html">A Call to Arms (and Contributors)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter2.html">Feature Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developers</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter3.html">Working with Our Code</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter4.html">What Code to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter5.html">Contributing Code</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Documenters</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter6.html">Working with Our Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter7.html">Types of Documentation We Maintain</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter8.html">What Documentation to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter9.html">Contributing Documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Other Contributors</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part4/chapter10.html">You Can Help Too</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendix: Resources and Examples</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix1.html">Further References and Resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix2.html">Doc Template: New MGED Command</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix3.html">Code Example: Shooting Rays</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix4.html">Code Example: Walking Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix5.html">Code Example: Command Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix6.html">Example Code: Root Solving</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../index.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview.html">I. An Overview of BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../mged-intro.html">II. Introduction to MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/preface1.html">Preface</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/preface2.html">Acknowledgments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter1.html">1. Creating Primitive Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter2.html">2. Learning the Viewing Options</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter3.html">3. Using the Insert Command to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter4.html">4. Assigning Material Properties and Raytracing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter5.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter6.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter7.html">7. Assigning Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter8.html">8. Assigning More Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter9.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter10.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter11.html">11. Refining the Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter12.html">12. Creating the Mug Through the GUI</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter13.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter14.html">14. Gaining More Practice Placing Shapes in Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter15.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter16.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/appendix1.html"><code class="app">MGED</code> Commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../modeling.html">III. Modeling</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter2.html">2. The Model Process</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter3.html">3. Measuring data</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter4.html">4. Organizing the Structure</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="chapter5.html">5. Developing Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter6.html">5. Evaluating Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter7.html">7. Logging Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendices</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="appendix1.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="appendix2.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="appendix3.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="appendix4.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="appendix5.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="appendix6.html">Using the build_region Command</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../converting.html">IV. Converting</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter2.html">2. Pertinent Characteristics of the BRL-CAD Format</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter3.html">3. Converting From/to ASCII</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter4.html">4. Converting to BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter5.html">5. Converting From BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter6.html">6. Building a New Converter</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter7.html">7. Postconversion Issues</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/index.html">Articles</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_pattern.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_region.html">Using the build_region Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/camo_shader.html">Camouflage shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ebm_primitive.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/gcv.html">The Geometry Conversion Library</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ged.html">GED: An Interactive Solid Modeling System</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/mged/index.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tutorial.html">Tutorial</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/gui.html">Graphical User Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/command-line-editing.html">Command Line Editing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/user-commands.html">User Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/developer-commands.html">Developer Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tcl-variables.html">Tcl Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/env.html">Environment Variable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/callback.html">Callback</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/brlcad-solid.html">BRL-CAD Solid</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/mgedrc.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/nirt.html">Interactive Raytracing: The nirt Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/overlap_tool.html">The Overlap Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/oed.html">Object Editing - the oed Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/pipes.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/projection_shader.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/tire.html">Vehicle Tire and Wheel Creation in BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/TEMPLATE.html">TEMPLATE</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Misc</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Dev Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../devguides/bool_eval_development.html">NURBS Boolean Evaluation Development Guide</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Presentations</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/brlcad-app-devel.html">Application Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="presentations:_attachments/brlcad-app-devel.html">brlcad-app-devel</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/intro-to-tcltk.html">Introduction to Tcl/Tk</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../specifications/BRL_CAD_g_format_V5.html">BRL-CAD Database Format</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Manual Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/1.html">man1</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/3.html">man3</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/5.html">man5</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/n.html">mann</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Wiki Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">page-1</span>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">BRL-CAD</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../../index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../es/index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../es/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">BRL-CAD</a></li>
+    <li>Books</li>
+    <li><a href="../index.html">Tutorials</a></li>
+    <li><a href="../modeling.html">III. Modeling</a></li>
+    <li><a href="chapter5.html">5. Developing Geometry</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/docs/modules/tutorials/pages/modeling/chapter5.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">5. Developing Geometry</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>In the end, the heart of the modeling process is the actual
+construction of the geometry.  All the best measurement, organization,
+evaluation, and documentation would be ineffective unless the
+geometric shapes that make up a model are built and built correctly.</p>
+</div>
+<div class="paragraph">
+<p>Basically, there are two steps to geometry development: (1) <em>creating
+geometry</em>, and (2) <em>positioning geometry</em>.  Of course, as with all the
+other phases in the modeling process, there are different schools of
+thought as to how these steps should be accomplished, and each method
+has its own set of advantages and disadvantages.</p>
+</div>
+<div class="paragraph">
+<p>Factors that need to be considered when deciding which methods to use
+include the convenience of building location and manner (e.g.,
+building geometry at the origin or in an order that leverages
+previously defined measurements or mathematical calculations); the
+number of object replications that will be needed in the model; the
+ease of editing one or more of the replications; storage space;
+prep/rendering time; etc.</p>
+</div>
+<div class="paragraph">
+<p>The following are some general tips regarding the efficient
+development of geometry in BRL-CAD:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Build the main structure first:</em> As mentioned previously, it is a
+good idea to start building with the "main" object of a model. This
+could be the largest piece, the piece most central to the rest of
+the model, or a piece whose location represents a prominent corner
+or point. Much like on the assembly line of an automobile
+manufacturer, building the main frame first provides an overall
+model coordinate system for the rest of the smaller, secondary parts
+to reference. Also, for projects in which multiple modelers work on
+separate pieces simultaneously, starting with the main structure
+allows other pieces to be built in place or put in position
+immediately upon completion. This practice is more efficient in that
+it eliminates having extra parts floating around waiting to be
+positioned, and it provides a better picture of model completion
+throughout the project.</p>
+</li>
+<li>
+<p><em>Know the four modeling levels and their differences:</em> As shown in
+Table 4 (and discussed in Volume II [Butler et al., 2001]), all
+models built in BRL-CAD are built within the confines of its four
+modeling levels: (1) the primitive level, (2) the combination level,
+(3) the region level, and (4) the assembly level. Knowing the
+characteristics of these modeling levels is one of the first keys to
+developing effective geometry.</p>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. The four modeling levels in BRL-CAD</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Modeling Level</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Primitive level (.s)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This level is where one performs three-dimensional (3-D) CAD
+  "sculpting", working with the primitive shapes to represent the
+  target geometry in coordinate space.  Objects at this level are not
+  recognized as having volume or material properties.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Combination level (.c)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This level is an optional intermediate level between primitives and
+  regions or regions and assemblies.  It allows Booleaned objects to
+  be subtracted and intersected.  All nonprimitive objects are stored
+  as combinations.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Region level (.r)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This level is the lowest level at which geometry occupies 3-D space
+  and can have material properties. It is where one assembles
+  primitives and defines positive volume using Boolean logic.  A
+  region must be composed of one material, should be interconnected,
+  and should perform the same function.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Assembly level (.a or .g)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This is the level at which subparts are organized into parts and
+  parts are organized into assemblies.  This is also where meaningful
+  names and appropriate hierarchical structure are applied.</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><em>Know the major primitives and their constraints:</em> Another key to
+good model building is to understand the required inputs, editing
+options, geometric characteristics, and relative
+advantages/disadvantages of the package&#8217;s basic "building
+blocks"--the primitive shapes. Although the package currently has
+more than 20 primary primitives (as well as another dozen
+developmental/special-use primitives), only a few of these
+primitives are used on a regular basis (see Table 5). That is not to
+say, of course, that less common shapes could not be used, but with
+some experience, users can begin to "see geometry" in a relatively
+small set of primitives and understand the data needed to produce
+accurate models.</p>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. The major BRL-CAD primitives and parameters.</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-middle">Primitive Shape/BRL-CAD Abbreviation</th>
+<th class="tableblock halign-left valign-middle">Input Parameters/Definitions <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../_images/tutorial_series_volIII_fig24.png" alt="tutorial series volIII fig24">
+</div>
+<div class="title">Figure 1. Arbitrary convex polyhedron, 8 pts (arb8)</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>8 vertices, 6 faces, and 12 edges</p>
+</li>
+<li>
+<p>Each face must be a plane.</p>
+</li>
+<li>
+<p>Illegal variations include the following:</p>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/tutorial_series_volIII_fig23.png" alt="tutorial series volIII fig23">
+</div>
+</div>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../_images/tutorial_series_volIII_fig25.png" alt="tutorial series volIII fig25">
+</div>
+<div class="title">Figure 2. Arbitrary convex polyhedron, 6 pts (arb6)</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>6 vertices, 5 faces, and 9 edges.</p>
+</li>
+<li>
+<p>Stored as an arb8, where point 8 is coincident with point 5 and
+point 7 is coincident with point 6</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../_images/tutorial_series_volIII_fig26.png" alt="tutorial series volIII fig26">
+</div>
+<div class="title">Figure 3. Sphere (sph)</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Vertex, V.</p>
+</li>
+<li>
+<p>Radii, A, B, C.</p>
+</li>
+<li>
+<p>Stored as an ellipsoid (ell).</p>
+</li>
+<li>
+<p>Vectors A, B, and C are mutually perpendicular.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../_images/tutorial_series_volIII_fig27.png" alt="tutorial series volIII fig27">
+</div>
+<div class="title">Figure 4. Right circular cylinder (rcc)</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Vertex, V.</p>
+</li>
+<li>
+<p>Radii, A, B, C, D.</p>
+</li>
+<li>
+<p>Height vector, H (base-to-top distance).</p>
+</li>
+<li>
+<p>Stored as a truncated general cone (tgc).</p>
+</li>
+<li>
+<p>Vectors A and B have equal lengths, C and D have equal lengths, and
+all vectors are perpendicular to H.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../_images/tutorial_series_volIII_fig28.png" alt="tutorial series volIII fig28">
+</div>
+<div class="title">Figure 5. Torus (tor)</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Vertex, V (center of hole).</p>
+</li>
+<li>
+<p>Normal direction for the plane of the ring.</p>
+</li>
+<li>
+<p>Radius 1 (radius from V to center of tube).</p>
+</li>
+<li>
+<p>Radius 2 (radius of tube).</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../_images/tutorial_series_volIII_fig29.png" alt="tutorial series volIII fig29">
+</div>
+<div class="title">Figure 6. Pipe (pipe)</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Outer diameter (OD).</p>
+</li>
+<li>
+<p>Inner diameter (ID).</p>
+</li>
+<li>
+<p>Bend radius (equivalent to an r1 value of a torus).</p>
+</li>
+<li>
+<p>Each point contains X, Y, Z coordinates, OD, ID, and bend radius data.</p>
+</li>
+<li>
+<p>Is effectively a subregion combination of cylinders and bounded
+tori whose path is defined by a series of coordinates.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>For a list of all the primary primitives and their shapes, see
+Appendix C of BRL-CAD Tutorial Volume II (Butler et al., 2001) or
+consult <a href="http://ftp.arl.army.mil/brlcad/" class="bare">http://ftp.arl.army.mil/brlcad/</a> (U.S.  ARL, 2003). For
+detailed guidance on using the pipe and the extruded bitmap (ebm)
+primitives, see Appendices A and C of this volume.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p><em>Use the best command to build primitives:</em> In addition to
+understanding the package&#8217;s basic building blocks and modeling
+levels, it is important to understand the behavior and
+advantages/disadvantages of its basic building "tools" (see Table
+6). Using the right building command at the right time can maximize
+modeling efficiency by, in some cases, taking advantage of data from
+previously built geometry and saving measurement and/or input time.</p>
+</li>
+<li>
+<p>Build objects in the most convenient location: Although coordinate
+systems vary according to the type of situation (e.g., converted
+geometry or group modeling, where a particular orientation has been
+established), BRL-CAD models are generally centered at the origin (x
+y z = 0 0 0), where the +X axis is front, the +Y axis is left, and
+the +Z axis is up.</p>
+<div class="paragraph">
+<p>For objects that are symmetrical in nature, this practice can take
+advantage of BRL-CAD&#8217;s mirroring operations and can provide simpler
+reference numbers for objects that are more complex in composition
+and/or orientation.  In some cases, however, the modeler will find it
+makes more sense to build objects in place in the model.  These
+include cases in which previously created objects offer convenient
+reference numbers for the object&#8217;s location/orientation and cases in
+which tangencies and other necessary calculations would be more
+difficult to derive with the object at the origin.</p>
+</div>
+<div class="paragraph">
+<p>Note that there are traditional coordinate system conventions that
+some organizations use for their target descriptions (Ellis, 1992;
+Robertson et al., 1996; Winner et al., 2002). For a turreted vehicle,
+the origin is traditionally located at the intersection of the axis of
+the turret rotation and the ground surface.  The +X axis points to the
+front of the vehicle, the +Y axis points toward the vehicle&#8217;s left,
+and the +Z points up (see Figure 6). For a nonturreted vehicle, the
+axes are the same, but there is no axis of rotation to provide a
+definitive reference point.  So, the origin is located at the
+intersection of the ground surface and a convenient point along the
+left-right, mid-plane of the vehicle (see Figure 7). For fixed-wing
+and rotary-wing aircraft, the axes are the same, but the origin is
+located on the front nose of the airframe (see Figures 8 and 9).</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 3. Various ways to build primitives.</caption>
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><em class="nowrap">MGED Command</em></th>
+<th class="tableblock halign-left valign-top">Behavior</th>
+<th class="tableblock halign-left valign-top">Advantages/Disadvantages</th>
+<th class="tableblock halign-left valign-top"><em class="nowrap">Method of Input</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">create</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Creates a &#8220;generic&#8221; primitive shape based on the user&#8217;s screen
+  size and center.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Creates shape without having to input parameter/location values;
+  primitive usually requires further editing; puts user into edit
+  mode.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Graphical user interface (GUI)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">make</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Creates a &#8220;generic&#8221; primitive shape based on the user&#8217;s screen
+  size and center.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Creates shape without having to input parameter/location values;
+  primitive requires further editing.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Command line</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Creates a new primitive shape according to user-input parameter
+  values and location.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Allows user to create a shape in a specific size and location
+  without having to further edit it.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Command line</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inside</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Creates a primitive shape by referencing a previously created shape
+  and applying user-defined positive/negative thicknesses to faces
+  (e.g., making an interior wall).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Allows user to create a shape based on a specified primitive by
+  applying wall thicknesses without having to further edit it.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Command line</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Creates a duplicate of a previously defined object.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Copies the parameters of an object to a new object of the same type.
+  Takes advantage of previously defined measurements and locations.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Command line</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cpi (copy index)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Originally created to model wiring or piping runs; creates a
+  duplicate cylinder whose base vertex is coincident with the top of
+  the original cylinder.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Can only be used with cylinders; takes advantage of previously
+  defined measurements and locations; puts user into edit mode
+  automatically.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Command line</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mirror</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Creates a duplicate primitive shape, region, or assembly and locates
+  it across the x axis, y axis, z axis, or an arbitrary axis specified
+  by a point and a direction.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Takes advantage of previously defined measurements and locations;
+  can mirror across only one axis at a time but across any point along
+  that axis.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Command line</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pattern</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Creates a rectangular, spherical, or cylindrical pattern of
+  primitive shapes, regions, or assemblies by referencing a previously
+  created object and applying user-defined offsets and parameters.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Takes advantage of previously defined measurements and locations;
+  requires extra positioning measurements.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GUI or command line</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Note the in and inside commands are often the best ways to create a
+primitive in the right size/location if the modeler knows the
+parameters.  Also, using the cp and mirror commands to create
+primitives can often save time by taking advantage of previously
+established measurements/positioning.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/tutorial_series_volIII_fig06.png" alt="tutorial series volIII fig06">
+</div>
+<div class="title">Figure 7. Coordinate axes of a turreted ground vehicle.</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/tutorial_series_volIII_fig07.png" alt="tutorial series volIII fig07">
+</div>
+<div class="title">Figure 8. Coordinate axes of a nonturreted ground vehicle.</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/tutorial_series_volIII_fig08.png" alt="tutorial series volIII fig08">
+</div>
+<div class="title">Figure 9. Coordinate axes of a fixed-wing aircraft.</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/tutorial_series_volIII_fig09.png" alt="tutorial series volIII fig09">
+</div>
+<div class="title">Figure 10. Coordinate axes of a rotary-wing aircraft.</div>
+</div>
+</li>
+<li>
+<p><em>Build multiple occurrences of objects in the most advantageous
+manner:</em> Sometimes a modeler will have to make several occurrences
+of an object. For example, imagine modeling a box of new, identical
+pencils. Wouldn&#8217;t it be convenient to take advantage of the
+similarities involved? There are two basic techniques for
+constructing such collections. The first involves actually
+replicating geometry; the second involves referencing shared
+geometry.</p>
+<div class="paragraph">
+<p>Regardless of the technique used, the modeler typically starts by
+creating a prototype of the object.  In the first technique
+(illustrated in Figure 10), the modeler creates complete copies of the
+object to be replicated.  Each copy is then positioned within the
+model.  In the second technique (illustrated in Figure 11), a
+"reference" combination that contains only the prototype is created.
+This combination is then positioned within the model.</p>
+</div>
+<div class="paragraph">
+<p>As shown in Table 7, there are trade-offs to be considered when using
+each of these approaches.  Construction effort is one of them.  If the
+prototype consists of many objects or layers of structure, replication
+could be a tedious task.  In the box of pencils, for example, all of
+the structure of the pencil would have to be duplicated, including the
+wood, eraser, barrel, and lead.  On the other hand, if the referencing
+approach is used, then a relatively minor amount of work is needed to
+create the multiple occurrences.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/tutorial_series_volIII_fig10.png" alt="tutorial series volIII fig10">
+</div>
+<div class="title">Figure 11. Building multiple occurrences through replication.</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/tutorial_series_volIII_fig11.png" alt="tutorial series volIII fig11">
+</div>
+<div class="title">Figure 12. Building multiple occurrences through referencing.</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 4. Advantages and disadvantages of replication vs. referencing.</caption>
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><span class="nowrap">Duplication Method</span></th>
+<th class="tableblock halign-left valign-top">Advantages</th>
+<th class="tableblock halign-left valign-top">Disadvantages</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Replication</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>No matrices.</p>
+</li>
+<li>
+<p>Faster prep time for raytracing.</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>More effort to construct.</p>
+</li>
+<li>
+<p>Loss of update relationship between occurrences.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Referencing</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Easier to create.</p>
+</li>
+<li>
+<p>Changes to prototype propagate to all occurrences.</p>
+</li>
+<li>
+<p>Uses less disk space when creating many occurrences of complex
+objects.</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Does not provide a unique object, which is required by some
+analysis codes.</p>
+</li>
+<li>
+<p>Prototype parameters do not reflect location and orientation of an
+individual reference.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Also, if the modeler wants to make a change to all of the objects
+(e.g., sharpening the point of the pencil), then the referencing
+approach has definite advantages.  The prototype object is edited to
+incorporate the change, and all occurrences automatically reflect that
+change.  However, if only one object is to be modified, then a copy of
+the prototype must be made, and the reference for that item must now
+refer to the copy.  Not surprisingly, when this type of operation is
+to be performed often, the replication approach has definite
+advantages over the referencing approach.</p>
+</div>
+<div class="paragraph">
+<p>Referencing also has the advantage that it can reduce the amount of
+disk space needed to store multiple copies of complex objects.  The
+extra space needed to store each new occurrence on disk consists of
+the transformation matrix and the name of the object and reference
+combination.  This can be significantly smaller than the replication
+of all the geometry that makes up the prototype.</p>
+</div>
+<div class="paragraph">
+<p>It should be noted, however, that because some analysis codes require
+a unique identifier for each object in the database, some agencies
+require that all occurrences be replicated to the primitive level
+without matrices.</p>
+</div>
+<div class="paragraph">
+<p>There are several other tools that can make the duplication process
+easier&#8212;&#8203;namely, the Build Pattern tool and the keep and dbconcat
+commands.  The Build Pattern tool, which is discussed in Appendix E,
+can help the modeler automatically generate multiple copies of
+geometry in rectangular, spherical, or cylindrical patterns.  The keep
+command can be used to save portions of geometry, and the dbconcat
+command can be used to concatenate (add) them to other geometries or
+reinsert them into the existing database as copies.</p>
+</div>
+</li>
+<li>
+<p><em>Use the push command to eliminate matrices from replicated
+geometry:</em> When the replication technique has been used to copy a
+particular piece of geometry, the <code>push</code> command is frequently used
+to walk the geometry tree from a specified top to the primitive
+level and collect the matrix transformations (i.e., any
+translations, rotations, or scales applied to the new assembly using
+matrix edits). The push command applies the matrix transformation to
+the parameters of the primitives, eliminating the need for storing
+the matrices. One disadvantage of this operation is that any local
+coordinate system used in constructing objects is lost.</p>
+</li>
+<li>
+<p><em>Use the best method for exporting and importing pieces of a
+database:</em> Sometimes a modeler will want to save a portion of a
+model to be added to another database, to be reinserted into the
+original database as a copy, to be saved for future use, or to be
+edited as a new database (e.g., using a crew member or engine from
+one database in a different database). There are two commonly used
+methods to export and import geometry in BRL-CAD: (1) using the keep
+and dbconcat commands from the command line, or (2) using the export
+and import commands from the GUI.</p>
+<div class="paragraph">
+<p>For the first method, the keep command exports data either creating a
+new database file or appending objects to an existing database.  The
+form of the command is as follows:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>mged&gt;  keep filename.g object(s)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>dbconcat</code> command adds the contents of an existing database file
+to the database currently open.  The user may import the database as
+is or choose to rename each element of the geometry by specifying a
+prefix.  The user may alternatively use the -s or -p option to add a
+computer-generated suffix (-s) or prefix (-p). The form of the command
+is as follows:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>mged&gt;  dbconcat [-s, -p] filename.g [prefix]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As mentioned previously, every BRL-CAD object must have a unique name;
+however, when combining geometry from more than one database, there
+may be duplicate names (especially if a modeler uses standard naming
+conventions in all of his models). If there are name collisions, the
+package will automatically add computer-generated prefixes to the
+duplicate items in the concatenated geometry.  The default prefix
+names are of the form A_, B_, C_, etc.  Note that these prefixes will
+not be added to the member names in existing combinations in the
+database.  This allows the user to edit or remove this geometry
+independently of existing data, preventing unintentional overwriting
+of the existing database items.</p>
+</div>
+<div class="paragraph">
+<p>Another way to move data to and from separate databases is by using
+the export and import commands in MGED&#8217;s GUI.  Located under the File
+menu, these commands allow the user to choose either ASCII or binary
+objects.  They perform the same functions as their command-line
+counterparts.  (When exporting, if no objects are selected, the
+default objects will be any that are currently displayed in the
+graphics window.)</p>
+</div>
+<div class="paragraph">
+<p>It is good modeling practice to check for duplicate names before
+inserting new geometry into your database.  To check for duplicates,
+use the dup command from the command line.  This command compares
+external database file object names with current database file object
+names and reports duplicate names.  The form of the dup command is as
+follows:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>mged&gt;  dbconcat [-s, -p] filename.g [prefix]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that there is currently no GUI equivalent to the dup command.</p>
+</div>
+</li>
+<li>
+<p><em>Keep bounding primitives as small and compact as possible:</em>
+Although it is possible to use large primitives to achieve
+intersected or subtracted shapes in BRL-CAD (e.g., using a large
+sphere to create the relatively flat curve of a radar dish), using
+bounding or subtraction primitives that extend significantly beyond
+the outer boundaries of the positive volume of the region is
+generally not recommended because it slows down raytracing
+applications and can make wireframe geometry more difficult to view,
+especially in a complex database.</p>
+<div class="paragraph">
+<p>Imagine that a user wants half of a sphere for the target geometry
+(see Figure 12). In some cases, the user might want to use a large
+primitive that already exists in the database because it is in the
+proper location/orientation or because it requires no edits.  The user
+should recognize, however, that whenever this object is rendered, any
+rays that pass through the large bounding primitive will have to do
+the extra calculation to determine whether or not the ray is in the
+positive volume for that region (see Figure 13). Therefore, whenever
+possible, the use of smaller, more compact bounding primitives is
+recommended (see Figure 14).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/tutorial_series_volIII_fig12.png" alt="tutorial series volIII fig12">
+</div>
+<div class="title">Figure 13. Target geometry.</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/tutorial_series_volIII_fig13.png" alt="tutorial series volIII fig13">
+</div>
+<div class="title">Figure 14. Example of an Overly Large Bounding Primitive.</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/tutorial_series_volIII_fig14.png" alt="tutorial series volIII fig14">
+</div>
+<div class="title">Figure 15. Example of a compact bounding primitive.</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The half space is a prime example of an overly large bounding
+primitive.  Because its extent is infinite, it is always larger than
+needed.  Therefore, whenever possible, the modeler should use an arb8
+or other primitive that can be dimensioned to meet the modeling needs.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p><em>Consider the possibility of articulations, animations, and
+presentations:</em> Sometimes models need to be able to simulate
+movement in parts and personnel or to show unique views for
+presentation purposes. Unfortunately, the modeler (or even the user)
+cannot always predict all the possible uses at the outset of a
+project. Therefore, it is wise, especially in organizations that use
+many different types of model applications, to try to design and
+build models with the thought that they may need to be articulated,
+animated, or presented in different configurations at some point.</p>
+<div class="paragraph">
+<p>For articulation and animation, this generally means that objects that
+normally move together (e.g., components on a helicopter rotor, tank
+turret, etc.) should be grouped together in assembly combinations (as
+shown in Figure 15).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/tutorial_series_volIII_fig15.png" alt="tutorial series volIII fig15">
+</div>
+<div class="title">Figure 16. Example of grouping objects for articulation.</div>
+</div>
+<div class="paragraph">
+<p>In the example shown in Figure 15, we would want to create a
+turret_asy assembly with turret_armor, main_gun, and commanders_hatch
+in it.</p>
+</div>
+<div class="paragraph">
+<p>Also, as discussed in Lesson 16 of Volume II (Butler et al., 2001),
+specialty models or assemblies can be made to simulate changes in
+model configuration (e.g., personnel hatches opened/closed, crew
+compartments occupied/unoccupied, fuel tanks full/half full/empty,
+etc.) or to show views not normally seen (e.g., transparent skin or
+cross-sectional cutouts to show internal components, similarly colored
+components to show subsystem categorization, etc.). Specialty models
+usually involve copying the original model or assembly, altering the
+copy to achieve the special effect, and then substituting in the copy
+as needed.</p>
+</div>
+</li>
+<li>
+<p><em>Understand and use Boolean operations properly:</em> Because Boolean
+operations play such a vital role in building geometry, it is
+important that the modeler possesses a good understanding of
+them. As shown in Table 4, a combination is the BRL-CAD database
+record that stores Boolean operations. It can take one of three
+forms:</p>
+<div class="openblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><em>Primitive shape combination</em>&#8201;&#8212;&#8201;a combination that intersects,
+subtracts, or unions primitive shapes. This combination does not
+actually occupy 3-D space.</p>
+</li>
+<li>
+<p><em>Region</em>&#8201;&#8212;&#8201;the lowest-level combination that assigns material
+properties to geometry and occupies 3-D space. Because it is
+impossible for two or more objects to occupy the same physical
+space, it follows that one region cannot be unioned into or
+intersected with another region (e.g., a wheel cannot occupy the
+same space as the axle that connects to it). Conversely,
+subtraction is valid (e.g., subtracting a wall-mounted radio from
+the wall on which it hangs). For a reminder of how Boolean
+combinations work, see Figure 16.</p>
+</li>
+<li>
+<p><em>Assembly combination</em>&#8201;&#8212;&#8201;a type of combination that associates two
+or more regions or other combinations together.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/tutorial_series_volIII_fig16.png" alt="tutorial series volIII fig16">
+</div>
+<div class="title">Figure 17. Sample Boolean operations.</div>
+</div>
+<div class="paragraph">
+<p>Combinations can be created with a variety of commands, depending on
+the user&#8217;s requirements.  These commands include the following:</p>
+</div>
+</li>
+<li>
+<p><em>comb</em>&#8201;&#8212;&#8201;creates a combination using Boolean expressions in GIFT
+<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup> format. Proceeding left to right, intersections (+) and
+subtractions (") are performed before unions (u). For example, the
+command</p>
+<div class="literalblock">
+<div class="content">
+<pre>comb comb_name u a - b + c</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>is evaluated as</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>((a - b) + c)</pre>
+</div>
+</div>
+</li>
+<li>
+<p><em>c</em>&#8201;&#8212;&#8201;creates a combination using parenthetically ordered Boolean
+expressions. Where no order is indicated, intersections are
+performed before subtractions or unions, and then subtractions and
+unions, which have equal precedence, are performed left to right.</p>
+</li>
+<li>
+<p><em>r</em>&#8201;&#8212;&#8201;creates a region out of primitive shapes or assembly
+combinations using Boolean expressions in GIFT format. Unless the
+user specifies otherwise, default region ID, air code,
+line-of-sight density, and GIFT material values are assigned.</p>
+</li>
+<li>
+<p><em>g</em>&#8201;&#8212;&#8201;creates a combination by automatically unioning all
+user-specified elements together. Thus, this command does not
+accept any sort of Boolean operators from the user. <sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>In addition, there are several general recommended practices when
+dealing with Boolean operations.  They are as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Start with a positive volume:</em> The modeler must start with a
+positive volume before any subtraction or intersection operations
+are performed. If you are using GIFT notation, this means that you
+must start with a union operator. If you are using fully
+parenthesized standard notation, this means that you must specify
+an object before specifying a subtraction or intersection from it.</p>
+</li>
+<li>
+<p><em>Be mindful of the order of Boolean operations:</em> The modeler should
+make sure unions, intersections, and subtractions are properly
+ordered in the region structure to achieve the desired effect. For
+example, imagine that a modeler wants to subtract a hole in a
+region named bolt.r. As shown in Figure 17, if that region consists
+of two unioned primitives&#8212;&#8203;head.s and shaft.s&#8212;&#8203;the subtraction in
+the region must follow the shaft primitive. Alternatively, if the
+hole is subtracted from the head, the subtraction will have no
+effect because head.s and hole.s do not share any volume.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/tutorial_series_volIII_fig17.png" alt="tutorial series volIII fig17">
+</div>
+<div class="title">Figure 18. Properly (top) and improperly (bottom) ordered regions.</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Note that in BRL-CAD releases 6.0 and later, fully parenthesized
+Boolean expressions are available for the c command.  This allows the
+user to designate operator precedence on the command line based on
+standard parenthetical notation as opposed to the order-of-occurrence
+and union-last methodology, which is the previously described
+functionality in BRL-CAD.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><em>Follow or develop standardized conventions for colorizing objects:</em>
+When displaying a complex model, it is sometimes difficult for the
+user to visually differentiate one system, subsystem, or component
+from another. Also, it is not always clear as to which components
+belong to which systems/subsystems. Therefore, if possible, it is
+good practice to follow a standardized RGB (red-green-blue) color
+scheme for commonly modeled/analyzed systems (e.g., engine,
+suspension, communications, etc.).</p>
+<div class="paragraph">
+<p>Table 8 shows some RGB colors traditionally used in MGED (out of a
+possible 17 million color combinations between black [0 0 0] and white
+[255 255 255]) (Applin et al., 1988). Table 9 shows some commonly used
+system-color assignments for various ground and air target
+descriptions (as drawn in a graphics display window with a black
+background) (Robertson et al., 1996; Winner et al., 2002).</p>
+</div>
+</li>
+<li>
+<p><em>Take advantage of advanced/automation modeling tools:</em> BRL-CAD
+offers many tools that can help users perform advanced functions or
+automate complex or tedious aspects of the geometry development
+process. Examples of some these tools, which are discussed in
+Appendices A-F, include the pipe primitive (which can automate the
+building of wiring or hydraulic lines), the projection shader (which
+can paste words or images onto geometry instead of having to build
+them), the extruded bitmap (which can turn two-dimensional objects
+[e.g., a building floor plan] into 3-D geometry [e.g., walls]),
+the .mgedrc file (which can create customized shortcuts for many
+MGED operations), the Build Pattern tool (which can automatically
+replicate objects in a specified pattern), and the build_region
+command (which can automatically build regions by grouping together
+similarly named objects).</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 5. Traditionally used MGED colors.</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Color</th>
+<th class="tableblock halign-left valign-top">RGB Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Aquamarine</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">112 219 147</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Medium aquamarine</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">50 204 153</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Black</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0 0 0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Blue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0 0 255</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cadet blue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">95 159 159</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Corn flower blue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">66 66 111</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dark slate blue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">107 35 142</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Light blue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">191 216 216</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Light steel blue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">143 143 188</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Medium blue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">50 50 204</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Medium slate blue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">127 0 255</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Midnight blue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">47 47 79</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Navy blue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">35 35 142</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sky blue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">50 153 204</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Slate blue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0 127 255</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Steel blue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">35 107 142</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Coral</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">255 127 0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cyan</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0 255 255</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Firebrick</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">142 35 35</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gold</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">204 127 50</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Goldenrod</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">219 219 112</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Medium goldenrod</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">234 234 173</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Green</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0 255 0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dark green</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">47 79 47</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dark olive green</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">79 79 47</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Forest green</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">35 142 35</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lime green</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">50 204 50</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Medium forest green</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">107 142 50</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Medium sea green</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">66 111 66</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Medium spring green</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">127 255 0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pale green</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">143 188 143</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sea green</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">35 142 107</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Spring green</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0 255 127</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yellow green</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">153 204 50</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dark slate gray</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">47 79 79</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dim gray</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">84 84 84</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Light gray</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">168 168 168</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Khaki</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">159 159 95</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Magenta</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">255 0 255</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Maroon</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">142 35 107</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Orange</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">204 50 50</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Orchid</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">219 112 219</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dark orchid</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">153 50 204</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Medium orchid</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">147 112 219</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pink</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">188 143 143</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Plum</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">234 173 234</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Red</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">255 0 0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Indian red</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">79 47 47</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Medium violet</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">219 112 147</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Orange red</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">255 0 127</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Violet red</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">204 50 153</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Salmon</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">111 66 66</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sienna</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">142 107 35</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tan</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">219 147 112</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Thistle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">216 191 216</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Turquoise</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">173 234 234</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dark turquoise</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">112 147 219</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Medium turquoise</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">112 219 219</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Violet</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">79 47 79</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Blue violet</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">159 95 159</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Wheat</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">216 216 191</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">White</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">255 255 255</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yellow</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">255 255 0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Green yellow</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">147 219 112</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 6. Commonly used system-color codes.</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">System</th>
+<th class="tableblock halign-left valign-top">Color</th>
+<th class="tableblock halign-left valign-top">RGB Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Crew/passenger</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tan</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">200 150 100</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Exterior armor <sup class="footnote" id="_footnote_armygreenrecommended">[<a id="_footnoteref_4" class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gray</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">80 80 80</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fuel system</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yellow</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">255 255 0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Armament (not ammunition) <sup class="footnoteref">[<a class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gray</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">80 80 80</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Propellant</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Magenta</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">255 0 255</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Projectiles</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Red</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">255 0 0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Engine/propulsion <sup class="footnoteref">[<a class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Blue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0 0 255</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Oil Lines/hoses</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Light brown</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">159 159 95</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Coolant lines/hoses</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Green</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0 255 0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Air lines/hoses</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Blue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0 0 255</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Drivetrain</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cyan</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0 255 255</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Driver/flight controls <sup class="footnoteref">[<a class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dark blue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">50 0 175</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Suspension/rotor blades <sup class="footnoteref">[<a class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gray</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">80 80 80</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tracks</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dark brown</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">104 56 30</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tires/roadwheel rubber <sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="#_footnotedef_5" title="View footnote.">5</a>]</sup></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gray</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">80 80 80</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Electrical</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Forest green</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">50 145 20</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hydraulics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pink</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">255 145 145</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Communications/mission equipment package</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lime green</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">50 204 50</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fire control</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Peach</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">234 100 30</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fire suppression</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dark red</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">79 47 47</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">A Final Word About Modeling Ease vs. Modeling Precision</div>
+<div class="paragraph">
+<p>Modelers can be tempted to use the "quickest" methods of creating and
+aligning objects (e.g., using mouse clicks to size objects and the
+shift/control grips and "eyeballing" to position them).</p>
+</div>
+<div class="paragraph">
+<p>However, using precision MGED tools (e.g., the analyze and extrude
+commands, the snap-to-grid feature, etc.), listing primitives, making
+temporary assemblies, etc., is often more efficient.  In addition, as
+the user becomes more familiar with these tools and features, they
+become easier to use.  For more information on these specific
+features, see the appropriate on-line help in MGED.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. To maximize database efficiency, some shape types are stored as other types (e.g., all arbs are stored as arb8&#8217;s), but this behavior is invisible to the user.
+</div>
+<div class="footnote" id="_footnotedef_2">
+<a href="#_footnoteref_2">2</a>. Geometric information for targets (GIFT) is the single-level operator hierarchy format that is the traditional (and default) notation used in BRL-CAD.
+</div>
+<div class="footnote" id="_footnotedef_3">
+<a href="#_footnoteref_3">3</a>. The g command is derived from "`group`", the term sometimes used for assembly combination.
+</div>
+<div class="footnote" id="_footnotedef_4">
+<a href="#_footnoteref_4">4</a>. Army green (RGB 42 98 48) is recommended for white backgrounds (e.g., printouts).
+</div>
+<div class="footnote" id="_footnotedef_5">
+<a href="#_footnoteref_5">5</a>. Black (RGB 0 0 0) is recommended for white backgrounds (e.g., printouts).
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="chapter4.html">4. Organizing the Structure</a></span>
+  <span class="next"><a href="chapter6.html">5. Evaluating Geometry</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../ui/js/site.js"></script>
+<script src="../../../ui/js/vendor/lunr.js"></script>
+<script src="../../../ui/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/docs/tutorials/modeling/chapter5.html"></script>
+<script async src="../../../ui/../search-index.js"></script>
+<script async src="../../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

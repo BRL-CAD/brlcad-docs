@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>9. Creating a Globe in a Display Box :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/docs/tutorials/mged-intro/chapter9.html">
+    <link rel="prev" href="chapter8.html">
+    <link rel="next" href="chapter10.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../ui/css/site.css">
+    <link rel="stylesheet" href="../../../ui/css/search.css">
+    <link rel="stylesheet" href="../../../ui/css/custom.css">
+    <script>var uiRootPath = '../../../ui'</script>
+    <link rel="icon" href="../../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lessons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../lessons/mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/01_creating_primitive_shapes.html">1. Creating Primitive Shapes in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/02_learning_viewing_options.html">2. Learning Viewing Options in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/03_using_insert_command.html">3. Using the Insert Command in MGED to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/04_assign_mat_prop_rt.html">4. Assigning Material Properties and Raytracing in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/05_learning_boolean_expressions.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/06_creating_a_goblet.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/07_goblet_material_properties.html">7. Assigning Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/08_goblet_material_properties2.html">8. Assigning More Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/09_globe_in_display_box.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/10_creating_mug.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/11_refining_mug.html">11. Refining a Mug Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/12_mug_through_gui.html">12. Creating a Mug Model using the MGED Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/13_placing_shapes_in_3d.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/14_placing_shapes_in_3d_2.html">14. Additional Exercises Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/15_creating_a_toy_truck.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/16_mod_tech_struct.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Books</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../hacking/index.html">Hacking BRL-CAD</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting Started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter1.html">A Call to Arms (and Contributors)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter2.html">Feature Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developers</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter3.html">Working with Our Code</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter4.html">What Code to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter5.html">Contributing Code</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Documenters</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter6.html">Working with Our Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter7.html">Types of Documentation We Maintain</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter8.html">What Documentation to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter9.html">Contributing Documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Other Contributors</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part4/chapter10.html">You Can Help Too</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendix: Resources and Examples</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix1.html">Further References and Resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix2.html">Doc Template: New MGED Command</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix3.html">Code Example: Shooting Rays</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix4.html">Code Example: Walking Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix5.html">Code Example: Command Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix6.html">Example Code: Root Solving</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../index.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview.html">I. An Overview of BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../mged-intro.html">II. Introduction to MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="preface1.html">Preface</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="preface2.html">Acknowledgments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter1.html">1. Creating Primitive Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter2.html">2. Learning the Viewing Options</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter3.html">3. Using the Insert Command to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter4.html">4. Assigning Material Properties and Raytracing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter5.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter6.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter7.html">7. Assigning Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter8.html">8. Assigning More Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="chapter9.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter10.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter11.html">11. Refining the Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter12.html">12. Creating the Mug Through the GUI</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter13.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter14.html">14. Gaining More Practice Placing Shapes in Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter15.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter16.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="appendix1.html"><code class="app">MGED</code> Commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../modeling.html">III. Modeling</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../modeling/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../modeling/chapter2.html">2. The Model Process</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../modeling/chapter3.html">3. Measuring data</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../modeling/chapter4.html">4. Organizing the Structure</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../modeling/chapter5.html">5. Developing Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../modeling/chapter6.html">5. Evaluating Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../modeling/chapter7.html">7. Logging Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendices</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../modeling/appendix1.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../modeling/appendix2.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../modeling/appendix3.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../modeling/appendix4.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../modeling/appendix5.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../modeling/appendix6.html">Using the build_region Command</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../converting.html">IV. Converting</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter2.html">2. Pertinent Characteristics of the BRL-CAD Format</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter3.html">3. Converting From/to ASCII</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter4.html">4. Converting to BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter5.html">5. Converting From BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter6.html">6. Building a New Converter</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter7.html">7. Postconversion Issues</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/index.html">Articles</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_pattern.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_region.html">Using the build_region Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/camo_shader.html">Camouflage shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ebm_primitive.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/gcv.html">The Geometry Conversion Library</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ged.html">GED: An Interactive Solid Modeling System</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/mged/index.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tutorial.html">Tutorial</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/gui.html">Graphical User Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/command-line-editing.html">Command Line Editing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/user-commands.html">User Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/developer-commands.html">Developer Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tcl-variables.html">Tcl Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/env.html">Environment Variable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/callback.html">Callback</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/brlcad-solid.html">BRL-CAD Solid</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/mgedrc.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/nirt.html">Interactive Raytracing: The nirt Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/overlap_tool.html">The Overlap Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/oed.html">Object Editing - the oed Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/pipes.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/projection_shader.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/tire.html">Vehicle Tire and Wheel Creation in BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/TEMPLATE.html">TEMPLATE</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Misc</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Dev Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../devguides/bool_eval_development.html">NURBS Boolean Evaluation Development Guide</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Presentations</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/brlcad-app-devel.html">Application Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="presentations:_attachments/brlcad-app-devel.html">brlcad-app-devel</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/intro-to-tcltk.html">Introduction to Tcl/Tk</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../specifications/BRL_CAD_g_format_V5.html">BRL-CAD Database Format</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Manual Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/1.html">man1</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/3.html">man3</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/5.html">man5</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/n.html">mann</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Wiki Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">page-1</span>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">BRL-CAD</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../../index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../es/index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../es/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">BRL-CAD</a></li>
+    <li>Books</li>
+    <li><a href="../index.html">Tutorials</a></li>
+    <li><a href="../mged-intro.html">II. Introduction to MGED</a></li>
+    <li><a href="chapter9.html">9. Creating a Globe in a Display Box</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/docs/modules/tutorials/pages/mged-intro/chapter9.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">9. Creating a Globe in a Display Box</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>In previous lessons, you combined various shapes into new objects.
+These new objects have been created using solid building blocks, much
+like those used in a wooden toy truck.  However, in real life, most of
+the objects that you will design will consist of an outside shell and
+various inside parts.</p>
+</div>
+<div class="paragraph">
+<p>In this lesson you will:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Use the GUI to create a display box using arb8 shapes.</p>
+</li>
+<li>
+<p>Create a globe inside the display box.</p>
+</li>
+<li>
+<p>Assign material properties to make the objects appear more
+realistic.</p>
+</li>
+<li>
+<p>Rotate an object 180'0 using the rotate option of the Edit menu</p>
+</li>
+<li>
+<p>Use the color option of the Combination Editor to produce customized
+colors.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_globe_in_display_newdb"><a class="anchor" href="#_globe_in_display_newdb"></a>1. Create a New Database</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Begin by creating a new database.  Name your new file cube.g.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_globe_create_display_box"><a class="anchor" href="#_globe_create_display_box"></a>2. Creating the Display Box</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Go to the Create menu, select the Arbs category, and then select an
+arb8 (arbitrary convex polyhedron with eight vertices). When asked to
+provide a name for the arb8, name it cube1.s.  Click on Apply.  Go to
+the Edit menu and select Accept.  You now have a cube for the outside
+of the display box, as in the following:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../lessons/_images/mged/09_globe_outside_display_box.png" alt="09 globe outside display box">
+</div>
+<div class="title">Figure 1. The Outside of the Display Box</div>
+</div>
+<div class="paragraph">
+<p>Repeat the first part of this process to produce another arb8, this
+time calling this shape cube2.s.  Go to the Edit menu and select
+Scale.  Place the mouse pointer in the lower half of the Graphics
+Window screen and click the middle mouse button until the second cube
+is slightly smaller than the first cube, as follows:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../lessons/_images/mged/09_globe_inside_outside_box.png" alt="09 globe inside outside box">
+</div>
+<div class="title">Figure 2. The Inside and Outside of the Display Box</div>
+</div>
+<div class="paragraph">
+<p>Go to the View menu and change view to Front.  Go to the Edit menu and
+select Translate (move). Hold down the SHIFT key and drag the inside
+cube into position in the center of the outside cube.  Repeat this
+process from the Top view and Left view until the smaller cube is
+placed in the center of the outside cube when viewed from all
+perspectives.  When you are finished, go back to the Edit menu and
+select Accept.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_create_globe_in_box"><a class="anchor" href="#_create_globe_in_box"></a>3. Create a Globe Inside the Display Box</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Go to the Create menu and select sph from the list of Ellipsoids.
+Name the shape globe1.s and select Apply.</p>
+</div>
+<div class="paragraph">
+<p>A sphere should appear inside the cube in the Graphics Window.  Change
+View to Front.</p>
+</div>
+<div class="paragraph">
+<p>Go to the Edit menu and select Scale.  Reduce the size of the sphere
+until it will fit inside of the cube and then drag it into the center
+of the cube.  Go to Edit and Accept your changes.  Your globe and box
+should appear similar to the following in the az35, el25 view:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../lessons/_images/mged/09_globe_wireframe.png" alt="09 globe wireframe">
+</div>
+<div class="title">Figure 3. Wireframe Representation of Globe and Display Box</div>
+</div>
+<div class="paragraph">
+<p>To view contents of the database, type at the Command Window prompt:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">ls <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>You should see cube1.s, cube2.s, and globe1.s listed as shapes you
+have created.  To make regions of these shapes, type at the prompt:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r cube1.r u cube1.s - cube2.s <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r globe1.r u globe1.s <kbd>Enter</kbd></code></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_globe_assign_mater_prop"><a class="anchor" href="#_globe_assign_mater_prop"></a>4. Using the Combination Editor to Assign Material Properties that Makethe Objects Appear More Realistic</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Go to Edit and select Combination Editor.  In the dialog box, click
+the button next to the Name entry box.  Select globe1.r from Select
+From All or Select From All Regions.  Double click on the globe1.r
+name.  Assign this region a Shader of cloud.  Check the Boolean
+Expression box to make sure the region is made up of u globe1.s.
+Click on Apply to accept your choices.  Go to View and select az35,
+el25.</p>
+</div>
+<div class="paragraph">
+<p>Go back to Name and select cube1.r from the Select From All menu.
+Assign this region a Shader of glass.  The glass shader is a shortcut
+to individually changing the attributes of the plastic shader to make
+it appear like glass.</p>
+</div>
+<div class="paragraph">
+<p>Go to the Color option and enter the values 244 255 255.  This will
+give your glass box a light cyan color.  Click on Apply to accept your
+changes.</p>
+</div>
+<div class="paragraph">
+<p>Before you can raytrace your design, you need to clear the Graphics
+Window by typing Z at the Command Window prompt because both shapes
+and regions are being displayed at this point.  Next, type in the
+Command Window:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">draw cube1.r globe1.r <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>The display box and globe should reappear in the Graphics Window.  Go
+to the File menu and select Raytrace.  Next, select the white option
+for Background Color.  Click on Raytrace.</p>
+</div>
+<div class="paragraph">
+<p>Your design should show a light cyan-colored glass cube with a blue globe inside.
+To eliminate the wireframing, go to Framebuffer (in the Raytrace Panel) and select Overlay.
+The display should appear similar to the following illustration:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../lessons/_images/mged/09_globe_raytraced.png" alt="09 globe raytraced">
+</div>
+<div class="title">Figure 4. Raytraced Display Box and Globe</div>
+</div>
+<div class="paragraph">
+<p>To make this design more interesting, you can place the globe on a
+base.  Do this by going back to Framebuffer and clicking on Active to
+deactivate the framebuffer.  Next, go to the Create menu and select
+the trc (truncated right cone) under the Cones and Cylinders category.
+Name the shape base1.s.  Working from a Front view, go to the Edit
+menu and select Scale.  Click the middle mouse button to reduce the
+trc in size until the bottom of it appears to be an appropriate size
+for the globe base.  (You may need to increase the size of your
+Graphics Window or decrease your geometry view size to see the bottom
+of the trc.) Next, reduce the height of the shape by selecting Set H
+from the Edit menu and clicking with the middle mouse button.  You may
+need to switch back and forth between these two options a few times to
+get an acceptable size.  When finished, however, do not select Accept
+yet, as we have more changes to make.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_globe_move_rotate"><a class="anchor" href="#_globe_move_rotate"></a>5. Moving and Rotating an Object</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As with other features in <code class="app">MGED</code>, moving and rotating objects
+can be accomplished in several ways, according to the amount of
+precision desired.  As previously described, the Shift Grip functions
+can be used as a quick way to change an object when its exact angle
+and location do not necessarily matter.  Alternatively, to achieve
+greater precision, the Translate (move) and Rotate commands under Edit
+can be selected and specific parameter numbers can be entered in the
+Command Window.  In this lesson, we will experiment with both methods.</p>
+</div>
+<div class="paragraph">
+<p>With your trc still in edit mode and still in a Front view, use the
+SHIFT key and the left mouse button to drag your shape (the bottom of
+the base) and sit it on the floor of the cube (just touching the
+inside box). Note that you could have selected Translate under Edit
+and entered parameters on the Command Line to move the trc to an exact
+location; however, in this case, aligning the shape with the
+drag-and-drop "eyeballing" method was appropriate.  At this point, you
+may notice that your trc needs to be resized a little to better fit
+the globe.  Use Scale and Set H as needed and then Accept your
+changes.</p>
+</div>
+<div class="paragraph">
+<p>Now we need to make a second trc named base2.s, which we will use for
+the top of the base.  On the Command Line, type:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">cp base1.s base2.s</code></p>
+</div>
+<div class="paragraph">
+<p>The second trc will appear directly on top of the first trc, so we
+will have to use Primitive Selection under the edit menu to put
+base2.s in edit mode so that we can flip it upside down and then drag
+it to the top of the first trc.</p>
+</div>
+<div class="paragraph">
+<p>To do this, we could use the CTRL and ALT (constrained rotation) keys
+and left mouse button and then move the mouse up or down until the trc
+is upside down.  (If this method is used, note that you can release
+the mouse button and regrab the object if you need to.) However,
+because we know we want to rotate the shape an exact amount (180'0)
+about the x axis, let&#8217;s use a more precise method to flip the shape.
+Select Rotate under Edit and then type in the following parameters
+(abbreviated as p) on the Command Line:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">p 180 0 0 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Our shape should have flipped upside down and jumped to the bottom of
+the first trc.  (The two zeros you input indicate no rotation along
+the y and z axes.) Now use the SHIFT key and the left mouse button to
+drag base2.s upward and sit it on top of base1.s.  The two shapes
+should form a base in which to hold your globe.  Check your alignment
+using multiple views and then Accept your changes.</p>
+</div>
+<div class="paragraph">
+<p>Go to Edit and Primitive Selection and select globe1.r/globe1.s.  As
+you did with the trc shapes, use the Shift Grips to drag the globe
+down until it is in place on the base.  Go back to the Edit menu and
+select Accept.  Your design should look as follows:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../lessons/_images/mged/09_globe_base_box_wireframe.png" alt="09 globe base box wireframe">
+</div>
+<div class="title">Figure 5. Wireframe Representation of Globe and Base in Display Box</div>
+</div>
+<div class="paragraph">
+<p>To make a region of the base, type in the Command Window:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r base1.r u base1.s u base2.s <kbd>Enter</kbd></code></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_globe_use_color_tool"><a class="anchor" href="#_globe_use_color_tool"></a>6. Use the Color Tool of the Combination Editor to Produce CustomizedColors.</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In the Combination Editor window, click the button to the right of the
+Name entry box and then Select From All.  Choose base1.r.  Assign the
+base a Shader of plastic.  In the Color box, enter the numbers:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">217 217 217</code></p>
+</div>
+<div class="paragraph">
+<p>Apply your changes.  Before you can raytrace your completed design,
+you must first clear the Graphics Window and rebuild your design by
+typing at the Command Window prompt:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">Z <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">draw cube1.r globe1.r base1.r <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Change your view to az35, el25 and then raytrace your design, which
+should appear similar to the following:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../lessons/_images/mged/09_globe_base_box_raytraced.png" alt="09 globe base box raytraced">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_globe_in_display_box_review"><a class="anchor" href="#_globe_in_display_box_review"></a>7. Review</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this lesson, you:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Used the GUI to create a display box using arb8 shapes.</p>
+</li>
+<li>
+<p>Created a globe inside the display box.</p>
+</li>
+<li>
+<p>Used the Combination Editor to assign material properties that make
+the objects appear more realistic.</p>
+</li>
+<li>
+<p>Rotated an object 180'0 using the rotate option of the Edit menu.</p>
+</li>
+<li>
+<p>Used the color option of the Combination Editor to produce
+customized colors.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="chapter8.html">8. Assigning More Material Properties to Your Goblet</a></span>
+  <span class="next"><a href="chapter10.html">10. Creating a Mug</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../ui/js/site.js"></script>
+<script src="../../../ui/js/vendor/lunr.js"></script>
+<script src="../../../ui/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/docs/tutorials/mged-intro/chapter9.html"></script>
+<script async src="../../../ui/../search-index.js"></script>
+<script async src="../../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

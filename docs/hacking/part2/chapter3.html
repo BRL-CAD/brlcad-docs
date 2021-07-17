@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Working with Our Code :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/docs/hacking/part2/chapter3.html">
+    <link rel="prev" href="../part1/chapter2.html">
+    <link rel="next" href="chapter4.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../ui/css/site.css">
+    <link rel="stylesheet" href="../../../ui/css/search.css">
+    <link rel="stylesheet" href="../../../ui/css/custom.css">
+    <script>var uiRootPath = '../../../ui'</script>
+    <link rel="icon" href="../../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lessons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../lessons/mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/01_creating_primitive_shapes.html">1. Creating Primitive Shapes in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/02_learning_viewing_options.html">2. Learning Viewing Options in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/03_using_insert_command.html">3. Using the Insert Command in MGED to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/04_assign_mat_prop_rt.html">4. Assigning Material Properties and Raytracing in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/05_learning_boolean_expressions.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/06_creating_a_goblet.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/07_goblet_material_properties.html">7. Assigning Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/08_goblet_material_properties2.html">8. Assigning More Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/09_globe_in_display_box.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/10_creating_mug.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/11_refining_mug.html">11. Refining a Mug Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/12_mug_through_gui.html">12. Creating a Mug Model using the MGED Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/13_placing_shapes_in_3d.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/14_placing_shapes_in_3d_2.html">14. Additional Exercises Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/15_creating_a_toy_truck.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/16_mod_tech_struct.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Books</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../index.html">Hacking BRL-CAD</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting Started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../part1/chapter1.html">A Call to Arms (and Contributors)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../part1/chapter2.html">Feature Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developers</span>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="chapter3.html">Working with Our Code</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter4.html">What Code to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter5.html">Contributing Code</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Documenters</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../part3/chapter6.html">Working with Our Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../part3/chapter7.html">Types of Documentation We Maintain</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../part3/chapter8.html">What Documentation to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../part3/chapter9.html">Contributing Documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Other Contributors</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../part4/chapter10.html">You Can Help Too</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendix: Resources and Examples</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../part5/appendix1.html">Further References and Resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../part5/appendix2.html">Doc Template: New MGED Command</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../part5/appendix3.html">Code Example: Shooting Rays</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../part5/appendix4.html">Code Example: Walking Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../part5/appendix5.html">Code Example: Command Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../part5/appendix6.html">Example Code: Root Solving</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/index.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../tutorials/overview.html">I. An Overview of BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/mged-intro.html">II. Introduction to MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/preface1.html">Preface</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/preface2.html">Acknowledgments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter1.html">1. Creating Primitive Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter2.html">2. Learning the Viewing Options</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter3.html">3. Using the Insert Command to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter4.html">4. Assigning Material Properties and Raytracing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter5.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter6.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter7.html">7. Assigning Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter8.html">8. Assigning More Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter9.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter10.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter11.html">11. Refining the Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter12.html">12. Creating the Mug Through the GUI</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter13.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter14.html">14. Gaining More Practice Placing Shapes in Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter15.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter16.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/appendix1.html"><code class="app">MGED</code> Commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/modeling.html">III. Modeling</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter2.html">2. The Model Process</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter3.html">3. Measuring data</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter4.html">4. Organizing the Structure</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter5.html">5. Developing Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter6.html">5. Evaluating Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter7.html">7. Logging Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendices</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix1.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix2.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix3.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix4.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix5.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix6.html">Using the build_region Command</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/converting.html">IV. Converting</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter2.html">2. Pertinent Characteristics of the BRL-CAD Format</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter3.html">3. Converting From/to ASCII</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter4.html">4. Converting to BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter5.html">5. Converting From BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter6.html">6. Building a New Converter</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter7.html">7. Postconversion Issues</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/index.html">Articles</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_pattern.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_region.html">Using the build_region Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/camo_shader.html">Camouflage shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ebm_primitive.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/gcv.html">The Geometry Conversion Library</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ged.html">GED: An Interactive Solid Modeling System</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/mged/index.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tutorial.html">Tutorial</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/gui.html">Graphical User Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/command-line-editing.html">Command Line Editing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/user-commands.html">User Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/developer-commands.html">Developer Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tcl-variables.html">Tcl Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/env.html">Environment Variable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/callback.html">Callback</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/brlcad-solid.html">BRL-CAD Solid</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/mgedrc.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/nirt.html">Interactive Raytracing: The nirt Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/overlap_tool.html">The Overlap Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/oed.html">Object Editing - the oed Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/pipes.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/projection_shader.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/tire.html">Vehicle Tire and Wheel Creation in BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/TEMPLATE.html">TEMPLATE</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Misc</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Dev Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../devguides/bool_eval_development.html">NURBS Boolean Evaluation Development Guide</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Presentations</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/brlcad-app-devel.html">Application Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="presentations:_attachments/brlcad-app-devel.html">brlcad-app-devel</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/intro-to-tcltk.html">Introduction to Tcl/Tk</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../specifications/BRL_CAD_g_format_V5.html">BRL-CAD Database Format</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Manual Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/1.html">man1</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/3.html">man3</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/5.html">man5</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/n.html">mann</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Wiki Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">page-1</span>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">BRL-CAD</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../../index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../es/index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../es/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">BRL-CAD</a></li>
+    <li>Books</li>
+    <li><a href="../index.html">Hacking BRL-CAD</a></li>
+    <li>Developers</li>
+    <li><a href="chapter3.html">Working with Our Code</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/docs/modules/hacking/pages/part2/chapter3.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Working with Our Code</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_the_big_picture">1. The Big Picture</a>
+<ul class="sectlevel2">
+<li><a href="#_history_of_the_code">1.1. History of the Code</a></li>
+<li><a href="#_system_architecture">1.2. System Architecture</a></li>
+<li><a href="#_tenets_of_good_software">1.3. Tenets of Good Software</a></li>
+</ul>
+</li>
+<li><a href="#_code_layout">2. Code Layout</a></li>
+<li><a href="#_code_conventions">3. Code Conventions</a>
+<ul class="sectlevel2">
+<li><a href="#_languages">3.1. Languages</a></li>
+<li><a href="#_coding_style">3.2. Coding Style</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>BRL-CAD consists of more than 1 million lines of source code spanning
+more than 20 foundation libraries and 400 application modules.</p>
+</div>
+<div class="paragraph">
+<p>The majority of BRL-CAD is written in highly portable C and C&#43;&#43;,
+with some GUI and scripting components written in <a href="http://www.tcl.tk/" target="_blank" rel="noopener">Tcl/Tk</a>.  There is
+also some support for, and bindings to, other languages available.
+<a href="http://en.wikipedia.org/wiki/POSIX" target="_blank" rel="noopener">POSIX</a> shell scripts are used for deployment integration testing.
+BRL-CAD uses the <a href="http://www.cmake.org/" target="_blank" rel="noopener">CMake</a> build system for compilation and unit
+testing.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_big_picture"><a class="anchor" href="#_the_big_picture"></a>1. The Big Picture</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The source code and most project data are stored in a <a href="http://git-scm.com/" target="_blank" rel="noopener">Git</a> version
+control system for change tracking and collaborative development.
+Primary development in the "main" branch is generally stable, but
+cross-platform compilation is not guaranteed.  A separate branch
+(named STABLE) provides a higher level of quality assurance.  Every
+released version of BRL-CAD is tested and tagged.</p>
+</div>
+<div class="paragraph">
+<p>The project aims for an <em>It Just Works</em> approach to compilation
+whereby a functional build of BRL-CAD is possible without needing to
+install more than a compiler, CMake, and a build environment&#8212;&#8203;for
+example, GNU Make or Microsoft Visual Studio.  BRL-CAD provides all of
+the necessary third-party dependencies for download and compilation
+convenience within source distributions but by default will build
+using system versions of those dependencies if available.</p>
+</div>
+<div class="paragraph">
+<p>As with any large system that has been under development for a number
+of years, there are vast sections of code that may be unfamiliar,
+uninteresting, or even daunting.  Don&#8217;t panic.  BRL-CAD has been
+intentionally designed with layering and modularity in mind.</p>
+</div>
+<div class="paragraph">
+<p>You can generally focus in on the enhancement or change that interests
+you without being too concerned with other portions of the code.  You
+should, however, do some basic research to make sure what you plan to
+contribute isn&#8217;t already in the BRL-CAD code base.</p>
+</div>
+<div class="sect2">
+<h3 id="_history_of_the_code"><a class="anchor" href="#_history_of_the_code"></a>1.1. History of the Code</h3>
+<div class="paragraph">
+<p>As mentioned previously, the initial architecture and design of
+BRL-CAD began in 1979.  Development as a unified package began in
+1983.  The first public release was in 1984.  And on December 21,
+2004, BRL-CAD became an open source project <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>.</p>
+</div>
+<div class="paragraph">
+<p>BRL-CAD is a mature code base that has remained active over decades
+due to continual attention on design and maintainability.  Since the
+project&#8217;s inception, more than 200 people have directly contributed to
+BRL-CAD.  The project has historically received support from numerous
+organizations within academia, commercial industry, various government
+agencies, and from various independent contributors.  We credit all
+contributors in BRL-CAD&#8217;s authorship documentation <sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup>.</p>
+</div>
+<div class="paragraph">
+<p>The following diagram illustrates how the number of lines of code in
+BRL-CAD has changed over time:</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_system_architecture"><a class="anchor" href="#_system_architecture"></a>1.2. System Architecture</h3>
+<div class="paragraph">
+<p>BRL-CAD is designed based on a <a href="http://en.wikipedia.org/wiki/UNIX" target="_blank" rel="noopener">UNIX</a> methodology of the command-line
+services, providing many tools that work in harmony to complete a
+specific task.  These tools include geometry and image converters,
+signal and image processing tools, various raytrace applications,
+geometry manipulators, and much more.</p>
+</div>
+<div class="paragraph">
+<p>To support what has grown into a relatively large software system,
+BRL-CAD takes advantage of a variety of support libraries that
+encapsulate and simplify application development.  At the heart of
+BRL-CAD is a multi-representation ray tracing library named LIBRT.
+BRL-CAD specifies its own file format (files with the extension .g
+or .asc) for storing information on disk.  The ray tracing library
+uses a suite of other libraries for other basic application
+functionality.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_tenets_of_good_software"><a class="anchor" href="#_tenets_of_good_software"></a>1.3. Tenets of Good Software</h3>
+<div class="paragraph">
+<p>BRL-CAD&#8217;s architecture is designed to be as cross-platform and
+portable as is realistically and reasonably possible.  As such,
+BRL-CAD maintains support for many legacy systems and devices provided
+that maintaining such support is not a significant burden on new
+development.</p>
+</div>
+<div class="paragraph">
+<p>The code adheres to a published change deprecation and obsolescence
+policy <sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup> whereby features that have been made publicly available
+are not removed without appropriate notification.  Generally there
+should be a compelling motivation to remove any existing
+functionality, but improvements are encouraged.</p>
+</div>
+<div class="paragraph">
+<p>BRL-CAD has a longstanding heritage of maintaining verifiable,
+validated, and repeatable results in critical portions of the package,
+particularly in the ray tracing library.  BRL-CAD includes regression
+tests that will compare runtime behavior against known results and
+report any deviations from previous results as failures.  Considerable
+attention is put into verification and validation throughout BRL-CAD.
+Incorrect behavior does not need to be preserved simply to maintain
+consistency, but it is rare to find genuine errors in the baseline
+testing results.  So, anyone proposing such a behavior change will
+have to conclusively demonstrate that the previous result is
+incorrect.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_code_layout"><a class="anchor" href="#_code_layout"></a>2. Code Layout</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The basic layout of BRL-CAD&#8217;s source code places public API headers in
+the top-level include directory and source code for both applications
+and libraries in the src directory.  The following is a partial
+listing of how the code is organized in a checkout or source
+distribution.  Note that some subdirectories contain a README file
+with more details on the content in that directory.</p>
+</div>
+<div class="dlist">
+<div class="title">Applications &amp; Resources</div>
+<dl>
+<dt class="hdlist1"><em class="path">db/</em></dt>
+<dd>
+<p>Example geometry</p>
+</dd>
+<dt class="hdlist1"><em class="path">doc/</em></dt>
+<dd>
+<p>Project documentation</p>
+</dd>
+<dt class="hdlist1"><em class="path">doc/docbook</em></dt>
+<dd>
+<p>User documentation in XML format</p>
+<div class="paragraph">
+<p>See doc/docbook/README for more details</p>
+</div>
+</dd>
+<dt class="hdlist1"><em class="path">include/</em></dt>
+<dd>
+<p>Public API headers</p>
+</dd>
+<dt class="hdlist1"><em class="path">regress/</em></dt>
+<dd>
+<p>Scripts and resources for regression testing</p>
+</dd>
+<dt class="hdlist1"><em class="path">src/</em></dt>
+<dd>
+<p>Application and library source code</p>
+<div class="paragraph">
+<p>See src/README for more details</p>
+</div>
+</dd>
+<dt class="hdlist1"><em class="path">src/conv/</em></dt>
+<dd>
+<p>Geometry converters</p>
+</dd>
+<dt class="hdlist1"><em class="path">src/fb/</em></dt>
+<dd>
+<p>Tools for displaying data in windows</p>
+</dd>
+<dt class="hdlist1"><em class="path">src/mged/</em></dt>
+<dd>
+<p>Main GUI application: Multi-device Geometry EDitor</p>
+</dd>
+<dt class="hdlist1"><em class="path">src/other/</em></dt>
+<dd>
+<p>3rd party frameworks (Tcl/Tk, libpng, zlib, etc.)</p>
+</dd>
+<dt class="hdlist1"><em class="path">src/proc-db/</em></dt>
+<dd>
+<p>Examples on creating models programmatically</p>
+</dd>
+<dt class="hdlist1"><em class="path">src/rt*/</em></dt>
+<dd>
+<p>Ray tracing applications</p>
+</dd>
+<dt class="hdlist1"><em class="path">src/util/</em></dt>
+<dd>
+<p>Image processing utilities</p>
+</dd>
+</dl>
+</div>
+<div class="dlist">
+<div class="title">Libraries</div>
+<dl>
+<dt class="hdlist1"><em class="path">src/libbn/</em></dt>
+<dd>
+<p>Numerics library: vector/matrix math, random
+number generators, polynomial math, root solving, noise functions, and
+more</p>
+</dd>
+<dt class="hdlist1"><em class="path">src/libbu</em></dt>
+<dd>
+<p>Utility library: string handling, logging,
+threading, memory management, argument processing, container data
+structures, and more</p>
+</dd>
+<dt class="hdlist1"><em class="path">src/libgcv/</em></dt>
+<dd>
+<p>Geometry conversion library for importing or
+exporting geometry in various formats</p>
+</dd>
+<dt class="hdlist1"><em class="path">src/libged/</em></dt>
+<dd>
+<p>Geometry editing library containing the majority
+of our command API</p>
+</dd>
+<dt class="hdlist1"><em class="path">src/libicv/</em></dt>
+<dd>
+<p>Image conversion library for importing,
+processing, and exporting image data</p>
+</dd>
+<dt class="hdlist1"><em class="path">src/libpkg/</em></dt>
+<dd>
+<p>Network "package" library for basic
+client-server communication</p>
+</dd>
+<dt class="hdlist1"><em class="path">src/librt/</em></dt>
+<dd>
+<p>Ray tracing library including routines for
+reading, processing, and writing geometry</p>
+</dd>
+<dt class="hdlist1"><em class="path">src/libwdb/</em></dt>
+<dd>
+<p>Simple (write-only) library for creating
+geometry</p>
+</dd>
+<dt class="hdlist1"><em class="path">src/lib*/tests/</em></dt>
+<dd>
+<p>API Unit tests</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_code_conventions"><a class="anchor" href="#_code_conventions"></a>3. Code Conventions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>BRL-CAD has a STABLE branch in Git that should always compile and run
+on all supported platforms.  The primary development branch trunk,
+unlike STABLE, is generally expected to compile but may occasionally
+fail to do so during active development.</p>
+</div>
+<div class="sect2">
+<h3 id="_languages"><a class="anchor" href="#_languages"></a>3.1. Languages</h3>
+<div class="paragraph">
+<p>The majority of BRL-CAD is written in ANSI/POSIX C with the intent of
+strictly conforming with the C standard.  The core libraries are all C
+API, though several&#8212;&#8203;such as the LIBBU and LIBRT libraries&#8212;&#8203;use C&#43;&#43;
+for implementation details.  Our C libraries can use C&#43;&#43; for
+implementation detail, but they cannot expose C&#43;&#43; in the public API.</p>
+</div>
+<div class="paragraph">
+<p>Major components of the system are written in the following languages:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>STEP and NURBS boundary representation support: C&#43;&#43;</p>
+</li>
+<li>
+<p>The MGED geometry editor: a combination of C, Tcl/Tk, and Incr
+Tcl/Tk</p>
+</li>
+<li>
+<p>The BRL-CAD Benchmark, build system, and utility scripts:
+POSIX-compliant Bourne Shell Script</p>
+</li>
+<li>
+<p>Initial implementation of a BRL-CAD Geometry Server: PHP</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Source code files use the following extensions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>C files: .c</p>
+</li>
+<li>
+<p>Header files: .h</p>
+</li>
+<li>
+<p>C&#43;&#43; files: .cpp</p>
+</li>
+<li>
+<p>PHP files: .php</p>
+</li>
+<li>
+<p>Tcl/Tk files: .tcl or .tk</p>
+</li>
+<li>
+<p>POSIX Bourne-style shell scripts: .sh</p>
+</li>
+<li>
+<p>Perl files: .pl (program) or .pm (module)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>With release 7.0, BRL-CAD has moved forward and worked toward making
+all of the software&#8217;s C code conform strictly with the ANSI/ISO
+standard for C language compilation (ISO/IEC 9899:1990, or
+c89). Support for older compilers and older K&amp;R-based system
+facilities is being migrated to build system declarations or
+preprocessor defines, or is being removed outright.  You can, however,
+make modifications that assume compiler conformance with the ANSI C
+standard (c89).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_coding_style"><a class="anchor" href="#_coding_style"></a>3.2. Coding Style</h3>
+<div class="paragraph">
+<p>To ensure consistency, the coherence of the project, and the long-term
+maintainability of BRL-CAD, we use a defined coding style and
+conventions that contributors are expected to follow.  Our coding
+style is documented in the HACKING file of any source distribution.</p>
+</div>
+<div class="paragraph">
+<p>Our style may not be your preferred style.  While we welcome
+discussion, we will always prefer consistency over any personal
+preference.  Contributions that do not follow our style will generally
+be rejected until they do.</p>
+</div>
+<div class="paragraph">
+<p>Here are some highlights of our style:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Global variables, structures, classes, and other public data
+containers are discouraged within application code. Do not add any
+new global variables to existing libraries. Global variables are
+often a quick solution to some deeper coding problem. However, they
+carry significant maintenance costs, introduce complexity to the
+code, make multi-threading support more costly, pollute the public
+API (symbol-wise at a minimum), increase security risks, are
+error-prone to use, and usually complicate future efforts to
+refactor and restructure the code. Using static variables (whether
+function- or static/file-scoped) is a viable
+alternative. Restructuring the logic to not be stateful is even
+better.</p>
+</li>
+<li>
+<p>Exact floating point comparisons are unreliable without requiring
+IEEE-compliant floating point math, but BRL-CAD does not require
+such math for portability and for performance reasons. When floating
+point comparisons are necessary, use the NEAR_EQUAL and NEAR_ZERO
+macros with a specified tolerance or the EQUAL and ZERO macros where
+a tolerance is indeterminate. All the macros are available by
+including bn.h, part of libbn.</p>
+</li>
+<li>
+<p>The code should strive to achieve conformance with the GNU coding
+standard with a few exceptions. One such exception is not using the
+GNU indentation style, but instead using the BSD KNF indentation
+style, which is basically the K&amp;R indentation style with character
+indentation consistent with the file that you&#8217;re editing. If this is
+confusing, use spaces to indent and run the sh/ws.sh script to
+convert spaces to tabs. We value consistency to preserve
+maintainability.</p>
+</li>
+<li>
+<p>Stylistic whitespace</p>
+<div class="ulist">
+<ul>
+<li>
+<p>No space immediately inside parentheses.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">while (1) { ...                   /* ok */
+for (i = 0; i &amp;lt; max; i++) { ...   /* ok */
+while ( max ) { ...               /* discouraged */</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Commas and semicolons are followed by whitespace.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">int main(int argc, char *argv[]); /* ok */
+for (i = 0; i &amp;lt; max; i++) { ...   /* ok */</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>No space on arrow operators.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">structure-&gt;member = 5;            /* ok */
+structure -&gt; member = 5;          /* bad */</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Native language statements (if, while, for, switch, and return)
+have a separating space; functions do not.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">int my_function(int i);           /* ok, no space */
+while (argc--) ...                /* ok, has space */
+if( var == val )                  /* discouraged */
+switch(foo) ...                   /* discouraged */</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Comments should have an interior space and be without tabs.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">/** good single-line doxygen */
+/* good */
+/*bad*/
+/*    discouraged */
+/*  discouraged  */
+/**
+* good:
+* multiple-line doxygen comment
+*/</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Naming symbols</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Variable and public API function names should almost always begin
+with a lowercase letter.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">double localVariable; /* ok */
+double LocalVariable; /* bad (looks like class or    constructor) */
+double _localVar;     /* bad (looks like member variable)      */</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Do not use Hungarian notation or its variations to show the type of
+a variable. An exception can be made for pointers on occasion. The
+name should be concise and meaningful&#8212;&#8203;typing a descriptive name is
+preferred to someone spending time trying to learn what the name of
+the variable means.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">char *name;    /* ok  */
+char *pName;   /* discouraged for new code, but okay */
+char *fooPtr;  /* bad */
+char *lpszFoo; /* bad */</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Constants should be all upper-case with word boundaries optionally
+separated by underscores.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">static const int MAX_READ = 2;  /* ok  */
+static const int arraySize = 8; /* bad */</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Public API (global) function names should be in lowercase with
+underscores to separate words. Most functions within the core
+libraries are named with the following convention:
+<em class="library">[group]</em>[action]</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">bu_vls_strcat()
+bn_mat_transpose()</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Naming exceptions are allowed where the API intentionally mirrors
+some other familiar programming construct&#8212;&#8203;for example,
+bu_malloc()+bu_free())--but be as consistent as possible within a
+file and across a library&#8217;s API.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>BRL-CAD uses The One True Brace Style from BSD KNF and K&amp;R
+<sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup>. Opening braces should be on the same line as their
+statement; closing braces should line up with that same
+statement. Functions, however, are treated specially, and we place
+their opening braces on separate lines.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">static int
+some_function(char *j)
+{
+    for (i = 0; i &amp;lt; 100; i++) {
+        if (i % 10 == 0) {
+            j += 1;
+        } else {
+            j -= 1;
+        }
+    }
+}</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. <a href="http://developers.slashdot.org/story/05/01/08/1823248/us-army-research-lab-opens-brl-cad-source" class="bare">http://developers.slashdot.org/story/05/01/08/1823248/us-army-research-lab-opens-brl-cad-source</a>
+</div>
+<div class="footnote" id="_footnotedef_2">
+<a href="#_footnoteref_2">2</a>. See the AUTHORS file in a source distribution.
+</div>
+<div class="footnote" id="_footnotedef_3">
+<a href="#_footnoteref_3">3</a>. See the CHANGES file in a source distribution.
+</div>
+<div class="footnote" id="_footnotedef_4">
+<a href="#_footnoteref_4">4</a>. <a href="http://en.wikipedia.org/wiki/Indent_style" class="bare">http://en.wikipedia.org/wiki/Indent_style</a>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="../part1/chapter2.html">Feature Overview</a></span>
+  <span class="next"><a href="chapter4.html">What Code to Work On</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../ui/js/site.js"></script>
+<script src="../../../ui/js/vendor/lunr.js"></script>
+<script src="../../../ui/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/docs/hacking/part2/chapter3.html"></script>
+<script async src="../../../ui/../search-index.js"></script>
+<script async src="../../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

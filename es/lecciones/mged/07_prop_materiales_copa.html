@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>7. Asignar propiedades de los materiales a una copa :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/es/lecciones/mged/07_prop_materiales_copa.html">
+    <link rel="prev" href="06_crear_una_copa.html">
+    <link rel="next" href="08_prop_materiales_copa2.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../ui/css/site.css">
+    <link rel="stylesheet" href="../../../ui/css/search.css">
+    <link rel="stylesheet" href="../../../ui/css/custom.css">
+    <script>var uiRootPath = '../../../ui'</script>
+    <link rel="icon" href="../../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="es" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lecciones</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01_crear_figuras_primitivas.html">1. Crear Figuras Primitivas with MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02_opciones_vistas.html">2. Reconocer las opciones de vistas en MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03_utilizar_comando_in.html">3. Usar el comando Insert en MGED para dimensionar y ubicar figuras</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="04_prop_materiales.html">4. Asignación de propiedades de los materiales y trazado de rayos (Raytracing) en MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="05_expresiones_booleanas.html">5. Expresiones Booleanas</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="06_crear_una_copa.html">6. Crear una copa</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="07_prop_materiales_copa.html">7. Asignar propiedades de los materiales a una copa</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="08_prop_materiales_copa2.html">8. Asignar más propiedades de los materiales a la copa</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="09_esfera_en_caja_exhibidora.html">9. Crear una esfera en una caja exhibidora transparente</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="10_crear_taza.html">10. Crear una taza</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="11_refinar_taza.html">11. Refinando el modelo de la taza</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="12_taza_desde_gui.html">12. Crear el modelo de una taza utilizando la interfaz de MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="13_ubicar_figuras_en_3d.html">13. Ubicar figuras en espacios 3-D</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="14_ubicar_figuras_en_3d_2.html">14. Ejercicios adicionales de ubicación de imágenes en espacios 3-D</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="15_crear_camion_de_juguete.html">15. Crear un camión de juguete</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="16_mod_tech_struct.html">16. Aprender técnicas de modelado y estructuras</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Spanish</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs/index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../../index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">Spanish</a></li>
+    <li>Lecciones</li>
+    <li><a href="../mged.html">MGED</a></li>
+    <li><a href="07_prop_materiales_copa.html">7. Asignar propiedades de los materiales a una copa</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/translations/es/modules/lecciones/pages/mged/07_prop_materiales_copa.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">7. Asignar propiedades de los materiales a una copa</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>En este tutorial usted aprenderá a:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Repasar como abrir una base de datos existente.</p>
+</li>
+<li>
+<p>Asignar colores y sombreado de plástico a las regiones de la copa.</p>
+</li>
+<li>
+<p>Utilizar las opciones del sombreado con transparencia y reflexión
+espejada.</p>
+</li>
+<li>
+<p>Realizar el trazado de rayos de varios ejemplos de la copa.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>En este tutorial, le agregará a la copa creada en el tutorial
+anterior, propiedades de los materiales.  La copa terminará se verá de
+forma similar a la de la siguiente imagen.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/07_goblet_mater_complete.png" alt="07 goblet mater complete">
+</div>
+<div class="title">Figure 1. La copa completa con propiedades de los materiales asignadas.</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_goblet_review_opening_db"><a class="anchor" href="#_goblet_review_opening_db"></a>1. Repaso: abrir una base de datos existente</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Si salió del programa luego del último tutorial, abra la base de datos
+de la copa nuevamente (llamada goblet.g). La forma más sencilla de
+hacer esto es abriendo la base de datos desde la ventana de comandos
+al iniciarse <code class="app">MGED</code>.  Para hacer esto, tipee luego del prompt:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">mged goblet.g <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>TambiÈn puede abrirlo desde el entorno gráfico seleccionando del menú
+File (Archivo) la opción Open (Abrir). Un cuadro de diálogo aparecerá
+y le pedirá que ingrese el nombre de una base de datos existente.
+Ingrese el nombre de goblet.g o cliquéelo entre las opciones de la
+lista de directorios.  Luego presione Open (Abrir) y el programa le
+avisará que pudo acceder a la base de datos exitosamente, recordando
+que utiliza milímetros como unidad de medida.  Cliquee entonces OK.</p>
+</div>
+<div class="sect2">
+<h3 id="_dibujando_la_copa_en_la_ventana_gráfica"><a class="anchor" href="#_dibujando_la_copa_en_la_ventana_gráfica"></a>1.1. Dibujando la copa en la ventana gráfica</h3>
+<div class="paragraph">
+<p>Para dibujar la copa que realizo en el tutorial anterior, diríjase a
+la ventana de comandos y tipee en el prompt lo siguiente:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">draw goblet1.c <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Una representacion en malla de la copa aparecerá en la ventana
+gráfica.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_goblet_assign_colors"><a class="anchor" href="#_goblet_assign_colors"></a>2. Asignar colores y sombreado de plástico a las regiones de la copa</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ingrese al menú Edit (Edición) y selecciones Combination Editor
+(Editor de combinaciones). Para seleccionar las distintas regiones de
+la copa que realizó previamente, vuelva al cuadro de Nombre y cliquee
+en el botón ubicado a la derecha del cuadro de ingreso.  Aparecerá un
+submenú.  Haga doble click en Select From All Regions (Seleccionar
+desde todas las regiones). Le mostrará una lista de todas las regiones
+creadas en esta base de datos, incluyendo base1.r, basin1.r, y
+stem1.r.  Haga doble click en base1.r para seleccionar esa región.</p>
+</div>
+<div class="paragraph">
+<p>Cliquee en el botón de la derecha de la opción de color del editor de
+combinación y en el menú desplegable tendrá disponible una herramienta
+que le permitirá crear más colores.  Cliquee en el azul.  Luego
+cliquee en el botón a la derecha del cuadro de sombras.  Aparecerá una
+lista con los sombreados disponibles.  Cliquee en la opción Plastic
+(Plástico) Del nuevo conjunto de opciones que le brindará el programa,
+utilizará sólo dos en este tutorial.  Cliquee en Apply (Aplicar) para
+asignarle el color azul y las propiedades del plástico al cuenco de su
+copa.</p>
+</div>
+<div class="paragraph">
+<p>Repita estos pasos para asignarle el color verde y sombreado de
+plástico a la región stem1.r y el color amarillo y sombreado de
+plástico a la región basin1.r.  Cuando finalice, cliquee OK para
+terminar con la ventana del Combination Editor (editor de
+combinación).</p>
+</div>
+<div class="paragraph">
+<p>A pesar que los cambios fuerpon aplicados en la base de datos, la
+ventana gráfica no los reflejara.  Para redibujarlos debe activar la
+ventana de comandos y tipear en el prompt:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">B goblet1.c <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>El comando B (de Blast) despeja la pantalla y redibuja la copa con las
+selecciones de color aplicadas.</p>
+</div>
+<div class="sect2">
+<h3 id="_realizando_el_trazado_de_rayos_de_la_copa"><a class="anchor" href="#_realizando_el_trazado_de_rayos_de_la_copa"></a>2.1. Realizando el trazado de rayos de la copa</h3>
+<div class="paragraph">
+<p>Para volver a obtener la malla de la copa, del menú File (Archivo)
+seleccione la opción Raytrace (Trazado de rayos). Aparecerá la ventana
+de Raytrace Panel de control (Panel de control de Raytrace). Mueva el
+puntero al botón ubicado a la derecha de Background Color (Color de
+fondo) y haga clic en la opción de blanco.  Para que el trazado de
+rayos se genere más rápidamente, puede cambiar el tamaño de la ventana
+de gráficos para hacerla menor antes de abrir el panel de trazado de
+rayos.  Cuando decremente el tamaño de la ventana, haga clic en
+Raytrace para iniciar el proceso de trazado de rayos.</p>
+</div>
+<div class="paragraph">
+<p>Nota: Como se mencionó anteriormente, no es conveniente que las
+regiones se superpongan.  Aunque al haber solapamiento no siempre se
+afecta a el proceso de trazado de rayos, si el modelo va a ser
+estadísticamente analizado, esto podría crear problemas.</p>
+</div>
+<div class="paragraph">
+<p>Mientras se genera el trazado de la copa, mueva el cursor al la opción
+Framebuffer de la barra de menú del Raytrace Control Panel (Panel de
+control de Raytrace) y cliquee Overlay (Traer al frente). Cuendo el
+trazado de rayos finalice, debería ver una copa similar a la de la
+siguiente imagen:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/07_goblet_complete_window.png" alt="07 goblet complete window">
+</div>
+<div class="title">Figure 2. Raytrace de la copa</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_goblet_transparency_mirror"><a class="anchor" href="#_goblet_transparency_mirror"></a>3. Utilizar las opciones del sombreado con transparencia y reflejoespejado</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>La copa trazada parece bastante real, pero podría mejorarse utilizando
+otras opciones del Editor de combinación.  Cuando seleccione el
+sombreado de plástico, un nuevo conjunto de opciones aparecerá y le
+permitirán elegir diversas propiedades o atributos del sombreado.  Una
+de ellas es Transparency (Transparencia). Puede ajustar esta propiedad
+en las distintas regiones mediente el ingreso de cualquier valor entre
+0,0 (opaco) y 1,0 (transparentes).</p>
+</div>
+<div class="paragraph">
+<p>Cuando aplique color y sombreado a cada una de las tres regiones de la
+copa, usted puede ajustar la transparencia de cada region con los
+siguientes pasos (1) seleccionar la región en el Combination Editor
+(Editor de combinación), (2) botón derecho en la caja de Transparency
+(Transparencia), y (3) ingresar un valor entre 0.0 y 1.0.</p>
+</div>
+<div class="paragraph">
+<p>Para este tutorial, abra Combination Editor (Editor de combinación),
+haga clic en el botón a la derecho del cuadro Name (Nombre), presione
+Select From All Regions (Selección desde todas las regiones) en el
+menú desplegable y, a continuación, elija la región base1.r.  Aplique
+el sombreado de plástico y tipee .5 para que su región sea
+semi-transparente.  Cliquee en Apply (Aplicar) y repita este
+procedimiento para cada una de las otras dos regiones.  Entonces
+rehaga el trazado de rayos de la copa, la cual deberá verse similar a
+la siguiente:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/07_goblet_semitransparent.png" alt="07 goblet semitransparent">
+</div>
+<div class="title">Figure 3. Raytrace de una copa semitransparente</div>
+</div>
+<div class="paragraph">
+<p>Los colores de la copa semi-transparente son más brillantes que los de
+las copas opaca porque es mayor la cantidad de luz que puede penetrar
+el material plástico.  Usted puede hacer la copa más realista en
+apariencia volviendo al Combination Editor (Editor de combinación) y
+agregando una reflexión espejada.  Para cada región, coloque el cursor
+en la casilla que aparece junto a esta opción, cliquee en el botón
+izquierdo del ratón, y tipee .45.  Esto hará que la mitad de la luz
+disponible se refleje en la superficie de la copa.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_goblet_newforms_raytrace"><a class="anchor" href="#_goblet_newforms_raytrace"></a>4. Realizando el trazado de rayos de una nueva forma de la copa</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cliquee en aplicar y realice nuevamente el trazado de rayos de su
+diseño.  Una nueva imagen similar a la siguiente aparecerá en su
+ventana gráfica:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/07_goblet_mirror.png" alt="07 goblet mirror">
+</div>
+<div class="title">Figure 4. Raytrace de una copa con efecto de reflexi&#xF3;n espejada</div>
+</div>
+<div class="paragraph">
+<p>La nueva imagen será bastante distinta a la imagen original.  Continúe
+modificando los valores de los efectos de transparencia y reflexión
+para comprender como impactan enla imagen resultante.</p>
+</div>
+<div class="paragraph">
+<p>Recuerde que al utilizar estas opciones, los valores ingresados
+deberán ser menores a 1.0.  La siguiente tabla le muestra algunos
+ejemplos de combinaciones que puede usar:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Valor de transparencia</th>
+<th class="tableblock halign-center valign-top">Valor de reflexión espejada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">.50</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">.49</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">.35</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">.64</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">.20</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">.57</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">.10</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">.89</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">.89</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">.10</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_goblet_material_properties_review"><a class="anchor" href="#_goblet_material_properties_review"></a>5. Repasemos&#8230;&#8203;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>En este tutorial usted repasó la apertura de una base de datos y
+aprendió a:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Asignar colores y sombreado de plástico a las regiones de la copa.</p>
+</li>
+<li>
+<p>Utilizar las opciones del sombreado con transparencia y reflexión
+espejada.</p>
+</li>
+<li>
+<p>Realizar el trazado de rayos de varios ejemplos de la copa.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="06_crear_una_copa.html">6. Crear una copa</a></span>
+  <span class="next"><a href="08_prop_materiales_copa2.html">8. Asignar más propiedades de los materiales a la copa</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../ui/js/site.js"></script>
+<script src="../../../ui/js/vendor/lunr.js"></script>
+<script src="../../../ui/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/es/lecciones/mged/07_prop_materiales_copa.html"></script>
+<script async src="../../../ui/../search-index.js"></script>
+<script async src="../../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

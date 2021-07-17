@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>10. Creating a Mug :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/docs/tutorials/mged-intro/chapter10.html">
+    <link rel="prev" href="chapter9.html">
+    <link rel="next" href="chapter11.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../ui/css/site.css">
+    <link rel="stylesheet" href="../../../ui/css/search.css">
+    <link rel="stylesheet" href="../../../ui/css/custom.css">
+    <script>var uiRootPath = '../../../ui'</script>
+    <link rel="icon" href="../../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lessons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../lessons/mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/01_creating_primitive_shapes.html">1. Creating Primitive Shapes in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/02_learning_viewing_options.html">2. Learning Viewing Options in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/03_using_insert_command.html">3. Using the Insert Command in MGED to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/04_assign_mat_prop_rt.html">4. Assigning Material Properties and Raytracing in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/05_learning_boolean_expressions.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/06_creating_a_goblet.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/07_goblet_material_properties.html">7. Assigning Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/08_goblet_material_properties2.html">8. Assigning More Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/09_globe_in_display_box.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/10_creating_mug.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/11_refining_mug.html">11. Refining a Mug Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/12_mug_through_gui.html">12. Creating a Mug Model using the MGED Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/13_placing_shapes_in_3d.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/14_placing_shapes_in_3d_2.html">14. Additional Exercises Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/15_creating_a_toy_truck.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/16_mod_tech_struct.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Books</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../hacking/index.html">Hacking BRL-CAD</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting Started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter1.html">A Call to Arms (and Contributors)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter2.html">Feature Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developers</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter3.html">Working with Our Code</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter4.html">What Code to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter5.html">Contributing Code</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Documenters</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter6.html">Working with Our Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter7.html">Types of Documentation We Maintain</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter8.html">What Documentation to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter9.html">Contributing Documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Other Contributors</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part4/chapter10.html">You Can Help Too</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendix: Resources and Examples</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix1.html">Further References and Resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix2.html">Doc Template: New MGED Command</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix3.html">Code Example: Shooting Rays</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix4.html">Code Example: Walking Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix5.html">Code Example: Command Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix6.html">Example Code: Root Solving</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../index.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview.html">I. An Overview of BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../mged-intro.html">II. Introduction to MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="preface1.html">Preface</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="preface2.html">Acknowledgments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter1.html">1. Creating Primitive Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter2.html">2. Learning the Viewing Options</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter3.html">3. Using the Insert Command to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter4.html">4. Assigning Material Properties and Raytracing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter5.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter6.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter7.html">7. Assigning Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter8.html">8. Assigning More Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter9.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="chapter10.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter11.html">11. Refining the Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter12.html">12. Creating the Mug Through the GUI</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter13.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter14.html">14. Gaining More Practice Placing Shapes in Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter15.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter16.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="appendix1.html"><code class="app">MGED</code> Commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../modeling.html">III. Modeling</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../modeling/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../modeling/chapter2.html">2. The Model Process</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../modeling/chapter3.html">3. Measuring data</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../modeling/chapter4.html">4. Organizing the Structure</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../modeling/chapter5.html">5. Developing Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../modeling/chapter6.html">5. Evaluating Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../modeling/chapter7.html">7. Logging Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendices</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../modeling/appendix1.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../modeling/appendix2.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../modeling/appendix3.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../modeling/appendix4.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../modeling/appendix5.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../modeling/appendix6.html">Using the build_region Command</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../converting.html">IV. Converting</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter2.html">2. Pertinent Characteristics of the BRL-CAD Format</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter3.html">3. Converting From/to ASCII</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter4.html">4. Converting to BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter5.html">5. Converting From BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter6.html">6. Building a New Converter</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter7.html">7. Postconversion Issues</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/index.html">Articles</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_pattern.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_region.html">Using the build_region Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/camo_shader.html">Camouflage shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ebm_primitive.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/gcv.html">The Geometry Conversion Library</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ged.html">GED: An Interactive Solid Modeling System</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/mged/index.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tutorial.html">Tutorial</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/gui.html">Graphical User Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/command-line-editing.html">Command Line Editing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/user-commands.html">User Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/developer-commands.html">Developer Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tcl-variables.html">Tcl Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/env.html">Environment Variable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/callback.html">Callback</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/brlcad-solid.html">BRL-CAD Solid</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/mgedrc.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/nirt.html">Interactive Raytracing: The nirt Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/overlap_tool.html">The Overlap Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/oed.html">Object Editing - the oed Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/pipes.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/projection_shader.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/tire.html">Vehicle Tire and Wheel Creation in BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/TEMPLATE.html">TEMPLATE</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Misc</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Dev Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../devguides/bool_eval_development.html">NURBS Boolean Evaluation Development Guide</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Presentations</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/brlcad-app-devel.html">Application Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="presentations:_attachments/brlcad-app-devel.html">brlcad-app-devel</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/intro-to-tcltk.html">Introduction to Tcl/Tk</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../specifications/BRL_CAD_g_format_V5.html">BRL-CAD Database Format</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Manual Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/1.html">man1</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/3.html">man3</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/5.html">man5</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/n.html">mann</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Wiki Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">page-1</span>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">BRL-CAD</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../../index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../es/index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../es/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">BRL-CAD</a></li>
+    <li>Books</li>
+    <li><a href="../index.html">Tutorials</a></li>
+    <li><a href="../mged-intro.html">II. Introduction to MGED</a></li>
+    <li><a href="chapter10.html">10. Creating a Mug</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/docs/modules/tutorials/pages/mged-intro/chapter10.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">10. Creating a Mug</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this lesson, you will:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Create an outside cylinder using the in command.</p>
+</li>
+<li>
+<p>Create an inside cylinder for hollowing out the larger shape
+cylinder.</p>
+</li>
+<li>
+<p>Create a handle for your mug.</p>
+</li>
+<li>
+<p>Create a combination to produce the body of your mug.</p>
+</li>
+<li>
+<p>Create a combination to join the handle to the body.</p>
+</li>
+<li>
+<p>Create a region of combined shapes with the same material and color.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In this lesson, you will be continuing your work creating real-life
+objects-in this case, the basic body shape of a coffee mug.  In the
+next lesson, you will refine the body so that it is more realistic.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mug_new_db"><a class="anchor" href="#_mug_new_db"></a>1. Creating a New Database</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Create a new database and call it mug.g.  Go back to the File menu and
+select Preferences, then Units, and then inches.  This will create
+your body using inches.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You could also do this by typing units in at the Command Window
+prompt.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mug_outside_cyl"><a class="anchor" href="#_mug_outside_cyl"></a>2. Creating the Outside Cylinder Using the In Command</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To begin making the body, you will need to create an outside right
+circular cylinder.  At the <code class="app">MGED</code> prompt, type:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">in bodyout.s rcc</code></p>
+</div>
+<div class="paragraph">
+<p>The diagram of this command is as follows:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">in</th>
+<th class="tableblock halign-center valign-top">bodyout.s</th>
+<th class="tableblock halign-center valign-top">rcc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Make a shape</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Call it bodyout.s</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">The shape type is right circular cylinder</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><code class="app">MGED</code> will ask you the following questions about the cylinder
+you want to make.  Type in the values given in bold.  Make sure you
+leave spaces between variable values.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre><span class="prompt">Enter X, Y, Z of vertex:</span> <span class="in">0 0 0</span> <kbd>Enter</kbd>
+<span class="prompt">Enter X, Y, Z of height (H) vector:</span> <span class="in">0 0 3.5</span> <kbd>Enter</kbd>
+<span class="prompt">Enter radius:</span> <span class="in">1.75</span> <kbd>Enter</kbd></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that the streamlined way to do this would be to type:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">in bodyout.s rcc 0 0 0 0 0 3.5 1.75 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>The diagram of this command is as follows:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">in</th>
+<th class="tableblock halign-center valign-top">bodyout.s</th>
+<th class="tableblock halign-center valign-top">rcc</th>
+<th class="tableblock halign-center valign-top">0 0 0</th>
+<th class="tableblock halign-center valign-top">0 0 3.5</th>
+<th class="tableblock halign-center valign-top">1.75</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Make a shape</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Call it bodyout.s</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">The shape type is right circular cylinder</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">The x, y, and z of vertex is 0 0 0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">The x, y, and z of the height vector is 0 0 3.5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">The radius is 1.75</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>A shape of a cylinder, in wireframe form, will appear in the Graphics
+Window.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mug_inside_cyl"><a class="anchor" href="#_mug_inside_cyl"></a>3. Creating the Inside Cylinder</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Using this same method, type in the information for the inside right
+circular cylinder.  This cylinder will be used to hollow out the
+outside cylinder.  Whenever you are creating a hole in the surface of
+an object, make sure the shape creating the hole protrudes through the
+surface.  This will ensure that you don&#8217;t inadvertently leave a thin
+film of material where the two surfaces meet.</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">in bodyin.s rcc 0 0 0.25 0 0 3.5 1.5 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>The diagram of this command is:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">in</th>
+<th class="tableblock halign-center valign-top">bodyin.s</th>
+<th class="tableblock halign-center valign-top">rcc</th>
+<th class="tableblock halign-center valign-top">0 0 0.25</th>
+<th class="tableblock halign-center valign-top">0 0 3.5</th>
+<th class="tableblock halign-center valign-top">1.5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Make a shape</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Call it bodyin.s</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">The shape type is right circular cylinder</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">The x, y, and z of vertex is 0, 0, and 0.25</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">The x, y, and z of the height vector is 0, 0, and 3.5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">The radius is 1.5</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>A second cylinder, inside the first cylinder, should now appear in the
+Graphics Window.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mug_handle"><a class="anchor" href="#_mug_handle"></a>4. Creating the Handle</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now you will want to enter some information about the body&#8217;s handle.
+The shape type for the handle is an elliptical torus.  At the Command
+Window prompt, type:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">in handle.s eto 0 2.5 1.75 1 0 0 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>The diagram of this command is:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">in</th>
+<th class="tableblock halign-center valign-top">handle.s</th>
+<th class="tableblock halign-center valign-top">eto</th>
+<th class="tableblock halign-center valign-top">0 2.5 1.75</th>
+<th class="tableblock halign-center valign-top">1 0 0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Make a shape</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Name it handle.s</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">The shape type is elliptical torus</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">The x, y, and z of the vertex is 0, 2.5, and 1.75</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">The x, y, and z of the normal vector is 1, 0, and 0</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The program will ask you to enter more values for the elliptical torus
+you are creating.  Type in the values shown in bold.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre><span class="prompt">Enter radius of revolution, r:</span> <span class="cmd">1.45</span> <kbd>Enter</kbd>
+<span class="prompt">Enter X, Y, Z, of vector C:</span> <span class="cmd">0.6 0 0</span> <kbd>Enter</kbd>
+<span class="prompt">Enter elliptical semi-minor axis, d:</span> <span class="cmd">0.2</span> <kbd>Enter</kbd></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A doughnut shape should appear on the right-hand side of the body.  If
+you look carefully, you can see that about one-third of the elliptical
+torus intersects the body.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mug_comb1"><a class="anchor" href="#_mug_comb1"></a>5. Creating the Bodyout.s-Bodyin.s Combination</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The next step is to combine the two cylinders into the body of
+the mug.  To do this, type:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">comb body.c u bodyout.s - bodyin.s <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>You have told the program to make the combination body.c out of the
+union of bodyout.s minus bodyin.s.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">comb</th>
+<th class="tableblock halign-center valign-top">body.c</th>
+<th class="tableblock halign-center valign-top">u</th>
+<th class="tableblock halign-center valign-top">bodyout.s</th>
+<th class="tableblock halign-center valign-top">-</th>
+<th class="tableblock halign-center valign-top">bodyin.s</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Make a combination</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Call it body.c</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Create a union of</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">bodyout.s cylinder</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">and subtract</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">bodyin.s cylinder</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mug_comb2"><a class="anchor" href="#_mug_comb2"></a>6. Creating the Handle.s - Bodyout.s Combination</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To combine the handle with the outside cylinder, type:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">comb handle.c u handle.s - bodyout.s <kbd>Enter</kbd></code></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">comb</th>
+<th class="tableblock halign-center valign-top">handle.c</th>
+<th class="tableblock halign-center valign-top">u</th>
+<th class="tableblock halign-center valign-top">handle.s</th>
+<th class="tableblock halign-center valign-top">-</th>
+<th class="tableblock halign-center valign-top">bodyout.s</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Make a combination</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Call it handle.c</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Create a union of</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">the handle.s torus</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">and subtract</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">the bodyout.s cylinder</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mug_region"><a class="anchor" href="#_mug_region"></a>7. Creating the Region Mug.r</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The last step, of this part of making the mug is to make a region out
+of your combinations.  Type:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r mug.r u body.c u handle.c <kbd>Enter</kbd></code></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">r</th>
+<th class="tableblock halign-center valign-top">mug.r</th>
+<th class="tableblock halign-center valign-top">u</th>
+<th class="tableblock halign-center valign-top">body.c</th>
+<th class="tableblock halign-center valign-top">u</th>
+<th class="tableblock halign-center valign-top">handle.c</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Make a region of shapes of the same material and color</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Call it mug.r</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Create a union of</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">the body.c combination</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">and merge it with</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">the handle.c combination</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>If you did this correctly, the program should say something similar
+to:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>   Defaulting item number to 1002
+   Creating region id=1001, air=0, GIFTmaterial=1, los=100</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../lessons/_images/mged/10_mug_wireframe.png" alt="10 mug wireframe">
+</div>
+<div class="title">Figure 1. Wireframe Mug</div>
+</div>
+<div class="paragraph">
+<p>You should now have the region mug.r that is a combination of shapes
+containing the same material and color.  You could assign color and
+material at this point, but you will want to do some more work on this
+design to make it more realistic.  So, for now, review the lessons of
+this chapter.  When you are ready to work again, you can continue
+refining your design in the next lesson.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mug_review"><a class="anchor" href="#_mug_review"></a>8. Review</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this lesson you:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Created an outside cylinder using the in command.</p>
+</li>
+<li>
+<p>Created an inside cylinder for hollowing out the larger shape
+cylinder.</p>
+</li>
+<li>
+<p>Created a handle for your mug.</p>
+</li>
+<li>
+<p>Created a combination to produce the body of your mug.</p>
+</li>
+<li>
+<p>Created a combination to join the handle to the body.</p>
+</li>
+<li>
+<p>Created a region of combined shapes with the same material and
+color.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="chapter9.html">9. Creating a Globe in a Display Box</a></span>
+  <span class="next"><a href="chapter11.html">11. Refining the Mug</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../ui/js/site.js"></script>
+<script src="../../../ui/js/vendor/lunr.js"></script>
+<script src="../../../ui/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/docs/tutorials/mged-intro/chapter10.html"></script>
+<script async src="../../../ui/../search-index.js"></script>
+<script async src="../../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

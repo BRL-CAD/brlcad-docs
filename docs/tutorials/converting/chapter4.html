@@ -1,0 +1,1956 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>4. Converting to BRL-CAD :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/docs/tutorials/converting/chapter4.html">
+    <link rel="prev" href="chapter3.html">
+    <link rel="next" href="chapter5.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../ui/css/site.css">
+    <link rel="stylesheet" href="../../../ui/css/search.css">
+    <link rel="stylesheet" href="../../../ui/css/custom.css">
+    <script>var uiRootPath = '../../../ui'</script>
+    <link rel="icon" href="../../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lessons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../lessons/mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/01_creating_primitive_shapes.html">1. Creating Primitive Shapes in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/02_learning_viewing_options.html">2. Learning Viewing Options in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/03_using_insert_command.html">3. Using the Insert Command in MGED to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/04_assign_mat_prop_rt.html">4. Assigning Material Properties and Raytracing in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/05_learning_boolean_expressions.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/06_creating_a_goblet.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/07_goblet_material_properties.html">7. Assigning Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/08_goblet_material_properties2.html">8. Assigning More Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/09_globe_in_display_box.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/10_creating_mug.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/11_refining_mug.html">11. Refining a Mug Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/12_mug_through_gui.html">12. Creating a Mug Model using the MGED Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/13_placing_shapes_in_3d.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/14_placing_shapes_in_3d_2.html">14. Additional Exercises Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/15_creating_a_toy_truck.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/16_mod_tech_struct.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Books</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../hacking/index.html">Hacking BRL-CAD</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting Started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter1.html">A Call to Arms (and Contributors)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter2.html">Feature Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developers</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter3.html">Working with Our Code</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter4.html">What Code to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter5.html">Contributing Code</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Documenters</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter6.html">Working with Our Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter7.html">Types of Documentation We Maintain</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter8.html">What Documentation to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter9.html">Contributing Documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Other Contributors</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part4/chapter10.html">You Can Help Too</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendix: Resources and Examples</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix1.html">Further References and Resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix2.html">Doc Template: New MGED Command</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix3.html">Code Example: Shooting Rays</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix4.html">Code Example: Walking Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix5.html">Code Example: Command Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix6.html">Example Code: Root Solving</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../index.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview.html">I. An Overview of BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../mged-intro.html">II. Introduction to MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/preface1.html">Preface</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/preface2.html">Acknowledgments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter1.html">1. Creating Primitive Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter2.html">2. Learning the Viewing Options</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter3.html">3. Using the Insert Command to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter4.html">4. Assigning Material Properties and Raytracing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter5.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter6.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter7.html">7. Assigning Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter8.html">8. Assigning More Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter9.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter10.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter11.html">11. Refining the Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter12.html">12. Creating the Mug Through the GUI</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter13.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter14.html">14. Gaining More Practice Placing Shapes in Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter15.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter16.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/appendix1.html"><code class="app">MGED</code> Commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../modeling.html">III. Modeling</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../modeling/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../modeling/chapter2.html">2. The Model Process</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../modeling/chapter3.html">3. Measuring data</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../modeling/chapter4.html">4. Organizing the Structure</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../modeling/chapter5.html">5. Developing Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../modeling/chapter6.html">5. Evaluating Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../modeling/chapter7.html">7. Logging Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendices</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../modeling/appendix1.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../modeling/appendix2.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../modeling/appendix3.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../modeling/appendix4.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../modeling/appendix5.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../modeling/appendix6.html">Using the build_region Command</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../converting.html">IV. Converting</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter2.html">2. Pertinent Characteristics of the BRL-CAD Format</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter3.html">3. Converting From/to ASCII</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="chapter4.html">4. Converting to BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter5.html">5. Converting From BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter6.html">6. Building a New Converter</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter7.html">7. Postconversion Issues</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/index.html">Articles</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_pattern.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_region.html">Using the build_region Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/camo_shader.html">Camouflage shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ebm_primitive.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/gcv.html">The Geometry Conversion Library</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ged.html">GED: An Interactive Solid Modeling System</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/mged/index.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tutorial.html">Tutorial</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/gui.html">Graphical User Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/command-line-editing.html">Command Line Editing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/user-commands.html">User Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/developer-commands.html">Developer Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tcl-variables.html">Tcl Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/env.html">Environment Variable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/callback.html">Callback</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/brlcad-solid.html">BRL-CAD Solid</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/mgedrc.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/nirt.html">Interactive Raytracing: The nirt Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/overlap_tool.html">The Overlap Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/oed.html">Object Editing - the oed Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/pipes.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/projection_shader.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/tire.html">Vehicle Tire and Wheel Creation in BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/TEMPLATE.html">TEMPLATE</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Misc</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Dev Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../devguides/bool_eval_development.html">NURBS Boolean Evaluation Development Guide</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Presentations</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/brlcad-app-devel.html">Application Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="presentations:_attachments/brlcad-app-devel.html">brlcad-app-devel</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/intro-to-tcltk.html">Introduction to Tcl/Tk</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../specifications/BRL_CAD_g_format_V5.html">BRL-CAD Database Format</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Manual Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/1.html">man1</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/3.html">man3</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/5.html">man5</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/n.html">mann</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Wiki Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">page-1</span>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">BRL-CAD</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../../index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../es/index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../es/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">BRL-CAD</a></li>
+    <li>Books</li>
+    <li><a href="../index.html">Tutorials</a></li>
+    <li><a href="../converting.html">IV. Converting</a></li>
+    <li><a href="chapter4.html">4. Converting to BRL-CAD</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/docs/modules/tutorials/pages/converting/chapter4.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">4. Converting to BRL-CAD</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_general_information_about_converting_to_brl_cad">1. General Information About Converting to BRL-CAD</a></li>
+<li><a href="#_converting_from_autocad_dxf_format">2. Converting From AutoCAD DXF Format</a></li>
+<li><a href="#_converting_from_elysium_neutral_facetted_format">3. Converting From Elysium Neutral Facetted Format</a></li>
+<li><a href="#_converting_from_euclid_format">4. Converting From EUCLID Format</a></li>
+<li><a href="#_converting_from_fastgen_format">5. Converting From FASTGEN Format</a>
+<ul class="sectlevel2">
+<li><a href="#_fastgen4">5.1. FASTGEN4</a></li>
+<li><a href="#_preprocessed_fastgen_version_3patch">5.2. Preprocessed FASTGEN Version 3/PATCH</a></li>
+</ul>
+</li>
+<li><a href="#_converting_from_iges_format">6. Converting From IGES Format</a></li>
+<li><a href="#_converting_from_jack">7. Converting From Jack</a></li>
+<li><a href="#_converting_from_nastran_format">8. Converting From NASTRAN Format</a></li>
+<li><a href="#_converting_from_proe_format">9. Converting From Pro/E Format</a></li>
+<li><a href="#_sec_converting_from_stl">10. Converting From STL Format</a></li>
+<li><a href="#_converting_from_tankill_format">11. Converting From TANKILL Format</a></li>
+<li><a href="#_converting_from_unigraphics_format">12. Converting From Unigraphics Format</a></li>
+<li><a href="#_converting_from_viewpoint_datalabs_format">13. Converting From Viewpoint Datalabs Format</a></li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="_general_information_about_converting_to_brl_cad"><a class="anchor" href="#_general_information_about_converting_to_brl_cad"></a>1. General Information About Converting to BRL-CAD</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="#_tbl_import_converters">BRL-CAD import converters</a> contains the primary file formats (other
+than ASCII) that currently convert to BRL-CAD.  Note that, as
+discussed previously, the "-g" designation at the end of each
+converter name indicates that the converted file will be in BRL-CAD&#8217;s
+standard geometry (.g) format.</p>
+</div>
+<table id="_tbl_import_converters" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. BRL-CAD import converters</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">CAD format</th>
+<th class="tableblock halign-left valign-top">Import Converter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AutoCAD DXF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dxf-g</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Elysium Neutral Facetted</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enf-g</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EUCLID <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">euclid-g</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FASTGEN (FASTGEN4 and PATCH)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fast4-g/patch-g</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IGES</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">iges-g</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Jack</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jack-g</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NASTRAN</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">nastran-g</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pro/E</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">* <sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">STL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">stl-g</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TANKILL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tankill-g</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unigraphics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ug-g</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Viewpoint datalabs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">viewpoint-g</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_converting_from_autocad_dxf_format"><a class="anchor" href="#_converting_from_autocad_dxf_format"></a>2. Converting From AutoCAD DXF Format</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>DXF is Autodesk Inc.'s proprietary data specification that has been
+developed to support links with AutoCAD, the company&#8217;s popular CAD
+software.  The format, which has been implemented in many CAD systems
+(particularly those that work on PCs), is simple and relatively
+limited; however, it has become a well-established means of exchanging
+engineering drawings.</p>
+</div>
+<div class="paragraph">
+<p>The DXF format allows for the specification of the units used in the
+DXF file; however, not all DXF files include this information.  Thus,
+if units information is not found in the DXF file, millimeters (which
+is also the default and underlying unit of measure in BRL-CAD) is the
+assumed unit of measure.  Of course, if millimeters is not the right
+choice for a particular user or application, the <code class="opt">-s</code> (scale)
+option can be used.  This option and the other available options for
+the <code>dxf-g</code> converter are discussed in the text that follows.</p>
+</div>
+<div class="paragraph">
+<p>When using this converter, polygons and meshes are converted to BOT
+primitives.  Each layer becomes a region.  Lines, circles, and arcs
+become n-manifold geometry (NMG) objects, and points become spheres.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">NMG Primitive</div>
+<div class="paragraph">
+<p>The NMG primitive represents geometry that is defined by points,
+lines, polygonal facets, and collections thereof.  It is the primary
+BRL-CAD primitive for encoding one- or two-dimensional (2-D) data.
+For more information on the NMG, see Muuss and Butler (1991) and
+Weiler (1987).</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The command for the <code>dxf-g</code> converter is as follows:</p>
+</div>
+<div class="paragraph">
+<p><code><strong class="cmd">dxf-g</strong> [<em class="opt">options</em>] <em class="path">input.dxf</em> <em class="path">output.g</em></code></p>
+</div>
+<div class="paragraph">
+<p>The options for the command are as follows:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code class="opt">-c</code> </dt>
+<dd>
+<p>specifies that only the first color encountered for a
+layer in the DXF file is used; additional colors for the same layer
+are ignored.</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-d</code> </dt>
+<dd>
+<p>debug; produces core dump on failure.</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-s</code> </dt>
+<dd>
+<p>applies the specified scale factor to the DXF data (takes
+an argument).</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-t</code> </dt>
+<dd>
+<p>sets tolerance distance (in millimeters) (default is
+0.005) (takes an argument).</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-v</code> </dt>
+<dd>
+<p>verbose; prints out progress information.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>For more information on the DXF file format and import possibilities,
+see the on-line documentation on the Autodesk web site at
+<a href="http://adeskftp.autodesk.com/" class="bare">http://adeskftp.autodesk.com/</a> prodsupp/downloads/dxf.pdf (Autodesk,
+2003).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_converting_from_elysium_neutral_facetted_format"><a class="anchor" href="#_converting_from_elysium_neutral_facetted_format"></a>3. Converting From Elysium Neutral Facetted Format</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Elysium Inc.  was founded in 1984 to provide product structure
+synchronization and compatibility between different CAD systems.  The
+company claims to hold the industry&#8217;s highest translation success rate
+and relies on three of its products (CADporter, CADdoctor, and
+CADserver) to convert geometry between a large number of formats,
+including Pro/E, Unigraphics, ABAQUS/CAE, ACIS, CATIA, Inventor,
+I-deas, Metrix Build!IT, One Space Designer, Parasolid, and SolidWorks
+(Elysium, 2003).</p>
+</div>
+<div class="paragraph">
+<p>The <code>enf-g</code> converter was originally written when BRL-CAD developers
+needed an intermediate format-the Elysium neutral facetted file
+format-to allow the conversion of Unigraphics geometry to BRL-CAD.
+The converter converts each part to a BRL-CAD region consisting of one
+BOT primitive.  Ident numbers are incremented for each region.  If a
+part name mapping file is provided, part names in the input file will
+be output using the corresponding names from the mapping file.  The
+part name mapping file may look similar to the following:</p>
+</div>
+<div class="listingblock">
+<div class="title">Part name mapping</div>
+<div class="content">
+<pre>01a3-011-03    washer, flat
+01a2-011-02    nut, flex
+.
+.
+.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The syntax for the <code>enf-g</code> command is as follows:</p>
+</div>
+<div class="paragraph">
+<p><code><strong class="cmd">enf-g</strong> <em class="path">input_file</em> <em class="path">output.g</em></code></p>
+</div>
+<div class="paragraph">
+<p>The options for the command are as follows:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code class="opt">-i starting_ident</code> </dt>
+<dd>
+<p>sets the starting ident number (default is
+1000).</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-n part_name_mapping</code> </dt>
+<dd>
+<p>sets the mapping from input names to
+output names.</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-t tolerance_distance</code> </dt>
+<dd>
+<p>sets distance calculation tolerance
+(in millimeters) (default is 0.005).</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>For more information on the Elysium file format and import
+possibilities, see the Elysium web site at <a href="http://www.elysiuminc.com" class="bare">http://www.elysiuminc.com</a>
+(Elysium, 2003).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_converting_from_euclid_format"><a class="anchor" href="#_converting_from_euclid_format"></a>4. Converting From EUCLID Format</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>EUCLID is one of Europe&#8217;s primary product design, manufacturing, and
+engineering CAD packages (though it is quickly being superseded by
+CATIA). Formerly distributed by the European Aeronautic Defence and
+Space Company&#8217;s Matra Datavision subsidiary and now a product of the
+IBM subsidiary MDTVISION, the package was developed for the design and
+manufacture of complex models and has been used on major systems such
+as the Airbus, Eurocopter, Ariane, Eurofighter, Astrium, and
+Euromissile.</p>
+</div>
+<div class="paragraph">
+<p>Package features include specialized applications for design, styling,
+drafting, analysis, machining, and product data management.  Recent
+enhancements have focused on automatic creation of 2-D drawings from
+3-D models, milling cycles, two- to four-axis wire cutting, sheet
+metal design, mold design, and standard data exchange format
+interfaces.</p>
+</div>
+<div class="paragraph">
+<p>EUCLID offers several data translation interfaces, including those for
+DXF, IGES, VDA-FS, STL, and SET formats.  In addition, other modules
+are available to help refine and customize data transfer, with direct
+connectivity at two levels available for CATIA (V4/V5) data transfer
+using BREPs to handle surface data.  EUCLID geometry can be output to
+standard graphic (e.g., PostScript, Encapsulated PostScript, and
+Interleaf) and plotting (e.g., CalComp, HP, HP/GL2, OCE, and Versatec)
+formats as well as to an STL file.</p>
+</div>
+<div class="paragraph">
+<p>The <code>euclid-g</code> converter converts an ASCII EUCLID "decoded" format
+file to BRL-CAD.  Each part is converted to a BRL-CAD region
+consisting of a single BOT primitive.</p>
+</div>
+<div class="paragraph">
+<p>The syntax for the converter is as follows:</p>
+</div>
+<div class="paragraph">
+<p><code><strong class="cmd">euclid-g</strong> [<em class="opt">options</em>]</code></p>
+</div>
+<div class="paragraph">
+<p>The options for the command are as follows:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code class="opt">-v</code> </dt>
+<dd>
+<p>verbose; prints out progress information.</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-i <span class="rep">input_euclid_db</span></code> </dt>
+<dd>
+<p>sets input file name
+(default is <code class="path">stdin</code>).</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-o <span class="rep">output_brlcad_db</span></code> </dt>
+<dd>
+<p>sets output file name
+(default is <code class="path">stdout</code>).</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-d tolerance_distance</code> </dt>
+<dd>
+<p>sets distance calculation tolerance
+(in millimeters) (default is 0.005).</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-n</code> </dt>
+<dd>
+<p>produces NMG primitives (default is BOT primitives).</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-x lvl</code> </dt>
+<dd>
+<p>sets librt debug flag (see <code class="path">raytrace.h</code> in the
+binary distribution for definitions of DEBUG_xxx).</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-X lvl</code> </dt>
+<dd>
+<p>sets NMG library debug flag (see <code class="path">nmg.h</code> in the
+binary distribution for definitions of DEBUG_xxx).</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>For more information about the EUCLID file format and import
+possibilities, see the MDTVISION web site at
+<a href="http://support.mdtvision.com" class="bare">http://support.mdtvision.com</a> (MDTVISION, 2003).</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Header file note</div>
+<div class="paragraph">
+<p>Note that all header (.h) files-including <code class="path">raytrace.h</code>,
+<code class="path">nmg.h</code>, and <code class="path">bu.h</code>&#8201;&#8212;&#8201;are accessible in both the source
+and binary distributions of BRL-CAD.  In the binary distribution,
+these files are installed in the <code class="path">/user/brlcad/include/brlcad</code>
+directory.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_converting_from_fastgen_format"><a class="anchor" href="#_converting_from_fastgen_format"></a>5. Converting From FASTGEN Format</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Developed by the Falcon Research and Development Company over 30 years
+ago, FASTGEN has been widely used in the Department of Defense air
+combat system assessment community (e.g., the Air Force Research
+Laboratory, the Joint Technical Coordinating Group for Munitions
+Effectiveness, and the Joint Technical Coordinating Group on Aircraft
+Survivability.  Now distributed by the Survivability/Vulnerability
+Information Analysis Center (SURVIAC) as part of the Vulnerability
+Modeling Tool Set, the FASTGEN format uses geometry BREP based on
+NASTRAN, with data presented in a generic, open text-based file
+format.</p>
+</div>
+<div class="paragraph">
+<p>Components of a target are represented in FASTGEN by triangles,
+quadrilaterals, cones, cylinders, spheres, and hexahedrons.  These
+basic elements are designated as either plate (hollow) or volume
+(solid) mode and combined using a hierarchical structure for the
+formation of components and groups (SURVICE Engineering Company,
+2002).</p>
+</div>
+<div class="paragraph">
+<p>Notable aerospace firms and support organizations that use FASTGEN
+include <em class="org">Lockheed Martin</em>, <em class="org">Boeing</em>, <em class="org">Bell Helicopter</em>
+, <em class="org">Northrop Grumman</em> , <em class="org">Pratt &amp; Whitney</em> , <em class="org">General
+Electric</em> , <em class="org">KETRON</em> , <em class="org">ITT</em> , <em class="org">BAH</em> , <em class="org">SURVICE
+Engineering</em> , and <em class="org">ASI</em> .</p>
+</div>
+<div class="paragraph">
+<p>There are several versions of FASTGEN currently in use.  FASTGEN
+converters include FASTGEN4 and preprocessed FASTGEN Version 3 (also
+referred to as PATCH).</p>
+</div>
+<div class="sect2">
+<h3 id="_fastgen4"><a class="anchor" href="#_fastgen4"></a>5.1. FASTGEN4</h3>
+<div class="paragraph">
+<p>The <code>fast4-g</code> converter converts FASTGEN4 entities to corresponding
+BRL-CAD objects.</p>
+</div>
+<div class="paragraph">
+<p>The syntax for the <code>fast4-g</code> command is as follows:</p>
+</div>
+<div class="paragraph">
+<p><code><strong class="cmd">fast4-g</strong> [<em class="opt">options</em>] <em class="path">fastgen4_input</em> <em class="path">output.g</em></code></p>
+</div>
+<div class="paragraph">
+<p>The options for the command are as follows:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code class="opt">-d</code> </dt>
+<dd>
+<p>prints verbose debugging output.</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-q</code> </dt>
+<dd>
+<p>prints nothing except errors.</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-w</code> </dt>
+<dd>
+<p>prints warnings about creating default names.</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-o <span class="rep">plot_file_name</span></code> </dt>
+<dd>
+<p>creates a UNIX plot file of
+all CTRI and CQUAD elements processed.</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-c component_list</code> </dt>
+<dd>
+<p>processes only the listed region ids; may
+be a list (e.g., 3001,4082,5347) or a range (e.g., 2314-3527).</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-m <span class="rep">muves_file_name</span></code> </dt>
+<dd>
+<p>creates a MUVES warnings
+file containing CHGCOMP and CBACKING elements.</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-b lvl</code> </dt>
+<dd>
+<p>sets libbu debug flag (see <code class="path">bu.h</code> in the binary
+distribution for definitions of BU_DEBUG_xxx).</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-x lvl</code> </dt>
+<dd>
+<p>sets librt debug flag (see <code class="path">raytrace.h</code> in the
+binary distribution for definitions of DEBUG_xxx).</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_preprocessed_fastgen_version_3patch"><a class="anchor" href="#_preprocessed_fastgen_version_3patch"></a>5.2. Preprocessed FASTGEN Version 3/PATCH</h3>
+<div class="paragraph">
+<p>The <code>patch-g</code> converter converts preprocessed FASTGEN version 3 files
+to BRL-CAD format.  The syntax for the command is as follows:</p>
+</div>
+<div class="paragraph">
+<p><code><strong class="cmd">patch-g</strong> [<em class="opt">options</em>] <em class="path">output.g</em></code></p>
+</div>
+<div class="paragraph">
+<p>The options for the command are as follows:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code class="opt">-f <span class="rep">fastgen.rp</span></code> </dt>
+<dd>
+<p>specifies preprocessed FASTGEN
+file (default is <code class="path">stdin</code>).</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-a</code> </dt>
+<dd>
+<p>processes phantom armor.</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-n</code> </dt>
+<dd>
+<p>processes volume mode as plate mode.</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-u #</code> </dt>
+<dd>
+<p>specifies the number of union operations per region
+(default is five).</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-c "x y z"</code> </dt>
+<dd>
+<p>specifies the object&#8217;s center (in inches) (for
+some surface normal calculations).</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-t title</code> </dt>
+<dd>
+<p>specifies optional title (default is "Untitled
+MGED database").</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-o object_name</code> </dt>
+<dd>
+<p>specifies optional top-level name (default is
+"all").</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-p</code> </dt>
+<dd>
+<p>writes volume and plate mode components as BOTs.</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-6</code> </dt>
+<dd>
+<p>processes plate mode triangles as ARB6 solids (overrides
+p option for triangles).</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-i <span class="rep">group.file</span></code> </dt>
+<dd>
+<p>specifies group labels source
+file.</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-m <span class="rep">mat.file</span></code> </dt>
+<dd>
+<p>specifies materials information
+source file.</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-r</code> </dt>
+<dd>
+<p>reverses normals for plate mode triangles.</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-d lvl</code> </dt>
+<dd>
+<p>sets debug level.</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-x lvl</code> </dt>
+<dd>
+<p>sets librt debug flag (see <code class="path">raytrace.h</code> in the
+binary distribution for definitions of DEBUG_xxx).</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-X lvl</code> </dt>
+<dd>
+<p>sets librt NMG debug flag (see <code class="path">nmg.h</code> in the
+binary distribution for definitions of DEBUG_xxx).</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-T tolerance_distance</code> </dt>
+<dd>
+<p>sets distance tolerance (in inches).</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-A parallel_tolerance</code> </dt>
+<dd>
+<p>sets parallel tolerance (sine).</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>For more information about the FASTGEN file formats and import
+possibilities, see the SURVIAC web site at
+<a href="http://www.bahdayton.com/surviac/fastgen.htm" class="bare">http://www.bahdayton.com/surviac/fastgen.htm</a> (SURVIAC, 2003).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_converting_from_iges_format"><a class="anchor" href="#_converting_from_iges_format"></a>6. Converting From IGES Format</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>IGES was developed in 1979 by a consortium of government, industry,
+and academia representatives.  Originally intended to provide a means
+of exchanging graphics and engineering drawings, IGES was extended to
+include solid models as well.  This specification includes so many
+different implementations within itself that conversion between IGES
+flavors has become a small industry.  Thus, conversion to/from IGES is
+a "hit-or-miss" proposition (NIST, 2003).</p>
+</div>
+<div class="paragraph">
+<p>The Product Data Exchange using STEP specification is intended to
+replace IGES and correct the aforementioned deficiency by explicitly
+identifying different types of conversion and requiring converters to
+conform to those types.  BRL-CAD supports conversion of two
+implementations of IGES, entirely facetted BREP and CSG with facetted
+BREP primitives.</p>
+</div>
+<div class="paragraph">
+<p>The syntax for the <code>iges-g</code> converter is as follows:</p>
+</div>
+<div class="paragraph">
+<p><code><strong class="cmd">iges-g</strong> [<em class="opt">options</em>] -o <em class="path">output.g</em> <em class="path">input.iges</em></code></p>
+</div>
+<div class="paragraph">
+<p>The options available for this command are as follows:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code class="opt">-n</code> </dt>
+<dd>
+<p>combines all the rational B-spline surfaces in the file
+into one BRL-CAD spline primitive.</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-d</code> </dt>
+<dd>
+<p>converts drawings in the IGES file to 2-D BRL-CAD NMG
+primitives.</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-3</code> </dt>
+<dd>
+<p>same as the <code class="opt">-d</code> option, but the final projection to
+2-D is not performed. This can produce 3-D drawings in some cases.</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-t</code> </dt>
+<dd>
+<p>converts all trimmed surfaces in the IGES file to a
+single BRL-CAD NMG primitive.</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-N primitive_name</code> </dt>
+<dd>
+<p>specifies a name for single primitive
+created using the <code class="opt">-t</code> or <code class="opt">-n</code> options.</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-p</code> </dt>
+<dd>
+<p>converts all BREP entities to BRL-CAD NMG primitives
+rather than the default BOT primitives.</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-x lvl</code> </dt>
+<dd>
+<p>sets librt debug flag (see <code class="path">raytrace.h</code> in the
+binary distribution for definitions of DEBUG_xxx).</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-X lvl</code> </dt>
+<dd>
+<p>sets librt NMG debug flag (see <code class="path">nmg.h</code> in the
+binary distribution for definitions of DEBUG_xxx).</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>The <code class="opt">-n</code>, <code class="opt">-d</code>, <code class="opt">-t</code>, and <code class="opt">-3</code> options are
+mutually exclusive.  If none of these four options is provided, the
+default action is to convert only IGES solid model entities (CSG and
+planar face BREP) to BRL-CAD.</p>
+</div>
+<div class="paragraph">
+<p>For more information about the IGES file format and import
+possibilities, see the National Institute of Standards and Technology
+(NIST) web site at <a href="http://www.nist.gov/iges" class="bare">http://www.nist.gov/iges</a> (NIST, 2003).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_converting_from_jack"><a class="anchor" href="#_converting_from_jack"></a>7. Converting From Jack</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jack is a 3-D interactive ergonomics and human factors CAD package
+developed by the University of Pennsylvania&#8217;s Center for Human
+Modeling and Simulation.  Now maintained and distributed by Electronic
+Data Systems (EDS) (the company that now also distributes Unigraphics
+and NASTRAN), the package enables users to study and improve the
+ergonomics of product design and workplace tasks through the
+positioning of biomechanically accurate digital humans of various
+sizes in virtual environments.  Jack and Jill digital "humans" can
+tell engineers what they can see and reach, how comfortable they are,
+when and why they&#8217;re getting hurt, when they&#8217;re getting tired, and
+other important ergonomics information.  The package&#8217;s principal
+features include a detailed human model, realistic behavioral
+controls, anthropometric scaling, task animation and evaluation
+systems, view analysis, automatic reach and grasp, and collision
+detection and avoidance (The University of Pennsylvania, 2001; EDS,
+2003a).</p>
+</div>
+<div class="paragraph">
+<p>The <code>jack-g</code> converter creates a single region consisting of a single
+BOT primitive.  The syntax for the converter is as follows:</p>
+</div>
+<div class="paragraph">
+<p><code><strong class="cmd">jack-g</strong> [<em class="opt">options</em>] <em class="path">input.jack</em> <em class="path">output.g</em></code></p>
+</div>
+<div class="paragraph">
+<p>The options for this command are:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code class="opt">-r region_name</code> </dt>
+<dd>
+<p>specifies a name for the BRL-CAD region
+created. If this option is not specified, the input file name will be
+used to construct a region name.</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-g group_name</code> </dt>
+<dd>
+<p>specifies the name of a combination to create
+to hold the BRL-CAD region created. If this option is not specified,
+the combination will not be created.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>For more information on the Jack file format and import possibilities,
+see the EDS web page at <a href="http://www.eds.com/products/plm/efactory/jack/" class="bare">http://www.eds.com/products/plm/efactory/jack/</a>
+(EDS, 2003a).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_converting_from_nastran_format"><a class="anchor" href="#_converting_from_nastran_format"></a>8. Converting From NASTRAN Format</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Originally developed under <em class="org">National Aeronautics and Space
+Administration (NASA)</em> sponsorship in the mid-1960s, the NASA
+Structural Analysis (NASTRAN) program was one of the first efforts to
+consolidate structural mechanics into a single computer program.  It
+has since been used as a general-purpose software tool in numerous
+industries, including aerospace, automotive, medical, heavy machinery,
+electronic devices, and consumer products.  The program is developed
+and distributed by the <em class="org">MSC.Software Corporation (MSC)</em> and (as
+of June 2003) the <em class="org">EDS Corporation</em>.  It employs advanced finite
+element analysis computational techniques to analyze material
+strength/performance and evaluate static structures and the dynamic
+motion of structures (SURVICE Engineering Company, 2002; MSC.Software
+Corporation, 2003).</p>
+</div>
+<div class="paragraph">
+<p>NASTRAN&#8217;s nonlinear analysis capabilities can address a wide range of
+static and dynamic problems exhibiting both material and geometric
+nonlinear behavior.  Heat transfer problems can also be solved using
+conduction, convection, and radiation methods under a variety of
+applied loads and boundary conditions.</p>
+</div>
+<div class="paragraph">
+<p>The NASTRAN finite element modeling program is one of the
+general-purpose structural analysis programs used worldwide.  Even
+though it was originally intended for structural analysis problems,
+its current applications include aeroelasticity, heat transfer, fluid
+structure interaction, acoustics, electromagnetics, and many other
+applications.</p>
+</div>
+<div class="paragraph">
+<p>NASTRAN includes a file specification for describing geometric data.
+NASTRAN&#8217;s wide use and adoption by CAD vendors make it well suited as
+a file standard.</p>
+</div>
+<div class="paragraph">
+<p>The <code>nastran-g</code> converter currently only converts CBAR, CROD, CTRIA3,
+and CQUAD4 elements of NASTRAN files to BRL-CAD format.  CBAR and CROD
+elements become cylinders in BRL-CAD.  CTRIA3 and CQUAD4 elements
+become BOT facets.</p>
+</div>
+<div class="paragraph">
+<p>The syntax for the converter is as follows:</p>
+</div>
+<div class="paragraph">
+<p><code><strong class="cmd">nastran-g</strong> [<em class="opt">options</em>]</code></p>
+</div>
+<div class="paragraph">
+<p>The options for the command are as follows:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code class="opt">-i <span class="rep">NASTRAN_input_file</span></code> </dt>
+<dd>
+<p>sets input NASTRAN file
+(default is <code class="path">stdin</code>).</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-o <span class="rep">output.g</span></code> </dt>
+<dd>
+<p>sets output file name (default is
+"nastran.g").</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-n</code> </dt>
+<dd>
+<p>produces NMG primitives (default is BOT primitives).</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-x lvl</code> </dt>
+<dd>
+<p>sets librt debug flag (see <code class="path">raytrace.h</code> in the
+binary distribution for definitions of DEBUG_xxx).</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-X lvl</code> </dt>
+<dd>
+<p>sets NMG library debug flag (see <code class="path">nmg.h</code> in the
+binary distribution for definitions of DEBUG_xxx).</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-t tolerance_distance</code> </dt>
+<dd>
+<p>sets distance calculation tolerance
+(in millimeters) (default is 0.005).</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-m</code> </dt>
+<dd>
+<p>sets input units to millimeters (default is inches).</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>For more on the NASTRAN file format and import possibilities, see the
+<em class="org">MSC</em> web site at <a href="http://www.mscsoftware.com" class="bare">http://www.mscsoftware.com</a> (MSC.Software
+Corporation, 2003) and the <em class="org">EDS</em> web site at
+<a href="http://www.eds.com/products/plm/nastran/" class="bare">http://www.eds.com/products/plm/nastran/</a> (EDS, 2003b).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_converting_from_proe_format"><a class="anchor" href="#_converting_from_proe_format"></a>9. Converting From Pro/E Format</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Distributed by the <em class="org">Parametric Technology Corporation (PTC)</em> ,
+Pro/E is one of the most widely used commercial CAD packages for
+designing, engineering, and manufacturing products.  The long list of
+major corporations that use Pro/E software for Product Lifecycle
+Management includes <em class="org">Boeing</em> , <em class="org">Rolex</em> , <em class="org">Audi</em> ,
+<em class="org">Dell</em> , <em class="org">Nike</em> , <em class="org">Maytag</em> , <em class="org">Braun</em> , and
+<em class="org">Hewlett-Packard</em> (PTC, 2003).</p>
+</div>
+<div class="paragraph">
+<p>Because of Pro/E&#8217;s popularity in the Defense community, the
+Pro/E-to-BRL- CAD converter is one of the most important conversion
+utilities that BRL- CAD offers.  Note that unlike the converters for
+other formats, the Pro/E converter is no longer command-line
+activated.  This converter was written using the Pro/Toolkit module of
+Pro/E and therefore runs as part of the Pro/E program and GUI.</p>
+</div>
+<div class="paragraph">
+<p>Accordingly, in order to use the converter, the user must have a seat
+of Pro/E as well as the BRL-CAD distribution.  Currently, the
+converter is only supported on <em class="org">Silicon Graphics (SGI)</em> machines
+with MIPS processors running the Irix operating system.  The source
+code for this converter is included in the binary distribution, so
+users can compile it for different platforms if they have the
+Pro/Toolkit module for that platform.</p>
+</div>
+<div class="paragraph">
+<p>Pro/E models are made up of two elements: parts and assemblies.  Part
+files (which are designated by a <code class="path">.prt</code> extension) are the basic
+building blocks of Pro/E geometry.  Assembly files (which are
+designated by a <code class="path">.asm</code> extension) are composed of parts and/or
+other assemblies.  The converter produces a BRL-CAD region for each
+Pro/E part that is converted and a BRL- CAD combination for each Pro/E
+assembly that is converted.  Each of these regions will consist of a
+single BOT primitive.</p>
+</div>
+<div class="paragraph">
+<p>The conversion of geometry from Pro/E to BRL-CAD is a two-stage
+process.  This converter first produces the ASCII form of BRL-CAD
+databases.  The user then converts these databases to binary form
+using the <code>asc2g</code> utility.</p>
+</div>
+<div class="paragraph">
+<p>In addition, because Pro/E files for most vehicles are so large (often
+several GBs in size), entire geometries typically cannot be loaded all
+at once.  Thus, the BRL-CAD user often has to convert geometry system
+by system (e.g., engine, transmission, and suspension) and then
+concatenate (i.e., join) them together in a single BRL-CAD geometry
+file.  For more detailed information about this process, see the
+discussion on dbconcat in Volume III of this tutorial series.</p>
+</div>
+<div class="paragraph">
+<p>Pro/E makes extensive use of referenced geometry.  As discussed in the
+previous volume of this tutorial series (see section 5 of Butler
+et al.  [2003]), referencing is the method by which multiple
+occurrences of objects are created by referring to a single object
+numerous times with different orientations and locations for each
+reference.  These references are duplicated in BRL-CAD using
+combinations and transformation matrices.  In some cases-such as when
+geometry is used with vulnerability codes that require each region to
+have a unique ident number-users may need to use the <code>xpush</code> command
+in MGED after the conversion is complete to replace the references
+with real geometry.  For more information about this procedure, users
+should consult MGED&#8217;s on-line help or the <code>xpush</code> entry in volume II
+of this tutorial series (see appendix A of Butler et al.  [2001]).</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Keys to Converting Pro/E Geometry</div>
+<div class="paragraph">
+<p>To maximize the efficiency and effectiveness of converting Pro/E
+geometry, the BRL-CAD user should first acquire the following
+information from the Pro/E designer: A list of top-level assemblies&#8201;&#8212;&#8201;This information is vital in helping the BRL-CAD user gain an
+understanding of the overall model structure and know where to begin
+the conversion process.  A mapping of part numbers to part names&#8201;&#8212;&#8201;Although part numbers can be an important aspect of design and
+manufacturing, they have little meaning for vulnerability analysts,
+who are more concerned with the descriptive names of the components
+than the numbers represent.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The command to start the Pro/E program is specified by each installer.
+When Pro/E is started, the program looks for a file named
+<code class="path">protk.dat</code> in a few specific places, one of which is in the
+current directory.  This file informs Pro/E about Pro/TOOLKIT modules
+it should load.  There is a <code class="path">protk.dat</code> file for the
+Pro/E-to-BRL-CAD converter, and it is included in the distribution
+under the pro-engineer directory.  Users should copy this file to the
+directory where they will be starting Pro/E.  After that file is in
+place, Pro/E will load the converter at startup.  If the loading
+succeeds, users will see a message saying "Installation of Proe-BRL
+converter succeeded." With Pro/E started and the converter module
+loaded, the user can open any Pro/E model he wants to convert.</p>
+</div>
+<div class="paragraph">
+<p>The conversion process is started by selecting the <span class="menuseq"><b class="menu">File</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">ProE-BRL</b></span>
+item in the Pro/E drop-down menu.  The converter dialog box, shown in
+<a href="#_fig_converter_dialog_box">Converter dialog box</a>, will then appear.</p>
+</div>
+<div id="_fig_converter_dialog_box" class="imageblock">
+<div class="content">
+<img src="../_images/test_img.eps" alt="test img">
+</div>
+<div class="title">Figure 1. Converter dialog box</div>
+</div>
+<div class="paragraph">
+<p>The following list provides a description of the use and functionality
+of the primary elements in the dialog box.  Note that the box is
+preloaded with reasonable defaults for many of the inputs.  In
+addition, if the user has a question about any of the entry windows,
+check boxes, or buttons, he can move the mouse over them to see a
+brief explanation of their use.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="label">Output File Name</span>&#8201;&#8212;&#8201;This is the name of the file to receive
+the ASCII output.</p>
+</li>
+<li>
+<p><span class="label">Log File Name</span>&#8201;&#8212;&#8201;If provided, verbose status logging will
+be written to that file.</p>
+</li>
+<li>
+<p><span class="label">Part Name File</span>&#8201;&#8212;&#8201;If provided, the converter will use that
+information to map Pro/E part and assembly names into the specified
+BRL-CAD object names. This file is simply a text file with each line
+specifying a Pro/E part or assembly name and a BRL-CAD object name
+separated by white space. Note that the BRL-CAD names should not
+include any special characters such as "/", "[", "]", or white
+space.</p>
+</li>
+<li>
+<p><span class="label">Starting Ident Number</span>&#8201;&#8212;&#8201;Ident numbers will be assigned to
+the resulting BRL-CAD regions sequentially starting with the number
+that appears in the window.</p>
+</li>
+<li>
+<p><span class="label">Max Tessellation Error</span>&#8201;&#8212;&#8201;This value (expressed in
+millimeters) is used to control the coarseness of the
+tessellation. It is the maximum distance between the actual surface
+and its tessellated approximation. Smaller values here will result
+in finer tessellations and more triangles. The default value is
+reasonable for ballistic vulnerability analysis purposes.</p>
+</li>
+<li>
+<p><span class="label">Angle Control Value</span>&#8201;&#8212;&#8201;This is a number between 0 and 1
+that provides additional control over the coarseness of the
+tessellation. The exact relationship between the tessellation and
+this value is not specified in the Pro/E documentation, but the
+default value of 0.5 seems to work well.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For more information about the Pro/E file format and import
+possibilities, see the <em class="org">Parametric Technology Corporation (PTC)</em>
+web site at <a href="http://www.ptc.com" class="bare">http://www.ptc.com</a> (PTC, 2003).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_sec_converting_from_stl"><a class="anchor" href="#_sec_converting_from_stl"></a>10. Converting From STL Format</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The STL format was developed by <em class="org">3D Systems, Inc.</em> , in the 1980s
+for use with its StereoLithography Apparatus (SLA). The SLA device
+produces a physical 3-D model based on an STL format file.  Because of
+its simplicity, the STL format has become an industry standard for
+exchanging 3-D models.  Unfortunately, this simplicity also presents
+some limitations.</p>
+</div>
+<div class="paragraph">
+<p>The format consists only of triangles, and each triangle is
+represented by three vertices and a surface normal vector.  Because
+the vertices for each triangle are explicitly listed, rather than
+indexed from a list, the topology must be inferred by the receiving
+system, which can sometimes lead to incorrect geometry.</p>
+</div>
+<div class="paragraph">
+<p>STL files may be either ASCII or binary.  The ASCII format includes
+the capability of including more than one solid part and an optional
+name for each part, while the binary format can only support a single
+solid part with no naming.</p>
+</div>
+<div class="paragraph">
+<p>The <code>stl-g</code> converter converts STL format to BRL-CAD.  The STL format
+is entirely triangles.  The resulting BRL-CAD database will consist of
+one or more regions and a top-level combination named "all," which
+contains all the regions produced.  Each region will consist of a
+single BOT primitive.</p>
+</div>
+<div class="paragraph">
+<p>Note that the ASCII format STL file includes a capability to contain
+more than one solid part.  The regions created will be named according
+to the name specified in the STL file unless a name is provided on the
+command line.  If the STL file does not specify any name, and the user
+does not provide a name, then the regions produced in the BRL-CAD
+database will be constructed from the name of the STL file.</p>
+</div>
+<div class="paragraph">
+<p>The syntax for the <code>stl-g</code> converter is as follows:</p>
+</div>
+<div class="paragraph">
+<p><code><strong class="cmd">stl-g</strong> [<em class="opt">options</em>] <em class="path">input.stl</em> <em class="path">output.g</em></code></p>
+</div>
+<div class="paragraph">
+<p>where <code class="path">input.stl</code> is the STL file to be converted and
+<code class="path">output.g</code> is the name of the BRL-CAD database to receive the
+converted output.</p>
+</div>
+<div class="paragraph">
+<p>The options for this command are as follows:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code class="opt">-b</code> </dt>
+<dd>
+<p>designates that the input STL file is in binary format
+(the default is ASCII).</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-c units</code> </dt>
+<dd>
+<p>specifies the units used in the STL file. Choices
+include "cm", "m", "in", "ft", and many others (the default is
+millimeters).</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-N name</code> </dt>
+<dd>
+<p>specifies a name for the resulting BRL-CAD
+region. If more than one region is produced, unique region names will
+be constructed by adding a suffix consisting of an underscore and an
+integer.</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-d</code> </dt>
+<dd>
+<p>designates that additional debugging information be
+printed during the conversion.</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-i ident</code> </dt>
+<dd>
+<p>specifies the ident number assigned to the first
+region created during the conversion. Additional regions will be
+assigned sequential ident numbers.</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-I ident</code> </dt>
+<dd>
+<p>specifies the ident number to assign to all the
+BRL-CAD regions created during this conversion. (This option and the
+<code class="opt">-i ident</code> option are mutually exclusive.)</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-m material_code</code> </dt>
+<dd>
+<p>specifies the integer material code to be
+assigned to each BRL-CAD region created during this conversion.</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-t tolerance_distance</code> </dt>
+<dd>
+<p>specifies the minimum distance (in
+millimeters) allowed between distinct vertices. Vertices closer than
+this minimum will be considered to be the same vertex (the default
+value is 0.005 mm).</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-x librt_debug_flag</code> </dt>
+<dd>
+<p>specifies a flag for the raytracing
+library that will result in additional debug log messages (see
+<code class="path">librt/debug.h</code> in the binary distribution for details).</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>For more information on the STL file format and import possibilities,
+see the <em class="org">3D Systems</em> web site at <a href="http://www.3dsystems.com" class="bare">http://www.3dsystems.com</a> (3D
+Systems, 2003).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_converting_from_tankill_format"><a class="anchor" href="#_converting_from_tankill_format"></a>11. Converting From TANKILL Format</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Distributed by the Advantage Business Group, a contractor to the
+British Ministry of Defence, the TANKILL format is used with the
+TANKILL vulnerability and lethality assessment code.  This format is
+another purely triangulated representation of solid objects.</p>
+</div>
+<div class="paragraph">
+<p>The syntax for the tankill-g converter is as follows:</p>
+</div>
+<div class="paragraph">
+<p><code><strong class="cmd">tankill-g</strong> [<em class="opt">options</em>]</code></p>
+</div>
+<div class="paragraph">
+<p>The options for the command are as follows:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code class="opt">-v</code> </dt>
+<dd>
+<p>verbose; prints out progress information.</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-n</code> </dt>
+<dd>
+<p>produces NMG primitives (default is BOT primitives).</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-i <span class="rep">input.tkl</span></code> </dt>
+<dd>
+<p>specifies the input TANKILL file
+(default is <code class="path">stdin</code>).</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-o <span class="rep">output.g</span></code> </dt>
+<dd>
+<p>specifies the output BRL-CAD file
+(default is <code class="path">tankill.g</code>).</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-k</code> </dt>
+<dd>
+<p>keeps components with id = 1001 (normally skipped).</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-x lvl</code> </dt>
+<dd>
+<p>sets librt debug flag (see <code class="path">raytrace.h</code> in the
+binary distribution for definitions of DEBUG_xxx).</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-X lvl</code> </dt>
+<dd>
+<p>sets NMG library debug flag (see <code class="path">nmg.h</code> in the
+binary distribution for definitions of DEBUG_xxx).</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>For more information on the TANKILL file format and import
+possibilities, contact the <em class="org">Advantage Business Group</em> at</p>
+</div>
+<div class="literalblock address">
+<div class="content">
+<pre>the Barbician
+East Street
+Farnham, Surrey
+GU9 7TB</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or visit the web site at <a href="http://www.advantage-business.co.uk" class="bare">http://www.advantage-business.co.uk</a>
+(Advantage Business Group, 2003).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_converting_from_unigraphics_format"><a class="anchor" href="#_converting_from_unigraphics_format"></a>12. Converting From Unigraphics Format</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Like Pro/E, Unigraphics is a widely popular CAD format used by
+thousands of companies in the United States and abroad, including
+<em class="org">General Motors</em> , <em class="org">Ford</em> , <em class="org">Kodak</em> , <em class="org">General
+Electric</em> , <em class="org">Pratt &amp; Whitney</em> , <em class="org">Boeing</em> , and
+<em class="org">Samsung</em> .  Now distributed by <em class="org">EDS</em> (the company that also
+distributes Jack and a version of NASTRAN), the Unigraphics toolset
+addresses traditional CAD/CAM/CAE, conceptual and industrial design,
+knowledge-based engineering, real-time design collaboration, and
+process automation (EDS, 2003c).</p>
+</div>
+<div class="paragraph">
+<p>There are three modeling methodologies offered with Unigraphics.
+First, explicit (or traditional) modeling uses points, curves, and
+surfaces with no associativity or history.  Second, history-based
+modeling uses associative geometric entities.  Third, direct modeling
+uses a combination of both explicit and history-based modeling and
+also allows the global application of geometric rules and constraints
+across geometry of all origins (SURVICE Engineering Company, 2002).</p>
+</div>
+<div class="paragraph">
+<p>Unigraphics bases its component geometric modeling capabilities on the
+Parasolid geometry engine (developed by EDS in Cambridge, England) and
+related XT file format.  This enables Parasolid-based systems (e.g.,
+Unigraphics, Solid Edge, and systems by Parametric Technology,
+SolidWorks, Bentley Systems, CADKEY, ANSYS, Mechanical Dynamics, and
+MSC.Software) to share and exchange geometric data without translation
+via an interoperable data pipeline (SURVICE Engineering Company,
+2002).</p>
+</div>
+<div class="paragraph">
+<p>Because the Unigraphics-to-BRL-CAD converter, ug-g, was written using
+the Unigraphics UG/Open API library, users must have a Unigraphics
+UG/Open execute or development license in order to run it.  This
+converter is compiled for SGI Irix machines running on MIPS
+processors; however, users can compile it for other platforms by
+obtaining the BRL-CAD source distribution and a UG/Open development
+license from Unigraphics.</p>
+</div>
+<div class="paragraph">
+<p>This converter creates a BRL-CAD region consisting of a single BOT
+primitive for each Unigraphics part and a combination for each
+Unigraphics assembly.  Each instance of a Unigraphics part is
+converted independently, so there are no transformation matrices
+created in the resulting BRL-CAD model.  The BRL-CAD regions are given
+the same name as the parts are assigned in the Unigraphics model,
+unless a part-name mapping file is provided.  Region names are made
+unique, if necessary, by adding a suffix consisting of a dot and an
+integer number.</p>
+</div>
+<div class="paragraph">
+<p>The syntax for this converter is as follows:</p>
+</div>
+<div class="paragraph">
+<p><code><strong class="cmd">ug-g</strong> [<em class="opt">options</em>] <em class="opt">-o</em> <em class="path">output.g</em> <em class="path">UG_part_file</em> [<em class="opt">subpart1</em> <em class="opt">subpart2</em> &#8230;&#8203;]</code></p>
+</div>
+<div class="paragraph">
+<p>where the <code class="path">UG_part_file</code> is a Unigraphics part file.  If
+subparts are listed on the command line, only those named parts in the
+specified part file will be converted.</p>
+</div>
+<div class="paragraph">
+<p>The available options are as follows:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code class="opt">-d level</code> </dt>
+<dd>
+<p>specifies a debug level for additional log
+messages. Currently, any nonzero value here provides additional
+logging.</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-i initial_ident</code> </dt>
+<dd>
+<p>specifies the ident number for the first
+region created by the conversion. Subsequent regions are assigned
+sequential ident numbers.</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-n <span class="rep">part_name_file</span></code> </dt>
+<dd>
+<p>specifies a file containing
+a mapping of Unigraphics part and/or assembly names to BRL-CAD object
+names. If this file is provided, it will be used to create object
+names in the BRL-CAD model. The format of this file is simply a line
+per part, with the Unigraphics part/assembly name followed by the
+desired BRL- CAD object name, separated by white space. Note that the
+usual restrictions for BRL-CAD object names apply (e.g., no spaces, no
+special symbols, etc.) For a detailed discussion of recommended naming
+schemes and restrictions, see section 4 of Volume III (Butler et al.,
+2003).</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-R refset_name</code> </dt>
+<dd>
+<p>specifies a desired reference set (which
+Unigraphics uses to provide additional control over assembly
+components), overriding the reference set specified in the Unigraphics
+model.</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-f</code> </dt>
+<dd>
+<p>facetizes all the geometry. If this option is not
+specified, the converter will attempt to create CSG equivalent
+geometry wherever possible.</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-s</code> </dt>
+<dd>
+<p>lists all features that were attempted to convert
+to CSG. (This option and the <code class="opt">-f</code> option are mutually exclusive.)</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-u</code> </dt>
+<dd>
+<p>extracts surface normals from the Unigraphics
+model. Using this option will result in a BRL-CAD model that is
+significantly larger than when not using it, but raytraced objects
+will appear much smoother.</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-o <span class="rep">output.g</span></code> </dt>
+<dd>
+<p>specifies the name of the file to
+receive the BRL-CAD model.</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-t tolerance_distance</code> </dt>
+<dd>
+<p>specifies the minimum distance (in
+millimeters) allowed between distinct vertices. Vertices closer than
+this minimum will be considered to be the same vertex (the default
+value is 0.005 mm).</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-a surface_normal_tolerance</code> </dt>
+<dd>
+<p>specifies a surface normal error
+tolerance (in degrees) for the facetization process. By default, the
+surface normal is not considered during facetization.</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-c min_chamfer</code> </dt>
+<dd>
+<p>specifies that any chamfer with dimensions
+less than the provided minimum (in millimeters) will be ignored. By
+default, no features are ignored.</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-r min_round</code> </dt>
+<dd>
+<p>specifies that any round (or fillet) with a
+radius less than the specified minimum (in millimeters) will be
+ignored. By default, no features are ignored.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>For more information on the Unigraphics file format and conversion
+potential, see the <em class="org">EDS</em> web site at
+<a href="http://www.eds.com/products/plm/unigraphics_nx/" class="bare">http://www.eds.com/products/plm/unigraphics_nx/</a> (EDS, 2003c).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_converting_from_viewpoint_datalabs_format"><a class="anchor" href="#_converting_from_viewpoint_datalabs_format"></a>13. Converting From Viewpoint Datalabs Format</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><em class="org">Viewpoint Datalabs</em> started out as a commercial supplier of 3-D
+models, maintaining a large repository of facetted models of many
+objects.  The company has since grown to provide more services than
+models, and its model repository is now maintained by
+<em class="org">Digimation, Inc.</em></p>
+</div>
+<div class="paragraph">
+<p>The <code>viewpoint-g</code> converter converts the Viewpoint Datalabs coor/elem
+format to BRL-CAD format.  Objects in the input files are converted to
+regions, each consisting of a single BOT primitive.  The converter
+will assign vertex normals if they are present in the input files.
+Two files are expected, one that contains vertex coordinates (and
+optional normals) and one that lists the vertex numbers for each
+polygonal face.  This format was used by the original Viewpoint
+Datalabs model repository.  The current repository uses more common
+formats such as DXF and VRML.</p>
+</div>
+<div class="paragraph">
+<p>The syntax for the converter is as follows:</p>
+</div>
+<div class="paragraph">
+<p><code><strong class="cmd">viewpoint-g</strong> [<em class="opt">options</em>]</code></p>
+</div>
+<div class="paragraph">
+<p>The options for the command are as follows:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code class="opt">-c <span class="rep">coord_file_name</span></code> </dt>
+<dd>
+<p>sets the input vertex
+coordinates file name (required).</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-e <span class="rep">elements_file_name</span></code> </dt>
+<dd>
+<p>sets the input faces
+file name (required).</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-o <span class="rep">output_file_name</span></code> </dt>
+<dd>
+<p>sets the output BRL-CAD
+database name (default is <code class="path">viewpoint.g</code>).</p>
+</dd>
+<dt class="hdlist1"><code class="opt">-t tolerance_distance</code> </dt>
+<dd>
+<p>sets distance calculation tolerance
+(in millimeters) (default is 0.005).</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. Conversion is from the ASCII EUCLID decoded format, not native format.
+</div>
+<div class="footnote" id="_footnotedef_2">
+<a href="#_footnoteref_2">2</a>. Converter is part of the Pro/E GUI.
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="chapter3.html">3. Converting From/to ASCII</a></span>
+  <span class="next"><a href="chapter5.html">5. Converting From BRL-CAD</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../ui/js/site.js"></script>
+<script src="../../../ui/js/vendor/lunr.js"></script>
+<script src="../../../ui/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/docs/tutorials/converting/chapter4.html"></script>
+<script async src="../../../ui/../search-index.js"></script>
+<script async src="../../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

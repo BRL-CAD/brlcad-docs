@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>3. Usar el comando Insert en MGED para dimensionar y ubicar figuras :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/es/lecciones/mged/03_utilizar_comando_in.html">
+    <link rel="prev" href="02_opciones_vistas.html">
+    <link rel="next" href="04_prop_materiales.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../ui/css/site.css">
+    <link rel="stylesheet" href="../../../ui/css/search.css">
+    <link rel="stylesheet" href="../../../ui/css/custom.css">
+    <script>var uiRootPath = '../../../ui'</script>
+    <link rel="icon" href="../../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="es" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lecciones</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01_crear_figuras_primitivas.html">1. Crear Figuras Primitivas with MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02_opciones_vistas.html">2. Reconocer las opciones de vistas en MGED</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="03_utilizar_comando_in.html">3. Usar el comando Insert en MGED para dimensionar y ubicar figuras</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="04_prop_materiales.html">4. Asignación de propiedades de los materiales y trazado de rayos (Raytracing) en MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="05_expresiones_booleanas.html">5. Expresiones Booleanas</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="06_crear_una_copa.html">6. Crear una copa</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="07_prop_materiales_copa.html">7. Asignar propiedades de los materiales a una copa</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="08_prop_materiales_copa2.html">8. Asignar más propiedades de los materiales a la copa</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="09_esfera_en_caja_exhibidora.html">9. Crear una esfera en una caja exhibidora transparente</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="10_crear_taza.html">10. Crear una taza</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="11_refinar_taza.html">11. Refinando el modelo de la taza</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="12_taza_desde_gui.html">12. Crear el modelo de una taza utilizando la interfaz de MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="13_ubicar_figuras_en_3d.html">13. Ubicar figuras en espacios 3-D</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="14_ubicar_figuras_en_3d_2.html">14. Ejercicios adicionales de ubicación de imágenes en espacios 3-D</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="15_crear_camion_de_juguete.html">15. Crear un camión de juguete</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="16_mod_tech_struct.html">16. Aprender técnicas de modelado y estructuras</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Spanish</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs/index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../../index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">Spanish</a></li>
+    <li>Lecciones</li>
+    <li><a href="../mged.html">MGED</a></li>
+    <li><a href="03_utilizar_comando_in.html">3. Usar el comando Insert en MGED para dimensionar y ubicar figuras</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/translations/es/modules/lecciones/pages/mged/03_utilizar_comando_in.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">3. Usar el comando Insert en MGED para dimensionar y ubicar figuras</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>En este tutorial usted aprenderá a:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Crear una esfera y un cilindro circular recto (rcc por sus siglas en
+inglés: right circular cylinder)usando el comando make</p>
+</li>
+<li>
+<p>Crear ambas figuras usando el comando in (de insert).</p>
+</li>
+<li>
+<p>Combinar argumentos mediante línea de comandos para racionalizar la
+entrada de variables.</p>
+</li>
+<li>
+<p>Desarrollar un formato de comando combinado para ayudar a manejar
+las variables de línea de comandos.</p>
+</li>
+<li>
+<p>Considerar las convenciones para la elección de los nombres de sus
+objetos.</p>
+</li>
+<li>
+<p>Visualizar sus figuras desde distintas perspectivas utilizando las
+opciones del menú View (Vistas).</p>
+</li>
+<li>
+<p>Cerrar el programa <code class="app">MGED</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Esta lección se centra en la creación de formas a partir de la ventana
+de comandos utilizando los comandos in y make.  Va a crear una esfera
+(SPH) y un cilindro circular recto (RCC), utilizando los comandos de
+modo que usted puede ver cómo trabaja cada comando.  Luego, practicará
+las vistas de su modelo desde diferentes ángulos.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_new_db_myshapes"><a class="anchor" href="#_new_db_myshapes"></a>1. Crear una nueva base de datos desde la línea de comandos.</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Crear una nueva base de datos y nombrarla shapes.g.  Agréguele como
+título el nombre myShapes.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_sphere_make"><a class="anchor" href="#_sphere_make"></a>2. Crear una esfera utilizando el comando make.</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Comience por activar la ventana (por lo general, se logra haciendo
+clic en cualquier parte la ventana). Luego, en el prompt de
+<code class="app">MGED</code> tipee el siguiente comando:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">make sph1.s sph  <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Como pudo apreciar en el tutorial #1, este comando le dice a
+<code class="app">MGED</code> que:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">make</th>
+<th class="tableblock halign-center valign-top">sph1.s</th>
+<th class="tableblock halign-center valign-top">sph</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Cree una figura</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">La nombre sph1.s</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Que sea una esfera</p></td>
+</tr>
+</tbody>
+</table>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/03_wireframe_sph.png" alt="03 wireframe sph">
+</div>
+<div class="title">Figure 1. Vireframe (marco de alambre) de una esfera</div>
+</div>
+<div class="paragraph">
+<p>La figura de una esfera fue creada y en su ventana gráfica aparecerá
+un dibujo de la misma en forma de wireframe.</p>
+</div>
+<div class="paragraph">
+<p>Para crear el rcc desde la ventana de comandos tipee en el prompt:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">make rcc1.s rcc  <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Su ventana gráfica deberá mostrar un rcc grande, con la vista por
+defecto de az35, el25, viéndose como si entersectara con la esfera
+previamente creada.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/03_wireframe_sph_rcc.png" alt="03 wireframe sph rcc">
+</div>
+<div class="title">Figure 2. Wireframe de la esfera y del RCC</div>
+</div>
+<div class="paragraph">
+<p>Utilizar el comando make es la forma más fácil y rápida de crear una
+figura.  De todas maneras, la mayoría de los modelos requieren figuras
+con parámetros específicos, como altura y radio.  Por lo tanto, la
+manera más precisa de crear estas figuras es utilizando el comando in
+(insert).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_in"><a class="anchor" href="#_using_in"></a>3. Utilizar el comando in para crear figuras</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Una vez que la ventana de comandos esté activa al cliquear sobre ella,
+use el comando Z (zap) para despejar la ventana gráfica.  Ya está
+listo para crear una esfera utilizando el comando in.  En el prompt de
+<code class="app">MGED</code> tipee:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">in sph2.s sph <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p><code class="app">MGED</code> responderá con:</p>
+</div>
+<div class="paragraph">
+<p><code>Enter X, Y, Z of vertex:</code></p>
+</div>
+<div class="paragraph">
+<p><code>(Ingrese X, Y, Z del vértice:)</code></p>
+</div>
+<div class="paragraph">
+<p>Debe responderle a <code class="app">MGED</code> con la posición del vértice (centro) de
+la esfera en el espacio.  Tipee entonces en el prompt de <code class="app">MGED</code>:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">4 4 4 <kbd>Enter</kbd></code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Al trabajar con <code class="app">MGED</code>, recibirá algunas preguntas sobre el
+valor de vectores o vértices.  En <code class="app">MGED</code>, un vector representa la
+distancia y dirección desde un punto del espacio a otro, y el vértice
+es sólo un punto en el espacio.  Los valores ingresados para un
+vector, generalmente son utilizados para crear objetos con dimensiones
+específicas.  Los valores ingresador para el vértice ubican los
+objetos en el espacio.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Su esfera estará ahora ubicada en(x,y,z)=(4,4,4), medido en
+milímetros.  Recuerde que los valores se ingresan separados por un
+espacio y se presiona la tecla <kbd>ENTER</kbd> luego. <code class="app">MGED</code> le
+preguntará entonces.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>      Enter radius:
+      (Ingrese radio:)
+      Tipee.
+
+      3 kbd:[Enter]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>El radio de la esfera será de 3 mm.  El siguiente cuadro de diálogo
+aparecerá en la ventana de comandos (incluyendo las respuestas
+correspondientes):</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre><span class="prompt">mged></span> <span class="cmd">in sph2.s sph</span>
+<span class="prompt">Enter X, Y, Z of vertex:</span> <span class="cmd">4 4 4</span>
+<span class="prompt">Enter radius:</span> <span class="cmd">3</span>
+<span class="output">51 vectors in 0.000543 sec</span></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>La última línea de este diálogo es simplemente un registro de la
+velocidad de la computadora en dibujar la forma.  No tiene ninguna
+utilidad real para el usuario en este punto.</p>
+</div>
+<div class="paragraph">
+<p>La esfera ha sido creada y su wireframe (marco de alambre), similar al
+de la esfera creada con el comando make aparecerá en su ventana
+gráfica.</p>
+</div>
+<div class="paragraph">
+<p>Para crear el RCC correcto, tipee en el prompt de la línea de
+comandos:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">in rcc2.s rcc <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p><code class="app">MGED</code> le pedirá que ingrese los valores x, y, z de los vértices
+(donde quiere que el centro de un extremo de la RCC sea colocado en el
+espacio). Tipee.</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">4 4 0 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Asegúrese de dejar espacios entre cada valor.</p>
+</div>
+<div class="paragraph">
+<p><code class="app">MGED</code> le pedirá ahora que ingrese los valores x, y, z para la
+altura (H: de height) del vector (que determinará que tal alto desea
+que sea su rcc). Tipee:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">0 0 4 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>El último valor requerido será el radio del RCC.  Tipee:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">3 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>El diálogo en la ventana de comandos para la creación de
+RCC debería verso como el siguiente:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>      <span class="prompt">mged></span> <span class="cmd">in rcc2.s rcc</span>
+      <span class="prompt">Enter X, Y, Z of vertex:</span> 4 4 0
+      <span class="prompt">Enter X, Y, Z of height (H) vector:</span> 0 0 4
+      <span class="prompt">Enter radius:</span> 3
+      <span class="output">42 vectors in 0.000214 sec</span></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Deberías tener ahora nuevas versiones de la esfera y del RCC.  Compare
+las dimensiones de éstos con los creados anteriormente.  El rcc está
+ahora en proporción con la esfera y posicionado en el espacio a la
+izquierda en la ventana gráfica.  Al especificar las dimensiones de
+las formas y sus ubicaciones en el espacio, se ha podido crear el
+modelo de mayor precisión.</p>
+</div>
+<table class="tableblock frame-none grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../_images/mged/03_shapes_make_command.png" alt="03 shapes make command">
+</div>
+<div class="title">Figure 3. Figuras creadas con el comando make</div>
+</div></div></td>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../_images/mged/03_shapes_in_command.png" alt="03 shapes in command">
+</div>
+<div class="title">Figure 4. Figuras creadas con el comando in</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_args_on_one_line"><a class="anchor" href="#_args_on_one_line"></a>4. Combinar argumentos en una línea</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Otra forma de usar el comando in es combinar toda la información
+requerida en una línea.  Una vez que se familiariarice con el comando
+in, preferirá probablemente este método ya que permite mayor velocidad
+en el ingreso de parámetros.</p>
+</div>
+<div class="paragraph">
+<p>Despejar la ventana gráfica con el comando Z.  Ahora cree una nueva
+esfera tipeando en el prompt de <code class="app">MGED</code>:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">in sph3.s sph 4 4 4 3 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Esta forma larga de ingresar el comando significa:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">in</th>
+<th class="tableblock halign-center valign-top">sph3.s</th>
+<th class="tableblock halign-center valign-top">sph</th>
+<th class="tableblock halign-center valign-top">4</th>
+<th class="tableblock halign-center valign-top">4</th>
+<th class="tableblock halign-center valign-top">4</th>
+<th class="tableblock halign-center valign-top">3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Insertar una figura primitiva</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Llamarla sph3.s</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Que la figura sea una esfera</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Dar a la x del vértice el valor 4</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Dar a la y del vértice el valor 4</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Dar a la z del vértice el valor 4</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Dar al radio el valor 3</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Para hacer un RCC correctamente usando este método, tipee en la línea
+de comandos:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">in rcc3.s rcc 4 4 0 0 0 4 3 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Este comando significa:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">in</th>
+<th class="tableblock halign-center valign-top">rcc3.s</th>
+<th class="tableblock halign-center valign-top">rcc</th>
+<th class="tableblock halign-center valign-top">4</th>
+<th class="tableblock halign-center valign-top">4</th>
+<th class="tableblock halign-center valign-top">0</th>
+<th class="tableblock halign-center valign-top">0</th>
+<th class="tableblock halign-center valign-top">0</th>
+<th class="tableblock halign-center valign-top">4</th>
+<th class="tableblock halign-center valign-top">3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top" rowspan="2"><p class="tableblock">Insertar una figura primitiva</p></td>
+<td class="tableblock halign-center valign-top" rowspan="2"><p class="tableblock">Llamarla rcc3.s</p></td>
+<td class="tableblock halign-center valign-top" rowspan="2"><p class="tableblock">Hacer de la figura primitiva un cilindro circular recto (RCC)</p></td>
+<td class="tableblock halign-center valign-top" rowspan="2"><p class="tableblock">Dar a la x del vértice el valor 4</p></td>
+<td class="tableblock halign-center valign-top" rowspan="2"><p class="tableblock">Dar a la y del vértice el valor 4</p></td>
+<td class="tableblock halign-center valign-top" rowspan="2"><p class="tableblock">Dar a la z del vértice el valor 0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Dar a la x del vector de altura el valor 0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Dar a la y del vector de altura el valor 0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Dar a la z del vector de altura el valor 4</p></td>
+<td class="tableblock halign-center valign-top" rowspan="2"><p class="tableblock">Dar al radio el valor de 3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" colspan="3"><p class="tableblock">Hacer la forma de cuatro unidades de largo, apuntando directamente hacia z positivo</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_command_combined_in"><a class="anchor" href="#_command_combined_in"></a>5. Desarrollar un formato de comando combinado para el comando in</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cuando usted comienza a usar <code class="app">MGED</code>, si desea utilizar la ventana
+de comandos en lugar de la interfaz gráfica de usuario, probablemente
+querrá hacer algunos formularios en blanco de comandos combinados para
+cada tipo de forma primitiva que usted esté creando.  Esto puede
+acelerar el proceso de diseño y ayudar a recordar que los valores
+deben ser presentados para cada forma.  Una forma de la esfera podría
+ser:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">in</th>
+<th class="tableblock halign-center valign-top">?</th>
+<th class="tableblock halign-center valign-top">sph</th>
+<th class="tableblock halign-center valign-top">?</th>
+<th class="tableblock halign-center valign-top">?</th>
+<th class="tableblock halign-center valign-top">?</th>
+<th class="tableblock halign-center valign-top">?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top" rowspan="2"><p class="tableblock">Insertar una figura</p></td>
+<td class="tableblock halign-center valign-top" rowspan="2"><p class="tableblock">Nombre de la figura</p></td>
+<td class="tableblock halign-center valign-top" rowspan="2"><p class="tableblock">La figura es una esfera</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Valor de x</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Valor de y</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Valor de z</p></td>
+<td class="tableblock halign-center valign-top" rowspan="2"><p class="tableblock">radio de la esfera</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" colspan="3"><p class="tableblock">Centro</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Un ejemplo para el RCC puede ser:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">in</th>
+<th class="tableblock halign-center valign-top">?</th>
+<th class="tableblock halign-center valign-top">rcc</th>
+<th class="tableblock halign-center valign-top" colspan="3">?</th>
+<th class="tableblock halign-center valign-top" colspan="3">?</th>
+<th class="tableblock halign-center valign-top">?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top" rowspan="2"><p class="tableblock">Insertar figura primitiva</p></td>
+<td class="tableblock halign-center valign-top" rowspan="2"><p class="tableblock">Nombre de la figura</p></td>
+<td class="tableblock halign-center valign-top" rowspan="2"><p class="tableblock">La figura es un cilindro circular recto</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Valor de x</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Valor de y</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Valor de z</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Valor de x</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Valor de y</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Valor de z</p></td>
+<td class="tableblock halign-center valign-top" rowspan="2"><p class="tableblock">radio del rcc</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" colspan="3"><p class="tableblock">Vértice</p></td>
+<td class="tableblock halign-center valign-top" colspan="3"><p class="tableblock">Vector de altura</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mged_naming_conventions"><a class="anchor" href="#_mged_naming_conventions"></a>6. Considerar los nombres convencionales para las figuras en <code class="app">MGED</code></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Usted puede haber notado que cada vez que se crea una esfera o CCR, se
+han asignado nombres diferentes.  A <code class="app">MGED</code> no le afecta en nada
+el nombre que le dé a una forma, pero puede ayudar el uso de
+convenciones sobre los nombres de las formas.  Sólo tenga en cuenta
+también que cada nombre debe ser único en la base de datos, y para las
+versiones anteriores a <code class="app">BRL-CAD</code> 6.0, los nombres están limitados
+a 16 caracteres de longitud.</p>
+</div>
+<div class="paragraph">
+<p>En esta lección le asignamos nombres a las formas en función de su
+tipo de figura y el orden en el que los creó.  Lo hicimos porque las
+formas no tenía ninguna función real, salvo servir de ejemplos.</p>
+</div>
+<div class="paragraph">
+<p>Al crear modelos reales, sin embargo, es probable que quiera asignar
+nombres como hemos hecho con los nombres de los componentes del radio,
+que se basan en sus funciones (por ejemplo, btn para el botón, ant
+para la antena, etc.)</p>
+</div>
+<div class="paragraph">
+<p>Si usted trabaja con otros modeladores con experiencia, consulte con
+ellos para ver qué conjunto de convenciones utilizarán.  Si trabaja
+solo, desarrolle su un conjunto de convenciones al nombrar sus figuras
+de forma que funcione para usted, y úselo de forma coherente.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_view_shapes"><a class="anchor" href="#_view_shapes"></a>7. Visualización de las figuras</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Practique ver sus nuevas formas mediante el menú View
+(Vistas). Manipule la vista con las diferentes combinaciones entre el
+mouse y las teclas identificadas en el tutorial anterior.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_insert_command_quit"><a class="anchor" href="#_using_insert_command_quit"></a>8. Salir de <code class="app">MGED</code></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Si desea salir de <code class="app">MGED</code> tipee la letra q o la palabra quit luego
+del prompt de la ventana de comandos y luego presione ENTER.  También
+puede cerrar el programa seleccionando Exit (Salir) en el menú File
+(Archivo).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_insert_command_review"><a class="anchor" href="#_using_insert_command_review"></a>9. Repasemos</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>En este tutorial usted aprendió a:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Crear una esfera y un cilindro circular recto usando el comando
+make.</p>
+</li>
+<li>
+<p>Crear ambas figuras usando el comando in (de insert).</p>
+</li>
+<li>
+<p>Combinar argumentos mediante línea de comandos para racionalizar la
+entrada de variables.</p>
+</li>
+<li>
+<p>Desarrollar un formato de comando combinado para ayudar a manejar
+las variables de línea de comandos.</p>
+</li>
+<li>
+<p>Considerar las convenciones para la elección de los nombres de sus
+objetos.</p>
+</li>
+<li>
+<p>Visualizar sus figuras desde distintas perspectivas utilizando las
+opciones del menú View (Vistas).</p>
+</li>
+<li>
+<p>Cerrar el programa <code class="app">MGED</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="02_opciones_vistas.html">2. Reconocer las opciones de vistas en MGED</a></span>
+  <span class="next"><a href="04_prop_materiales.html">4. Asignación de propiedades de los materiales y trazado de rayos (Raytracing) en MGED</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../ui/js/site.js"></script>
+<script src="../../../ui/js/vendor/lunr.js"></script>
+<script src="../../../ui/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/es/lecciones/mged/03_utilizar_comando_in.html"></script>
+<script async src="../../../ui/../search-index.js"></script>
+<script async src="../../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

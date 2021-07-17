@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>11. Refinando el modelo de la taza :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/es/lecciones/mged/11_refinar_taza.html">
+    <link rel="prev" href="10_crear_taza.html">
+    <link rel="next" href="12_taza_desde_gui.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../ui-es/css/site.css">
+    <link rel="stylesheet" href="../../../ui-es/css/search.css">
+    <link rel="stylesheet" href="../../../ui-es/css/custom.css">
+    <script>var uiRootPath = '../../../ui-es'</script>
+    <link rel="icon" href="../../../ui-es/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../../ui-es/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="es" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lecciones</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01_crear_figuras_primitivas.html">1. Crear Figuras Primitivas with MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02_opciones_vistas.html">2. Reconocer las opciones de vistas en MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03_utilizar_comando_in.html">3. Usar el comando Insert en MGED para dimensionar y ubicar figuras</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="04_prop_materiales.html">4. Asignación de propiedades de los materiales y trazado de rayos (Raytracing) en MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="05_expresiones_booleanas.html">5. Expresiones Booleanas</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="06_crear_una_copa.html">6. Crear una copa</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="07_prop_materiales_copa.html">7. Asignar propiedades de los materiales a una copa</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="08_prop_materiales_copa2.html">8. Asignar más propiedades de los materiales a la copa</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="09_esfera_en_caja_exhibidora.html">9. Crear una esfera en una caja exhibidora transparente</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="10_crear_taza.html">10. Crear una taza</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="11_refinar_taza.html">11. Refinando el modelo de la taza</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="12_taza_desde_gui.html">12. Crear el modelo de una taza utilizando la interfaz de MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="13_ubicar_figuras_en_3d.html">13. Ubicar figuras en espacios 3-D</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="14_ubicar_figuras_en_3d_2.html">14. Ejercicios adicionales de ubicación de imágenes en espacios 3-D</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="15_crear_camion_de_juguete.html">15. Crear un camión de juguete</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="16_mod_tech_struct.html">16. Aprender técnicas de modelado y estructuras</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Spanish</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../../index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">Spanish</a></li>
+    <li>Lecciones</li>
+    <li><a href="../mged.html">MGED</a></li>
+    <li><a href="11_refinar_taza.html">11. Refinando el modelo de la taza</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/translations/es/modules/lecciones/pages/mged/11_refinar_taza.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">11. Refinando el modelo de la taza</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>En este tutorial usted aprenderá a:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Asignar propiedades de los materiales a la taza utilizando el
+comando mater.</p>
+</li>
+<li>
+<p>Refinar la taza.</p>
+</li>
+<li>
+<p>Combinar las figuras.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>En este capítulo, vamos a refinar la taza que usted hizo en el
+tutorial anterior.
+Abra la base de datos creada anteriormente llamada mug.g.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mug_mater_prop_mater_cmd"><a class="anchor" href="#_mug_mater_prop_mater_cmd"></a>1. Asignando propiedades de los materiales a la taza utilizando elcomando <code>mater</code></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>La asignación de propiedades de los materiales a una región se puede
+hacer ya sea con el comando mater (materia) o con el comando shader
+(sombreado). El programa responderá con una serie de preguntas
+referidas a los distintos parámetros del sombreado.</p>
+</div>
+<div class="paragraph">
+<p>El sombreado más comunmente utilizado es el de plástico, que utiliza
+el modelo de sombreado de Phong.  Seleccione el sombreado de plástico
+y establezca el color en un tono medio de sombreado verde.  El diálogo
+en la ventana de comandos debería similar al siguiente:</p>
+</div>
+<div class="paragraph">
+<p><code class="userinput"><span class="prompt">mged&gt;</span> <span class="cmd">mater mug.r</span> <kbd>Enter</kbd></code></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>	   Shader =
+	   Shader? ('del' to delete, CR to skip) plastic kbd:[Enter]
+	   Color = (No color specified)
+	   Color R G B (0..255)? ('del' to delete, CR to skip)
+	   32 128 32 kbd:[Enter]
+	   Inherit = 0: lower nodes (towards leaves) override
+	   Inheritance (0|1)? (CR to skip) 0 kbd:[Enter]</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+El sombreado de Phong es una técnica de sombreado para imágenes
+3D generadas por ordenador en el que el brillo general de las
+superficies se divide en tres componentes: luz ambiente (constante),
+luz difusa y reflejos especulares.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Ingrese la información apropiada que se muestra en negrita.  Si desea
+utilizar el comando de una sola línea, tipee:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">mater mug.r plastic 32 128 32 0 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>El diagrama de este comando es:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">mater</th>
+<th class="tableblock halign-center valign-top">mug.r</th>
+<th class="tableblock halign-center valign-top">plastic</th>
+<th class="tableblock halign-center valign-top">32 128 32</th>
+<th class="tableblock halign-center valign-top">0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Asignar propiedad de material</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">A la región mug.r</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Con material plástico</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">De color verde</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Herencia desactivada=0</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Herencia (Inheritance) es un tema más avanzado que no se verá en este
+tutorial.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mug_raytrace1"><a class="anchor" href="#_mug_raytrace1"></a>2. Realizando el trazado de rayos de su taza (Raytrace)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Abra el Panel de control de Raytrace y seleccione Raytrace.  Usted
+debe obtener una imagen de una taza verde sobre un fondo oscuro (se
+utiliza un fondo blanco aquí para ahorrar tinta de impresión). Si su
+taza no es verde, probablemente necesite redibujarla en modo de malla
+de alambre (wireframe) antes de aplicar el Raytrace.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/11_mug_raytraced_norim.png" alt="11 mug raytraced norim">
+</div>
+<div class="title">Figure 1. Realizando el trazado de rayos (Raytrace) de su taza de boca</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mug_refining"><a class="anchor" href="#_mug_refining"></a>3. Refinando la taza</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ahora vamos a mejorar la taza.  Observe que el borde de la taza se ve
+un poco angulado.  Para solucionar este problema, tendrá que añadir un
+borde redondeado arriba del filo de la boca.  Usted puede hacer esto
+colocando una forma de toro circular exactamente en la parte superior
+de la taza y añadirlo a la combinación body.c.</p>
+</div>
+<div class="paragraph">
+<p>En el prompt de <code class="app">MGED</code> tipee:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">in rim.s tor 0 0 3.5 0 0 1 1.625 0.125 <kbd>Enter</kbd></code></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">in</th>
+<th class="tableblock halign-center valign-top">rim.s</th>
+<th class="tableblock halign-center valign-top">tor</th>
+<th class="tableblock halign-center valign-top">0 0 3.5</th>
+<th class="tableblock halign-center valign-top">0 0 1</th>
+<th class="tableblock halign-center valign-top">1.625</th>
+<th class="tableblock halign-center valign-top">0.125</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Crear una figura</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Llamarla rim.s</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Que la figura sea un toro</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Con x, y, y z del vértice 0, 0, y 3.5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Con x, y, y z del vector normal de 0, 0, y 1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Radio 1 de 1.625 pulgadas</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Radio 2 de 0.125 pulgadas</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mug_torus_cup_combine"><a class="anchor" href="#_mug_torus_cup_combine"></a>4. Combinando las figuras</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Para combinar el toro con la taza, necesitará tipear en el prompt:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">comb body.c u rim.s <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Ahora se enfrenta a una situación única.  La forma rim.s ha sido
+añadida a la lista de objetos que se muestra cuando fue creada.  Sin
+embargo, ahora es también una parte de mug.r (a través de body.c). Si
+realiza el Raytrace de la vista actual tendrá dos copias de esta forma
+y el trazador de rayos se quejará de que se solapan.</p>
+</div>
+<div class="paragraph">
+<p>Una forma de solucionar esto es limpiar la pantalla, volver a mostrar
+de nuevo el objeto completo y, a continuación, realizar el trazado de
+rayos.  Como se ha dicho previamente, el comando fbclear en el panel
+de control de Raytrace limpia la pantalla de framebuffer, y el comando
+Z de la ventana de comandos borra todos los objetos mostrados en modo
+framebuffer.  Usted puede volver a mostrar los objetos como trazado de
+rayos con el comando draw.  Tipee en el prompt:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">Z <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">draw mug.r <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Realiza el Raytrace de su taza.  Ésta podría verse similar a la
+siguiente imagen:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/11_mug_raytraced_rim.png" alt="11 mug raytraced rim">
+</div>
+<div class="title">Figure 2. La taza hecha mediante l&#xED;nea de comandos.</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_refining_mug_review"><a class="anchor" href="#_refining_mug_review"></a>5. Repasemos&#8230;&#8203;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>En este tutorial usted aprendió a:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Asignar propiedades de los materiales a la taza utilizando el
+comando mater.</p>
+</li>
+<li>
+<p>Refinar la taza.</p>
+</li>
+<li>
+<p>Combinar las figuras.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="10_crear_taza.html">10. Crear una taza</a></span>
+  <span class="next"><a href="12_taza_desde_gui.html">12. Crear el modelo de una taza utilizando la interfaz de MGED</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../ui-es/js/site.js"></script>
+<script src="../../../ui-es/js/vendor/lunr.js"></script>
+<script src="../../../ui-es/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/es/lecciones/mged/11_refinar_taza.html"></script>
+<script async src="../../../ui-es/../search-index.js"></script>
+<script async src="../../../ui-es/js/vendor/highlight.js"></script>
+  </body>
+</html>

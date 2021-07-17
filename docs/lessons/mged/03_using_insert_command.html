@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>3. Using the Insert Command in MGED to Size and Place Shapes :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/docs/lessons/mged/03_using_insert_command.html">
+    <link rel="prev" href="02_learning_viewing_options.html">
+    <link rel="next" href="04_assign_mat_prop_rt.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../ui/css/site.css">
+    <link rel="stylesheet" href="../../../ui/css/search.css">
+    <link rel="stylesheet" href="../../../ui/css/custom.css">
+    <script>var uiRootPath = '../../../ui'</script>
+    <link rel="icon" href="../../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lessons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01_creating_primitive_shapes.html">1. Creating Primitive Shapes in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02_learning_viewing_options.html">2. Learning Viewing Options in MGED</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="03_using_insert_command.html">3. Using the Insert Command in MGED to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="04_assign_mat_prop_rt.html">4. Assigning Material Properties and Raytracing in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="05_learning_boolean_expressions.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="06_creating_a_goblet.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="07_goblet_material_properties.html">7. Assigning Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="08_goblet_material_properties2.html">8. Assigning More Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="09_globe_in_display_box.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="10_creating_mug.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="11_refining_mug.html">11. Refining a Mug Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="12_mug_through_gui.html">12. Creating a Mug Model using the MGED Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="13_placing_shapes_in_3d.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="14_placing_shapes_in_3d_2.html">14. Additional Exercises Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="15_creating_a_toy_truck.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="16_mod_tech_struct.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Books</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../hacking/index.html">Hacking BRL-CAD</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting Started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter1.html">A Call to Arms (and Contributors)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter2.html">Feature Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developers</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter3.html">Working with Our Code</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter4.html">What Code to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter5.html">Contributing Code</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Documenters</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter6.html">Working with Our Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter7.html">Types of Documentation We Maintain</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter8.html">What Documentation to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter9.html">Contributing Documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Other Contributors</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part4/chapter10.html">You Can Help Too</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendix: Resources and Examples</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix1.html">Further References and Resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix2.html">Doc Template: New MGED Command</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix3.html">Code Example: Shooting Rays</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix4.html">Code Example: Walking Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix5.html">Code Example: Command Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix6.html">Example Code: Root Solving</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/index.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../tutorials/overview.html">I. An Overview of BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/mged-intro.html">II. Introduction to MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/preface1.html">Preface</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/preface2.html">Acknowledgments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter1.html">1. Creating Primitive Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter2.html">2. Learning the Viewing Options</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter3.html">3. Using the Insert Command to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter4.html">4. Assigning Material Properties and Raytracing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter5.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter6.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter7.html">7. Assigning Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter8.html">8. Assigning More Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter9.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter10.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter11.html">11. Refining the Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter12.html">12. Creating the Mug Through the GUI</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter13.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter14.html">14. Gaining More Practice Placing Shapes in Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter15.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter16.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/appendix1.html"><code class="app">MGED</code> Commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/modeling.html">III. Modeling</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter2.html">2. The Model Process</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter3.html">3. Measuring data</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter4.html">4. Organizing the Structure</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter5.html">5. Developing Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter6.html">5. Evaluating Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter7.html">7. Logging Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendices</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix1.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix2.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix3.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix4.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix5.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix6.html">Using the build_region Command</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/converting.html">IV. Converting</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter2.html">2. Pertinent Characteristics of the BRL-CAD Format</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter3.html">3. Converting From/to ASCII</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter4.html">4. Converting to BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter5.html">5. Converting From BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter6.html">6. Building a New Converter</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter7.html">7. Postconversion Issues</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/index.html">Articles</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_pattern.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_region.html">Using the build_region Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/camo_shader.html">Camouflage shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ebm_primitive.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/gcv.html">The Geometry Conversion Library</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ged.html">GED: An Interactive Solid Modeling System</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/mged/index.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tutorial.html">Tutorial</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/gui.html">Graphical User Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/command-line-editing.html">Command Line Editing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/user-commands.html">User Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/developer-commands.html">Developer Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tcl-variables.html">Tcl Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/env.html">Environment Variable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/callback.html">Callback</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/brlcad-solid.html">BRL-CAD Solid</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/mgedrc.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/nirt.html">Interactive Raytracing: The nirt Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/overlap_tool.html">The Overlap Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/oed.html">Object Editing - the oed Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/pipes.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/projection_shader.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/tire.html">Vehicle Tire and Wheel Creation in BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/TEMPLATE.html">TEMPLATE</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Misc</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Dev Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../devguides/bool_eval_development.html">NURBS Boolean Evaluation Development Guide</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Presentations</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/brlcad-app-devel.html">Application Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="presentations:_attachments/brlcad-app-devel.html">brlcad-app-devel</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/intro-to-tcltk.html">Introduction to Tcl/Tk</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../specifications/BRL_CAD_g_format_V5.html">BRL-CAD Database Format</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Manual Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/1.html">man1</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/3.html">man3</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/5.html">man5</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/n.html">mann</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Wiki Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">page-1</span>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">BRL-CAD</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../../index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../es/index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../es/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">BRL-CAD</a></li>
+    <li>Lessons</li>
+    <li><a href="../mged.html">MGED</a></li>
+    <li><a href="03_using_insert_command.html">3. Using the Insert Command in MGED to Size and Place Shapes</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/docs/modules/lessons/pages/mged/03_using_insert_command.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">3. Using the Insert Command in MGED to Size and Place Shapes</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this lesson, you will:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Create a sphere and a right circular cylinder using the make
+command.</p>
+</li>
+<li>
+<p>Create the same two shapes using the in (insert) command.</p>
+</li>
+<li>
+<p>Combine arguments on the Command Line to streamline the entry of
+variables.</p>
+</li>
+<li>
+<p>Develop a combined-command form to help manage Command Line
+variables.</p>
+</li>
+<li>
+<p>Consider conventions for choosing names for your objects.</p>
+</li>
+<li>
+<p>View your shapes from different perspectives using options of the
+View menu.</p>
+</li>
+<li>
+<p>Quit the <code class="app">MGED</code> program.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This lesson focuses on creating shapes from the Command Window using
+the make and in commands.  You will create a sphere (sph) and a right
+circular cylinder (rcc) using both commands so that you can see how
+each command works.  Later in the lesson, you will practice viewing
+your model from different angles.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_new_db_myshapes"><a class="anchor" href="#_new_db_myshapes"></a>1. Creating a New Database from the Command Window</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Create a new database and name it shapes.g.  Title your database
+myShapes.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_sphere_make"><a class="anchor" href="#_sphere_make"></a>2. Creating a Sphere Using the Make Command</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Begin by making the Command Window active (usually by clicking
+anywhere in the window). Then, at the <code class="app">MGED</code> prompt, type in the
+command:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">make sph1.s sph <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>As noted in Lesson 1, this command tells <code class="app">MGED</code> to:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">make</th>
+<th class="tableblock halign-center valign-top">sph1.s</th>
+<th class="tableblock halign-center valign-top">sph</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Create a shape</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Name it sph1.s</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Make it a sphere</p></td>
+</tr>
+</tbody>
+</table>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/03_wireframe_sph.png" alt="03 wireframe sph">
+</div>
+<div class="title">Figure 1. Wireframe Sphere</div>
+</div>
+<div class="paragraph">
+<p>A sphere shape has now been created, and a wireframe drawing should
+appear in your Graphics Window.</p>
+</div>
+<div class="paragraph">
+<p>To make the rcc from the Command Window prompt, type:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">make rcc1.s rcc <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Your Graphics Window should now display a large rcc that, from the
+default view of az35, el25, looks as if it intersects the sphere you
+previously created.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/03_wireframe_sph_rcc.png" alt="03 wireframe sph rcc">
+</div>
+<div class="title">Figure 2. Wireframe Sphere and Right Circular Cylinder</div>
+</div>
+<div class="paragraph">
+<p>Using the make command is a fast and easy way to create a shape;
+however, most models are going to require shapes that have specific
+parameters, such as height and radius.  So, a more precise way to
+create these shapes is to use the in (insert) command.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_in"><a class="anchor" href="#_using_in"></a>3. Using the In Command to Create Shapes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Begin by making the Command Window active (usually done by clicking
+anywhere in the window). Then, use the Z (zap) command to clear the
+Graphics Window.  You are now ready to create a sphere using the in
+command.  At the <code class="app">MGED</code> prompt type:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">in sph2.s sph <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p><code class="app">MGED</code> will respond with:</p>
+</div>
+<div class="paragraph">
+<p><code>Enter X, Y, Z of vertex:</code></p>
+</div>
+<div class="paragraph">
+<p>You must tell <code class="app">MGED</code> where to position the vertex (center) of
+your sphere in space.  Type at the <code class="app">MGED</code> prompt:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">4 4 4 <kbd>Enter</kbd></code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>As you work in <code class="app">MGED</code>, you will often be asked to enter a value
+for a vector or a vertex.  In <code class="app">MGED</code>, a vector represents the
+distance and direction from one point in space to another, and a
+vertex is one single point in space.  The values entered for a vector
+are typically used to create an object with specific dimensions.  The
+values entered for a vertex place the object in space.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Your sphere will now be placed at (x,y,z)=(4,4,4), as measured in
+millimeters.  Notice that the numbers are separated by spaces followed
+by the ENTER key. <code class="app">MGED</code> will now ask you to:</p>
+</div>
+<div class="paragraph">
+<p><code class="prompt">Enter radius: </code></p>
+</div>
+<div class="paragraph">
+<p>Type in:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">3 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>The radius of your sphere will be 3 mm.  The following is the dialog
+that should appear in your Command Window (including the appropriate
+responses).</p>
+</div>
+<div class="paragraph">
+<p><code class="userinput"><span class="prompt">mged&gt;</span> in sph2.s sph</code></p>
+</div>
+<div class="paragraph">
+<p><code>Enter X, Y, Z of vertex: 4 4 4</code></p>
+</div>
+<div class="paragraph">
+<p><code>Enter radius: 3</code></p>
+</div>
+<div class="paragraph">
+<p><code>51 vectors in 0.000543 sec</code></p>
+</div>
+<div class="paragraph">
+<p>The last line of this dialog is simply a record of the computer&#8217;s
+speed in drawing the shape.  It has no real usefulness to the user at
+this point.</p>
+</div>
+<div class="paragraph">
+<p>A sphere has now been created, and a wireframe drawing similar to the
+one created using the make command should appear in your Graphics
+Window.</p>
+</div>
+<div class="paragraph">
+<p>To make the right circular cylinder, type at the Command Window
+prompt:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">in rcc2.s rcc <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p><code class="app">MGED</code> will ask you to enter values for x, y, and z of the vertex
+(where you want the center of one end of the rcc placed in
+space). Type:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">4 4 0 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Be sure to leave spaces between each of these numbers.</p>
+</div>
+<div class="paragraph">
+<p><code class="app">MGED</code> will now ask you to enter the x, y, and z values of the
+height (H) vector (i.e., how long you want the rcc to be). Type:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">0 0 4 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>The last value you will need to enter is the radius of
+the rcc.  Type:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">3 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>The dialog in the Command Window for the creation of the rcc should
+look like this:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>      <span class="prompt">mged></span> in rcc2.s rcc
+      Enter X, Y, Z of vertex: 4 4 0
+      Enter X, Y, Z of height (H) vector: 0 0 4
+      Enter radius: 3
+      42 vectors in 0.000214 sec</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You should now have new versions of the sphere and rcc shapes.  Notice
+how these two shapes compare in size to the first two you created.
+The rcc is now in proportion to the sphere and is placed in space off
+to the left in your Graphics Window.  By specifying the dimensions of
+the shapes and their locations in space, you were able to create the
+model more precisely.</p>
+</div>
+<table class="tableblock frame-none grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../_images/mged/03_shapes_make_command.png" alt="03 shapes make command">
+</div>
+<div class="title">Figure 3. Shapes Created with Make Command</div>
+</div></div></td>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../_images/mged/03_shapes_in_command.png" alt="03 shapes in command">
+</div>
+<div class="title">Figure 4. Shapes Created with In Command</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_args_on_one_line"><a class="anchor" href="#_args_on_one_line"></a>4. Combining Arguments on One Line</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Another way to use the in command is to combine all of the required
+information on one line.  Once you become familiar with using the in
+command, you will probably prefer to use this method as it allows you
+to input all the parameter values more quickly.</p>
+</div>
+<div class="paragraph">
+<p>Clear the Graphics Window by using the Z command.  Now make another
+sphere by typing after the <code class="app">MGED</code> prompt:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">in sph3.s sph 4 4 4 3 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>The meaning of this longer form of the command is:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">in</th>
+<th class="tableblock halign-center valign-top">sph3.s</th>
+<th class="tableblock halign-center valign-top">sph</th>
+<th class="tableblock halign-center valign-top">4</th>
+<th class="tableblock halign-center valign-top">4</th>
+<th class="tableblock halign-center valign-top">4</th>
+<th class="tableblock halign-center valign-top">3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Insert a primitive shape</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Name it sph3.s</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Make the primitive shape a sphere</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Make the x of the vertex a value of 4</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Make the y of the vertex a value of 4</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Make the z of the vertex a value of 4</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Make the radius a value of 3</p></td>
+</tr>
+</tbody>
+</table>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>To make the right circular cylinder using this method, type after the
+<code class="app">MGED</code> prompt:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">in rcc3.s rcc 4 4 0 0 0 4 3 <kbd>Enter</kbd></code></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The meaning of this command is:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">in</th>
+<th class="tableblock halign-center valign-top">rcc3.s</th>
+<th class="tableblock halign-center valign-top">rcc</th>
+<th class="tableblock halign-center valign-top">4</th>
+<th class="tableblock halign-center valign-top">4</th>
+<th class="tableblock halign-center valign-top">0</th>
+<th class="tableblock halign-center valign-top">0</th>
+<th class="tableblock halign-center valign-top">0</th>
+<th class="tableblock halign-center valign-top">4</th>
+<th class="tableblock halign-center valign-top">3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top" rowspan="2"><p class="tableblock">Insert a primitive shape</p></td>
+<td class="tableblock halign-center valign-top" rowspan="2"><p class="tableblock">Name it rcc3.s</p></td>
+<td class="tableblock halign-center valign-top" rowspan="2"><p class="tableblock">Make the primitive shape a right circular cylinder</p></td>
+<td class="tableblock halign-center valign-top" rowspan="2"><p class="tableblock">Make the x of the vertex a value of 4</p></td>
+<td class="tableblock halign-center valign-top" rowspan="2"><p class="tableblock">Make the y of the vertex a value of 4</p></td>
+<td class="tableblock halign-center valign-top" rowspan="2"><p class="tableblock">Make the z of the vertex a value of 0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Make the x of the height vector a value of 0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Make the y of the height vector a value of 0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Make the z of the height vector a value of 4</p></td>
+<td class="tableblock halign-center valign-top" rowspan="2"><p class="tableblock">Make the radius a value of 3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" colspan="3"><p class="tableblock">Make the shape four units long, pointing straight toward positive z</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_command_combined_in"><a class="anchor" href="#_command_combined_in"></a>5. Making a Combined-Command Form for the In Command</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When you are first starting to use <code class="app">MGED</code>, if you want to use the
+Command Window rather than the GUI, you may want to make yourself some
+blank, combined-command forms for each type of primitive shape you
+will be creating.  This can speed up the design process and help
+remind you of which values must be entered for each shape.  A form for
+the sphere might be:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">in</th>
+<th class="tableblock halign-center valign-top">?</th>
+<th class="tableblock halign-center valign-top">sph</th>
+<th class="tableblock halign-center valign-top">?</th>
+<th class="tableblock halign-center valign-top">?</th>
+<th class="tableblock halign-center valign-top">?</th>
+<th class="tableblock halign-center valign-top">?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top" rowspan="2"><p class="tableblock">Insert a shape</p></td>
+<td class="tableblock halign-center valign-top" rowspan="2"><p class="tableblock">Name of primitive shape</p></td>
+<td class="tableblock halign-center valign-top" rowspan="2"><p class="tableblock">Type of shape is a sphere</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Value of x</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Value of y</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Value of z</p></td>
+<td class="tableblock halign-center valign-top" rowspan="2"><p class="tableblock">Radius of sph</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" colspan="3"><p class="tableblock">Center</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>A Combined-Command Form for the rcc might be:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">in</th>
+<th class="tableblock halign-center valign-top">?</th>
+<th class="tableblock halign-center valign-top">rcc</th>
+<th class="tableblock halign-center valign-top" colspan="3">?</th>
+<th class="tableblock halign-center valign-top" colspan="3">?</th>
+<th class="tableblock halign-center valign-top">?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top" rowspan="2"><p class="tableblock">Insert a primitive shape</p></td>
+<td class="tableblock halign-center valign-top" rowspan="2"><p class="tableblock">Name of shape</p></td>
+<td class="tableblock halign-center valign-top" rowspan="2"><p class="tableblock">Type of shape is a right circular cylinder</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Value of x</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Value of y</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Value of z</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Value of x</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Value of y</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Value of z</p></td>
+<td class="tableblock halign-center valign-top" rowspan="2"><p class="tableblock">Radius of rcc</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" colspan="3"><p class="tableblock">Vertex</p></td>
+<td class="tableblock halign-center valign-top" colspan="3"><p class="tableblock">Height vector</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mged_naming_conventions"><a class="anchor" href="#_mged_naming_conventions"></a>6. Considering <code class="app">MGED</code> Naming Conventions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You may have noticed that each time you have created a sphere, or rcc,
+you have given it a different name. <code class="app">MGED</code> doesn&#8217;t care what name
+you give a shape, but you will find as you develop models that it
+helps to have some formula, or conventions, when naming shapes.  Note
+also that each name must be unique in the database, and for
+<code class="app">BRL-CAD</code> releases prior to 6.0, names are limited to 16
+characters in length.</p>
+</div>
+<div class="paragraph">
+<p>In this lesson, we sometimes assigned names to the shapes based on
+their shape type and the order in which we created them.  We did this
+because the shapes had no real function, except to be examples.</p>
+</div>
+<div class="paragraph">
+<p>When you create real-life models, however, you will probably want to
+assign names as we did for the radio component names, which were based
+on their functions (e.g., btn for button, ant for antenna, etc.).</p>
+</div>
+<div class="paragraph">
+<p>If you work with more experienced modelers, check with them to see
+what set of conventions they use.  If you work alone, develop a set of
+naming conventions that works for you and then use it consistently.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_view_shapes"><a class="anchor" href="#_view_shapes"></a>7. Viewing the Shapes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Practice viewing your new shapes using the View menu.  Manipulate your
+view using the various mouse-key combinations identified in the
+previous lesson.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_insert_command_quit"><a class="anchor" href="#_using_insert_command_quit"></a>8. Quitting <code class="app">MGED</code></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you wish to quit <code class="app">MGED</code>, at this point, type either the
+letter q or the word quit after the Command Window prompt and then
+press ENTER.  You may also quit the program by selecting Exit from the
+File menu.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_insert_command_review"><a class="anchor" href="#_using_insert_command_review"></a>9. Review</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this lesson, you:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Created a sphere and a right circular cylinder using the make
+command.</p>
+</li>
+<li>
+<p>Created the same two shapes using the in (insert) command.</p>
+</li>
+<li>
+<p>Combined commands to streamline the entry of variables.</p>
+</li>
+<li>
+<p>Developed a combined-command form to help manage Command-Line
+variables.</p>
+</li>
+<li>
+<p>Considered <code class="app">MGED</code> naming conventions.</p>
+</li>
+<li>
+<p>Viewed your shapes from different perspectives using options of the
+View menu.</p>
+</li>
+<li>
+<p>Quit the <code class="app">MGED</code> program.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="02_learning_viewing_options.html">2. Learning Viewing Options in MGED</a></span>
+  <span class="next"><a href="04_assign_mat_prop_rt.html">4. Assigning Material Properties and Raytracing in MGED</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../ui/js/site.js"></script>
+<script src="../../../ui/js/vendor/lunr.js"></script>
+<script src="../../../ui/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/docs/lessons/mged/03_using_insert_command.html"></script>
+<script async src="../../../ui/../search-index.js"></script>
+<script async src="../../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

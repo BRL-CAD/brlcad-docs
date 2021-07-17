@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Feature Overview :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/docs/hacking/part1/chapter2.html">
+    <link rel="prev" href="chapter1.html">
+    <link rel="next" href="../part2/chapter3.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../ui/css/site.css">
+    <link rel="stylesheet" href="../../../ui/css/search.css">
+    <link rel="stylesheet" href="../../../ui/css/custom.css">
+    <script>var uiRootPath = '../../../ui'</script>
+    <link rel="icon" href="../../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lessons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../lessons/mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/01_creating_primitive_shapes.html">1. Creating Primitive Shapes in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/02_learning_viewing_options.html">2. Learning Viewing Options in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/03_using_insert_command.html">3. Using the Insert Command in MGED to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/04_assign_mat_prop_rt.html">4. Assigning Material Properties and Raytracing in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/05_learning_boolean_expressions.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/06_creating_a_goblet.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/07_goblet_material_properties.html">7. Assigning Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/08_goblet_material_properties2.html">8. Assigning More Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/09_globe_in_display_box.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/10_creating_mug.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/11_refining_mug.html">11. Refining a Mug Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/12_mug_through_gui.html">12. Creating a Mug Model using the MGED Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/13_placing_shapes_in_3d.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/14_placing_shapes_in_3d_2.html">14. Additional Exercises Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/15_creating_a_toy_truck.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/16_mod_tech_struct.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Books</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../index.html">Hacking BRL-CAD</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting Started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter1.html">A Call to Arms (and Contributors)</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="chapter2.html">Feature Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developers</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../part2/chapter3.html">Working with Our Code</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../part2/chapter4.html">What Code to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../part2/chapter5.html">Contributing Code</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Documenters</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../part3/chapter6.html">Working with Our Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../part3/chapter7.html">Types of Documentation We Maintain</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../part3/chapter8.html">What Documentation to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../part3/chapter9.html">Contributing Documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Other Contributors</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../part4/chapter10.html">You Can Help Too</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendix: Resources and Examples</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../part5/appendix1.html">Further References and Resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../part5/appendix2.html">Doc Template: New MGED Command</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../part5/appendix3.html">Code Example: Shooting Rays</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../part5/appendix4.html">Code Example: Walking Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../part5/appendix5.html">Code Example: Command Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../part5/appendix6.html">Example Code: Root Solving</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/index.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../tutorials/overview.html">I. An Overview of BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/mged-intro.html">II. Introduction to MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/preface1.html">Preface</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/preface2.html">Acknowledgments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter1.html">1. Creating Primitive Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter2.html">2. Learning the Viewing Options</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter3.html">3. Using the Insert Command to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter4.html">4. Assigning Material Properties and Raytracing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter5.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter6.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter7.html">7. Assigning Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter8.html">8. Assigning More Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter9.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter10.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter11.html">11. Refining the Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter12.html">12. Creating the Mug Through the GUI</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter13.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter14.html">14. Gaining More Practice Placing Shapes in Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter15.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter16.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/appendix1.html"><code class="app">MGED</code> Commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/modeling.html">III. Modeling</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter2.html">2. The Model Process</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter3.html">3. Measuring data</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter4.html">4. Organizing the Structure</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter5.html">5. Developing Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter6.html">5. Evaluating Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter7.html">7. Logging Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendices</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix1.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix2.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix3.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix4.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix5.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix6.html">Using the build_region Command</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/converting.html">IV. Converting</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter2.html">2. Pertinent Characteristics of the BRL-CAD Format</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter3.html">3. Converting From/to ASCII</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter4.html">4. Converting to BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter5.html">5. Converting From BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter6.html">6. Building a New Converter</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter7.html">7. Postconversion Issues</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/index.html">Articles</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_pattern.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_region.html">Using the build_region Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/camo_shader.html">Camouflage shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ebm_primitive.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/gcv.html">The Geometry Conversion Library</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ged.html">GED: An Interactive Solid Modeling System</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/mged/index.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tutorial.html">Tutorial</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/gui.html">Graphical User Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/command-line-editing.html">Command Line Editing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/user-commands.html">User Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/developer-commands.html">Developer Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tcl-variables.html">Tcl Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/env.html">Environment Variable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/callback.html">Callback</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/brlcad-solid.html">BRL-CAD Solid</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/mgedrc.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/nirt.html">Interactive Raytracing: The nirt Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/overlap_tool.html">The Overlap Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/oed.html">Object Editing - the oed Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/pipes.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/projection_shader.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/tire.html">Vehicle Tire and Wheel Creation in BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/TEMPLATE.html">TEMPLATE</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Misc</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Dev Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../devguides/bool_eval_development.html">NURBS Boolean Evaluation Development Guide</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Presentations</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/brlcad-app-devel.html">Application Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="presentations:_attachments/brlcad-app-devel.html">brlcad-app-devel</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/intro-to-tcltk.html">Introduction to Tcl/Tk</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../specifications/BRL_CAD_g_format_V5.html">BRL-CAD Database Format</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Manual Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/1.html">man1</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/3.html">man3</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/5.html">man5</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/n.html">mann</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Wiki Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">page-1</span>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">BRL-CAD</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../../index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../es/index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../es/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">BRL-CAD</a></li>
+    <li>Books</li>
+    <li><a href="../index.html">Hacking BRL-CAD</a></li>
+    <li>Getting Started</li>
+    <li><a href="chapter2.html">Feature Overview</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/docs/modules/hacking/pages/part1/chapter2.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Feature Overview</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_solid_geometry">1. Solid Geometry</a></li>
+<li><a href="#_raytracing">2. Raytracing</a></li>
+<li><a href="#_geometry_conversion">3. Geometry Conversion</a></li>
+<li><a href="#_procedural_geometry">4. Procedural Geometry</a></li>
+<li><a href="#_boundary_representation">5. Boundary Representation</a></li>
+<li><a href="#_path_tracing">6. Path Tracing</a></li>
+<li><a href="#_constructive_solid_geometry_csg">7. Constructive Solid Geometry (CSG)</a></li>
+<li><a href="#_hidden_line_rendering">8. Hidden Line Rendering</a></li>
+<li><a href="#_scripting_interface">9. Scripting Interface</a></li>
+<li><a href="#_more_cowbell">10. More Cowbell</a>
+<ul class="sectlevel2">
+<li><a href="#_geometric_analysis">10.1. Geometric Analysis</a></li>
+<li><a href="#_high_performance_design">10.2. High-Performance Design</a></li>
+<li><a href="#_symmetric_multi_processing">10.3. Symmetric Multi-Processing</a></li>
+<li><a href="#_modular_architecture">10.4. Modular Architecture</a></li>
+<li><a href="#_cross_platform_portability">10.5. Cross-Platform Portability</a></li>
+<li><a href="#_iso_step_10303">10.6. ISO STEP 10303</a></li>
+<li><a href="#_performance_benchmark">10.7. Performance Benchmark</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>BRL-CAD has thousands of distinct features that have been developed
+over a number of decades.  One strength of a solid modeling system
+with integrated high-performance rendering is the ability to showcase
+some of those features graphically.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s take a quick look at just some of the high-level features
+provided by BRL-CAD.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_solid_geometry"><a class="anchor" href="#_solid_geometry"></a>1. Solid Geometry</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="../_images/hacking_brlcad_tracked_mine.png" alt="hacking brlcad tracked mine">
+</div>
+</div>
+<div class="paragraph">
+<p>BRL-CAD focuses on solid modeling CAD.  Solid modeling is
+distinguished from other forms of geometric modeling by an emphasis on
+being physically accurate, fully describing 3D space.  Shown is a 3D
+model of a Goliath tracked mine, a German-engineered remote controlled
+vehicle used during World War II.  This model was created by students
+new to BRL-CAD in the span of about 2 weeks, starting from actual
+measurements in a museum.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_raytracing"><a class="anchor" href="#_raytracing"></a>2. Raytracing</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="../_images/hacking_brlcad_bearing_cc.png" alt="hacking brlcad bearing cc">
+</div>
+</div>
+<div class="paragraph">
+<p>Raytracing is central to BRL-CAD as a means for performing geometric
+analysis (e.g., calculating weights and moments of inertia) and for
+rendering images for visualization purposes.  The image shown is a
+BRL-CAD 2D framebuffer screenshot displaying the rendering of a ball
+bearing.  The bearing is modeled with a material appearance resembling
+acrylic glass, and this raytracing result shows reflection,
+refraction, shadowing, and some caustic effects.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_geometry_conversion"><a class="anchor" href="#_geometry_conversion"></a>3. Geometry Conversion</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="../_images/hacking_brlcad_cubit.png" alt="hacking brlcad cubit">
+</div>
+</div>
+<div class="paragraph">
+<p>As shown, a BRL-CAD target description can be converted to a finite
+element mesh (FEM) using the BRL-CAD g-sat exporter and Cubit from
+Sandia National Laboratories.</p>
+</div>
+<div class="paragraph">
+<p>This screenshot shows a model imported from the Rhino3D 3DM file
+format into BRL-CAD as NURBS boundary representation geometry,
+visualized via OpenGL.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_procedural_geometry"><a class="anchor" href="#_procedural_geometry"></a>4. Procedural Geometry</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="../_images/hacking_brlcad_sflake2_cc.png" alt="hacking brlcad sflake2 cc">
+</div>
+</div>
+<div class="paragraph">
+<p>BRL-CAD provides a comprehensive procedural geometry interface as a
+means for creating models algorithmically instead of manually.  This
+screenshot shows a classic "Sphere Flake" model with five levels of
+recursion, specular reflections, multiple light sources, environment
+mapping, checkered texture synthesis, ambient occlusion, and soft
+shadows.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_boundary_representation"><a class="anchor" href="#_boundary_representation"></a>5. Boundary Representation</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="../_images/hacking_brlcad_teapot.png" alt="hacking brlcad teapot">
+</div>
+</div>
+<div class="paragraph">
+<p>Boundary representation NURBS surface geometry is one of the dominant
+geometric representation formats in CAD.  BRL-CAD is one of the few 3D
+solid modeling systems that not only support geometry in boundary
+representation NURBS format but also provide extensive support for
+robust solid ray tracing of NURBS geometry.  The image shown is the
+classic computer graphics Utah teapot model prepared for 3D printing
+and rendered via BRL-CAD ray tracing.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_path_tracing"><a class="anchor" href="#_path_tracing"></a>6. Path Tracing</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="../_images/hacking_brlcad_stryker_slat.png" alt="hacking brlcad stryker slat">
+</div>
+</div>
+<div class="paragraph">
+<p>Representing more than 8 trillion rays fired at this
+11-million-polygon scene (amounting to more than 20 million rays per
+second on 2004 hardware), this figure signifies the path tracing
+capability of BRL-CAD.  A full light simulation was computed to
+generate the image with all exterior and interior vehicle detail,
+including every nut, bolt, wire, and component inside the vehicle and
+every leaf and blade of grass modeled as actual geometry (with no
+textures and no procedural geometry).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_constructive_solid_geometry_csg"><a class="anchor" href="#_constructive_solid_geometry_csg"></a>7. Constructive Solid Geometry (CSG)</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="../_images/hacking_brlcad_M1A1_9x10_300dpi_cc.png" alt="hacking brlcad M1A1 9x10 300dpi cc">
+</div>
+</div>
+<div class="paragraph">
+<p>While now a fully hybrid modeling system, BRL-CAD has its roots in CSG
+modeling with implicit primitives.  This image, provided courtesy of
+GSI Solutions, Inc., depicts a detailed M1A1 tank on a pedestal in a
+mirrored showcase room.  The model is entirely constructed from
+implicit primitives and CSG boolean operations.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/hacking_brlcad_csg.png" alt="hacking brlcad csg">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_hidden_line_rendering"><a class="anchor" href="#_hidden_line_rendering"></a>8. Hidden Line Rendering</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="../_images/hacking_brlcad_havoc_c.png" alt="hacking brlcad havoc c">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/hacking_brlcad_havoc_views_c.png" alt="hacking brlcad havoc views c">
+</div>
+</div>
+<div class="paragraph">
+<p>This raytrace image is a multiple-view hidden line rendering of an
+Mi28 Havoc Russian attack helicopter using BRL-CAD&#8217;s rtedge utility.
+The model is entirely composed of implicit primitives combined
+together with CSG boolean operations.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_scripting_interface"><a class="anchor" href="#_scripting_interface"></a>9. Scripting Interface</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="../_images/hacking_brlcad_Sgi_cube_cc.png" alt="hacking brlcad Sgi cube cc">
+</div>
+</div>
+<div class="paragraph">
+<p>BRL-CAD can run series of commands piped in or redirected to it via
+standard input, and it is considerably more efficient to batch
+multiple BRL-CAD commands together via standard input instead of
+re-invoking BRL-CAD for each command.  The image demonstrates the
+output of a shell script that uses BRL-CAD tools to procedurally
+create and render the SGI Cube.  For more information, go to
+<a href="http://brlcad.org/wiki/SGI_Cube" class="bare">http://brlcad.org/wiki/SGI_Cube</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_more_cowbell"><a class="anchor" href="#_more_cowbell"></a>10. More Cowbell</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Not all of BRL-CAD&#8217;s capabilities lend themselves well to pretty
+pictures, but some are definitely worth mentioning.  Among the
+thousands of features in BRL-CAD, here are some additional
+capabilities that are central to our project ethos.</p>
+</div>
+<div class="sect2">
+<h3 id="_geometric_analysis"><a class="anchor" href="#_geometric_analysis"></a>10.1. Geometric Analysis</h3>
+<div class="paragraph">
+<p>A particular strength of the BRL-CAD software lies in its ability to
+build and analyze realistic models of complex objects.  There are a
+number of features aimed at inspecting, preparing, verifying, and
+validating geometry models.  Single-ray sampling can be used for
+measuring thicknesses or distances, and certain 3D analyses are
+possible (such as calculating volume, centroids, and moments of
+inertia). BRL-CAD also has numerous facilities for detecting and
+resolving assembly or part interferences where two objects spatially
+overlap each other.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_high_performance_design"><a class="anchor" href="#_high_performance_design"></a>10.2. High-Performance Design</h3>
+<div class="paragraph">
+<p>BRL-CAD is designed from the ground up with performance in mind.
+Considerable attention has been put into in-memory and on-disk data
+storage efficiency.  BRL-CAD is capable of handling complex geometry
+models that are often impossible to open with other systems without
+changing hardware requirements.  BRL-CAD&#8217;s ray tracing infrastructure
+is one of the fastest in the world for implicit geometry
+representations and is continually seeking performance advancements
+for other explicit representation types, such as polygonal mesh
+geometry and NURBS surface models.  BRL-CAD&#8217;s distributed ray tracing
+support is recognized as the world&#8217;s first "real-time" ray tracing
+implementation, achieving several frames per second in the 1980s.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_symmetric_multi_processing"><a class="anchor" href="#_symmetric_multi_processing"></a>10.3. Symmetric Multi-Processing</h3>
+<div class="paragraph">
+<p>BRL-CAD efficiently leverages symmetric multi-processing (SMP)
+capabilities of desktop, server, and supercomputing systems, where an
+arbitrary number of processing cores can be put to work on a
+computational task.  BRL-CAD&#8217;s ray tracing library is commonly
+leveraged for performing highly detailed geometric analysis, driving
+third-party simulations, and producing animations.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_modular_architecture"><a class="anchor" href="#_modular_architecture"></a>10.4. Modular Architecture</h3>
+<div class="paragraph">
+<p>As a large software package developed over a relatively long period of
+time, BRL-CAD has necessarily been designed and evolved with
+modularity in mind.  Functionality is implemented across hundreds of
+application modules, commands, and libraries designed to work
+together.  Hundreds of application binaries work together supporting
+efficient customizable workflows.  Core geometry editing capabilities
+are implemented as commands that can be easily extended, replaced, or
+improved upon.  All functionality and features are built on top of a
+core set of libraries that encapsulate common capabilities.  One of
+the best ways to get involved is to add a new module or improve an
+existing one.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_cross_platform_portability"><a class="anchor" href="#_cross_platform_portability"></a>10.5. Cross-Platform Portability</h3>
+<div class="paragraph">
+<p>BRL-CAD has an extensive history of investment in and attention toward
+cross-platform portability.  This heritage includes systems such as a
+DEC VAX-11/780 running 4.3 BSD, DECStations running ULTRIX, Silicon
+Graphics machines running IRIX, Cray supercomputers running UNICOS,
+and so much more.  Today, BRL-CAD&#8217;s hardware support includes
+everything from minimal laptops and desktops to gigantic distributed
+supercomputers.  And it is commonly run on Linux, Windows, Mac OS X,
+BSD, Haiku, Solaris, and other desktop operating systems.  We aim to
+be "embarrassingly portable."</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_iso_step_10303"><a class="anchor" href="#_iso_step_10303"></a>10.6. ISO STEP 10303</h3>
+<div class="paragraph">
+<p>STandard for the Exchange of Product Model Data (STEP) is an ISO
+standard describing a product&#8217;s full life cycle.  One small portion of
+that gigantic standard describes a complex geometry file format that
+fortunately has been adopted by most commercial CAD systems.  BRL-CAD
+is proud to be one of the few open source software systems that is
+able to read and write STEP geometry files.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_performance_benchmark"><a class="anchor" href="#_performance_benchmark"></a>10.7. Performance Benchmark</h3>
+<div class="paragraph">
+<p>The BRL-CAD Benchmark provides a practical metric of real-world
+performance.  Correlated with a longstanding heritage of providing
+verifiable and repeatable behavior throughout the package, the
+Benchmark compares a given compilation&#8217;s ray tracing performance
+against the results from one of the very first systems to support
+BRL-CAD: a VAX 11/780 running BSD.  The mathematically intensive
+computations exercise the processing unit, system memory, various
+levels of data and instruction cache, the operating system, thread
+concurrency efficiency, data coherency, and compiler optimization
+capabilities.  The performance results let you weigh the relative
+computational strength of a given platform.  With the right controls
+in place, the Benchmark can tell you whether a given operating system
+is more efficient than another, whether a particular compiler really
+makes a difference, or just how much of an improvement a particular
+piece of hardware provides.  We have results tracing back several
+decades of computing.</p>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="chapter1.html">A Call to Arms (and Contributors)</a></span>
+  <span class="next"><a href="../part2/chapter3.html">Working with Our Code</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../ui/js/site.js"></script>
+<script src="../../../ui/js/vendor/lunr.js"></script>
+<script src="../../../ui/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/docs/hacking/part1/chapter2.html"></script>
+<script async src="../../../ui/../search-index.js"></script>
+<script async src="../../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

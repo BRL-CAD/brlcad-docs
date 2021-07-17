@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>FACETIZE(nged) :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/docs/man/n/facetize.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../ui/css/site.css">
+    <link rel="stylesheet" href="../../../ui/css/search.css">
+    <link rel="stylesheet" href="../../../ui/css/custom.css">
+    <script>var uiRootPath = '../../../ui'</script>
+    <link rel="icon" href="../../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article manpage">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lessons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../lessons/mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/01_creating_primitive_shapes.html">1. Creating Primitive Shapes in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/02_learning_viewing_options.html">2. Learning Viewing Options in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/03_using_insert_command.html">3. Using the Insert Command in MGED to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/04_assign_mat_prop_rt.html">4. Assigning Material Properties and Raytracing in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/05_learning_boolean_expressions.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/06_creating_a_goblet.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/07_goblet_material_properties.html">7. Assigning Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/08_goblet_material_properties2.html">8. Assigning More Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/09_globe_in_display_box.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/10_creating_mug.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/11_refining_mug.html">11. Refining a Mug Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/12_mug_through_gui.html">12. Creating a Mug Model using the MGED Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/13_placing_shapes_in_3d.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/14_placing_shapes_in_3d_2.html">14. Additional Exercises Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/15_creating_a_toy_truck.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/16_mod_tech_struct.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Books</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../hacking/index.html">Hacking BRL-CAD</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting Started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter1.html">A Call to Arms (and Contributors)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter2.html">Feature Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developers</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter3.html">Working with Our Code</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter4.html">What Code to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter5.html">Contributing Code</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Documenters</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter6.html">Working with Our Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter7.html">Types of Documentation We Maintain</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter8.html">What Documentation to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter9.html">Contributing Documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Other Contributors</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part4/chapter10.html">You Can Help Too</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendix: Resources and Examples</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix1.html">Further References and Resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix2.html">Doc Template: New MGED Command</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix3.html">Code Example: Shooting Rays</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix4.html">Code Example: Walking Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix5.html">Code Example: Command Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix6.html">Example Code: Root Solving</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/index.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../tutorials/overview.html">I. An Overview of BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/mged-intro.html">II. Introduction to MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/preface1.html">Preface</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/preface2.html">Acknowledgments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter1.html">1. Creating Primitive Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter2.html">2. Learning the Viewing Options</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter3.html">3. Using the Insert Command to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter4.html">4. Assigning Material Properties and Raytracing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter5.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter6.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter7.html">7. Assigning Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter8.html">8. Assigning More Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter9.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter10.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter11.html">11. Refining the Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter12.html">12. Creating the Mug Through the GUI</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter13.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter14.html">14. Gaining More Practice Placing Shapes in Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter15.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter16.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/appendix1.html"><code class="app">MGED</code> Commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/modeling.html">III. Modeling</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter2.html">2. The Model Process</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter3.html">3. Measuring data</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter4.html">4. Organizing the Structure</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter5.html">5. Developing Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter6.html">5. Evaluating Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter7.html">7. Logging Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendices</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix1.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix2.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix3.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix4.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix5.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix6.html">Using the build_region Command</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/converting.html">IV. Converting</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter2.html">2. Pertinent Characteristics of the BRL-CAD Format</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter3.html">3. Converting From/to ASCII</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter4.html">4. Converting to BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter5.html">5. Converting From BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter6.html">6. Building a New Converter</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter7.html">7. Postconversion Issues</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/index.html">Articles</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_pattern.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_region.html">Using the build_region Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/camo_shader.html">Camouflage shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ebm_primitive.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/gcv.html">The Geometry Conversion Library</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ged.html">GED: An Interactive Solid Modeling System</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/mged/index.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tutorial.html">Tutorial</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/gui.html">Graphical User Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/command-line-editing.html">Command Line Editing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/user-commands.html">User Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/developer-commands.html">Developer Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tcl-variables.html">Tcl Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/env.html">Environment Variable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/callback.html">Callback</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/brlcad-solid.html">BRL-CAD Solid</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/mgedrc.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/nirt.html">Interactive Raytracing: The nirt Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/overlap_tool.html">The Overlap Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/oed.html">Object Editing - the oed Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/pipes.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/projection_shader.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/tire.html">Vehicle Tire and Wheel Creation in BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/TEMPLATE.html">TEMPLATE</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Misc</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Dev Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../devguides/bool_eval_development.html">NURBS Boolean Evaluation Development Guide</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Presentations</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/brlcad-app-devel.html">Application Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="presentations:_attachments/brlcad-app-devel.html">brlcad-app-devel</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/intro-to-tcltk.html">Introduction to Tcl/Tk</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../specifications/BRL_CAD_g_format_V5.html">BRL-CAD Database Format</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Manual Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../1.html">man1</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../3.html">man3</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../5.html">man5</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../n.html">mann</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Wiki Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">page-1</span>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">BRL-CAD</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../../index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../es/index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../es/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">BRL-CAD</a></li>
+    <li><a href="facetize.html">FACETIZE(nged)</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/docs/modules/man/pages/n/facetize.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">FACETIZE(nged)</h1>
+<div class="sect1">
+<h2 id="_name"><a class="anchor" href="#_name"></a>NAME</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>facetize - Creates new_object using old_object as a guide, creating an
+evaluated NMG or BoT planar approximation of the original shape.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_synopsis"><a class="anchor" href="#_synopsis"></a>SYNOPSIS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>facetize</strong> [-h] [-v] [-q] [-r] [-n] [-T] [--NMG] [--CM] [--SPSR] {<em>old_object new_object</em>}</p>
+</div>
+<div class="paragraph">
+<p><strong>facetize --CM</strong> [--feature-scale] [--feature-size] [--decimation-feature-size] [--max-time] [--max-pnts] {<em>old_object new_object</em>}</p>
+</div>
+<div class="paragraph">
+<p><strong>facetize --SPSR</strong> [-d] [-w] [--samples-per-node] {<em>old_object new_object</em>}</p>
+</div>
+<div class="paragraph">
+<p><strong>facetize -r</strong> [standard_options] [--resume] [--retry] [--in-place] {<em>output_hierarchy_obj</em>}</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description"><a class="anchor" href="#_description"></a>DESCRIPTION</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Creates <em>new_object</em> as planar primitive shape (either an NMG or a
+BOT) approximating the 3D volume bound by <em>old_object</em>.  The <em>-r</em>
+option will operate per-region rather than on an entire object and
+produces a new hiearchy.</p>
+</div>
+<div class="paragraph">
+<p>There are a number of different verbosity levels available for the
+facetize command.  One or mulitple specifications of the <em>-v</em> flag
+will increase reporting detail about what the facetize command is
+doing in various steps. To silence all output specify the <em>-q</em> flag -
+this is generally not recommended as the messages produced by the
+facetize command often contain important information about conversion
+failures in addition to reporting incremental progress on large
+conversion tasks.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_regions"><a class="anchor" href="#_regions"></a>PER-REGION FACETIZATION AND PARTIAL CONVERSIONS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Often, it is desirable to perform facetization on each region
+individually within a geometry hierarchy, rather than trying for a
+single "all or nothing" shape.  This mode, available with the <em>-r</em>
+flag, has the advantage of allowing for partial conversion of complex
+models even when individual shapes within the model cannot be
+converted, as well as preserving all pre-existing region attributes
+such as color and region ID.</p>
+</div>
+<div class="paragraph">
+<p>Because multi-region hierarchy conversion is often a long process, the
+facetize command (when run in region mode) works in a way that allows
+an incomplete conversion to resume work.  For example, if a large
+model is to be converted it may be advantageous to attempt just the
+NMG conversion on the hierarchy first to get a sense of the work to be
+done.  After the initial attempt, global facetize parameters can be
+adjusted and a second NMG run attempted, perhaps this time with SPSR
+reconstruction also enabled. Note that this works only for a hierarchy
+generated with the <strong class="cmd">facetize</strong>.</p>
+</div>
+<div class="paragraph">
+<p>By default the <strong class="cmd">facetize</strong> command attempts to be non-destructive
+when operating on objects - it will not rename or replace any existing
+geometry in normal operational modes.  However, if a user needs to
+create a new version of an existing hierarchy which replaces geometry
+below regions with BoT objects but leaves all upper level names
+intact, this may be accomplished by specifying the <em>--in-place</em> option
+in combination with the <em>-r</em> option.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_examples"><a class="anchor" href="#_examples"></a>EXAMPLES</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="title">Example 1. Create a facetized BOT version of an existing object.</div>
+<div class="content">
+<div class="paragraph">
+<p>The example shows the use of the <strong class="cmd">facetize</strong> command to create a
+facetized BOT version of an existing object (<em>old_object</em>) and
+renaming that facetized object (<em>new_object</em>).  It will try first NMG
+conversion, and if that fails attempts CM conversion.</p>
+</div>
+<div class="paragraph">
+<p><span class="prompt">mged&gt;</span> <code class="ui">facetize region1.r region1.bot</code></p>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 2. Facetize all regions in a hierarchy.</div>
+<div class="content">
+<div class="paragraph">
+<p>This runs the per region conversion on all regions under the "model"
+assembly and creates a new conversion hierarchy under model_facetized.</p>
+</div>
+<div class="paragraph">
+<p><span class="prompt">mged&gt;</span> <code class="ui">facetize -r model model.f</code></p>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 3. Facetize all regions in a hierarchy, attempting only NMG conversion.</div>
+<div class="content">
+<div class="paragraph">
+<p>This runs the per region conversion on all regions, but in the case of
+failure will not attempt any fallback conversion methods.</p>
+</div>
+<div class="paragraph">
+<p><span class="prompt">mged&gt;</span> <code class="ui">facetize -r --NMG model model.f</code></p>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 4. Retry failed conversion objects in a previous facetization attempt with new methodology.</div>
+<div class="content">
+<div class="paragraph">
+<p>This retries the per region conversion on all regions that didn&#8217;t
+originally succeed in the initial conversion attempt, attempting only
+CM reconstruction without first retrying NMG conversion.</p>
+</div>
+<div class="paragraph">
+<p><span class="prompt">mged&gt;</span> <code class="ui">facetize -r --resume model.f</code></p>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 5. Increase Decimation in CM Mode</div>
+<div class="content">
+<div class="paragraph">
+<p><span class="prompt">mged&gt;</span> <code class="ui">facetize --CM --feature-size 0.06 --decimation-feature-size 2.0 ellipse.r ell.bot</code></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>CM: completed in 16 seconds with size 0.06
+CM: completed in 23 seconds with size 0.054
+CM: timed out after 30 seconds with size 0.0486
+CM: successfully created 6960500 faces, feature size 0.054
+CM: decimation succeeded, final BoT has 104 faces</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The default settings on this object in CM mode will produce a little
+over 8000 faces in the final bot, but the addition of the
+<strong class="opt">decimation-feature-size</strong> option with a &gt;1.5 value has
+dramatically reduced the count to 104.</p>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 6. Decrease Decimation in CM Mode</div>
+<div class="content">
+<div class="paragraph">
+<p><span class="prompt">mged&gt;</span> <code class="ui">facetize --CM --feature-size 0.06 --decimation-feature-size .01 ellipse.r ell.bot</code></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>CM: completed in 16 seconds with size 0.06
+CM: completed in 23 seconds with size 0.054
+CM: timed out after 30 seconds with size 0.0486
+CM: successfully created 6960500 faces, feature size 0.054
+CM: decimation succeeded, final BoT has 247642 faces</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the intent is preserve a more detailed mesh, reducing
+<strong class="opt">decimation-feature-size</strong> will keep more of the original
+triangles - in the above example, almost 250 thousand of the original
+6.9 million faces were retained.  NOTE: use lower values here
+cautiously, as extremely large meshes can be very difficult for many
+tools to deal with.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_methodology"><a class="anchor" href="#_methodology"></a>METHODOLOGY</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ideally users would not need to concern themselves with the details of
+how <strong class="cmd">facetize</strong> works, but unfortunately there are a significant
+number of real world geometries which will cause problems for the
+current implementation.  In those cases, deeper understanding of what
+is happening can be very important to maximizing the success of a
+conversion.</p>
+</div>
+<div class="paragraph">
+<p>By default, conversions will first attempt a standard NMG facetization
+and boolean evaluation of the existing geometry.  When it succeeds,
+NMG&#8217;s output is generally the best quality output that can be produced
+by any of BRL-CAD&#8217;s available facetization methods.  If NMG booleans
+fail, a fall-back method based on Bloomenthal&#8217;s continuation method
+(CM) polygonalizer will be attempted by default.Note that if any of
+the methodology flags (<em>--NMG</em>, <em>--CM</em>, or <em>--SPSR</em>) are explicitly
+enabled, the other methodologies will be disabled unless they too are
+explicitly enabled.</p>
+</div>
+<div class="paragraph">
+<p>While the <strong class="cmd">facetize</strong> command does not itself expose options to
+adjust the behavior of the NMG boolean methodology, it will respect
+MGED&#8217;s settings for absolute (<em>abs</em>), relative (<em>rel</em>), and normal
+(<em>norm</em>) tolerances which are set with the MGED <strong class="cmd">tol</strong> command.
+These settings may be changed between repeated runs of the facetize
+command to attempt different NMG evaluations.</p>
+</div>
+<div class="paragraph">
+<p>Bloomenthal&#8217;s continuation method tends to be slower and exhibit
+artifacts around sharp corners - users are advised to inspect the
+output from this method manually to ensure it will meet their
+needs. (All objects created with this methodology in a multi-region
+hierarchical conversion are also included in a top level combination
+with CONTINUATION in the name to allow users to more easily inspect
+them.)  By default, the BRL-CAD raytracer is used to shoot
+pseudo-random rays at the object and accumulate an average observed
+thickness of the model.  This thickness is then used as the basis for
+an initial guess at the appropriate stepping size used by the CM
+walker (smaller means more triangles, and longer run times, but
+potentially better preservation of small features.)  The initial
+thickness is multiplied by a scale factor, which defaults to 0.15 but
+may be overridden by the user with the <em>--feature-scale</em>
+option. Alternately, if the user has some specific knowledge of what
+feature size they are likely to want, they may use the
+<em>--feature-size</em> option to directly set this parameter independent of
+the observed average thickness.</p>
+</div>
+<div class="paragraph">
+<p>Because CM tends to generate a very large number of triangles, it is
+necessary to post process its initial mesh with a decimation routine
+to remove triangles which are not necessary to actual feature
+representation.  This process is also feature-size based, and by
+default is set to 1.5x the feature size. However, if the user wishes
+to preserve more triangles than the default behavior they may manually
+override this parameter with the <em>--decimation-feature-size</em> option.
+Generally speaking smaller values will lead to more meshes being
+retained in the final output mesh, but experimentation will likely be
+needed to zero in on desired results.  See CM examples above for an
+illustration using the moss.g ellipsoid region.</p>
+</div>
+<div class="paragraph">
+<p>Both NMG and CM assume a geometry hierarchy containing only valid
+solid objects.  Both methods will refuse to process any tree
+containing recognizably non-solid objects, as these tend to cause
+run-time problems and generate invalid outputs.  For non-solid
+objects, the "--SPSR" methodology may be enabled - it will apply the
+Kazhdan et. al. Screened Poisson Surface Reconstruction (SPSR) process
+to a pseudo-randomly sampled point set generated from <em>old_object</em>.
+This methodology may not cope well with the type of points sets
+generated from CAD geometry and is off by default in normal
+<strong class="cmd">facetize</strong> processing, but it is also the only currently
+available methodology in BRL-CAD which has a chance of generating a
+valid mesh from non-solid inputs.</p>
+</div>
+<div class="paragraph">
+<p>There are three parameters available for the SPSR methodology
+specifically: maximum reconstruction depth (<em>-d</em>) will control the
+level of detail in the output mesh, point weight (<em>-w</em>) which impacts
+how much the output will attempt to interpolate the original inputs,
+and samples per node (see the Kazhdan et. al. paper for more
+information.)  For situations where the user wishes to experiment with
+different point sampling schemes, they are referred to the <strong class="cmd">pnts</strong>
+command which offers more fine grained controls when it comes to
+generating point sets from BRL-CAD objects.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_util"><a class="anchor" href="#_util"></a>USEFUL TRICKS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>These are some useful tricks for targeted manipulation of the
+facetization process.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 7. Reset CM state of a subset of objects.</div>
+<div class="content">
+<div class="paragraph">
+<p>Use search -exec to reset just the continuation method flag (will
+result in resume retrying CM on all missing objects, without
+triggering the full retry of all methods entailed by the --retry
+option.)  More targeted searches can do this reset for more narrow
+subsets of the .g database.</p>
+</div>
+<div class="paragraph">
+<p><span class="prompt">mged&gt;</span> <code class="ui">search -attr facetize:CM -exec attr rm "{}" facetize:CM ";"</code></p>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 8. List invalid BoT objects below a comb</div>
+<div class="content">
+<div class="paragraph">
+<p>Use lint -M to report on invalid objects below a comb.</p>
+</div>
+<div class="paragraph">
+<p><span class="prompt">mged&gt;</span> <code class="ui">lint -M model.f</code></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_author"><a class="anchor" href="#_author"></a>AUTHOR</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>BRL-CAD Team</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright"><a class="anchor" href="#_copyright"></a>COPYRIGHT</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This software is Copyright (c) 1989-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bug_reports"><a class="anchor" href="#_bug_reports"></a>BUG REPORTS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Reports of bugs or problems should be submitted via electronic mail to
+<a href="mailto:devs@brlcad.org">devs@brlcad.org</a></p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../ui/js/site.js"></script>
+<script src="../../../ui/js/vendor/lunr.js"></script>
+<script src="../../../ui/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/docs/man/n/facetize.html"></script>
+<script async src="../../../ui/../search-index.js"></script>
+<script async src="../../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

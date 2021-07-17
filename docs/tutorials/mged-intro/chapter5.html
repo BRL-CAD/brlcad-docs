@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>5. Learning About Boolean Expressions :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/docs/tutorials/mged-intro/chapter5.html">
+    <link rel="prev" href="chapter4.html">
+    <link rel="next" href="chapter6.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../ui/css/site.css">
+    <link rel="stylesheet" href="../../../ui/css/search.css">
+    <link rel="stylesheet" href="../../../ui/css/custom.css">
+    <script>var uiRootPath = '../../../ui'</script>
+    <link rel="icon" href="../../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lessons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../lessons/mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/01_creating_primitive_shapes.html">1. Creating Primitive Shapes in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/02_learning_viewing_options.html">2. Learning Viewing Options in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/03_using_insert_command.html">3. Using the Insert Command in MGED to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/04_assign_mat_prop_rt.html">4. Assigning Material Properties and Raytracing in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/05_learning_boolean_expressions.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/06_creating_a_goblet.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/07_goblet_material_properties.html">7. Assigning Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/08_goblet_material_properties2.html">8. Assigning More Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/09_globe_in_display_box.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/10_creating_mug.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/11_refining_mug.html">11. Refining a Mug Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/12_mug_through_gui.html">12. Creating a Mug Model using the MGED Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/13_placing_shapes_in_3d.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/14_placing_shapes_in_3d_2.html">14. Additional Exercises Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/15_creating_a_toy_truck.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/16_mod_tech_struct.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Books</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../hacking/index.html">Hacking BRL-CAD</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting Started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter1.html">A Call to Arms (and Contributors)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter2.html">Feature Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developers</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter3.html">Working with Our Code</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter4.html">What Code to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter5.html">Contributing Code</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Documenters</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter6.html">Working with Our Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter7.html">Types of Documentation We Maintain</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter8.html">What Documentation to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter9.html">Contributing Documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Other Contributors</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part4/chapter10.html">You Can Help Too</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendix: Resources and Examples</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix1.html">Further References and Resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix2.html">Doc Template: New MGED Command</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix3.html">Code Example: Shooting Rays</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix4.html">Code Example: Walking Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix5.html">Code Example: Command Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix6.html">Example Code: Root Solving</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../index.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview.html">I. An Overview of BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../mged-intro.html">II. Introduction to MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="preface1.html">Preface</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="preface2.html">Acknowledgments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter1.html">1. Creating Primitive Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter2.html">2. Learning the Viewing Options</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter3.html">3. Using the Insert Command to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter4.html">4. Assigning Material Properties and Raytracing</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="chapter5.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter6.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter7.html">7. Assigning Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter8.html">8. Assigning More Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter9.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter10.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter11.html">11. Refining the Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter12.html">12. Creating the Mug Through the GUI</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter13.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter14.html">14. Gaining More Practice Placing Shapes in Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter15.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter16.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="appendix1.html"><code class="app">MGED</code> Commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../modeling.html">III. Modeling</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../modeling/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../modeling/chapter2.html">2. The Model Process</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../modeling/chapter3.html">3. Measuring data</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../modeling/chapter4.html">4. Organizing the Structure</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../modeling/chapter5.html">5. Developing Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../modeling/chapter6.html">5. Evaluating Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../modeling/chapter7.html">7. Logging Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendices</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../modeling/appendix1.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../modeling/appendix2.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../modeling/appendix3.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../modeling/appendix4.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../modeling/appendix5.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../modeling/appendix6.html">Using the build_region Command</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../converting.html">IV. Converting</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter2.html">2. Pertinent Characteristics of the BRL-CAD Format</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter3.html">3. Converting From/to ASCII</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter4.html">4. Converting to BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter5.html">5. Converting From BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter6.html">6. Building a New Converter</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter7.html">7. Postconversion Issues</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/index.html">Articles</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_pattern.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_region.html">Using the build_region Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/camo_shader.html">Camouflage shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ebm_primitive.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/gcv.html">The Geometry Conversion Library</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ged.html">GED: An Interactive Solid Modeling System</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/mged/index.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tutorial.html">Tutorial</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/gui.html">Graphical User Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/command-line-editing.html">Command Line Editing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/user-commands.html">User Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/developer-commands.html">Developer Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tcl-variables.html">Tcl Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/env.html">Environment Variable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/callback.html">Callback</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/brlcad-solid.html">BRL-CAD Solid</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/mgedrc.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/nirt.html">Interactive Raytracing: The nirt Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/overlap_tool.html">The Overlap Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/oed.html">Object Editing - the oed Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/pipes.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/projection_shader.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/tire.html">Vehicle Tire and Wheel Creation in BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/TEMPLATE.html">TEMPLATE</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Misc</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Dev Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../devguides/bool_eval_development.html">NURBS Boolean Evaluation Development Guide</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Presentations</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/brlcad-app-devel.html">Application Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="presentations:_attachments/brlcad-app-devel.html">brlcad-app-devel</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/intro-to-tcltk.html">Introduction to Tcl/Tk</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../specifications/BRL_CAD_g_format_V5.html">BRL-CAD Database Format</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Manual Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/1.html">man1</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/3.html">man3</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/5.html">man5</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/n.html">mann</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Wiki Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">page-1</span>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">BRL-CAD</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../../index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../es/index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../es/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">BRL-CAD</a></li>
+    <li>Books</li>
+    <li><a href="../index.html">Tutorials</a></li>
+    <li><a href="../mged-intro.html">II. Introduction to MGED</a></li>
+    <li><a href="chapter5.html">5. Learning About Boolean Expressions</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/docs/modules/tutorials/pages/mged-intro/chapter5.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">5. Learning About Boolean Expressions</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this lesson, you will:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Learn about combinations and regions.</p>
+</li>
+<li>
+<p>Learn about Boolean operations.</p>
+</li>
+<li>
+<p>Make regions with Boolean operations.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This is an important lesson because Boolean operations are critical to
+the modeling process.  The order in which shapes are combined and the
+operators used to combine the shapes will determine how the
+<code class="app">MGED</code> program interprets your model.</p>
+</div>
+<div class="paragraph">
+<p>The correct use of Boolean expressions to modify geometric shapes is a
+key skill in constructive solid modeling.  It important to review
+these concepts as many times as necessary.  If it is difficult to
+absorb them all now, come back to them later.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_boolean_tools"><a class="anchor" href="#_boolean_tools"></a>1. Combinations and Regions: Boolean Tools</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are conceptually two objects in <code class="app">MGED</code> that support Boolean
+operations.  One is called a combination, the other is called a
+region.</p>
+</div>
+<div class="paragraph">
+<p>As mentioned earlier, a typical geometric shape in <code class="app">MGED</code> is
+called a primitive.  However, single primitives are often insufficient
+to fully describe the complex shape of the object being modeled.  So,
+combining two or more primitive shapes into other shapes (called
+combinations) using Boolean operators allows you to artfully imitate
+the shape and form of most complicated objects.</p>
+</div>
+<div class="paragraph">
+<p>The previous chapter noted that material properties are associated
+with regions.  Like combinations, regions use Boolean operations to
+create complex shapes.  The difference is that regions are shapes that
+have material properties.  They occupy three-dimensional space, rather
+than simply defining a shape in space.</p>
+</div>
+<div class="paragraph">
+<p>You can think of primitives and combinations as a blueprint for an
+object.  The actual object is created when a region is made.  For
+example, you might make a blueprint of an object such as a coffee mug,
+but then create that mug from different types of material (e.g.,
+ceramic or glass). Regardless of the material, the blueprint is the
+same.</p>
+</div>
+<div class="paragraph">
+<p>When Boolean operations are used to build up complex shapes from
+simpler shapes, we can call the result a shape combination.  When they
+are used to define other logical or hierarchical structure within the
+database, the result may be referred to as a group or an assembly
+combination.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_boolean_operations"><a class="anchor" href="#_boolean_operations"></a>2. Boolean Operations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The three Boolean operators employed by the <code class="app">MGED</code> program are
+union, subtraction, and intersection.  You can use Boolean operations
+to combine shapes to produce more complex shapes.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Union Shapes: Merge two shapes.</p>
+</li>
+<li>
+<p>Subtract Shapes: Remove the volume of one shape from another.</p>
+</li>
+<li>
+<p>Intersect Shapes: Use only the parts of the two shapes that overlap.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_union"><a class="anchor" href="#_union"></a>2.1. Union</h3>
+<div class="paragraph">
+<p>The union operator, u, joins shapes so that any point in at least one
+of them will be part of the result.  Union is a powerful and
+frequently used operator.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../lessons/_images/mged/05_unionspheres.png" alt="05 unionspheres">
+</div>
+<div class="title">Figure 1. The Union of Two Spheres</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_subtraction"><a class="anchor" href="#_subtraction"></a>2.2. Subtraction</h3>
+<div class="paragraph">
+<p>When a primitive shape has a second, overlapping shape subtracted from
+it, the result is that the second shape disappears, together with any
+common volume it had with the first shape.  The - (minus sign)
+operator signifies subtraction or difference.  This operation is
+especially useful in hollowing a body, removing an oddly shaped piece
+of a primitive shape, or accounting for edge intersections of walls,
+plates, piping, or other connected shapes.</p>
+</div>
+<div class="paragraph">
+<p>In the following example, a dotted red line indicates that the sphere
+being subtracted extends inside the sphere on the right.  This
+overlapping portion is partially out of view in the raytraced image.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../lessons/_images/mged/05_subtractionspheres.png" alt="05 subtractionspheres">
+</div>
+<div class="title">Figure 2. Subtraction of One Sphere from Another Sphere</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_intersection"><a class="anchor" href="#_intersection"></a>2.3. Intersection</h3>
+<div class="paragraph">
+<p>The Boolean intersection operation, signified by a + (plus sign)
+operator, combines two primitive shapes that overlap each other,
+saving only their common volume (the nonoverlapped areas will not be
+present). An easy way to understand intersections is to think of
+shapes as roads.  The intersection is the place where two roads
+overlap.</p>
+</div>
+<div class="paragraph">
+<p>Although many people find intersection operations harder to understand
+than unions and subtractions, unusual/complex shapes can be expressed
+using the intersection operator.  For example, you can model a
+magnifying lens as the intersection of two spheres.</p>
+</div>
+<div class="paragraph">
+<p>The intersection operation is rarely useful unless, as shown in the
+following figure, at least two shapes overlap.  The intersection of
+two shapes having no common points (i.e., no overlap) is the null set,
+so it includes no points of space at all.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../lessons/_images/mged/05_intersectionspheres.png" alt="05 intersectionspheres">
+</div>
+<div class="title">Figure 3. Intersection of Two Spheres</div>
+</div>
+<div class="paragraph">
+<p>There is one important restriction when using the Boolean subtraction
+and intersection operators.  There must be a first shape from which a
+second shape can be subtracted or intersected.  If you have only one
+shape within a region or combination, the operator will be ignored and
+the union operator will always be used.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_making_regions_bool_ops"><a class="anchor" href="#_making_regions_bool_ops"></a>3. Making Regions with Boolean Operations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Begin by opening the database shapes.g that you created in Lesson 3.
+At the Command Window prompt, type:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">draw sph2.s rcc2.s <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>This lets us see the shapes we will be using to create our regions.
+As seen earlier, the two shapes should look something like the
+following:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../lessons/_images/mged/05_twoprimitivespheres.png" alt="05 twoprimitivespheres">
+</div>
+<div class="title">Figure 4. Two Primitive Shapes</div>
+</div>
+<div class="paragraph">
+<p>In this lesson, we will create different shapes to demonstrate the
+function of Boolean operations.  In the Command Window, type the
+following:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r part1.r u rcc2.s - sph2.s <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>This command tells <code class="app">MGED</code> to:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">r</th>
+<th class="tableblock halign-center valign-top">part1.r</th>
+<th class="tableblock halign-center valign-top">u</th>
+<th class="tableblock halign-center valign-top">rcc2.s</th>
+<th class="tableblock halign-center valign-top">-</th>
+<th class="tableblock halign-center valign-top">sph2.s</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Make a region</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Call it part1.r</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Merge&#8230;&#8203;</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">The shape named rcc2.s</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Subtract&#8230;&#8203;</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">The shape named sph2.s</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The first member always has a lowercase u for an operator.  The second
+and subsequent members can use -, +, or u as needed.  The process of
+determining which operators to use, and in what order, is discussed in
+a more advanced tutorial.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In the previous lesson, we applied material properties to objects from
+the Command Line.  Now we are going to use the graphical interface to
+do the same thing.  From the Edit menu, choose Combination Editor.
+This will pop up a dialog box.  Select the button to the right of the
+Name entry box and then Select from All.  A drop-down menu will appear
+with the regions you have created.  Select part1.r.  The result should
+look like the following:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../lessons/_images/mged/05_combinationeditor.png" alt="05 combinationeditor">
+</div>
+<div class="title">Figure 5. Combination Editor</div>
+</div>
+<div class="paragraph">
+<p>Click on the button next to Color and select red from the pull-down
+menu.</p>
+</div>
+<div class="paragraph">
+<p>Now click the OK button at the bottom left of the dialog window.  This
+will apply your changes and close the panel.</p>
+</div>
+<div class="paragraph">
+<p>At the moment, we have only the primitive shapes displayed, not the
+region.  Before we can raytrace, we must remove the primitive shapes
+from the display, and draw the region.  Otherwise, we will not be able
+to see the region with the color properties we applied.  We can do
+this by typing:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">B part1.r</code></p>
+</div>
+<div class="paragraph">
+<p>We are now ready to raytrace this object.  From the File menu, bring
+up the Raytrace Control Panel and click the Raytrace button.  The
+image you get should look similar to the left-hand image that follows.
+Note that it may take several minutes to raytrace the window,
+depending on the speed of your particular system.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../../lessons/_images/mged/05_raytracedpart1.png" alt="05 raytracedpart1">
+</div>
+<div class="title">Figure 6. Raytraced part1.r</div>
+</div></div></td>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../../lessons/_images/mged/05_raytracedpart2.png" alt="05 raytracedpart2">
+</div>
+<div class="title">Figure 7. Raytraced part2.r</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>You should see that a spherical "bite" has been taken out of the top
+of the cylinder.</p>
+</div>
+<div class="paragraph">
+<p>Next we will make a blue region using the intersection operator
+instead of subtraction.  Once again, we start by creating a region:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r part2.r u rcc2.s + sph2.s <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>For comparison to the GUI approach used to make part1.r, let&#8217;s use the
+Command Line to assign the color to part2.r:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">mater part2.r plastic 0 0 255 0 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Finally, Blast this new region onto the display as follows:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">B part2.r <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Now raytrace the object.  It should look similar to the preceding
+right-hand image.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Remember to clear the Graphics Window and draw your new region or
+combination before trying to raytrace the model.  The raytracer
+ignores a region or combination that is not drawn in the Graphics
+Window.  The color of the wireframe is your clue.  If it doesn&#8217;t
+reflect the colors you&#8217;ve assigned (e.g., everything is drawn in red
+even though you&#8217;ve assigned other colors), then you haven&#8217;t cleared
+the screen of the primitive shapes and drawn the new region or
+combination since the time you made it.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>When you use the intersection operator, the order in which you specify
+the shapes doesn&#8217;t matter.  We would have gotten the same results if
+we had specified the Boolean operation as</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r part2.r u sph2.s + rcc2.s</code></p>
+</div>
+<div class="paragraph">
+<p>However, when using the subtraction operator, the order of the two
+shapes is very important.  Let&#8217;s make a region with the order of the
+shapes reversed from that used for part1.r:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r part3.r u sph2.s - rcc2.s</code></p>
+</div>
+<div class="paragraph">
+<p>This time we won&#8217;t bother to set a color.  (When no color is set for
+objects, the raytracer (rt) will use a color of white.  However, these
+objects may appear gray because of the amount of light in the scene.)
+Blast this design to the display and raytrace it:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../lessons/_images/mged/05_raytracedpart3.png" alt="05 raytracedpart3">
+</div>
+<div class="title">Figure 8. Raytrace part3.r</div>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s raytrace all three objects we have created together.  To
+draw the three regions at once, we could type:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">B part1.r part2.r part3.r</code></p>
+</div>
+<div class="paragraph">
+<p>Doing this once is no problem.  However, if these were three parts
+that made up some complex object, we might like to be able to draw all
+of them more conveniently.  To make drawing a collection of objects
+together easier, we create an assembly combination to gather them all
+together.  We will create one called dome.c for our three regions.
+This is accomplished by the following command:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">comb dome.c u part1.r u part2.r u part3.r</code></p>
+</div>
+<div class="paragraph">
+<p>Notice the similarity between this command and the r command we used
+to create the regions.</p>
+</div>
+<div class="paragraph">
+<p>Remember from the discussion at the beginning of this lesson, the
+difference between a region and a combination is that combinations are
+not necessarily composed of only one kind of material.  Several
+objects of different materials can make up an assembly combination
+such as the one we have just created.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Because creating assembly combinations is a very common task, there is
+a shortcut command-the g (for group) command-to help make the task
+easier.  Creating dome.c using this command would look as follows:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">g dome.c part1.r part2.r part3.r</code></p>
+</div>
+<div class="paragraph">
+<p>Notice that you don&#8217;t have to type the u Boolean operators.  The g
+command unions all of its arguments.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>All that is necessary to draw all three objects is the much simpler
+command:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">B dome.c</code></p>
+</div>
+<div class="paragraph">
+<p>Now we can raytrace the collected set and get the following image:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../lessons/_images/mged/05_raytraceddome.png" alt="05 raytraceddome">
+</div>
+<div class="title">Figure 9. Raytraced dome.c</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_operator_precedence"><a class="anchor" href="#_operator_precedence"></a>4. Operator Precedence</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The shapes we have created here are fairly simple.  In each case, a
+single primitive shape is unioned, and subtraction or intersection
+operations are performed on that single primitive shape.  You should
+know that it is possible to use much more complex Boolean equations to
+create the shape of objects.  When you want to make such objects, keep
+in mind the precedence of the Boolean operations.  In the Boolean
+notation we are using, the subtraction and intersection operators both
+have higher precedence than the union operator has.  So, for example:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">comb demo.c u shape1 - shape2 u shape3 - shape4 + shape5</code></p>
+</div>
+<div class="paragraph">
+<p>This would result in the following Boolean expression:</p>
+</div>
+<div class="paragraph">
+<p><code>(shape1 - shape2) u ( (shape3 - shape4) + shape5)</code></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_learning_boolean_operations_review"><a class="anchor" href="#_learning_boolean_operations_review"></a>5. Review</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this lesson, you:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Learned about combinations and regions.</p>
+</li>
+<li>
+<p>Learned about Boolean operations.</p>
+</li>
+<li>
+<p>Made regions with Boolean operations.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="chapter4.html">4. Assigning Material Properties and Raytracing</a></span>
+  <span class="next"><a href="chapter6.html">6. Creating a Goblet</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../ui/js/site.js"></script>
+<script src="../../../ui/js/vendor/lunr.js"></script>
+<script src="../../../ui/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/docs/tutorials/mged-intro/chapter5.html"></script>
+<script async src="../../../ui/../search-index.js"></script>
+<script async src="../../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

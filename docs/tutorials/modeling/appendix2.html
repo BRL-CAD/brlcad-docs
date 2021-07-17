@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Using the Projection Shader :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/docs/tutorials/modeling/appendix2.html">
+    <link rel="prev" href="appendix1.html">
+    <link rel="next" href="appendix3.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../ui/css/site.css">
+    <link rel="stylesheet" href="../../../ui/css/search.css">
+    <link rel="stylesheet" href="../../../ui/css/custom.css">
+    <script>var uiRootPath = '../../../ui'</script>
+    <link rel="icon" href="../../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lessons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../lessons/mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/01_creating_primitive_shapes.html">1. Creating Primitive Shapes in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/02_learning_viewing_options.html">2. Learning Viewing Options in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/03_using_insert_command.html">3. Using the Insert Command in MGED to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/04_assign_mat_prop_rt.html">4. Assigning Material Properties and Raytracing in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/05_learning_boolean_expressions.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/06_creating_a_goblet.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/07_goblet_material_properties.html">7. Assigning Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/08_goblet_material_properties2.html">8. Assigning More Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/09_globe_in_display_box.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/10_creating_mug.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/11_refining_mug.html">11. Refining a Mug Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/12_mug_through_gui.html">12. Creating a Mug Model using the MGED Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/13_placing_shapes_in_3d.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/14_placing_shapes_in_3d_2.html">14. Additional Exercises Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/15_creating_a_toy_truck.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/16_mod_tech_struct.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Books</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../hacking/index.html">Hacking BRL-CAD</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting Started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter1.html">A Call to Arms (and Contributors)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter2.html">Feature Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developers</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter3.html">Working with Our Code</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter4.html">What Code to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter5.html">Contributing Code</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Documenters</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter6.html">Working with Our Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter7.html">Types of Documentation We Maintain</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter8.html">What Documentation to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter9.html">Contributing Documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Other Contributors</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part4/chapter10.html">You Can Help Too</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendix: Resources and Examples</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix1.html">Further References and Resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix2.html">Doc Template: New MGED Command</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix3.html">Code Example: Shooting Rays</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix4.html">Code Example: Walking Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix5.html">Code Example: Command Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix6.html">Example Code: Root Solving</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../index.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview.html">I. An Overview of BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../mged-intro.html">II. Introduction to MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/preface1.html">Preface</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/preface2.html">Acknowledgments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter1.html">1. Creating Primitive Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter2.html">2. Learning the Viewing Options</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter3.html">3. Using the Insert Command to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter4.html">4. Assigning Material Properties and Raytracing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter5.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter6.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter7.html">7. Assigning Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter8.html">8. Assigning More Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter9.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter10.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter11.html">11. Refining the Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter12.html">12. Creating the Mug Through the GUI</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter13.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter14.html">14. Gaining More Practice Placing Shapes in Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter15.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter16.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/appendix1.html"><code class="app">MGED</code> Commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../modeling.html">III. Modeling</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter2.html">2. The Model Process</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter3.html">3. Measuring data</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter4.html">4. Organizing the Structure</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter5.html">5. Developing Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter6.html">5. Evaluating Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter7.html">7. Logging Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendices</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="appendix1.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="4">
+    <a class="nav-link" href="appendix2.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="appendix3.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="appendix4.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="appendix5.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="appendix6.html">Using the build_region Command</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../converting.html">IV. Converting</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter2.html">2. Pertinent Characteristics of the BRL-CAD Format</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter3.html">3. Converting From/to ASCII</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter4.html">4. Converting to BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter5.html">5. Converting From BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter6.html">6. Building a New Converter</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter7.html">7. Postconversion Issues</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/index.html">Articles</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_pattern.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_region.html">Using the build_region Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/camo_shader.html">Camouflage shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ebm_primitive.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/gcv.html">The Geometry Conversion Library</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ged.html">GED: An Interactive Solid Modeling System</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/mged/index.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tutorial.html">Tutorial</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/gui.html">Graphical User Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/command-line-editing.html">Command Line Editing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/user-commands.html">User Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/developer-commands.html">Developer Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tcl-variables.html">Tcl Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/env.html">Environment Variable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/callback.html">Callback</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/brlcad-solid.html">BRL-CAD Solid</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/mgedrc.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/nirt.html">Interactive Raytracing: The nirt Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/overlap_tool.html">The Overlap Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/oed.html">Object Editing - the oed Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/pipes.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/projection_shader.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/tire.html">Vehicle Tire and Wheel Creation in BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/TEMPLATE.html">TEMPLATE</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Misc</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Dev Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../devguides/bool_eval_development.html">NURBS Boolean Evaluation Development Guide</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Presentations</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/brlcad-app-devel.html">Application Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="presentations:_attachments/brlcad-app-devel.html">brlcad-app-devel</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/intro-to-tcltk.html">Introduction to Tcl/Tk</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../specifications/BRL_CAD_g_format_V5.html">BRL-CAD Database Format</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Manual Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/1.html">man1</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/3.html">man3</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/5.html">man5</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/n.html">mann</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Wiki Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">page-1</span>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">BRL-CAD</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../../index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../es/index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../es/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">BRL-CAD</a></li>
+    <li>Books</li>
+    <li><a href="../index.html">Tutorials</a></li>
+    <li><a href="../modeling.html">III. Modeling</a></li>
+    <li>Appendices</li>
+    <li><a href="appendix2.html">Using the Projection Shader</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/docs/modules/tutorials/pages/modeling/appendix2.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Using the Projection Shader</h1>
+<div class="sect1">
+<h2 id="_projshader_general"><a class="anchor" href="#_projshader_general"></a>General</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Though the U.S.  Army Ballistic Research Laboratory - Computer-Aided
+Design (BRL-CAD) package has the capability to model highly detailed
+and complex surfaces of objects, such as the multitude of small chips,
+connectors, and other electrical components on a circuit board (see
+Figure 1), individually building each piece of a complex surface is
+often labor intensive, time consuming, and unnecessary for the model&#8217;s
+intended purpose.  Thus, the package offers an alternative, the
+projection shader, to create realistic-looking "skin" for objects.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../articles/_images/projection_shader_fig01.png" alt="projection shader fig01">
+</div>
+<div class="title">Figure 1. The many components of a circuit board.</div>
+</div>
+<div class="paragraph">
+<p>As its name implies, the projection shader projects an image onto a
+surface.  Unlike the texture shader, however, which fits an image to
+all available surfaces (stretching/shrinking as necessary), the
+projection shader projects the image with user-defined dimensions and
+orientations.</p>
+</div>
+<div class="paragraph">
+<p>There are several ways that advanced users can implement and customize
+the projection shader in BRL-CAD.  The average user can reduce the
+complexity of the process, however, by complying with the following
+three basic rules of thumb:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>the image to be projected should be square,</p>
+</li>
+<li>
+<p>the geometry window (minus the toolbar and borders) should be
+square, and</p>
+</li>
+<li>
+<p>the projected image should exactly fill the framebuffer.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The following list identifies the basic tasks needed to use the
+projection shader:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>create/obtain an image to project,</p>
+</li>
+<li>
+<p>resize the graphics display window or image so that their dimensions
+match each other,</p>
+</li>
+<li>
+<p>ensure the framebuffer is active,</p>
+</li>
+<li>
+<p>display the image in the framebuffer of the graphics display window,</p>
+</li>
+<li>
+<p>align the image on the geometry by modifying the view parameters,</p>
+</li>
+<li>
+<p>save the projection shader settings file,</p>
+</li>
+<li>
+<p>apply the shader settings file to the object in the combination
+editor, and</p>
+</li>
+<li>
+<p>render the image.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Each of these steps is discussed in the following paragraphs using the
+example of the previously mentioned circuit board.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_projshader_getimage"><a class="anchor" href="#_projshader_getimage"></a>Create/Obtain an Image to Project</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The first step in using the projection shader is to create or obtain
+the image to be projected.  The image can be a pre-existing picture
+file, or it can be created specifically for the projection.  In this
+case, we took a photograph of the circuit board with a digital camera
+and used a commercially available PC image editor to make the image
+square.  When finished, we saved the image as a .jpg file, with the
+name circuit_back_950.jpg.  (Note that it is wise to include the image
+dimensions [i.e., 950 pixels wide × 950 pixels high] in the file name
+because many projection shader tasks rely on them.) To get the image
+into a BRL-CAD-accepted format (see tutorial box that follows), we
+converted the .jpg file to a .png file using an image editor and then
+the .png file to a .pix file using the BRL-CAD png-pix utility.  For
+more information on this utility, consult the man page.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>BRL-CAD recognizes several image file formats, including .pix, .png.,
+and .ppm.  Because the package relies on precise color values to
+perform certain calculations, it does not support lossy file formats
+(e.g., .jpg), which are based on algorithms that can alter or lose
+image/color data.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_projshader_resize"><a class="anchor" href="#_projshader_resize"></a>Resize the Graphics Display Window to Match Image Dimensions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The next step is to "prepare" the area on which the image will be
+displayed so that it is ready for the image.  For the circuit board,
+the size of the photograph was 950 pixels × 950 pixels high.  To make
+the graphics display window match, we opened the Raytrace Control
+Panel and used the numbers in the Size window box as a reference to
+determine how much to enlarge/shrink the graphics display window (by
+using the mouse to drag the window borders in or out) (see Figure
+2).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../articles/_images/projection_shader_fig02.png" alt="projection shader fig02">
+</div>
+<div class="title">Figure 2. Using the Raytrace Control Panel to size the graphics window.</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Note that the Raytrace Control Panel (specifically, the Size field) is
+used here simply to report the result of the user scaling the
+dimensions of the graphics display area.  It is not used to set the
+desired dimensions (in this case, 950 × 950) of the graphics area by
+inputting them into the Size field.  Any numbers input into this field
+will only determine the size of the display area in the next raytrace.</p>
+</div>
+<div class="paragraph">
+<p>Also note that some window managers have information boxes that
+automatically report the size of the graphics display window as it is
+being enlarged/reduced; however, the dimensions reported in these
+boxes often represent the size of the entire window (including
+toolbars, borders, etc.) and not the size of the framebuffer.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_projshader_actframe"><a class="anchor" href="#_projshader_actframe"></a>Ensure the Framebuffer is Active</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A small but sometimes overlooked step before displaying any image onto
+the graphics display window is to make sure the framebuffer is active.
+If it is not active, it may appear that nothing happens when a display
+command is given.  There are several ways to check the status of the
+framebuffer.  We went to the Settings pull-down menu in the graphical
+user interface, selected Framebuffer, and made sure the box next to
+the Framebuffer Active option was toggled on.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_projshader_dispimage"><a class="anchor" href="#_projshader_dispimage"></a>Display the Image in the Graphics Display Window</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After the graphics display window has been prepared and the
+framebuffer checked/set, the image can be displayed in the graphics
+window.  To do this, we entered the following command:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">pix-fb -F0 -s 950 circuit_back_950.pix</code></p>
+</div>
+<div class="paragraph">
+<p>Diagrammed, the command breaks down as follows:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">pix-fb</th>
+<th class="tableblock halign-left valign-top">-F0</th>
+<th class="tableblock halign-left valign-top">-s</th>
+<th class="tableblock halign-left valign-top">950</th>
+<th class="tableblock halign-left valign-top">circuit_back_950.pix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Send a .pix file to a framebuffer.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use framebuffer number 0.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Make it a square image.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">950 pixels wide and high.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use the image file named circuit_back_950.pix</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>For more information on the pix-fb command (including a list of other
+options the command takes), type pix-fb on the command line or consult
+the man page.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Note that framebuffers use transmission control protocol (TCP) ports
+for applications.  The framebuffer number that follows the -F option
+specifies an offset from the TCP port number.  Framebuffer 0 is on
+port 5558.  If 0 is already in use, the Multi-Device Geometry Editor
+(MGED) will use the next available framebuffer number (e.g., 1, 2, 3,
+etc.). To determine which port MGED is actually using, type "set port"
+from the MGED command prompt.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_projshader_overlayimage"><a class="anchor" href="#_projshader_overlayimage"></a>Overlay the Image on the Geometry by Modifying the View Parameters</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>With the image and the target geometry displayed, edit the view
+parameters so that the image is aligned with the geometry on which it
+is to be projected.  In our case, we used the Shift-Grips to scale and
+translate and the ae command to adjust the azimuth, elevation, and
+twist of the circuit board wireframe so that its outside edges lined
+up with the outside edges of the projected image (see Figure
+B-3). (For a refresher on the functionality of the Shift-Grips,
+consult chapter 2, Volume II, of the BRL-CAD Tutorial Series.)</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_projshader_savesettingsfile"><a class="anchor" href="#_projshader_savesettingsfile"></a>Save the Projection Shader Settings File</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After the geometry and image have been aligned, the projection
+settings (i.e., image file name, image width, image height, and
+current view parameters) can then be saved to a file using the prj_add
+command.  The prj_add command appends the image file name and the
+current view parameters to the shader file.  In our case, the command
+was:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">prj_add circuitboard.prj circuit_back_950.pix 950 950</code></p>
+</div>
+<div class="paragraph">
+<p>Diagrammed, this command breaks down as follows:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">prj_add</th>
+<th class="tableblock halign-left valign-top">circuitboard.prj</th>
+<th class="tableblock halign-left valign-top">circuit_back_950.pix</th>
+<th class="tableblock halign-left valign-top">950</th>
+<th class="tableblock halign-left valign-top">950</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add the projection file name and parameters to the shader.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name the shader circuitboard.prj</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use image file circuit_back_950.pix</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Make the image 950 pixels wide.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Make the image 950 pixels high.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="imageblock">
+<div class="content">
+<img src="../../articles/_images/projection_shader_fig03.png" alt="projection shader fig03">
+</div>
+<div class="title">Figure 3. Fitting the geometry view to the image dimensions.</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_projshader_applysettingsfile"><a class="anchor" href="#_projshader_applysettingsfile"></a>Apply the Shader Settings File to the Object in the Combination Editor</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The projection now needs to be applied to the object.  We did this by
+opening the combination editor, typing in the region name cir.r1 in
+the Name field, and selecting Projection from the pull-down menu to
+the right of the Shader field.  We then typed circuitboard.prj in the
+Parameter File field and pressed Apply (see Figure 4).  Note that
+when the name of the shader file is typed into the Parameter File
+field, the same information is echoed into the Shader field.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_projshader_render"><a class="anchor" href="#_projshader_render"></a>Render the Image</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The final step in using the projection shader is to raytrace the
+object to determine if all the other steps have been performed
+correctly.  In our case, rendering the image identified several
+problems that we wanted to correct.  First of all, as shown in Figure
+B-5, the holes in the board failed to convey the three-dimensional
+look we desired.  So, we went back and modeled circular cutouts (using
+cylinder primitives) to improve the appearance.  In addition, the
+rendered image revealed that the image we were using was too dark.
+So, we ended up adjusting the gamma setting on the original image
+(a .jpg file) in an external photo editor.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../articles/_images/projection_shader_fig04.png" alt="projection shader fig04">
+</div>
+<div class="title">Figure 4. Applying the shader settings with the combination editor.</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../articles/_images/projection_shader_fig05.png" alt="projection shader fig05">
+</div>
+<div class="title">Figure 5. Original image (left) and image with circular cutouts (right).</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_projshader_projectfront"><a class="anchor" href="#_projshader_projectfront"></a>Repeating the Steps to Project the Image on the Front</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After one side of the circuit board was finished, we proceeded to
+repeat the steps to add more projection parameters to the .prj file
+and thus project a different image onto the front side of the geometry
+(see Figure 6). To do this, we once again had to acquire an image,
+properly size the geometry window, display the image and the geometry
+to the geometry window, and set up view parameters.  After this was
+done, these parameters could be added to the existing .prj file by
+typing the following:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">prj_add circuitboard.prj circuit_front_950.pix 950 950</code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../articles/_images/projection_shader_fig06.png" alt="projection shader fig06">
+</div>
+<div class="title">Figure 6. The projection shader applied to the front of the circuit board.</div>
+</div>
+<div class="paragraph">
+<p>Figure 7 shows the resulting prj file.  (Note that the first
+projection is on top and the second projection is on the bottom.)</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../articles/_images/projection_shader_fig07.png" alt="projection shader fig07">
+</div>
+<div class="title">Figure 7. The circuit board .prj file.</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="appendix1.html">Using the Pipe Primitive</a></span>
+  <span class="next"><a href="appendix3.html">Using the Extruded Bitmap Primitive</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../ui/js/site.js"></script>
+<script src="../../../ui/js/vendor/lunr.js"></script>
+<script src="../../../ui/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/docs/tutorials/modeling/appendix2.html"></script>
+<script async src="../../../ui/../search-index.js"></script>
+<script async src="../../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

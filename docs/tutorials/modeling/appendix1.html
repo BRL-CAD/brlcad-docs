@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Using the Pipe Primitive :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/docs/tutorials/modeling/appendix1.html">
+    <link rel="prev" href="chapter7.html">
+    <link rel="next" href="appendix2.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../ui/css/site.css">
+    <link rel="stylesheet" href="../../../ui/css/search.css">
+    <link rel="stylesheet" href="../../../ui/css/custom.css">
+    <script>var uiRootPath = '../../../ui'</script>
+    <link rel="icon" href="../../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lessons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../lessons/mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/01_creating_primitive_shapes.html">1. Creating Primitive Shapes in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/02_learning_viewing_options.html">2. Learning Viewing Options in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/03_using_insert_command.html">3. Using the Insert Command in MGED to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/04_assign_mat_prop_rt.html">4. Assigning Material Properties and Raytracing in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/05_learning_boolean_expressions.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/06_creating_a_goblet.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/07_goblet_material_properties.html">7. Assigning Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/08_goblet_material_properties2.html">8. Assigning More Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/09_globe_in_display_box.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/10_creating_mug.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/11_refining_mug.html">11. Refining a Mug Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/12_mug_through_gui.html">12. Creating a Mug Model using the MGED Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/13_placing_shapes_in_3d.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/14_placing_shapes_in_3d_2.html">14. Additional Exercises Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/15_creating_a_toy_truck.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/16_mod_tech_struct.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Books</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../hacking/index.html">Hacking BRL-CAD</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting Started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter1.html">A Call to Arms (and Contributors)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter2.html">Feature Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developers</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter3.html">Working with Our Code</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter4.html">What Code to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter5.html">Contributing Code</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Documenters</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter6.html">Working with Our Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter7.html">Types of Documentation We Maintain</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter8.html">What Documentation to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter9.html">Contributing Documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Other Contributors</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part4/chapter10.html">You Can Help Too</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendix: Resources and Examples</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix1.html">Further References and Resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix2.html">Doc Template: New MGED Command</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix3.html">Code Example: Shooting Rays</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix4.html">Code Example: Walking Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix5.html">Code Example: Command Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix6.html">Example Code: Root Solving</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../index.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview.html">I. An Overview of BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../mged-intro.html">II. Introduction to MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/preface1.html">Preface</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/preface2.html">Acknowledgments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter1.html">1. Creating Primitive Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter2.html">2. Learning the Viewing Options</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter3.html">3. Using the Insert Command to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter4.html">4. Assigning Material Properties and Raytracing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter5.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter6.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter7.html">7. Assigning Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter8.html">8. Assigning More Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter9.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter10.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter11.html">11. Refining the Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter12.html">12. Creating the Mug Through the GUI</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter13.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter14.html">14. Gaining More Practice Placing Shapes in Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter15.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/chapter16.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mged-intro/appendix1.html"><code class="app">MGED</code> Commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../modeling.html">III. Modeling</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter2.html">2. The Model Process</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter3.html">3. Measuring data</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter4.html">4. Organizing the Structure</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter5.html">5. Developing Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter6.html">5. Evaluating Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter7.html">7. Logging Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendices</span>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="4">
+    <a class="nav-link" href="appendix1.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="appendix2.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="appendix3.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="appendix4.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="appendix5.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="appendix6.html">Using the build_region Command</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../converting.html">IV. Converting</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter2.html">2. Pertinent Characteristics of the BRL-CAD Format</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter3.html">3. Converting From/to ASCII</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter4.html">4. Converting to BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter5.html">5. Converting From BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter6.html">6. Building a New Converter</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter7.html">7. Postconversion Issues</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/index.html">Articles</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_pattern.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_region.html">Using the build_region Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/camo_shader.html">Camouflage shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ebm_primitive.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/gcv.html">The Geometry Conversion Library</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ged.html">GED: An Interactive Solid Modeling System</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/mged/index.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tutorial.html">Tutorial</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/gui.html">Graphical User Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/command-line-editing.html">Command Line Editing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/user-commands.html">User Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/developer-commands.html">Developer Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tcl-variables.html">Tcl Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/env.html">Environment Variable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/callback.html">Callback</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/brlcad-solid.html">BRL-CAD Solid</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/mgedrc.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/nirt.html">Interactive Raytracing: The nirt Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/overlap_tool.html">The Overlap Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/oed.html">Object Editing - the oed Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/pipes.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/projection_shader.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/tire.html">Vehicle Tire and Wheel Creation in BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/TEMPLATE.html">TEMPLATE</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Misc</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Dev Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../devguides/bool_eval_development.html">NURBS Boolean Evaluation Development Guide</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Presentations</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/brlcad-app-devel.html">Application Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="presentations:_attachments/brlcad-app-devel.html">brlcad-app-devel</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/intro-to-tcltk.html">Introduction to Tcl/Tk</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../specifications/BRL_CAD_g_format_V5.html">BRL-CAD Database Format</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Manual Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/1.html">man1</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/3.html">man3</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/5.html">man5</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/n.html">mann</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Wiki Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">page-1</span>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">BRL-CAD</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../../index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../es/index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../es/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">BRL-CAD</a></li>
+    <li>Books</li>
+    <li><a href="../index.html">Tutorials</a></li>
+    <li><a href="../modeling.html">III. Modeling</a></li>
+    <li>Appendices</li>
+    <li><a href="appendix1.html">Using the Pipe Primitive</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/docs/modules/tutorials/pages/modeling/appendix1.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Using the Pipe Primitive</h1>
+<div class="sect1">
+<h2 id="_pipe_general_use"><a class="anchor" href="#_pipe_general_use"></a>General Use</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Fewer primitives and Booleans.</strong> One pipe primitive can effectively
+represent hundreds of cylinders and tori with their associated
+subtraction and bounding primitives. This means fewer parameter values
+to define and simpler regions.</p>
+</li>
+<li>
+<p><strong>Easier editing.</strong> Because the pipe is just one primitive, extending
+it, hollowing it out, or otherwise changing its parameters can be
+easily and efficiently performed without having to edit many
+primitives. Unfortunately, seemingly simple edits to combined geometry
+can often require not-so-simple changes/calculations associated with
+the underlying primitives.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Although a pipe is a single primitive (regardless of how long it is
+and how many bends it has), geometrically, it is effectively a series
+of cylinders connected by torus sections.  As illustrated in Figure
+A-1, the pipe must have a minimum of two end points (shown in
+blue). Between the end points can be any number of other points (shown
+in red) to designate bends in the pipe or changes in pipe diameter.
+All points (including end points) contain information to define the
+bend radius, outer diameter, and inner diameter.</p>
+</div>
+<div class="paragraph">
+<p>To build a pipe, points can be appended after a given point, prepended
+before a given point, moved, or deleted; and the parameters at each
+point can be independently edited at any time.</p>
+</div>
+<div class="paragraph">
+<p>One potentially confusing aspect of the pipe is that bend points do
+not always lie along the pipe&#8217;s path.  This is because the bend radius
+dictates the path of the pipe between points.  As shown in Figure A-2,
+which depicts the same pipe with three different bend radii, a small
+bend radius means the bend point will be closer to the path of the
+pipe, and a large bend radius means the point will be farther away.
+Also, because a bend is computationally equivalent to a section of
+torus, each point is constrained to accept only those bends that are
+consistent with the parameters of a torus (e.g., the user cannot
+specify a bend radius that is so small that it violates the defined
+characteristics of a torus).</p>
+</div>
+<div class="paragraph">
+<p>In addition, because they are defining turns, points in a pipe are
+often nonlinear.  However, as shown in Figure A-3, collinear points
+can also be used when a modeler simply wants to achieve a tapered or
+"stepped" inside or outer diameter on a straight-running tube.
+Examples of other potential uses include a notched axle on a vehicle,
+a pressed gear fitting, and a tapered end on a garden hose.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../articles/_images/pipes_fig01.png" alt="pipes fig01">
+</div>
+<div class="title">Figure 1. Basic pipe with parameters.</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../articles/_images/pipes_fig02.png" alt="pipes fig02">
+</div>
+<div class="title">Figure 2. Various bend radii.</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../articles/_images/pipes_fig03.png" alt="pipes fig03">
+</div>
+<div class="title">Figure 3. Example of special uses of the pipe.</div>
+</div>
+<div class="paragraph">
+<p>Nonetheless, it is good modeling practice to build your pipe with only
+those points needed to define its shape.  It is not necessary to add
+extra collinear points along a long straight section of pipe.  Note
+too that pipes are not required to have hollow volume in them at all.
+The modeler can set the inner diameter to 0 and achieve a solid shape.</p>
+</div>
+<div class="paragraph">
+<p>Modelers should remember that when a pipe is made with the <code>make</code> or
+<code>create</code> command, the default values for the previously listed
+parameters are based upon the size of the view in the graphics window
+when the pipe is first created.  This is important because modelers
+can sometimes find themselves unable to move or delete certain points
+due to relatively large bend radii (e.g., that might have been
+established when the pipe was first created in a relatively large
+graphics window). These large radii constrain the shape and prevent it
+from accepting mathematically invalid commands (e.g., a larger inner
+diameter than outer diameter or an unacceptably tight bend radius).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_pipe_make_coil"><a class="anchor" href="#_pipe_make_coil"></a>Making a Coil</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In addition to using the pipe primitive to make tubular objects such
+as electrical and hydraulic lines, it can be used to make other types
+of objects.</p>
+</div>
+<div class="paragraph">
+<p>Consider, for example, the building of a wire coil.  The pipe
+primitive can reduce the complexity of the process by avoiding some of
+the difficulties associated with combining geometry.</p>
+</div>
+<div class="paragraph">
+<p>The main challenge of using the pipe to build a coil is to locate
+where the points should be in order to achieve the properly
+dimensioned geometry.  We can start with the following measured
+dimensions:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Diameter of the coil</strong> - The critical measurement here is the
+center-to-center measurement. It is difficult to measure this
+directly, but it can be easily derived from an outside-to-outside
+measurement by subtracting the wire diameter.</p>
+</li>
+<li>
+<p><strong>Diameter of the wire</strong> - This will define the outer diameter (or
+gauge) of the pipe.</p>
+</li>
+<li>
+<p><strong>Height per coiled section</strong> - The best way to derive this
+measurement is to take a total measurement of the coil sections and
+divide by the number of turns. This will ensure the total height and
+number of turns are correct and will allow one to measure to the
+tolerance of his tool with minimal error.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>In the example shown in Figure A-4, the coil diameter is 1/4 (0.25)
+in, the wire diameter is 1/32 (0.03125) in, and the height of each of
+the 10 coil sections is 7/32 (0.21875) in.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../articles/_images/pipes_fig04.png" alt="pipes fig04">
+</div>
+<div class="title">Figure 4. Determining the point positions for the copper coil.</div>
+</div>
+<div class="paragraph">
+<p>The key to properly and precisely positioning points to build a coil
+section is to use half of the coil diameter as an offset.  The first
+and the last points in the coil must lie on the pipe&#8217;s path.  These
+points are easily determined at 90° intervals from the center of the
+pipe (or, with a bit of trigonometry, at any interval). The rest of
+the points for the pipe are located at ± offsets in whichever plane is
+perpendicular to the pipe height vector from the center of the pipe
+with the proper height delta (which will generally be 1/4 of the
+height per coil section).</p>
+</div>
+<div class="paragraph">
+<p>Obviously, the construction of this type of object is a little more
+advanced than the construction of many of the other types of objects
+discussed.  Thus, the following text provides the user with
+step-by-step instructions that can also serve as a kind of template
+when using the pipe primitive to build a coil or similar object.</p>
+</div>
+<div class="paragraph">
+<p>To build two turns of a coil at the origin with a coil diameter of
+1000 mm, a wire diameter of 200 mm, and a coil height of400 mm
+(running along the +Z axis), the user would perform the following
+steps (or ones similar to them):</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Set the units to millimeters using the <code>units</code> command on the
+command line (<code>mged&gt; units mm</code>) or the Units option in the
+graphical user interface (GUI) (menu:File[Preferences &gt; Units]).</p>
+</li>
+<li>
+<p>Set the screen size to 2000 using the <code>size</code> command (<code>mged&gt; size
+2000</code>) and center the screen at 0 0 400 using the <code>center</code> command
+(<code>mged&gt; center 0 0 400</code>).</p>
+</li>
+<li>
+<p>Create a pipe named spring.s1 using the <code>make</code> command (<code>mged&gt; make
+spring.s1 pipe</code>) from the command line or the Create option from
+the GUI. Select the pipe for editing using either the <code>sed</code> command
+(<code>mged&gt; sed spring.s1</code>) or the Enter Primitive Name dialog box.</p>
+</li>
+<li>
+<p>With the default pipe in edit mode, set the diameter of the wire. To
+do this, first set the inner diameter of the wire to 0 by using the
+Edit menu&#8217;s Set Pipe ID option and the <code>p</code> command on the command
+line (<code>mged&gt; p 0</code>). Next, set the outer diameter to 200 using the Set
+Pipe OD option and the p command (<code>mged&gt; p 200</code>). (Be sure to set the
+Pipe inner diameter [ID] and outer diameter [OD], not the Point ID
+and OD.)</p>
+</li>
+<li>
+<p>Set the pipe bend to 500 mm using the Edit menu&#8217;s Set Pipe Bend
+option and the <code>p</code> command (<code>mged&gt; p 500</code>).</p>
+</li>
+<li>
+<p>Translate the pipe to coordinate 0 500 0 by selecting the Edit
+menu&#8217;s Translate option and the <code>p</code> command (<code>mged&gt; p 0 500 0</code>).</p>
+</li>
+<li>
+<p>Choose the Edit menu&#8217;s Select Point option and use the center mouse
+button to click on (or near) the top of the pipe segment.</p>
+</li>
+<li>
+<p>Move the top end point to 500 500 50 using the Edit menu&#8217;s Move
+Point option and the <code>p</code> command (<code>mged&gt; p 500 500 50</code>).</p>
+</li>
+<li>
+<p>Add points at the following coordinates using the Edit menu&#8217;s Append
+Point option and the <code>p</code> command (the visual effect for each of the
+commands is shown to the right of each command):</p>
+</li>
+</ol>
+</div>
+<table class="tableblock frame-none grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">- mged&gt;p 500 -500 150</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../../articles/_images/pipes_fig05.png" alt="pipes fig05"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">- mged&gt;p -500 -500 250</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../../articles/_images/pipes_fig06.png" alt="pipes fig06"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">- mged&gt;p -500 500 350</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../../articles/_images/pipes_fig07.png" alt="pipes fig07"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">- mged&gt;p 500 500 450</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../../articles/_images/pipes_fig08.png" alt="pipes fig08"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">- mged&gt;p 500 -500 550</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../../articles/_images/pipes_fig09.png" alt="pipes fig09"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">- mged&gt;p -500 -500 650</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../../articles/_images/pipes_fig10.png" alt="pipes fig10"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">- mged&gt;p -500 500 750</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../../articles/_images/pipes_fig11.png" alt="pipes fig11"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">- mged&gt;p 0 500 800</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../../articles/_images/pipes_fig12.png" alt="pipes fig12"></span></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The raytraced image of the coil segment is shown in Figure A-5.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../articles/_images/pipes_fig13.png" alt="pipes fig13">
+</div>
+<div class="title">Figure 5. Raytraced coil segment.</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Important Points to Remember About the Pipe</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Even the end points of a pipe have a bend radius (although it is not
+used unless the point is changed to an interior point).</p>
+</li>
+<li>
+<p>Each bend radius value must be greater than half the value of its
+corresponding outer diameter.</p>
+</li>
+<li>
+<p>The pipe primitive does not have to be used for hollow tubes. The
+inner diameter can be 0, making the object solid.</p>
+</li>
+<li>
+<p>The bend radius at each point constrains the pipe in such a way that
+the path of the pipe often touches only end points, not those in
+between.</p>
+</li>
+<li>
+<p>BRL-CAD will not allow points to be added, deleted, or moved if the
+result of such actions would create pipes with mathematically
+invalid characteristics.</p>
+</li>
+<li>
+<p>Points may not be coincident; they must be offset by at least
+0.0001 mm.</p>
+</li>
+<li>
+<p>When modeling a tube with fluid inside of it, model both the tube
+and fluid as solid pipes and subtract the fluid from the tube.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="chapter7.html">7. Logging Documentation</a></span>
+  <span class="next"><a href="appendix2.html">Using the Projection Shader</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../ui/js/site.js"></script>
+<script src="../../../ui/js/vendor/lunr.js"></script>
+<script src="../../../ui/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/docs/tutorials/modeling/appendix1.html"></script>
+<script async src="../../../ui/../search-index.js"></script>
+<script async src="../../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

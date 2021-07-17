@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>12. Crear el modelo de una taza utilizando la interfaz de MGED :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/es/lecciones/mged/12_taza_desde_gui.html">
+    <link rel="prev" href="11_refinar_taza.html">
+    <link rel="next" href="13_ubicar_figuras_en_3d.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../ui/css/site.css">
+    <link rel="stylesheet" href="../../../ui/css/search.css">
+    <link rel="stylesheet" href="../../../ui/css/custom.css">
+    <script>var uiRootPath = '../../../ui'</script>
+    <link rel="icon" href="../../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="es" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lecciones</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01_crear_figuras_primitivas.html">1. Crear Figuras Primitivas with MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02_opciones_vistas.html">2. Reconocer las opciones de vistas en MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03_utilizar_comando_in.html">3. Usar el comando Insert en MGED para dimensionar y ubicar figuras</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="04_prop_materiales.html">4. Asignación de propiedades de los materiales y trazado de rayos (Raytracing) en MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="05_expresiones_booleanas.html">5. Expresiones Booleanas</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="06_crear_una_copa.html">6. Crear una copa</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="07_prop_materiales_copa.html">7. Asignar propiedades de los materiales a una copa</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="08_prop_materiales_copa2.html">8. Asignar más propiedades de los materiales a la copa</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="09_esfera_en_caja_exhibidora.html">9. Crear una esfera en una caja exhibidora transparente</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="10_crear_taza.html">10. Crear una taza</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="11_refinar_taza.html">11. Refinando el modelo de la taza</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="12_taza_desde_gui.html">12. Crear el modelo de una taza utilizando la interfaz de MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="13_ubicar_figuras_en_3d.html">13. Ubicar figuras en espacios 3-D</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="14_ubicar_figuras_en_3d_2.html">14. Ejercicios adicionales de ubicación de imágenes en espacios 3-D</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="15_crear_camion_de_juguete.html">15. Crear un camión de juguete</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="16_mod_tech_struct.html">16. Aprender técnicas de modelado y estructuras</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Spanish</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs/index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../../index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">Spanish</a></li>
+    <li>Lecciones</li>
+    <li><a href="../mged.html">MGED</a></li>
+    <li><a href="12_taza_desde_gui.html">12. Crear el modelo de una taza utilizando la interfaz de MGED</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/translations/es/modules/lecciones/pages/mged/12_taza_desde_gui.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">12. Crear el modelo de una taza utilizando la interfaz de MGED</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>En este tutorial usted aprenderá a:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Crear la figura de una taza desde el GUI.</p>
+</li>
+<li>
+<p>Usar nuevas figuras para crear el asa y el reborde suave de la taza.</p>
+</li>
+<li>
+<p>Combinar las figuras.</p>
+</li>
+<li>
+<p>Crear una región de las combinaciones.</p>
+</li>
+<li>
+<p>Controlar el árbol de datos y hacer correcciones.</p>
+</li>
+<li>
+<p>Asignar propiedades de los materiales usando el editor de
+combinaciones (Combination Editor).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>En los anteriores dos tutoriales, usted creó una taza mediante es uso
+de comandos desde el prompt de la ventana de comandos.  Ahora usted
+creará la misma figura desde el GUI.</p>
+</div>
+<div class="paragraph">
+<p>Comience por abrir una nueva base de datos.
+Llámela mug2.g.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mug_gui_create_body"><a class="anchor" href="#_mug_gui_create_body"></a>1. Crear el cuerpo de la taza</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Diríjase al menú Create (Crear) y seleccione rcc (right circular
+cylinder = cilindro circular recto) bajo la categoría Cones and
+Cylinders (Conos y cilindros). Ingrese el nombre del rcc.  Llámelo
+outside.s.</p>
+</div>
+<div class="paragraph">
+<p>Vaya al menú Edit (Edición), donde encontrará las siguientes opciones:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>Set H
+Set H (Move V)
+Set A
+Set B
+Set c
+Set d
+Set A,B
+Set C,D
+Set A,B,C,D
+Rotate H
+Rotate AxB
+Move End H(rt)
+Move End H</pre></div></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>Rotate
+Translate
+Scale
+None of the Above</pre></div></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>Reject
+Accept
+Apply
+Reset</pre></div></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>Primitive Editor
+Combination
+Editor</pre></div></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+La primera columna incluye funciones específicas de figuras.
+Las otras columnas son opciones comunes a cualquier figura.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Seleccione Set H.  Desde una vista frontal, mueva el cursor del ratón
+a la mitad inferior de la pantalla y haga clic en el botón central del
+ratón para reducir la escala de la altura del cilindro.  A
+continuación, seleccione el conjunto A, B, C, D.  Mueva el cursor del
+ratón a la mitad superior de la pantalla y haga clic en el botón
+central del ratón para aumentar el diámetro del cilindro.  Aceptar los
+cambios cuando el objeto aparece similar al que se muestra en la
+siguiente figura.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Si en algún momento en que edite a través de la GUI no está
+satisfecho con los cambios, puede rechazar los cambios o
+restablecerlos desde las opciones del cuadro de diálogo para devolver
+las variables a su valor original.  Sin embargo, si las rechaza,
+tendrá que volver a entrar en el estado primitivo de edición descrito
+anteriormente.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>A continuación, cree una figura en el interior del cilindro circular
+recto con nombre inside.s.  Edite el cilindro de la misma manera que
+editó el cilindro exterior.  Antes de que usted acepte los cambios,
+cambie la opción View (Vista) a Up (arriba) y asegúrese de que los
+cilindros estén alineados.  Si los cilindros están fuera de
+alineación, utilice la tecla SHIFT y el botón izquierdo del ratón para
+arrastrar el cilindro interior en su posición.  Devuelva su vista al
+frente y acepte los cambios cuando los cilindros estén alineados.  Su
+cilindros deben asemejarse a los del ejemplo siguiente:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/12_cyls_frontview.png" alt="12 cyls frontview">
+</div>
+<div class="title">Figure 1. Dos cilindros vistos desde la vista frontal</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Recuerde que cuando se cambia la escala de una forma, la
+posición del puntero del ratón en la ventana de gráficos determinará
+qué tan grande o pequeño será el cambio.  Cuanto más se acerque el
+puntero del ratón al centro de la línea horizontal de la ventana,
+menor será el cambio, y viceversa.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mug_gui_create_handle"><a class="anchor" href="#_mug_gui_create_handle"></a>2. Crear el asa de la taza</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Anteriormente, hemos hecho el asa de la taza con un toro elíptico.  En
+este tutorial, haremos la manija seleccionando un toro (que es una
+figura con forma de rosquilla) en el menú de formas.  Nómbrelo
+handle.s.  El menú Edición ahora ofrecerá un conjunto diferente de
+parámetros detallados en la siguiente lista:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>Set Radius 1
+Set Radius 2</pre></div></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>Rotate
+Translate
+Scale
+None of the Above</pre></div></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>Reject
+Accept
+Apply
+Reset</pre></div></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>Primitive Editor
+Combination
+Editor</pre></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>En este caso, Set Radio 1 cambia la distancia desde el centro del
+orificio del toro a la mitad del cuerpo del mismo.  Set Radio 2 cambia
+el radio del toro, el cual define su grosor.  Con la misma técnica
+utilizada en la edición de las formas rcc, modificar el tamaño del
+toro hasta que se vea similar los siguientes ejemplos:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../_images/mged/12_mug_handle_frontview.png" alt="12 mug handle frontview">
+</div>
+<div class="title">Figure 2. Taza y asa desde una vista frontal</div>
+</div></div></td>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../_images/mged/12_mug_handle_topview.png" alt="12 mug handle topview">
+</div>
+<div class="title">Figure 3. Taza y asa desde una vista superior</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Visualice su taza desde arriba para asegurarse de que esté alineada.
+Acepte los cambios cuando esté terminada.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mug_gui_create_rim"><a class="anchor" href="#_mug_gui_create_rim"></a>3. Creando el borde de la boca de la taza</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Para hacer el borde de la taza, seleccione del menú Create (Crear), la
+opción tor (toro) y cree un toro con el nombre rim.s.  Seleccione el
+comando Rotate (Rotación) y tipee en la línea de comandos:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">p 0 90 0 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>para girar el toro sobre sí mismo (90'0 en torno al eje y). Luego,
+escale y edite los distintos parámetros del toro con las vistas
+frontal y superior hasta que la taza se vea similar a la del ejemplo
+siguiente.  Asegúrese de aceptar sus cambios cuando haya terminado.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/12_mug_rim_frontview.png" alt="12 mug rim frontview">
+</div>
+<div class="title">Figure 4. Taza con borde mostrada desde una vista frontal</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mug_gui_create_combinations"><a class="anchor" href="#_mug_gui_create_combinations"></a>4. Crear combinaciones de varias figuras</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Para combinar las distintas figuras de su taza, tipee los siguientes
+comandos en el prompt de la ventana de comandos:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">comb mug.c u outside.s - inside.s <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">comb handle.c u handle.s - outside.s <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">comb mug.c u rim.s <kbd>Enter</kbd></code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Regrese a los dos tutoriales anteriores a éste para recordar
+cómo trabaja cada uno de estos comandos.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mug_gui_make_region"><a class="anchor" href="#_mug_gui_make_region"></a>5. Crear una region con las combinaciones</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Para crear una región partiendo de las combinaciones que acaba de
+crear, tipee en la línea de comandos:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r mug.r u mug.c u handle.c <kbd>Enter</kbd></code></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mug_gui_check_tree"><a class="anchor" href="#_mug_gui_check_tree"></a>6. Controlando el árbol de datos (Data Tree)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Antes de continuar, sería recomendable controlar el árbol de datos.
+Asegúrese de que está de acuerdo con el siguiente árbol:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>   mug.r/R
+   u mug.c/
+   u outside.s
+   - inside.s
+   u rim.s
+   u handle.c/
+   u handle.s
+   - outside.s</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Si su árbol de datos no se parece a este ejemplo, tendrá que volver y
+averiguar dónde ha ido mal.  De ser necesario, puede eliminar una
+forma, una combinación, o una región escribiendo en el prompt de la
+ventana de comandos:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">kill [name of shape, combination, or region] <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Por ejemplo, en este tutorial usted ha creado una figura extra llamada
+rim2.s, que ya no utilizará.  Para eiminar esta figura deberá tipear:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">kill rim2.s <kbd>Enter</kbd></code></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mug_gui_comb_edit_props"><a class="anchor" href="#_mug_gui_comb_edit_props"></a>7. Asignar propiedades de los materiales utilizando el CombinationEditor (Editor de combinaciones)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vaya al menú Edit (Edición) y seleccione la combinación Editor
+(Editor). Escriba mug.r en la caja de entrada de Nombre.  Pulse ENTER.
+Tipee 0 148 0 en el cuadro de entrada de color.  Seleccione un
+sombreado de plástico.  Marque la casilla Boolean Expression
+(Expresión booleana) para asegurarse de que diga:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>   u mug.c
+   u handle.c</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Cuando esté terminado cliquee en Apply (Aplicar) y luego en Dismiss
+(Despedir). En la venana de comandos tipee en el prompt:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">B mug.r <kbd>Enter</kbd></code></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mug_gui_raytracing"><a class="anchor" href="#_mug_gui_raytracing"></a>8. Haciendo el trazado de rayos (Raytracing) del diseño</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ir a la opción View (Vista) de la barra de menús y seleccione az35,
+el25.  Ir a File (Archivo) y luego a Raytrace.  Seleccione un color de
+fondo blanco y genere el trazado de su diseño.  Haga clic en Overlay
+(Superposición). Cuando el trazado de rayos se termina, debe verse
+como el siguiente ejemplo:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/12_mug_gui_finished_raytraced.png" alt="12 mug gui finished raytraced">
+</div>
+<div class="title">Figure 5. El trazado de rayos de la taza completa</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mug_through_gui_review"><a class="anchor" href="#_mug_through_gui_review"></a>9. Repasemos&#8230;&#8203;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>En este tutorial usted aprenderá a:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Crear la figura de una taza desde el GUI.</p>
+</li>
+<li>
+<p>Usar nuevas figuras para crear el asa y el reborde suabe de la taza.</p>
+</li>
+<li>
+<p>Combinar las figuras.</p>
+</li>
+<li>
+<p>Crear una región con las combinaciones.</p>
+</li>
+<li>
+<p>Controlar el árbol de datos y hacer correcciones.</p>
+</li>
+<li>
+<p>Asignar propiedades de los materiales usando el editor de
+combinaciones (Combination Editor).</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="11_refinar_taza.html">11. Refinando el modelo de la taza</a></span>
+  <span class="next"><a href="13_ubicar_figuras_en_3d.html">13. Ubicar figuras en espacios 3-D</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../ui/js/site.js"></script>
+<script src="../../../ui/js/vendor/lunr.js"></script>
+<script src="../../../ui/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/es/lecciones/mged/12_taza_desde_gui.html"></script>
+<script async src="../../../ui/../search-index.js"></script>
+<script async src="../../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

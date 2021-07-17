@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>4. Asignación de propiedades de los materiales y trazado de rayos (Raytracing) en MGED :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/es/lecciones/mged/04_prop_materiales.html">
+    <link rel="prev" href="03_utilizar_comando_in.html">
+    <link rel="next" href="05_expresiones_booleanas.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../ui/css/site.css">
+    <link rel="stylesheet" href="../../../ui/css/search.css">
+    <link rel="stylesheet" href="../../../ui/css/custom.css">
+    <script>var uiRootPath = '../../../ui'</script>
+    <link rel="icon" href="../../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="es" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lecciones</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01_crear_figuras_primitivas.html">1. Crear Figuras Primitivas with MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02_opciones_vistas.html">2. Reconocer las opciones de vistas en MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03_utilizar_comando_in.html">3. Usar el comando Insert en MGED para dimensionar y ubicar figuras</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="04_prop_materiales.html">4. Asignación de propiedades de los materiales y trazado de rayos (Raytracing) en MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="05_expresiones_booleanas.html">5. Expresiones Booleanas</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="06_crear_una_copa.html">6. Crear una copa</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="07_prop_materiales_copa.html">7. Asignar propiedades de los materiales a una copa</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="08_prop_materiales_copa2.html">8. Asignar más propiedades de los materiales a la copa</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="09_esfera_en_caja_exhibidora.html">9. Crear una esfera en una caja exhibidora transparente</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="10_crear_taza.html">10. Crear una taza</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="11_refinar_taza.html">11. Refinando el modelo de la taza</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="12_taza_desde_gui.html">12. Crear el modelo de una taza utilizando la interfaz de MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="13_ubicar_figuras_en_3d.html">13. Ubicar figuras en espacios 3-D</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="14_ubicar_figuras_en_3d_2.html">14. Ejercicios adicionales de ubicación de imágenes en espacios 3-D</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="15_crear_camion_de_juguete.html">15. Crear un camión de juguete</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="16_mod_tech_struct.html">16. Aprender técnicas de modelado y estructuras</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Spanish</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs/index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../../index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">Spanish</a></li>
+    <li>Lecciones</li>
+    <li><a href="../mged.html">MGED</a></li>
+    <li><a href="04_prop_materiales.html">4. Asignación de propiedades de los materiales y trazado de rayos (Raytracing) en MGED</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/translations/es/modules/lecciones/pages/mged/04_prop_materiales.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">4. Asignación de propiedades de los materiales y trazado de rayos (Raytracing) en MGED</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>En este tutorial usted aprenderá a:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Llamar figuras primitivas creadas anteriormente.</p>
+</li>
+<li>
+<p>Crear una región de dos figuras primitivas.</p>
+</li>
+<li>
+<p>Asignar propiedades de los materiales a sus figuras primitivas desde
+la ventana de comandos.</p>
+</li>
+<li>
+<p>Limpiar su ventana gráfica y dibujar una nueva región.</p>
+</li>
+<li>
+<p>Generar el Raytrace de si diseño desde la interfaz gráfica.</p>
+</li>
+<li>
+<p>Utilizar la interfaz gráfica para cambiar capas de la ventana
+gráfica.</p>
+</li>
+<li>
+<p>Limpiar la ventana gráfica luego de hacer el trazado de rayos de su
+modelo.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_assigning_material_properties_and_raytracing_opendb"><a class="anchor" href="#_assigning_material_properties_and_raytracing_opendb"></a>1. Abrir una base de datos</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Para llamar a una figura primitiva creada en el tutorial anterior,
+inicie <code class="app">MGED</code> e ingrese al menú File (Archivo) seleccionando la
+opción Open (Abrir). Un panel de control aparecerá con una lista de
+carpetas y archivos.  Selecciones shapes.g y luego Open (Abrir). Un
+nuevo cuadro se mostrará en pantalla, en el que deberá cliquear OK.</p>
+</div>
+<div class="paragraph">
+<p>Dos ventanas se abrirán en su pantalla.  En el prompt de <code class="app">MGED</code>
+de la ventana de comandos tipee:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">draw sph2.s rcc2.s <kbd>Enter</kbd></code></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_create_region"><a class="anchor" href="#_create_region"></a>2. Crear una región</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Antes de que pueda hacer el trazado de rayos de su diseño, usted tiene
+que hacer una región de las dos formas.  Una región es un objeto que
+tiene propiedades de un material uniforme.  La mayoría de las
+aplicaciones que utilizan los modelos de <code class="app">BRL-CAD</code> consideraran a
+las regiones como los componentes básicos del modelo.  Las regiones se
+construyen utilizando las operaciones booleanas básicas de unión,
+intersección y substracción, que se mostrarán en el próximo capítulo.</p>
+</div>
+<div class="paragraph">
+<p>En el promp de <code class="app">MGED</code> tipee:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r shRaytrace Control Panelapes2.r u sph2.s u rcc2.s <kbd>Enter</kbd></code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Asegúrese de haber ingresado correctamente el comando antes de
+presionar ENTER.  Los espacios, o la falta de los mismos, son
+importantes.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Este comando le dice a <code class="app">MGED</code> que:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">r</th>
+<th class="tableblock halign-center valign-top">shapes2.r</th>
+<th class="tableblock halign-center valign-top">u</th>
+<th class="tableblock halign-center valign-top">sph2.s</th>
+<th class="tableblock halign-center valign-top">u</th>
+<th class="tableblock halign-center valign-top">rcc2.s</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Cree una región</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">La llame shapes2.r</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Añada el volumen de la forma</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">sph2.s</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Añada el volumen de la forma</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">rcc2.s</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_assign_material_prop"><a class="anchor" href="#_assign_material_prop"></a>3. Asignar propiedad de la materia a una región</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ahora tipee:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">mater shapes2.r <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p><code class="app">MGED</code> responderá con:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>   shader=
+   Shader? ('del' to delete, CR to skip)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Que significa: Tipo de sombra ('del' para borrar, CR para saltear)
+Tipee entonces:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">plastic <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p><code class="app">MGED</code> le preguntará:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>   Color = (no color specified)
+   Color R G B (0..255)? ('del' to delete, CR to skip)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Tipee:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">0 255 0 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Eso le asignará a la región el color gris claro. <code class="app">MGED</code>
+preguntará entonces:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>   Inherit = 0 lower nodes (towards leaves) override
+   Inheritance (0/1)? (CR to skip)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Tipee:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">0 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Cuando complete esta seguidilla de comandos, en su ventana gráfica
+aparecerá algo como el siguiente ejemplo:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/04_commandwindow.png" alt="04 commandwindow">
+</div>
+<div class="title">Figure 1. La pantalla de la ventana de comandos</div>
+</div>
+<div class="paragraph">
+<p>Una versión de una sola línea de estos comandos podría ser:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">mater shapes2.r plastic 0 255 0 0 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Este comando dice que:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">mater</th>
+<th class="tableblock halign-center valign-top">shapes2.r</th>
+<th class="tableblock halign-center valign-top">plastic</th>
+<th class="tableblock halign-center valign-top">0 255 0</th>
+<th class="tableblock halign-center valign-top">0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Asigne propiedades de la materia a&#8230;&#8203;</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">la región llamada shapes2.r</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Crear una región de plástico</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Con el color gris claro</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">No heredando los colores del tipo de material</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_clear_window_new_region"><a class="anchor" href="#_clear_window_new_region"></a>4. Limpiar la ventana gráfica y dibujar una nueva región</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Una forma sencilla de limpiar su ventana gráfica y dibujar la nueva
+región al mismo tiempo es tipeando en el prompt de <code class="app">MGED</code>:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">B shapes2.r <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Este comando le dice a <code class="app">MGED</code>:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">B</th>
+<th class="tableblock halign-center valign-top">shapes2.r</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">La B es de Blast (ráfaga) y su función es despejar la ventana gráfica
+ y redibujar el diseño.</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">La región llamada shapes2.r</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>El comando Blast es la forma corta de combinar los comandos Z y draw.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_raytrace_model"><a class="anchor" href="#_raytrace_model"></a>5. Crear el  trazado de rayos (Raytrace) de su modelo</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>En el menú File (Archivo) seleccione la opción Raytrace.  Aparecerá un
+cuadro de diálogo llamado Raytrace Control Panel (Panel de control de
+Raytrace). En la parte superior están los menús de Framebuffer y
+Objets (Objetos). Seleccione Framebuffer.  Un menú desplegable le dará
+seis opciones: Active, All, Rectangle Area, Overlay, Interlay, y
+Underlay (en orden: Activo, Todo, Área rectangular, Traer al frente,
+Combinar capas, y Llevar al fondo). Con Overlay y Underlay, la capa
+que se envía hacia al frente o al fondo es la de framebuffer.
+Asegúrese de que las opciones Active (Activo), All (Todo) y Underlay
+(Llevar al fondo) estén activas (se evidencia con la presencia de un
+indicador rojo a la izquierda de cada elección). Seleccione OK.</p>
+</div>
+<div class="paragraph">
+<p>Nota: Cuando selecciona Raytrace desde esta ventana de diálogo, se
+inicia una programa auxiliar (RT) de los paquetes de <code class="app">BRL-CAD</code>.
+El programa sólo crea el trazado de rayos de los objetos que se han
+dibujado en la ventana gráfica.  Usted puede tener muchas formas,
+regiones, o combinaciones de ellas en una base de datos, pero si no
+están dibujados en ese momento en la ventana gráfica, el trazador de
+rayos las ignorará.</p>
+</div>
+<div class="paragraph">
+<p>Cambie el color de fondo producido por el trazador de rayos mediante
+la opción Background Color (Color de fondo) en el Panel de Control de
+Raytrace.  Un menú desplegable aparecerá con algunas opciones
+predefinidas de color, más una herramienta de color.  Seleccione el
+color blanco.  El botón de selección debería aparecer ahora en blanco,
+en concordancia con su selección.</p>
+</div>
+<div class="paragraph">
+<p>Seleccione Raytrace.  La ventana gráfica debe empezar a cambiar, y
+pronto verá su diseño en tonos verdes, con la malla superpuesta en el
+diseño, como se muestra en el ejemplo siguiente:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/04_raytracedshapes.png" alt="04 raytracedshapes">
+</div>
+<div class="title">Figure 2. Figuras con trazado de rayos</div>
+</div>
+<div class="paragraph">
+<p>Como hemos visto, puede especificar el color de fondo con el que se
+hará el trazado de rayos.</p>
+</div>
+<div class="paragraph">
+<p>También puede rellenar el framebuffer entero con el color de fondo.
+Para hacer esto, seleccione el color deseado y luego haga clic en el
+botón fbclear (despejar framebuffer) situado en la parte inferior del
+panel de control de Raytrace.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_layers_graphics_window"><a class="anchor" href="#_layers_graphics_window"></a>6. Cambiando capas de la ventana gráfica</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>La ventana gráfica de <code class="app">MGED</code> se utiliza para mostrar los
+diferentes tipos de información gráfica: mallas 3D y pixels en 2D (o
+imágenes). Conceptualmente, cada tipo de datos ocupa una capa
+diferente en la pantalla.  Las mallas en 3D ocupan la capa de mallas
+(Raytrace), mientras que el 2D píxeles (imágenes) ocupan la capa de
+framebuffer.  Estas capas pueden pensarse como transparencias, y el
+orden en que se apilan y se muestran puede ser modificado.</p>
+</div>
+<div class="paragraph">
+<p>Como se mencionó anteriormente, hay un menú de Framebuffer en el panel
+de control de Raytrace.  En la parte superior de este menú hay un
+botón de control etiquetado como activo.  Éste modifica la pantalla
+con la capa de framebuffer a activada o desactivada.  Cerca de la
+parte inferior del mismo menú hay tres botones de opción: Overlay,
+Interlay y Underlay.  Cuando se selecciona el modo Underlay, se
+muestran los datos de píxeles debajo o detrás de los datos
+vectoriales.  Por el contrario, cuando el modo Overlay está
+seleccionado, los datos de píxeles están en frente de los datos
+vectoriales.  El modo interlay es similar al Overlay.  La sutil
+diferencia es una tema avanzado que no se incluirá en este toturial.</p>
+</div>
+<table class="tableblock frame-none grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../_images/mged/04_raytracedshapes.png" alt="04 raytracedshapes">
+</div>
+<div class="title">Figure 3. Framebuffer en modo Underlay</div>
+</div></div></td>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../_images/mged/04_fb_overlay_mode.png" alt="04 fb overlay mode">
+</div>
+<div class="title">Figure 4. Framebuffer en modo Overlay</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Para ver cómo funciona, vaya al menú de Framebuffer y seleccione la
+opción Overlay.  Observe que la representación de malla desaparece.
+¿A dónde va? Si contestara "detrás de la visualización de
+Framebuffer", sería una respuesta correcta.  Para ver la geometría del
+modelo, usted tendría que inactivar el framebuffer o seleccionar el
+modo Underlay.</p>
+</div>
+<div class="paragraph">
+<p>La malla tiene un punto amarillo en el centro que marca el centro de
+la vista (Ver tutorial 2). Esto le permite determinar si el uso de
+este dispositivo está en modo Overlay o Underlay.  Si usted puede ver
+el punto de color amarillo, el uso de este dispositivo está en modo
+Underlay.  Si le ha dicho a <code class="app">MGED</code> que extraiga algunas figuras,
+pero la ventana gráfica se ve en blanco, probablemente esté
+visualizando un framebuffer blanco que enmascara la capa de mallas.</p>
+</div>
+<div class="paragraph">
+<p>Tenga en cuenta que puede cambiar la vista sobre la malla, pero la
+vista en el uso de framebuffer no se actualiza automáticamente para
+que coincidan.  No es posible la manipulación directa de la vista en
+el framebuffer.  Usted debe realizar nuevamente el trazado de rayos
+con el fin de actualizar la imagen de framebuffer.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_clear_graphics_window"><a class="anchor" href="#_clear_graphics_window"></a>7. Despejar la ventana gráfica</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Para borrar por completo la ventana de gráficos, usted puede hacerlo
+tanto desde la capa de mallas, como en el framebuffer.  Recuerde que
+usted puede limpiar la capa de malla con el comando Z.  Para la capa
+de framebuffer, existe el botón fbclear en el panel de control de
+Raytrace.</p>
+</div>
+<div class="paragraph">
+<p>En algunos casos, puede que prefiera para desactivar el framebuffer en
+lugar de borrarlo.  Cuando el uso de este dispositivo está inactivo,
+<code class="app">MGED</code> se ejecuta más rápido porque que no tiene que volver a
+dibujar el framebuffer cada vez que se actualiza lo expuesto.  Se
+puede activar y desactivar el framebuffer alternadamente con el ítem
+de activación de framebuffer del Panel de control de Raytrace.</p>
+</div>
+<div class="paragraph">
+<p>Nota: Tenga en cuenta que en la versión de <code class="app">BRL-CAD</code> 5.1 y
+posteriores, al desactivar el framebuffer no se destruye la imagen que
+contiene, sino que al reactivar la opción, se recupera la misma
+imagen.  Sin embargo, en las versiones anteriores del paquete, el
+contenido del framebuffer se pierde al desactivarlo.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_assigning_material_properties_and_raytracing_review"><a class="anchor" href="#_assigning_material_properties_and_raytracing_review"></a>8. Revisión</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>En este tutorial usted aprendió a:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Llamar figuras primitivas creadas anteriormente.</p>
+</li>
+<li>
+<p>Crear una región de dos figuras primitivas.</p>
+</li>
+<li>
+<p>Asignar propiedades de los materiales a sus figuras primitivas desde
+la ventana de comandos.</p>
+</li>
+<li>
+<p>Limpiar su ventana gráfica y dibujar una nueva región.</p>
+</li>
+<li>
+<p>Generar el Raytrace de si diseño desde la interfaz gráfica.</p>
+</li>
+<li>
+<p>Utilizar la interfaz gráfica para cambiar capas de la ventana
+gráfica.</p>
+</li>
+<li>
+<p>Limpiar la ventana gráfica luego de hacer el trazado de rayos de su
+modelo.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="03_utilizar_comando_in.html">3. Usar el comando Insert en MGED para dimensionar y ubicar figuras</a></span>
+  <span class="next"><a href="05_expresiones_booleanas.html">5. Expresiones Booleanas</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../ui/js/site.js"></script>
+<script src="../../../ui/js/vendor/lunr.js"></script>
+<script src="../../../ui/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/es/lecciones/mged/04_prop_materiales.html"></script>
+<script async src="../../../ui/../search-index.js"></script>
+<script async src="../../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

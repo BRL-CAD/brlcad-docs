@@ -1,0 +1,3109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Interactive Raytracing: The nirt Command :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/docs/articles/nirt.html">
+    <link rel="prev" href="mgedrc.html">
+    <link rel="next" href="overlap_tool.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../ui/css/site.css">
+    <link rel="stylesheet" href="../../ui/css/search.css">
+    <link rel="stylesheet" href="../../ui/css/custom.css">
+    <script>var uiRootPath = '../../ui'</script>
+    <link rel="icon" href="../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../about.html">About</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lessons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../lessons/mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/01_creating_primitive_shapes.html">1. Creating Primitive Shapes in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/02_learning_viewing_options.html">2. Learning Viewing Options in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/03_using_insert_command.html">3. Using the Insert Command in MGED to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/04_assign_mat_prop_rt.html">4. Assigning Material Properties and Raytracing in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/05_learning_boolean_expressions.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/06_creating_a_goblet.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/07_goblet_material_properties.html">7. Assigning Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/08_goblet_material_properties2.html">8. Assigning More Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/09_globe_in_display_box.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/10_creating_mug.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/11_refining_mug.html">11. Refining a Mug Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/12_mug_through_gui.html">12. Creating a Mug Model using the MGED Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/13_placing_shapes_in_3d.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/14_placing_shapes_in_3d_2.html">14. Additional Exercises Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/15_creating_a_toy_truck.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/16_mod_tech_struct.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Books</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../hacking/index.html">Hacking BRL-CAD</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting Started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part1/chapter1.html">A Call to Arms (and Contributors)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part1/chapter2.html">Feature Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developers</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part2/chapter3.html">Working with Our Code</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part2/chapter4.html">What Code to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part2/chapter5.html">Contributing Code</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Documenters</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part3/chapter6.html">Working with Our Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part3/chapter7.html">Types of Documentation We Maintain</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part3/chapter8.html">What Documentation to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part3/chapter9.html">Contributing Documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Other Contributors</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part4/chapter10.html">You Can Help Too</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendix: Resources and Examples</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix1.html">Further References and Resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix2.html">Doc Template: New MGED Command</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix3.html">Code Example: Shooting Rays</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix4.html">Code Example: Walking Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix5.html">Code Example: Command Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix6.html">Example Code: Root Solving</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials/index.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tutorials/overview.html">I. An Overview of BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials/mged-intro.html">II. Introduction to MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/preface1.html">Preface</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/preface2.html">Acknowledgments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter1.html">1. Creating Primitive Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter2.html">2. Learning the Viewing Options</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter3.html">3. Using the Insert Command to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter4.html">4. Assigning Material Properties and Raytracing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter5.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter6.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter7.html">7. Assigning Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter8.html">8. Assigning More Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter9.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter10.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter11.html">11. Refining the Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter12.html">12. Creating the Mug Through the GUI</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter13.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter14.html">14. Gaining More Practice Placing Shapes in Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter15.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter16.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/appendix1.html"><code class="app">MGED</code> Commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials/modeling.html">III. Modeling</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter2.html">2. The Model Process</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter3.html">3. Measuring data</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter4.html">4. Organizing the Structure</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter5.html">5. Developing Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter6.html">5. Evaluating Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter7.html">7. Logging Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendices</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix1.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix2.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix3.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix4.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix5.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix6.html">Using the build_region Command</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials/converting.html">IV. Converting</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter2.html">2. Pertinent Characteristics of the BRL-CAD Format</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter3.html">3. Converting From/to ASCII</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter4.html">4. Converting to BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter5.html">5. Converting From BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter6.html">6. Building a New Converter</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter7.html">7. Postconversion Issues</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">Articles</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="build_pattern.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="build_region.html">Using the build_region Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="camo_shader.html">Camouflage shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="ebm_primitive.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="gcv.html">The Geometry Conversion Library</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="ged.html">GED: An Interactive Solid Modeling System</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="mged/index.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/tutorial.html">Tutorial</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/gui.html">Graphical User Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/command-line-editing.html">Command Line Editing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/user-commands.html">User Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/developer-commands.html">Developer Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/tcl-variables.html">Tcl Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/env.html">Environment Variable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/callback.html">Callback</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mged/brlcad-solid.html">BRL-CAD Solid</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="mgedrc.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="nirt.html">Interactive Raytracing: The nirt Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="overlap_tool.html">The Overlap Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="oed.html">Object Editing - the oed Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="pipes.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="projection_shader.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="tire.html">Vehicle Tire and Wheel Creation in BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="TEMPLATE.html">TEMPLATE</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Misc</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Dev Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../devguides/bool_eval_development.html">NURBS Boolean Evaluation Development Guide</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Presentations</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../presentations/brlcad-app-devel.html">Application Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="presentations:_attachments/brlcad-app-devel.html">brlcad-app-devel</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../presentations/intro-to-tcltk.html">Introduction to Tcl/Tk</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../specifications/BRL_CAD_g_format_V5.html">BRL-CAD Database Format</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Manual Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../man/1.html">man1</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../man/3.html">man3</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../man/5.html">man5</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../man/n.html">mann</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Wiki Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">page-1</span>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">BRL-CAD</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../es/index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../es/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">BRL-CAD</a></li>
+    <li><a href="index.html">Articles</a></li>
+    <li><a href="nirt.html">Interactive Raytracing: The nirt Command</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/docs/modules/articles/pages/nirt.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Interactive Raytracing: The nirt Command</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_about_nirt">1. About <code class="app">NIRT</code></a></li>
+<li><a href="#_nirt_basic_syntax_and_operations">2. <code class="app">NIRT</code>:  Basic Syntax and Operations</a>
+<ul class="sectlevel2">
+<li><a href="#_command_line_help">2.1. Command Line Help</a></li>
+<li><a href="#_loading_a_model">2.2. Loading a Model</a></li>
+<li><a href="#_shooting_a_ray">2.3. Shooting a Ray</a></li>
+<li><a href="#_moving_the_origination_point">2.4. Moving the Origination Point</a></li>
+<li><a href="#_backing_out_of_a_model">2.5. Backing Out of a Model</a></li>
+<li><a href="#_changing_the_direction_of_the_ray">2.6. Changing the Direction of the Ray</a></li>
+<li><a href="#_reporting_of_overlaps">2.7. Reporting of Overlaps</a></li>
+</ul>
+</li>
+<li><a href="#_graphical_visualization">3. Graphical Visualization: <code class="app">NIRT</code> in <code class="app">MGED</code></a>
+<ul class="sectlevel2">
+<li><a href="#_basic_usage">3.1. Basic Usage</a></li>
+<li><a href="#_backing_out_with_nirt_in_mged">3.2. Backing Out with <code class="app">NIRT</code> in <code class="app">MGED</code></a></li>
+<li><a href="#_ray_segment_coloring_with_nirt">3.3. Ray Segment Coloring with <code class="app">NIRT</code> and <code class="app">MGED</code></a></li>
+<li><a href="#_mouse_based">3.4. Mouse-Based <code class="app">NIRT</code> Usage</a></li>
+<li><a href="#_configuring_nirt">3.5. Configuring <code class="app">NIRT</code> with the Query Ray Control Panel</a></li>
+</ul>
+</li>
+<li><a href="#_reporting_options">4. Reporting Options</a>
+<ul class="sectlevel2">
+<li><a href="#_how_to_change_the_reporting_format">4.1. How to Change the Reporting Format</a></li>
+<li><a href="#_handling_attribute_reporting">4.2. Handling Attribute Reporting</a></li>
+<li><a href="#_changing_units">4.3. Changing Units</a></li>
+</ul>
+</li>
+<li><a href="#_other_options">5. Other Options</a>
+<ul class="sectlevel2">
+<li><a href="#_silent_and_verbose_modes">5.1. Silent and Verbose Modes</a></li>
+<li><a href="#_using_air_regions">5.2. Using Air Regions</a></li>
+<li><a href="#_reading_an_orientation">5.3. Reading an Orientation Matrix and Commands</a></li>
+</ul>
+</li>
+<li><a href="#_scripting_nirt">6. Scripting <code class="app">NIRT</code></a>
+<ul class="sectlevel2">
+<li><a href="#_command_line_scripts">6.1. Command Line Scripts:  The <em>e</em> Option</a></li>
+<li><a href="#_script_files">6.2. Script Files: Other Uses of the <em>f</em> Option</a></li>
+<li><a href="#_defining_a_custom">6.3. Defining a Custom Reporting Format</a></li>
+<li><a href="#_customizing_report_output_in_mged">6.4. Customizing Report Output in <code class="app">MGED</code></a></li>
+<li><a href="#_reporting_attributes_in_mged">6.5. Reporting Attributes in <code class="app">MGED</code>:  Advanced Formatting and Scripting</a></li>
+<li><a href="#_available_information_for_inclusion_in_reports">6.6. Available Information for Inclusion in Reports</a></li>
+</ul>
+</li>
+<li><a href="#_summary">7. Summary</a></li>
+<li><a href="#_report_format_variable_listings">Appendix A: Report Format Variable Listings</a></li>
+<li><a href="#_debugging_options">Appendix B: Debugging Options</a>
+<ul class="sectlevel2">
+<li><a href="#_librt_debugging_information">librt Debugging Information</a></li>
+<li><a href="#_debugging_information"><code class="app">NIRT</code> Debugging Information</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>nirt</code> command casts individual rays according to user-specified
+options, and reports back a wide variety of information about the
+model along the specified ray. It is extremely useful for tasks such
+as measuring the thickness of objects and identifying gaps between
+objects. When used within the MGED environment, NIRT will produce a
+visible ray path, coloring the ray according to the geometry
+encountered along the ray. It is also scriptable, allowing users to
+develop their own custom analysis routines.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_about_nirt"><a class="anchor" href="#_about_nirt"></a>1. About <code class="app">NIRT</code></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code class="app">NIRT</code> (Natalie&#8217;s Interactive Ray-Tracer) command line tool
+provides a user-level interface to the low-level routines defining the
+ray tracing logic, allowing a user to specify and cast an individual
+ray and tailor the information reported.  It was originally written by
+Natalie L.  Eberius and Paul J.  Tanenbaum in the early 1990s, with
+additional updates by others over the years.  Significant work was
+done by Bob Parker in the late 1990s to integrate <code class="app">NIRT</code> with
+<code class="app">MGED</code>, resulting in wireframe visualization of ray paths and the
+Query Ray Control Panel.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_nirt_basic_syntax_and_operations"><a class="anchor" href="#_nirt_basic_syntax_and_operations"></a>2. <code class="app">NIRT</code>:  Basic Syntax and Operations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are two environments within which <code class="app">NIRT</code> can be used -
+inside the <code class="app">MGED</code> interactive geometry editor and within its own
+command line interactive environment.  Consequently, there are three
+command line environments where behavior needs to be described in this
+document; operating system command prompt, <code class="app">NIRT</code> command prompt,
+and <code class="app">MGED</code> command prompt.  The convention used here will be:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Command Line Environment</th>
+<th class="tableblock halign-center valign-top">Command Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Operating System Command Line Prompt</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">command</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code class="app">NIRT</code> Command Prompt</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">interactive command</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code class="app">MGED</code> Command Prompt</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code class="app">MGED</code> command</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="_command_line_help"><a class="anchor" href="#_command_line_help"></a>2.1. Command Line Help</h3>
+<div class="paragraph">
+<p><code class="app">NIRT</code> provides an <em>h</em> option which prints out a list of
+available options and command syntax:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre><span class="prompt">user@machine ~ $</span> <span class="cmd">nirt --h</span>
+Usage: 'nirt [options] model.g objects...'
+Options:
+ -b        back out of geometry before first shot
+ -B n      set rt_bot_minpieces=n
+ -e script run script before interacting
+ -f sfile  run script sfile before interacting
+ -L        list output formatting options
+ -M        read matrix, cmds on stdin
+ -O action handle overlap claims via action
+ -s        run in silent (non-verbose) mode
+ -u n      set use_air=n (default 0)
+ -v        run in verbose mode
+ -x v      set librt(3) diagnostic flag=v
+ -X v      set nirt diagnostic flag=v</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_loading_a_model"><a class="anchor" href="#_loading_a_model"></a>2.2. Loading a Model</h3>
+<div class="paragraph">
+<p>There will be a number of models used to illustrate various
+<code class="app">NIRT</code> behaviors, all of which will be centered around regions
+created with various combinations of 2mm arb8 cubes.  The left cube is
+centered at (-2, 0, 0), the center cube at (0, 0, 0) and the right
+cube at (2, 0, 0).  One additional arb8 will be defined to overlap the
+center cube with side lengths in the z direction of 4mm.  The various
+models based off of these primitives will be read from a database
+called <em class="path">nirt_example.g</em>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/nirt_fig01.png" alt="nirt fig01">
+</div>
+<div class="title">Figure 1. Wireframe view of the three arb8 cubes which will be used to build example models for illustrating <code class="app">NIRT</code> behavior.</div>
+</div>
+<div class="paragraph">
+<p>Although there are many <code>nirt</code> options available, only the database
+name and objects are essential to get started:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">nirt <em>model.g</em> <em>objects</em></code></p>
+</div>
+<div class="paragraph">
+<p>where <em>objects</em> is a list of objects in the database separated by
+spaces.  To begin, select the object <em>center_cube.r</em> object with
+interactive command line <code class="app">NIRT</code>.  The form of the command is:
+<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup></p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">nirt nirt_example.g center_cube.r</code></p>
+</div>
+<div class="paragraph">
+<p>This starts up the <code class="app">NIRT</code> command line interactive environment:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>BRL-CAD Release 7.13.0  Natalie's Interactive Ray Tracer
+    Tue, 26 Aug 2008 23:21:32 -0400, Compilation 2
+    user@localhost:/usr/brlcad
+Database file:  'nirt_example.g'
+Building the directory...
+Get trees...
+Prepping the geometry...
+Object 'center_cube.r' processed
+Database title: 'Example BRL-CAD Database'
+Database units: 'mm'
+model_min = (-1, -1, -1)    model_max = (1, 1, 1)
+<span class="prompt">nirt></span></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The first three lines identify the release number, tool being used,
+date of compilation or date release was made, and user.  The fourth
+line identifies the database file.  The next three lines are
+informational messages relating to model setup.  The database title
+and units are then printed.  The last pieces of information,
+<code>model_min</code> and <code>model_max</code>, are the outer bounds of the objects
+specified.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_shooting_a_ray"><a class="anchor" href="#_shooting_a_ray"></a>2.3. Shooting a Ray</h3>
+<div class="paragraph">
+<p>With the example loaded into <code class="app">NIRT</code>, the <code>s</code> interactive command
+is used to shoot a ray:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre><span class="prompt">nirt></span>  <span class="cmd">s</span>
+Origin (x y z) = (0.00000000 0.00000000 0.00000000)  (h v d) = (0.0000 0.0000 0.0000)
+Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (0.00000000 0.00000000)
+    Region Name               Entry (x y z)              LOS  Obliq_in Attrib
+center_cube.r        (   1.0000    0.0000    0.0000)   2.0000   0.0000</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>What happened and what do these results mean?  The following table
+breaks down the structure of the report:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 1%;">
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><span class="nowrap">Report Element</span></th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Origin</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Origination point of the ray (NOT the model origin)</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">x y z</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Coordinates in the reference frame of the model</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">h v d</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Coordinates in the reference frame of the view</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Direction</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Direction in which the ray is traced; reported as a unit vector in
+ model coordinates and as an azimuth/elevation angle pair</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Region Name</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of region as recorded in database file</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Entry (x y z)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Point at which ray first enters the region</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">LOS</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Line of Sight thickness. In this basic instance, it is equivalent to
+ the thickness of the object along the ray vector.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Obliq_in</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Obliquity of the ray at the point of entry into the region (0 in this
+ case, because the ray happened to be perpendicular to the surface in
+ question)</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Attrib</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Additional attributes the region in question has assigned and the
+ user requested (in this case, none were requested)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Because the ray only hit <em>center_cube.r</em>, only <em>center_cube.r</em> appears
+in the report.  (Remember <code class="app">NIRT</code> was only supplied with
+<em>center_cube.r</em> for a target object to begin with.) Many examples of
+real world <code class="app">NIRT</code> usage will have much more complex geometries
+and hence longer reports.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_moving_the_origination_point"><a class="anchor" href="#_moving_the_origination_point"></a>2.4. Moving the Origination Point</h3>
+<div class="paragraph">
+<p>If we move the origin to some point other than the sphere center, a
+different ray is cast and the reported intersections change.  The
+<code>xyz</code> interactive command will print the current origin if given no
+arguments, and accepts a list of points to change the origin:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>nirt&gt;  xyz
+(x, y, z) = (0.00, 0.00, 0.00)
+nirt&gt;  xyz 0 0 .5
+nirt&gt;  xyz
+(x, y, z) = (0.00, 0.00, 0.50)
+nirt&gt;  s
+Origin (x y z) = (0.00000000 0.00000000 0.50000000)  (h v d) = (0.0000 0.5000 0.0000)
+Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (0.00000000 0.00000000)
+    Region Name               Entry (x y z)              LOS  Obliq_in Attrib
+center_cube.r        (   1.0000    0.0000    0.5000)   2.0000   0.0000</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_backing_out_of_a_model"><a class="anchor" href="#_backing_out_of_a_model"></a>2.5. Backing Out of a Model</h3>
+<div class="paragraph">
+<p>Although in both previous cases the ray&#8217;s origin was inside the cube,
+<code class="app">NIRT</code> backed up to the point of first intersection along the
+indicated vector to report both LOS thickness and entry.  This
+behavior is specific to the case of an origination point <em>inside</em> a
+region.  In the case where the origination point of the ray is between
+two objects belonging to the same region, <code class="app">NIRT</code> will report only
+those portions of the region along its path forward.  To ensure that a
+ray always starts outside the <em>entire</em> geometry, the <code>backout</code>
+interactive command is used. <sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup> The backout command moves the
+starting point outside the bounding box of the model.  This ensures
+that all segments along a given ray path will be reported.  As an
+illustration, reload <em class="path">nirt_example.g</em> and this time specify
+<em>left_and_right_cubes.r</em> (defined as the combination of <em>left_cube.s</em>
+and <em>right_cube.s</em>).  Cast rays before and after backout:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>nirt&gt;  q
+Quitting...
+
+user@machine ~ $ nirt nirt_example.g left_and_right_cubes.r
+BRL-CAD Release 7.13.0  Natalie's Interactive Ray Tracer
+    Tue, 26 Aug 2008 23:21:32 -0400, Compilation 2
+    user@localhost:/usr/brlcad
+Database file:  'nirt_example.g'
+Building the directory...
+Get trees...
+Prepping the geometry...
+Object 'left_and_right_cubes.r' processed
+Database title: 'Example BRL-CAD Database'
+Database units: 'mm'
+model_min = (-3, -1, -1)    model_max = (3, 1, 1)
+nirt&gt;  s
+Origin (x y z) = (0.00000000 0.00000000 0.00000000)  (h v d) = (0.0000 0.0000 0.0000)
+Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (0.00000000 0.00000000)
+    Region Name               Entry (x y z)              LOS  Obliq_in Attrib
+left_and_right_cubes.r (  -1.0000    0.0000    0.0000)   2.0000   0.0000
+nirt&gt;  backout 1
+nirt&gt;  s
+Origin (x y z) = (6.63324958 0.00000000 0.00000000)  (h v d) = (0.0000 0.0000 0.0000)
+Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (0.00000000 0.00000000)
+    Region Name               Entry (x y z)              LOS  Obliq_in Attrib
+left_and_right_cubes.r (   3.0000    0.0000    0.0000)   2.0000   0.0000
+left_and_right_cubes.r (  -1.0000    0.0000    0.0000)   2.0000   0.0000</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that in the first raytrace, <em>left_and_right_cubes.r</em> did not
+backtrack to generate its LOS thickness value, and when the backout
+option was applied, <em>left_and_right_cubes.r</em> gained an extra entry.
+The double report for <em>left_and_right_cubes.r</em> is not a mistake; the
+ray did indeed enter and exit the region twice once the <code>backout</code>
+interactive command changed the origination point.</p>
+</div>
+<div class="paragraph">
+<p>It is important to understand that the <code>backout</code> interactive command
+does not permanently change the origination point of the ray; it
+requests an automatic adjustment of the origination point based on the
+model <em>for the casting of the ray</em>, and then restores the original
+specified origination point.  If the user no longer wishes to have
+<code class="app">NIRT</code> back the origination point out of the model, deactivating
+the backout flag (supplying 0 to the <code>backout</code> interactive command)
+will restore the non-backout point.  If the <code>xyz</code> interactive command
+is used to change the origination point while backout is activated,
+the backout routine will back out from the new point.  For example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>nirt&gt;  backout 0
+nirt&gt;  xyz
+(x, y, z) = (0.00, 0.00, 0.00)
+nirt&gt;  xyz 0 0 .5
+nirt&gt;  s
+Origin (x y z) = (0.00000000 0.00000000 0.50000000)  (h v d) = (0.0000 0.5000 0.0000)
+Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (0.00000000 0.00000000)
+    Region Name               Entry (x y z)              LOS  Obliq_in Attrib
+left_and_right_cubes.r (  -1.0000    0.0000    0.5000)   2.0000   0.0000
+nirt&gt;  backout 1
+nirt&gt;  xyz
+(x, y, z) = (0.00, 0.00, 0.50)
+nirt&gt;  backout 0
+nirt&gt;  xyz
+(x, y, z) = (0.00, 0.00, 0.50)
+nirt&gt;  backout 1
+nirt&gt;  xyz 0 0 .8
+nirt&gt;  s
+Origin (x y z) = (6.63324958 0.00000000 0.80000000)  (h v d) = (0.0000 0.8000 0.0000)
+Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (0.00000000 0.00000000)
+    Region Name               Entry (x y z)              LOS  Obliq_in Attrib
+left_and_right_cubes.r (   3.0000    0.0000    0.8000)   2.0000   0.0000
+left_and_right_cubes.r (  -1.0000    0.0000    0.8000)   2.0000   0.0000
+nirt&gt;  backout 0
+nirt&gt;  s
+Origin (x y z) = (0.00000000 0.00000000 0.80000000)  (h v d) = (0.0000 0.8000 0.0000)
+Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (0.00000000 0.00000000)
+    Region Name               Entry (x y z)              LOS  Obliq_in Attrib
+left_and_right_cubes.r (  -1.0000    0.0000    0.8000)   2.0000   0.0000
+nirt&gt;</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_changing_the_direction_of_the_ray"><a class="anchor" href="#_changing_the_direction_of_the_ray"></a>2.6. Changing the Direction of the Ray</h3>
+<div class="paragraph">
+<p>The other fundamental operation needed to make <code class="app">NIRT</code> usable is
+changing the direction of the ray.  This is achieved with the <code>dir</code>
+interactive command, which either prints out the current direction
+unit vector (if no arguments are supplied) or takes x, y, and z
+components of a vector separated by spaces and changes the direction.
+To make interpreting the results easier for this example, the
+origination point of the ray is first returned to the origin:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>nirt&gt;  xyz 0 0 0
+nirt&gt;  dir
+(x, y, z) = (-1.00, 0.00, 0.00)
+nirt&gt;  s
+Origin (x y z) = (0.00000000 0.00000000 0.00000000)  (h v d) = (0.0000 0.0000 0.0000)
+Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (-0.00000000 -0.00000000)
+    Region Name               Entry (x y z)              LOS  Obliq_in Attrib
+left_and_right_cubes.r (  -1.0000    0.0000    0.0000)   2.0000   0.0000
+nirt&gt;  dir -1 -.5 0
+nirt&gt;  dir
+(x, y, z) = (-0.89, -0.45, 0.00)
+nirt&gt;  s
+Origin (x y z) = (0.00000000 0.00000000 0.00000000)  (h v d) = (0.0000 0.0000 0.0000)
+Direction (x y z) = (-0.89442719 -0.44721360 0.00000000)  (az el) = (26.56505118 -0.00000000)
+    Region Name               Entry (x y z)              LOS  Obliq_in Attrib
+left_and_right_cubes.r (  -1.0000   -0.5000    0.0000)   1.1180  26.5651
+nirt&gt;  dir 0 0 1
+nirt&gt;  s
+Origin (x y z) = (0.00000000 0.00000000 0.00000000)  (h v d) = (0.0000 0.0000 0.0000)
+Direction (x y z) = (0.00000000 0.00000000 1.00000000)  (az el) = (0.00000000 -90.00000000)
+You missed the target
+nirt&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The first shot, in the default -x direction, intersects one of the
+sections.  The second shot changes the aim slightly off the -x axis,
+with different results - the <code>LOS</code> thickness is now longer. <code>Obliq_in</code>
+changed as well, because the ray is no longer perpendicular to the
+tangent at the point of intersection.  Notice that the direction was
+not specified using a unit vector, but was reported as one; the
+conversion to a unit vector is handled automatically by <code class="app">NIRT</code>.
+The third shot is a more drastic change of direction, from the -x to
+positive z.  As there are no portions of the region present along that
+path, a miss is reported.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_reporting_of_overlaps"><a class="anchor" href="#_reporting_of_overlaps"></a>2.7. Reporting of Overlaps</h3>
+<div class="paragraph">
+<p>In many cases, a geometry will have overlaps: errors where a model is
+assigning two physical regions to one volume.  To demonstrate this
+behavior, <code class="app">NIRT</code> is reloaded with <em>overlap_example</em>:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>nirt&gt;  q
+Quitting...
+
+user@machine ~ $ nirt nirt_example.g overlap_example
+BRL-CAD Release 7.13.0  Natalie's Interactive Ray Tracer
+    Tue, 26 Aug 2008 23:21:32 -0400, Compilation 2
+    user@localhost:/usr/brlcad
+Database file:  'nirt_example.g'
+Building the directory...
+Get trees...
+Prepping the geometry...
+Object 'overlap_example' processed
+Database title: 'Example BRL-CAD Database'
+Database units: 'mm'
+model_min = (-3, -1, -2)    model_max = (3, 1, 2)
+nirt&gt;  backout 1
+nirt&gt;  s
+Origin (x y z) = (7.48331477 0.00000000 0.00000000)  (h v d) = (0.0000 0.0000 0.0000)
+Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (0.00000000 0.00000000)
+    Region Name               Entry (x y z)              LOS  Obliq_in Attrib
+all_cubes.r          (   3.0000    0.0000    0.0000)   6.0000   0.0000
+OVERLAP: 'center_overlap.r' and 'all_cubes.r' xyz_in=(1 0 0) los=2
+nirt&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The last line in the preceding report is reporting that the regions
+<em>all_cubes.r</em> and <em>center_overlap.r</em> are both claiming the same
+volume, starting at (1, 0, 0) and continuing to do so for 2 mm per the
+LOS thickness.  If the direction and origin are changed to shoot along
+the z axis:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>nirt&gt;  dir 0 0 -1
+nirt&gt;  s
+Origin (x y z) = (0.00000000 0.00000000 7.48331477)  (h v d) = (0.0000 0.0000 0.0000)
+Direction (x y z) = (0.00000000 0.00000000 -1.00000000)  (az el) = (0.00000000 90.00000000)
+    Region Name               Entry (x y z)              LOS  Obliq_in Attrib
+center_overlap.r     (   0.0000    0.0000    2.0000)   1.0000   0.0000
+OVERLAP: 'center_overlap.r' and 'all_cubes.r' xyz_in=(0 0 1) los=2
+all_cubes.r          (   0.0000    0.0000    1.0000)   2.0000   0.0000
+center_overlap.r     (   0.0000    0.0000   -1.0000)   1.0000   0.0000
+nirt&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Along that vector, <em>center_overlap.r</em> is encountered first, then
+<em>all_cubes.r</em> intersecting with <em>center_overlap.r</em>. <sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup></p>
+</div>
+<div class="paragraph">
+<p>It should be pointed out that overlaps are usually regarded as
+modeling errors and need to be corrected, unless they are below some
+previously established threshold for precision in the model.  One of
+the potential uses of <code class="app">NIRT</code> is to provide detailed information
+on which regions are overlapping and where, although tools such as
+<code>rtcheck</code> typically provide more comprehensive summaries of overlap
+problems.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_graphical_visualization"><a class="anchor" href="#_graphical_visualization"></a>3. Graphical Visualization: <code class="app">NIRT</code> in <code class="app">MGED</code></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The command line interaction provided by <code class="app">NIRT</code> has few options
+for graphic visualization, but <code class="app">MGED</code> allows the use and
+visualization of <code class="app">NIRT</code> rays. <code class="app">MGED</code> provides a <code>nirt</code>
+command, but rather than starting an interactive environment, each
+invocation of the <code>nirt</code> <code class="app">MGED</code> command casts one ray and returns
+a report, together with information allowing <code class="app">MGED</code> to
+graphically plot the ray on its wireframe view.</p>
+</div>
+<div class="sect2">
+<h3 id="_basic_usage"><a class="anchor" href="#_basic_usage"></a>3.1. Basic Usage</h3>
+<div class="paragraph">
+<p>The most important thing to remember when starting to use <code class="app">NIRT</code>
+in <code class="app">MGED</code> is that the ray direction is always perpendicular to
+the viewing plane.  In other words, the user is looking in the
+direction in which the ray will be cast.  There is no option to choose
+a different direction from the <code class="app">MGED</code> command line, and as a
+consequence it may initially look like nothing has happened in the
+<code class="app">MGED</code> wireframe.  The report on the command line will print out,
+but the user will have to change the direction from which the model is
+being viewed in MGED before the graphical results will be visible.</p>
+</div>
+<div class="paragraph">
+<p>Another important point to remember about using <code class="app">NIRT</code> in
+<code class="app">MGED</code> is that the user does not specify objects as arguments to
+the <code>nirt</code> <code class="app">MGED</code> command.  Even if supplied with objects it will
+not use them - the objects used are those active in <code class="app">MGED</code>'s
+wireframe view.</p>
+</div>
+<div class="paragraph">
+<p>For example, load <em class="path">nirt_example.g</em> in <code class="app">MGED</code>, <code>draw
+center_cube.r</code>, set the view direction to a front view looking down
+the negative x axis, and run the <code>nirt</code> <code class="app">MGED</code> command:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>mged&gt; draw center_cube.r
+mged&gt; ae 0 0
+mged&gt; nirt
+
+Firing from view center...
+Origin (x y z) = (0.00 0.00 0.00)  (h v d) = (0.00 0.00 0.00)
+Direction (x y z) = (-1.0000 -0.0000 0.0000)  (az el) = (0.00 -0.00)
+    Region Name               Entry (x y z)              LOS  Obliq_in
+center_cube.r        (    1.000     0.000     0.000)     2.00    0.000
+
+mged&gt;</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/nirt_fig02.png" alt="nirt fig02">
+</div>
+<div class="title">Figure 2. View of wireframe immediately after running <code class="app">NIRT</code> within <code class="app">MGED</code>.</div>
+</div>
+<div class="paragraph">
+<p>Select the <code class="app">MGED</code> view window and press "3" to view the path of
+the ray:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/nirt_fig03.png" alt="nirt fig03">
+</div>
+<div class="title">Figure 3. View of wireframe after changing view direction, showing path of <code class="app">NIRT</code> ray.</div>
+</div>
+<div class="paragraph">
+<p>Because the ray encountered only a single region, the only visible
+path drawn is the intersection path of the ray and the region (the
+light blue line).  The region intersection was backed out to the first
+intersection with that region, despite the origination point of the
+ray being at the center of the sphere.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>When a miss is reported by <code class="app">NIRT</code>, no line is drawn in the
+wireframe view.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_backing_out_with_nirt_in_mged"><a class="anchor" href="#_backing_out_with_nirt_in_mged"></a>3.2. Backing Out with <code class="app">NIRT</code> in <code class="app">MGED</code></h3>
+<div class="paragraph">
+<p>Because <code class="app">NIRT</code>'s interactive mode cannot be used while in
+<code class="app">MGED</code>, the <em>b</em> flag must be provided to the invocation of the
+<code>nirt</code> <code class="app">MGED</code> command to back out the origination point while
+using <code class="app">NIRT</code> within <code class="app">MGED</code>.  For comparison purposes, it is
+more instructive to examine <em>left_and_right_cubes.r</em> than
+<em>center_cube.r</em>.  To generate a "no backout" control view, the display
+is cleared, <em>left_and_right_cubes.r</em> is drawn, the view direction is
+set, <code class="app">NIRT</code> (no <em>b</em> flag) is run, and the view is switched to
+view the ray path:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>mged&gt; B left_and_right_cubes.r
+mged&gt; ae 0 0
+mged&gt; nirt
+
+Firing from view center...
+Origin (x y z) = (0.00 0.00 0.00)  (h v d) = (0.00 0.00 0.00)
+Direction (x y z) = (-1.0000 -0.0000 0.0000)  (az el) = (0.00 -0.00)
+    Region Name               Entry (x y z)              LOS  Obliq_in
+region1.r            ( -300.000     0.000     0.000)   100.00    0.000
+
+mged&gt; ae 90 0
+mged&gt;</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/nirt_fig04.png" alt="nirt fig04">
+</div>
+<div class="title">Figure 4. View of <code class="app">NIRT</code> ray intersecting <em>left_and_right_cubes.r</em> with ray origin at the global origin.</div>
+</div>
+<div class="paragraph">
+<p>The ray did indeed intersect a solid area as indicated in the report,
+but only in one of the two cubes making up the region.  Repeating the
+steps using the <em>b</em> flag to back the origination point out produces
+somewhat different results:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>mged&gt; ae 0 0
+mged&gt; nirt -b
+
+Firing from view center...
+Origin (x y z) = (6.63 0.00 0.00)  (h v d) = (0.00 0.00 0.00)
+Direction (x y z) = (-1.0000 -0.0000 0.0000)  (az el) = (0.00 -0.00)
+    Region Name               Entry (x y z)              LOS  Obliq_in
+left_and_right_cubes.r (    3.000     0.000     0.000)     2.00    0.000
+left_and_right_cubes.r (   -1.000     0.000     0.000)     2.00    0.000
+
+mged&gt; ae 90 0</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/nirt_fig05.png" alt="nirt fig05">
+</div>
+<div class="title">Figure 5. View of <code class="app">NIRT</code> ray intersecting <em>left_and_right_cubes.r</em> with ray origin backed out of the region.</div>
+</div>
+<div class="paragraph">
+<p>Notice that the ray path is now drawn over a much larger area, and
+multiple colors are used.  The colors have significance; the purple
+segment in the <code class="app">NIRT</code> ray path corresponds to the empty area or
+"gap" between the two solid areas.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ray_segment_coloring_with_nirt"><a class="anchor" href="#_ray_segment_coloring_with_nirt"></a>3.3. Ray Segment Coloring with <code class="app">NIRT</code> and <code class="app">MGED</code></h3>
+<div class="paragraph">
+<p><code class="app">NIRT</code> uses colors to visually represent the information seen in
+text form in its report.  The conventions are:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Color</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Solid</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alternates between Blue and Yellow</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gap</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Purple</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Overlap</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">White</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>To illustrate these outputs, a series of cube configurations will be
+examined.  First, all three are drawn at once, the viewing direction
+is set to the -x direction, <code>nirt -b</code> is run, and the view is changed
+to see the results:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>mged&gt; B left_cube.r center_cube.r right_cube.r
+mged&gt; ae 0 0
+mged&gt; nirt -b
+
+Firing from view center...
+Origin (x y z) = (6.63 0.00 0.00)  (h v d) = (0.00 0.00 0.00)
+Direction (x y z) = (-1.0000 -0.0000 0.0000)  (az el) = (0.00 -0.00)
+    Region Name               Entry (x y z)              LOS  Obliq_in
+right_cube.r         (    3.000     0.000     0.000)     2.00    0.000
+center_cube.r        (    1.000     0.000     0.000)     2.00    0.000
+left_cube.r          (   -1.000     0.000     0.000)     2.00    0.000
+
+mged&gt; ae 90 0</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/nirt_fig06.png" alt="nirt fig06">
+</div>
+<div class="title">Figure 6. Side view of aligned individual arb8 cubes with a single <code class="app">NIRT</code> ray passing through all three cubes.</div>
+</div>
+<div class="paragraph">
+<p>There are three regions present, according to the text report.  The
+first region encountered is that associated with <em>right_cube.r</em>, and
+the portion of the ray intersection in that region is light blue.  The
+second region, <em>center_cube.r</em>, has its intersection with the
+yellow ray.  Note the color of the intersection in <em>left_cube.r</em> is
+the same as that shown for <em>right_cube.r</em>. <strong>It is important to realize
+that the same intersection color in two different areas does NOT imply
+that they are the same region, material, etc.  Nor do different colors
+guarantee that noncontiguous geometric areas are in different
+regions.</strong> The color swap is simply an aid when viewing two different
+contiguous solid regions that would otherwise be indistinguishable
+visually.  For example, if all three cubes were unioned into a single
+region, the wireframe would look identical but the region report would
+be very different.  In that case, there would be only one region, and
+only one line color would be needed.  To illustrate:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>mged&gt; B all_cubes.r
+mged&gt; ae 0 0
+mged&gt; nirt -b
+
+Firing from view center...
+Origin (x y z) = (6.63 0.00 0.00)  (h v d) = (0.00 0.00 0.00)
+Direction (x y z) = (-1.0000 -0.0000 0.0000)  (az el) = (0.00 -0.00)
+    Region Name               Entry (x y z)              LOS  Obliq_in
+all_cubes.r          (    3.000     0.000     0.000)     6.00    0.000
+
+mged&gt; ae 90 0</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/nirt_fig07.png" alt="nirt fig07">
+</div>
+<div class="title">Figure 7. View of wireframe of three arb8 cubes combined into a single region with a <code class="app">NIRT</code> ray passing through the region on the same path as that used for the individual arb8 cubes.</div>
+</div>
+<div class="paragraph">
+<p>Without the color-changing mechanism, the two previous situations
+would have been visually identical despite having very different
+properties.</p>
+</div>
+<div class="paragraph">
+<p>The other two situations that result in a color change are gaps and
+overlaps.  A gap in <code class="app">NIRT</code> is any area along the ray path <strong>after
+a solid portion of a region is encountered</strong> and <strong>before the last solid
+portion of a region is encountered</strong> that does not intersect a region.
+As an illustration, casting the same ray through just <em>left_cube.r</em>
+and <em>right_cube.r</em> results in a gap where <em>center_cube.r</em> was in the
+first example in this section:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>mged&gt; B left_cube.r right_cube.r
+mged&gt; ae 0 0
+mged&gt; nirt -b
+
+Firing from view center...
+Origin (x y z) = (6.63 0.00 0.00)  (h v d) = (0.00 0.00 0.00)
+Direction (x y z) = (-1.0000 -0.0000 0.0000)  (az el) = (0.00 -0.00)
+    Region Name               Entry (x y z)              LOS  Obliq_in
+right_cube.r         (    3.000     0.000     0.000)     2.00    0.000
+left_cube.r          (   -1.000     0.000     0.000)     2.00    0.000
+
+mged&gt; ae 90 0</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/nirt_fig08.png" alt="nirt fig08">
+</div>
+<div class="title">Figure 8. View of ray cast through only <em>left_cube.r</em> and <em>right_cube.r</em>.</div>
+</div>
+<div class="paragraph">
+<p>To illustrate overlaps, both <em>center_cube.r</em> and <em>all_cubes.r</em> are
+drawn at the same time:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>mged&gt; B all_cubes.r center_cube.r
+mged&gt; ae 0 0
+mged&gt; nirt -b
+
+Firing from view center...
+Origin (x y z) = (6.63 0.00 0.00)  (h v d) = (0.00 0.00 0.00)
+Direction (x y z) = (-1.0000 -0.0000 0.0000)  (az el) = (0.00 -0.00)
+    Region Name               Entry (x y z)              LOS  Obliq_in
+all_cubes.r          (    3.000     0.000     0.000)     6.00    0.000
+OVERLAP: 'center_cube.r' and 'all_cubes.r' xyz_in=(1 0 0) los=2
+
+mged&gt; ae 90 0</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/nirt_fig09.png" alt="nirt fig09">
+</div>
+<div class="title">Figure 9. Example of an overlap region in a <code class="app">NIRT</code> ray.</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_mouse_based"><a class="anchor" href="#_mouse_based"></a>3.4. Mouse-Based <code class="app">NIRT</code> Usage</h3>
+<div class="paragraph">
+<p>In addition to providing a <code>nirt</code> command on the <code class="app">MGED</code> command
+line, there is a mouse-based trigger that can be used.  In the MGED
+menu, selecting <span class="menuseq"><b class="menu">Settings</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Mouse Behavior</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Query Ray</b></span> will change
+the behavior of the mouse.  Selecting the view window, placing the
+mouse at some point over the model, and preforming a click will cast a
+ray in the view direction, centered at the point under the mouse
+pointer rather than the view center.</p>
+</div>
+<div class="paragraph">
+<p>For this example, bring up <em>left_cube.r</em>, <em>center_cube.r</em>, and
+<em>right_cube.r</em>:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>mged&gt; B left_cube.r center_cube.r right_cube.r
+mged&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To aid with aiming, the grid overlay is enabled from the menu:
+<span class="menuseq"><b class="menu">Settings</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Grid</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Draw Grid</b></span>.  Grid spacing is adjusted with
+<span class="menuseq"><b class="menu">Settings</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Grid Spacing</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Autosize</b></span>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/nirt_fig10.png" alt="nirt fig10">
+</div>
+<div class="title">Figure 10. Grid overlay on <code class="app">MGED</code> wireframe.</div>
+</div>
+<div class="paragraph">
+<p>With the mouse behavior set to Query Ray, the following results are
+from casting rays at (approximately) the (-2 mm, 0 mm), (0 mm, 0 mm),
+and (2 mm, 0 mm) grid points:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Firing from (-1.992832, -4.000000, -0.028674)...
+Origin (x y z) = (-1.99 -10.63 -0.03)  (h v d) = (-1.99 -0.03 4.00)
+Direction (x y z) = (-0.0000 1.0000 0.0000)  (az el) = (-90.00 -0.00)
+    Region Name               Entry (x y z)              LOS  Obliq_in
+left_cube.r          (   -1.993    -1.000    -0.029)     2.00    0.000
+
+Firing from (0.014337, -4.000000, -0.000000)...
+Origin (x y z) = (0.01 -10.63 -0.00)  (h v d) = (0.01 0.00 4.00)
+Direction (x y z) = (-0.0000 1.0000 0.0000)  (az el) = (-90.00 -0.00)
+    Region Name               Entry (x y z)              LOS  Obliq_in
+center_cube.r        (    0.014    -1.000     0.000)     2.00    0.000
+
+Firing from (2.021505, -4.000000, -0.028674)...
+Origin (x y z) = (2.02 -10.63 -0.03)  (h v d) = (2.02 -0.03 4.00)
+Direction (x y z) = (-0.0000 1.0000 0.0000)  (az el) = (-90.00 -0.00)
+    Region Name               Entry (x y z)              LOS  Obliq_in
+right_cube.r         (    2.022    -1.000    -0.029)     2.00    0.000</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Notice the entry points are off from the target values by small but
+significant amounts.  A more precise way to do this analysis is to use
+the "snap to grid" feature.  This feature is enabled by selecting
+<span class="menuseq"><b class="menu">Modes</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Snap To Grid</b></span>.  Repeating the above ray casts:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Firing from (-2.000000, -4.000000, -0.000000)...
+Origin (x y z) = (-2.00 -10.63 -0.00)  (h v d) = (-2.00 0.00 4.00)
+Direction (x y z) = (-0.0000 1.0000 0.0000)  (az el) = (-90.00 -0.00)
+    Region Name               Entry (x y z)              LOS  Obliq_in
+left_cube.r          (   -2.000    -1.000     0.000)     2.00    0.000
+
+Firing from (0.000000, -4.000000, -0.000000)...
+Origin (x y z) = (0.00 -10.63 -0.00)  (h v d) = (-0.00 0.00 4.00)
+Direction (x y z) = (-0.0000 1.0000 0.0000)  (az el) = (-90.00 -0.00)
+    Region Name               Entry (x y z)              LOS  Obliq_in
+center_cube.r        (    0.000    -1.000     0.000)     2.00    0.000
+
+Firing from (2.000000, -4.000000, -0.000000)...
+Origin (x y z) = (2.00 -10.63 -0.00)  (h v d) = (2.00 0.00 4.00)
+Direction (x y z) = (-0.0000 1.0000 0.0000)  (az el) = (-90.00 -0.00)
+    Region Name               Entry (x y z)              LOS  Obliq_in
+right_cube.r         (    2.000    -1.000     0.000)     2.00    0.000</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>These values are exact thanks to the corrections provided by the snap
+to grid mode.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configuring_nirt"><a class="anchor" href="#_configuring_nirt"></a>3.5. Configuring <code class="app">NIRT</code> with the Query Ray Control Panel</h3>
+<div class="paragraph">
+<p>When using <code class="app">NIRT</code> within <code class="app">MGED</code>, some of its settings can be
+changed through a graphical dialog found in the menu: <code class="app">MGED</code>'s
+<span class="menuseq"><b class="menu">Tools</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Query Ray Control Panel</b></span>.  This section will describe the
+basic options.  More advanced settings will be covered later.</p>
+</div>
+<div class="sect3">
+<h4 id="_enabling_and_disabling_mouse_based"><a class="anchor" href="#_enabling_and_disabling_mouse_based"></a>3.5.1. Enabling and Disabling Mouse-Based <code class="app">nirt</code> Ray Casting</h4>
+<div class="paragraph">
+<p>Earlier, mouse-based <code class="app">NIRT</code> ray casting was enabled via a menu
+option.  The Query Ray Control Panel offers a more convenient option
+for toggling the same behavior via the <strong>Mouse Active</strong> check box in the
+lower left corner of the dialog box.  Selecting this check box and
+clicking <strong>Apply</strong> will activate the mouse as a trigger for a ray cast.
+Clearing the <strong>Mouse Active</strong> check box and clicking <strong>Apply</strong> will
+restore the default behavior.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/nirt_fig11.png" alt="nirt fig11">
+</div>
+<div class="title">Figure 11. <code class="app">MGED</code>'s Query Ray Control Panel with the <strong><em>Mouse Active</em></strong> check box circled.</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_customizing_nirt_coloring"><a class="anchor" href="#_customizing_nirt_coloring"></a>3.5.2. Customizing <code class="app">NIRT</code> Coloring in <code class="app">MGED</code></h4>
+<div class="paragraph">
+<p>Although the default colors normally work well, it is possible to
+adjust the colors used for regions, overlaps, and gaps:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/nirt_fig12.png" alt="nirt fig12">
+</div>
+<div class="title">Figure 12. <code class="app">MGED</code>'s Query Ray Control Panel with the <strong><em>Query Ray Colors</em></strong> circled.</div>
+</div>
+<div class="paragraph">
+<p>The <strong>odd</strong> and <strong>even</strong> colors correspond to solid areas of regions,
+<strong>void</strong> is a gap between regions, and <strong>overlap</strong> is the color for
+overlapping regions.  Select a color by typing in an RGB color
+designation directly or using the drop-down menu visible on the right
+end of each color entry:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/nirt_fig13.png" alt="nirt fig13">
+</div>
+<div class="title">Figure 13. <code class="app">MGED</code>'s Query Ray Control Panel with an example color list selected.</div>
+</div>
+<div class="paragraph">
+<p>If the default color listings are insufficient, the <strong>Color Tool</strong> can
+be used for more fine-tuned selection:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/nirt_fig14.png" alt="nirt fig14">
+</div>
+<div class="title">Figure 14. <code class="app">MGED</code>'s Color Tool</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_customizing_the_pseudo"><a class="anchor" href="#_customizing_the_pseudo"></a>3.5.3. Customizing the Pseudo-Primitive Base Name</h4>
+<div class="paragraph">
+<p><code class="app">MGED</code> and <code class="app">NIRT</code> use "pseudo" primitives to describe the
+actual graphical lines.  They will not behave like "normal"
+primitives, but they do need a name.  By default, these names are the
+string "query_ray" and the color used for the string.  For example,
+the pseudo-primitive list after running <code class="app">NIRT</code> on the cube
+example with a gap is given below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/nirt_fig08.png" alt="nirt fig08">
+</div>
+<div class="title">Figure 15. Wireframe view of a <code class="app">NIRT</code> ray using multiple colors.</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>mged&gt; who p
+query_rayffff00 query_rayffff query_rayff00ff</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This naming convention is used almost completely as an internal
+mechanism by <code class="app">MGED</code> and <code class="app">NIRT</code>.  For example, an <code>l</code> command
+on <em>query_rayffff</em> does not work:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>mged&gt; l query_rayffff
+rt_db_get_internal(query_rayffff) failure</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>However, it <em>is</em> possible to use these names to erase the <code class="app">NIRT</code>
+line segments from the drawing.  For example, to remove the purple
+line segments from the wireframe, the command:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>mged&gt; erase query_rayff00ff</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>will remove <em>only</em> the purple line segment and leave the others:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/nirt_fig15.png" alt="nirt fig15">
+</div>
+<div class="title">Figure 16. Wireframe view of the <code class="app">NIRT</code> ray <em>after</em> erasing <em>query_rayff00ff</em>.</div>
+</div>
+<div class="paragraph">
+<p>The Query Ray Control Panel also offers a way to customize the base
+name used for these pseudo-primitives.  Changing the <strong>Base Name</strong> from
+query_ray to line_segment and rerunning <code class="app">NIRT</code> results in
+pseudo-primitives named:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>mged&gt; who p
+     line_segmentffff00 line_segmentffff line_segmentff00ff</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/nirt_fig16.png" alt="nirt fig16">
+</div>
+<div class="title">Figure 17. <code class="app">MGED</code>'s Query Ray Control Panel showing a new <strong><em>Base Name</em></strong>.</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_echoing_the_internal"><a class="anchor" href="#_echoing_the_internal"></a>3.5.4. Echoing the Internal <code>nirt</code> Command</h4>
+<div class="paragraph">
+<p>The <strong>Echo Cmd</strong> check box in the <strong>Effects</strong> row allows the user to
+enable/disable the printing of the internal <code>nirt</code> command being run
+by <code class="app">MGED</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/nirt_fig17.png" alt="nirt fig17">
+</div>
+<div class="title">Figure 18. <code class="app">MGED</code>'s Query Ray Control Panel with the <strong><em>Echo Cmd</em></strong> check box circled.</div>
+</div>
+<div class="paragraph">
+<p>For example, with <strong>Echo Cmd</strong> selected, casting a ray into the last
+example in the previous section results in:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>nirt -e fmt r ""; fmt h ""; fmt p ""; fmt m ""; fmt o ""; fmt f ""; fmt g "" -e fmt p
+ "%e %e %e %e\n" x_in y_in z_in los -e xyz 4.000000 0.022222 0.011111;dir -1.000000
+-0.000000 0.000000; s -e fmt r "\n" ; fmt p ""; fmt o "%e %e %e %e\n" ov_x_in ov_y_in
+ov_z_in ov_los -e xyz 4.000000 0.022222 0.011111;dir -1.000000 -0.000000 0.000000; s
+-e  fmt r "\nOrigin (x y z) = (%.2f %.2f %.2f)  (h v d) = (%.2f %.2f %.2f)\nDirection
+(x y z) = (%.4f %.4f %.4f)  (az el) = (%.2f %.2f)\n"  x_orig y_orig z_orig h v d_orig
+x_dir y_dir z_dir a e -e fmt h "    Region Name               Entry (x y z)
+    LOS  Obliq_in\n"; fmt p "%-20s (%9.3f %9.3f %9.3f) %8.2f %8.3f\n" reg_name x_in
+y_in z_in los obliq_in; fmt f ""; fmt m "You missed the target\n"; fmt o "OVERLAP:
+'%s' and '%s' xyz_in=(%g %g %g) los=%g\n" ov_reg1_name ov_reg2_name ov_x_in ov_y_in
+ov_z_in ov_los; fmt g "" -e xyz 4.000000 0.022222 0.011111;dir -1.000000 -0.000000
+0.000000; s -b nirt_example.g right_cube.r center_cube.r left_cube.r
+
+Firing from (4.000000, 0.022222, 0.011111)...
+Origin (x y z) = (10.63 0.02 0.01)  (h v d) = (0.02 0.01 4.00)
+Direction (x y z) = (-1.0000 -0.0000 0.0000)  (az el) = (0.00 -0.00)
+    Region Name               Entry (x y z)              LOS  Obliq_in
+right_cube.r         (    3.000     0.022     0.011)     2.00    0.000
+center_cube.r        (    1.000     0.022     0.011)     2.00    0.000
+left_cube.r          (   -1.000     0.022     0.011)     2.00    0.000</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This feature is primarily useful for debugging or scripting outside of
+<code class="app">MGED</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_selecting_graphical"><a class="anchor" href="#_selecting_graphical"></a>3.5.5. Selecting Graphical and Textual Output</h4>
+<div class="paragraph">
+<p>By default, <code class="app">NIRT</code> in <code class="app">MGED</code> outputs both graphical and
+text-based output.  This is reflected in the drop-down menu on the
+right side of the <strong>Effects</strong> row in the Query Ray Control Panel, which
+is set to <strong>Both</strong>.  The other options in the drop-down menu allow the
+user to specify only <strong>Graphics</strong> (no text report is printed) or only
+<strong>Text</strong> (no ray path is drawn in the wireframe.)</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/nirt_fig18.png" alt="nirt fig18">
+</div>
+<div class="title">Figure 19. <code class="app">MGED</code>'s Query Ray Control Panel with the <strong><em>Effects</em></strong> drop-down menu shown.</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_reporting_options"><a class="anchor" href="#_reporting_options"></a>4. Reporting Options</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Up until this point, only the default output configuration of
+<code class="app">NIRT</code> has been used.  Much of the power of <code class="app">NIRT</code> comes
+from taking that output and changing the format and information to
+supply precisely what is needed for any given purpose.</p>
+</div>
+<div class="sect2">
+<h3 id="_how_to_change_the_reporting_format"><a class="anchor" href="#_how_to_change_the_reporting_format"></a>4.1. How to Change the Reporting Format</h3>
+<div class="paragraph">
+<p>The <em>f</em> option allows <code class="app">NIRT</code> to load customized formatting files
+that change its reporting style.  In addition to the default style
+used thus far in this report, <code class="app">NIRT</code> has several built-in options
+for convenient formatting.  Running <code>nirt -L</code> prints out a list of
+available built-in formats, with a description of each:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>user@machine ~ $ nirt -L
+csv-gap   - Comma Separated Value Output Formatting with Gap Reporting
+entryexit - Variation on Standard format that prints Entry and Exit points rather than LOS.
+csv       - Comma Separated Value Output Formatting
+gap2      - Reporting with Gap input point, output point and LOS
+gap1      - Reporting with Gap Input Point and LOS
+default   - Standard NIRT Reporting Format</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To use a particular format, the name on the left (csv, gap1, etc.) is
+supplied as an argument to the <em>f</em> flag.</p>
+</div>
+<div class="paragraph">
+<p>For example, cases where data needs to be imported into a spreadsheet
+can benefit from using comma-separated-variable (csv) output
+formatting.  The individual cube regions are loaded and a ray cast:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>user@machine ~ $ nirt -b -f csv nirt_example.g left_cube.r center_cube.r right_cube.r
+BRL-CAD Release 7.13.0  Natalie's Interactive Ray Tracer
+    Tue, 26 Aug 2008 23:21:32 -0400, Compilation 2
+    user@localhost:/usr/brlcad
+Database file:  'nirt_example.g'
+Building the directory...
+Get trees...
+Prepping the geometry...
+Objects 'left_cube.r' 'center_cube.r' 'right_cube.r' processed
+Database title: 'Example BRL-CAD Database'
+Database units: 'mm'
+model_min = (-3, -1, -1)    model_max = (3, 1, 1)
+nirt&gt;  s
+Ray:
+x_orig,y_orig,z_orig,d_orig,h,v,x_dir,y_dir,z_dir,az,el
+6.63324958,0.00000000,0.00000000,0.00000000,0.00000000,0.00000000,-1.00000000,0.000000...
+
+Results:
+reg_name,path_name,reg_id,x_in,y_in,z_in,d_in,x_out,y_out,z_out,d_out,los,scaled_los,o...
+"right_cube.r","/right_cube.r",1002,3.000000,0.000000,0.000000,3.000000,1.000000,0.000...
+"center_cube.r","/center_cube.r",1000,1.000000,0.000000,0.000000,1.000000,-1.000000,0...
+"left_cube.r","/left_cube.r",1001,-1.000000,0.000000,0.000000,-1.000000,-3.000000,0.00...</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The output of the shot command is then copied to a file (for example,
+test.csv) and imported into a spreadsheet:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/nirt_fig19.png" alt="nirt fig19">
+</div>
+</div>
+<div class="paragraph">
+<p>Since copying to a file is impractical in many cases, <code class="app">NIRT</code>
+provides an interactive command called <code>dest</code> which can specify an
+output file.  In the previous case, the test.csv file is created
+easily:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>nirt&gt;  dest test.csv
+nirt&gt;  s</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The file contents match the previous output:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Ray:
+x_orig,y_orig,z_orig,d_orig,h,v,x_dir,y_dir,z_dir,az,el
+6.63324958,0.00000000,0.00000000,0.00000000,0.00000000,0.00000000,-1.00000000,0.000000...
+
+Results:
+reg_name,path_name,reg_id,x_in,y_in,z_in,d_in,x_out,y_out,z_out,d_out,los,scaled_los,o...
+"right_cube.r","/right_cube.r",1002,3.000000,0.000000,0.000000,3.000000,1.000000,0.000...
+"center_cube.r","/center_cube.r",1000,1.000000,0.000000,0.000000,1.000000,-1.000000,0...
+"left_cube.r","/left_cube.r",1001,-1.000000,0.000000,0.000000,-1.000000,-3.000000,0.00...</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To restore output to the command line, use <code>dest default</code> to redirect
+to standard output:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>nirt&gt;  dest default</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When dealing with spaces between models, it is sometimes advantageous
+to report gaps in <code class="app">NIRT</code>'s output. <code class="app">MGED</code>'s
+visualization routines show gaps between regions as purple lines, but
+the default text report does not include information about gaps.
+Sometimes it is desirable to get exact information on gaps,
+particularly when they represent errors in a model.  The <em>gap1</em> and
+<em>gap2</em> formats will include information about gaps.  Running
+<code class="app">NIRT</code> on the <em>left_and_right_cubes.r</em> object with backout
+enabled provides an example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>user@machine ~ $ nirt -b -f gap2 nirt_example.g left_and_right_cubes.r
+BRL-CAD Release 7.13.0  Natalie's Interactive Ray Tracer
+    Tue, 26 Aug 2008 23:21:32 -0400, Compilation 2
+    user@localhost:/usr/brlcad
+Database file:  'nirt_example.g'
+Building the directory...
+Get trees...
+Prepping the geometry...
+Object 'left_and_right_cubes.r' processed
+Database title: 'Example BRL-CAD Database'
+Database units: 'mm'
+model_min = (-3, -1, -1)    model_max = (3, 1, 1)
+nirt&gt;  s
+Origin (x y z) = (6.63324958 0.00000000 0.00000000)  (h v d) = (0.0000 0.0000 0.0000)
+Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (0.00000000 0.00000000)
+    Region Name               Entry (x y z)              LOS  Obliq_in Attrib
+left_and_right_cubes.r (   3.0000    0.0000    0.0000)   2.0000   0.0000
+GAP: xyz_in=(1 0 0) xyz_out=(-1 0 0) los=2
+left_and_right_cubes.r (  -1.0000    0.0000    0.0000)   2.0000   0.0000</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_handling_attribute_reporting"><a class="anchor" href="#_handling_attribute_reporting"></a>4.2. Handling Attribute Reporting</h3>
+<div class="paragraph">
+<p>The default command line reporting format lists an <strong>Attrib</strong> column
+where attributes may be printed, but does not print any as default
+output.  Including attributes in a <code class="app">NIRT</code> report requires adding
+attributes in question to the attributes table using the <code>attr</code>
+command.  For example, if the user wants the report to identify the
+<strong>rgb</strong> color being used for each region:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>user@machine ~ $ nirt -b nirt_example.g left_cube_color.r center_cube_color.r right_cube_color.r
+nirt&gt;  attr rgb
+nirt&gt;  attr -p
+"rgb"
+nirt&gt;  s
+
+Get trees...
+Prepping the geometry...
+Objects 'left_cube_color.r' 'center_cube_color.r' 'right_cube_color.r' processed
+Origin (x y z) = (6.63324958 0.00000000 0.00000000)  (h v d) = (0.0000 0.0000 0.0000)
+Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (0.00000000 0.00000000)
+    Region Name               Entry (x y z)              LOS  Obliq_in Attrib
+right_cube_color.r   (   3.0000    0.0000    0.0000)   2.0000   0.0000 rgb=255/0/0
+center_cube_color.r  (   1.0000    0.0000    0.0000)   2.0000   0.0000 rgb=0/255/0
+left_cube_color.r    (  -1.0000    0.0000    0.0000)   2.0000   0.0000 rgb=0/0/255</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Notice how the report now includes the <strong>rgb</strong> attribute for each
+region.  The <em>p</em> flag prints the current list of attributes to
+include.  In the previous case it&#8217;s simply the "rgb" attribute.  An
+<em>f</em> option can be supplied to flush all entries and clear the table.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>nirt&gt;  attr -f
+nirt&gt;  attr -p</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Multiple attributes can also be specified:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>nirt&gt;  attr rgb region
+nirt&gt;  attr -p
+"rgb"
+"region"
+nirt&gt;  s
+
+Get trees...
+Prepping the geometry...
+Objects 'left_cube_color.r' 'center_cube_color.r' 'right_cube_color.r' processed
+Origin (x y z) = (6.63324958 0.00000000 0.00000000)  (h v d) = (0.0000 0.0000 0.0000)
+Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (0.00000000 0.00000000)
+    Region Name               Entry (x y z)              LOS  Obliq_in Attrib
+right_cube_color.r   (   3.0000    0.0000    0.0000)   2.0000   0.0000 rgb=255/0/0 region=R
+center_cube_color.r  (   1.0000    0.0000    0.0000)   2.0000   0.0000 rgb=0/255/0 region=R
+left_cube_color.r    (  -1.0000    0.0000    0.0000)   2.0000   0.0000 rgb=0/0/255 region=R</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the user wishes to add yet another attribute, it could be appended
+to the current list with another <code>attr</code> command.</p>
+</div>
+<div class="paragraph">
+<p>To provide attributes to the list on startup, the <em>A</em> option will add
+its arguments to the list:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>user@machine ~ $ nirt -b -A rgb nirt_example.g left_cube_color.r center_cube_color.r right_cube_color.r
+BRL-CAD Release 7.13.0  Natalie's Interactive Ray Tracer
+    Mon, 25 Aug 2008 15:14:03 -0400, Compilation 1
+    user@localhost:/usr/brlcad
+Database file:  'nirt_example.g'
+Building the directory...
+Get trees...
+Prepping the geometry...
+Objects 'left_cube_color.r' 'center_cube_color.r' 'right_cube_color.r' processed
+Database title: 'Example BRL-CAD Database'
+Database units: 'mm'
+model_min = (-3, -1, -1)    model_max = (3, 1, 1)
+nirt&gt;  s
+Origin (x y z) = (6.63324958 0.00000000 0.00000000)  (h v d) = (0.0000 0.0000 0.0000)
+Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (0.00000000 0.00000...
+    Region Name               Entry (x y z)              LOS  Obliq_in Attrib
+right_cube_color.r   (   3.0000    0.0000    0.0000)   2.0000   0.0000 rgb=255/0/0
+center_cube_color.r  (   1.0000    0.0000    0.0000)   2.0000   0.0000 rgb=0/255/0
+left_cube_color.r    (  -1.0000    0.0000    0.0000)   2.0000   0.0000 rgb=0/0/255</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Reporting attributes when running <code class="app">NIRT</code> from within <code class="app">MGED</code>
+is more involved.  This will be covered later.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_changing_units"><a class="anchor" href="#_changing_units"></a>4.3. Changing Units</h3>
+<div class="paragraph">
+<p>By default <code class="app">NIRT</code>'s interactive command line mode reads and
+writes all dimensions in millimeters, regardless of the units set in
+the geometry file.  This is configurable via the <code>units</code> command,
+which will accept mm, cm, m, in, and ft as arguments or print the
+current unit with no arguments.  Using <em>center_cube.r</em> as an example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>nirt&gt;  units
+units = 'mm'
+nirt&gt;  s
+Origin (x y z) = (3.46410162 0.00000000 0.00000000)  (h v d) = (0.0000 0.0000 0.0000)
+Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (0.00000000 0.00000000)
+    Region Name               Entry (x y z)              LOS  Obliq_in Attrib
+center_cube.r        (   1.0000    0.0000    0.0000)   2.0000   0.0000
+nirt&gt;  units m
+nirt&gt;  s
+Origin (x y z) = (0.00346410 0.00000000 0.00000000)  (h v d) = (0.0000 0.0000 0.0000)
+Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (0.00000000 0.00000000)
+    Region Name               Entry (x y z)              LOS  Obliq_in Attrib
+center_cube.r        (   0.0010    0.0000    0.0000)   0.0020   0.0000
+nirt&gt;  units in
+nirt&gt;  s
+Origin (x y z) = (0.13638195 0.00000000 0.00000000)  (h v d) = (0.0000 0.0000 0.0000)
+Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (0.00000000 0.00000000)
+    Region Name               Entry (x y z)              LOS  Obliq_in Attrib
+center_cube.r        (   0.0394    0.0000    0.0000)   0.0787   0.0000
+nirt&gt;  units ft
+nirt&gt;  s
+Origin (x y z) = (0.01136516 0.00000000 0.00000000)  (h v d) = (0.0000 0.0000 0.0000)
+Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (0.00000000 0.00000000)
+    Region Name               Entry (x y z)              LOS  Obliq_in Attrib
+center_cube.r        (   0.0033    0.0000    0.0000)   0.0066   0.0000</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When run from within <code class="app">MGED</code>, <code class="app">NIRT</code> uses the current units
+set within the <code class="app">MGED</code> environment.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_other_options"><a class="anchor" href="#_other_options"></a>5. Other Options</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_silent_and_verbose_modes"><a class="anchor" href="#_silent_and_verbose_modes"></a>5.1. Silent and Verbose Modes</h3>
+<div class="paragraph">
+<p><code class="app">NIRT</code> supports two behaviors associated with output verbosity.
+The interactive command line environment uses the verbose mode by
+default.  Verbose mode prints out the headers containing information
+about the BRL-CAD version number, database name, database title, etc.
+and also provides the "<strong>nirt&gt;</strong>" command prompt label.  Silent mode,
+used by default inside the MGED command window, does not print any
+headers or prompt label.</p>
+</div>
+<div class="paragraph">
+<p>When generating large numbers of results, it is sometimes desirable to
+switch to silent mode on the command line.  This is accomplished by
+supplying the <em>s</em> option to <code>nirt</code>.  Similarly, in the <code class="app">MGED</code>
+window, supplying the <em>v</em> option will produce the full text output of
+<code class="app">NIRT</code>'s interactive mode in the <code class="app">MGED</code> window.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_using_air_regions"><a class="anchor" href="#_using_air_regions"></a>5.2. Using Air Regions</h3>
+<div class="paragraph">
+<p>Air regions have a special status in BRL-CAD, and by default
+<code class="app">NIRT</code> does not report them.  If the user <em>does</em> wish to have air
+regions reported, the <em>u</em> option is supplied with an argument of 1 to
+activate air region reporting.  This is illustrated with a
+<em>center_cube_air.r</em> object:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>user@machine $ nirt -s -b -u 0 -f gap2 nirt_example.g left_and_right_cubes.r center_cube_air.r
+s
+Origin (x y z) = (6.63324958 0.00000000 0.00000000)  (h v d) = (0.0000 0.0000 0.0000)
+Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (0.00000000 0.00000000)
+    Region Name               Entry (x y z)              LOS  Obliq_in Attrib
+left_and_right_cubes.r (   3.0000    0.0000    0.0000)   2.0000   0.0000
+GAP: xyz_in=(1 0 0) xyz_out=(-1 0 0) los=2
+left_and_right_cubes.r (  -1.0000    0.0000    0.0000)   2.0000   0.0000
+
+
+user@machine $ nirt -s -b -u 1 -f gap2 nirt_example.g left_and_right_cubes.r center_cube_air.r
+s
+Origin (x y z) = (6.63324958 0.00000000 0.00000000)  (h v d) = (0.0000 0.0000 0.0000)
+Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (0.00000000 0.00000000)
+    Region Name               Entry (x y z)              LOS  Obliq_in Attrib
+left_and_right_cubes.r (   3.0000    0.0000    0.0000)   2.0000   0.0000
+center_cube_air.r    (   1.0000    0.0000    0.0000)   2.0000   0.0000
+left_and_right_cubes.r (  -1.0000    0.0000    0.0000)   2.0000   0.0000</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the first case, area in between the cubes of
+<em>left_and_right_cubes.r</em> is reported as a gap when gap reporting is
+enabled.  In the second case, <em>center_cube_air.r</em> is treated as a
+region and a new region report line is generated instead of a gap
+report.</p>
+</div>
+<div class="paragraph">
+<p>The Query Ray Control Panel also offers a way to select the Use Air
+option:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/nirt_fig20.png" alt="nirt fig20">
+</div>
+<div class="title">Figure 20. <code class="app">MGED</code>'s Query Ray Control Panel showing the <strong><em>Use Air</em></strong> check box.</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_reading_an_orientation"><a class="anchor" href="#_reading_an_orientation"></a>5.3. Reading an Orientation Matrix and Commands</h3>
+<div class="paragraph">
+<p>This option is seldom used manually from the command line.  Its
+primary purpose is to allow <code class="app">MGED</code>'s <code>saveview</code> command to
+generate scripts that allow commands run on <code class="app">MGED</code> views to be
+repeated on the command line.  By default the <code>saveview</code> <code class="app">MGED</code>
+command generates scripts to run <code>rt</code>, so it is necessary to specify
+<code>nirt</code> with <code>saveview</code>'s <em>e</em> option; for example <code>saveview -e nirt
+tsv.script</code>.  Typically the <code>saveview</code> <code class="app">MGED</code> command generates
+scripts with a few other options included, but the important parts are
+the orientation matrix and eyepoint:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>#!/bin/sh
+nirt -M  nirt_example.g 'right_cube.r' 'center_cube.r' 'left_cube.r'  &lt;&lt;EOF
+orientation 2.480973490458727e-01 4.765905732660485e-01 7.480973490458729e-01 \
+	    3.894348305183902e-01;
+eye_pt 6.000000000000000e+00 4.201245229258262e+00 3.415539237722919e+00;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When the above script is run, a <code class="app">NIRT</code> report is generated for a
+ray cast in the same direction as that which would have been cast in
+the original <code class="app">MGED</code> view where the <code>saveview</code> command was run:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>machine:~ user$ sh tsv.script
+Origin (x y z) = (6.00000000 4.20124523 3.41553924)  (h v d) = (0.0000 0.0000 8.0819)
+Direction (x y z) = (-0.74240388 -0.51983679 -0.42261826)  (az el) = (35.00000000 25.00000000)
+    Region Name               Entry (x y z)              LOS  Obliq_in Attrib
+right_cube.r         (   1.4281    1.0000    0.8130)   0.5767  58.6787
+center_cube.r        (   1.0000    0.7002    0.5693)   2.6940  42.0634
+left_cube.r          (  -1.0000   -0.7002   -0.5693)   0.5767  42.0634</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Notice the <code>az</code> and <code>el</code> reported are 35 and 25, which correspond to
+the settings for those values in <code class="app">MGED</code> when <code>saveview</code> was run.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_scripting_nirt"><a class="anchor" href="#_scripting_nirt"></a>6. Scripting <code class="app">NIRT</code></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As mentioned in the output formatting section, hand-copying
+<code class="app">NIRT</code> output can be an inconvenient way to store results,
+particularly in cases where large numbers of rays will be cast.  In
+such cases, it is possible to automate <code class="app">NIRT</code> usage with
+scripting.</p>
+</div>
+<div class="sect2">
+<h3 id="_command_line_scripts"><a class="anchor" href="#_command_line_scripts"></a>6.1. Command Line Scripts:  The <em>e</em> Option</h3>
+<div class="paragraph">
+<p>The most straightforward approach to supplying <code class="app">NIRT</code> with a
+series of commands is to do so in a string from the command line using
+the <em>e</em> option.  The format of such a string is <code>nirt -e "command1;
+command2; &#8230;&#8203; commandn" model.g object</code>.  For example, to cast a ray
+in the negative z direction and avoid interactive mode, the following
+would work:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>user@machine ~ $ nirt -b -s -e "dir 0 0 -1; s; q" nirt_example.g all_cubes.r
+Origin (x y z) = (0.00000000 0.00000000 6.63324958)  (h v d) = (0.0000 0.0000 0.0000)
+Direction (x y z) = (0.00000000 0.00000000 -1.00000000)  (az el) = (0.00000000 90.00000000)
+    Region Name               Entry (x y z)              LOS  Obliq_in Attrib
+all_cubes.r          (   0.0000    0.0000    1.0000)   2.0000   0.0000</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It&#8217;s important to be aware that the order of <em>e</em> and <em>f</em> options
+matters.  They are read in from left to right and each option is aware
+of the effects of the previous options.  Using the gap format with the
+<em>left_and_right_cubes.r</em> object, both orders of the <em>e</em> and <em>f</em>
+options produce different results:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>user@machine ~ $ nirt -b -s -f gap2 -e "s; q" nirt_example.g left_and_right_cubes.r
+Origin (x y z) = (6.63324958 0.00000000 0.00000000)  (h v d) = (0.0000 0.0000 0.0000)
+Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (0.00000000 0.00000000)
+    Region Name               Entry (x y z)              LOS  Obliq_in Attrib
+left_and_right_cubes.r (   3.0000    0.0000    0.0000)   2.0000   0.0000
+GAP: xyz_in=(1 0 0) xyz_out=(-1 0 0) los=2
+left_and_right_cubes.r (  -1.0000    0.0000    0.0000)   2.0000   0.0000
+
+user@machine ~ $ nirt -b -s -e "s; q" -f gap2 nirt_example.g left_and_right_cubes.r
+Origin (x y z) = (6.63324958 0.00000000 0.00000000)  (h v d) = (0.0000 0.0000 0.0000)
+Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (0.00000000 0.00000000)
+    Region Name               Entry (x y z)              LOS  Obliq_in Attrib
+left_and_right_cubes.r (   3.0000    0.0000    0.0000)   2.0000   0.0000
+left_and_right_cubes.r (  -1.0000    0.0000    0.0000)   2.0000   0.0000</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the second case, the arguments to <em>e</em> were executed before the
+formatting change was reached.  A final illustration of this behavior
+uses multiple instances of the <em>e</em> and <em>f</em> options:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>user@machine ~ $ nirt -b -s -e "s" -f gap2 -e "s; q" nirt_example.g left_and_right_cubes.r
+Origin (x y z) = (6.63324958 0.00000000 0.00000000)  (h v d) = (0.0000 0.0000 0.0000)
+Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (0.00000000 0.00000000)
+    Region Name               Entry (x y z)              LOS  Obliq_in Attrib
+left_and_right_cubes.r (   3.0000    0.0000    0.0000)   2.0000   0.0000
+left_and_right_cubes.r (  -1.0000    0.0000    0.0000)   2.0000   0.0000
+Origin (x y z) = (6.63324958 0.00000000 0.00000000)  (h v d) = (0.0000 0.0000 0.0000)
+Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (0.00000000 0.00000000)
+    Region Name               Entry (x y z)              LOS  Obliq_in Attrib
+left_and_right_cubes.r (   3.0000    0.0000    0.0000)   2.0000   0.0000
+GAP: xyz_in=(1 0 0) xyz_out=(-1 0 0) los=2
+left_and_right_cubes.r (  -1.0000    0.0000    0.0000)   2.0000   0.0000</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Notice how the commands in the first <em>e</em> option are run without the
+gap formatting, but the command in the second is run <em>with</em> gap
+formatting.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_script_files"><a class="anchor" href="#_script_files"></a>6.2. Script Files: Other Uses of the <em>f</em> Option</h3>
+<div class="paragraph">
+<p>Earlier, the <em>f</em> option was used to change the output formatting of
+<code class="app">NIRT</code>.  This is only one instance of using scripted commands in
+files to control <code class="app">NIRT</code>.  The same principles apply for any
+command normally available during an interactive <code class="app">NIRT</code> session.</p>
+</div>
+<div class="paragraph">
+<p>Instead of hand-copying the output to a file as was done in the
+previous example using <em class="path">tire.g</em>, a more ambitious goal is to
+output the results of several different ray casts to a single file
+without manual copying.  A script file is defined thus:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># testscript: A Scripted NIRT Example
+backout 1
+dir -1 0 0
+s
+dir 1 0 0
+s
+q</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Because the intent is to have <em>only</em> the output in the file, the <em>s</em>
+option is supplied to the <code>nirt</code> command.  The output is redirected to
+a file called <em class="path">output.txt</em> <sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>nirt -s -f testscript nirt_example.g left_and_right_cubes.r &gt; output.txt</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The contents of that file are the text reports of the two rays cast
+into the model:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Origin (x y z) = (6.63324958 0.00000000 0.00000000)  (h v d) = (0.0000 0.0000 0.0000)
+Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (-0.00000000 -0.00000000)
+    Region Name               Entry (x y z)              LOS  Obliq_in Attrib
+left_and_right_cubes.r (   3.0000    0.0000    0.0000)   2.0000   0.0000
+left_and_right_cubes.r (  -1.0000    0.0000    0.0000)   2.0000   0.0000
+Origin (x y z) = (-6.63324958 0.00000000 0.00000000)  (h v d) = (0.0000 0.0000 0.0000)
+Direction (x y z) = (1.00000000 0.00000000 0.00000000)  (az el) = (-180.00000000 -0.00000000)
+    Region Name               Entry (x y z)              LOS  Obliq_in Attrib
+left_and_right_cubes.r (  -3.0000    0.0000    0.0000)   2.0000   0.0000
+left_and_right_cubes.r (   1.0000    0.0000    0.0000)   2.0000   0.0000</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is useful, but more interesting would be the above output in csv
+format.  Fortunately, the <em>f</em> option can be used multiple times in a
+single <code>nirt</code> run:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>nirt -s -f csv -f testscript nirt_example.g left_and_right_cubes.r &gt; output.csv</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As mentioned in the earlier section when combinations of <em>e</em> and <em>f</em>
+options were used, using multiple instances of the <em>f</em> option in this
+fashion requires paying attention to the left-to-right order.  The csv
+script in the above case is executed before testscript.  The result is
+the csv equivalent of the preceding file:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Ray:
+x_orig,y_orig,z_orig,d_orig,h,v,x_dir,y_dir,z_dir,az,el
+6.63324958,0.00000000,0.00000000,0.00000000,0.00000000,0.00000000,-1.00000000,0.00000...
+
+Results:
+reg_name,path_name,reg_id,x_in,y_in,z_in,d_in,x_out,y_out,z_out,d_out,los,scaled_los,...
+"left_and_right_cubes.r","/left_and_right_cubes.r",1004,3.000000,0.000000,0.000000,3....
+"left_and_right_cubes.r","/left_and_right_cubes.r",1004,-1.000000,0.000000,0.000000,-...
+
+Ray:
+x_orig,y_orig,z_orig,d_orig,h,v,x_dir,y_dir,z_dir,az,el
+-6.63324958,0.00000000,0.00000000,0.00000000,0.00000000,0.00000000,1.00000000,0.00000...
+
+Results:
+reg_name,path_name,reg_id,x_in,y_in,z_in,d_in,x_out,y_out,z_out,d_out,los,scaled_los,...
+"left_and_right_cubes.r","/left_and_right_cubes.r",1004,-3.000000,0.000000,0.000000,3...
+"left_and_right_cubes.r","/left_and_right_cubes.r",1004,1.000000,0.000000,0.000000,-1...</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As before, this format is trivially imported into a spreadsheet:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/nirt_fig21.png" alt="nirt fig21">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_defining_a_custom"><a class="anchor" href="#_defining_a_custom"></a>6.3. Defining a Custom Reporting Format</h3>
+<div class="paragraph">
+<p>A final example of the use of the scripting mechanism is constructing
+a custom-tailored report format and specifying it using the <em>f</em>
+option.  In the case of a custom file stored in a user directory, the
+full file name needs to be supplied just like any other script, e.g.,
+<code>nirt -f my_report_format.nrt model.g item</code>.</p>
+</div>
+<div class="paragraph">
+<p>Generally, it is simplest to use one of the predefined files as a
+starting point.  For example, if the user prefers to have commas
+between xyz coordinates, but otherwise wishes to use the default
+format, the <em class="path">default.nrt</em> file from the installed BRL-CAD system
+is copied to the local directory and renamed
+<em class="path">default-commas.nrt</em>:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>machine:~ user$ cp /usr/brlcad/share/brlcad/7.12.5/nirt/default.nrt default-commas.nrt
+
+machine:~ user$ more default-commas.nrt
+# default.nrt
+# Description: default   - Standard NIRT Reporting Format
+fmt r "Origin (x y z) = (%.8f %.8f %.8f)  (h v d) = (%.4f %.4f %.4f)\nDirection (x y z)...
+fmt h "    Region Name               Entry (x y z)              LOS  Obliq_in Attrib\n"
+fmt p "%-20s (%9.4f %9.4f %9.4f) %8.4f %8.4f %s\n" reg_name x_in y_in z_in los obliq_in...
+fmt m "You missed the target\n"
+fmt o "OVERLAP: '%s' and '%s' xyz_in=(%g %g %g) los=%g\n" ov_reg1_name ov_reg2_name ov_...</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Next, the file is edited to replace all of the spaces in the point
+strings with commas:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>machine:~ user$ more default-commas.nrt
+fmt r "Origin (x,y,z) = (%.8f,%.8f,%.8f)  (h,v,d) = (%.4f,%.4f,%.4f)\nDirection (x,y,z...
+fmt h "    Region Name               Entry (x,y,z)              LOS  Obliq_in Attrib\n"
+fmt p "%-20s (%9.4f,%9.4f,%9.4f) %8.4f %8.4f %s\n" reg_name x_in y_in z_in los obliq_i...
+fmt f ""
+fmt m "You missed the target\n"
+fmt o "OVERLAP: '%s' and '%s' xyz_in=(%g,%g,%g) los=%g\n" ov_reg1_name ov_reg2_name ov...
+fmt g ""</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Running the <em>center_cube.r</em> object:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>machine:~ user$ nirt -s -b -f default-commas.nrt nirt_example.g center_cube.r
+s
+Origin (x,y,z) = (3.46410162,0.00000000,0.00000000)  (h,v,d) = (0.0000,0.0000,0.0000)
+Direction (x,y,z) = (-1.00000000,0.00000000,0.00000000)  (az,el) = (0.00000000,0.00000000)
+    Region Name               Entry (x,y,z)              LOS  Obliq_in Attrib
+center_cube.r        (   1.0000,   0.0000,   0.0000)   2.0000   0.0000</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Notice the commas now present between points.  This file can be saved
+and reused on any <code class="app">NIRT</code> task.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If a user wishes to save the current session configuration of an
+interactive command line <code class="app">NIRT</code> session at any time, they can
+always use the <code>dump</code> interactive command to print out a script file
+that contains all the relevant commands required to restore a specific
+configuration.  By default this file is called <em class="path">nirt_state</em>.
+The <code>statefile</code> interactive command is used to change that name if
+desired.  If a user has used in-session commands to alter formatting,
+but wants to preserve them for later use or as a starting point for a
+new report format, the output of <code>dump</code> is an excellent starting
+point.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_customizing_report_output_in_mged"><a class="anchor" href="#_customizing_report_output_in_mged"></a>6.4. Customizing Report Output in <code class="app">MGED</code></h3>
+<div class="paragraph">
+<p>The Query Ray Control Panel discussed earlier also provides access to
+the reporting logic used by <code class="app">MGED</code> when calling <code class="app">NIRT</code>, but
+it does not provide any graphical aid when it comes to laying out the
+formatting.  All layout logic must be defined with the same syntax
+already seen for the script files.  Customizations of this logic in
+<code class="app">MGED</code> are done using the <strong>Advanced</strong> option in the lower right
+corner of the Query Ray Control Panel, which brings up the following
+window:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/nirt_fig22.png" alt="nirt fig22">
+</div>
+<div class="title">Figure 21. <code class="app">MGED</code>'s Query Ray Control Panel Advanced Settings dialog box.</div>
+</div>
+<div class="paragraph">
+<p>Note also the last line of this dialog box, which provides a place for
+script commands to be executed before the internal <code>s</code> command is run.
+It functions just like the <em>-e</em> option on the normal command line,
+including the syntax of separating all commands except the last one
+with semicolons.  This is useful for setup not possible in normal
+command line operation, as illustrated in the next section.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_reporting_attributes_in_mged"><a class="anchor" href="#_reporting_attributes_in_mged"></a>6.5. Reporting Attributes in <code class="app">MGED</code>:  Advanced Formatting and Scripting</h3>
+<div class="paragraph">
+<p>As mentioned earlier, reporting attributes with <code class="app">NIRT</code> inside of
+<code class="app">MGED</code> is more involved than the strictly command line interface
+allows.  In default <code class="app">NIRT</code> reporting inside <code class="app">MGED</code>, the
+attributes column is not even listed.  Attributes <em>can</em> be reported
+with <code class="app">NIRT</code> in <code class="app">MGED</code>, but it requires custom formatting and
+scripting.</p>
+</div>
+<div class="paragraph">
+<p>The first step is to open the Query Ray Advanced Settings dialog box
+shown in the previous section.  Examining the default <code class="app">NIRT</code>
+formatting file used on the command line reveals that the partition
+formatting string needs a <strong>%s</strong> variable added and the <strong>attributes</strong>
+variable in position to be supplied to the <strong>%s</strong>.  Also the <strong>Attrib</strong>
+column header is added to <strong>Head</strong>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/nirt_fig23.png" alt="nirt fig23">
+</div>
+<div class="title">Figure 22. Query Ray Advanced Settings dialog box showing changes to values (white highlight).</div>
+</div>
+<div class="paragraph">
+<p>The second step is to use the <strong>Script</strong> line in this dialog box to add
+<strong>rgb</strong> to the attributes list.  Because the script line is run before
+<code class="app">MGED</code> sends the <code>s</code> command, the attributes list will be updated
+by the time the ray is cast and the subsequent report is generated.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/nirt_fig24.png" alt="nirt fig24">
+</div>
+<div class="title">Figure 23. Adding commands to the <strong><em>Script</em></strong> line in the Advanced Settings dialog.</div>
+</div>
+<div class="paragraph">
+<p>Unless graphical visualization is needed, it is probably simpler to
+work from the <code class="app">NIRT</code> interactive command line in cases where a
+lot of adjustment of attribute reporting is needed.  If <code class="app">MGED</code> is
+needed, however, this technique will allow custom reports inside of
+<code class="app">MGED</code> that include attributes.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_available_information_for_inclusion_in_reports"><a class="anchor" href="#_available_information_for_inclusion_in_reports"></a>6.6. Available Information for Inclusion in Reports</h3>
+<div class="paragraph">
+<p>There are many cases where the user may want to change <em>what</em>
+<code class="app">NIRT</code> is reporting, instead of or in addition to the
+<em>formatting</em> of the reports. <code class="app">NIRT</code> internally defines values
+that it supports as output options, most of which are not reported in
+the default format for the sake of brevity and clarity.  It also
+defines "events" corresponding to various model geometric states
+encountered by the ray, which are used to trigger print events:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 1%;">
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Event</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">r</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Ray</strong>.  A ray is cast.  The formatting associated with r will print
+ regardless of whether a region is encountered.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">h</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Header</strong>. First output after a ray hits anything.  Formatting at
+  <strong>h</strong> is output once per ray.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">p</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Partition</strong>.  Output for each region encountered by the ray.
+ Typically this will be where most of the information about a model is
+ reported.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">f</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Footnote</strong>.  Last output statement after a ray hits anything; a
+ "footnote" line after the ray has completed its evaluations; once
+ per ray.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">g</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Gap</strong>.  Output written once for each gap the ray may encounter.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">m</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Miss</strong>.  If triggered, prints a message that nothing was hit;
+ maximum once per ray.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">o</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Overlap</strong>.  Output written once for each overlap along the
+ ray.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The available variables pertain to the ray, partitions, overlaps, and
+gaps.  Other event options typically use only labeling strings.  The
+variables are listed in Appendix A and can be used to change reported
+information.  The csv output format is one example of such use.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_summary"><a class="anchor" href="#_summary"></a>7. Summary</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><code class="app">NIRT</code> is the standard, interactive ray trace query tool used
+for obtaining precise, detailed information about specific areas of
+a model via individual ray queries.</p>
+</li>
+<li>
+<p><code class="app">NIRT</code> offers a wide variety of formatting options for various
+analysis needs as well as support for custom formats.</p>
+</li>
+<li>
+<p>Running <code class="app">NIRT</code> within <code class="app">MGED</code> offers additional graphical
+feedback not available when run outside of <code class="app">MGED</code>.</p>
+</li>
+<li>
+<p><code class="app">NIRT</code> provides both command-line and file-based scripting to
+allow for powerful, automated, custom analyses.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_report_format_variable_listings"><a class="anchor" href="#_report_format_variable_listings"></a>Appendix A: Report Format Variable Listings</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 1%;">
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="2">Ray Variables</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">x_orig</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x coordinate of ray origination point.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">y_orig</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">y coordinate of ray origination point.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">z_orig</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">z coordinate of ray origination point.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">d_orig</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">d coordinate of ray origination point.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">h</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">h coordinate for the entire ray.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">v</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">v coordinate for the entire ray.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">x_dir</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x component of direction vector.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">y_dir</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">y component of direction vector.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">z_dir</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">z component of direction vector.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">a</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">azimuth of view (i.e., of ray direction).</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">e</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">elevation of view (i.e., of ray direction).</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 1%;">
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="2">Partition Variables</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">attributes</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A string variable consisting of the names and values of the
+ attributes requested by the <code>attr</code> interactive command or the -A
+ command line option.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">x_in</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x coordinate of entry into current region.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">y_in</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">y coordinate of entry into current region.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">z_in</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">z coordinate of entry into current region.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">d_in</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">d coordinate of entry into current region.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">x_out</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x coordinate of exit from current region.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">y_out</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">y coordinate of exit from current region.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">z_out</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">z coordinate of exit from current region.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">d_out</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">d coordinate of exit from current region.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">los</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">line-of-sight distance through current region.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">scaled_los</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">scaled line of sight: product of line-of-sight distance through
+ current region and region solidity <sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="#_footnotedef_5" title="View footnote.">5</a>]</sup> (sometimes called ``percent
+ LOS'').</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">path_name</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">full path name of current region.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">reg_name</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name of current region</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">reg_id</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">region ID of current region.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">claimant_count</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">number of regions claiming this partition (that is, participating in
+ a retained overlap).</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">claimant_list</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">space-separated list of names of regions claiming this partition
+ (that is, participating in a retained overlap).</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">claimant_listn</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Same as claimant_list, except that it is newline-, rather than
+ space-separated.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">obliq_in</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">entry obliquity for current region.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">obliq_out</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">exit obliquity for current region.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">nm_x_in</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x component of entry normal vector</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">nm_y_in</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">y component of entry normal vector</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">nm_z_in</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">z component of entry normal vector</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">nm_h_in</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">h component of entry normal vector</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">nm_v_in</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">v component of entry normal vector</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">nm_d_in</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">d component of entry normal vector</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">nm_x_out</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x component of exit normal vector</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">nm_y_out</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">y component of exit normal vector</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">nm_z_out</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">z component of exit normal vector</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">nm_h_out</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">h component of exit normal vector</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">nm_v_out</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">v component of exit normal vector</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">nm_d_out</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">d component of exit normal vector</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">surf_num_in</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">entry-surface ID of entry solid.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">surf_num_out</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">exit-surface ID of exit solid.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 1%;">
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="2">Overlap Variables</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">ov_reg1_name</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name of one of the overlapping regions.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">ov_reg2_name</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name of the other overlapping region.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">ov_reg1_id</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">region ID of one of the overlapping regions.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">ov_reg2_id</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">region ID of the other overlapping region.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">ov_sol_in</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name of one of the overlapping solids.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">ov_sol_out</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name of the other overlapping solid.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">ov_los</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">line-of-sight distance through the overlap.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">ov_x_in</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x coordinate of entry into overlap.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">ov_y_in</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">y coordinate of entry into overlap.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">ov_z_in</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">z coordinate of entry into overlap.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">ov_d_in</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">d coordinate of entry into overlap.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">ov_x_out</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x coordinate of exit from overlap.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">ov_y_out</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">y coordinate of exit from overlap.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">ov_z_out</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">z coordinate of exit from overlap.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">ov_d_out</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">d coordinate of exit from overlap.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 1%;">
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="2">Gap Variables</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">x_gap_in</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x coordinate of entry into gap.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">y_gap_in</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">y coordinate of entry into gap.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">z_gap_in</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">z coordinate of entry into gap.</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">gap_los</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">line-of-sight distance through gap.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_debugging_options"><a class="anchor" href="#_debugging_options"></a>Appendix B: Debugging Options</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In cases where problems are being encountered, it is possible to use
+debugging options to print additional information from the supporting
+BRL-CAD libraries.</p>
+</div>
+<div class="sect2">
+<h3 id="_librt_debugging_information"><a class="anchor" href="#_librt_debugging_information"></a>librt Debugging Information</h3>
+<div class="paragraph">
+<p>In cases where detailed behavior of the core raytracing routines is of
+interest, it is possible to use the <em>x</em> (lower case "x") option to
+print additional diagnostic messages. <sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="#_footnotedef_6" title="View footnote.">6</a>]</sup> See the <strong>librt</strong> header
+files for more detail about the very extensive debugging options
+provided.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>machine:~ user$ nirt -s -b -x 0x002 -e "s; q" nirt_example.g center_cube.r
+
+  **********shootray cpu=0  0,0 lvl=0 a_onehit=0 (NIRT ray)
+  Pnt (3.4641016151377543864, 0, 0)
+  Dir (-1, 0, 0)
+    ------Partition list passed to a_hit() routine
+    00604d50: PT center_cube.s (ARB8#0) center_cube.s (ARB8#0) (2.4641,4.4641)
+      InHIT dist=2.4641 (surf 5)
+     OutHIT dist=4.4641 (surf 4)
+      Primitives: center_cube.s,
+      Untrimmed Segments spanning this interval:
+	0680d600: SEG center_cube.s (2.4641,4.4641) st_bit=0 xray#=0
+      Region: /center_cube.r
+  ------
+Origin (x y z) = (3.46410162 0.00000000 0.00000000)  (h v d) = (0.0000 0.0000 0.0000)
+Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (0.00000000 0.00000000)
+    Region Name               Entry (x y z)              LOS  Obliq_in Attrib
+center_cube.r        (   1.0000    0.0000    0.0000)   2.0000   0.0000
+----------shootray cpu=0  0,0 lvl=0 (NIRT ray) HIT ret=1</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_debugging_information"><a class="anchor" href="#_debugging_information"></a><code class="app">NIRT</code> Debugging Information</h3>
+<div class="paragraph">
+<p><code class="app">NIRT</code> itself also provides debugging information.  It is
+accessed using the <em>X</em> option. <sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="#_footnotedef_7" title="View footnote.">7</a>]</sup> <code class="app">NIRT</code> provides five
+different debug flags, as seen in <em class="path">nirt.h</em>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">/** FLAG VALUES FOR nirt_debug */
+#define DEBUG_INTERACT  0x001
+#define DEBUG_SCRIPTS   0x002
+#define DEBUG_MAT       0x004
+#define DEBUG_BACKOUT   0x008
+#define DEBUG_HITS      0x010</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>0x001 and 0x002 pertain to interaction and scripts, respectively:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>machine:~ user$ nirt -s -b -X 0x001 -e "s; q" nirt_example.g center_cube.r
+interact(READING_STRING, 603c10)...
+sgetc((null)) '(null)' '(null)'... initializing
+sgetc(s; q) '(null)' '(null)'... initializing
+returning 's' (o163)
+line_buffer[0] = 's' (o163)
+sgetc(s; q) 's; q' '; q'... returning ';' (o73)
+Line buffer contains 's'
+Origin (x y z) = (3.46410162 0.00000000 0.00000000)  (h v d) = (0.0000 0.0000 0.0000)
+Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (0.00000000 0.00000000)
+    Region Name               Entry (x y z)              LOS  Obliq_in Attrib
+center_cube.r        (   1.0000    0.0000    0.0000)   2.0000   0.0000
+sgetc(s; q) 's; q' ' q'... returning ' ' (o40)
+Skipping ' '
+sgetc(s; q) 's; q' 'q'... returning 'q' (o161)
+line_buffer[0] = 'q' (o161)
+sgetc(s; q) 's; q' ''... returning EOS
+Line buffer contains 'q'
+
+
+machine:~ user$ nirt -s -b -X 0x002 -e "s; q" nirt_example.g center_cube.r
+interact(READING_STRING, 603c10)...
+sgetc((null)) '(null)' '(null)'... initializing
+sgetc(s; q) '(null)' '(null)'... initializing
+returning 's' (o163)
+line_buffer[0] = 's' (o163)
+sgetc(s; q) 's; q' '; q'... returning ';' (o73)
+Line buffer contains 's'
+Origin (x y z) = (3.46410162 0.00000000 0.00000000)  (h v d) = (0.0000 0.0000 0.0000)
+Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (0.00000000 0.00000000)
+    Region Name               Entry (x y z)              LOS  Obliq_in Attrib
+center_cube.r        (   1.0000    0.0000    0.0000)   2.0000   0.0000
+sgetc(s; q) 's; q' ' q'... returning ' ' (o40)
+Skipping ' '
+sgetc(s; q) 's; q' 'q'... returning 'q' (o161)
+line_buffer[0] = 'q' (o161)
+sgetc(s; q) 's; q' ''... returning EOS
+Line buffer contains 'q'
+user@localhost $ nirt -s -b -X 0x002 -e "s; q" nirt_example.g center_cube.r
+- - - - - - - The command-line scripts - - - - - - -
+1. script string 's; q'
+- - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - The command-line scripts - - - - - - -
+1. script string 's; q'
+- - - - - - - - - - - - - - - - - - - - - - - - - -
+  Attempting to run literal 's; q'
+Origin (x y z) = (3.46410162 0.00000000 0.00000000)  (h v d) = (0.0000 0.0000 0.0000)
+Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (0.00000000 0.00000000)
+    Region Name               Entry (x y z)              LOS  Obliq_in Attrib
+center_cube.r        (   1.0000    0.0000    0.0000)   2.0000   0.0000</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The 0x004 DEBUG_MAT flag pertains to the <em>M</em> option seen earlier in
+the <code>saveview</code> <code class="app">MGED</code> command example that supplies a matrix for
+<code class="app">NIRT</code> to read.  Adding the debug option to the script triggers a
+printout of the matrix:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">#!/bin/sh
+nirt -M -X 0x004 nirt_example.g center_cube.r &lt;&lt;EOF
+orientation 5.000000000000000e-01 5.000000000000001e-01 5.000000000000000e-01 4.999999999999999e-01;
+eye_pt 0.000000000000000e+00 0.000000000000000e+00 0.000000000000000e+00;</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>machine:~ user$ sh tsv.script
+MATRIX view matrix:
+     -0.000    1.000    0.000    0.000
+      0.000    0.000    1.000    0.000
+      1.000    0.000   -0.000    0.000
+      0.000    0.000    0.000    1.000
+Origin (x y z) = (0.00000000 0.00000000 0.00000000)  (h v d) = (0.0000 0.0000 0.0000)
+Direction (x y z) = (-1.00000000 -0.00000000 0.00000000)  (az el) = (0.00000000 -0.00000000)
+    Region Name               Entry (x y z)              LOS  Obliq_in Attrib
+center_cube.r        (   1.0000    0.0000   -0.0000)   2.0000   0.0000</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>DEBUG_BACKOUT and DEBUG_HITS pertain to the backout option and
+geometry hits:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>machine:~ user$ nirt -s -b -X 0x008 -e "s; q" nirt_example.g center_cube.r
+Backing out 3.4641 units to (3.4641 0 0), shooting dir is (-1 0 0)
+Origin (x y z) = (3.46410162 0.00000000 0.00000000)  (h v d) = (0.0000 0.0000 0.0000)
+Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (0.00000000 0.00000000)
+    Region Name               Entry (x y z)              LOS  Obliq_in Attrib
+center_cube.r        (   1.0000    0.0000    0.0000)   2.0000   0.0000
+
+machine:~ user$ nirt -s -b -X 0x010 -e "s; q" nirt_example.g center_cube.r
+Origin (x y z) = (3.46410162 0.00000000 0.00000000)  (h v d) = (0.0000 0.0000 0.0000)
+Direction (x y z) = (-1.00000000 0.00000000 0.00000000)  (az el) = (0.00000000 0.00000000)
+    Region Name               Entry (x y z)              LOS  Obliq_in Attrib
+Partition 1 entry: (1, 0, 0) exit: (-1, 0, 0)
+center_cube.r        (   1.0000    0.0000    0.0000)   2.0000   0.0000</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. To quickly find out what objects are in a database, use the commands mged -c nirt_example.g tops to see all top level objects and mged -c nirt_example.g ls to see all objects in the model.
+</div>
+<div class="footnote" id="_footnotedef_2">
+<a href="#_footnoteref_2">2</a>. To perform this operation automatically when the model is loaded, supply the b flag to nirt at startup: nirt -b.
+</div>
+<div class="footnote" id="_footnotedef_3">
+<a href="#_footnoteref_3">3</a>. The last two lines that appear in the output when the direction vector is changed are a result of how the raytracing library keeps track of regions internally.  Even when in an overlap, the ray is considered to be in only one region at a time. In this particular overlap situation, it might be either region, so librt selects the region with the lowest bit number (for more information, see rt_defoverlap in librt/bool.c).  If the ray happens to exit the lowest bit number region when it exits the overlap the active region changes again and another line is generated.  Ultimately the difference is inconsequential and can be disregarded.  Both reports contain the key information: the overlap to be removed.
+</div>
+<div class="footnote" id="_footnotedef_4">
+<a href="#_footnoteref_4">4</a>. These examples use a standard POSIX-style output redirect to create the file.  If this doesn&#8217;t work, the above script can be edited to use the dest command instead.
+</div>
+<div class="footnote" id="_footnotedef_5">
+<a href="#_footnoteref_5">5</a>. Region solidity refers to a thickness equivalence factor often used to simulate material properties like density.
+</div>
+<div class="footnote" id="_footnotedef_6">
+<a href="#_footnoteref_6">6</a>. librt&#8217;s diagnostic setting can also be set in the interactive environment with the libdebug command.
+</div>
+<div class="footnote" id="_footnotedef_7">
+<a href="#_footnoteref_7">7</a>. The nirt level diagnostics can be set in the interactive environment with the debug command.
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="mgedrc.html">Setting Up a .mgedrc File</a></span>
+  <span class="next"><a href="overlap_tool.html">The Overlap Tool</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../ui/js/site.js"></script>
+<script src="../../ui/js/vendor/lunr.js"></script>
+<script src="../../ui/js/vendor/search.js" id="search-script" data-base-path="../.." data-page-path="/docs/articles/nirt.html"></script>
+<script async src="../../ui/../search-index.js"></script>
+<script async src="../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

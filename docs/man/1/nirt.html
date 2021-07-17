@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>NIRT(1) :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/docs/man/1/nirt.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../ui/css/site.css">
+    <link rel="stylesheet" href="../../../ui/css/search.css">
+    <link rel="stylesheet" href="../../../ui/css/custom.css">
+    <script>var uiRootPath = '../../../ui'</script>
+    <link rel="icon" href="../../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article manpage">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lessons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../lessons/mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/01_creating_primitive_shapes.html">1. Creating Primitive Shapes in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/02_learning_viewing_options.html">2. Learning Viewing Options in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/03_using_insert_command.html">3. Using the Insert Command in MGED to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/04_assign_mat_prop_rt.html">4. Assigning Material Properties and Raytracing in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/05_learning_boolean_expressions.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/06_creating_a_goblet.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/07_goblet_material_properties.html">7. Assigning Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/08_goblet_material_properties2.html">8. Assigning More Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/09_globe_in_display_box.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/10_creating_mug.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/11_refining_mug.html">11. Refining a Mug Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/12_mug_through_gui.html">12. Creating a Mug Model using the MGED Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/13_placing_shapes_in_3d.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/14_placing_shapes_in_3d_2.html">14. Additional Exercises Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/15_creating_a_toy_truck.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/16_mod_tech_struct.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Books</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../hacking/index.html">Hacking BRL-CAD</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting Started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter1.html">A Call to Arms (and Contributors)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter2.html">Feature Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developers</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter3.html">Working with Our Code</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter4.html">What Code to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter5.html">Contributing Code</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Documenters</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter6.html">Working with Our Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter7.html">Types of Documentation We Maintain</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter8.html">What Documentation to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter9.html">Contributing Documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Other Contributors</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part4/chapter10.html">You Can Help Too</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendix: Resources and Examples</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix1.html">Further References and Resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix2.html">Doc Template: New MGED Command</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix3.html">Code Example: Shooting Rays</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix4.html">Code Example: Walking Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix5.html">Code Example: Command Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix6.html">Example Code: Root Solving</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/index.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../tutorials/overview.html">I. An Overview of BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/mged-intro.html">II. Introduction to MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/preface1.html">Preface</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/preface2.html">Acknowledgments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter1.html">1. Creating Primitive Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter2.html">2. Learning the Viewing Options</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter3.html">3. Using the Insert Command to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter4.html">4. Assigning Material Properties and Raytracing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter5.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter6.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter7.html">7. Assigning Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter8.html">8. Assigning More Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter9.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter10.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter11.html">11. Refining the Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter12.html">12. Creating the Mug Through the GUI</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter13.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter14.html">14. Gaining More Practice Placing Shapes in Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter15.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter16.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/appendix1.html"><code class="app">MGED</code> Commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/modeling.html">III. Modeling</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter2.html">2. The Model Process</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter3.html">3. Measuring data</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter4.html">4. Organizing the Structure</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter5.html">5. Developing Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter6.html">5. Evaluating Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter7.html">7. Logging Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendices</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix1.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix2.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix3.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix4.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix5.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix6.html">Using the build_region Command</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/converting.html">IV. Converting</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter2.html">2. Pertinent Characteristics of the BRL-CAD Format</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter3.html">3. Converting From/to ASCII</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter4.html">4. Converting to BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter5.html">5. Converting From BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter6.html">6. Building a New Converter</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter7.html">7. Postconversion Issues</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/index.html">Articles</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_pattern.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_region.html">Using the build_region Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/camo_shader.html">Camouflage shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ebm_primitive.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/gcv.html">The Geometry Conversion Library</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ged.html">GED: An Interactive Solid Modeling System</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/mged/index.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tutorial.html">Tutorial</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/gui.html">Graphical User Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/command-line-editing.html">Command Line Editing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/user-commands.html">User Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/developer-commands.html">Developer Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tcl-variables.html">Tcl Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/env.html">Environment Variable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/callback.html">Callback</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/brlcad-solid.html">BRL-CAD Solid</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/mgedrc.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/nirt.html">Interactive Raytracing: The nirt Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/overlap_tool.html">The Overlap Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/oed.html">Object Editing - the oed Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/pipes.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/projection_shader.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/tire.html">Vehicle Tire and Wheel Creation in BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/TEMPLATE.html">TEMPLATE</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Misc</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Dev Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../devguides/bool_eval_development.html">NURBS Boolean Evaluation Development Guide</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Presentations</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/brlcad-app-devel.html">Application Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="presentations:_attachments/brlcad-app-devel.html">brlcad-app-devel</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/intro-to-tcltk.html">Introduction to Tcl/Tk</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../specifications/BRL_CAD_g_format_V5.html">BRL-CAD Database Format</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Manual Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../1.html">man1</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../3.html">man3</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../5.html">man5</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../n.html">mann</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Wiki Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">page-1</span>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">BRL-CAD</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../../index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../es/index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../es/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">BRL-CAD</a></li>
+    <li><a href="nirt.html">NIRT(1)</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/docs/modules/man/pages/1/nirt.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">NIRT(1)</h1>
+<div class="sect1">
+<h2 id="_name"><a class="anchor" href="#_name"></a>NAME</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>nirt - interactively ray trace a BRL-CAD geometric model</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_synopsis"><a class="anchor" href="#_synopsis"></a>SYNOPSIS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>nirt</strong> [<em>options</em>] <em>model.g</em> <em>objects</em>&#8230;&#8203;</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description"><a class="anchor" href="#_description"></a>DESCRIPTION</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong class="cmd">nirt</strong> operates on the specified <em>objects</em> in the database
+<em>model.g</em>, using <a href="../3/librt.html" class="page"><strong>librt</strong>(3)</a> to trace rays
+according to commands read from the standard input and producing an
+ASCII report of the results. By default, the user can interact with
+<strong class="cmd">nirt</strong>, repeatedly specifying origination points and directions
+for rays and the format and destination for the reports. Locations may
+be input and output in either model coordinates (<em>x</em>, <em>y</em>, <em>z</em>)
+or view (a.k.a. grid-plane) coordinates (<em>h</em>, <em>v</em>,
+<em>d</em>). Similarly, direction may be input and output either as vectors
+expressed in model coordinates or as angles of azimuth and elevation.</p>
+</div>
+<div class="sect2">
+<h3 id="_options"><a class="anchor" href="#_options"></a>Options</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>-A <span class="rep">attribute_name&#8230;&#8203;</span></strong></dt>
+<dd>
+<p>Adds the names to the list of
+attributes that will be reported when the "attributes" partition
+information value is specified. See also the <em>attr</em> command below.</p>
+</dd>
+<dt class="hdlist1"><strong>-M</strong></dt>
+<dd>
+<p>Causes <strong class="cmd">nirt</strong> to read the eye point and either the
+orientation quaternion (new format) or the view-rotation matrix (old
+format) from the standard input, and fire a single ray from the point
+in the specified direction. This option allows <strong class="cmd">nirt</strong> to be
+called directly from within <strong class="cmd">mged</strong> using the <strong class="cmd">nirt</strong> and
+<em>rrt</em> commands.</p>
+</dd>
+<dt class="hdlist1"><strong>-b</strong></dt>
+<dd>
+<p>Causes <strong class="cmd">nirt</strong> to perform a <em>backout</em> command before the
+first <em>shoot</em> command (see the description of these two commands
+below). This is probably only useful with the <strong class="opt">-M</strong> option.</p>
+</dd>
+<dt class="hdlist1"><strong>-B</strong> <em>rt_bot_minpieces</em></dt>
+<dd>
+<p>Causes <strong class="cmd">nirt</strong> to adjust the setting of
+<em>rt_bot_minpieces</em> to the indicated value. A value of zero here
+indicates that the "pieces" methodology should not be used. A value
+greater than zero indicates that all BOT primitives containing more
+than <em>rt_bot_minpieces</em> triangles should be broken down into a
+separate piece for each triangle. This can result in significant
+improvement in raytrace speed at the cost of more memory use.</p>
+</dd>
+<dt class="hdlist1"><strong>-e</strong> <em>script</em></dt>
+<dd>
+<p>Causes <strong class="cmd">nirt</strong> to run the <em>script</em> string before
+reading the standard input. Multiple commands in <em>script</em> may be
+separated with a semicolon ';'. Scripts specified with either the
+<strong class="opt">-e</strong> or <strong class="opt">-f</strong> options are executed in the order in which they
+are specified on the command line.</p>
+</dd>
+<dt class="hdlist1"><strong>-f</strong> <em>format</em></dt>
+<dd>
+<p>Causes <strong class="cmd">nirt</strong> to load the predefined format (see
+<strong class="opt">-L</strong>) <em>format</em> or script file before reading standard input.
+Scripts specified with either the <strong class="opt">-e</strong> or <strong class="opt">-f</strong> options are
+executed in the order in which they are specified on the command line.</p>
+</dd>
+<dt class="hdlist1"><strong>-E</strong></dt>
+<dd>
+<p>Causes <strong class="cmd">nirt</strong> to ignore any <strong class="opt">-e</strong> or <strong class="opt">-f</strong> options
+specified previously on the command line.</p>
+</dd>
+<dt class="hdlist1"><strong>-L</strong></dt>
+<dd>
+<p>List output formatting options.</p>
+</dd>
+<dt class="hdlist1"><strong>-s</strong></dt>
+<dd>
+<p>Causes <strong class="cmd">nirt</strong> to run in silent (that is, non-verbose)
+mode. In this mode, which is useful in a pipeline,<strong class="cmd">nirt</strong> does not
+print its initial lines of output or the prompt.</p>
+</dd>
+<dt class="hdlist1"><strong>-v</strong></dt>
+<dd>
+<p>Causes <strong class="cmd">nirt</strong> to run in verbose mode. The default is
+verbose mode, except if standard input has been redirected, in which
+case the default is silent mode.</p>
+</dd>
+<dt class="hdlist1"><strong>-H</strong> <em>n</em></dt>
+<dd>
+<p>Set flag (<em>n</em>) for enable/disable informational header
+(<em>n</em>=1 [on] by default, always off in silent mode).</p>
+</dd>
+<dt class="hdlist1"><strong>-u</strong> <em>n</em></dt>
+<dd>
+<p>Sets the <em>useair</em> member of the <em>rt_i</em> structure to
+<em>n</em>. See the discussion of the <em>useair</em> command below.</p>
+</dd>
+<dt class="hdlist1"><strong>-O</strong> <em>n</em></dt>
+<dd>
+<p>Causes <strong class="cmd">nirt</strong> to handle multiple regions' claims to
+segments of a ray according to action <em>n</em>. The argument <em>n</em> may be any
+of the values 0, 1, 2, or 3, or their corresponding key words
+"resolve", "rebuild_fastgen", "rebuild_all", or "retain". See the
+discussion of the <em>overlap_claims</em> command below.</p>
+</dd>
+<dt class="hdlist1"><strong>-x</strong> <em>v</em></dt>
+<dd>
+<p>Sets the <a href="../3/librt.html" class="page"><strong>librt</strong>(3)</a> debug flags to
+the hexadecimal bit vector <em>v</em>. See the discussion of the <em>libdebug</em>
+command below.</p>
+</dd>
+<dt class="hdlist1"><strong>-X</strong> <em>v</em></dt>
+<dd>
+<p>Sets <strong class="cmd">nirt</strong>'s own debug flags to the hexadecimal bit
+vector <em>v</em>. See the discussion of the <em>debug</em> command below.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong class="cmd">nirt</strong> will check in two places for a <em class="path">.nirtrc</em> file -
+first in the current directory, and if it is not found there, in the
+user&#8217;s home directory. If found, <strong class="cmd">nirt</strong> begins by reading
+from it.  This start-up file may contain any <strong class="cmd">nirt</strong> commands and
+is useful for loading predefined states or initializing actions for
+output statements.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_commands"><a class="anchor" href="#_commands"></a>Commands</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>xyz [x y z]</strong> </dt>
+<dd>
+<p>Sets the ray origination point to (<em>x</em>, <em>y</em>, <em>z</em>). If
+this command is invoked with no arguments, <strong class="cmd">nirt</strong> prints the
+current ray origination point in model coordinates. Default is (0, 0,
+0). Changing (<em>x</em>, <em>y</em>, <em>z</em>) will change (<em>h</em>, <em>v</em>, <em>d</em>), according to
+the current direction vector.</p>
+</dd>
+<dt class="hdlist1"><strong>hv [h v[d]]</strong> </dt>
+<dd>
+<p>Sets the ray origination point to (<em>h</em>, <em>v</em>, <em>d</em>). If
+this command is invoked with only two arguments, <strong class="cmd">nirt</strong>
+interprets them as <em>h</em> and <em>v</em>, and <em>d</em> retains its previous value. If
+invoked with no argument, the command causes <strong class="cmd">nirt</strong> to print the
+current ray origination point in view coordinates. Default is (0, 0,
+0).  Changing (<em>h</em>, <em>v</em>, <em>d</em>) will change (<em>x</em>, <em>y</em>, <em>z</em>), according
+to the current direction vector.</p>
+</dd>
+<dt class="hdlist1"><strong>dir [dx dy dz]</strong> </dt>
+<dd>
+<p>Sets the direction vector to the unit vector in
+direction (<em>dx</em>, <em>dy</em>, <em>dz</em>). If this command is invoked with no
+arguments, <strong class="cmd">nirt</strong> prints the current direction vector.  Default
+is (-1, 0, 0).  Changing (<em>dx</em>, <em>dy</em>, <em>dz</em>) will change the azimuth
+and elevation angles.</p>
+</dd>
+<dt class="hdlist1"><strong>ae [az el]</strong> </dt>
+<dd>
+<p>Sets the direction vector to point <em>from</em> azimuth =
+<em>az</em> and elevation = <em>el</em>. If this command is invoked with no
+arguments, <strong class="cmd">nirt</strong> prints the current values of the azimuth and
+elevation angles. Default is (0, 0).  Changing azimuth and elevation
+will change the direction vector.</p>
+</dd>
+<dt class="hdlist1"><strong>s</strong> </dt>
+<dd>
+<p>Fires a ray from the current origination point in the current
+direction.</p>
+</dd>
+<dt class="hdlist1"><strong>bot_minpieces [n]</strong> </dt>
+<dd>
+<p>Sets "rt_bot_minpieces" to the new value
+<em>n</em>. If <em>n</em> is not provided, the current value of "rt_bot_minpieces"
+is displayed.  See the discussion of the <strong class="opt">-B</strong> option above for
+more details.</p>
+</dd>
+<dt class="hdlist1"><strong>backout [n]</strong> </dt>
+<dd>
+<p>Command to set the backout flag.  With no option,
+prints the current value. When activated, backs the ray origination
+point out of the geometry: <em>h</em> and <em>v</em> retain their previous values
+and <em>d</em> is set to <em>Dmax</em>, the largest value of <em>d</em> anywhere in the
+geometry.  Default is 0 (deactivated), 1 is active.</p>
+</dd>
+<dt class="hdlist1"><strong>useair [n]</strong></dt>
+<dd>
+<p>Sets the <em>useair</em> member of the <em>rt_i</em> structure to the
+integer <em>n</em>.  If <em>n</em> is 0, then <strong class="cmd">nirt</strong> ignores any air in the
+geometry.  If this command is invoked with no arguments, <strong class="cmd">nirt</strong>
+prints the current value of <em>useair</em>. Default is 0.</p>
+</dd>
+<dt class="hdlist1"><strong>overlap_claims [n]</strong> </dt>
+<dd>
+<p>Specifies how to handle multiple regions'
+claims to segments of a ray. If <em>n</em> is 0 or "resolve", then all
+overlaps are resolved in favor of a single region and any other
+claimants are ignored.  If <em>n</em> is 2 or "rebuild_all", then all
+overlaps are rebuilt, so any overlapping regions along the ray create
+individual (geometrically intersecting) partitions.  If <em>n</em> is 3 or
+"retain", then all overlaps are retained. In this case, the resulting
+partitions are always geometrically disjoint, each one is owned by a
+single region according to the current overlap resolution strategy,
+but every claimant is recorded. If <em>n</em> is 1 or "rebuild_fastgen", then
+<strong class="cmd">nirt</strong> takes on <em>FASTGEN</em> behavior, so overlaps of plate-mode
+primitives are rebuilt, but other overlaps are retained. This command
+is useful with the <em>claimant_count</em>, <em>claimant_list</em>, and
+<em>claimant_listn</em> output items.  Default is "resolve".</p>
+</dd>
+<dt class="hdlist1"><strong>attr {-f|-p|attr_names&#8230;&#8203;}</strong> </dt>
+<dd>
+<p>When used with one or more names, adds
+the names to the list of attributes that will be printed when the
+"attributes" value is requested in the output format string.</p>
+<div class="paragraph">
+<p>The <strong class="opt">-p</strong> option to the <strong class="cmd">attr</strong> command causes it to print the
+list of attributes that will be reported.</p>
+</div>
+<div class="paragraph">
+<p>The <strong class="opt">-f</strong> option clears the attributes table.</p>
+</div>
+</dd>
+<dt class="hdlist1"><strong>units [u]</strong> </dt>
+<dd>
+<p>Causes <strong class="cmd">nirt</strong> to read and write all distances and
+locations in units of <em>u</em>.  Valid choices for <em>u</em> are "mm"; "cm"; "m";
+"in"; and "ft".  If this command is invoked with no arguments,
+<strong class="cmd">nirt</strong> prints the current choice of I/O units.  Default is the
+units of <em>model.g</em>.</p>
+</dd>
+<dt class="hdlist1"><strong>fmt [t format item item &#8230;&#8203;]</strong> </dt>
+<dd>
+<p>Sets the action for output
+statements of type <em>t</em>. If this command is invoked with only one
+argument, a valid statement type, <strong class="cmd">nirt</strong> prints the current
+format and items for the specified type. See the discussion of output
+statements below.</p>
+</dd>
+<dt class="hdlist1"><strong>dest [d]</strong></dt>
+<dd>
+<p>Sets the destination for subsequent output actions to
+<em>d</em>. If the first character of <em>d</em> is '|', then <em>d</em> is interpreted as
+a pipeline to which to write its output. Otherwise, if <em>d</em> is the
+string "default", <strong class="cmd">nirt</strong> sets the destination to the standard
+output. Otherwise, <em>d</em> is interpreted as a file. In any event, <em>d</em> is
+not closed until the user quits <strong class="cmd">nirt</strong> or resets the destination
+by another invocation of the <em>dest</em> command. If this command is
+invoked with no arguments, <strong class="cmd">nirt</strong> prints the current value of
+<em>d</em>. Default is "default", that is, the standard output.</p>
+</dd>
+<dt class="hdlist1"><strong>statefile [f]</strong> </dt>
+<dd>
+<p>Sets the name of the state file to which to dump
+and from which to load state information. See the discussion of the
+<em>dump</em> and <em>load</em> commands below.  If this command is invoked with no
+arguments, <strong class="cmd">nirt</strong> prints the current name of the state file.
+Default is "nirt_state".</p>
+</dd>
+<dt class="hdlist1"><strong>dump</strong> </dt>
+<dd>
+<p>Writes state information to the state file.  The ray
+origination point and direction vector, useair, units, destination,
+and all the output actions are dumped.</p>
+</dd>
+<dt class="hdlist1"><strong>load</strong> </dt>
+<dd>
+<p>Reads state information from the state file.  The state file
+loaded may contain any <strong class="cmd">nirt</strong> commands.</p>
+</dd>
+<dt class="hdlist1"><strong>print item</strong></dt>
+<dd>
+<p>Prints the current value of the output item <em>item</em>. See
+the discussion of output statements below.</p>
+</dd>
+<dt class="hdlist1"><strong>libdebug v</strong> </dt>
+<dd>
+<p>Sets the <a href="../3/librt.html" class="page"><strong>librt</strong>(3)</a> debug flags
+(the <em>debug</em> member of the <em>rt_g</em> structure) to the hexadecimal bit
+vector <em>v</em>. These flags control the amount and kind of diagnostic
+print statements <a href="../3/librt.html" class="page"><strong>librt</strong>(3)</a> executes.  If <em>v</em>
+is 0, then no diagnostics are produced. If this command is invoked
+with no arguments, <strong class="cmd">nirt</strong> prints the current value of <em>v</em> and the
+names of any of its bits that are set.  Default is 0.</p>
+</dd>
+<dt class="hdlist1"><strong>debug v</strong> </dt>
+<dd>
+<p>Sets <strong class="cmd">nirt</strong>'s internal debug flags to the
+hexadecimal bit vector <em>v</em>.  These flags control the amount and kind
+of diagnostic print statements <strong class="cmd">nirt</strong> executes.  If <em>v</em> is 0,
+then no diagnostics are produced.  If this command is invoked with no
+arguments, <strong class="cmd">nirt</strong> prints the current value of <em>v</em> and the names
+of any of its bits that are set.  Default is 0.</p>
+</dd>
+<dt class="hdlist1"><strong>?</strong> </dt>
+<dd>
+<p>Prints a help menu to the standard output.</p>
+</dd>
+<dt class="hdlist1"><strong>q</strong> </dt>
+<dd>
+<p>Quits <strong class="cmd">nirt</strong>.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_output_statements"><a class="anchor" href="#_output_statements"></a>Output Statements</h3>
+<div class="paragraph">
+<p><strong class="cmd">nirt</strong> allows the user a high degree of control, via the <em>fmt</em>
+command, over what information gets printed out for each ray and in
+what format. There are six types of output statements, each of which
+is executed under appropriate circumstances. The types and their use
+are:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>r</strong></dt>
+<dd>
+<p>Ray. The first output statement executed whenever the <em>s</em> command is invoked.</p>
+</dd>
+<dt class="hdlist1"><strong>h</strong></dt>
+<dd>
+<p>Head.  Executed immediately after the ray statement if the ray
+hits anything.</p>
+</dd>
+<dt class="hdlist1"><strong>p</strong></dt>
+<dd>
+<p>Partition.  Executed once for each partition along the ray if
+the ray hits anything.</p>
+</dd>
+<dt class="hdlist1"><strong>f</strong></dt>
+<dd>
+<p>Foot. The last output statement executed if the ray hits
+anything.</p>
+</dd>
+<dt class="hdlist1"><strong>m</strong></dt>
+<dd>
+<p>Miss.  Executed immediately after the ray statement if the ray
+hits nothing.</p>
+</dd>
+<dt class="hdlist1"><strong>o</strong></dt>
+<dd>
+<p>Overlap.  Executed once for each overlap along the ray if the
+ray hits anything.</p>
+</dd>
+<dt class="hdlist1"><strong>g</strong></dt>
+<dd>
+<p>Gap.  Executed once for each gap along the ray if the ray
+encounters any gaps.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>The action associated with each output statement type is essentially a
+<a href="#man:3/printf.adoc" class="page unresolved"><strong>printf</strong>(3)</a> statement, with a format string
+and a list of output items. The items may be chosen from a set of
+values that <strong class="cmd">nirt</strong> updates according to user commands and
+location along the ray. These values may be categorized as pertaining
+to the entire ray, partitions along the ray, or overlaps.  The values
+are explained in the following table.</p>
+</div>
+<div class="sect3">
+<h4 id="_ray_information"><a class="anchor" href="#_ray_information"></a>Ray Information</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>x_orig</strong> </dt>
+<dd>
+<p><em>x</em> coordinate of ray origination point.</p>
+</dd>
+<dt class="hdlist1"><strong>y_orig</strong> </dt>
+<dd>
+<p><em>y</em> coordinate of ray origination point.</p>
+</dd>
+<dt class="hdlist1"><strong>z_orig</strong> </dt>
+<dd>
+<p><em>z</em> coordinate of ray origination point.</p>
+</dd>
+<dt class="hdlist1"><strong>d_orig</strong> </dt>
+<dd>
+<p><em>d</em> coordinate of ray origination point.</p>
+</dd>
+<dt class="hdlist1"><strong>h</strong> </dt>
+<dd>
+<p><em>h</em> coordinate for the entire ray.</p>
+</dd>
+<dt class="hdlist1"><strong>v</strong> </dt>
+<dd>
+<p><em>v</em> coordinate for the entire ray.</p>
+</dd>
+<dt class="hdlist1"><strong>x_dir</strong> </dt>
+<dd>
+<p><em>x</em> component of direction vector.</p>
+</dd>
+<dt class="hdlist1"><strong>y_dir</strong> </dt>
+<dd>
+<p><em>y</em> component of direction vector.</p>
+</dd>
+<dt class="hdlist1"><strong>z_dir</strong> </dt>
+<dd>
+<p><em>z</em> component of direction vector.</p>
+</dd>
+<dt class="hdlist1"><strong>a</strong> </dt>
+<dd>
+<p>azimuth of view (i.e., of ray direction).</p>
+</dd>
+<dt class="hdlist1"><strong>e</strong> </dt>
+<dd>
+<p>elevation of view (i.e., of ray direction).</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_partition_information"><a class="anchor" href="#_partition_information"></a>Partition Information</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>attributes</strong> </dt>
+<dd>
+<p>A string variable consisting of the names and values
+of the attributes requested by the <em>attr</em> command or the <strong class="opt">-A</strong>
+command line option.</p>
+</dd>
+<dt class="hdlist1"><strong>x_in</strong> </dt>
+<dd>
+<p><em>x</em> coordinate of entry into current region.</p>
+</dd>
+<dt class="hdlist1"><strong>y_in</strong> </dt>
+<dd>
+<p><em>y</em> coordinate of entry into current region.</p>
+</dd>
+<dt class="hdlist1"><strong>z_in</strong> </dt>
+<dd>
+<p><em>z</em> coordinate of entry into current region.</p>
+</dd>
+<dt class="hdlist1"><strong>d_in</strong> </dt>
+<dd>
+<p><em>d</em> coordinate of entry into current region.</p>
+</dd>
+<dt class="hdlist1"><strong>x_out</strong> </dt>
+<dd>
+<p><em>x</em> coordinate of exit from current region.</p>
+</dd>
+<dt class="hdlist1"><strong>y_out</strong> </dt>
+<dd>
+<p><em>y</em> coordinate of exit from current region.</p>
+</dd>
+<dt class="hdlist1"><strong>z_out</strong> </dt>
+<dd>
+<p><em>z</em> coordinate of exit from current region.</p>
+</dd>
+<dt class="hdlist1"><strong>d_out</strong> </dt>
+<dd>
+<p><em>d</em> coordinate of exit from current region.</p>
+</dd>
+<dt class="hdlist1"><strong>los</strong> </dt>
+<dd>
+<p>line-of-sight distance through current region.</p>
+</dd>
+<dt class="hdlist1"><strong>scaled_los</strong> </dt>
+<dd>
+<p>scaled line of sight: product of line-of-sight
+distance through current region and region solidity (sometimes called
+"percent LOS").</p>
+</dd>
+<dt class="hdlist1"><strong>path_name</strong> </dt>
+<dd>
+<p>full path name of current region.</p>
+</dd>
+<dt class="hdlist1"><strong>reg_name</strong> </dt>
+<dd>
+<p>name of current region, as might be obtained by passing
+<em>path_name</em> to <a href="#man:1/basename.adoc" class="page unresolved"><strong>basename</strong>(1)</a>.</p>
+</dd>
+<dt class="hdlist1"><strong>reg_id</strong> </dt>
+<dd>
+<p>region ID of current region.</p>
+</dd>
+<dt class="hdlist1"><strong>claimant_count</strong> </dt>
+<dd>
+<p>number of regions claiming this partition (that
+is, participating in a retained overlap).</p>
+</dd>
+<dt class="hdlist1"><strong>claimant_list</strong> </dt>
+<dd>
+<p>space-separated list of names of regions claiming
+this partition (that is, participating in a retained overlap).</p>
+</dd>
+<dt class="hdlist1"><strong>claimant_listn</strong> </dt>
+<dd>
+<p>Same as <em>claimant_list</em>, except that it is
+newline-, rather than space-separated.</p>
+</dd>
+<dt class="hdlist1"><strong>obliq_in</strong> </dt>
+<dd>
+<p>entry obliquity for current region.</p>
+</dd>
+<dt class="hdlist1"><strong>obliq_out</strong> </dt>
+<dd>
+<p>exit obliquity for current region.</p>
+</dd>
+<dt class="hdlist1"><strong>nm_x_in</strong> </dt>
+<dd>
+<p><em>x</em> component of entry normal vector</p>
+</dd>
+<dt class="hdlist1"><strong>nm_y_in</strong> </dt>
+<dd>
+<p><em>y</em> component of entry normal vector</p>
+</dd>
+<dt class="hdlist1"><strong>nm_z_in</strong> </dt>
+<dd>
+<p><em>z</em> component of entry normal vector</p>
+</dd>
+<dt class="hdlist1"><strong>nm_h_in</strong> </dt>
+<dd>
+<p><em>h</em> component of entry normal vector</p>
+</dd>
+<dt class="hdlist1"><strong>nm_v_in</strong> </dt>
+<dd>
+<p><em>v</em> component of entry normal vector</p>
+</dd>
+<dt class="hdlist1"><strong>nm_d_in</strong> </dt>
+<dd>
+<p><em>d</em> component of entry normal vector</p>
+</dd>
+<dt class="hdlist1"><strong>nm_x_out</strong> </dt>
+<dd>
+<p><em>x</em> component of exit normal vector</p>
+</dd>
+<dt class="hdlist1"><strong>nm_y_out</strong> </dt>
+<dd>
+<p><em>y</em> component of exit normal vector</p>
+</dd>
+<dt class="hdlist1"><strong>nm_z_out</strong> </dt>
+<dd>
+<p><em>z</em> component of exit normal vector</p>
+</dd>
+<dt class="hdlist1"><strong>nm_h_out</strong> </dt>
+<dd>
+<p><em>h</em> component of exit normal vector</p>
+</dd>
+<dt class="hdlist1"><strong>nm_v_out</strong> </dt>
+<dd>
+<p><em>v</em> component of exit normal vector</p>
+</dd>
+<dt class="hdlist1"><strong>nm_d_out</strong> </dt>
+<dd>
+<p><em>d</em> component of exit normal vector</p>
+</dd>
+<dt class="hdlist1"><strong>surf_num_in</strong> </dt>
+<dd>
+<p>entry-surface ID of entry solid.</p>
+</dd>
+<dt class="hdlist1"><strong>surf_num_out</strong> </dt>
+<dd>
+<p>exit-surface ID of exit solid.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>ap Informat</strong> on</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>x_gap_in</strong> </dt>
+<dd>
+<p><em>x</em> coordinate of entry into gap.</p>
+</dd>
+<dt class="hdlist1"><strong>y_gap_in</strong> </dt>
+<dd>
+<p><em>y</em> coordinate of entry into gap.</p>
+</dd>
+<dt class="hdlist1"><strong>z_gap_in</strong> </dt>
+<dd>
+<p><em>z</em> coordinate of entry into gap.</p>
+</dd>
+<dt class="hdlist1"><strong>gap_los</strong> </dt>
+<dd>
+<p>line-of-sight distance through gap.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_overlap_information"><a class="anchor" href="#_overlap_information"></a>Overlap Information</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>ov_reg1_name</strong> </dt>
+<dd>
+<p>name of one of the overlapping regions.</p>
+</dd>
+<dt class="hdlist1"><strong>ov_reg2_name</strong> </dt>
+<dd>
+<p>name of the other overlapping region.</p>
+</dd>
+<dt class="hdlist1"><strong>ov_reg1_id</strong> </dt>
+<dd>
+<p>region ID of one of the overlapping regions.</p>
+</dd>
+<dt class="hdlist1"><strong>ov_reg2_id</strong> </dt>
+<dd>
+<p>region ID of the other overlapping region.</p>
+</dd>
+<dt class="hdlist1"><strong>ov_sol_in</strong> </dt>
+<dd>
+<p>name of one of the overlapping solids.</p>
+</dd>
+<dt class="hdlist1"><strong>ov_sol_out</strong> </dt>
+<dd>
+<p>name of the other overlapping solid.</p>
+</dd>
+<dt class="hdlist1"><strong>ov_los</strong> </dt>
+<dd>
+<p>line-of-sight distance through the overlap.</p>
+</dd>
+<dt class="hdlist1"><strong>ov_x_in</strong> </dt>
+<dd>
+<p><em>x</em> coordinate of entry into overlap.</p>
+</dd>
+<dt class="hdlist1"><strong>ov_y_in</strong> </dt>
+<dd>
+<p><em>y</em> coordinate of entry into overlap.</p>
+</dd>
+<dt class="hdlist1"><strong>ov_z_in</strong> </dt>
+<dd>
+<p><em>z</em> coordinate of entry into overlap.</p>
+</dd>
+<dt class="hdlist1"><strong>ov_d_in</strong> </dt>
+<dd>
+<p><em>d</em> coordinate of entry into overlap.</p>
+</dd>
+<dt class="hdlist1"><strong>ov_x_out</strong> </dt>
+<dd>
+<p><em>x</em> coordinate of exit from overlap.</p>
+</dd>
+<dt class="hdlist1"><strong>ov_y_out</strong> </dt>
+<dd>
+<p><em>y</em> coordinate of exit from overlap.</p>
+</dd>
+<dt class="hdlist1"><strong>ov_z_out</strong> </dt>
+<dd>
+<p><em>z</em> coordinate of exit from overlap.</p>
+</dd>
+<dt class="hdlist1"><strong>ov_d_out</strong> </dt>
+<dd>
+<p><em>d</em> coordinate of exit from overlap.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_hints"><a class="anchor" href="#_hints"></a>HINTS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ray origination coordinates specified with the <em>hv</em> command are
+immediately converted for internal use to model coordinates, according
+to the current direction vector.  If you want to change the ray
+direction and origination point, and you&#8217;re using view coordinates,
+you probably want to change the ray direction <em>before</em> you use the
+<em>hv</em> command.</p>
+</div>
+<div class="paragraph">
+<p>The name "nirt" stands for "Natalie&#8217;s interactive ray tracer".</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_definitions"><a class="anchor" href="#_definitions"></a>DEFINITIONS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The usage in <strong class="cmd">nirt</strong> of the following terms corresponds to that
+found in <a href="mged.html" class="page"><strong>mged</strong>(1)</a> and elsewhere throughout
+BRL-CAD. We provide the definitions here for reference.</p>
+</div>
+<div class="sect2">
+<h3 id="_view_coordinates"><a class="anchor" href="#_view_coordinates"></a>View Coordinates</h3>
+<div class="paragraph">
+<p>We define the view coordinate system (more precisely its basis vectors
+<em>m</em>, <em>n</em>, and <em>o</em>) in terms of the basis vectors <em>i</em>, <em>j</em>, and <em>k</em> of
+the model coordinate system as follows:</p>
+</div>
+<div class="paragraph">
+<p><em>m</em> is the opposite of the direction vector and corresponds to <em>d</em>,
+<em>n</em> = <em>k</em> × <em>m</em> corresponds to <em>h</em>, and <em>o</em> = <em>m</em> × <em>n</em> corresponds to
+<em>v</em>.</p>
+</div>
+<div class="paragraph">
+<p>Thus if the direction vector is (-1, 0, 0), then (<em>d</em>, <em>h</em>, <em>v</em>) =
+(<em>x</em>, <em>y</em>, <em>z</em>).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_azimuth_and_elevation"><a class="anchor" href="#_azimuth_and_elevation"></a>Azimuth and Elevation</h3>
+<div class="paragraph">
+<p>Azimuth is the angle measured around <em>k</em> (right-hand rule) from the
+<em>xz</em> plane to <em>m</em>. Elevation is the angle measured toward <em>k</em> from the
+<em>xy</em> plane to <em>m</em>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_files"><a class="anchor" href="#_files"></a>FILES</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><em>~/.nirtrc</em></dt>
+<dd>
+<p>run-time configuration file</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also"><a class="anchor" href="#_see_also"></a>SEE ALSO</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="mged.html" class="page"><strong>mged</strong>(1)</a>, <a href="../3/librt.html" class="page"><strong>librt</strong>(3)</a>,
+<a href="#man:3/printf.adoc" class="page unresolved"><strong>printf</strong>(3)</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_author"><a class="anchor" href="#_author"></a>AUTHOR</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>BRL-CAD Team</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright"><a class="anchor" href="#_copyright"></a>COPYRIGHT</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This software is Copyright (c) 1989-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bug_reports"><a class="anchor" href="#_bug_reports"></a>BUG REPORTS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Reports of bugs or problems should be submitted via electronic mail to
+<a href="mailto:devs@brlcad.org">devs@brlcad.org</a></p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../ui/js/site.js"></script>
+<script src="../../../ui/js/vendor/lunr.js"></script>
+<script src="../../../ui/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/docs/man/1/nirt.html"></script>
+<script async src="../../../ui/../search-index.js"></script>
+<script async src="../../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

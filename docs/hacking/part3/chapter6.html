@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Working with Our Documentation :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/docs/hacking/part3/chapter6.html">
+    <link rel="prev" href="../part2/chapter5.html">
+    <link rel="next" href="chapter7.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../ui/css/site.css">
+    <link rel="stylesheet" href="../../../ui/css/search.css">
+    <link rel="stylesheet" href="../../../ui/css/custom.css">
+    <script>var uiRootPath = '../../../ui'</script>
+    <link rel="icon" href="../../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lessons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../lessons/mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/01_creating_primitive_shapes.html">1. Creating Primitive Shapes in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/02_learning_viewing_options.html">2. Learning Viewing Options in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/03_using_insert_command.html">3. Using the Insert Command in MGED to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/04_assign_mat_prop_rt.html">4. Assigning Material Properties and Raytracing in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/05_learning_boolean_expressions.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/06_creating_a_goblet.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/07_goblet_material_properties.html">7. Assigning Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/08_goblet_material_properties2.html">8. Assigning More Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/09_globe_in_display_box.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/10_creating_mug.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/11_refining_mug.html">11. Refining a Mug Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/12_mug_through_gui.html">12. Creating a Mug Model using the MGED Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/13_placing_shapes_in_3d.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/14_placing_shapes_in_3d_2.html">14. Additional Exercises Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/15_creating_a_toy_truck.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/16_mod_tech_struct.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Books</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../index.html">Hacking BRL-CAD</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting Started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../part1/chapter1.html">A Call to Arms (and Contributors)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../part1/chapter2.html">Feature Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developers</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../part2/chapter3.html">Working with Our Code</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../part2/chapter4.html">What Code to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../part2/chapter5.html">Contributing Code</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Documenters</span>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="chapter6.html">Working with Our Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter7.html">Types of Documentation We Maintain</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter8.html">What Documentation to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter9.html">Contributing Documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Other Contributors</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../part4/chapter10.html">You Can Help Too</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendix: Resources and Examples</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../part5/appendix1.html">Further References and Resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../part5/appendix2.html">Doc Template: New MGED Command</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../part5/appendix3.html">Code Example: Shooting Rays</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../part5/appendix4.html">Code Example: Walking Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../part5/appendix5.html">Code Example: Command Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../part5/appendix6.html">Example Code: Root Solving</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/index.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../tutorials/overview.html">I. An Overview of BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/mged-intro.html">II. Introduction to MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/preface1.html">Preface</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/preface2.html">Acknowledgments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter1.html">1. Creating Primitive Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter2.html">2. Learning the Viewing Options</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter3.html">3. Using the Insert Command to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter4.html">4. Assigning Material Properties and Raytracing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter5.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter6.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter7.html">7. Assigning Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter8.html">8. Assigning More Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter9.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter10.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter11.html">11. Refining the Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter12.html">12. Creating the Mug Through the GUI</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter13.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter14.html">14. Gaining More Practice Placing Shapes in Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter15.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter16.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/appendix1.html"><code class="app">MGED</code> Commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/modeling.html">III. Modeling</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter2.html">2. The Model Process</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter3.html">3. Measuring data</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter4.html">4. Organizing the Structure</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter5.html">5. Developing Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter6.html">5. Evaluating Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter7.html">7. Logging Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendices</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix1.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix2.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix3.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix4.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix5.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix6.html">Using the build_region Command</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/converting.html">IV. Converting</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter2.html">2. Pertinent Characteristics of the BRL-CAD Format</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter3.html">3. Converting From/to ASCII</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter4.html">4. Converting to BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter5.html">5. Converting From BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter6.html">6. Building a New Converter</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter7.html">7. Postconversion Issues</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/index.html">Articles</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_pattern.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_region.html">Using the build_region Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/camo_shader.html">Camouflage shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ebm_primitive.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/gcv.html">The Geometry Conversion Library</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ged.html">GED: An Interactive Solid Modeling System</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/mged/index.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tutorial.html">Tutorial</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/gui.html">Graphical User Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/command-line-editing.html">Command Line Editing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/user-commands.html">User Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/developer-commands.html">Developer Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tcl-variables.html">Tcl Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/env.html">Environment Variable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/callback.html">Callback</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/brlcad-solid.html">BRL-CAD Solid</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/mgedrc.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/nirt.html">Interactive Raytracing: The nirt Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/overlap_tool.html">The Overlap Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/oed.html">Object Editing - the oed Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/pipes.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/projection_shader.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/tire.html">Vehicle Tire and Wheel Creation in BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/TEMPLATE.html">TEMPLATE</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Misc</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Dev Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../devguides/bool_eval_development.html">NURBS Boolean Evaluation Development Guide</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Presentations</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/brlcad-app-devel.html">Application Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="presentations:_attachments/brlcad-app-devel.html">brlcad-app-devel</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/intro-to-tcltk.html">Introduction to Tcl/Tk</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../specifications/BRL_CAD_g_format_V5.html">BRL-CAD Database Format</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Manual Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/1.html">man1</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/3.html">man3</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/5.html">man5</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/n.html">mann</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Wiki Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">page-1</span>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">BRL-CAD</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../../index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../es/index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../es/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">BRL-CAD</a></li>
+    <li>Books</li>
+    <li><a href="../index.html">Hacking BRL-CAD</a></li>
+    <li>Documenters</li>
+    <li><a href="chapter6.html">Working with Our Documentation</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/docs/modules/hacking/pages/part3/chapter6.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Working with Our Documentation</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_what_is_docbook">1. What is DocBook?</a></li>
+<li><a href="#_tools_for_working_with_docbook">2. Tools for Working with DocBook</a></li>
+<li><a href="#_adding_a_new_document_to_brl_cad">3. Adding a New Document to BRL-CAD</a></li>
+<li><a href="#_adding_a_translated_document_to_brl_cad">4. Adding a Translated Document to BRL-CAD</a></li>
+<li><a href="#_selecting_output_formats">5. Selecting Output Formats</a></li>
+<li><a href="#_sharing_content_between_documents">6. Sharing Content Between Documents</a></li>
+<li><a href="#_customizing_docbook_output">7. Customizing DocBook Output</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>BRL-CAD provides documentation in the following formats:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>UNIX man pages.</p>
+</li>
+<li>
+<p>HyperText Markup Language (HTML) for the web.</p>
+</li>
+<li>
+<p>PDF for documents needing a well-defined, consistent appearance.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Our challenge is to maintain BRL-CAD&#8217;s documentation in multiple
+formats.  It is difficult enough to keep software documentation up to
+date without needing to update multiple documents using different
+formats that contain the same information.  As well, it is not
+possible to supply documentation in a single format that works
+optimally on all platforms.  For example, while UNIX man pages are
+standard across all UNIX and UNIX-like systems, most Windows systems
+will not understand that format and will require HTML versions of
+those documents.</p>
+</div>
+<div class="paragraph">
+<p>Instead of using a mix of formats and tools, BRL-CAD uses the DocBook
+documentation format and toolchain to produce documentation in the
+range of required formats.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_what_is_docbook"><a class="anchor" href="#_what_is_docbook"></a>1. What is DocBook?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>DocBook is a schema (a structured approach to organization of
+information) that uses the eXtensible Markup Language standard (XML)
+as its fundamental framework and builds atop that framework a
+vocabulary for describing the content and structure of technical
+documentation.  BRL-CAD uses the DocBook 5.0 documentation format to
+describe its documentation.  For detailed documentation for DocBook
+5.0, see <a href="http://www.docbook.org/tdg5/en/html/docbook.html" class="bare">http://www.docbook.org/tdg5/en/html/docbook.html</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tools_for_working_with_docbook"><a class="anchor" href="#_tools_for_working_with_docbook"></a>2. Tools for Working with DocBook</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>While you can write documentation in DocBook using WYSIWYG (What You
+See Is What You Get) editors, we require that a document saved to
+DocBook from an editing tool should be inspected for human readability
+and, if necessary, reformatted for simplicity.</p>
+</div>
+<div class="paragraph">
+<p>If you are comfortable with working with DocBook XML directly, we
+recommend that you use the Emacs editor and its nXML module.  nXML can
+automatically recognize and highlight mistakes in the structure of a
+document while you are editing.  The following image illustrates nXML
+identifying an incorrect closing tag for an informal figure object:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/hacking_brlcad_emacs-nxml.png" alt="hacking brlcad emacs nxml">
+</div>
+</div>
+<div class="paragraph">
+<p>Aside from error checking tools like nXML, the ability to pinpoint
+errors in a document&#8217;s formatting is built into the BRL-CAD
+compilation process.  That process uses a tool called xmllint to
+report incorrect formatting.  When, for example, the error illustrated
+in the image above is encountered during BRL-CAD&#8217;s build, xmllint
+produces the following error:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>[40%] Validating DocBook source with xmllint:
+/home/user/brlcad/doc/docbook/articles/en/tire.xml:65: parser error : Opening and ending tag mismatch: informalfigure line 54 and informafigure
+&lt;/informafigure&gt;
+^
+CMake Error at tire_validate.cmake:39 (message):
+xmllint failure: 1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this case, the error is reasonably informative.  However, xmllint
+is not the only tool available for this sort of error checking.  You
+can specify the following validation tools when you configure your
+environment:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Oracle Multi-Schema XML Validator (<a href="https://msv.java.net" class="bare">https://msv.java.net</a>) - specified
+as <code>msv</code> on the command line.</p>
+</li>
+<li>
+<p>oNVDL (<a href="http://sourceforge.net/projects/onvdl" class="bare">http://sourceforge.net/projects/onvdl</a>) - specified as <code>nvld</code>
+on the command line.</p>
+</li>
+<li>
+<p>Relax NG Validator (rnv) (<a href="http://sourceforge.net/projects/rnv" class="bare">http://sourceforge.net/projects/rnv</a>) -
+specified as <code>rsv</code> on the command line.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Note that these alternative validation tools must be installed on the
+system on which you are working; they are not provided with BRL-CAD.
+To specify an alternative tool, use the VALIDATE_EXECUTABLE option.
+For example, run the following command to use the Oracle Multi-Schema
+XML Validator:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">cmake -DVALIDATE_EXECUTABLE=msv ...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>While BRL-CAD provides enough DocBook support to guarantee that HTML
+files and UNIX man pages are generated, you can only generate PDF
+documents if the <a href="http://xmlgraphics.apache.org/fop">Apache Formatting
+Objects Processor (FOP)</a> (<a href="http://xmlgraphics.apache.org/fop"" class="bare">http://xmlgraphics.apache.org/fop"</a>) is
+installed on your system.  When FOP is available, BRL-CAD can
+automatically produce PDF outputs.</p>
+</div>
+<div class="paragraph">
+<p>For more information, including how to use alternative tools for other
+DocBook processing steps besides validation, see the file
+<em class="path">doc/docbook/README</em> in the BRL-CAD source code archive.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_adding_a_new_document_to_brl_cad"><a class="anchor" href="#_adding_a_new_document_to_brl_cad"></a>3. Adding a New Document to BRL-CAD</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Because creating and editing DocBook documentation is greatly
+simplified by BRL-CAD&#8217;s management of the conversion process, it is
+usually a good idea to add a new document to the build system at the
+beginning of the document creation and editing process.  To do this,
+copy a template file from the source directories to the file name to
+be used for the new document.</p>
+</div>
+<div class="paragraph">
+<p>For example, if you are writing a new DocBook article in English about
+the ellipsoid, use the following command to copy the article template
+to the filename <em class="path">ellipsoid.xml</em> in the English articles
+directory:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">cp doc/docbook/articles/en/TEMPLATE.xml \
+   doc/docbook/articles/en/ellipsoid.xml</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Next, open the file <em class="path">doc/docbook/articles/en/CMakeLists.txt</em> in
+a text editor.  Then, add the name of the new document to the file to
+alert the build system of its existence:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/hacking_brlcad_docbook_CMakeLists.png" alt="hacking brlcad docbook CMakeLists">
+</div>
+</div>
+<div class="paragraph">
+<p>BRL-CAD now knows about the new file and can generate output for it.</p>
+</div>
+<div class="paragraph">
+<p>You will generally only want to rebuild a specific output (say, HTML)
+to confirm that output renders properly.  To set up the specific
+targets for the new file, run the command below to refresh the build
+targets (in this example, the build output directory is called
+<em class="path">build</em>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">cmake ..</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This creates a new build target, ellipsoid_article_html, which will
+build only the HTML output of the document and its dependencies:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>~/brlcad/build $ make ellipsoid_article_html
+
+[  0%] Built target printtimestamp
+[  0%] Built target buildtimestart
+
+Build Time: Tue Oct 15 19:14:42 2013
+
+[  0%] Built target timestamp
+[  0%] Built target zlib
+[100%] Built target xml
+[100%] Built target xslt
+[100%] Built target exslt
+[100%] Built target xmllint
+[100%] Built target xsltproc
+[100%] Built target schema-expand
+[100%] Built target fonts-dejavu-expand
+[100%] Built target fonts-stix-expand
+[100%] Built target offo-2-expand
+[100%] Built target svg-dtd-expand
+[100%] Built target xsl-expand
+[100%] Built target docbook_articles_EN_IMAGES_cp
+Scanning dependencies of target ellipsoid_article_html
+[100%] Validating DocBook source with xmllint:
+/home/user/brlcad/doc/docbook/articles/en/ellipsoid.xml validates
+[100%] Generating ../../../../share/doc/html/articles/en/ellipsoid.html
+[100%] Built target ellipsoid_article_html
+~/brlcad/build $</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This generates a file named
+<em class="path">brlcad/build/share/doc/html/articles/en/ellipsoid.html.</em> Open
+this document in a web browser to view the HTML output:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/hacking_brlcad_example_docbook_default_output.png" alt="hacking brlcad example docbook default output">
+</div>
+</div>
+<div class="paragraph">
+<p>Now that all the pieces are in place, you can begin the documentation
+cycle:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Modify the DocBook XML sources.</p>
+</li>
+<li>
+<p>Build the HTML output. As long as the DocBook file is the only file
+being changed, you can use the target ellipsoid_article_html/fast to
+avoid checking the target&#8217;s dependencies and to speed up the
+compilation process.</p>
+</li>
+<li>
+<p>Once you have generated the updated HTML file, refresh the page in
+your web browser to view the changes.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>In the following example, all of the previous elements are combined
+into a DocBook editing workflow.  The title of the article was changed
+from the default (Article Title) to the article&#8217;s actual title (A
+Guide to Modeling with the Ellipsoid Primitive), the build target was
+remade, and the results are seen in a web browser.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/hacking_brlcad_docbook_working_session.png" alt="hacking brlcad docbook working session">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_adding_a_translated_document_to_brl_cad"><a class="anchor" href="#_adding_a_translated_document_to_brl_cad"></a>4. Adding a Translated Document to BRL-CAD</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>By and large, adding translations of BRL-CAD documents follows the
+same process as adding English documents.  However, you must select
+the correct subdirectory for the language of the translation.</p>
+</div>
+<div class="paragraph">
+<p>BRL-CAD uses the <a href="http://www-01.sil.org/iso639-3/codes.asp">ISO 639-1
+language codes</a> (<a href="http://www-01.sil.org/iso639-3/codes.asp" class="bare">http://www-01.sil.org/iso639-3/codes.asp</a>) as
+language-specific subdirectories within the higher-level categories.
+These are two-letter codes that represent the names of languages (for
+example, <code>pt</code> for Portuguese). If a language is not listed in ISO
+639-1, use that&#8217;s language&#8217;s three-letter code from ISO 639-2 or (if
+necessary) ISO 639-3 instead.</p>
+</div>
+<div class="paragraph">
+<p>Currently, all translations are manually created and manually
+maintained.  If you are working with translated documents, you are not
+limited to the ASCII character set; you can use Unicode characters in
+a document.  The following example is the Armenian translation of the
+BRL-CAD introduction documentation:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/hacking_brlcad_brlcad_intro_hy.png" alt="hacking brlcad brlcad intro hy">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_selecting_output_formats"><a class="anchor" href="#_selecting_output_formats"></a>5. Selecting Output Formats</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Although you can produce HTML, UNIX man pages, and PDF files from the
+DocBook sources, you don&#8217;t have to produce all of them.  By default,
+PDF output is not produced because it takes longer to generate than
+other formats.  UNIX man pages are not generated by default for
+Windows (where they generally are of little use) to avoid wasting
+configuration and compilation time.</p>
+</div>
+<div class="paragraph">
+<p>You can use the following configuration options to turn the
+compilation of various formats on and off:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. BRL-CAD DocBook Configuration Options</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Option</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Setting</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BRLCAD_EXTRADOCS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enable DocBook documentation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ON</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BRLCAD_EXTRADOCS_HTML</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enable HTML output</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ON</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BRLCAD_EXTRADOCS_MAN</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enable UNIX man page output</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ON (OFF on Windows)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BRLCAD_EXTRADOCS_PDF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enable PDF output (needs FOP)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OFF</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BRLCAD_EXTRADOCS_PDF_MAN</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enable PDF man page output</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Defaults to setting of BRLCAD_EXTRADOCS_PDF</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The option to disable the PDF man page output exists to support
+situations where someone wants the article and tutorial PDFs, without
+the overhead of generating hundreds of PDFs for the various manual
+pages.  If you do not specifically want PDF versions of the individual
+manual pages, set the BRLCAD_EXTRADOCS_PDF_MAN option to OFF.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_sharing_content_between_documents"><a class="anchor" href="#_sharing_content_between_documents"></a>6. Sharing Content Between Documents</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Just as different documentation formats are needed to display the same
+content in different software environments, different documents that
+serve different needs will often need to share common content.
+DocBook provides a mechanism, called XInclude, which allows one
+document to directly reference content from another document.</p>
+</div>
+<div class="paragraph">
+<p>For example, volume II of the BRL-CAD Tutorial Series makes extensive
+use of the XInclude mechanism.  The majority of the original content
+in that tutorial was split up into individual lessons, each which
+exist as separate documents.  To provide those individual documents
+and at the same time preserve the original Volume II, without
+duplicating content, the file
+<em class="path">BRL-CAD_Tutorial_Series-VolumeII.xml</em> pulls in the content of
+the lessons using XInclude:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;xi:include href="/lessons/en/mged01_creating_primitive_shapes.xml" xpointer="creating_primitive_shapes_overviewlist"/&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For this reference to work, the lesson
+<em class="path">mged01_creating_primitive_shapes.xml</em> must provide matching
+identifying labels.  The matching label for the reference above is:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;para xml:id="creating_primitive_shapes_overviewlist"&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The drawbacks to this mechanism are that:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You can&#8217;t read a source document as a single, coherent whole. Most
+of the time, content pulled into a document using XInclude should be
+a fairly small subset of that document unless the specific purpose
+of the document is to aggregate other documents.</p>
+</li>
+<li>
+<p>Content changed in one document introduces changes in other
+documents the author is not currently editing. Only share content
+with XInclude when the content is not expected to change based on
+the context.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_customizing_docbook_output"><a class="anchor" href="#_customizing_docbook_output"></a>7. Customizing DocBook Output</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>DocBook does not allow you to specify the formatting details of a
+document.  This is a deliberate design decision, since avoiding the
+encoding of formatting information in the original document offers
+greater consistency and uniformity across documents.</p>
+</div>
+<div class="paragraph">
+<p>However, some documents have unique formatting requirements.
+DocBook&#8217;s toolchain allows you to do this type of customization, but
+it is the most complex aspect of working with DocBook.  You should
+only customize the output when there is a compelling need to do so.</p>
+</div>
+<div class="paragraph">
+<p>One of the best examples of DocBook output customization in BRL-CAD is
+work done by Tom Browder to format the PDF covers of the BRL-CAD
+Tutorial Series volumes, as shown below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/hacking_brlcad_tutorial_1_pdf.png" alt="hacking brlcad tutorial 1 pdf">
+</div>
+</div>
+<div class="paragraph">
+<p>A number of elements are needed to achieve this result:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A custom XML Stylesheet Language (XSL) file (named
+<em class="path">doc/docbook/resources/brlcad/tutorial-template.xsl.in</em>) that
+defines the layout of the document.</p>
+</li>
+<li>
+<p>A custom CMake build logic file (named
+<em class="path">doc/docbook/books/en/CMakeLists.txt</em>) that further customizes
+the template file for each individual book.</p>
+</li>
+<li>
+<p>The Deja-Vu and STIX fonts (located in
+<em class="path">doc/docbook/resources/other/fonts</em>) to ensure uniform,
+high-quality text rendering.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Although each case of special formatting is likely to be unique, the
+preceding example can serve as a starting point.  Another useful
+resource for information about customizing DocBook output is the book
+<a href="http://www.sagehill.net/docbookxsl">DocBook XSL: The Complete Guide</a>
+(<a href="http://www.sagehill.net/docbookxsl" class="bare">http://www.sagehill.net/docbookxsl</a>).</p>
+</div>
+<div class="paragraph">
+<p>Now that you have an idea about how to format documentation for the
+BRL-CAD project, let&#8217;s take a look at the types of documentation that
+the project maintains.</p>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="../part2/chapter5.html">Contributing Code</a></span>
+  <span class="next"><a href="chapter7.html">Types of Documentation We Maintain</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../ui/js/site.js"></script>
+<script src="../../../ui/js/vendor/lunr.js"></script>
+<script src="../../../ui/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/docs/hacking/part3/chapter6.html"></script>
+<script async src="../../../ui/../search-index.js"></script>
+<script async src="../../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

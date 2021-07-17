@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>man 1 pages :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/docs/man/1.html">
+    <link rel="prev" href="../specifications/BRL_CAD_g_format_V5.html">
+    <link rel="next" href="3.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../ui/css/site.css">
+    <link rel="stylesheet" href="../../ui/css/search.css">
+    <link rel="stylesheet" href="../../ui/css/custom.css">
+    <script>var uiRootPath = '../../ui'</script>
+    <link rel="icon" href="../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../about.html">About</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lessons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../lessons/mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/01_creating_primitive_shapes.html">1. Creating Primitive Shapes in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/02_learning_viewing_options.html">2. Learning Viewing Options in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/03_using_insert_command.html">3. Using the Insert Command in MGED to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/04_assign_mat_prop_rt.html">4. Assigning Material Properties and Raytracing in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/05_learning_boolean_expressions.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/06_creating_a_goblet.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/07_goblet_material_properties.html">7. Assigning Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/08_goblet_material_properties2.html">8. Assigning More Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/09_globe_in_display_box.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/10_creating_mug.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/11_refining_mug.html">11. Refining a Mug Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/12_mug_through_gui.html">12. Creating a Mug Model using the MGED Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/13_placing_shapes_in_3d.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/14_placing_shapes_in_3d_2.html">14. Additional Exercises Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/15_creating_a_toy_truck.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/16_mod_tech_struct.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Books</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../hacking/index.html">Hacking BRL-CAD</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting Started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part1/chapter1.html">A Call to Arms (and Contributors)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part1/chapter2.html">Feature Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developers</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part2/chapter3.html">Working with Our Code</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part2/chapter4.html">What Code to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part2/chapter5.html">Contributing Code</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Documenters</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part3/chapter6.html">Working with Our Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part3/chapter7.html">Types of Documentation We Maintain</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part3/chapter8.html">What Documentation to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part3/chapter9.html">Contributing Documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Other Contributors</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part4/chapter10.html">You Can Help Too</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendix: Resources and Examples</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix1.html">Further References and Resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix2.html">Doc Template: New MGED Command</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix3.html">Code Example: Shooting Rays</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix4.html">Code Example: Walking Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix5.html">Code Example: Command Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix6.html">Example Code: Root Solving</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials/index.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tutorials/overview.html">I. An Overview of BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials/mged-intro.html">II. Introduction to MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/preface1.html">Preface</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/preface2.html">Acknowledgments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter1.html">1. Creating Primitive Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter2.html">2. Learning the Viewing Options</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter3.html">3. Using the Insert Command to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter4.html">4. Assigning Material Properties and Raytracing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter5.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter6.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter7.html">7. Assigning Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter8.html">8. Assigning More Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter9.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter10.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter11.html">11. Refining the Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter12.html">12. Creating the Mug Through the GUI</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter13.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter14.html">14. Gaining More Practice Placing Shapes in Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter15.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter16.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/appendix1.html"><code class="app">MGED</code> Commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials/modeling.html">III. Modeling</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter2.html">2. The Model Process</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter3.html">3. Measuring data</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter4.html">4. Organizing the Structure</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter5.html">5. Developing Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter6.html">5. Evaluating Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter7.html">7. Logging Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendices</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix1.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix2.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix3.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix4.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix5.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix6.html">Using the build_region Command</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials/converting.html">IV. Converting</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter2.html">2. Pertinent Characteristics of the BRL-CAD Format</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter3.html">3. Converting From/to ASCII</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter4.html">4. Converting to BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter5.html">5. Converting From BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter6.html">6. Building a New Converter</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter7.html">7. Postconversion Issues</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../articles/index.html">Articles</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/build_pattern.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/build_region.html">Using the build_region Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/camo_shader.html">Camouflage shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/ebm_primitive.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/gcv.html">The Geometry Conversion Library</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/ged.html">GED: An Interactive Solid Modeling System</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../articles/mged/index.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../articles/mged/tutorial.html">Tutorial</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../articles/mged/gui.html">Graphical User Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../articles/mged/command-line-editing.html">Command Line Editing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../articles/mged/user-commands.html">User Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../articles/mged/developer-commands.html">Developer Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../articles/mged/tcl-variables.html">Tcl Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../articles/mged/env.html">Environment Variable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../articles/mged/callback.html">Callback</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../articles/mged/glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../articles/mged/brlcad-solid.html">BRL-CAD Solid</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/mgedrc.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/nirt.html">Interactive Raytracing: The nirt Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/overlap_tool.html">The Overlap Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/oed.html">Object Editing - the oed Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/pipes.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/projection_shader.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/tire.html">Vehicle Tire and Wheel Creation in BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/TEMPLATE.html">TEMPLATE</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Misc</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Dev Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../devguides/bool_eval_development.html">NURBS Boolean Evaluation Development Guide</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Presentations</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../presentations/brlcad-app-devel.html">Application Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="presentations:_attachments/brlcad-app-devel.html">brlcad-app-devel</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../presentations/intro-to-tcltk.html">Introduction to Tcl/Tk</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../specifications/BRL_CAD_g_format_V5.html">BRL-CAD Database Format</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Manual Pages</span>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="1.html">man1</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="3.html">man3</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="5.html">man5</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="n.html">mann</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Wiki Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">page-1</span>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">BRL-CAD</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../es/index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../es/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">BRL-CAD</a></li>
+    <li>Manual Pages</li>
+    <li><a href="1.html">man1</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/docs/modules/man/pages/1.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">man 1 pages</h1>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/alias-pix.html" class="page">alias-pix</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/ap-pix.html" class="page">ap-pix</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/asc2dsp.html" class="page">asc2dsp</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/asc2g.html" class="page">asc2g</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/asc-nmg.html" class="page">asc-nmg</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/asc-plot3.html" class="page">asc-plot3</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/benchmark.html" class="page">benchmark</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/bolt.html" class="page">bolt</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/bot_dump.html" class="page">bot_dump</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/brep_simple.html" class="page">brep_simple</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/brlcad.html" class="page">brlcad</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/brlcad-config.html" class="page">brlcad-config</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/brlman.html" class="page">brlman</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/burst.html" class="page">burst</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/bwcrop.html" class="page">bwcrop</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/bwdiff.html" class="page">bwdiff</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/bw-fb.html" class="page">bw-fb</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/bwfilter.html" class="page">bwfilter</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/bwhist.html" class="page">bwhist</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/bwhisteq.html" class="page">bwhisteq</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/bwmod.html" class="page">bwmod</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/bw-pix.html" class="page">bw-pix</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/bw-png.html" class="page">bw-png</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/bw-ps.html" class="page">bw-ps</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/bwrect.html" class="page">bwrect</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/bwrot.html" class="page">bwrot</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/bwscale.html" class="page">bwscale</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/bwshrink.html" class="page">bwshrink</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/bwstat.html" class="page">bwstat</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/bwthresh.html" class="page">bwthresh</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/cad_boundp.html" class="page">cad_boundp</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/cad_parea.html" class="page">cad_parea</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/canonize.html" class="page">canonize</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/coil.html" class="page">coil</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/comgeom-g.html" class="page">comgeom-g</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/conv-vg2g.html" class="page">conv-vg2g</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/cv.html" class="page">cv</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/db.html" class="page">db</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/dbclean.html" class="page">dbclean</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/dbcp.html" class="page">dbcp</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/dbupgrade.html" class="page">dbupgrade</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/decimate.html" class="page">decimate</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/dpix-pix.html" class="page">dpix-pix</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/dxf-g.html" class="page">dxf-g</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/enf-g.html" class="page">enf-g</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/fast4-g.html" class="page">fast4-g</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/fb-bw.html" class="page">fb-bw</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/fbcbars.html" class="page">fbcbars</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/fbclear.html" class="page">fbclear</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/fbcmap.html" class="page">fbcmap</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/fbcolor.html" class="page">fbcolor</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/fbed.html" class="page">fbed</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/fbfade.html" class="page">fbfade</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/fb-fb.html" class="page">fb-fb</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/fbframe.html" class="page">fbframe</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/fbfree.html" class="page">fbfree</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/fbgamma.html" class="page">fbgamma</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/fbgrid.html" class="page">fbgrid</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/fbhelp.html" class="page">fbhelp</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/fblabel.html" class="page">fblabel</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/fbline.html" class="page">fbline</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/fb-pix.html" class="page">fb-pix</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/fb-png.html" class="page">fb-png</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/fbpoint.html" class="page">fbpoint</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/fbserv.html" class="page">fbserv</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/fbstretch.html" class="page">fbstretch</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/fbzoom.html" class="page">fbzoom</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/g2asc.html" class="page">g2asc</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/g-acad.html" class="page">g-acad</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/gastank.html" class="page">gastank</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/gdiff.html" class="page">gdiff</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/g-dot.html" class="page">g-dot</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/g-dxf.html" class="page">g-dxf</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/g-egg.html" class="page">g-egg</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/gencolor.html" class="page">gencolor</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/gif2fb.html" class="page">gif2fb</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/gif-fb.html" class="page">gif-fb</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/g-iges.html" class="page">g-iges</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/glint.html" class="page">glint</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/g-nff.html" class="page">g-nff</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/g-obj.html" class="page">g-obj</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/g-ply.html" class="page">g-ply</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/gqa.html" class="page">gqa</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/g-raw.html" class="page">g-raw</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/g-shell-rect.html" class="page">g-shell-rect</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/g-step.html" class="page">g-step</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/g-stl.html" class="page">g-stl</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/g-var.html" class="page">g-var</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/g-voxel.html" class="page">g-voxel</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/g-vrml.html" class="page">g-vrml</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/g-x3d.html" class="page">g-x3d</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/halftone.html" class="page">halftone</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/handle.html" class="page">handle</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/icv.html" class="page">icv</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/iges-g.html" class="page">iges-g</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/imgdims.html" class="page">imgdims</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/irdisp.html" class="page">irdisp</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/ir-X.html" class="page">ir-X</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/loop.html" class="page">loop</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/mac-pix.html" class="page">mac-pix</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/mged.html" class="page">mged</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/morphedit.html" class="page">morphedit</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/nastran-g.html" class="page">nastran-g</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/nirt.html" class="page">nirt</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/obj-g.html" class="page">obj-g</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/patch-g.html" class="page">patch-g</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/picket_fence.html" class="page">picket_fence</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/pix2asc.html" class="page">pix2asc</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/pix-alias.html" class="page">pix-alias</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/pixautosize.html" class="page">pixautosize</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/pixbackgnd.html" class="page">pixbackgnd</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/pixbgstrip.html" class="page">pixbgstrip</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/pixblend.html" class="page">pixblend</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/pixborder.html" class="page">pixborder</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/pixbustup.html" class="page">pixbustup</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/pix-bw.html" class="page">pix-bw</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/pixclump.html" class="page">pixclump</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/pixcmp.html" class="page">pixcmp</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/pixcolors.html" class="page">pixcolors</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/pixcrop.html" class="page">pixcrop</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/pixdiff.html" class="page">pixdiff</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/pixfade.html" class="page">pixfade</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/pix-fb.html" class="page">pix-fb</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/pixfilter.html" class="page">pixfilter</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/pixhalve.html" class="page">pixhalve</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/pixhist3d.html" class="page">pixhist3d</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/pixhist3d-plot3.html" class="page">pixhist3d-plot3</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/pixhist.html" class="page">pixhist</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/pixinterp2x.html" class="page">pixinterp2x</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/pixmatte.html" class="page">pixmatte</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/pixmerge.html" class="page">pixmerge</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/pixmorph.html" class="page">pixmorph</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/pix-png.html" class="page">pix-png</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/pix-ppm.html" class="page">pix-ppm</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/pix-ps.html" class="page">pix-ps</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/pixrect.html" class="page">pixrect</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/pixrot.html" class="page">pixrot</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/pixsaturate.html" class="page">pixsaturate</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/pixscale.html" class="page">pixscale</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/pixshrink.html" class="page">pixshrink</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/pixstat.html" class="page">pixstat</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/pixsubst.html" class="page">pixsubst</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/pix-sun.html" class="page">pix-sun</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/pixtile.html" class="page">pixtile</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/pixuntile.html" class="page">pixuntile</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/plot3-asc.html" class="page">plot3-asc</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/plot3color.html" class="page">plot3color</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/plot3-fb.html" class="page">plot3-fb</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/plot3getframe.html" class="page">plot3getframe</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/plot3line2.html" class="page">plot3line2</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/plot3-plot3.html" class="page">plot3-plot3</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/plot3-ps.html" class="page">plot3-ps</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/plot3rot.html" class="page">plot3rot</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/ply-g.html" class="page">ply-g</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/png-bw.html" class="page">png-bw</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/png-fb.html" class="page">png-fb</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/png-pix.html" class="page">png-pix</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/pp-fb.html" class="page">pp-fb</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/proe-g.html" class="page">proe-g</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/random.html" class="page">random</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/remrt.html" class="page">remrt</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/reshoot.html" class="page">reshoot</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/rpatch.html" class="page">rpatch</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/rt.html" class="page">rt</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/rtarea.html" class="page">rtarea</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/rtcheck.html" class="page">rtcheck</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/rtedge.html" class="page">rtedge</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/rtexample.html" class="page">rtexample</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/rtg3.html" class="page">rtg3</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/rthide.html" class="page">rthide</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/rtscale.html" class="page">rtscale</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/rtshot.html" class="page">rtshot</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/rtweight.html" class="page">rtweight</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/rtwizard.html" class="page">rtwizard</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/rtxray.html" class="page">rtxray</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/showshot.html" class="page">showshot</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/stl-g.html" class="page">stl-g</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/sun-pix.html" class="page">sun-pix</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/tankill-g.html" class="page">tankill-g</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/terrain.html" class="page">terrain</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/tire.html" class="page">tire</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/ug-g.html" class="page">ug-g</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/vdeck.html" class="page">vdeck</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/wavelet.html" class="page">wavelet</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/wdb_example.html" class="page">wdb_example</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/window.html" class="page">window</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/window_frame.html" class="page">window_frame</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="1/wire.html" class="page">wire</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<nav class="pagination">
+  <span class="prev"><a href="../specifications/BRL_CAD_g_format_V5.html">BRL-CAD Database Format</a></span>
+  <span class="next"><a href="3.html">man3</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../ui/js/site.js"></script>
+<script src="../../ui/js/vendor/lunr.js"></script>
+<script src="../../ui/js/vendor/search.js" id="search-script" data-base-path="../.." data-page-path="/docs/man/1.html"></script>
+<script async src="../../ui/../search-index.js"></script>
+<script async src="../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

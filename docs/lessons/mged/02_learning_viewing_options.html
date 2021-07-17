@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>2. Learning Viewing Options in MGED :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/docs/lessons/mged/02_learning_viewing_options.html">
+    <link rel="prev" href="01_creating_primitive_shapes.html">
+    <link rel="next" href="03_using_insert_command.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../ui/css/site.css">
+    <link rel="stylesheet" href="../../../ui/css/search.css">
+    <link rel="stylesheet" href="../../../ui/css/custom.css">
+    <script>var uiRootPath = '../../../ui'</script>
+    <link rel="icon" href="../../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lessons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01_creating_primitive_shapes.html">1. Creating Primitive Shapes in MGED</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="02_learning_viewing_options.html">2. Learning Viewing Options in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03_using_insert_command.html">3. Using the Insert Command in MGED to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="04_assign_mat_prop_rt.html">4. Assigning Material Properties and Raytracing in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="05_learning_boolean_expressions.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="06_creating_a_goblet.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="07_goblet_material_properties.html">7. Assigning Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="08_goblet_material_properties2.html">8. Assigning More Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="09_globe_in_display_box.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="10_creating_mug.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="11_refining_mug.html">11. Refining a Mug Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="12_mug_through_gui.html">12. Creating a Mug Model using the MGED Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="13_placing_shapes_in_3d.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="14_placing_shapes_in_3d_2.html">14. Additional Exercises Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="15_creating_a_toy_truck.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="16_mod_tech_struct.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Books</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../hacking/index.html">Hacking BRL-CAD</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting Started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter1.html">A Call to Arms (and Contributors)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter2.html">Feature Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developers</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter3.html">Working with Our Code</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter4.html">What Code to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter5.html">Contributing Code</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Documenters</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter6.html">Working with Our Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter7.html">Types of Documentation We Maintain</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter8.html">What Documentation to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter9.html">Contributing Documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Other Contributors</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part4/chapter10.html">You Can Help Too</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendix: Resources and Examples</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix1.html">Further References and Resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix2.html">Doc Template: New MGED Command</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix3.html">Code Example: Shooting Rays</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix4.html">Code Example: Walking Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix5.html">Code Example: Command Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix6.html">Example Code: Root Solving</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/index.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../tutorials/overview.html">I. An Overview of BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/mged-intro.html">II. Introduction to MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/preface1.html">Preface</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/preface2.html">Acknowledgments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter1.html">1. Creating Primitive Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter2.html">2. Learning the Viewing Options</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter3.html">3. Using the Insert Command to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter4.html">4. Assigning Material Properties and Raytracing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter5.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter6.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter7.html">7. Assigning Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter8.html">8. Assigning More Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter9.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter10.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter11.html">11. Refining the Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter12.html">12. Creating the Mug Through the GUI</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter13.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter14.html">14. Gaining More Practice Placing Shapes in Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter15.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter16.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/appendix1.html"><code class="app">MGED</code> Commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/modeling.html">III. Modeling</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter2.html">2. The Model Process</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter3.html">3. Measuring data</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter4.html">4. Organizing the Structure</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter5.html">5. Developing Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter6.html">5. Evaluating Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter7.html">7. Logging Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendices</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix1.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix2.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix3.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix4.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix5.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix6.html">Using the build_region Command</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/converting.html">IV. Converting</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter2.html">2. Pertinent Characteristics of the BRL-CAD Format</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter3.html">3. Converting From/to ASCII</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter4.html">4. Converting to BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter5.html">5. Converting From BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter6.html">6. Building a New Converter</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter7.html">7. Postconversion Issues</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/index.html">Articles</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_pattern.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_region.html">Using the build_region Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/camo_shader.html">Camouflage shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ebm_primitive.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/gcv.html">The Geometry Conversion Library</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ged.html">GED: An Interactive Solid Modeling System</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/mged/index.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tutorial.html">Tutorial</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/gui.html">Graphical User Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/command-line-editing.html">Command Line Editing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/user-commands.html">User Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/developer-commands.html">Developer Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tcl-variables.html">Tcl Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/env.html">Environment Variable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/callback.html">Callback</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/brlcad-solid.html">BRL-CAD Solid</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/mgedrc.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/nirt.html">Interactive Raytracing: The nirt Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/overlap_tool.html">The Overlap Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/oed.html">Object Editing - the oed Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/pipes.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/projection_shader.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/tire.html">Vehicle Tire and Wheel Creation in BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/TEMPLATE.html">TEMPLATE</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Misc</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Dev Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../devguides/bool_eval_development.html">NURBS Boolean Evaluation Development Guide</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Presentations</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/brlcad-app-devel.html">Application Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="presentations:_attachments/brlcad-app-devel.html">brlcad-app-devel</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/intro-to-tcltk.html">Introduction to Tcl/Tk</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../specifications/BRL_CAD_g_format_V5.html">BRL-CAD Database Format</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Manual Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/1.html">man1</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/3.html">man3</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/5.html">man5</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/n.html">mann</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Wiki Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">page-1</span>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">BRL-CAD</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../../index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../es/index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../es/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">BRL-CAD</a></li>
+    <li>Lessons</li>
+    <li><a href="../mged.html">MGED</a></li>
+    <li><a href="02_learning_viewing_options.html">2. Learning Viewing Options in MGED</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/docs/modules/lessons/pages/mged/02_learning_viewing_options.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">2. Learning Viewing Options in MGED</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this lesson, you will:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Create a model radio.</p>
+</li>
+<li>
+<p>Locate viewing information in the Command Window.</p>
+</li>
+<li>
+<p>Identify elements of the <code class="app">MGED</code> viewing system.</p>
+</li>
+<li>
+<p>View your radio from different angles.</p>
+</li>
+<li>
+<p>Work with Shift Grips.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Models in <code class="app">BRL-CAD</code> are constructed in a single xyz coordinate
+system, which we sometimes refer to as model space.  The Graphics
+Window of <code class="app">MGED</code> displays a portion of this space.  The xyz
+coordinate system is used for specifying both the geometry and the
+view of the geometry that is presented in the Graphics Window.</p>
+</div>
+<div class="paragraph">
+<p><code class="app">MGED</code> offers a default view and a variety of optional views.
+You can switch back and forth between these views during and after
+model creation.  This lesson is designed to help you understand the
+viewing process and options.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_creating_radio"><a class="anchor" href="#_creating_radio"></a>1. Creating a Radio</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To gain practice viewing actual geometry, let&#8217;s build a simple
+geometric object-a "walkie-talkie" radio.  Note that the commands we
+use to do this are not discussed here because our current concern is
+on applying the principles of viewing.  Later lessons on creating
+geometry address these commands in detail.  Begin by launching
+<code class="app">MGED</code> and creating a new database named radio.g.  Remember that
+one way to do this is to type the following command in a Terminal
+Window:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">$ mged radio.g</code></p>
+</div>
+<div class="paragraph">
+<p>Type the following in the Command Window, carefully checking each line
+before pressing ENTER.  If you make a mistake, use BACKSPACE or the
+left/ right arrow keys to make corrections before pressing ENTER (see
+Appendix B for the editing command list).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Be especially careful to note the difference between the numeral one
+[1] and the letter l [l] in ell1 on the third line.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>       <span class="cmd">in body.s rpp 0 16 0 32 0 48</span> <kbd>ENTER</kbd>
+       <span class="cmd">in btn.s rec 8 30 36 0 3 0 4 0 0 0 0 2</span> <kbd>ENTER</kbd>
+       <span class="cmd">in btn2.s ell1 8 33 36 4 0 0 2</span> <kbd>ENTER</kbd>
+       <span class="cmd">in spkr.s tor 16 16 16 1 0 0 12 1</span> <kbd>ENTER</kbd>
+       <span class="cmd">in ant.s rcc 2 2 46 0 0 48 1</span> <kbd>ENTER</kbd>
+       <span class="cmd">in knob.s rcc 4 4 40 8 0 0 5</span> <kbd>ENTER</kbd></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Note that in the preceding Command Line expressions, btn is an
+abbreviation for button, ant is an abbreviation for antenna, and spkr
+is an abbreviation for speaker.  Also note that the numbers could have
+been separated by single spaces.  The extra spaces were inserted
+simply to improve readability.  For some usages (e.g., the r and comb
+commands, which are discussed later), the number of spaces has to be
+exact.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>An image similar to the following should now appear in the Graphics
+Window.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/02_defaultradio.png" alt="02 defaultradio">
+</div>
+<div class="title">Figure 1. Default View of a Radio</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_locating_viewing_info_cmd_window"><a class="anchor" href="#_locating_viewing_info_cmd_window"></a>2. Locating Viewing Information in the Command Window</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now take a minute to look at the Command Window.  Even if nothing is
+in the window, enclosed in the bottom border is a string of
+information about the Graphics Window.  An example string might read:
+<code>cent=(8.000 16.000 24.000) sz=96.000 mm az=35.00 el=25.00 tw=-0.00
+ang=(0.00 0.00 0.00)</code></p>
+</div>
+<div class="paragraph">
+<p>As detailed in the following table, this information contains four
+groups of viewing data about the Graphics Window.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Viewing Data at the Bottom of the Command Window</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-middle">Screen Designation</th>
+<th class="tableblock halign-center valign-middle">Viewing Information</th>
+<th class="tableblock halign-center valign-middle">Location of Variables</th>
+<th class="tableblock halign-center valign-middle">Default Units</th>
+<th class="tableblock halign-center valign-middle">Default Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">cent=</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Center of View</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">First 3 numbers</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Millimeters</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">0.000 0.000 0.000</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">sz=</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Size of View</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">4th number</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Millimeters</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Dependent upon size selected</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">az=</p></td>
+<td class="tableblock halign-center valign-middle" rowspan="2"><p class="tableblock">Viewing Angle</p></td>
+<td class="tableblock halign-center valign-middle" rowspan="2"><p class="tableblock">5th and 6th numbers</p></td>
+<td class="tableblock halign-center valign-middle" rowspan="2"><p class="tableblock">Degrees</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">35.00</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">el=</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">25.00</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">tw=</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Twist</p></td>
+<td class="tableblock halign-center valign-middle" rowspan="2"><p class="tableblock">7th-10th numbers</p></td>
+<td class="tableblock halign-center valign-middle" rowspan="2"><p class="tableblock">Degrees</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">0.00</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">ang=</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Angle of View</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">0.00 0.00 0.00</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_viewing_system_elements"><a class="anchor" href="#_viewing_system_elements"></a>3. Identifying Elements of the <code class="app">MGED</code> Viewing System</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_center_of_view"><a class="anchor" href="#_center_of_view"></a>3.1. Center of View</h3>
+<div class="paragraph">
+<p>The first set of information tells you the center of what you are
+viewing.  You can change the center of where you are looking through
+both the GUI and the Command Window.</p>
+</div>
+<div class="paragraph">
+<p>To change the center of your view of the radio using the GUI, press
+the SHIFT key and any mouse button while dragging the mouse.  (This is
+an example of a Shift Grip, which is described later in this chapter.)
+You can also change the center of view by placing the mouse pointer
+where you want the center to be and clicking the middle mouse button.</p>
+</div>
+<div class="paragraph">
+<p>To change the center of view using the Command Window, simply type at
+the prompt the word center followed by three values for x, y, and z
+(which is the 3-D coordinate system mentioned previously). For
+example:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">center 0 15 325.735 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>As you change your view of the geometry, notice that the numbers in
+the brackets after the cent= title will change to reflect the new
+center of the view.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_size_of_view"><a class="anchor" href="#_size_of_view"></a>3.2. Size of View</h3>
+<div class="paragraph">
+<p>The size of the view is the amount of model space that is shown in the
+Graphics Window.  For example, consider using a camera with a zoom
+lens to photograph a rose.  As shown in the following figures, if you
+zoom in on the rose, it will appear large in relation to your viewing
+field.  If you zoom out, it will appear smaller.  In actuality, the
+view size for the rose image on the left might represent only 15 mm
+across while the view size for the image on the right might represent
+100 mm across.  In both cases, however, the actual size of the rose is
+the same.</p>
+</div>
+<table class="tableblock frame-none grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../_images/mged/02_flower_zoomin.png" alt="02 flower zoomin" width="400">
+</div>
+<div class="title">Figure 2. Zoom In to View Details (small size of view)</div>
+</div></div></td>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../_images/mged/02_flower_zoomout.png" alt="02 flower zoomout" width="400">
+</div>
+<div class="title">Figure 3. Zoom Out to View Object in Relation to Environment (large size of view)</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>To change the view size of your radio through the GUI, click the right
+mouse button to zoom in and the left mouse button to zoom out.  Each
+time you click the left or right mouse button, the view of the design
+will increase or decrease in size by a factor of 2 (i.e., two times
+larger or two times smaller than the previous size).</p>
+</div>
+<div class="paragraph">
+<p>You can also zoom in or out on your design by going to the View menu
+and selecting Zoom In or Zoom Out.  A drawback to this method is that
+you can only zoom in or out one time because the drop-down menu closes
+once you make a selection.</p>
+</div>
+<div class="paragraph">
+<p>If you get lost at any point while creating a model, you can use the
+zap (Z) command to clear the geometry from the Graphics Window and
+then recall the shape with the draw command.  When drawing in an empty
+Graphics Window, <code class="app">MGED</code> automatically sizes the view to fit what
+you draw into the window.</p>
+</div>
+<div class="paragraph">
+<p>You can control the view size of your radio more accurately with the
+Command Window.  To set the size to 100 (of whichever units you have
+selected), type at the prompt:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">size 100 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>You can also zoom in or out on a design by typing zoom on the Command
+Line.  To make your radio appear 50% smaller, you would type:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">zoom 0.5 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>To make your radio appear twice as large, you would type:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">zoom 2 <kbd>Enter</kbd></code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Remember that changing the view size does NOT affect the size of the
+object.  You will change the size of an object in Lesson 6.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_angle_of_view"><a class="anchor" href="#_angle_of_view"></a>3.3. Angle of View</h3>
+<div class="paragraph">
+<p>Azimuth, elevation, and twist (all measured in degrees) determine
+where you are in relation to the object you are viewing.  Azimuth
+determines where you are around the sides of it (i.e., to the front,
+left, right, behind, or somewhere in between), elevation determines
+where you are above or below it, and twist determines the angle you
+are rotated about the viewing direction.</p>
+</div>
+<div class="paragraph">
+<p>To better understand azimuth, imagine walking around a truck with a
+camera to photograph it.  As shown in the following illustrations, you
+would be at 0'0 azimuth if you stood directly in front of the truck to
+take its picture.  If you circled around slightly to your right, you
+would be at 35'0 azimuth.  If you moved further around until you were
+looking directly at the driver&#8217;s side (in U.S.  trucks), you would be
+at 90'0 azimuth.  Standing behind it would put you at 180'0 azimuth.
+If you were facing the passenger&#8217;s side, you would be at 270'0
+azimuth.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The terms azimuth, elevation, and twist are similar to the terms yaw,
+pitch, and roll, respectively, which are common terms in the aerospace
+industry.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-none grid-all stretch">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../_images/mged/02_truck_front.png" alt="02 truck front">
+</div>
+<div class="title">Figure 4. Front (az=0, el=0)</div>
+</div></div></td>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../_images/mged/02_truck_35_0.png" alt="02 truck 35 0">
+</div>
+<div class="title">Figure 5. az=35, el=0</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-none grid-all stretch">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../_images/mged/02_truck_left.png" alt="02 truck left">
+</div>
+<div class="title">Figure 6. Left (az=90, el=0)</div>
+</div></div></td>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../_images/mged/02_truck_rear.png" alt="02 truck rear">
+</div>
+<div class="title">Figure 7. Rear (az=180, el=0)</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-none grid-all stretch">
+<colgroup>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../_images/mged/02_truck_right.png" alt="02 truck right">
+</div>
+<div class="title">Figure 8. Right (az=270, el=0)</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Elevation, on the other hand, involves the viewer&#8217;s position above or
+below an object.  In the preceding example, you circled around a truck
+without changing your relative height.  You had an elevation of 0'0,
+which means you were level with it.  As the following figures
+illustrate, however, imagine stopping at the 35'0 azimuth position and
+then climbing a ladder to photograph the truck from 25'0 elevation.
+Climbing higher, you would be at 60'0 elevation.  If you were directly
+above it with the camera facing down, you would be at 90'0 elevation.
+If you crawled under the truck and looked directly up at it, you would
+be at -90'0 elevation.</p>
+</div>
+<table class="tableblock frame-none grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../_images/mged/02_truck_35_0.png" alt="02 truck 35 0">
+</div>
+<div class="title">Figure 9. az=35, el=0</div>
+</div></div></td>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../_images/mged/02_truck_35_25.png" alt="02 truck 35 25">
+</div>
+<div class="title">Figure 10. az=35, el=25</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../_images/mged/02_truck_35_60.png" alt="02 truck 35 60">
+</div>
+<div class="title">Figure 11. az=35, el=60</div>
+</div></div></td>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../_images/mged/02_truck_35_90.png" alt="02 truck 35 90">
+</div>
+<div class="title">Figure 12. az=35, el=90</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../_images/mged/02_truck_270_90.png" alt="02 truck 270 90">
+</div>
+<div class="title">Figure 13. Top (az=270, el=90)</div>
+</div></div></td>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../_images/mged/02_truck_270_-90.png" alt="02 truck 270  90">
+</div>
+<div class="title">Figure 14. Bottom (az=270, el=-90)</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Finally, twist (which is an optional setting in <code class="app">MGED</code>)
+specifies a rotation about the viewing direction.  This rotation is
+applied to the view after azimuth and elevation have been designated.
+So, returning to our truck example, imagine standing in front of the
+vehicle (az=0, el=0) and then tilting your camera counterclockwise
+14'0.  This would give your view a 14'0 twist angle, as shown in the
+following figure (on the left). Note again that it is not the truck
+that is tipped up, but simply your view of it.  For more information
+on specifying twist, see the <code class="cmd">ae</code> command in Appendix A.</p>
+</div>
+<table class="tableblock frame-none grid-all stretch">
+<colgroup>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../_images/mged/02_truck_0_0_14.png" alt="02 truck 0 0 14">
+</div>
+<div class="title">Figure 15. Front (az=0, el=0, tw=14)</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_coord_sys_summary"><a class="anchor" href="#_coord_sys_summary"></a>4. Summing up on Azimuth and Elevation and the xyz Coordinate System</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As mentioned at the start of this lesson, <code class="app">MGED</code> operates in a
+three-dimensional coordinate system (determined by the x, y, and z
+axes). Azimuth is measured in the xy plane with the positive x
+direction corresponding to an azimuth of 0'0.  Positive azimuth angles
+are measured from the positive x axis toward and past the positive y
+axis.  Negative azimuth angles are measured in the other direction.</p>
+</div>
+<table class="tableblock frame-none grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../_images/mged/02_coordsys.png" alt="02 coordsys" width="35%">
+</div>
+<div class="title">Figure 16. Azimuth, Elevation, and the xyz Coordinate System</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>If the azimuth angle is 0, then elevation is measured in the xz plane
+with +90'0 corresponding to the positive z direction and -90'0
+corresponding to the negative z direction.  However, if azimuth is not
+0, these angles are in a plane aligned with the azimuth direction.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_view_radio_angles"><a class="anchor" href="#_view_radio_angles"></a>5. Viewing Your Radio from Different Angles</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Let&#8217;s now experiment with different views of your radio. <code class="app">MGED</code>
+has several standard default views, which you&#8217;ve already seen in the
+preceding truck example.  They include Top (az270, el90); Bottom
+(az270, el-90); Right (az270, el0); Left (az90, el0); Front (az0,
+el0); Rear (az180, el0); az35, el25; and az45, el45.</p>
+</div>
+<div class="paragraph">
+<p>Go to the View menu and try viewing your radio from different angles.</p>
+</div>
+<table class="tableblock frame-none grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../_images/mged/02_radio_top.png" alt="02 radio top">
+</div>
+<div class="title">Figure 17. Top</div>
+</div></div></td>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../_images/mged/02_radio_35_25.png" alt="02 radio 35 25">
+</div>
+<div class="title">Figure 18. az35,el25</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../_images/mged/02_radio_right.png" alt="02 radio right">
+</div>
+<div class="title">Figure 19. Right</div>
+</div></div></td>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../_images/mged/02_radio_front.png" alt="02 radio front">
+</div>
+<div class="title">Figure 20. Front</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>You can also select any azimuth-elevation combination from the Command
+Line.  For example, at the prompt type</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">ae 128 17 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>As with many of the Command Line options, this method of selecting
+views provides a finer degree of control/precision when you need it.</p>
+</div>
+<div class="paragraph">
+<p><code class="app">MGED</code> can also display multiple views simultaneously.  Go to the
+Modes menu and select Multipane.  Four small panes with different
+views should appear in your Graphics Window, as shown in the following
+illustration.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/02_multipane.png" alt="02 multipane">
+</div>
+<div class="title">Figure 21. Multipane View of the Radio</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_shift_grips"><a class="anchor" href="#_shift_grips"></a>6. Working with Shift Grips</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Shift Grip options of <code class="app">MGED</code> are handy hot-key and mouse
+button combinations that can be used in two different ways.  With
+regard to our present discussion on viewing, the Shift Grips can, in
+effect, "drag" the world around in front of the viewer (but without
+actually changing the coordinates of the viewed objects). The same
+Shift Grips can also be used in Edit mode to actually move or alter
+the geometry of your objects.  In both cases, the Shift Grips appear
+to do the same thing, so it is important always to know the mode in
+which you are operating.</p>
+</div>
+<div class="paragraph">
+<p>In general, the SHIFT key translates (moves), the CTRL key rotates,
+and the ALT key constrains (or limits) translation or rotation to a
+particular axis (x, y, or z). These axes correspond to the three mouse
+buttons as follows: the left button represents the x axis, the middle
+button represents the y axis, and the right button represents the z
+axis.  In addition, the SHIFT and CTRL keys can be used in conjunction
+with any mouse button to scale an object (although the ALT key will
+not constrain this action). The following table lists all of the key
+bindings and their functions.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. Shift Grip Keys and Effects</caption>
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-middle">Function</th>
+<th class="tableblock halign-center valign-middle">Key Combination</th>
+<th class="tableblock halign-center valign-middle">Effect in Normal Viewing</th>
+<th class="tableblock halign-center valign-middle">Effect in Edit Mode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Translate (Move)</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">SHIFT + any mouse button + mouse drag</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Moves view in any direction</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Translates object in any direction</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Rotate</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">CTRL + any mouse button + mouse drag</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Rotates view in any direction</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Rotates object in any direction</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle" rowspan="3"><p class="tableblock">Constrain Translation</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">SHIFT + ALT + left mouse button + mouse drag</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Moves view in the x direction</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Translates object in the x direction</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">SHIFT + ALT + middle mouse button + mouse drag</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Moves view in the y direction</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Translates object in the y direction</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">SHIFT + ALT + right mouse button + mouse drag</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Moves view in the z direction</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Translates object in the z direction</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle" rowspan="3"><p class="tableblock">Constrain Rotation</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">CTRL + ALT + left mouse button + mouse drag</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Rotates view about the x axis</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Rotates object about the x axis</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">CTRL + ALT + middle mouse button + mouse drag</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Rotates view about the y axis</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Rotates object only about the y axis</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">CTRL + ALT + right mouse button + mouse drag</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Rotates view about the z axis</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Rotates object about the z axis</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Scale</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">SHIFT + CTRL + any mouse button + mouse drag</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Scales view larger or smaller</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Scales object larger or smaller</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Depending on your window manager or desktop environment settings, some
+key combinations may already be designated to perform other tasks
+(e.g., resizing or moving a window). If so, you may need to adjust
+settings to allow the Shift Grip options to function.  Furthermore,
+left-handed users may have switched the behavior of the left and right
+mouse buttons in their system configurations.  In such instances, the
+terms left mouse button and right mouse button should be switched
+throughout this document.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Probably the easiest way to familiarize yourself with the Shift Grip
+options is to try them out on your radio.  Using the preceding table
+as a guide, experiment with translating, rotating, constraining
+translation and rotation to particular axes, and sizing your radio
+view.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Remember, although the Shift Grip options may appear to be
+manipulating objects, unless you are in Edit mode they are only
+manipulating your view of the objects.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_learning_viewing_options_review"><a class="anchor" href="#_learning_viewing_options_review"></a>7. Review</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this lesson, you:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Created a model radio.</p>
+</li>
+<li>
+<p>Located viewing information in the Command Window.</p>
+</li>
+<li>
+<p>Identified elements of the <code class="app">MGED</code> viewing system.</p>
+</li>
+<li>
+<p>Viewed your radio from different angles.</p>
+</li>
+<li>
+<p>Worked with Shift Grips.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="01_creating_primitive_shapes.html">1. Creating Primitive Shapes in MGED</a></span>
+  <span class="next"><a href="03_using_insert_command.html">3. Using the Insert Command in MGED to Size and Place Shapes</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../ui/js/site.js"></script>
+<script src="../../../ui/js/vendor/lunr.js"></script>
+<script src="../../../ui/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/docs/lessons/mged/02_learning_viewing_options.html"></script>
+<script async src="../../../ui/../search-index.js"></script>
+<script async src="../../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

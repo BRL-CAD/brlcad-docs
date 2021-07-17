@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>13. Placing Shapes in 3-D Space :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/docs/tutorials/mged-intro/chapter13.html">
+    <link rel="prev" href="chapter12.html">
+    <link rel="next" href="chapter14.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../ui/css/site.css">
+    <link rel="stylesheet" href="../../../ui/css/search.css">
+    <link rel="stylesheet" href="../../../ui/css/custom.css">
+    <script>var uiRootPath = '../../../ui'</script>
+    <link rel="icon" href="../../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lessons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../lessons/mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/01_creating_primitive_shapes.html">1. Creating Primitive Shapes in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/02_learning_viewing_options.html">2. Learning Viewing Options in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/03_using_insert_command.html">3. Using the Insert Command in MGED to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/04_assign_mat_prop_rt.html">4. Assigning Material Properties and Raytracing in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/05_learning_boolean_expressions.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/06_creating_a_goblet.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/07_goblet_material_properties.html">7. Assigning Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/08_goblet_material_properties2.html">8. Assigning More Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/09_globe_in_display_box.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/10_creating_mug.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/11_refining_mug.html">11. Refining a Mug Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/12_mug_through_gui.html">12. Creating a Mug Model using the MGED Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/13_placing_shapes_in_3d.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/14_placing_shapes_in_3d_2.html">14. Additional Exercises Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/15_creating_a_toy_truck.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/16_mod_tech_struct.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Books</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../hacking/index.html">Hacking BRL-CAD</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting Started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter1.html">A Call to Arms (and Contributors)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter2.html">Feature Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developers</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter3.html">Working with Our Code</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter4.html">What Code to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter5.html">Contributing Code</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Documenters</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter6.html">Working with Our Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter7.html">Types of Documentation We Maintain</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter8.html">What Documentation to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter9.html">Contributing Documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Other Contributors</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part4/chapter10.html">You Can Help Too</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendix: Resources and Examples</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix1.html">Further References and Resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix2.html">Doc Template: New MGED Command</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix3.html">Code Example: Shooting Rays</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix4.html">Code Example: Walking Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix5.html">Code Example: Command Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix6.html">Example Code: Root Solving</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../index.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview.html">I. An Overview of BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../mged-intro.html">II. Introduction to MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="preface1.html">Preface</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="preface2.html">Acknowledgments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter1.html">1. Creating Primitive Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter2.html">2. Learning the Viewing Options</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter3.html">3. Using the Insert Command to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter4.html">4. Assigning Material Properties and Raytracing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter5.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter6.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter7.html">7. Assigning Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter8.html">8. Assigning More Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter9.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter10.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter11.html">11. Refining the Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter12.html">12. Creating the Mug Through the GUI</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="chapter13.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter14.html">14. Gaining More Practice Placing Shapes in Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter15.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter16.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="appendix1.html"><code class="app">MGED</code> Commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../modeling.html">III. Modeling</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../modeling/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../modeling/chapter2.html">2. The Model Process</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../modeling/chapter3.html">3. Measuring data</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../modeling/chapter4.html">4. Organizing the Structure</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../modeling/chapter5.html">5. Developing Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../modeling/chapter6.html">5. Evaluating Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../modeling/chapter7.html">7. Logging Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendices</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../modeling/appendix1.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../modeling/appendix2.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../modeling/appendix3.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../modeling/appendix4.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../modeling/appendix5.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../modeling/appendix6.html">Using the build_region Command</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../converting.html">IV. Converting</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter2.html">2. Pertinent Characteristics of the BRL-CAD Format</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter3.html">3. Converting From/to ASCII</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter4.html">4. Converting to BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter5.html">5. Converting From BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter6.html">6. Building a New Converter</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter7.html">7. Postconversion Issues</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/index.html">Articles</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_pattern.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_region.html">Using the build_region Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/camo_shader.html">Camouflage shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ebm_primitive.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/gcv.html">The Geometry Conversion Library</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ged.html">GED: An Interactive Solid Modeling System</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/mged/index.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tutorial.html">Tutorial</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/gui.html">Graphical User Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/command-line-editing.html">Command Line Editing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/user-commands.html">User Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/developer-commands.html">Developer Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tcl-variables.html">Tcl Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/env.html">Environment Variable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/callback.html">Callback</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/brlcad-solid.html">BRL-CAD Solid</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/mgedrc.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/nirt.html">Interactive Raytracing: The nirt Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/overlap_tool.html">The Overlap Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/oed.html">Object Editing - the oed Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/pipes.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/projection_shader.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/tire.html">Vehicle Tire and Wheel Creation in BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/TEMPLATE.html">TEMPLATE</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Misc</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Dev Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../devguides/bool_eval_development.html">NURBS Boolean Evaluation Development Guide</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Presentations</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/brlcad-app-devel.html">Application Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="presentations:_attachments/brlcad-app-devel.html">brlcad-app-devel</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/intro-to-tcltk.html">Introduction to Tcl/Tk</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../specifications/BRL_CAD_g_format_V5.html">BRL-CAD Database Format</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Manual Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/1.html">man1</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/3.html">man3</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/5.html">man5</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/n.html">mann</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Wiki Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">page-1</span>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">BRL-CAD</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../../index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../es/index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../es/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">BRL-CAD</a></li>
+    <li>Books</li>
+    <li><a href="../index.html">Tutorials</a></li>
+    <li><a href="../mged-intro.html">II. Introduction to MGED</a></li>
+    <li><a href="chapter13.html">13. Placing Shapes in 3-D Space</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/docs/modules/tutorials/pages/mged-intro/chapter13.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">13. Placing Shapes in 3-D Space</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this lesson, you will:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Create, edit, and place shapes in 3-D space.</p>
+</li>
+<li>
+<p>Create custom colors using the Combination Editor.</p>
+</li>
+<li>
+<p>Identify the attributes of the checker shader.</p>
+</li>
+<li>
+<p>Identify how RGB colors are created.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In previous lessons, you created and edited shapes.  You also placed
+objects in three-dimensional space.  This lesson will provide more
+advanced practice on creating and editing shapes and placing them in
+3-D space.</p>
+</div>
+<div class="paragraph">
+<p>The design you will make in this lesson is a simple candle in a candle
+holder sitting on a table (as shown in the following figure). In the
+next lesson, you will add decorations and lighting to make the design
+more realistic.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../lessons/_images/mged/13_candle_design.png" alt="13 candle design">
+</div>
+<div class="title">Figure 1. The Candle Design</div>
+</div>
+<div class="paragraph">
+<p>Begin by creating a new database called candle.g.  Title your database
+Candle Tutorial.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_candle_create_tabletop"><a class="anchor" href="#_candle_create_tabletop"></a>1. Creating the Tabletop</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Create an arb8 from the GUI.  Name the shape arb8.s.  Go to View and
+select Front.</p>
+</div>
+<div class="paragraph">
+<p>Go to the Edit option of the menu bar.  The arb8 needs to be made
+larger, so, under the Edit menu, select Scale.  Put the mouse pointer
+in the upper half of the screen to make the arb8 larger and click the
+middle mouse button until the sides of the arb8 touch each side of the
+screen.  Use the SHIFT key and left mouse button to drag the arb into
+position, if necessary.</p>
+</div>
+<div class="paragraph">
+<p>Under the Edit menu, select Move Faces and then Move Face 4378.  Place
+the mouse pointer in the lower half of the screen and click the middle
+mouse button until the arb8 is about the thickness of a tabletop.  Go
+back to the Edit menu and Accept the changes, and then use the SHIFT
+and any mouse key to position the tabletop so that it appears similar
+to the following:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../lessons/_images/mged/13_candle_tabletop_wireframe_front.png" alt="13 candle tabletop wireframe front">
+</div>
+<div class="title">Figure 2. Wireframe Representation of Tabletop from Front View</div>
+</div>
+<div class="paragraph">
+<p>Make a region of the tabletop by typing at the Command Window prompt:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r table1.r u arb8.s <kbd>Enter</kbd></code></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_candle_create_base"><a class="anchor" href="#_candle_create_base"></a>2. Creating the Candle Base</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Create an eto and name it eto1.s.  To create the bottom of the candle
+base, you will need to flip the eto 180'0.  Type at the Command Window
+prompt:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">rot 0 180 0 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>This tells <code class="app">MGED</code> to rotate the shape 180'0 along the y axis.
+Next, select Scale and make the eto a little smaller than its default
+size.  Place the eto on the tabletop by using the SHIFT key and left
+mouse button to drag the base into position.</p>
+</div>
+<div class="paragraph">
+<p>View your design from different angles to make sure the eto sits flush
+on the center of the tabletop.  Select Accept when you are satisfied
+with its size and placement.  Your base should be similar to the one
+shown as follows:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../lessons/_images/mged/13_candle_tabletop_eto1_wireframe_front.png" alt="13 candle tabletop eto1 wireframe front">
+</div>
+<div class="title">Figure 3. Wireframe Representation of Tabletop and First eto</div>
+</div>
+<div class="paragraph">
+<p>The next step in creating a candle base is to make a right circular
+cylinder (rcc). Name the shape rcc1.s.</p>
+</div>
+<div class="paragraph">
+<p>Go to Edit.  In addition to the standard commands, you will be
+presented with a menu of thirteen shape-specific ways to edit this
+shape.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>Set H
+Set H (Move V)
+Set A
+Set B
+Set c
+Set d</pre></div></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre>Set A,B
+Set C,D
+Set A,B,C,D
+Rotate H
+Rotate AxB
+Move End H(rt)
+Move End H</pre></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Scale the shape until it is slightly larger in diameter than the top
+of the eto1.s (you can check this by switching to a top view). Go back
+to Edit and select Set H.  Reduce the height of the shape until the
+rcc is about two times the height of eto1.s.  Position the cylinder on
+the candle-holder base.  Check the placement of the rcc from the top,
+left, and front to ensure that it is centered in the eto.  Make sure
+the bottom of the rcc is not quite touching the tabletop.  Accept your
+changes.  When done, your design should look like the following:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../lessons/_images/mged/13_candle_tabletop_eto1_rcc_wireframe_front.png" alt="13 candle tabletop eto1 rcc wireframe front">
+</div>
+<div class="title">Figure 4. Wireframe Representation of Tabletop, First eto and First rcc</div>
+</div>
+<div class="paragraph">
+<p>The last step in making the candle base is to create another eto.
+Name it eto2.s.  Edit this shape as you did the previous eto and place
+it on top of the rcc, as shown in the following figure.  Accept your
+changes when finished.  Your candle base should now look like this:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../lessons/_images/mged/13_candle_tabletop_base_front.png" alt="13 candle tabletop base front">
+</div>
+<div class="title">Figure 5. Wireframe Representation of Tabletop and Candle Base</div>
+</div>
+<div class="paragraph">
+<p>Make a region of the three shapes of the base.  Name it base1.r.  Your
+Boolean expression should read:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r base1.r u eto1.s u rcc1.s u eto2.s</code></p>
+</div>
+<div class="paragraph">
+<p>Note that we could have written it</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r base1.r u eto1.s u eto2.s u rcc1.s</code></p>
+</div>
+<div class="paragraph">
+<p>but the first expression is preferred to be consistent with the order
+of a later example.  In a moment, we will want to remove some material
+that eto2.s gives us.  By placing eto2.s last in the list, we can
+perform this removal easily.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_candle_create_candle"><a class="anchor" href="#_candle_create_candle"></a>3. Creating the Candle</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Create an rcc and name it rcc2.s.  Edit the shape as you did the
+previous rcc.  When you are done, it should look similar to the one in
+the following illustration.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+After you have accepted the changes, you can get all of your
+tabletop and candle in the Graphics Window by using the SHIFT key and
+left mouse button to move your view of the design.
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../lessons/_images/mged/13_candle_tabletop_base_candle_front.png" alt="13 candle tabletop base candle front">
+</div>
+<div class="title">Figure 6. Wireframe Representation of Tabletop, Candle Base, and Candle</div>
+</div>
+<div class="paragraph">
+<p>Make a region of the candle.  Your Boolean statement should read:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r candle1.r u rcc2.s</code></p>
+</div>
+<div class="paragraph">
+<p>Now we create a cylindrical cutout in the base for
+the candle to sit in.  To do this we can use the shape of the candle,
+as follows:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r base1.r - rcc2.s</code></p>
+</div>
+<div class="paragraph">
+<p>Earlier we had mentioned that we would want to remove some material
+that we got from eto2.s.  Now we have done it.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_candle_create_flame"><a class="anchor" href="#_candle_create_flame"></a>4. Creating the Candle Flame</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Create a particle (part) and name it part1.s.  Edit and position the
+shape until your design looks like the following one:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../lessons/_images/mged/13_candle_complete_front.png" alt="13 candle complete front">
+</div>
+<div class="title">Figure 7. Wireframe Representation of Completed Candle Design</div>
+</div>
+<div class="paragraph">
+<p>Make a region of the flame by typing at the Command Window prompt:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r flame1.r u part1.s <kbd>Enter</kbd></code></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_candle_create_combination"><a class="anchor" href="#_candle_create_combination"></a>5. Making a Combination of the Base, Candle, and Flame</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To make a combination of the parts of the candle, type at the Command
+Window prompt:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">comb candle1.c u base1.r u candle1.r u flame1.r <kbd>Enter</kbd></code></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_candle_check_data_tree"><a class="anchor" href="#_candle_check_data_tree"></a>6. Checking the Data Tree</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now that you have made a number of regions and a combination, it would
+be a good time to check your data tree and make sure it agrees with
+the following tree.  If you find that you have made a mistake in any
+of the parts of the tree, you can change them in the Boolean
+Expression box of the Combination Editor (refer to Lesson 5). At the
+Command Line prompt, type:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">tree candle1.c <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Your Boolean expression should read:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>   candle1.c/
+   u base1.r/R
+     u eto1.s
+     u rcc1.s
+     u eto2.s
+     - rcc2.s
+   u candle1.r/R
+     u rcc2.s
+   u flame1.r/R
+     u part1.s</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_candle_assign_mater_prop"><a class="anchor" href="#_candle_assign_mater_prop"></a>7. Assigning Material Properties to the Elements of the Design</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To assign material properties to your design, go to the Edit menu and
+select the Combination Editor.  Assign the following material
+properties to each of the elements:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Element</th>
+<th class="tableblock halign-center valign-top">Shader</th>
+<th class="tableblock halign-center valign-top">Color(s)</th>
+<th class="tableblock halign-center valign-top">Other</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Tabletop</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Checker</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Red (255 0 0); White (255 255 255)</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Scale (10)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Candle Base</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Plastic</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Medium Gray (128 130 144)</p></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Candle</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Plastic</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Light Blue (0 166 255)</p></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Flame</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Plastic</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Light Yellow (255 255 190)</p></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Notice that the checker shader for the tabletop includes two color
+values and a scale value.  Type the values for red, white, and a scale
+of 10 in the boxes, as follows:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../lessons/_images/mged/13_candle_comb_ed_checker.png" alt="13 candle comb ed checker">
+</div>
+<div class="title">Figure 8. Combination Editor with the Checker Shader Selected</div>
+</div>
+<div class="paragraph">
+<p>For the rest of the elements of the design, use the Color Tool to make
+the colors shown or simply type them in the Color text box,
+remembering to leave a space between each set of numbers.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>As discussed previously, a color is made up of three numbers, ranging
+from 0 to 255.  The first number represents the amount of red, the
+second represents the amount of green, and the third represents the
+amount of blue used to make the color.  A color of 0 0 0 is black, and
+255 255 255 is white.  This method of creating colors is different
+from mixing pigment colors used in painting because you are dealing
+with light.  While it may seem strange at first, most <code class="app">MGED</code>
+users quickly become adept at creating RGB colors.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_candle_raytrace"><a class="anchor" href="#_candle_raytrace"></a>8. Raytracing Your Design</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Before raytracing, change the View to az35, el25 to give a better view
+of the completed design and then Blast the old design by typing at the
+Command Window prompt:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">B table1.r candle1.c <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>This command tells the <code class="app">MGED</code> program to:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">B</th>
+<th class="tableblock halign-center valign-top">table1.r</th>
+<th class="tableblock halign-center valign-top">candle1.c</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Clear the Graphics Window</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Draw the region named table1.r</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Draw the combination named candle1.c</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>To provide the most light on your design, use a white background
+color.  Your raytraced candle should look similar to the following:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../lessons/_images/mged/13_candle_raytraced_overlay.png" alt="13 candle raytraced overlay">
+</div>
+<div class="title">Figure 9. Raytraced Candle Design in Overlay Mode</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_placing_shapes_in_3d_review"><a class="anchor" href="#_placing_shapes_in_3d_review"></a>9. Review</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this lesson, you:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Created, edited, and placed shapes in 3-D space.</p>
+</li>
+<li>
+<p>Created custom colors using the Combination Editor.</p>
+</li>
+<li>
+<p>Identified the attributes of the checker shader.</p>
+</li>
+<li>
+<p>Identified how RGB colors are created.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="chapter12.html">12. Creating the Mug Through the GUI</a></span>
+  <span class="next"><a href="chapter14.html">14. Gaining More Practice Placing Shapes in Space</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../ui/js/site.js"></script>
+<script src="../../../ui/js/vendor/lunr.js"></script>
+<script src="../../../ui/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/docs/tutorials/mged-intro/chapter13.html"></script>
+<script async src="../../../ui/../search-index.js"></script>
+<script async src="../../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

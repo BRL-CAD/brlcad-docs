@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Tutorial :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/docs/articles/mged/tutorial.html">
+    <link rel="prev" href="index.html">
+    <link rel="next" href="gui.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../ui/css/site.css">
+    <link rel="stylesheet" href="../../../ui/css/search.css">
+    <link rel="stylesheet" href="../../../ui/css/custom.css">
+    <script>var uiRootPath = '../../../ui'</script>
+    <link rel="icon" href="../../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lessons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../lessons/mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/01_creating_primitive_shapes.html">1. Creating Primitive Shapes in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/02_learning_viewing_options.html">2. Learning Viewing Options in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/03_using_insert_command.html">3. Using the Insert Command in MGED to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/04_assign_mat_prop_rt.html">4. Assigning Material Properties and Raytracing in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/05_learning_boolean_expressions.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/06_creating_a_goblet.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/07_goblet_material_properties.html">7. Assigning Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/08_goblet_material_properties2.html">8. Assigning More Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/09_globe_in_display_box.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/10_creating_mug.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/11_refining_mug.html">11. Refining a Mug Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/12_mug_through_gui.html">12. Creating a Mug Model using the MGED Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/13_placing_shapes_in_3d.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/14_placing_shapes_in_3d_2.html">14. Additional Exercises Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/15_creating_a_toy_truck.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/16_mod_tech_struct.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Books</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../hacking/index.html">Hacking BRL-CAD</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting Started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter1.html">A Call to Arms (and Contributors)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter2.html">Feature Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developers</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter3.html">Working with Our Code</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter4.html">What Code to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter5.html">Contributing Code</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Documenters</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter6.html">Working with Our Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter7.html">Types of Documentation We Maintain</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter8.html">What Documentation to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter9.html">Contributing Documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Other Contributors</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part4/chapter10.html">You Can Help Too</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendix: Resources and Examples</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix1.html">Further References and Resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix2.html">Doc Template: New MGED Command</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix3.html">Code Example: Shooting Rays</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix4.html">Code Example: Walking Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix5.html">Code Example: Command Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix6.html">Example Code: Root Solving</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/index.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../tutorials/overview.html">I. An Overview of BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/mged-intro.html">II. Introduction to MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/preface1.html">Preface</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/preface2.html">Acknowledgments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter1.html">1. Creating Primitive Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter2.html">2. Learning the Viewing Options</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter3.html">3. Using the Insert Command to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter4.html">4. Assigning Material Properties and Raytracing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter5.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter6.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter7.html">7. Assigning Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter8.html">8. Assigning More Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter9.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter10.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter11.html">11. Refining the Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter12.html">12. Creating the Mug Through the GUI</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter13.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter14.html">14. Gaining More Practice Placing Shapes in Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter15.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter16.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/appendix1.html"><code class="app">MGED</code> Commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/modeling.html">III. Modeling</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter2.html">2. The Model Process</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter3.html">3. Measuring data</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter4.html">4. Organizing the Structure</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter5.html">5. Developing Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter6.html">5. Evaluating Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter7.html">7. Logging Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendices</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix1.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix2.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix3.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix4.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix5.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix6.html">Using the build_region Command</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/converting.html">IV. Converting</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter2.html">2. Pertinent Characteristics of the BRL-CAD Format</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter3.html">3. Converting From/to ASCII</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter4.html">4. Converting to BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter5.html">5. Converting From BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter6.html">6. Building a New Converter</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter7.html">7. Postconversion Issues</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../index.html">Articles</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../build_pattern.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../build_region.html">Using the build_region Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../camo_shader.html">Camouflage shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../ebm_primitive.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../gcv.html">The Geometry Conversion Library</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../ged.html">GED: An Interactive Solid Modeling System</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="tutorial.html">Tutorial</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gui.html">Graphical User Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="command-line-editing.html">Command Line Editing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="user-commands.html">User Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="developer-commands.html">Developer Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tcl-variables.html">Tcl Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="env.html">Environment Variable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="callback.html">Callback</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="brlcad-solid.html">BRL-CAD Solid</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../mgedrc.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../nirt.html">Interactive Raytracing: The nirt Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../overlap_tool.html">The Overlap Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../oed.html">Object Editing - the oed Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../pipes.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../projection_shader.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tire.html">Vehicle Tire and Wheel Creation in BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../TEMPLATE.html">TEMPLATE</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Misc</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Dev Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../devguides/bool_eval_development.html">NURBS Boolean Evaluation Development Guide</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Presentations</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/brlcad-app-devel.html">Application Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="presentations:_attachments/brlcad-app-devel.html">brlcad-app-devel</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/intro-to-tcltk.html">Introduction to Tcl/Tk</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../specifications/BRL_CAD_g_format_V5.html">BRL-CAD Database Format</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Manual Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/1.html">man1</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/3.html">man3</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/5.html">man5</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/n.html">mann</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Wiki Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">page-1</span>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">BRL-CAD</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../../index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../es/index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../es/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">BRL-CAD</a></li>
+    <li><a href="../index.html">Articles</a></li>
+    <li><a href="index.html">MGED</a></li>
+    <li><a href="tutorial.html">Tutorial</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/docs/modules/articles/pages/mged/tutorial.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Tutorial</h1>
+<div class="sect1">
+<h2 id="_modeling_with_csg"><a class="anchor" href="#_modeling_with_csg"></a>Modeling With CSG</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In BRL-CAD objects are constructed using a technique known as
+"Combinatorial Solid Geometry" or "Constructive Solid Geometry" or
+simply "CSG" In the CSG approach to modeling This technique involves
+creating objects by combining primitive shapes together to form
+complex objects.  The primitive shapes are called "solids".  Each one
+occupies a volume of three dimensional space.  BRL-CAD currently has
+many primitive solid types.  These include:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Modeling with CSG</caption>
+<colgroup>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Primitive Shape</th>
+<th class="tableblock halign-left valign-top">BRL-CAD Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Arbitrary Convex Polyhedron</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">arbn</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Arbitrary Convex Polyhedron</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">arbn</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Arbitrary Convex Polyhedron (8pt or less)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">arb</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Extruded Bitmap <code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ebm <code>*</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Elliptical Hyperboloid</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ehy</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ellipsoid</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ell</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Elliptical Paraboloid</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epa</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Elliptical Torus</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">eto</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Halfspace</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">half</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Height-Field <code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">hf <code>*</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N-Manifold Geometry <code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">nmg <code>*</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Non-Uniform Rational B-spline <code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">nurb <code>*</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">particle <code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">part <code>*</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">polygonal object</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">polygon</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pipe <code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pipe <code>*</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Right Elliptical Cylinder</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rec</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Right Hyperbolic Cylinder</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rhc</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Right Parabolic Cylinder</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rpc</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sphere</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sph</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Truncated General Cone</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tgc</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Torus</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tor</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Volume/Voxel <code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">vol <code>*</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><code>*</code>&#8201;&#8212;&#8201;Implementation known to be incomplete as of this writing</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/prims.gif" alt="prims">
+</div>
+</div>
+<div class="paragraph">
+<p>These primitives can be combined using boolean operators to create
+complex shapes.  The three boolean operations supported are union,
+difference (or subtraction), and intersection.  Any number of
+primitives may be combined to produce a shape.  The union (u) of two
+solids is defined as the volume in either of the solids.  The
+difference (-) of two solids is the volume of the first solid which is
+not in the volume of the second solid.  The intersection (+) of two
+solids is the volume that is contained in both solids.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/bool.gif" alt="bool">
+</div>
+</div>
+<div class="paragraph">
+<p>The result of performing a set of boolean operations is a new shape.
+In BRL-CAD this new shape is known as a "combination".  This is
+frequently abbreviated as "comb".  A "comb" can be further combined
+with other shapes to create still more complex shapes.  For example,
+the shape of a simple cup might be created by subtracting a cylinder
+from a slightly larger cylinder.  From this "comb" shape, the shape
+of a mug could be created by adding a handle.  The handle might be
+composed of an elliptical torus with the part of the torus that would
+be inside the cup removed.  Logically this is:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Cup = Outside - Inside
+Handle = Ring - Outside
+Mug = Cup union Handle</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/cup_and_mug_small.gif" alt="cup and mug small">
+</div>
+</div>
+<div class="paragraph">
+<p>In this way the shape of objects are built up from components.</p>
+</div>
+<div class="paragraph">
+<p>When the desired shape of an object is attained, a special combination
+called a "region" is created.  A "region" represents an actual
+material component of the model.  It represents an item which is made
+from a homogeneous type of material.  In the example above two
+combinations are created: Cup and Handle.  These two are brought
+together to form an object (Mug) which is made of a single material
+(such as ceramic or bone china).  Material properties such as color,
+texture, transparency, reflectivity, etc.  are assigned to regions.</p>
+</div>
+<div class="paragraph">
+<p>The model is built up as a tree-like structure known as a Directed
+Acyclic Graph or DAG.  It is permissible for a node to be referenced
+by different parts of the model.  In the mug example, the solid
+"Outside" is a part of two different combinations: Cup and Handle.  In
+this example the graph of the mug object looks like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>			  Torus
+			 /
+		Handle (-)
+	       /	 \
+	Mug (u)		  Cylinder
+	       \	 /
+		Cup -- (-)
+			 \
+			  Insides</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It is possible to refer to combinations and regions multiple times as
+well.  For example, if a modeler were trying to create a cupboard
+containing three separate identical mugs, he might create a structure
+as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>	 Mug 1			    Ring
+        /     \			   /
+       /       \	 Handle (-)
+     (u)        \       /	   \
+Mugs (u)- Mug 2--Mug (u)	    Outside
+     (u)        /       \	   /
+       \       /	 Cup -- (-)
+        \     /			   \
+	 Mug 3			    Inside</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Users familiar with other CAD software may prefer to think of the
+"region" as a "part".  Combinations containing of "regions" may be
+thought of as "assemblies".</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_starting_mged"><a class="anchor" href="#_starting_mged"></a>Starting MGED</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The program for editing BRL-CAD geometry is called <code class="cmd">mged</code>.</p>
+</div>
+<div class="paragraph">
+<p>All the geometry for a particular model or application is generally
+stored in a single file called a database.  Each database may contain
+many different objects.  By convention, the files containing BRL-CAD
+geometry have an extension of <code>.g</code>.</p>
+</div>
+<div class="paragraph">
+<p>Before starting mged the user should assure that the X-Windows DISPLAY
+environment variable has been properly set.  This indicates where
+applications should display the windows they create.</p>
+</div>
+<div class="paragraph">
+<p>We use the following conventions for denoting text:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>	Text typed by the user
+	Text output by the program</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To edit or create a geometry file, the user starts the mged program
+from the shell by giving the command:</p>
+</div>
+<div class="paragraph">
+<p><code><span class="prompt">%</span> <span class="cmd">mged -c cup.g</span></code></p>
+</div>
+<div class="paragraph">
+<p>The filename is required.  Unlike many programs which allow the user
+to create a new document or database in memory, mged always keeps
+everything on disk.  After each user command, the contents of the disk
+file are brought up to date.  By doing this, the amount of work lost
+in the event of a system crash is minimized.</p>
+</div>
+<div class="paragraph">
+<p>When mged is started, it prints out the release number and date of
+compilation.  When multiple versions of mged are installed on a
+machine, this allows the user to verify that the proper version is
+being started.</p>
+</div>
+<div class="paragraph">
+<p>If the file specified does not exist when mged is started, it will
+stop and ask if the user wishes to create a new database:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>   <span class="prompt">%</span> <span class="cmd">mged -c cup.g</span>
+   <span class="output">BRL-CAD Release 4.5   Graphics Editor (MGED)
+       Mon May 19 16:31:32 EDT 1997, Compilation 5377
+       bparker@vapor.arl.mil:/m/cad/.mged.6d
+
+   cup.g: No such file or directory</span>
+   <span class="prompt">Create new database (y|n)[n]?</span></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>At this point pressing the "y" key followed by a return will create
+the new database.  Any other (non-y) keys (followed by a return) will
+cause mged to quit without creating the database.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>   <span class="prompt">%</span> <span class="cmd">mged -c cup.g</span>
+   <span class="output">BRL-CAD Release 4.5   Graphics Editor (MGED)
+       Mon May 19 16:31:32 EDT 1997, Compilation 5377
+       bparker@vapor.arl.mil:/m/cad/.mged.6d
+
+   cup.g: No such file or directory</span>
+   <span class="prompt">Create new database (y|n)[n]?</span> <span class="cmd">y</span>
+   <span class="output">Creating new database "cup.g"
+   Untitled MGED Database (units=mm)</span>
+   <span class="prompt">attach (nu|X|ogl|glx)[nu]?</span></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>At this point, mged is asking what type of geometry display window you
+would like.  The default is always "nu" for Null or "no geometry
+display".  If you are creating geometry, it is desirable to be able to
+see it.  The common choices are:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. Common Choices</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Display Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X Windows</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">glx</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Iris gl under X Windows</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ogl</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OpenGL under X Windows</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Enter one of the names listed followed by a return.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>   % mged -c cup.g
+   BRL-CAD Release 4.5   Graphics Editor (MGED)
+       Mon May 19 16:31:32 EDT 1997, Compilation 5377
+       bparker@vapor.arl.mil:/m/cad/.mged.6d
+
+   cup.g: No such file or directory
+   Create new database (y|n)[n]? y
+   Creating new database "cup.g"
+   Untitled MGED Database (units=mm)
+   attach (nu|X|ogl|glx)[nu]? ogl
+   mged&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>At this point you should have a window that looks something like this:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/faceplate_sm.gif" alt="faceplate sm">
+</div>
+</div>
+<div class="paragraph">
+<p>When the MGED program has a display window or device attached, it
+displays a border around the region of the screen being used along
+with some ancillary status information.  Together, this information is
+termed the editor "faceplate".</p>
+</div>
+<div class="paragraph">
+<p>In the upper left corner of the window is a small enclosed area which
+is used to display the current editor state.  The current editor state
+indicates whether objects are selected for editing and what modeling
+operations are allowed.</p>
+</div>
+<div class="paragraph">
+<p>Underneath the state display is a zone in which three "pop-up" menus
+may appear.  The top menu is termed the "button menu," as it contains
+menu items which duplicate many functions which were originally
+available via an external button box peripheral.  Having these
+frequently used functions available on a pop-up menu can greatly
+decrease the number of times that the user needs to remove his hand
+from the pointing device (either mouse or tablet puck) to reach for
+the buttons.</p>
+</div>
+<div class="paragraph">
+<p>Below is an example of the faceplate and first level menu.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/faceplate_menu_sm.gif" alt="faceplate menu sm">
+</div>
+</div>
+<div class="paragraph">
+<p>The second menu is used primarily for the various editing states, at
+which time it contains all the editing operations which are generic
+across all objects (scaling, rotation, and translation).  The third
+menu contains selections for object-specific editing operations.  The
+choices on these menus are detailed below.</p>
+</div>
+<div class="paragraph">
+<p>Running across the entire bottom of the faceplate is a thin
+rectangular display area which holds two lines of text.  The first
+line always contains a numeric display of the model-space coordinates
+of the center of the view and the current size of the viewing cube,
+both of which are displayed in the currently selected editing units.
+The first line also contains the current rotation rates.</p>
+</div>
+<div class="paragraph">
+<p>The second line has several uses, depending on editor mode.  In
+various editing states this second line will contain certain path
+selection information.  When the angle/distance cursor function is
+activated, the second line will be used to display the current
+settings of the cursor.</p>
+</div>
+<div class="paragraph">
+<p>All numeric interaction between the user and the editor are in terms
+of user-selected display units.  The user may select from millimeters,
+centimeters, meters, inches, and feet, and the currently active
+display units are noted in the first display line.  One important
+implementation detail is that all numeric values are stored in the
+database in millimeters.  When MGED interacts with the user, it
+converts values from the database into the units selected by the user
+before displaying them.  Likewise, values that the user enters are
+converted to millimeters before being written to the database.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_screen_coordinate_system"><a class="anchor" href="#_the_screen_coordinate_system"></a>The Screen Coordinate System</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Objects drawn on the screen are clipped in X, Y, and Z, to the size
+indicated on the first status line.  This creates a conceptual
+"viewing cube".  Only objects inside this cube are visible.  This
+feature allows objects within the cube to be seen, without cluttering
+the display with objects which are within view in X and Y, but quite
+far away in the Z direction.  This is especially useful when the
+display is zoomed in on a small portion of the geometry.  On some
+displays Z axis clipping can be selectively enabled and disabled as a
+viewing aid.</p>
+</div>
+<div class="paragraph">
+<p>The MGED editor uses the standard right-handed screen coordinate
+system shown in the figure below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/coord-axes.gif" alt="coord axes">
+</div>
+</div>
+<div class="paragraph">
+<p>The Z axis is perpendicular to the screen and the positive Z direction
+is out of the screen towards the viewer.  The directions of positive
+(+) and negative (-) axis rotations are also indicated.  For these
+rotations, the "Right Hand Rule" applies: Point the thumb of the right
+hand along the direction of +X axis and the other fingers will
+describe the sense of positive rotation.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_creating_geometry"><a class="anchor" href="#_creating_geometry"></a>Creating Geometry: The Cup</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Let&#8217;s look at the commands needed to build the cup geometry described
+in the first section.  The following MGED editing session contains all
+the commands needed to create the mug.  Each command will be explained
+below.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>   % newmged Mug.g
+   BRL-CAD Release 4.5   Graphics Editor (MGED)
+       Tue May 20 10:33:44 EDT 1997, Compilation 5378
+       jra@vapor.arl.mil:/m/cad/.mged.6d
+
+   Mug.g: No such file or directory
+   Create new database (y|n)[n]? y
+   Creating new database "Mug.g"
+   Untitled MGED Database (units=mm)
+   attach (nu|X|ogl|glx)[nu]? ogl
+   mged&gt; title MGED Tutorial Geometry
+   mged&gt; units in
+   New editing units = 'in'
+   mged&gt; in outside.s rcc
+   Enter X, Y, Z of vertex: 0 0 0
+   Enter X, Y, Z of height (H) vector: 0 0 3.5
+   Enter radius: 1.75
+   42 vectors in 0.006435 sec
+   mged&gt; in inside.s rcc 0 0 0.25 0 0 3.5 1.5
+   42 vectors in 0.006435 sec
+   mged&gt; in ring.s eto 0 2.5 1.75 1 0 0
+   Enter X, Y, Z, of vector C: .6 0 0
+   Enter radius of revolution, r: 1.45
+   Enter elliptical semi-minor axis, d: 0.2
+   2479 vectors in 0.087375 sec
+   mged&gt; comb cup.c u outside.s - inside.s
+   mged&gt; comb handle.c u ring.s - outside.s
+   mged&gt; r mug.r u cup.c u handle.c
+   Defaulting item number to 1002
+   Creating region id=1001, air=0, los=100, GIFTmaterial=1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The first step in preparing a new database is to provide a title which
+describes the contents of the database.  This is an important
+opportunity to describe the contents and purpose of the database.
+Setting the title is done with the title command in MGED.</p>
+</div>
+<div class="paragraph">
+<p><code>mged&gt; Title MGED Tutorial Geometry</code></p>
+</div>
+<div class="paragraph">
+<p>When the database is first created, the default editing units are set
+to millimeters.  For this example, we want to specify the dimensions
+of the object in inches.  To arrange this, the units command</p>
+</div>
+<div class="paragraph">
+<p><code>mged&gt; units in</code></p>
+</div>
+<div class="paragraph">
+<p>Now we can create our first solid.  There are two techniques for
+creating geometry in MGED.  The commands for these two techniques are
+make and in (for "insert").  For precision modeling the in command
+offers the greatest control over the definition of the solid.  This is
+the approach we will use.</p>
+</div>
+<div class="paragraph">
+<p>The "in" command can take all of its arguments on the command line, or
+it will prompt you for any missing portions.  Remembering what
+parameters need to be specified for each solid can be difficult at
+best.  All that you really need to enter is the command name.  Mged
+will prompt you for the rest of the parameters.</p>
+</div>
+<div class="paragraph">
+<p>In the first example above we specify the name of the solid we are
+creating ("outside.s") and the type of solid to create ("rcc"). Then
+mged prompts for the remaining arguments (vertex, height vector, and
+radius):</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>   mged&gt; in outside.s rcc
+   Enter X, Y, Z of vertex: 0 0 0
+   Enter X, Y, Z of height (H) vector: 0 0 3.5
+   Enter radius: 1.75</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For the solid "inside.s" we specify all the parameters on the command
+line, so mged does not prompt us for additional arguments.  In the
+case of the solid "ring.s" we specify some, but not all of the
+parameters, and mged prompts us for the missing ones:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>   mged&gt; in inside.s rcc 0 0 0.25 0 0 3.5 1.5
+   42 vectors in 0.006435 sec
+   mged&gt; in ring.s eto 0 2.5 1.75 1 0 0
+   Enter X, Y, Z, of vector C: .6 0 0
+   Enter radius of revolution, r: 1.45
+   Enter elliptical semi-minor axis, d: 0.2
+   2479 vectors in 0.087375 sec</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As a minimal example, if we wanted to create a sphere called "ball.s"
+we could simply type the "in" command and let mged prompt us for
+everything else:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>   mged&gt; in
+   Enter name of solid: ball.s
+   Enter solid type:  sph
+   Enter X, Y, Z of vertex:  0 0 0
+   Enter radius:  3
+   51 vectors in 0.117187 sec</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The three boolean operators supported are union, subtraction and
+intersection.  These operations are denoted by the operators u, - and
++ respectively.  Mged uses these in a sort of prefix notation.  In
+this notation the union operator has higher precedence than either
+subtraction or intersection.  Hence the following boolean sequence</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>	(A union B) subtract C
+
+is written as
+
+	u A - C u B - C</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The comb command creates a boolean combination.  In our example we use
+this to create the shape of the outside of the cup called "cup.s"
+Reading the command above that creates cup.c, we note that cup.c is
+formed from the union of the volume defined by the solid "outside.s"
+and the subtraction of the volume defined by the solid "inside.s".</p>
+</div>
+<div class="paragraph">
+<p>The r command creates a "region".  It is just like creating a
+combination, but the results are a volume of one logical material
+type.</p>
+</div>
+<div class="paragraph">
+<p>Assigning material properties is done with the mater or shader
+command.  Here we define which shader should be used when rendering
+the object, and the parameters for the shader.  The simplest shader is
+the "plastic" shader which uses a Phong lighting model.  For our mug
+this will be fine.  We specify the plastic shader and set the color to
+a shade of green.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>   mged&gt; mater mug.r
+   Shader =
+   Shader?  ('del' to delete, CR to skip) plastic
+   Color = (No color specified)
+   Color R G B (0..255)? ('del' to delete, CR to skip) 32 128 32
+   Inherit = 0:  lower nodes (towards leaves) override
+   Inheritance (0|1)? (CR to skip) 0</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The Inheritance option should be left 0.  This option will be
+discussed later.  Once we have created our geometry, it would be nice
+to look at the wireframe from a variety of angles.  By clicking on the
+button menu box a set of options is displayed.  The buttons labeled
+"35,25", "Top", "Right", "Front", and "45,45" offer a set of standard
+views.</p>
+</div>
+<div class="paragraph">
+<p>It is possible to raytrace the current view from within mged.  But to
+do so we need a place to display the image.  We start up a framebuffer
+server (number 1) to accommodate this:</p>
+</div>
+<div class="paragraph">
+<p><code>mged&gt; exec fbserv 1 /dev/sgip &amp;</code></p>
+</div>
+<div class="paragraph">
+<p>This runs the "fbserv" program which will maintain a framebuffer
+window for us.  Now we are ready to raytrace an image.  First we&#8217;ll
+clear the geometry window of all the primitives and combinations and
+regions we&#8217;ve created.  Then we display the region we want to raytrace
+with the "draw" command.  Finally, we&#8217;ll select a nice viewing angle
+of azimuth 35 elevation 25 with the "ae" command.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>   mged&gt; Z
+   mged&gt; draw mug.r
+   mged&gt; ae 35 25</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now we are ready to raytrace an image.  The "rt" command starts the
+raytracer on the geometry.  We must tell it where we want the pixels
+displayed with the "-F" option, and the size of the image with the -s
+option:</p>
+</div>
+<div class="paragraph">
+<p><code>mged&gt; rt -F:1 -s 512</code></p>
+</div>
+<div class="paragraph">
+<p>The rt program prints a variety of information when it runs:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>rt -F:0 -s 512
+rt -s50 -M -F:0 -s 512 cup.g mug.r
+mged&gt; BRL-CAD Release 4.4   Ray-Tracer
+    Thu Jan  5 10:08:14 EST 1995, Compilation 1
+    mike@wilson.arl.mil:/vld/src/brlcad/rt
+
+db title:  MGED Tutorial Geometry
+initial dynamic memory use=131072.
+GETTREE: cpu = 0.001619 sec, elapsed = 0.004842 sec
+    parent: 0.0user 0.0sys 0:00real 0% 0i+0d 2100maxrss 0+27pf 0+1csw
+  children: 0.0user 0.0sys 0:00real 0% 0i+0d 0maxrss 0+0pf 0+0csw
+Additional dynamic memory used=0. bytes
+
+...................Frame     0...................
+PREP: cpu = 0.001296 sec, elapsed = 0.003973 sec
+    parent: 0.0user 0.0sys 0:00real 0% 0i+0d 2100maxrss 0+7pf 1+0csw
+  children: 0.0user 0.0sys 0:00real 0% 0i+0d 0maxrss 0+0pf 0+0csw
+Additional dynamic memory used=0. bytes
+Tree: 3 solids in 1 regions
+Model: X(-45,45), Y(-45,116), Z(-8,97)
+View: 35 azimuth, 25 elevation off of front view
+Orientation: 0.248097, 0.476591, 0.748097, 0.389435
+Eye_pos: 87.6646, 90.5654, 97.5286
+Size: 236.164mm
+Grid: (0.461258, 0.461258) mm, (512, 512) pixels
+Beam: radius=0.230629 mm, divergence=0 mm/1mm
+Dynamic scanline buffering
+Lighting: Ambient = 40%
+  Implicit light 0: (155.394, -35.3438, 49.9036), aimed at (0, 0, -1)
+  Implicit light 0: invisible, no shadows, 1000 lumens (83%), halfang=180
+
+SHOT: cpu = 6.66068 sec, elapsed = 7.33342 sec
+    parent: 6.6user 0.0sys 0:07real 91% 0i+0d 2100maxrss 0+20pf 0+251csw
+  children: 0.0user 0.0sys 0:07real 0% 0i+0d 0maxrss 0+0pf 0+0csw
+Additional dynamic memory used=0. bytes
+154520 solid/ray intersections: 94456 hits + 60064 miss
+pruned 61.1%:  151248 model RPP, 0 dups skipped, 50361 solid RPP
+Frame     0:   262144 pixels in       6.66 sec =   39356.94 pixels/sec
+Frame     0:   262144 rays   in       6.66 sec =   39356.94 rays/sec (RTFM)
+Frame     0:   262144 rays   in       6.66 sec =   39356.94 rays/CPU_sec
+Frame     0:   262144 rays   in       7.33 sec =   35746.50 rays/sec (wallclock)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If all goes well, you will get an image of a green mug on a black
+background.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/mug_green.gif" alt="mug green">
+</div>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s improve on our basic cup.  The lip of this cup looks a
+little too squared off.  To fix this, we&#8217;ll add a rounded top to
+the lip.  To do this we create a circular torus solid positioned at
+exactly the top of the cup.  Then we can add it to the combination
+"cup.c".</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>   mged&gt; in rim.s tor 0 0 3.5 0 0 1 1.625 0.125
+   214 vectors in 0.001814 sec
+   mged&gt; comb cup.c u rim.s</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now we have a unique condition.  The solid rim.s was added to the list
+of objects being displayed when it was created.  However, now it is
+also a part of mug.r (via cup.c).  If we raytrace the current view we
+will have 2 copies of this solid.  The raytracer will complain that
+they overlap.  The best way to fix this is to clear the display,
+redisplay the new, complete object, and then raytrace.  The "Z"
+command clears all objects from the display.  Then we can redisplay
+the objects we want to raytrace with the "draw" command.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>   mged&gt; Z
+   mged&gt; draw mug.r</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Since this is a frequent operation (clear the display list and draw
+something new) there is a shortcut:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>   mged&gt; B mug.r</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The "B" is not very easy to remember (one suggested mnemonic is
+"blast"), but it is quite useful.  Now we are ready to raytrace again.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>   mged&gt; rt -F:1 -s 512
+   rt -s50 -M -F:1 -s 512 mug.g mug.r
+   BRL-CAD Release 4.4   Ray-Tracer
+       Thu Jan  5 10:08:14 EST 1995, Compilation 1
+       mike@wilson.arl.mil:/vld/src/brlcad/rt
+
+   db title:  MGED Tutorial Geometry
+   initial dynamic memory use=131072.
+   GETTREE: cpu = 0.001785 sec, elapsed = 0.005385 sec
+       parent: 0.0user 0.0sys 0:00real 0% 0i+0d 2152maxrss 0+31pf 0+1csw
+     children: 0.0user 0.0sys 0:00real 0% 0i+0d 0maxrss 0+0pf 0+0csw
+   Additional dynamic memory used=0. bytes
+
+   ...................Frame     0...................
+   PREP: cpu = 0.001468 sec, elapsed = 0.004084 sec
+       parent: 0.0user 0.0sys 0:00real 0% 0i+0d 2152maxrss 0+7pf 1+0csw
+     children: 0.0user 0.0sys 0:00real 0% 0i+0d 0maxrss 0+0pf 0+0csw
+   Additional dynamic memory used=0. bytes
+   Tree: 4 solids in 1 regions
+   Model: X(-45,45), Y(-45,116), Z(-8,97)
+   View: 35 azimuth, 25 elevation off of front view
+   Orientation: 0.248097, 0.476591, 0.748097, 0.389435
+   Eye_pos: 87.6646, 90.5654, 116.579
+   Size: 236.164mm
+   Grid: (0.461258, 0.461258) mm, (512, 512) pixels
+   Beam: radius=0.230629 mm, divergence=0 mm/1mm
+   Dynamic scanline buffering
+   Lighting: Ambient = 40%
+     Implicit light 0: (155.394, -35.3438, 49.9036), aimed at (0, 0, -1)
+     Implicit light 0: invisible, no shadows, 1000 lumens (83%), halfang=180
+
+   SHOT: cpu = 7.26825 sec, elapsed = 7.94901 sec
+       parent: 7.2user 0.0sys 0:07real 92% 0i+0d 2152maxrss 0+22pf 1+270csw
+     children: 0.0user 0.0sys 0:07real 0% 0i+0d 0maxrss 0+0pf 0+0csw
+   Additional dynamic memory used=0. bytes
+   170747 solid/ray intersections: 99501 hits + 71246 miss
+   pruned 58.3%:  151252 model RPP, 0 dups skipped, 64892 solid RPP
+   Frame     0:   262144 pixels in       7.27 sec =   36067.02 pixels/sec
+   Frame     0:   262144 rays   in       7.27 sec =   36067.02 rays/sec (RTFM)
+   Frame     0:   262144 rays   in       7.27 sec =   36067.02 rays/CPU_sec
+   Frame     0:   262144 rays   in       7.95 sec =   32978.18 rays/sec (wallclock)</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/rim.gif" alt="rim">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_editing_solids"><a class="anchor" href="#_editing_solids"></a>Editing Solids</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>So far we&#8217;ve focused on creating primitive solids and combinations.
+Now let&#8217;s look at ways of altering and deleting things that already
+exist.  We&#8217;ll continue with our example mug geometry.  There are a
+number of changes that need to be made to make it more realistic.</p>
+</div>
+<div class="paragraph">
+<p>The handle for the mug is a little awkward.  It sticks out too far
+from the side of the mug, and it is too wide.</p>
+</div>
+<div class="paragraph">
+<p>The bottom is perfectly flat.  Any imperfection in the table top would
+cause it to wobble.  The inside bottom corner is too sharp.  We need
+to create a "fillet" at the seam between side and bottom.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Fixing the Handle
+
+ kill handle.c
+kill ring.s
+in handle_01.s eto 0 2.25 1.25 1 0 0 .75 0.3 0 0 .15
+in handle_02.s rpp -.5 .5 1 3.5 1.25 2.5
+in handle_03.s rec 0 3 1.25 0 0 1.25 0.3 0 0 0 .15 0
+in handle_04.s eto 0 2.25 2.5 1 0 0 .75 0.3 0 0 .15</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>comb handle.c u handle_01.s - handle_02.s - outside.s u handle_04.s - handle_02.s - outside.s u handle_03.s</code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/handle.gif" alt="handle">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_adding_a_base"><a class="anchor" href="#_adding_a_base"></a>Adding a Base</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre> mvall outside.s outside_01.s
+in outside_02.s tor 0 0 0 0 0 1 1.6875 .0625
+comb cup.c u outside_02.s
+in outside_03.s rcc 0 0 0 0 0 -.2 1.6875
+comb cup.c u outside_03.s
+in outside_04.s tor 0 0 -.2 0 0 1 1.6875 .1375
+comb cup.c - outside_04.s
+in outside_05.s ellg 0 0 -.2 1.5 0 0 0 1.5 0 0 0 .15
+comb cup.c - outside_05.s
+center 0 0 0
+size 4
+ae 170 -52 120
+rt -s 512 -F :1</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/base.gif" alt="base">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_adding_a_fillet"><a class="anchor" href="#_adding_a_fillet"></a>Adding a fillet</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre> mvall inside.s inside.c
+mv inside.c inside_01.s
+solid edit bottom of inside_01.s up to 0 0 0.3125
+in inside_02.s tor 0 0 .3125 0 0 1 1.4375 0.0625
+in inside_03.s rcc 0 0 0.25 0 0 0.125 1.4375
+comb inside.c u inside_01.s u inside_02.s u inside_03.s
+B mug.r
+ae 35 85
+size 5
+rt -s 512 -F :1</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/fillet.gif" alt="fillet">
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="index.html">MGED</a></span>
+  <span class="next"><a href="gui.html">Graphical User Interface</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../ui/js/site.js"></script>
+<script src="../../../ui/js/vendor/lunr.js"></script>
+<script src="../../../ui/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/docs/articles/mged/tutorial.html"></script>
+<script async src="../../../ui/../search-index.js"></script>
+<script async src="../../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

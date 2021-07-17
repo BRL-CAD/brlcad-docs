@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>8. Asignar más propiedades de los materiales a la copa :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/es/lecciones/mged/08_prop_materiales_copa2.html">
+    <link rel="prev" href="07_prop_materiales_copa.html">
+    <link rel="next" href="09_esfera_en_caja_exhibidora.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../ui/css/site.css">
+    <link rel="stylesheet" href="../../../ui/css/search.css">
+    <link rel="stylesheet" href="../../../ui/css/custom.css">
+    <script>var uiRootPath = '../../../ui'</script>
+    <link rel="icon" href="../../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="es" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lecciones</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01_crear_figuras_primitivas.html">1. Crear Figuras Primitivas with MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02_opciones_vistas.html">2. Reconocer las opciones de vistas en MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03_utilizar_comando_in.html">3. Usar el comando Insert en MGED para dimensionar y ubicar figuras</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="04_prop_materiales.html">4. Asignación de propiedades de los materiales y trazado de rayos (Raytracing) en MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="05_expresiones_booleanas.html">5. Expresiones Booleanas</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="06_crear_una_copa.html">6. Crear una copa</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="07_prop_materiales_copa.html">7. Asignar propiedades de los materiales a una copa</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="08_prop_materiales_copa2.html">8. Asignar más propiedades de los materiales a la copa</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="09_esfera_en_caja_exhibidora.html">9. Crear una esfera en una caja exhibidora transparente</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="10_crear_taza.html">10. Crear una taza</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="11_refinar_taza.html">11. Refinando el modelo de la taza</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="12_taza_desde_gui.html">12. Crear el modelo de una taza utilizando la interfaz de MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="13_ubicar_figuras_en_3d.html">13. Ubicar figuras en espacios 3-D</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="14_ubicar_figuras_en_3d_2.html">14. Ejercicios adicionales de ubicación de imágenes en espacios 3-D</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="15_crear_camion_de_juguete.html">15. Crear un camión de juguete</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="16_mod_tech_struct.html">16. Aprender técnicas de modelado y estructuras</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Spanish</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs/index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../../index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">Spanish</a></li>
+    <li>Lecciones</li>
+    <li><a href="../mged.html">MGED</a></li>
+    <li><a href="08_prop_materiales_copa2.html">8. Asignar más propiedades de los materiales a la copa</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/translations/es/modules/lecciones/pages/mged/08_prop_materiales_copa2.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">8. Asignar más propiedades de los materiales a la copa</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>En este tutorial usted aprenderá a:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Utilizar las opciones de reflexión especular y difusa del sombreado
+de plástico.</p>
+</li>
+<li>
+<p>Asignar valores a los índices de refracción del sombreado de
+plástico.</p>
+</li>
+<li>
+<p>Asignar valores a la opción de brillo del sombreado de plástico.</p>
+</li>
+<li>
+<p>Asignar valores a la opción de extinción del sombreado de plástico.</p>
+</li>
+<li>
+<p>Experimentar con varias combinaciones de opciones del sombreado de
+plástico.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Abra la base de datos goblet.g utilizando cualquiera de métodos
+aprendidos.  Del menú Edit (Edición), seleccione la opción Combination
+Editor (Editor de combinación). Seleccione basin1.r.</p>
+</div>
+<div class="paragraph">
+<p>En el último tutorial, hemos asignado los valores para los atributos
+de transparencia y de reflexión espejada.  Ahora asignará valores de
+otras propiedades de sombreado.  Cuando selecciona el sombreado de
+plástico para la región basin1.r, ocho casillas de entrada de atributo
+aparecen en el editor de combinación.  Estas cajas contienen los
+valores que el usuario ha establecido previamente (por ejemplo, las
+que se ingresaron previamente para la transparencia y el reflejo
+espejado) o los valores por defecto que tiene el programa si no se
+especifican otros.  Cuando alguno de estos valores es modificado, el
+cambio puede ser visto entre llaves en el cuadro Shader (Sombreado)
+que muestra los ingresos en una cadena de texto además de en los
+cuadros de entrada de los atributos apropiados, como se puede apreciar
+en la siguiente imagen:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/08_goblet_combeditor.png" alt="08 goblet combeditor">
+</div>
+<div class="title">Figure 1. El Combination Editor (Editor de combinaci&#xF3;n)</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Note que en versiones posteriores a <code class="app">BRL-CAD</code> 5.2, se aplican los
+valores por defecto, pero no son visualizados en las cajas de atributo
+de sombreados.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>En este ejemplo, el cuadro de entrada de sombreado indica que la
+transparencia (tr) es de .5 y el reflejo espejado (re) es de .45.  Los
+ocho abreviaturas que se utilizan actualmente en el cuadro de entrada
+de sombreado son las siguientes:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>tr</strong> - transparency - transparencia</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>sp</strong> - specular reflectivity - reflexión especular</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ri</strong> - refractive index - índice de refracción</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ex</strong> - extinction - extinción</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>re</strong> - mirror reflectance - reflejo espejado</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>di</strong> - diffuse reflectivity - reflesión difusa</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>sh</strong> - shininess - brillo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>em</strong> - emission - emisión</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_goblet_specular_diffuse"><a class="anchor" href="#_goblet_specular_diffuse"></a>1. Reflexión especular y difusa</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cuando la luz se refleja de una superficie brillante, produce dos
+tipos de reflexiones.  Los puntos más notables son causados por
+reflexión especular.  El resto de la superficie produce la
+reflectividad difusa.  Mientras más brillante es la superficie, como
+en un vaso de cristal, mayor reflexión especular se produce.  Mientras
+más opaca sea la superficie, como en una pared pintada con pintura
+mate, más reflexión disfusa es producida.  En la ilustración
+siguiente, se muestra un modelo de la relación entre estas
+reflectividades:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/08_spec_vs_diff_reflectivity.png" alt="08 spec vs diff reflectivity">
+</div>
+<div class="title">Figure 2. Modelos de reflexi&#xF3;n especular y difusa</div>
+</div>
+<div class="paragraph">
+<p>Como se observa en la ilustración, la reflexión difusa muestra el
+color de un objeto al reflejar la luz ambiental desde del objeto.  La
+esfera de la parte superior izquierda muestra el valor máximo de
+reflexión difusa (1,0), y como resultado, el color de su superficie es
+uniforme.</p>
+</div>
+<div class="paragraph">
+<p>La reflexión especular, por otra parte, refleja el color de una luz
+fuente.  La esfera de la parte inferior derecha muestra el valor
+máximo de reflexión especular (1,0), por eso una fuente de luz blanca
+se refleja fuera de la superficie de la esfera.</p>
+</div>
+<div class="paragraph">
+<p>El rango para la reflexión, tanto especular como difusa, es entre 0,0
+y 1,0.  Sin embargo, los valores combinados de estas suelen ser igual
+a 1,0.  Recordar, si se van a establecer los valores de uno de estos
+atributos, es necesario asignar un valor correspondiente al atributo
+complementario, de manera que la combinación de los valores sea igual
+a 1,0.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_goblet_refractive_index"><a class="anchor" href="#_goblet_refractive_index"></a>2. Índice de refracción</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cuando la luz pasa a través de un medio (por ejemplo, aire) a otro
+medio de (por ejemplo, agua), se dobla de su trayectoria original.  El
+ángulo en que la luz se curva se denomina índice de refracción.
+Cuanto más disímiles son los medios, mayor es el grado de refracción
+que se producirá.  Por ejemplo, luz solar que pasa a través de un
+diamante se dobla más que la misma luz solar a través del cristal
+óptico.  El diamante tendría un mayor índice de refracción
+(aproximadamente 2,42) mientras que el vidrio óptico tendría un menor
+índice de refracción (aproximadamente 1,71).</p>
+</div>
+<div class="paragraph">
+<p>El rango del índice de refracción de <code class="app">MGED</code> es de 1,0 (el índice
+de aire) en adelante.  Este parámetro sólo es útil para los materiales
+que tienen un transparencia mayor que 0.  El siguiente dibujo de la
+luz solar pasando a través del agua muestra cómo funciona la
+refracción.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/08_refractive_index.png" alt="08 refractive index">
+</div>
+<div class="title">Figure 3. Un rayo de sol atravezando un cuerpo de agua</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_goblet_shininess"><a class="anchor" href="#_goblet_shininess"></a>3. Brillo</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>El brillo de un objeto afecta el índice del componente especular del
+sombreado de plástico.  Mientras mas brillante es la superficie de un
+objeto, menor será el reflejo de la fuente de luz en la superficie del
+objeto.  El rango de de brillo suele ser un valor entero de 1 a 10.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_goblet_extinction"><a class="anchor" href="#_goblet_extinction"></a>4. Extinción</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>El término extinción se aplica al componente transmisivo del sombreado
+del plástico, e indica la cantidad de luz absorbida por el material
+del objeto.  El valor por defecto es 0.0, y el rango puede ser
+cualquier número negativo.  Éste atributo puede afectar drásticamente
+otros atributos del sombreado, especialmente el índice de refracción.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_goblet_emission"><a class="anchor" href="#_goblet_emission"></a>5. Emisión</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Emisión es una característica relativamente nueva que se ha añadido al
+paquete <code class="app">BRL-CAD</code>. Se refiere a la cantidad de brillo
+artificial del objeto.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_goblet_shader_attributes"><a class="anchor" href="#_goblet_shader_attributes"></a>6. Aplicar atributos de material plático a la copa</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ahora que puede entender los diversos atributos del sombreado del
+plástico, es tiempo de experimentar con las formas en que afectan al
+producto final de la copa que ha creado en los últimos dos tutoriales.
+Habiendo probado los valores para la transparencia y la reflexión
+espejada, agregue los atributos de reflexión especular y difusa a
+basin1.r.  Una vez que vea cómo estos dos atributos afectan a su
+diseño, añada el índice de refracción, y a continuación, el brillo y
+la extinción.  Es posible que desee capturar algunos de estos cambios
+de manera que pueda referirse a ellos más tarde, cuando cree otro
+modelo que utiliza el mismo sombreado.  Recuerde cliquear en Aplicar
+en el Editor de combinación para que incorpore los cambios.</p>
+</div>
+<div class="paragraph">
+<p>Al cambiar los valores de los atributos del sombreado de plástico, se
+dará cuenta de que algunos cambios no alteran significativamente el
+diseño.  Esto es porque hay una variedad de formas para producir una
+mirada particular sobre el objeto.  Los siguientes son dos ejemplos de
+la copa con diversos valores de los atributos de plástico (que crean
+una diferencia notable) aplicado a basin1.r.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/08_goblet_reflectivity_1.png" alt="08 goblet reflectivity 1">
+</div>
+<div class="title">Figure 4. Copa con valor .9 de reflexi&#xF3;n especular y .1 de reflexi&#xF3;n difusa</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/08_goblet_reflectivity_2.png" alt="08 goblet reflectivity 2">
+</div>
+<div class="title">Figure 5. La misma copa con valor .5 de extinci&#xF3;n</div>
+</div>
+<div class="paragraph">
+<p>En el momento en que haya terminado de experimentar con el cambio de
+atributos del sombreado de plástico, la ventana del editor de
+combinación puede verse como la siguiente:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/08_comb_editor_window_mater_prop.png" alt="08 comb editor window mater prop">
+</div>
+<div class="title">Figure 6. La ventana del Combination Editor (Editor de combinaci&#xF3;n)</div>
+</div>
+<div class="paragraph">
+<p>Tenga en cuenta que en el cuadro de entrada de cadena de Shader se
+reflejan los valores fijados por el usuario en los cuadros de entrada
+de cada atributo (por ejemplo, la transparencia de .5), pero no se
+reflejan los valores por defecto (por ejemplo, el brillo de 10).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_goblet_material_properties2_review"><a class="anchor" href="#_goblet_material_properties2_review"></a>7. Repasemos&#8230;&#8203;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>En este tutorial usted aprendió a:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Utilizar las opciones de reflexión especular y difusa del sombreado
+de plástico.</p>
+</li>
+<li>
+<p>Asignar valores a los índices de refracción del sombreado de
+plástico.</p>
+</li>
+<li>
+<p>Asignar valores a la opción de brillo del sombreado de plástico.</p>
+</li>
+<li>
+<p>Asignar valores a la opción de extinción del sombreado de plástico.</p>
+</li>
+<li>
+<p>Experimentar con varias combinaciones de opciones del sombreado de
+plástico.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="07_prop_materiales_copa.html">7. Asignar propiedades de los materiales a una copa</a></span>
+  <span class="next"><a href="09_esfera_en_caja_exhibidora.html">9. Crear una esfera en una caja exhibidora transparente</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../ui/js/site.js"></script>
+<script src="../../../ui/js/vendor/lunr.js"></script>
+<script src="../../../ui/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/es/lecciones/mged/08_prop_materiales_copa2.html"></script>
+<script async src="../../../ui/../search-index.js"></script>
+<script async src="../../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

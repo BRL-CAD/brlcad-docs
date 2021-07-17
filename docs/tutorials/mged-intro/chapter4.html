@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>4. Assigning Material Properties and Raytracing :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/docs/tutorials/mged-intro/chapter4.html">
+    <link rel="prev" href="chapter3.html">
+    <link rel="next" href="chapter5.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../ui/css/site.css">
+    <link rel="stylesheet" href="../../../ui/css/search.css">
+    <link rel="stylesheet" href="../../../ui/css/custom.css">
+    <script>var uiRootPath = '../../../ui'</script>
+    <link rel="icon" href="../../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lessons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../lessons/mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/01_creating_primitive_shapes.html">1. Creating Primitive Shapes in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/02_learning_viewing_options.html">2. Learning Viewing Options in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/03_using_insert_command.html">3. Using the Insert Command in MGED to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/04_assign_mat_prop_rt.html">4. Assigning Material Properties and Raytracing in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/05_learning_boolean_expressions.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/06_creating_a_goblet.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/07_goblet_material_properties.html">7. Assigning Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/08_goblet_material_properties2.html">8. Assigning More Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/09_globe_in_display_box.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/10_creating_mug.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/11_refining_mug.html">11. Refining a Mug Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/12_mug_through_gui.html">12. Creating a Mug Model using the MGED Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/13_placing_shapes_in_3d.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/14_placing_shapes_in_3d_2.html">14. Additional Exercises Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/15_creating_a_toy_truck.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/16_mod_tech_struct.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Books</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../hacking/index.html">Hacking BRL-CAD</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting Started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter1.html">A Call to Arms (and Contributors)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter2.html">Feature Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developers</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter3.html">Working with Our Code</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter4.html">What Code to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter5.html">Contributing Code</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Documenters</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter6.html">Working with Our Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter7.html">Types of Documentation We Maintain</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter8.html">What Documentation to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter9.html">Contributing Documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Other Contributors</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part4/chapter10.html">You Can Help Too</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendix: Resources and Examples</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix1.html">Further References and Resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix2.html">Doc Template: New MGED Command</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix3.html">Code Example: Shooting Rays</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix4.html">Code Example: Walking Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix5.html">Code Example: Command Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix6.html">Example Code: Root Solving</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../index.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview.html">I. An Overview of BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../mged-intro.html">II. Introduction to MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="preface1.html">Preface</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="preface2.html">Acknowledgments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter1.html">1. Creating Primitive Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter2.html">2. Learning the Viewing Options</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter3.html">3. Using the Insert Command to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="chapter4.html">4. Assigning Material Properties and Raytracing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter5.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter6.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter7.html">7. Assigning Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter8.html">8. Assigning More Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter9.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter10.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter11.html">11. Refining the Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter12.html">12. Creating the Mug Through the GUI</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter13.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter14.html">14. Gaining More Practice Placing Shapes in Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter15.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="chapter16.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="appendix1.html"><code class="app">MGED</code> Commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../modeling.html">III. Modeling</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../modeling/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../modeling/chapter2.html">2. The Model Process</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../modeling/chapter3.html">3. Measuring data</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../modeling/chapter4.html">4. Organizing the Structure</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../modeling/chapter5.html">5. Developing Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../modeling/chapter6.html">5. Evaluating Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../modeling/chapter7.html">7. Logging Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendices</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../modeling/appendix1.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../modeling/appendix2.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../modeling/appendix3.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../modeling/appendix4.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../modeling/appendix5.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../modeling/appendix6.html">Using the build_region Command</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../converting.html">IV. Converting</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter2.html">2. Pertinent Characteristics of the BRL-CAD Format</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter3.html">3. Converting From/to ASCII</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter4.html">4. Converting to BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter5.html">5. Converting From BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter6.html">6. Building a New Converter</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../converting/chapter7.html">7. Postconversion Issues</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/index.html">Articles</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_pattern.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_region.html">Using the build_region Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/camo_shader.html">Camouflage shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ebm_primitive.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/gcv.html">The Geometry Conversion Library</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ged.html">GED: An Interactive Solid Modeling System</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/mged/index.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tutorial.html">Tutorial</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/gui.html">Graphical User Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/command-line-editing.html">Command Line Editing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/user-commands.html">User Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/developer-commands.html">Developer Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tcl-variables.html">Tcl Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/env.html">Environment Variable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/callback.html">Callback</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/brlcad-solid.html">BRL-CAD Solid</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/mgedrc.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/nirt.html">Interactive Raytracing: The nirt Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/overlap_tool.html">The Overlap Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/oed.html">Object Editing - the oed Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/pipes.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/projection_shader.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/tire.html">Vehicle Tire and Wheel Creation in BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/TEMPLATE.html">TEMPLATE</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Misc</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Dev Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../devguides/bool_eval_development.html">NURBS Boolean Evaluation Development Guide</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Presentations</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/brlcad-app-devel.html">Application Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="presentations:_attachments/brlcad-app-devel.html">brlcad-app-devel</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/intro-to-tcltk.html">Introduction to Tcl/Tk</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../specifications/BRL_CAD_g_format_V5.html">BRL-CAD Database Format</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Manual Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/1.html">man1</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/3.html">man3</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/5.html">man5</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/n.html">mann</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Wiki Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">page-1</span>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">BRL-CAD</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../../index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../es/index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../es/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">BRL-CAD</a></li>
+    <li>Books</li>
+    <li><a href="../index.html">Tutorials</a></li>
+    <li><a href="../mged-intro.html">II. Introduction to MGED</a></li>
+    <li><a href="chapter4.html">4. Assigning Material Properties and Raytracing</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/docs/modules/tutorials/pages/mged-intro/chapter4.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">4. Assigning Material Properties and Raytracing</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this lesson, you will:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Recall primitive shapes made previously.</p>
+</li>
+<li>
+<p>Make a region of two primitive shapes.</p>
+</li>
+<li>
+<p>Assign material properties to your primitive shapes from the Command
+Window.</p>
+</li>
+<li>
+<p>Clear the Graphics Window and draw the new region.</p>
+</li>
+<li>
+<p>Raytrace your design from the GUI.</p>
+</li>
+<li>
+<p>Use the GUI to change layers of the Graphics Window.</p>
+</li>
+<li>
+<p>Clear the Graphics Window after raytracing a model.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_assigning_material_properties_and_raytracing_opendb"><a class="anchor" href="#_assigning_material_properties_and_raytracing_opendb"></a>1. Opening the Database</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To recall the primitive shapes made in the previous lesson, start
+<code class="app">MGED</code> and go to the File menu and select Open.  A control panel
+will appear with a list of folders and files.  Select shapes.g and
+Open.  A new box will appear, and you should select OK.</p>
+</div>
+<div class="paragraph">
+<p>You should now have two windows prominently displayed on your screen.
+At the <code class="app">MGED</code> prompt in the Command Window, type:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">draw sph2.s rcc2.s <kbd>Enter</kbd></code></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_create_region"><a class="anchor" href="#_create_region"></a>2. Creating a Region</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Before you can raytrace your design, you have to make a region of the
+two shapes.  A region is an object that has uniform material
+properties.  Most applications that use <code class="app">BRL-CAD</code> models consider
+regions as the basic components of the model.  Regions are constructed
+using the basic Boolean operations of union, intersection, and
+subtraction, which are discussed in the next chapter.</p>
+</div>
+<div class="paragraph">
+<p>At the <code class="app">MGED</code> prompt, type:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r shapes2.r u sph2.s u rcc2.s <kbd>Enter</kbd></code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Make sure you key in the information correctly before you press ENTER.
+Spaces, or the lack thereof, are important.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>This command tells <code class="app">MGED</code> to:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">r</th>
+<th class="tableblock halign-center valign-top">shapes2.r</th>
+<th class="tableblock halign-center valign-top">u</th>
+<th class="tableblock halign-center valign-top">sph2.s</th>
+<th class="tableblock halign-center valign-top">u</th>
+<th class="tableblock halign-center valign-top">rcc2.s</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Make a region</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Name it shapes2.r</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Add the volume of the shape</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">sph2.s</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Add the volume of the shape</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">rcc2.s</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_assign_material_prop"><a class="anchor" href="#_assign_material_prop"></a>3. Assigning Material Properties to a Region</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now type in:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">mater shapes2.r <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p><code class="app">MGED</code> will respond with:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>   shader=
+   Shader? ('del' to delete, CR to skip)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Type in:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">plastic <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p><code class="app">MGED</code> will ask:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>   Color = (no color specified)
+   Color R G B (0..255)? ('del' to delete, CR to skip)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Type in:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">0 255 0 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>This will assign a light green color to the region. <code class="app">MGED</code> will
+now ask:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>   Inherit = 0 lower nodes (towards leaves) override
+   Inheritance (0/1)? (CR to skip)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Type:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">0 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>When you have completed this set of commands, your
+Command Window should look like the following example:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../lessons/_images/mged/04_commandwindow.png" alt="04 commandwindow">
+</div>
+<div class="title">Figure 1. The Command Window Screen</div>
+</div>
+<div class="paragraph">
+<p>The one-line version of this set of commands would be:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">mater shapes2.r plastic 0 255 0 0 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Diagrammed, this command says to:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">mater</th>
+<th class="tableblock halign-center valign-top">shapes2.r</th>
+<th class="tableblock halign-center valign-top">plastic</th>
+<th class="tableblock halign-center valign-top">0 255 0</th>
+<th class="tableblock halign-center valign-top">0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Assign material properties to:</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">the region called shapes2.r</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Make the region of plastic</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Give it a color of light green</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Do not inherit colors or material type</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_clear_window_new_region"><a class="anchor" href="#_clear_window_new_region"></a>4. Clearing the Graphics Window and Drawing the New Region</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>An easy way to clear the Graphics Window of the old design and draw
+the new region is to type at the <code class="app">MGED</code> prompt:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">B shapes2.r <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>This command tells <code class="app">MGED</code> to:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">B</th>
+<th class="tableblock halign-center valign-top">shapes2.r</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Blast (clear) the Graphics Window and draw</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">The region named shapes2.r</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The Blast command is shorthand for the combination of the Z and draw
+commands.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_raytrace_model"><a class="anchor" href="#_raytrace_model"></a>5. Raytracing Your Model</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now go to the File menu and select Raytrace.  A dialog box called the
+Raytrace Control Panel will appear.  At the top are menus for
+Framebuffer and Objects.  Select Framebuffer.  A drop-down menu will
+appear with six choices: Active, All, Rectangle Area, Overlay,
+Interlay, and Underlay.  Make sure the Active, All, and Underlay
+options are activated (as shown by the presence of a red indicator to
+the left of each choice). Select OK.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>When you select Raytrace from this dialog window, you start an
+auxiliary program (rt) of the <code class="app">BRL-CAD</code> package.  The program
+only raytraces objects that have been drawn in the Graphics Window.
+You may have many shapes, regions, or combinations in a database, but
+if they aren&#8217;t currently drawn in the Graphics Window, the raytracer
+will ignore them.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Change the background color produced by the raytracer by selecting
+Background Color in the Raytrace Control Panel.  A drop-down menu will
+appear with some predefined color choices plus a color tool.  Select
+the white option.  The select button should now appear white, in
+accordance with your selection.</p>
+</div>
+<div class="paragraph">
+<p>Next select Raytrace from the four options along the bottom of
+the box.  The Graphics Window should start changing, and you will soon
+see your design in shades of green with the wireframe superimposed on
+the design, as shown in the following example:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../lessons/_images/mged/04_raytracedshapes.png" alt="04 raytracedshapes">
+</div>
+<div class="title">Figure 2. Raytraced Shapes</div>
+</div>
+<div class="paragraph">
+<p>As we have seen, you can specify the background color for the
+raytraced image.</p>
+</div>
+<div class="paragraph">
+<p>You can also fill the entire framebuffer with the background color.
+To do this, select the desired color and then click the fbclear
+(framebuffer clear) button at the bottom of the Raytrace Control
+Panel.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_layers_graphics_window"><a class="anchor" href="#_layers_graphics_window"></a>6. Changing Layers of the Graphics Window</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Graphics Window of <code class="app">MGED</code> is used to display different types
+of graphical information: 3D wireframes and 2D pixels (or
+images). Conceptually, each type of data occupies a separate layer in
+the display.  The 3D wireframes occupy the wireframe layer, while the
+2D pixels (images) occupy the framebuffer layer.  These layers can be
+thought of as transparencies, and the order in which they are stacked
+and displayed can be changed.</p>
+</div>
+<div class="paragraph">
+<p>As mentioned previously, there is a Framebuffer menu within the
+Raytrace Control Panel.  At the top of this menu is a toggle button
+labeled Active.  This turns the display of the framebuffer layer on
+and off.  Near the bottom of the same menu are three radio buttons:
+Overlay, Interlay, and Underlay.  When the underlay mode is selected,
+the pixel data are displayed under or behind the vector data.
+Conversely, when the overlay mode is selected, the pixel data are in
+front of the vector data.  The interlay option is similar to the
+overlay mode.  The subtle difference is an advanced topic not covered
+here.</p>
+</div>
+<table class="tableblock frame-none grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../../lessons/_images/mged/04_raytracedshapes.png" alt="04 raytracedshapes">
+</div>
+<div class="title">Figure 3. Framebuffer in Underlay Mode</div>
+</div></div></td>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../../lessons/_images/mged/04_fb_overlay_mode.png" alt="04 fb overlay mode">
+</div>
+<div class="title">Figure 4. Framebuffer in Overlay Mode</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>To see how this works, go to the framebuffer menu and select Overlay.
+Notice that the wireframe representation disappears.  Where does it
+go? If you answered "behind the framebuffer," you would be correct.
+To view the model&#8217;s geometry, you would have to make the framebuffer
+inactive or select underlay mode.</p>
+</div>
+<div class="paragraph">
+<p>The wireframe layer has a yellow dot in the center that marks the
+center of the view talked about in Lesson 2.  This allows you to
+determine whether the framebuffer is in overlay or underlay mode.  If
+you can see the yellow dot, the framebuffer is in underlay mode.  If
+you&#8217;ve told <code class="app">MGED</code> to draw some geometry and the Graphics Window
+seems to remain blank, you are probably seeing a blank framebuffer
+masking the wireframe layer.</p>
+</div>
+<div class="paragraph">
+<p>Note that you can change the view in the wireframe, but the view in
+the framebuffer does not automatically update to match.  It is not
+possible to directly manipulate the view in the framebuffer.  You must
+raytrace again in order to update the framebuffer image.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_clear_graphics_window"><a class="anchor" href="#_clear_graphics_window"></a>7. Clearing the Graphics Window</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To completely clear the Graphics Window, you have to handle both the
+wireframe and framebuffer layers.  Recall that you can clear the
+wireframe layer with the Z command.  For the framebuffer layer, there
+is the fbclear button on the Raytrace Control Panel.</p>
+</div>
+<div class="paragraph">
+<p>In some instances, you may prefer to turn off the framebuffer instead
+of clearing it.  When the framebuffer is turned off, <code class="app">MGED</code> runs
+faster because it doesn&#8217;t have to redraw the framebuffer each time it
+updates the display.  You can turn the framebuffer on and off by
+toggling the Active item in the Raytrace Control Panel&#8217;s framebuffer
+menu.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Note that in <code class="app">BRL-CAD</code> versions 5.1 and later, turning off the
+framebuffer does not destroy the image it contains.  Turning it back
+on displays the same image.  However, in earlier versions of the
+package, the contents of the framebuffer are lost when it is
+turned off.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_assigning_material_properties_and_raytracing_review"><a class="anchor" href="#_assigning_material_properties_and_raytracing_review"></a>8. Review</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this lesson you:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Recalled primitive shapes made previously.</p>
+</li>
+<li>
+<p>Made a region of two primitive shapes.</p>
+</li>
+<li>
+<p>Assigned material properties to your primitive shapes from the
+Command Window.</p>
+</li>
+<li>
+<p>Cleared the Graphics Window and draw the new region.</p>
+</li>
+<li>
+<p>Raytraced your design from the GUI.</p>
+</li>
+<li>
+<p>Used the GUI to change layers of the Graphics Window.</p>
+</li>
+<li>
+<p>Cleared the Graphics Window after raytracing a model.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="chapter3.html">3. Using the Insert Command to Size and Place Shapes</a></span>
+  <span class="next"><a href="chapter5.html">5. Learning About Boolean Expressions</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../ui/js/site.js"></script>
+<script src="../../../ui/js/vendor/lunr.js"></script>
+<script src="../../../ui/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/docs/tutorials/mged-intro/chapter4.html"></script>
+<script async src="../../../ui/../search-index.js"></script>
+<script async src="../../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

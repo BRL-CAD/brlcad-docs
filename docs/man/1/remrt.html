@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>REMRT(1) :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/docs/man/1/remrt.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../ui/css/site.css">
+    <link rel="stylesheet" href="../../../ui/css/search.css">
+    <link rel="stylesheet" href="../../../ui/css/custom.css">
+    <script>var uiRootPath = '../../../ui'</script>
+    <link rel="icon" href="../../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article manpage">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lessons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../lessons/mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/01_creating_primitive_shapes.html">1. Creating Primitive Shapes in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/02_learning_viewing_options.html">2. Learning Viewing Options in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/03_using_insert_command.html">3. Using the Insert Command in MGED to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/04_assign_mat_prop_rt.html">4. Assigning Material Properties and Raytracing in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/05_learning_boolean_expressions.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/06_creating_a_goblet.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/07_goblet_material_properties.html">7. Assigning Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/08_goblet_material_properties2.html">8. Assigning More Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/09_globe_in_display_box.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/10_creating_mug.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/11_refining_mug.html">11. Refining a Mug Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/12_mug_through_gui.html">12. Creating a Mug Model using the MGED Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/13_placing_shapes_in_3d.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/14_placing_shapes_in_3d_2.html">14. Additional Exercises Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/15_creating_a_toy_truck.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/16_mod_tech_struct.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Books</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../hacking/index.html">Hacking BRL-CAD</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting Started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter1.html">A Call to Arms (and Contributors)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter2.html">Feature Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developers</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter3.html">Working with Our Code</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter4.html">What Code to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter5.html">Contributing Code</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Documenters</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter6.html">Working with Our Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter7.html">Types of Documentation We Maintain</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter8.html">What Documentation to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter9.html">Contributing Documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Other Contributors</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part4/chapter10.html">You Can Help Too</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendix: Resources and Examples</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix1.html">Further References and Resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix2.html">Doc Template: New MGED Command</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix3.html">Code Example: Shooting Rays</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix4.html">Code Example: Walking Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix5.html">Code Example: Command Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix6.html">Example Code: Root Solving</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/index.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../tutorials/overview.html">I. An Overview of BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/mged-intro.html">II. Introduction to MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/preface1.html">Preface</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/preface2.html">Acknowledgments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter1.html">1. Creating Primitive Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter2.html">2. Learning the Viewing Options</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter3.html">3. Using the Insert Command to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter4.html">4. Assigning Material Properties and Raytracing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter5.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter6.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter7.html">7. Assigning Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter8.html">8. Assigning More Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter9.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter10.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter11.html">11. Refining the Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter12.html">12. Creating the Mug Through the GUI</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter13.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter14.html">14. Gaining More Practice Placing Shapes in Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter15.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter16.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/appendix1.html"><code class="app">MGED</code> Commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/modeling.html">III. Modeling</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter2.html">2. The Model Process</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter3.html">3. Measuring data</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter4.html">4. Organizing the Structure</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter5.html">5. Developing Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter6.html">5. Evaluating Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter7.html">7. Logging Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendices</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix1.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix2.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix3.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix4.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix5.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix6.html">Using the build_region Command</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/converting.html">IV. Converting</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter2.html">2. Pertinent Characteristics of the BRL-CAD Format</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter3.html">3. Converting From/to ASCII</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter4.html">4. Converting to BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter5.html">5. Converting From BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter6.html">6. Building a New Converter</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter7.html">7. Postconversion Issues</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/index.html">Articles</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_pattern.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_region.html">Using the build_region Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/camo_shader.html">Camouflage shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ebm_primitive.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/gcv.html">The Geometry Conversion Library</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ged.html">GED: An Interactive Solid Modeling System</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/mged/index.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tutorial.html">Tutorial</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/gui.html">Graphical User Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/command-line-editing.html">Command Line Editing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/user-commands.html">User Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/developer-commands.html">Developer Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tcl-variables.html">Tcl Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/env.html">Environment Variable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/callback.html">Callback</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/brlcad-solid.html">BRL-CAD Solid</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/mgedrc.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/nirt.html">Interactive Raytracing: The nirt Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/overlap_tool.html">The Overlap Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/oed.html">Object Editing - the oed Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/pipes.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/projection_shader.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/tire.html">Vehicle Tire and Wheel Creation in BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/TEMPLATE.html">TEMPLATE</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Misc</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Dev Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../devguides/bool_eval_development.html">NURBS Boolean Evaluation Development Guide</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Presentations</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/brlcad-app-devel.html">Application Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="presentations:_attachments/brlcad-app-devel.html">brlcad-app-devel</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/intro-to-tcltk.html">Introduction to Tcl/Tk</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../specifications/BRL_CAD_g_format_V5.html">BRL-CAD Database Format</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Manual Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../1.html">man1</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../3.html">man3</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../5.html">man5</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../n.html">mann</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Wiki Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">page-1</span>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">BRL-CAD</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../../index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../es/index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../es/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">BRL-CAD</a></li>
+    <li><a href="remrt.html">REMRT(1)</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/docs/modules/man/pages/1/remrt.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">REMRT(1)</h1>
+<div class="sect1">
+<h2 id="_name"><a class="anchor" href="#_name"></a>NAME</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>remrt - network distributed (remote) ray-trace dispatcher</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_synopsis"><a class="anchor" href="#_synopsis"></a>SYNOPSIS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>remrt</strong> [<em>options</em>]&#8230;&#8203; <em>model.g</em> <em>objects</em>&#8230;&#8203;</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description"><a class="anchor" href="#_description"></a>DESCRIPTION</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong class="cmd">remrt</strong> is intended to be an entirely plug-compatible replacement
+for the <a href="rt.html" class="page"><strong>rt</strong>(1)</a> program.  While <em>rt</em> can operate
+on more than one processor of a shared memory MIMD style
+multi-processor, it can not spread the work out across the
+network. <strong class="cmd">remrt</strong> and its companion program
+<a href="#man:1/rtsrv.adoc" class="page unresolved"><strong>rtsrv</strong>(1)</a> implement a
+<a href="../3/libpkg.html" class="page"><strong>libpkg</strong>(3)</a>-based protocol for distributing
+the task of ray-traced rendering out to an arbitrary number of
+processors on the network. Those processors can be from an arbitrary
+mix of vendors, with differing instruction sets and data
+representations, operating at widely different speeds.</p>
+</div>
+<div class="paragraph">
+<p><strong class="cmd">remrt</strong> provides two levels of fault-tolerance in its distributed
+computation. First, any <em>rtsrv</em> processor which fails (or whose
+network link fails) will have its work reassigned automatically by
+<strong class="cmd">remrt</strong> to other processors, so that the failure of that
+processor does not hold up the progress of the computation.  On a
+regular interval <strong class="cmd">remrt</strong> attempts to restart computation on
+failed processors marked "active", so that when failed systems become
+available again they are put back to work. Second, <strong class="cmd">remrt</strong> offers
+a form of "checkpoint-restart" by carefully writing all received pixel
+data immediately to disk.  If the machine running <strong class="cmd">remrt</strong> should
+fail, when <strong class="cmd">remrt</strong> is restarted, it will determine what work
+remains to be done and restart all the <em>rtsrv</em> processes on the remote
+machines.</p>
+</div>
+<div class="paragraph">
+<p><strong class="cmd">remrt</strong> takes exactly the same set of command line arguments as
+<a href="rt.html" class="page"><strong>rt</strong>(1)</a>. For a full discussion of those options,
+consult the <a href="rt.html" class="page"><strong>rt</strong>(1)</a> manual page. From within
+<a href="mged.html" class="page"><strong>mged</strong>(1)</a> the <strong class="cmd">remrt</strong> program can be run
+from the current <em>mged</em> view by giving the <em>mged</em> command</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>rrt remrt -M -s###</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>where "###" is the image resolution desired.</p>
+</div>
+<div class="paragraph">
+<p><strong class="cmd">remrt</strong> depends on the Berkeley <em>rsh (1)</em> remote shell command
+and the user&#8217;s corresponding ".rhosts" file to automatically initiate
+remote computation.</p>
+</div>
+<div class="paragraph">
+<p><strong class="cmd">remrt</strong> requires a control file called ".remrtrc" which specifies
+a few essential parameters of the server machines (network hosts) that
+are to participate in the distributed computation.  The ".remrtrc"
+file contains a list of normal <strong class="cmd">remrt</strong> commands which are to be
+executed before distributed processing is to begin. This can be useful
+for establishing a variety of user-specific defaults. However, the
+most important command to provide is a "host" command to describe each
+of the remote hosts that will (or may) participate in the distributed
+computation. Here is a sample ".remrt" file:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>    host wolf	passive cd /tmp/cad/.remrt.4d
+    host voyage	always cd /tmp/cad/.remrt.4d
+    host whiz	hacknight convert /tmp</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The first argument to the "host" command is the name of the server
+machine. It will be converted to a fully qualified name by calling
+<a href="#man:3/gethostbyname.adoc" class="page unresolved"><strong>gethostbyname</strong>(3)</a> and
+<a href="#man:3/gethostbyaddr.adoc" class="page unresolved"><strong>gethostbyaddr</strong>(3)</a>.</p>
+</div>
+<div class="paragraph">
+<p>The second argument to the "host" command describes "when" this
+machine should be used.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><em>always</em></dt>
+<dd>
+<p>says that whenever this host is not participating in the
+computation, repeated attempts should be made (every 5 minutes) to
+start an <em>rtsrv</em> process on that machine. This option is most useful
+for machines where the system administrator and/or owner of the
+machine won&#8217;t mind your using the machine at any time.  (Note that
+<em>rtsrv</em> runs at the lowest priority by default, so this isn&#8217;t too
+terribly uncivilized.  But be polite and ask first.)</p>
+</dd>
+<dt class="hdlist1"><em>night</em></dt>
+<dd>
+<p>indicates that the machine should only be used during the
+night and on weekends.  Night extends from 1800 through 0000 to
+0800\. Saturday and Sunday are considered to be in night time for the
+entire day.</p>
+</dd>
+<dt class="hdlist1"><em>hacknight</em></dt>
+<dd>
+<p>indicates that the machine is owned by a late-night
+"hacker", and can be used while that hacker is likely to be
+asleep. Hacking tends to run from 1300 through 0000 to 0400, so
+<em>hacknight</em> is the time period from 0400 to 1300.</p>
+</dd>
+<dt class="hdlist1"><em>passive</em></dt>
+<dd>
+<p>indicates that <strong class="cmd">remrt</strong> should never attempt to
+initiate an <em>rtsrv</em> process on this machine, but if the user should
+happen to start <em>rtsrv</em> manually on the machine and direct it to join
+the computational fray, then the necessary information will be
+available.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>If an unlisted machine should join the fray, it will be added with a
+"when" value of <em>passive</em> and a "where" value of <em>convert</em>. When an
+<em>rtsrv</em> passes from night into day, it is automatically terminated by
+<strong class="cmd">remrt</strong> at the appointed time.</p>
+</div>
+<div class="paragraph">
+<p>The third argument to the "host" command is the "where" parameter,
+which indicates where the BRL-CAD ".g" file (and any related texture
+maps) can be found.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><em>cd</em></dt>
+<dd>
+<p>indicates that the <em>rtsrv</em> program should change directory
+<a href="#man:2/cd.adoc" class="page unresolved"><strong>cd</strong>(2)</a> to the indicated directory path, and
+should just read the data files in that directory as <em>rt</em> normally
+would. This can be used to specify NFS or RFS mounted remote
+directories, or static copies of the binary database file(s) needed to
+perform the ray-tracing. This is the most efficient way of operating
+<em>rtsrv</em>, but it also requires some manual preparation on the part of
+the user to install all the required files in the designated location.</p>
+</dd>
+<dt class="hdlist1"><em>convert</em></dt>
+<dd>
+<p>indicates that <strong class="cmd">remrt</strong> should send across an ASCII
+machine-independent version of the ".g" database file using the
+command:</p>
+<div class="literalblock">
+<div class="content">
+<pre>asc2g &lt; file.g | rsh host 'cd directory; g2asc &gt; file.g'</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>before starting up the <em>rtsrv</em> program in that same directory. This
+relieves the user of the burden of setting up the ".g" database file,
+but suffers from several drawbacks. First, the transmission of a large
+database can take a noticeable amount of time. Second, should the
+server host go down and then re-join the fray, the database will be
+sent again, because <strong class="cmd">remrt</strong> has no easy way to tell if the
+previous ".g" file is still intact after the crash/restart. Third,
+<strong class="cmd">remrt</strong> has no way to tell what auxiliary files might be needed
+for this ".g" file, and thus can not send them automatically. If the
+".g" file references height field, extruded bit-map, or volumetric
+solids, the associated data files will not be present on a <em>convert</em>
+mode server.  The same applies for texture map and bump map files.</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong class="cmd">remrt</strong> uses several different strategies for optimizing the
+dispatching of work. These can be controlled by the "allocate"
+command. If "allocate frame" has been specified, then the work
+allocation method is a "free for all", allocating work from one frame
+at a time to all servers as they become ready for more. This maximizes
+the CPU overhead for prepping (because all CPUs will prep all frames),
+but it also provides the shortest wall-clock time to getting the first
+frame finished. This mode is recommended for demonstrations, and other
+situations where people are sitting around waiting for results to
+appear on the screen.</p>
+</div>
+<div class="paragraph">
+<p>If the "allocate load" command has been given, then new servers will
+not be assigned to a given frame unless there is at least enough work
+remaining on that frame to require 10 percent of that server&#8217;s
+measured performance capacity. Otherwise the server is started on a
+subsequent frame.</p>
+</div>
+<div class="paragraph">
+<p>If the "allocate movie" command is given, then each server is
+allocated a whole frame to do.  This minimizes the CPU time spent in
+the overhead of prepping the frame, and tends to maximize overall
+throughput, at the price of making you wait a long time for the first
+frame to finish.  This mode is best used when crunching out large
+numbers of frames for an animation. (See also the
+<a href="#man:1/scriptsort.adoc" class="page unresolved"><strong>scriptsort</strong>(1)</a> command for a clever
+power-of-two script rearrangement technique first proposed by Jim
+Blinn).</p>
+</div>
+<div class="paragraph">
+<p>The output can be stored either in a file, or sent to the current
+framebuffer, the same as with <a href="rt.html" class="page"><strong>rt</strong>(1)</a>.</p>
+</div>
+<div class="paragraph">
+<p>When <strong class="cmd">remrt</strong> is run without command line arguments, it enters an
+interactive mode.  In this mode, the current framebuffer can be
+assigned and released, frames can be added to the list of pending
+work, and many other control and status commands can be used.</p>
+</div>
+<div class="paragraph">
+<p>Normally <strong class="cmd">remrt</strong> runs in a batch mode, taking all its information
+from the command line, the script file on stdin, and the ".remrtrc"
+file. If you wish to issue an interactive-style command to
+<strong class="cmd">remrt</strong> while it is running in batch mode, this can be
+accomplished by giving an extra argument to <em>rtsrv</em>, which will simply
+pass on the command and exit.</p>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>rtsrv server_host 4446 status</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>would send the command "status" to the <strong class="cmd">remrt</strong> process running on
+the machine called "server_host" and listening at port 4446. 4446 is
+the port used by the first copy of <strong class="cmd">remrt</strong> running on a machine.
+If a second copy of <strong class="cmd">remrt</strong> is started while the first one
+continues to run, it will be assigned port 4447.  One is added to the
+port number repeatedly until an available port is found. Normally you
+do not need to worry about which port is being used, unless you wish
+to send commands there directly. The
+<a href="#man:1/netstat.adoc" class="page unresolved"><strong>netstat</strong>(1)</a> command can sometimes be useful
+to track down which ports are being used.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_unknown_title"><a class="anchor" href="#_unknown_title"></a>Unknown Title!</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="title">Example 1. Performing a Basic remrt/rtsrv Raytrace</div>
+<div class="content">
+<div class="paragraph">
+<p>The following steps will set up a local (single machine) example remrt
+session. This does not utilize the full power of the remrt system, but
+will illustrate how the individual pieces relate to each other.
+Rather than use rsh, each process will be launched manually.</p>
+</div>
+<div class="paragraph">
+<p>Launch an <strong class="cmd">fbserv</strong> instance on the desired port and with the
+desired type (we will use port 0 and /dev/X for a Linux-based X11
+rendering - windows users can try /dev/wgl.) For a somewhat larger
+render we specify a size of 2048 pixels square.</p>
+</div>
+<div class="paragraph">
+<p><code class="ui">fbserv -s2048 -p0 -F/dev/X</code></p>
+</div>
+<div class="paragraph">
+<p>If an graphical framebuffer was specified, a window should appear.
+Otherwise, fbserv will silently wait for input.</p>
+</div>
+<div class="paragraph">
+<p>In MGED, set up the scene you wish to render and then save a script
+with <strong class="cmd">saveview</strong></p>
+</div>
+<div class="paragraph">
+<p><code class="ui">saveview remrt.rt</code></p>
+</div>
+<div class="paragraph">
+<p>Edit the script and replace the <strong class="cmd">rt</strong> command with <strong class="cmd">remrt</strong>.
+Replace the output file specification (<strong class="opt">-o filename</strong>) with a -F0
+option to point the render to the fbserv started in the previous
+step. Also add a -s2048 option to specify a rendering size to match
+that provided to the fbserv.</p>
+</div>
+<div class="paragraph">
+<p>Run the script to launch remrt.  You should see output indicating the
+program has launched.  (Note: the port number printed by the default
+output is not useful - you want to use 4446 by default to connect to
+remrt.)</p>
+</div>
+<div class="paragraph">
+<p><code class="ui">./remrt.rt</code></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>08/22 21:51:41 machinename BRL-CAD Release 7.30.0  Network-Distributed RT (REMRT)
+    Sat, 22 Aug 2020 11:24:22 -0400, Compilation 1
+    user@machinename
+
+pkg_permserver(rtsrv, 8): unknown service
+08/22 21:51:41 Automatic REMRT on machine
+08/23 21:51:41 Assigned LIBPKG permport 24081
+08/23 21:51:41 Listening at TCP port 4446
+08/23 21:51:41 Reading script on stdin
+08/22 21:51:41 Starting to scan animation script
+08/22 21:51:41 Animation script loaded
+08/22 21:51:41 Worker assignment interval=5 seconds:
+   Server   Last  Last   Average  Cur   Machine
+    State   Lump Elapsed pix/sec Frame   Name
+  -------- ----- ------- ------- ----- -------------
+08/22 21:51:41 Seeking servers to start</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that it is seeking servers - we have not given <strong class="cmd">remrt</strong> any
+instructions on how to start its own.  To start a server and see the
+system work, we set up a local directory containing the same .g file
+we used to set up the scene, and from that directory run
+<strong class="cmd">rtsrv</strong>. (For these purposes we also add the <strong class="opt">-d</strong> so we can
+see more of what is happening. Without this option, if anything isn&#8217;t
+set up correctly rtsrv can fail with cryptic errors.)</p>
+</div>
+<div class="paragraph">
+<p><code class="ui">rtsrv -d machinename 4446</code></p>
+</div>
+<div class="paragraph">
+<p>If successful, both <strong class="cmd">remrt</strong> and <strong class="cmd">rtsrv</strong> will being producing
+output. The <strong class="cmd">rtsrv</strong> will be more verbose, and should look like
+the following:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>PIXELS fr=0 pix=3588096..3592191, rays=3712, cpu=0.153336
+ph_enqueue: 3592192 3596287 0
+PIXELS fr=0 pix=3592192..3596287, rays=3856, cpu=0.143813
+ph_enqueue: 3596288 3600383 0
+PIXELS fr=0 pix=3596288..3600383, rays=3456, cpu=0.145104
+ph_enqueue: 3600384 3604479 0
+PIXELS fr=0 pix=3600384..3604479, rays=4032, cpu=0.145221
+ph_enqueue: 3604480 3608575 0
+PIXELS fr=0 pix=3604480..3608575, rays=3776, cpu=0.141353
+ph_enqueue: 3608576 3612671 0
+PIXELS fr=0 pix=3608576..3612671, rays=3696, cpu=0.13579
+ph_enqueue: 3612672 3616767 0</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Upon completion, remrt will notify the user and exit.  For this
+examle, the full remrt output is:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>08/22 21:51:41 machinename BRL-CAD Release 7.31.0  Network-Distributed RT (REMRT)
+    Sat, 22 Aug 2020 11:24:22 -0400, Compilation 1
+    user@machinename
+
+pkg_permserver(rtsrv, 8): unknown service
+08/22 21:51:41 Automatic REMRT on machinename
+08/22 21:51:41 Listening at port 24081, reading script on stdin
+08/22 21:51:41 Starting to scan animation script
+08/22 21:51:41 Animation script loaded
+08/22 21:51:41 Worker assignment interval=5 seconds:
+   Server   Last  Last   Average  Cur   Machine
+    State   Lump Elapsed pix/sec Frame   Name
+  -------- ----- ------- ------- ----- -------------
+08/22 21:51:41 Seeking servers to start
+host_lookup_by_hostent(localhost) got localhost?
+08/22 21:54:32 127.0.0.1: using 12 of 12 cpus
+08/22 21:54:32 127.0.0.1 dirbuild OK (Output from STEP converter step-g.)
+08/22 21:54:32 127.0.0.1: process_cmd 'opt -w2048 -n2048 -H0 -p0 -U0 -J0 -A0.4 -l0 -E1.41421 -x0 -X0 -T5.000000e-04/0.000000e+00'
+08/22 21:54:32 127.0.0.1: Using tolerance 0
+08/22 21:54:32 127.0.0.1: process_cmd 'viewsize 9.86571722597487e+02'
+08/22 21:54:32 127.0.0.1: process_cmd 'orientation 2.48097349045873e-01 4.76590573266048e-01 7.48097349045873e-01 3.89434830518390e-01'
+08/22 21:54:32 127.0.0.1: process_cmd 'eye_pt 1.01790192500394e+04 6.80791388110900e+03 5.76220366705708e+03'
+08/22 21:54:32 127.0.0.1: process_cmd 'clean'
+08/22 21:54:33 127.0.0.1: BRL-CAD Release 7.31.0  The BRL-CAD Optical Shader Library
+    Sat, 22 Aug 2020 11:24:22 -0400, Compilation 1
+    user@machinename
+08/22 21:54:33 127.0.0.1: PREP: cpu = 9.7e-05 sec, elapsed = 0.000109 sec
+    parent: 0.0user 0.0sys 0:00real 0% i+d maxrss +pf csw
+  children: 0.0user 0.0sys 0:00real 0% i+d maxrss +pf csw
+08/22 21:54:33 127.0.0.1: NUBSP: 0 cut, 1 box (1 empty)
+08/22 21:54:33 127.0.0.1 gettrees OK (Document)
+08/22 21:54:34 127.0.0.1: shade_inputs(Brep_1.s) flip N xy=1292, 238 ID_BREP surf=125 dot=0.422618
+08/22 21:54:34 127.0.0.1: center: 10236.048570366667 7005.4508761769466 5419.0434225048521
+08/22 21:54:34 127.0.0.1: dir: -0.74240387650610384 -0.51983679072568423 -0.42261826174069994
+08/22 21:54:35 127.0.0.1: shade_inputs(Brep_1.s) flip N xy=1090, 331 ID_BREP surf=37 dot=0.422618
+08/22 21:54:35 127.0.0.1: center: 10276.352963334217 6914.8807626523731 5459.6463522037802
+08/22 21:54:35 127.0.0.1: dir: -0.74240387650610384 -0.51983679072568423 -0.42261826174069994
+08/22 21:55:58 127.0.0.1: shade_inputs(Brep_1.s) flip N xy=1069, 1335 ID_BREP surf=171 dot=0.422618
+08/22 21:55:58 127.0.0.1: center: 10114.720787667989 6789.3550779060624 5897.983356695433
+08/22 21:55:58 127.0.0.1: dir: -0.74240387650610384 -0.51983679072568423 -0.42261826174069994
+08/22 21:56:16 Frame 0 DONE: 103.085 elapsed sec, 3890128 rays/1189.42 cpu sec
+08/22 21:56:16 RTFM=37737.1 rays/sec (3270.61 rays/cpu sec)
+08/22 21:56:16 All work done!
+08/22 21:56:16 Task accomplished</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The framebuffer started in the beginning will now hold the image
+results.  To save those results to a file, the <strong class="cmd">fb-png</strong> is used:</p>
+</div>
+<div class="paragraph">
+<p><code class="ui">fb-png -F0 -s2048 image.png</code></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also"><a class="anchor" href="#_see_also"></a>SEE ALSO</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="#man:1/rtsrv.adoc" class="page unresolved"><strong>rtsrv</strong>(1)</a>, <a href="rt.html" class="page"><strong>rt</strong>(1)</a>,
+<a href="#man:1/scriptsort.adoc" class="page unresolved"><strong>scriptsort</strong>(1)</a>,
+<a href="brlcad.html" class="page"><strong>brlcad</strong>(1)</a>, <a href="mged.html" class="page"><strong>mged</strong>(1)</a>,
+<a href="#man:1/lgt.adoc" class="page unresolved"><strong>lgt</strong>(1)</a>, <a href="pix-fb.html" class="page"><strong>pix-fb</strong>(1)</a>,
+<a href="#man:1/rtray.adoc" class="page unresolved"><strong>rtray</strong>(1)</a>, <a href="#man:1/rtpp.adoc" class="page unresolved"><strong>rtpp</strong>(1)</a>,
+<a href="../3/librt.html" class="page"><strong>librt</strong>(3)</a>, <a href="#man:5V/ray.adoc" class="page unresolved"><strong>ray</strong>(5V)</a>,
+<a href="../5/pix.html" class="page"><strong>pix</strong>(5)</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_diagnostics"><a class="anchor" href="#_diagnostics"></a>DIAGNOSTICS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Numerous error conditions are possible. Descriptive messages are
+printed on standard error.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also2"><a class="anchor" href="#_see_also2"></a>SEE ALSO</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>M. Muuss, "<em>Workstations</em>, <em>Networking</em>, <em>Distributed Graphics</em>, <em>and
+Parallel Processing</em>", in "<em>Computer Graphics Techniques</em>: <em>Theory and
+Practice</em>", ed: Rogers &amp; Earnshaw, Springer Verlag, New York, pages
+409-472</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bugs"><a class="anchor" href="#_bugs"></a>BUGS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Most deficiencies observed while using the <strong class="cmd">remrt</strong> program are
+usually with the <a href="rt.html" class="page"><strong>rt</strong>(1)</a> program, with which it
+shares a substantial amount of common code, or with the
+<a href="../3/librt.html" class="page"><strong>librt</strong>(3)</a> library. If a frame fails to render
+properly, try processing it on a single machine using
+<a href="rt.html" class="page"><strong>rt</strong>(1)</a> to determine if the problem is in the
+ray-tracing side of things, or the distributed computation side of
+things.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_author"><a class="anchor" href="#_author"></a>AUTHOR</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>BRL-CAD Team</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright"><a class="anchor" href="#_copyright"></a>COPYRIGHT</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This software is Copyright (c) 1989-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bug_reports"><a class="anchor" href="#_bug_reports"></a>BUG REPORTS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Reports of bugs or problems should be submitted via electronic mail to
+<a href="mailto:devs@brlcad.org">devs@brlcad.org</a></p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../ui/js/site.js"></script>
+<script src="../../../ui/js/vendor/lunr.js"></script>
+<script src="../../../ui/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/docs/man/1/remrt.html"></script>
+<script async src="../../../ui/../search-index.js"></script>
+<script async src="../../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

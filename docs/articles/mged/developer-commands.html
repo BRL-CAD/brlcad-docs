@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Developer Commands :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/docs/articles/mged/developer-commands.html">
+    <link rel="prev" href="user-commands.html">
+    <link rel="next" href="tcl-variables.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../ui/css/site.css">
+    <link rel="stylesheet" href="../../../ui/css/search.css">
+    <link rel="stylesheet" href="../../../ui/css/custom.css">
+    <script>var uiRootPath = '../../../ui'</script>
+    <link rel="icon" href="../../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lessons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../lessons/mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/01_creating_primitive_shapes.html">1. Creating Primitive Shapes in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/02_learning_viewing_options.html">2. Learning Viewing Options in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/03_using_insert_command.html">3. Using the Insert Command in MGED to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/04_assign_mat_prop_rt.html">4. Assigning Material Properties and Raytracing in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/05_learning_boolean_expressions.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/06_creating_a_goblet.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/07_goblet_material_properties.html">7. Assigning Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/08_goblet_material_properties2.html">8. Assigning More Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/09_globe_in_display_box.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/10_creating_mug.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/11_refining_mug.html">11. Refining a Mug Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/12_mug_through_gui.html">12. Creating a Mug Model using the MGED Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/13_placing_shapes_in_3d.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/14_placing_shapes_in_3d_2.html">14. Additional Exercises Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/15_creating_a_toy_truck.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/16_mod_tech_struct.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Books</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../hacking/index.html">Hacking BRL-CAD</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting Started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter1.html">A Call to Arms (and Contributors)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter2.html">Feature Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developers</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter3.html">Working with Our Code</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter4.html">What Code to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter5.html">Contributing Code</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Documenters</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter6.html">Working with Our Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter7.html">Types of Documentation We Maintain</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter8.html">What Documentation to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter9.html">Contributing Documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Other Contributors</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part4/chapter10.html">You Can Help Too</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendix: Resources and Examples</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix1.html">Further References and Resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix2.html">Doc Template: New MGED Command</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix3.html">Code Example: Shooting Rays</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix4.html">Code Example: Walking Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix5.html">Code Example: Command Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix6.html">Example Code: Root Solving</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/index.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../tutorials/overview.html">I. An Overview of BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/mged-intro.html">II. Introduction to MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/preface1.html">Preface</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/preface2.html">Acknowledgments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter1.html">1. Creating Primitive Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter2.html">2. Learning the Viewing Options</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter3.html">3. Using the Insert Command to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter4.html">4. Assigning Material Properties and Raytracing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter5.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter6.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter7.html">7. Assigning Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter8.html">8. Assigning More Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter9.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter10.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter11.html">11. Refining the Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter12.html">12. Creating the Mug Through the GUI</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter13.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter14.html">14. Gaining More Practice Placing Shapes in Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter15.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter16.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/appendix1.html"><code class="app">MGED</code> Commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/modeling.html">III. Modeling</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter2.html">2. The Model Process</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter3.html">3. Measuring data</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter4.html">4. Organizing the Structure</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter5.html">5. Developing Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter6.html">5. Evaluating Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter7.html">7. Logging Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendices</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix1.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix2.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix3.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix4.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix5.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix6.html">Using the build_region Command</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/converting.html">IV. Converting</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter2.html">2. Pertinent Characteristics of the BRL-CAD Format</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter3.html">3. Converting From/to ASCII</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter4.html">4. Converting to BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter5.html">5. Converting From BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter6.html">6. Building a New Converter</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter7.html">7. Postconversion Issues</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../index.html">Articles</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../build_pattern.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../build_region.html">Using the build_region Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../camo_shader.html">Camouflage shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../ebm_primitive.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../gcv.html">The Geometry Conversion Library</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../ged.html">GED: An Interactive Solid Modeling System</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial.html">Tutorial</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gui.html">Graphical User Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="command-line-editing.html">Command Line Editing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="user-commands.html">User Commands</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="developer-commands.html">Developer Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tcl-variables.html">Tcl Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="env.html">Environment Variable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="callback.html">Callback</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="brlcad-solid.html">BRL-CAD Solid</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../mgedrc.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../nirt.html">Interactive Raytracing: The nirt Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../overlap_tool.html">The Overlap Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../oed.html">Object Editing - the oed Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../pipes.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../projection_shader.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tire.html">Vehicle Tire and Wheel Creation in BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../TEMPLATE.html">TEMPLATE</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Misc</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Dev Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../devguides/bool_eval_development.html">NURBS Boolean Evaluation Development Guide</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Presentations</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/brlcad-app-devel.html">Application Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="presentations:_attachments/brlcad-app-devel.html">brlcad-app-devel</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/intro-to-tcltk.html">Introduction to Tcl/Tk</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../specifications/BRL_CAD_g_format_V5.html">BRL-CAD Database Format</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Manual Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/1.html">man1</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/3.html">man3</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/5.html">man5</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/n.html">mann</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Wiki Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">page-1</span>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">BRL-CAD</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../../index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../es/index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../es/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">BRL-CAD</a></li>
+    <li><a href="../index.html">Articles</a></li>
+    <li><a href="index.html">MGED</a></li>
+    <li><a href="developer-commands.html">Developer Commands</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/docs/modules/articles/pages/mged/developer-commands.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Developer Commands</h1>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. MGED Developer Commands</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_aip">aip</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_cmd_win">cmd_win</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_collaborate2">collaborate</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_get_comb">get_comb</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_get_dm_list">get_dm_list</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">get_edit_solid</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_get_more_default">get_more_default</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_grid2model_lu">grid2model_lu</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_grid2view_lu">grid2view_lu</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_gui_destroy">gui_destroy</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_hist">hist</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_make_name">make_name</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_mged_update">mged_update</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_mmenu_get">mmenu_get</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_mmenu_set">mmenu_set</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_model2grid_lu">model2grid_lu</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_model2view">model2view</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_model2view_lu">model2view_lu</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_output_hook">output_hook</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_put_comb">put_comb</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">put_edit_solid</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_reset_edit_solid">reset_edit_solid</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_rset">rset</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_set_more_default">set_more_default</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_share">share</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_solids_on_ray">solids_on_ray</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_stuff_str">stuff_str</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_svb">svb</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_tie">tie</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_view2grid_lu">view2grid_lu</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_view2model">view2model</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_view2model_lu">view2model_lu</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_view2model_vec">view2model_vec</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_view_ring">view_ring</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_viewget">viewget</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_viewset">viewset</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_winset">winset</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div id="_aip" class="dlist">
+<dl>
+<dt class="hdlist1">aip [<em>f|b</em>] </dt>
+<dd>
+<p>The <code>aip</code> command advances the <a href="#_ill">illumination</a>
+pointer when MGED is in the <a href="#_ill">solid illuminate</a> state or the
+<a href="#_ill">object illuminate</a> state.  In either of the <em>illuminate</em>
+states, a single primitive shape is highlighted at one time, and the
+path to that shape is displayed.  Moving the mouse vertically in the
+MGED display causes different shapes to be highlighted and their paths
+to be displayed.  The <em>aip</em> command causes the next shape in the list
+to be highlighted (if used with no arguments or the <em>f</em> argument), or
+it causes the previous shape in the list to be highlighted (if used
+with the <em>b</em> argument). When the desired shape is highlighted, it is
+selected by clicking the middle mouse button or by using the <a href="#_m">M</a>
+command.  If MGED is in the <a href="#_ill">object path</a> state, the place
+along the path where the edit is to take place will advance.  Once the
+desired path position is displayed, it is selected by clicking the
+middle mouse button or by using the <a href="#_m">M</a> command.</p>
+<div class="literalblock">
+<div class="title">Examples:</div>
+<div class="content">
+<pre>mged&gt; <strong>press</strong> sill  <i class="conum" data-value="1"></i><b>(1)</b>
+mged <strong>aip</strong>          <i class="conum" data-value="2"></i><b>(2)</b>
+mged <strong>aip b</strong>        <i class="conum" data-value="3"></i><b>(3)</b>
+mged <strong>M 1 0 0</strong>      <i class="conum" data-value="4"></i><b>(4)</b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Enter solid (i.e., primitive) illuminate mode.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Highlight the next shape.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Highlight the previous shape.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Select the highlighted shape.</td>
+</tr>
+</table>
+</div>
+</dd>
+</dl>
+</div>
+<div id="_cmd_win" class="dlist">
+<dl>
+<dt class="hdlist1">cmd_win subcommand </dt>
+<dd>
+<p>This command is used to maintain internal
+command window structures.</p>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>The <em>cmd_win</em> command accepts the following subcommands:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">open <em>id</em> </dt>
+<dd>
+<p>This subcommand is used to create the internal data
+structures for a new command window.  If <em>id</em> is already in use,
+nothing is changed.</p>
+</dd>
+<dt class="hdlist1">close <em>id</em> </dt>
+<dd>
+<p>This subcommand releases <em>id</em>'s internal data
+structures. If the referenced command window is tied to a display
+manager, then that association is also removed.</p>
+</dd>
+<dt class="hdlist1">set <em>id</em> </dt>
+<dd>
+<p>This subcommand sets the current command window to
+<em>id</em>. If this command window is tied to a display manager, that
+display manager becomes the current display manager.</p>
+</dd>
+<dt class="hdlist1">get </dt>
+<dd>
+<p>This subcommand returns the id of the current command window.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="literalblock">
+<div class="title">Examples:</div>
+<div class="content">
+<pre>mged&gt; <strong class="cmd">cmd_win open my_id</strong>   <i class="conum" data-value="1"></i><b>(1)</b>
+mged&gt; <strong class="cmd">cmd_win close my_id</strong>  <i class="conum" data-value="2"></i><b>(2)</b>
+mged&gt; <strong class="cmd">cmd_win set my_id</strong>    <i class="conum" data-value="3"></i><b>(3)</b>
+mged&gt; <strong class="cmd">cmd_win get</strong>          <i class="conum" data-value="4"></i><b>(4)</b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Create a command window named <em>my_id</em>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Closes the command window <em>my_id</em>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td><em>my_id</em> becomes the current command window.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Gets the current command window.</td>
+</tr>
+</table>
+</div>
+</dd>
+</dl>
+</div>
+<div id="_collaborate" class="dlist">
+<dl>
+<dt class="hdlist1">collaborate subcommand </dt>
+<dd>
+<p>This command is used to maintain the &#8220;collaborative
+session&#8221;. The collaborative session is a list whose members share a view and view ring among the upper right display manager panes.</p>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>The <em>collaborate</em> command accepts the following subcommands:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">join <em>id</em> </dt>
+<dd>
+<p>This causes the GUI associated with <em>id</em> to join the collaborative session.</p>
+</dd>
+<dt class="hdlist1">quit <em>id</em> </dt>
+<dd>
+<p>This causes the GUI associated with <em>id</em> to quit the collaborative session.</p>
+</dd>
+<dt class="hdlist1">show </dt>
+<dd>
+<p>This returns the list of participants (ids) in the collaborative session.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="literalblock">
+<div class="title">Examples:</div>
+<div class="content">
+<pre>mged&gt; collaborate join bill   <i class="conum" data-value="1"></i><b>(1)</b>
+mged *collaborate quit bill*  <i class="conum" data-value="2"></i><b>(2)</b>
+mged *collaborate show*       <i class="conum" data-value="3"></i><b>(3)</b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><em>bill</em> is added to the collaborative session.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><em>bill</em> is removed from the collaborative session.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Show list of collaborative participants.</td>
+</tr>
+</table>
+</div>
+</dd>
+</dl>
+</div>
+<div id="_get_comb" class="dlist">
+<dl>
+<dt class="hdlist1">get_comb comb_name </dt>
+<dd>
+<p>The &#8220;get_comb&#8221; command returns a Tcl list of information about <em>comb_name</em>.
+If <em>comb_name</em> is a region, the following information is returned:</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><em>NAME REGION REGION_ID AIRCODE
+    GIFT_MATERIAL</em>  LOS COLOR SHADER INHERIT BOOLEAN_FORMULA</p>
+</div>
+<div class="paragraph">
+<p>Otherwise, the following shorter list is returned:</p>
+</div>
+<div class="paragraph">
+<p>__</p>
+</div>
+<div class="paragraph">
+<p>NAME REGION COLOR SHADER INHERIT BOOLEAN_FORMULA
+ Examples: ::
+mged&gt; get_comb some_region</p>
+</div>
+<div class="paragraph">
+<p>some_region Yes 1000 0 1 100 {0 220 220} plastic No { u box - ball }</p>
+</div>
+<div class="paragraph">
+<p>mged <strong>get_comb some_non_region</strong>  some_non_region No {0 220 220} plastic No { u box2 - ball2 }</p>
+</div>
+<div class="paragraph">
+<p>**
+ get_dm_list ::
+The &#8220;get_dm_list&#8221; command returns a list of all open display managers.
+The members of this list are the actual Tcl/Tk window names of the open display managers.</p>
+</div>
+<div class="paragraph">
+<p>**
+ get_more_default ::
+Returns the current default input value.</p>
+</div>
+<div class="paragraph">
+<p>**
+ grid2model_lu gx gy ::
+Given a point in grid coordinates (local units), convert it to model coordinates (local units).</p>
+</div>
+<div class="paragraph">
+<p>**
+ grid2view_lu gx gy ::
+Given a point in grid coordinates (local units), convert it to view coordinates (local units).</p>
+</div>
+<div class="paragraph">
+<p>**
+ gui_destroy id ::
+Destroy the GUI (Graphical User Interface) represented by <em>id</em>.
+Note that this GUI must have been created with the <a href="#_gui">gui</a> command.</p>
+</div>
+<div class="paragraph">
+<p>**
+ hist subcommand ::
+This command is used to maintain command history. <em>Hist</em> accepts the following subcommands:
+ add command ::
+This adds <em>command</em> to the <a href="#_history">history</a> list of commands executed during the current MGED session.
+If <em>command</em> is more than one word, it must be surrounded by braces (i.e., {make box arb8}).
+ next ::
+This returns the next command in the command history list.
+ prev ::
+This returns the previous command in the command history list.
+ Examples: ::
+mged&gt; hist add {ae 35 25}</p>
+</div>
+<div class="paragraph">
+<p>– Add the command &#8220;ae 35 25&#8221; to the history list.</p>
+</div>
+<div class="paragraph">
+<p>mged <strong>ae 0 90</strong></p>
+</div>
+<div class="paragraph">
+<p>mged <strong>hist prev</strong>  – Return the previous command (i.e., <strong>ae 0 90</strong>).</p>
+</div>
+<div class="paragraph">
+<p>**
+ make_name template make_name -s [num] ::
+This command generates an object name that does not occur in the database.
+The name, which is generated in the format specified by <em>template</em>, contains an integer count.
+By default, this count appears at the end of the generated name, but if <em>template</em> contains the  @  character, then the count appears at that position in the name.
+ Examples: ::
+mged&gt; make_name wheel</p>
+</div>
+<div class="paragraph">
+<p>– Returns, say &#8220;wheel5.&#8221;</p>
+</div>
+<div class="paragraph">
+<p>mged <strong>make_name
+    tree@trunk</strong>  – Returns &#8220;tree@trunk.&#8221; The two-character string  @@  is interpreted as the literal  @ , and thus is ignored for the purposes of positioning the name count.
+The integer counter starts at 0, and, by default, it is incremented each time <em>make_name</em> is executed.
+The <em>-s</em> option resets this counter.
+If the argument <em>num</em> is specified, the counter is set to this value.
+Otherwise, it is set to 0.</p>
+</div>
+<div class="paragraph">
+<p>**
+ mged_update non_blocking ::
+This command is used to handle outstanding events and to refresh the MGED display(s). This may be useful in certain Tcl scripts to maintain interactivity while waiting for user input.
+Note that if <em>non_blocking</em> is negative, outstanding events will not be processed.
+That is, only the MGED display(s) will be refreshed.
+ Examples: ::
+mged&gt; mged_update 0</p>
+</div>
+<div class="paragraph">
+<p>– Update the MGED display, blocking (i.e., handle all outstanding events; if none, wait for one).</p>
+</div>
+<div class="paragraph">
+<p>mged <strong>mged_update 1</strong>  – Update the MGED display, nonblocking (i.e., handle all outstanding events; if none, return immediately).</p>
+</div>
+<div class="paragraph">
+<p>**
+ mmenu_get [<em>i</em>] ::
+This command is used to get MGED s internal menus.
+If <em>i</em> is not specified, return all three internal menus.
+Otherwise, return the <em>i</em></p>
+</div>
+<div class="paragraph">
+<p>+
+ menu.
+Note - valid values for <em>i</em> are 0, 1, or 2.
+ Examples: ::
+mged&gt; mmenu_get</p>
+</div>
+<div class="paragraph">
+<p>– Return all internal menus.</p>
+</div>
+<div class="paragraph">
+<p>mged <strong>mmenu_get 2</strong>  – Return the internal menu number 2.</p>
+</div>
+<div class="paragraph">
+<p>**
+ mmenu_set id i ::
+This Tcl proc is used to set/install MGED s <em>i</em></p>
+</div>
+<div class="paragraph">
+<p>+
+ internal menu in the Tcl/Tk button menu owned by <em>id</em>.</p>
+</div>
+<div class="paragraph">
+<p>+
+mged&gt; mmenu_set bill 0</p>
+</div>
+<div class="paragraph">
+<p>– Install MGED s 0
+ internal menu into <em>id</em> s button menu.</p>
+</div>
+<div class="paragraph">
+<p>**
+ model2grid_lu mx my mz::
+Convert a point in model coords (local units) to a point in grid coords (local units).</p>
+</div>
+<div class="paragraph">
+<p>**
+ model2view x y z ::
+The &#8220;model2view&#8221; command converts the supplied point (in model coordinates) to view coordinates.
+View coordinates are the coordinates in the viewing cube with values between -1.0 and +1.0 being inside the viewing cube.
+ Examples: ::
+mged&gt; model2view 10 20 30</p>
+</div>
+<div class="paragraph">
+<p>– Display the view coordinates that correspond to the point (10 20 30) in model space.</p>
+</div>
+<div class="paragraph">
+<p>**
+ model2view_lu mx my mz ::
+Convert a point in model coordinates (local units) to a point in view coordinates (local units).</p>
+</div>
+<div class="paragraph">
+<p>**
+ output_hook [<em>hook_cmd</em>] ::
+Set up to have output from bu_log sent to <em>hook_cmd</em>.
+If <em>hook_cmd</em> is not specified, the output hook is deleted.</p>
+</div>
+<div class="paragraph">
+<p>**
+ put_comb <em>comb_name is_Region</em> [<em>id air gift los</em>] color shader inherit Boolean_expr ::
+The &#8220;put_comb&#8221; command defines the combination <em>comb_name</em>.
+If <em>is_Region</em> is <em>Yes</em>, then <em>id, air, gift</em> and <em>los</em> must be specified.
+If <em>is_Region</em> is <em>No</em>, then <em>id, air, gift,</em> and <em>los</em> must not be specified.
+ Examples: ::
+mged&gt; put_comb not_region No "`0 220 220\`" plastic No "`u box\\n- ball\`"</p>
+</div>
+<div class="paragraph">
+<p>– Defines a combination called <em>not_region.</em></p>
+</div>
+<div class="paragraph">
+<p>mged <strong>put_comb my_region Yes
+    1000 0 1 100 "`0 220 220\`" plastic No "`u box\\n-
+    ball\`"</strong>  – Defines a region called <em>my_region.</em></p>
+</div>
+<div class="paragraph">
+<p>**</p>
+</div>
+<div class="paragraph">
+<p>reset_edit_solid</p>
+</div>
+<div class="paragraph">
+<p>Reset the parameters for the currently edited shape (i.e.
+es_int) to the database values.</p>
+</div>
+<div class="paragraph">
+<p>**</p>
+</div>
+<div class="paragraph">
+<p><strong>rset</strong> [<em>res_type</em> [<em>res</em> [<em>vals</em>]]]</p>
+</div>
+<div class="paragraph">
+<p>Provides a mechanism to get/set resource values for the given resource types.
+The supported resource types are: ax (Axes), c (Color Schemes), g (Grid), r (Rubber Band), and var (MGED Variables). Basically, <em>rset</em> always gets a value unless enough information is given to set a value.
+For example, with no parameters, <em>rset</em> returns a list of all resource values for the supported resource types.
+If <em>rset</em> is executed with only the <em>res_type</em> given, a list of all resource values for the given <em>res_type</em> is returned.</p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="paragraph">
+<p>mged&gt; rset g</p>
+</div>
+<div class="paragraph">
+<p>Grid</p>
+</div>
+<div class="paragraph">
+<p>draw=0  snap=0  anchor=0,0,0  rh=1  rv=1  mrh=5  mrv=5</p>
+</div>
+<div class="paragraph">
+<p>mged <strong>rset g snap</strong>  – Get value for grid snapping 0.</p>
+</div>
+<div class="paragraph">
+<p>mged <strong>rset g snap 1</strong>  – Enable snapping.</p>
+</div>
+<div class="paragraph">
+<p>mged <strong>rset r</strong>  Rubber Band  draw=0  linewidth=0  linestyle= s   pos=0,0  dim=0,0</p>
+</div>
+<div class="paragraph">
+<p>mged <strong>rset r draw</strong>  – Get value for &#8220;Rubber Band s&#8221; draw variable 0.</p>
+</div>
+<div class="paragraph">
+<p>mged <strong>rset r draw 1</strong>  – Draw rubber band.</p>
+</div>
+<div class="paragraph">
+<p>mged <strong>rset ax</strong></p>
+</div>
+<div class="paragraph">
+<p>Axes  model_draw=0  model_size=500  model_linewidth=1  model_pos=0,0,0  view_draw=0  view_size=500  view_linewidth=1  view_pos=0,0  edit_draw=0  edit_size1=500  edit_size2=500  edit_linewidth1=1  edit_linewidth2=1.</p>
+</div>
+<div class="paragraph">
+<p>–Prints the values of the axes</p>
+</div>
+<div class="paragraph">
+<p>mged <strong>rset ax model_size</strong>  – Get size of model axes 500.</p>
+</div>
+<div class="paragraph">
+<p>**
+ set_more_default more_default ::
+Set the current default input value.</p>
+</div>
+<div class="paragraph">
+<p><strong>*
+ share [-u] resource dm1 [dm2] ::
+The &#8220;share&#8221; command provides a mechanism to share (or unshare with the * u</strong> option) resources among display managers.
+When a resource is shared between two or more display managers, any change to that resource is seen only in the sharing display managers.
+The supported resource types are: ad (ADC), ax (Axes), c (Color Schemes), d (Display Lists), g (Grid), m (Menu), r (Rubber Band), vi (View), and var (MGED Variables).
+ Examples: ::
+mged&gt; share g .dm_ogl0 .dm_ogl1</p>
+</div>
+<div class="paragraph">
+<p>– .dm_ogl0 shares its grid resource with .dm_ogl1.</p>
+</div>
+<div class="paragraph">
+<p>mged <strong>share -u g
+    .dm_ogl1</strong>  – .dm_ogl1 acquires a private copy of the grid resource.</p>
+</div>
+<div class="paragraph">
+<p>**
+ solids_on_ray h v ::
+List all displayed shapes along a ray.</p>
+</div>
+<div class="paragraph">
+<p>**
+ stuff_str string ::
+Sends a string to MGED s tty, while leaving the current command line alone.
+This is used to relay the activity of Tcl/Tk command windows to MGED s tty.
+If MGED is no longer attached to a tty, nothing happens.</p>
+</div>
+<div class="paragraph">
+<p>**
+ svb ::
+The &#8220;svb&#8221; command sets the view reference base variables, which are used internally by the <a href="#_knob">knob</a> command to implement absolute rotation, translation, and scale.
+ Examples: ::
+mged&gt; svb</p>
+</div>
+<div class="paragraph">
+<p>– Set the view reference base variables with respect to the current view.</p>
+</div>
+<div class="paragraph">
+<p><strong>*
+ tie [[<em>-u</em>] <em>command_window</em> [<em>display_window</em>]] ::
+The &#8220;tie&#8221; command is used to create (or untie/destroy with the *-u</strong> option) an association between a command window and a display window.
+When there exists such an association, all commands entered from the command window will be directed at the associated display window.
+The <em>command_window</em> can be specified with MGED to refer to the tty from which MGED was started or an id associated with a Tcl/Tk interface window <a href="#_gui">created with <em>gui</em></a>.
+The <em>display_window</em> is specified with its Tcl/Tk pathname.
+If no parameters are given, a listing of the current <em>command_window</em>/<em>display_window</em> pairs is returned.
+If only the <em>command_window</em> is given, the <em>display_window</em> associated with <em>command_window</em> is returned.
+If both parameters are given, the <em>command_window</em>/<em>display_window</em> association is created.
+ Examples: ::
+mged&gt; tie my_id .my_display_window</p>
+</div>
+<div class="paragraph">
+<p>– Create the association between my_id and .my_display_window.</p>
+</div>
+<div class="paragraph">
+<p>mged <strong>tie my_id</strong>  .my_display_window  – Returns the display window associated with my_id.</p>
+</div>
+<div class="paragraph">
+<p>mged <strong>tie</strong>  {my_id .my_window} {mged {}}  – List all of the command_window/display_window pairs.</p>
+</div>
+<div class="paragraph">
+<p>**
+ view2grid_lu vx vy vz ::
+Given a point in view coordinates (local units), converts to grid coordinates (local units).</p>
+</div>
+<div class="paragraph">
+<p>**
+ view2model x y z ::
+The &#8220;view2model&#8221; command converts the specified point (<em>x y z</em>) in view coordinates to model coordinates (mm). The part of view space displayed by MGED is the cube -1.0 &#8656; x,y,z &#8656; +1.0.
+ Examples: ::
+mged&gt; view2model 1 1 0</p>
+</div>
+<div class="paragraph">
+<p>– List the model coordinates of the upper right corner of the MGED display (in a plane at the center of the viewing cube).</p>
+</div>
+<div class="paragraph">
+<p>**
+ view2model_lu vx vy vz ::
+Given a point in view coordinates (local units), converts to model coordinates (local units).</p>
+</div>
+<div class="paragraph">
+<p>**
+ view2model_vec vx vy vz ::
+Given a vector in view coordinates, convert it to model coordinates.</p>
+</div>
+<div class="paragraph">
+<p>**
+ view_ring subcommand ::
+This manipulates the view ring for the current display manager.
+The view ring is a list of views owned by a display manager.
+Views can be added or removed and can also be traversed or queried. <em>View_ring</em> accepts the following subcommands:</p>
+</div>
+<div class="paragraph">
+<p>**</p>
+</div>
+<div class="paragraph">
+<p>add</p>
+</div>
+<div class="paragraph">
+<p>This subcommand adds the current view to the view ring.</p>
+</div>
+<div class="paragraph">
+<p>**</p>
+</div>
+<div class="paragraph">
+<p>next</p>
+</div>
+<div class="paragraph">
+<p>This subcommand makes the next view on the view ring the current view.</p>
+</div>
+<div class="paragraph">
+<p>**</p>
+</div>
+<div class="paragraph">
+<p>prev</p>
+</div>
+<div class="paragraph">
+<p>This subcommand makes the previous view on the view ring the current view.</p>
+</div>
+<div class="paragraph">
+<p>**</p>
+</div>
+<div class="paragraph">
+<p>toggle</p>
+</div>
+<div class="paragraph">
+<p>This subcommand toggles between the current view and the last view.</p>
+</div>
+<div class="paragraph">
+<p>**</p>
+</div>
+<div class="paragraph">
+<p>delete vid</p>
+</div>
+<div class="paragraph">
+<p>This subcommand removes/deletes the view with a view id of <em>vid</em> from the view ring.
+The last view cannot be removed (i.e., there is always one view on the view ring).</p>
+</div>
+<div class="paragraph">
+<p>**</p>
+</div>
+<div class="paragraph">
+<p>goto vid</p>
+</div>
+<div class="paragraph">
+<p>This subcommand makes the view with a view id of <em>vid</em> the current view.</p>
+</div>
+<div class="paragraph">
+<p>**</p>
+</div>
+<div class="paragraph">
+<p>get [<em>-a</em>]</p>
+</div>
+<div class="paragraph">
+<p>Returns the id of the current view.
+If <em>-a</em> is specified, all view ids on the view ring are returned.</p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="paragraph">
+<p>mged&gt; view_ring add</p>
+</div>
+<div class="paragraph">
+<p>– Add the current view to the view ring.</p>
+</div>
+<div class="paragraph">
+<p>mged <strong>view_ring goto
+    1</strong>  – Go to view 1.</p>
+</div>
+<div class="paragraph">
+<p>mged <strong>view_ring delete
+    1</strong>  – Delete view 1 from the view ring.</p>
+</div>
+<div class="paragraph">
+<p>**
+ viewget parameter ::
+The &#8220;viewget&#8221; command displays various <em>mged</em> view parameters.
+The possible parameters are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>aet – list the <a href="#_azimuth">azimuth</a>, <a href="#_elevation">elevation</a>, and <a href="#_twist">twist</a> for the current viewing aspect.</p>
+</li>
+<li>
+<p>center – list the model coordinates (mm) of the center of the viewing cube.</p>
+</li>
+<li>
+<p>size – list the size (mm) of a side the current MGED display.</p>
+</li>
+<li>
+<p>eye – list the model coordinates (mm) of the current eye point.</p>
+</li>
+<li>
+<p>ypr – list the yaw, pitch, and roll angles (degrees) of the current viewing aspect.</p>
+</li>
+<li>
+<p>quat – list the quaternion for the current viewing aspect.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="paragraph">
+<p>mged&gt; viewget center</p>
+</div>
+<div class="paragraph">
+<p>– List the model coordinates of the center of the MGED viewing cube.</p>
+</div>
+<div class="paragraph">
+<p>**
+ viewset &lt;<em>parameter value</em>&gt; ::
+The &#8220;viewset&#8221; command sets various MGED view parameters.
+More than one parameter may be set with one command.
+The possible parameters are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>aet – set the <a href="#_azimuth">azimuth</a>, <a href="#_elevation">elevation</a>, and <a href="#_twist">twist</a> for the current viewing aspect.</p>
+</li>
+<li>
+<p>center – set the model coordinates (mm) of the center of the viewing cube.</p>
+</li>
+<li>
+<p>size – set the size (mm) of a side of the current MGED display.</p>
+</li>
+<li>
+<p>eye – set the model coordinates (mm) of the current eye point.</p>
+</li>
+<li>
+<p>ypr – set the yaw, pitch, and roll angles (degrees) of the current viewing aspect.</p>
+</li>
+<li>
+<p>quat – set the quaternion for the current viewing aspect.</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Examples: </dt>
+<dd>
+<p>mged&gt; viewset center 1 2 3 size 100</p>
+</dd>
+</dl>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>– Set the model coordinates of the center of the MGED viewing cube to the point (1 2 3) and set the size of the viewing cube to 100 mm.</p>
+</div>
+<div class="paragraph">
+<p>**
+ winset [<em>pathName</em>] ::
+The &#8220;winset&#8221; command sets the current display manager to <em>pathName</em>.
+If <em>pathName</em> is not given, the current display manager is returned.
+ Examples: ::
+mged&gt; winset .my_window</p>
+</div>
+<div class="paragraph">
+<p>– .my_window is now the current display manager.</p>
+</div>
+<div class="paragraph">
+<p>mged <strong>winset</strong>  – Returns the current display manager (i.e., .my_window).</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. Mged</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_mgedusercommands">MGED
+            User Commands</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_mgeddevelopercommands">MGED
+            Developer Commands</a></p></td>
+</tr>
+</tbody>
+</table>
+<nav class="pagination">
+  <span class="prev"><a href="user-commands.html">User Commands</a></span>
+  <span class="next"><a href="tcl-variables.html">Tcl Variables</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../ui/js/site.js"></script>
+<script src="../../../ui/js/vendor/lunr.js"></script>
+<script src="../../../ui/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/docs/articles/mged/developer-commands.html"></script>
+<script async src="../../../ui/../search-index.js"></script>
+<script async src="../../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

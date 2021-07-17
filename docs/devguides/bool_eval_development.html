@@ -1,0 +1,2762 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>NURBS Boolean Evaluation Development Guide :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/docs/devguides/bool_eval_development.html">
+    <link rel="prev" href="../articles/TEMPLATE.html">
+    <link rel="next" href="../presentations/brlcad-app-devel.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../ui/css/site.css">
+    <link rel="stylesheet" href="../../ui/css/search.css">
+    <link rel="stylesheet" href="../../ui/css/custom.css">
+    <script>var uiRootPath = '../../ui'</script>
+    <link rel="icon" href="../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../about.html">About</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lessons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../lessons/mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/01_creating_primitive_shapes.html">1. Creating Primitive Shapes in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/02_learning_viewing_options.html">2. Learning Viewing Options in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/03_using_insert_command.html">3. Using the Insert Command in MGED to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/04_assign_mat_prop_rt.html">4. Assigning Material Properties and Raytracing in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/05_learning_boolean_expressions.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/06_creating_a_goblet.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/07_goblet_material_properties.html">7. Assigning Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/08_goblet_material_properties2.html">8. Assigning More Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/09_globe_in_display_box.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/10_creating_mug.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/11_refining_mug.html">11. Refining a Mug Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/12_mug_through_gui.html">12. Creating a Mug Model using the MGED Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/13_placing_shapes_in_3d.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/14_placing_shapes_in_3d_2.html">14. Additional Exercises Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/15_creating_a_toy_truck.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lessons/mged/16_mod_tech_struct.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Books</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../hacking/index.html">Hacking BRL-CAD</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting Started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part1/chapter1.html">A Call to Arms (and Contributors)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part1/chapter2.html">Feature Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developers</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part2/chapter3.html">Working with Our Code</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part2/chapter4.html">What Code to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part2/chapter5.html">Contributing Code</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Documenters</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part3/chapter6.html">Working with Our Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part3/chapter7.html">Types of Documentation We Maintain</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part3/chapter8.html">What Documentation to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part3/chapter9.html">Contributing Documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Other Contributors</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part4/chapter10.html">You Can Help Too</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendix: Resources and Examples</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix1.html">Further References and Resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix2.html">Doc Template: New MGED Command</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix3.html">Code Example: Shooting Rays</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix4.html">Code Example: Walking Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix5.html">Code Example: Command Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hacking/part5/appendix6.html">Example Code: Root Solving</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials/index.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tutorials/overview.html">I. An Overview of BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials/mged-intro.html">II. Introduction to MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/preface1.html">Preface</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/preface2.html">Acknowledgments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter1.html">1. Creating Primitive Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter2.html">2. Learning the Viewing Options</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter3.html">3. Using the Insert Command to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter4.html">4. Assigning Material Properties and Raytracing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter5.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter6.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter7.html">7. Assigning Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter8.html">8. Assigning More Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter9.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter10.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter11.html">11. Refining the Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter12.html">12. Creating the Mug Through the GUI</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter13.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter14.html">14. Gaining More Practice Placing Shapes in Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter15.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/chapter16.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/mged-intro/appendix1.html"><code class="app">MGED</code> Commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials/modeling.html">III. Modeling</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter2.html">2. The Model Process</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter3.html">3. Measuring data</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter4.html">4. Organizing the Structure</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter5.html">5. Developing Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter6.html">5. Evaluating Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/modeling/chapter7.html">7. Logging Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendices</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix1.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix2.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix3.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix4.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix5.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../tutorials/modeling/appendix6.html">Using the build_region Command</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tutorials/converting.html">IV. Converting</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter2.html">2. Pertinent Characteristics of the BRL-CAD Format</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter3.html">3. Converting From/to ASCII</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter4.html">4. Converting to BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter5.html">5. Converting From BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter6.html">6. Building a New Converter</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tutorials/converting/chapter7.html">7. Postconversion Issues</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../articles/index.html">Articles</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/build_pattern.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/build_region.html">Using the build_region Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/camo_shader.html">Camouflage shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/ebm_primitive.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/gcv.html">The Geometry Conversion Library</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/ged.html">GED: An Interactive Solid Modeling System</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../articles/mged/index.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../articles/mged/tutorial.html">Tutorial</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../articles/mged/gui.html">Graphical User Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../articles/mged/command-line-editing.html">Command Line Editing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../articles/mged/user-commands.html">User Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../articles/mged/developer-commands.html">Developer Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../articles/mged/tcl-variables.html">Tcl Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../articles/mged/env.html">Environment Variable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../articles/mged/callback.html">Callback</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../articles/mged/glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../articles/mged/brlcad-solid.html">BRL-CAD Solid</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/mgedrc.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/nirt.html">Interactive Raytracing: The nirt Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/overlap_tool.html">The Overlap Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/oed.html">Object Editing - the oed Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/pipes.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/projection_shader.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/tire.html">Vehicle Tire and Wheel Creation in BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../articles/TEMPLATE.html">TEMPLATE</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Misc</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Dev Guides</span>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="bool_eval_development.html">NURBS Boolean Evaluation Development Guide</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Presentations</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../presentations/brlcad-app-devel.html">Application Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="presentations:_attachments/brlcad-app-devel.html">brlcad-app-devel</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../presentations/intro-to-tcltk.html">Introduction to Tcl/Tk</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../specifications/BRL_CAD_g_format_V5.html">BRL-CAD Database Format</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Manual Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../man/1.html">man1</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../man/3.html">man3</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../man/5.html">man5</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../man/n.html">mann</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Wiki Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">page-1</span>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">BRL-CAD</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../es/index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../es/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">BRL-CAD</a></li>
+    <li>Misc</li>
+    <li>Dev Guides</li>
+    <li><a href="bool_eval_development.html">NURBS Boolean Evaluation Development Guide</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/docs/modules/devguides/pages/bool_eval_development.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">NURBS Boolean Evaluation Development Guide</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_introduction">1. Introduction</a></li>
+<li><a href="#_nurbs_boolean_evaluation_using_the_brep_command">2. NURBS Boolean Evaluation Using the <code>brep</code> Command</a></li>
+<li><a href="#_overview_of_the_implementation">3. Overview of the Implementation</a>
+<ul class="sectlevel2">
+<li><a href="#_technical_approach">3.1. Technical Approach</a></li>
+<li><a href="#_the_boolean_evaluation_algorithm">3.2. The Boolean Evaluation Algorithm</a></li>
+<li><a href="#_descriptions_of_major_functions">3.3. Descriptions of Major Functions</a>
+<ul class="sectlevel3">
+<li><a href="#_boolean_cpp">3.3.1. <em class="path">boolean.cpp</em></a></li>
+<li><a href="#_intersect_cpp">3.3.2. <em class="path">intersect.cpp</em></a></li>
+</ul>
+</li>
+<li><a href="#_the_opennurbs_api">3.4. The OpenNURBS API</a>
+<ul class="sectlevel3">
+<li><a href="#_arrays">3.4.1. Arrays</a></li>
+<li><a href="#_memory">3.4.2. Memory</a></li>
+<li><a href="#_tolerance_tests">3.4.3. Tolerance Tests</a></li>
+<li><a href="#_2d_and_3d_points">3.4.4. 2D and 3D Points</a></li>
+<li><a href="#_bounding_boxes">3.4.5. Bounding Boxes</a></li>
+<li><a href="#_domain_intervals">3.4.6. Domain Intervals</a></li>
+<li><a href="#_parametric_curves">3.4.7. Parametric Curves</a></li>
+<li><a href="#_lines">3.4.8. Lines</a></li>
+<li><a href="#_surfaces">3.4.9. Surfaces</a></li>
+<li><a href="#_boundary_representation_objects">3.4.10. Boundary Representation Objects</a></li>
+<li><a href="#_intersection_events">3.4.11. Intersection Events</a></li>
+</ul>
+</li>
+<li><a href="#_code_conventions_and_pitfalls">3.5. Code Conventions and Pitfalls</a>
+<ul class="sectlevel3">
+<li><a href="#_2d_vs_3d">3.5.1. 2D vs 3D</a>
+<ul class="sectlevel4">
+<li><a href="#_naming_convention">3.5.1.1. Naming Convention</a></li>
+<li><a href="#_intersection_tolerances">3.5.1.2. Intersection Tolerances</a></li>
+<li><a href="#_curve_traversal_directions">3.5.1.3. Curve Traversal Directions</a></li>
+</ul>
+</li>
+<li><a href="#_accumulated_error">3.5.2. Accumulated Error</a>
+<ul class="sectlevel4">
+<li><a href="#_clamping">3.5.2.1. Clamping</a></li>
+<li><a href="#_iterated_solutions">3.5.2.2. Iterated Solutions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_debugging_nurbs_boolean_evaluations">4. Debugging NURBS Boolean Evaluations</a>
+<ul class="sectlevel2">
+<li><a href="#_debug_plotting">4.1. Debug Plotting</a>
+<ul class="sectlevel3">
+<li><a href="#_the_brep_command">4.1.1. The <code>brep</code> Command</a></li>
+<li><a href="#_the_dplot_command">4.1.2. The dplot Command</a>
+<ul class="sectlevel4">
+<li><a href="#_the_ssx_subcommands">4.1.2.1. The ssx Subcommands</a></li>
+<li><a href="#_the_isocsx_subcommands">4.1.2.2. The isocsx Subcommands</a></li>
+<li><a href="#_face_evaluation_subcommands">4.1.2.3. Face-Evaluation Subcommands</a></li>
+</ul>
+</li>
+<li><a href="#_plotting_arbitrary_evaluation_curves">4.1.3. Plotting Arbitrary Evaluation Curves</a></li>
+</ul>
+</li>
+<li><a href="#_debugging_with_the_dplot_command">4.2. Debugging with the <code>dplot</code> Command</a>
+<ul class="sectlevel3">
+<li><a href="#_tracing_output_to_the_code_that_created_it">4.2.1. Tracing Output to the Code That Created It</a></li>
+<li><a href="#_a_historical_debugging_example">4.2.2. A Historical Debugging Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="_introduction"><a class="anchor" href="#_introduction"></a>1. Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This document provides a technical overview of BRL-CAD&#8217;s Non-Uniform
+Rational Basis Spline (NURBS) Boolean evaluation implementation.  It
+includes details on user command line functionality, an overview of
+the algorithms and source code implementation, details on developer
+debugging facilities, and an overview of the debugging process (with a
+real example). This is intended to be a practical resource for
+software developers wanting improve BRL-CAD&#8217;s NURBS Boolean evaluation
+implementation.</p>
+</div>
+<div class="paragraph">
+<p>It is assumed that the reader has rudimentary familiarity with C/C&#43;&#43;
+software development and the BRL-CAD software package.  This includes
+how to acquire, modify, and rebuild the BRL-CAD source code, and how
+to run and debug C/C&#43;&#43; applications.  It is also assumed that the
+reader has a some understanding of concepts from 3D geometry such as
+surface normal vectors, parametric functions, boundary representation
+(B-Rep) geometry, and trimmed NURBS.</p>
+</div>
+<div class="paragraph">
+<p>Section 2 of this document briefly describes NURBS Boolean evaluation
+in BRL-CAD from a user perspective.</p>
+</div>
+<div class="paragraph">
+<p>Section 3 outlines the major algorithms being used and the files and
+functions in the BRL-CAD source code that implement them.  It also
+explains important concepts helpful in understanding and modifying the
+source code.</p>
+</div>
+<div class="paragraph">
+<p>Section 4 covers the current process for debugging evaluation issues.
+It describes available debugging tools, and provides step-by-step
+instructions for tracking down bugs based on debug information,
+including a complete example of debugging a real evaluation issue.</p>
+</div>
+<div class="paragraph">
+<p>It should be noted that some of the information in this document may
+become outdated due to future changes to the BRL-CAD software suite.
+Any developer making significant changes to the implementation should
+update the copy of this document that is included with the BRL-CAD
+source code.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_nurbs_boolean_evaluation_using_the_brep_command"><a class="anchor" href="#_nurbs_boolean_evaluation_using_the_brep_command"></a>2. NURBS Boolean Evaluation Using the <code>brep</code> Command</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>brep</code> command is available in BRL-CAD&#8217;s MGED and Archer
+applications.  If the command is run with a single argument naming a
+combination, the components of the combination are converted into
+NURBS objects which are combined into a single evaluated NURBS object
+according to the Boolean operations in the combination.</p>
+</div>
+<div class="paragraph">
+<p>By default, the evaluated B-Rep-type object is written to the database
+with its original name plus the suffix <code>.brep</code> (e.g.  running the
+<code>brep</code> command on <code>obj</code> produces <code>obj.brep</code>). If a specific name is
+desired for the output object, it can be provided as the second
+argument to the <code>brep</code> command.</p>
+</div>
+<div class="paragraph">
+<p>There are a number of known limitations to the NURBS Boolean evaluator
+as currently implemented:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>May produce incorrect output due to unhandled intersection cases.</p>
+</li>
+<li>
+<p>Unoptimized performance resulting in potentially significant
+runtimes.</p>
+</li>
+<li>
+<p>Material properties of source objects are discarded.</p>
+</li>
+<li>
+<p>Some primitive conversions to NURBS are undefined (e.g., an infinite
+halfspace).</p>
+</li>
+<li>
+<p>Hollow objects are not built topologically continuous.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_overview_of_the_implementation"><a class="anchor" href="#_overview_of_the_implementation"></a>3. Overview of the Implementation</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="_images/evaluation_overview.png" alt="evaluation overview">
+</div>
+<div class="title">Figure 1. Evaluation of a Subtraction</div>
+</div>
+<div class="sect2">
+<h3 id="_technical_approach"><a class="anchor" href="#_technical_approach"></a>3.1. Technical Approach</h3>
+<div class="paragraph">
+<p>The technical approach used for evaluating Boolean operations on NURBS
+entities involves calculating geometric intersections, trimming
+surfaces accordingly, and stitching together a resulting object.
+Boundary representation NURBS objects are composed of faces, edges,
+and vertices; and these topologically describe how surfaces, curves,
+and points are joined together to represent geometry.  The geometry is
+used to find intersections.  The topology is used in the application
+of Boolean logic.  This is oversimplified as there are also trimming
+curves, loops, orientations, and other details involved, but this is
+nonetheless a useful foundation for understanding the basic approach
+employed.</p>
+</div>
+<div class="paragraph">
+<p>BRL-CAD heavily integrates and extends the OpenNURBS Toolkit by Robert
+McNeel &amp; Associates, developers of the proprietary Rhinoceros freeform
+NURBS modeling software.  BRL-CAD heavily uses OpenNURBS for trimmed
+NURBS geometry representation (both in-memory and on-disk) and
+implements functionality not included with OpenNURBS such as ray
+tracing and Boolean evaluation. <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup> Additional functionality
+implemented for BRL-CAD is primarily contained within the boundary
+representation and ray trace libraries (LIBBREP and LIBRT). <sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup> The
+overall NURBS Boolean evaluation algorithm is based on the paper
+<em>BOOLE: A System to Compute Boolean Combinations of Sculptured
+Solids.</em> (S.  Krishnan et al., 1995). The main implementation file for
+the Boolean evaluation algorithm is <em class="path">boolean.cpp</em>.</p>
+</div>
+<div class="paragraph">
+<p>The NURBS surface-surface intersection algorithm is based on the
+"NURBS Intersection Curve Evaluation" section of the paper <em>Performing
+Efficient NURBS Modeling Operations on the GPU</em> (A.  Krishnamurthy et
+al., 2008). A detailed outline of the algorithm, as implemented,
+appears in the main implementation file for the NURBS Surface-Surface
+intersection algorithm, <em class="path">intersect.cpp</em>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_boolean_evaluation_algorithm"><a class="anchor" href="#_the_boolean_evaluation_algorithm"></a>3.2. The Boolean Evaluation Algorithm</h3>
+<div class="sidebarblock task">
+<div class="content">
+<div class="title">Evaluating a Boolean</div>
+<div class="admonitionblock note tasksummary">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Summary</div>
+<div class="paragraph">
+<p>This is a high-level overview of the Boolean evaluation
+performed on two B-Rep objects.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important taskprerequisites">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="title">Prerequisites</div>
+<div class="paragraph">
+<p>Make sure you have two entities that are geometric, solid, and valid;
+that they are topologically connected, describe manifold surfaces, and
+enclose some non-infinite volume.</p>
+</div>
+<div class="paragraph">
+<p>Make sure you have a valid Boolean operation (i.e., UNION, SUBTRACT,
+INTERSECT).</p>
+</div>
+<div class="paragraph">
+<p>Make sure their bounding boxes overlap, otherwise evaluation is
+trivial.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="exampleblock procedure">
+<div class="title">Example 1. Evaluate Intersections</div>
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Determine face intersections between the two input objects</p>
+<div class="paragraph">
+<p>For each face:</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Calculate surface intersection with all other surfaces to get intersection curves</p>
+<div class="paragraph">
+<p>For all surfaces whose bounding poxes intersect, calculate surface-surface intersections (SSI)</p>
+</div>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Identify any coincident overlap surfaces</p>
+</li>
+<li>
+<p>Identify coincident overlap boundary curves</p>
+</li>
+<li>
+<p>If stitched boundary curves form a closed loop, record an overlap intersection event</p>
+</li>
+<li>
+<p>Identify any other intersection curves and points</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Split original surfaces into pieces</p>
+<div class="paragraph">
+<p>For each intersection curve and overlap intersection event:</p>
+</div>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Divide original surface into separate surfaces according to the Boolean operation</p>
+</li>
+<li>
+<p>For each new surface, create new trimmed NURBS face</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Join trimmed NURBS faces based on intersections and the Boolean operation</p>
+</li>
+<li>
+<p>Combine resulting faces into a new evaluated B-Rep object</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_descriptions_of_major_functions"><a class="anchor" href="#_descriptions_of_major_functions"></a>3.3. Descriptions of Major Functions</h3>
+<div class="sect3">
+<h4 id="_boolean_cpp"><a class="anchor" href="#_boolean_cpp"></a>3.3.1. <em class="path">boolean.cpp</em></h4>
+<div class="paragraph">
+<p>The <code>ON_Boolean()</code> function performs a single Boolean evaluation on two B-Rep objects.
+A single execution of the <code>brep</code> command in MGED or Archer may involve passing several successive pairs of B-Rep objects to this function.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">int
+ON_Boolean(
+    ON_Brep *evaluated_brep,
+    const ON_Brep *brep1,
+    const ON_Brep *brep2,
+    op_type operation);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the nontrivial case where the bounding boxes of <code class="param">brep1</code> and
+<code class="param">brep2</code> intersect, <code>get_evaluated_faces()</code> is called to get the
+trimmed NURBS faces of the evaluated Boolean result.  The faces are
+then combined into a single B-Rep object returned via the
+<code class="param">evaluated_brep</code> argument.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">ON_ClassArray&lt; ON_SimpleArray&lt;Trimmed Face *&gt; &gt;
+get_evaluated_faces(
+    const ON_Brep *brep1,
+    const ON_Brep *brep2,
+    op_type operation);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The intersection curves between the faces of <code class="param">brep1</code> and
+<code class="param">brep2</code> are found by <code>get_face_intersection_curves()</code>.  These
+curves are used to split the original surfaces into pieces, each
+becoming a new trimmed NURBS face.  The <code>categorize_trimmed_faces()</code>
+function is used to identify which pieces, based on the Boolean
+operation, are part of the evaluated result.  Each
+<code class="class">TrimmedFace</code> whose <code class="var">m_belong_to_final</code> member is marked
+<code class="constant">TrimmedFace::BELONG</code> is used by <code>ON_Boolean()</code> to create
+the final evaluated result.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">ON_ClassArray&lt; ON_SimpleArray&lt;SSICurve&gt; &gt;
+get_face_intersection_curves(
+    ON_SimpleArray&lt;Subsurface *&gt; &amp;surf_tree1,
+    ON_SimpleArray&lt;Subsurface *&gt; &amp;surf_tree2,
+    const ON_Brep *brep1,
+    const ON_Brep *brep2,
+    op_type operation);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Each pair of <code class="param">brep1</code> and <code class="param">brep2</code> surfaces whose bounding
+boxes intersect are passed to the <code>ON_Intersect()</code> surface-surface
+intersection routine.  The <code>get_subcurves_inside_faces()</code> routine is
+used to remove irrelevant parts of the surface-surface intersection
+curves based on the trimming curves of the associated faces.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_intersect_cpp"><a class="anchor" href="#_intersect_cpp"></a>3.3.2. <em class="path">intersect.cpp</em></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">int
+ON_Intersect(const ON_Surface *surfA,
+             const ON_Surface *surfB,
+             ON_ClassArray&lt;ON_SSX_EVENT&gt; &amp;x,
+             double isect_tol,
+             double overlap_tol,
+             double fitting_tol,
+             const ON_Interval *surfaceA_udomain,
+             const ON_Interval *surfaceA_vdomain,
+             const ON_Interval *surfaceB_udomain,
+             const ON_Interval *surfaceB_vdomain,
+             Subsurface *treeA,
+             Subsurface *treeB);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The first stage of the surface-surface intersection algorithm attempts
+to identify overlap intersections (areas where the two surfaces are
+coincident). Our assumption is that the boundary curve of any overlap
+region must be formed from isocurves of the overlapping surfaces.</p>
+</div>
+<div class="paragraph">
+<p>Subcurves of isocurves that intersect both surfaces, such that the
+surfaces are coincident on one side of the curve but not the other,
+potentially form part of overlap boundaries.  These curves are
+identified using <code>find_overlap_boundary_curves()</code>.  To avoid wasted
+computations, this function also returns intersection points and
+non-boundary intersection curves which were found during the search
+for boundary curves.</p>
+</div>
+<div class="paragraph">
+<p>Then, the <code>split_overlaps_at_intersections()</code> function is run, and
+curve pieces that share endpoints are stitched together.  The stitched
+boundary curves which close to form loops are recorded as overlap
+intersection events.</p>
+</div>
+<div class="paragraph">
+<p>The second stage of the surface-surface intersection algorithm
+attempts to identify other intersection curves and points.  The input
+surfaces <code class="param">surfA</code> and <code class="param">surfB</code> are subdivided into four
+subsurfaces, whose bounding boxes are tested in pairs to see which
+subsurfaces potentially intersect.  This subdivision repeats to a
+fixed depth determined by the constant <code class="constant">MAX_SSI_DEPTH</code>
+(defined in <em class="path">brep_defines.h</em>).</p>
+</div>
+<div class="paragraph">
+<p>Subsurfaces that lie completely inside an overlap region identified in
+the first stage are discarded.  Each remaining pair of subsurfaces
+with intersecting bounding boxes is tested for intersection.  This is
+accomplished by approximating each subsurface with two triangles (i.e.
+a 'split' quad whose corners coincide with those of the actual
+subsurface patch, which has been split diagonally for a more accurate
+fit). The triangles are then intersected, and the average of all
+intersection points is used as the initial guess for a Newton
+iterative solver, implemented by <code>newton_ssi()</code>, which searches for a
+point close to the initial guess point which lies on both surfaces.</p>
+</div>
+<div class="paragraph">
+<p>Solved points that reside inside an overlap region identified in the
+first stage are discarded.  Of the remaining solved intersection
+points between <code class="param">surfA</code> and <code class="param">surfB</code>, those which are near
+one another are stitched together into polyline curves.  If a line or
+conic curve can be fit to the polyline curves in 2D, the fit curve
+replaces the original <code class="param">surfA</code> and/or <code class="param">surfB</code> polyline
+curve.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_opennurbs_api"><a class="anchor" href="#_the_opennurbs_api"></a>3.4. The OpenNURBS API</h3>
+<div class="paragraph">
+<p>BRL-CAD leverages the OpenNURBS library primarily for its classes that
+represent general (i.e.  NURBS) B-Rep surface, curve, and point
+geometry.  The following sections describe the OpenNURBS library
+symbols most commonly used in the NURBS Boolean evaluation
+implementation, with relevant usage notes.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>When using an OpenNURBS utility that hasn&#8217;t been used elsewhere in the
+implementation, always check the documentation <em>and the
+implementation</em> to make sure it does what you expect.</p>
+</div>
+<div class="paragraph">
+<p>Misleading methods have been misused in the past.  For example, <code>bool
+ON_Line::InPlane(ON_Plane&amp; plane)</code> appears to test if a line lies in
+the given plane, but actually constructs a plane that contains the
+line.</p>
+</div>
+<div class="paragraph">
+<p>Another example is <code>double ON_Line::MinimumDistanceTo(const
+ON_Line&amp;)</code>.  While the function does indeed return the distance of the
+shortest path between one line and another, reading the implementation
+reveals an undocumented assumption that the <code class="class">ON_Line</code> provided
+as an argument is not on the same infinite line as the instance the
+method is invoked on.  That is, the [class]`ON_Line`s can be parallel,
+but not coincident.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_arrays"><a class="anchor" href="#_arrays"></a>3.4.1. Arrays</h4>
+<div class="paragraph">
+<p>OpenNURBS includes two general array classes, <code class="class">ON_ClassArray</code>
+and <code class="class">ON_SimpleArray</code>, which are similar to C&#43;&#43;'s
+<code class="class">std::vector</code>.  Besides having slightly friendlier interfaces,
+they also feature some higher-level member functions like <code>Reverse()</code>
+and <code>Quicksort()</code>.</p>
+</div>
+<div class="paragraph">
+<p>The primary difference between the two classes is that
+<code class="class">ON_SimpleArray</code> doesn&#8217;t bother constructing and destructing
+its items.  This makes it more efficient than <code class="class">ON_ClassArray</code>,
+but unsuitable for class objects (though pointers to objects are
+fine). <code class="class">ON_ClassArray</code> requires items to have correctly
+implemented copy and assignment functions.</p>
+</div>
+<div class="paragraph">
+<p>The NURBS Boolean evaluation implementation generally employs a
+combined array of known size to index elements from two input objects.
+For example, if <code class="param">brepA</code> has <code class="math">i</code> faces and <code class="param">brepB</code>
+has <code class="math">j</code> faces, a single array of <code class="math">i + j</code> elements is
+created.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The OpenNURBS array classes do not check for out-of-bounds indexing.
+This isn&#8217;t a problem in the simple case where items are added with
+<code>Append()</code> and elements <code>[0, Count() - 1</code> are iterated over.</p>
+</div>
+<div class="paragraph">
+<p>However, if the array will be a fixed size whose items are assigned in
+a non-sequential order, both the <em>capacity</em> and <em>count</em> should be set,
+or else the reported <code>Count()</code> will be incorrect, and copying arrays
+by assignment won&#8217;t work.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">ON_ClassArray&lt; ON_SimpleArray&lt;SSICurve&gt; &gt; curves_array(face_count1 + face_count2);
+curves_array.SetCount(curves_array.Capacity());</code></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_memory"><a class="anchor" href="#_memory"></a>3.4.2. Memory</h4>
+<div class="paragraph">
+<p>Curves and surfaces are nearly always allocated on the heap and
+referenced by pointers, both in the OpenNURBS library, and in the
+NURBS Boolean evaluation implementation.</p>
+</div>
+<div class="paragraph">
+<p>Mostly these allocations are simply done with the <code>new</code> keyword as
+with any other class.  However, a few classes, notably
+<code class="class">ON_Brep</code> have a <code>New()</code> function that wraps the allocation,
+which is preferred over using <code>new</code> directly for technical reasons
+specified in the OpenNURBS <em class="path">opennurbs_brep.h</em> header.</p>
+</div>
+<div class="paragraph">
+<p>Pointers to objects, curves in particular, are generally "stolen" to
+avoid having to create a new copy of the object.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Classes containing heap-allocated objects delete them in their
+destructors.  Proper stealing of pointers requires the instance&#8217;s
+members be set to NULL.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>ON_SimpleArray&lt;ON_SSX_EVENT&gt; x;
+...
+for (int i = 0; i &lt; csx_events.Count(); ++i) {
+    // copy event
+    x.Append(csx_events[i]);
+
+    // clear pointers from original so they aren't deleted by the
+    // ON_SSX_EVENT destructor
+    csx_events[i].m_curveA = NULL;
+    csx_events[i].m_curveB = NULL;
+    csx_events[i].m_curve3d = NULL;
+}</code></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_tolerance_tests"><a class="anchor" href="#_tolerance_tests"></a>3.4.3. Tolerance Tests</h4>
+<div class="paragraph">
+<p>The OpenNURBS routines make extensive use of the symbol
+<code class="var">ON_ZERO_TOLERANCE</code> in calculations to test if a result is to be
+considered equal to zero, or if two values are to be considered equal.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The NURBS Boolean evaluation implementation generally uses the
+function <code>ON_NearZero(double x, double tolerance = ON_ZERO_TOLERANCE)</code>
+to check if values are near zero, or to check if two values are
+identical (e.g <code>ON_NearZero(t - last_t)</code>).</p>
+</div>
+<div class="paragraph">
+<p>This function is also used to determine if objects are close enough to
+be considered intersecting: <code>ON_NearZero(pt.DistanceTo(other.pt),
+INTERSECTION_TOL)</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_2d_and_3d_points"><a class="anchor" href="#_2d_and_3d_points"></a>3.4.4. 2D and 3D Points</h4>
+<div class="paragraph">
+<p>The <code class="class">ON_2dPoint</code> and <code class="class">ON_3dPoint</code> classes intuitively
+implement operators such as <code>&#43;</code> and <code>*</code> to allow points to be
+easily summed and scaled.</p>
+</div>
+<div class="paragraph">
+<p>The <code>operator[]</code> functions are notable because coordinates are not
+actually stored as arrays in these classes, but rather in the named
+members <code class="var">x</code>, <code class="var">y</code>, and <code class="var">z</code>.  So while accessing
+coordinates as <code class="var">pt[0]</code>, <code class="var">pt[1]</code> is possible, the more
+readable <code class="var">pt.x</code>, <code class="var">pt.y</code>, is more typically utilized.</p>
+</div>
+<div class="paragraph">
+<p>The most frequently used member function is <code>DistanceTo(const
+ON_3dPoint &amp;p)</code>, used to check inter-point distances, either as part
+of an intersection test or to identify closeable gaps or duplicate
+points.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><code class="class">ON_2dPoint</code> objects can be, and are, safely passed to
+functions that take <code class="class">ON_3dPoint</code> arguments.  The
+<code class="class">ON_3dPoint</code> arguments are constructed from the provided
+<code class="class">ON_2dPoint</code> objects, with their <code class="var">z</code> coordinates set to 0.</p>
+</div>
+<div class="paragraph">
+<p>The NURBS Boolean evaluation implementation generally constructs 2D
+curves by populating an <code class="class">ON_3dPointArray</code> with 2D points,
+rather than using an <code class="class">ON_2dPointArray</code>, as the 3D version of
+the class (besides having additional useful member functions), can be
+used to initialize an <code class="class">ON_PolylineCurve</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_bounding_boxes"><a class="anchor" href="#_bounding_boxes"></a>3.4.5. Bounding Boxes</h4>
+<div class="paragraph">
+<p><code class="class">ON_BoundingBox</code> is returned by the <code>BoundingBox()</code>,
+<code>GetTightBoundingBox()</code>, and <code>GetBBox()</code> functions, which are
+implemented by all geometry classes inheriting from
+<code class="class">ON_Geometry</code>.</p>
+</div>
+<div class="paragraph">
+<p>The most commonly used members of <code class="class">ON_BoundingBox</code> are
+<code>Diagonal()</code> (usually in an expression such as
+<code class="var">bbox.Diagonal().Length()</code> used as a scalar size estimate), and
+<code>IsPointIn()</code> and <code>MinimumDistanceTo()</code> (used in intersection tests).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_domain_intervals"><a class="anchor" href="#_domain_intervals"></a>3.4.6. Domain Intervals</h4>
+<div class="paragraph">
+<p><code class="class">ON_Interval</code> is used to represent the domains of parametric
+curves and surfaces.  The domain <em>starts</em> at <code class="var">m_t[0]</code> and <em>ends</em>
+at <code class="var">m_t[1]</code>.  These members can be set directly or via
+<code>Set(double t0, double t1)</code>.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The start, end, and overall length of the domain are <em>arbitrary</em>,
+and <code class="var">m_t[0]</code> need not be less than <code class="var">m_t[1]</code>.  If the
+numerically smaller or larger domain endpoint is needed, these should
+be accessed via the <code>Min()</code> and <code>Max()</code> member functions.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The <code>ParameterAt(double x)</code> function translates a <em>normalized</em>
+parameter (from a domain starting at 0.0 and ending at 1.0) into a
+<em>real</em> parameter.  Thus, the start of the domain is at
+<code class="var">domain.ParameterAt(0.0)</code>, the midpoint is at
+<code class="var">domain.ParameterAt(.5)</code>, etc.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_parametric_curves"><a class="anchor" href="#_parametric_curves"></a>3.4.7. Parametric Curves</h4>
+<div class="paragraph">
+<p>The most frequently used geometry class is <code class="class">ON_Curve</code>, a
+generic container for parametric curves.  The curve is interrogated by
+using the <code>PointAt(double t)</code> method to evaluate points at arbitrary
+values inside the curve&#8217;s domain, which is specified by the
+<code class="class">ON_Interval</code> returned by the <code>Domain()</code> method.  The start and
+end points of the curve have dedicated access methods,
+<code>PointAtStart()</code> and <code>PointAtEnd()</code>.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><code>PointAt()</code> takes a real parameter; parameters normalized to
+<code class="math">[0, 1]</code> must be converted.  For example, the midpoint of the
+curve can be found as
+<code class="var">curve&#8594;PointAt(curve&#8594;Domain().ParameterAt(.5))</code>. <code>PointAt()</code>
+<em>does not check</em> if the <code class="param">t</code> value you give it is inside the
+curve&#8217;s domain, so you have to get this right!</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>All the <code>PointAt()</code> methods return an <code class="class">ON_3dPoint</code>, though in
+the common case where <code class="class">ON_Curve</code> objects are representing 2D
+trim curves, the z coordinate will be 0.0.</p>
+</div>
+<div class="paragraph">
+<p>It is sometimes necessary to reverse a curve&#8217;s domain.  This is done
+using the <code>Reverse()</code> method to facilitate stitching curves together.
+The function has a Boolean <code>int</code> return value that must be checked.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">if (curveA-&gt;PointAtStart().DistanceTo(curveB-&gt;PointAtStart()) &lt; dist_tol) {
+  if (curveA-&gt;Reverse()) {
+      curveA = link_curves(curveA, curveB);
+  }
+  /* curves that cannot be reversed are degenerate and discarded */
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Comparing curve endpoints, or even just bounding boxes (retrieved via
+the <code>BoundingBox()</code> method), is often sufficient in the context of
+different intersection and stitching procedures.  However, it&#8217;s
+important to keep in mind that in the general case, the shape of the
+curve between its endpoints or within its bounding box could be
+anything.  For example, two curves with identical start and end points
+could both be linear, creating a degenerate loop.  A curve whose
+endpoints are equal within the OpenNURBS <code class="constant">ON_ZERO_TOLERANCE</code>
+(testable using the <code>IsClosed()</code> method), may be self-intersecting, or
+degenerate to a point.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>A copy of a curve is easily made using the <code>Duplicate()</code> member
+function, which simply wraps a standard copy procedure:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">ON_Curve* Duplicate()
+{
+  ON_Curve *p = new ON_Curve;
+  if (p) *p = *this;
+  return p;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This function is common to all OpenNURBS geometry classes, but curves
+are by far the most frequently duplicated objects.  However, if curves
+are simply being retained from a working set of container objects, the
+curve pointers are generally "stolen" rather than copied, with curve
+members set to <code class="constant">NULL</code> so that the curves aren&#8217;t destructed
+with the containers.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_lines"><a class="anchor" href="#_lines"></a>3.4.8. Lines</h4>
+<div class="paragraph">
+<p><code class="class">ON_Line</code> is used to represent an infinite line, defined by two
+points, <code class="var">from</code> and <code class="var">to</code>.</p>
+</div>
+<div class="paragraph">
+<p><code class="class">ON_Line</code> is not a subclass of <code class="class">ON_Curve</code> and should not
+be confused with <code class="class">ON_LineCurve</code> (which has an <code class="class">ON_Line</code>
+member), though it does have some of the same methods as an
+<code class="class">ON_Curve</code> class, including <code>PointAt(double t)</code>.  However,
+because the line has an infinite domain, it can be evaluated at any
+<code class="var">t</code> value, though evaluating at 0.0 returns <code class="var">from</code> and
+evaluating at 1.0 returns <code class="var">to</code>, as if the line was a parametric
+curve with a domain between 0.0 and 1.0.</p>
+</div>
+<div class="paragraph">
+<p><code class="class">ON_Line</code> has helpful line-specific methods such as
+<code>ClosestPointTo(const ON_3dPoint &amp;point)</code>.  Again, because the line is
+treated as infinite, this function doesn&#8217;t necessarily return a point
+in the segment between <code class="var">from</code> and <code class="var">to</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_surfaces"><a class="anchor" href="#_surfaces"></a>3.4.9. Surfaces</h4>
+<div class="paragraph">
+<p>An <code class="class">ON_Surface</code> has a similar interface to an
+<code class="class">ON_Curve</code>, but adapted to support the surface&#8217;s two domains,
+<code class="param">u</code> and <code class="param">v</code> (sometimes called <code class="param">s</code> and
+<code class="param">t</code>).  These also correspond to as the 0 and 1 surface domains
+(as in the first example in following) or with an <code class="param">x</code> and
+<code class="param">y</code> parameterization (as shown in the second example).</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 2. Projecting an arbitrary <code class="math">(u, v)</code> point into 3D.</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">ON_Interval udom = surface-&gt;Domain(0);
+ON_Interval vdom = surface-&gt;Domain(1);
+ON_3dPoint surf_midpt_3d = surface-&gt;PointAt(udom.ParameterAt(.5), vdom.ParameterAt(.5));</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 3. Projecting a trim-curve point into 3D.</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">ON_Interval tdom = trim_curve-&gt;Domain();
+ON_3dPoint trim_midpt_uv = trim_curve-&gt;PointAt(tdom.ParameterAt(.5));
+ON_3dPoint trim_midpt_3d = surface-&gt;PointAt(trim_midpt_uv.x, trim_midpt_uv.y);</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_boundary_representation_objects"><a class="anchor" href="#_boundary_representation_objects"></a>3.4.10. Boundary Representation Objects</h4>
+<div class="paragraph">
+<p><code class="class">ON_Brep</code> is the top-level OpenNURBS class used to represent
+the two input objects and the evaluated result of the <code>ON_Boolean()</code>
+function.  The geometry is encoded as a collection of faces, which for
+our purposes should be topologically connected to enclose solid
+volumes.</p>
+</div>
+<div class="paragraph">
+<p>An object&#8217;s faces are <code class="class">ON_BrepFace</code> objects stored in the
+<code class="class">ON_Brep</code> face array, <code class="var">m_F[]</code>.</p>
+</div>
+<div class="paragraph">
+<p>Each <code class="class">ON_BrepFace</code> is defined as the subset of an
+<code class="class">ON_Surface</code> lying inside the face&#8217;s <code>outerloop</code> (a.k.a.  the
+<code>face boundary</code>) and outside all of its <code>innerloops</code> (a.k.a.  <code>trim
+loops</code> or just <code>trims</code>).</p>
+</div>
+<div class="paragraph">
+<p>The loops of an <code class="class">ON_BrepFace</code> are listed in its loop array
+<code class="var">m_li[]</code> as indexes into the associated <code class="class">ON_Brep</code> object&#8217;s
+<code class="class">ON_BrepLoop</code> array, <code class="var">m_L[]</code>.  The first (and possibly
+only) loop listed in the face&#8217;s loop index array is the outerloop, and
+all following loops are inner trim loops.  The type of the loop is
+also recorded in the loop&#8217;s <code class="var">m_type</code> member.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">brep-&gt;m_L[brep-&gt;m_F[0]-&gt;m_li[0]].m_type;      // ON_BrepLoop::outer
+brep-&gt;m_L[brep-&gt;m_F[0]-&gt;m_li[1]].m_type;      // ON_BrepLoop::inner
+...
+brep-&gt;m_L[*brep-&gt;m_F[0]-&gt;m_li.Last()].m_type; // ON_BrepLoop::inner</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_intersection_events"><a class="anchor" href="#_intersection_events"></a>3.4.11. Intersection Events</h4>
+<div class="paragraph">
+<p>There are two OpenNURBS classes for representing
+intersections. <code class="class">ON_X_EVENT</code> is used for curve-curve and
+curve-surface intersections. <code class="class">ON_SSX_EVENT</code> is used for
+surface-surface intersections.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>An additional class, <code class="class">ON_PX_EVENT</code> has been implemented as an
+extension to the OpenNURBS API to represent point-point, point-curve,
+and point-surface intersection events.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The intersection classes enumerate a number of intersection types.
+Over the course of an evaluation, the <code class="var">m_type</code> of intersection
+events is repeatedly checked to determine how each event should be
+processed.</p>
+</div>
+<div class="paragraph">
+<p>When two curves are coincident with one another over a portion of
+their domains, <code class="var">m_type</code> will be <code class="var">ON_X_EVENT::ccx_overlap</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/ccx_overlap_event.png" alt="ccx overlap event">
+</div>
+<div class="title">Figure 2. Curve-Curve Overlap Intersection</div>
+</div>
+<div class="paragraph">
+<p>When two surfaces are coincident over a portion of their domains,
+<code class="var">m_type</code> will be <code class="var">ON_SSX_EVENT::ssx_overlap</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/ssx_overlap_event.png" alt="ssx overlap event">
+</div>
+<div class="title">Figure 3. Surface-Surface Overlap Intersection</div>
+</div>
+<div class="paragraph">
+<p>There are two ways that two surfaces can intersect in a curve.  If the
+normals of the surfaces are parallel over all points of the curve, the
+intersection <code class="var">m_type</code> is <code class="var">ON_SSX_EVENT::ssx_tangent</code>, and
+<code class="var">ON_SSX_EVENT::ssx_transverse</code> otherwise.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/ssx_tangent_event.png" alt="ssx tangent event">
+</div>
+<div class="title">Figure 4. Surface-Surface Tangent Intersection</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/ssx_transverse_event.png" alt="ssx transverse event">
+</div>
+<div class="title">Figure 5. Surface-Surface Transverse Intersection</div>
+</div>
+<div class="paragraph">
+<p>Similarly, if two surfaces intersect at a point, the intersection
+<code class="var">m_type</code> is <code class="var">ON_SSX_EVENT::ssx_tangent_point</code> if the normals
+of the two surfaces are parallel at that point, and
+<code class="var">ON_SSX_EVENT::ssx_transverse_point</code> otherwise.</p>
+</div>
+<div class="paragraph">
+<p>The <code class="var">m_type</code> of an intersection event determines how values in
+the <code class="var">m_a[]</code>, <code class="var">m_b[]</code>, <code class="var">m_A[]</code>, and <code class="var">m_B[]</code> array
+members of the event instance are to be interpreted (documented in the
+OpenNURBS <em class="path">opennurbs_x.h</em> header).</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>It&#8217;s very easy to confuse the <code class="var">m_a[]</code>, <code class="var">m_b[]</code>,
+<code class="var">m_A[]</code>, and <code class="var">m_B[]</code> arrays, as well as
+<code class="var">m_a[0]</code> vs. <code class="var">m_a[1]</code>, etc.  This is especially true when
+copying and pasting code.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For an <code class="class">ON_X_EVENT</code> representing a curve-curve intersection
+whose <code class="var">m_type</code> is <code class="var">ON_X_EVENT::ccx_overlap</code>, (<code class="var">m_a[0]</code>,
+<code class="var">m_a[1]</code>) represents the portion of the first curve&#8217;s domain that
+overlaps with the second curve, whereas in other cases <code class="var">m_a[1]</code>
+is simply a duplicate of <code class="var">m_a[0]</code>.</p>
+</div>
+<div class="paragraph">
+<p>As a result, a pattern seen repeatedly in the NURBS Boolean evaluation
+implementation is a loop over intersection events that gathers
+intersection points for processing, including overlap endpoints if the
+event represents an overlap.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">for (int i = 0; i &lt; x_event.Count(); ++i) {
+    x_points.Append(x_event[i].m_a[0]);
+    if (x_event[i].m_type == ON_X_EVENT::ccx_overlap) {
+        x_points.Append(x_event[i].m_a[1]);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_code_conventions_and_pitfalls"><a class="anchor" href="#_code_conventions_and_pitfalls"></a>3.5. Code Conventions and Pitfalls</h3>
+<div class="sect3">
+<h4 id="_2d_vs_3d"><a class="anchor" href="#_2d_vs_3d"></a>3.5.1. 2D vs 3D</h4>
+<div class="paragraph">
+<p>Implicit in working with parametric geometry is that some operations
+are done in 2D while others are done in 3D and it&#8217;s very important to
+know the dimension currently being worked in at all times.</p>
+</div>
+<div class="paragraph">
+<p>As mentioned in the section above on 2D and 3D points, 3D classes are
+often used in the implementation to store 2D points, and thus are not
+a reliable indication that an operation is happening in 3D.</p>
+</div>
+<div class="paragraph">
+<p>Being that operations in 2D tend to be a lot simpler, 2D is normally
+the dimension being worked in.  However, because parametric curves and
+surfaces of different objects have different parameterizations,
+determining where two objects intersect can&#8217;t be done by comparing 2D
+parameters; it must happen in 3D.</p>
+</div>
+<div class="sect4">
+<h5 id="_naming_convention"><a class="anchor" href="#_naming_convention"></a>3.5.1.1. Naming Convention</h5>
+<div class="paragraph">
+<p>Generally, when 2D and 3D operations are taking place near one
+another, you&#8217;ll see a naming convention being used to disambiguate 2D
+and 3D data.  3D identifiers are unadorned, while 2D names will be
+suffixed with 1/2 or A/B.</p>
+</div>
+<div class="paragraph">
+<p>Suppose for example we have three arrays of corresponding points that
+are samples along an intersection curve between two surfaces.  The 3D
+array might simply be named <code class="var">points</code>.  The corresponding 2D
+points in the domains of the two surfaces involved are then very
+likely to be named <code class="var">points1</code> and <code class="var">points2</code> or <code class="var">pointsA</code>
+and <code class="var">pointsB</code>.  Whether the 1/2 or A/B suffixes are used
+typically depends on whether the input surfaces have names like
+<code class="var">surf1</code>/<code class="var">surf2</code> or <code class="var">surfA</code>/<code class="var">surfB</code>.  The latter
+is more likely to be used when processing intersection events, as
+members of the OpenNURBS intersection event classes are named
+<code class="var">m_a</code> and <code class="var">m_b</code>, etc.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_intersection_tolerances"><a class="anchor" href="#_intersection_tolerances"></a>3.5.1.2. Intersection Tolerances</h5>
+<div class="paragraph">
+<p>The <code>ON_Intersect()</code> intersection routines (<em class="path">intersect.cpp</em>)
+generally take an <code class="var">isect_tol</code> argument, which is a 3D tolerance
+normally equal to the constant <code class="var">ON_INTERSECTION_TOL</code>.  2D
+tolerances, following the convention described above, are generally
+named <code class="var">isect_tolA</code> and <code class="var">isect_tolB</code>.</p>
+</div>
+<div class="paragraph">
+<p>2D tolerance values for curves and surfaces are derived from the 3D
+tolerance value using the <code>tolerance_2d_from_3d()</code> routines.  The
+length of the diagonal of the 3D bounding box of the curve or surface
+is divided by the length of the 2D domain to get a rough estimate of
+what distance in the 2D domain corresponds to the 3D tolerance
+distance.  In other words, the hope is that two points on a
+<code class="var">curveA</code> or <code class="var">surfA</code> that are <code class="var">isect_tolA</code> units apart
+in 2D, will evaluate to two 3D points that are <code class="var">isect_tol</code> units
+apart in 3D.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The difference between <code class="var">isect_tol</code> and <code class="var">isect_tolA</code> and
+<code class="var">isect_tolB</code> can be arbitrarily large, so it&#8217;s import that the
+correct tolerance is used in all cases.  However, it&#8217;s sometimes
+tempting to use the wrong tolerance, for instance using the 2D
+<code class="var">isect_tolA</code> in a 3D intersection test simply because the 3D
+points were evaluated from 2D points in the <code class="var">surfA</code> domain.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_curve_traversal_directions"><a class="anchor" href="#_curve_traversal_directions"></a>3.5.1.3. Curve Traversal Directions</h5>
+<div class="paragraph">
+<p>It&#8217;s important to remember that because parameterizations are
+arbitrary, there is no correspondence whatsoever between a 2D curve in
+one surface&#8217;s domain and another surface&#8217;s domain, even when those 2D
+curves evaluate to the same 3D curve.  In particular, you cannot
+assume that traversing different curves along their domain from
+<code class="var">m_t[0]</code> to <code class="var">m_t[1]</code> translates to a consistent traversal
+direction in 3D, or even that each 2D curve&#8217;s
+<code class="var">m_t[0]</code>/<code class="var">m_t[1]</code> corresponds to the same 3D starting
+point on a closed curve.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/curve_traversal_directions.png" alt="curve traversal directions">
+</div>
+<div class="title">Figure 6. Different Traversals of the Same Curve</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_accumulated_error"><a class="anchor" href="#_accumulated_error"></a>3.5.2. Accumulated Error</h4>
+<div class="paragraph">
+<p>By the nature of the math involved in representing parametric geometry
+(e.g.  converting between 2D and 3D, and solving intersections between
+objects with different parameterizations) values that are expected to
+be identical are generally only equal within a certain tolerance, or
+error.</p>
+</div>
+<div class="paragraph">
+<p>Over the course of the evaluation, the same data is interrogated and
+processed a number of times.  If ignored, the error introduced in one
+stage of the evaluation can grow over subsequent stages, causing an
+incorrect determination that leaves a curve unclosed, a surface
+unsplit, and ultimately an incorrect evaluated result.</p>
+</div>
+<div class="paragraph">
+<p>As a consequence, it&#8217;s generally a good idea to remove fuzziness when
+you find it, and avoid algorithms that introduce more error.</p>
+</div>
+<div class="sect4">
+<h5 id="_clamping"><a class="anchor" href="#_clamping"></a>3.5.2.1. Clamping</h5>
+<div class="paragraph">
+<p>Start and end points of closed curves are rarely identical.  So if a
+curve is found to be closed within tolerance, it&#8217;s a good idea to
+actually set the end point equal to the start point.  Similarly, if an
+interval of a domain is calculated whose endpoints are within
+tolerance of the domain endpoints, the entire domain should be used.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Producing subcurves of existing curves is a common operation in the
+NURBS Boolean evaluation implementation.  This is a prime example of
+an operation that can introduce fuzziness into the evaluation.  For
+example, we may be splitting a curve to remove a portion of it, and
+end up with two new curves with endpoints that used to align when part
+of the original curve, but no longer do.</p>
+</div>
+<div class="paragraph">
+<p>The <code>Split()</code> method of <code class="class">ON_Curve</code> can be used to produce
+subcurves, but in the implementation it&#8217;s much preferred to use the
+<code>sub_curve()</code> function defined in <em class="path">intersect.cpp</em> which wraps
+<code>Split()</code> and correctly handles clamping of curve parameters to domain
+endpoints.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_iterated_solutions"><a class="anchor" href="#_iterated_solutions"></a>3.5.2.2. Iterated Solutions</h5>
+<div class="paragraph">
+<p>The iterative method used to solve points on parametric curves and
+surfaces is expected to produce better answers given better inputs and
+more iterations.  However, our algorithms can&#8217;t always produce
+sufficient inputs, and the value the solver converges on isn&#8217;t always
+the correct one.</p>
+</div>
+<div class="paragraph">
+<p>This fuzziness produced in the solver&#8217;s results can be mitigated in
+the context of finding intersection curves for example, because we
+solve many points and fit a curve between them.  So, one unsolved
+point on the curve isn&#8217;t going to cause an evaluation failure.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>It&#8217;s tempting to test curve characteristics or make inside/outside
+determinations, etc.  by using the <code>ON_Intersect()</code> functions.
+However, there&#8217;s a persistent risk that the error in the iteratively
+solved results will cause incorrect determinations that cascade into
+larger problems over the course of the evaluation.  For this reason,
+the <code>ON_Intersect()</code> functions should be avoided whenever possible.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_debugging_nurbs_boolean_evaluations"><a class="anchor" href="#_debugging_nurbs_boolean_evaluations"></a>4. Debugging NURBS Boolean Evaluations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The current ongoing development activity for NURBS Boolean evaluation
+is debugging specific evaluation cases in order to find bugs and
+unhandled geometry cases in the implementation to support the
+evaluation of more geometry.</p>
+</div>
+<div class="sect2">
+<h3 id="_debug_plotting"><a class="anchor" href="#_debug_plotting"></a>4.1. Debug Plotting</h3>
+<div class="paragraph">
+<p>There are two Archer commands that can be used to plot individual
+components of brep NURBS objects to facilitate debugging.</p>
+</div>
+<div class="paragraph">
+<p>These commands work by creating temporary wireframe objects that are
+drawn in the view window.  While drawn, these objects appear in the
+in-memory database, so the <code>ls</code> command will show these objects (with
+names like <code class="var">_BC_S_&lt;obj&gt;_646464&gt;</code> or
+<code class="var">bool1_brep1_surface03838ff</code>), but they are not saved with the
+database, and are deleted when erased from the display.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Debug wireframe objects are not drawn the same way as geometry, and do
+not trigger an automatic resize and refresh of the view.  This means
+that after running a <code>plot</code> command, you may have to trigger a refresh
+manually (e.g.  by running the <code>autoview</code> command or interactively
+rotating/resizing the view.</p>
+</div>
+<div class="paragraph">
+<p>Also be aware that debug wireframes are drawn in a variety of
+hard-coded colors to help distinguish different subcomponents.  These
+colors were designed to be best visible using a view whose background
+color is black (this should be the default, but can be easily changed
+in Archer via the view window&#8217;s right-click menu).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_the_brep_command"><a class="anchor" href="#_the_brep_command"></a>4.1.1. The <code>brep</code> Command</h4>
+<div class="paragraph">
+<p>The Archer <code>brep</code> command (also implemented in MGED) can be used to
+get structural information about B-Rep objects and visualize different
+subcomponents.</p>
+</div>
+<div class="paragraph">
+<p>Most importantly, <code>brep &lt;obj&gt; info</code> will report summary information,
+including the number of NURBS surfaces and faces and <code>brep &lt;obj&gt; plot
+S &lt;index&gt;</code> can be used to plot individual surfaces in 3D.</p>
+</div>
+<div class="paragraph">
+<p>This is the primary way you can conceptually link a surface or face
+index to the 3D geometry it represents.  So if you notice an error in
+an object while viewing it in the editor, you can use the <code>brep</code>
+command to determine the index of the surface with the error, and then
+inspect the in-memory object in a debugger using that index into the
+final surface array, tracing that surface object to where it was
+created, etc.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>For evaluations involving more than two objects, the final brep NURBS
+object is made by converting two leaf objects into breps, performing a
+Boolean evaluation on them, converting the next relevant object to
+brep and combining it with the first intermediate evaluation to make a
+second intermediate evaluation, and so on up the tree.</p>
+</div>
+<div class="paragraph">
+<p>In order to inspect the surfaces and indices for a particular stage of
+the overall evaluation using the <code>brep</code> command, it&#8217;s necessary to
+manually create the intermediate combination (a subtree of the one
+being evaluated), and use the <code>brep</code> command to produce the
+intermediate NURBS result.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_the_dplot_command"><a class="anchor" href="#_the_dplot_command"></a>4.1.2. The dplot Command</h4>
+<div class="paragraph">
+<p>The <code>dplot</code> command is used to visualize the results of different
+stages of the NURBS Boolean evaluation algorithm.  This makes it
+easier to isolate the source of a problem in an evaluation.</p>
+</div>
+<div class="paragraph">
+<p>Unlike the <code>brep</code> command, the <code>dplot</code> command is purely a development
+tool.  Its implementation does not honor library boundaries and does
+not conform to the typical conventions for editor commands, and for
+this reason is only available as an Archer command in the NURBS
+Boolean evaluation development branch
+(<a href="https://sourceforge.net/p/brlcad/code/HEAD/tree/brlcad/branches/brep-debug/" class="bare">https://sourceforge.net/p/brlcad/code/HEAD/tree/brlcad/branches/brep-debug/</a>).</p>
+</div>
+<div class="paragraph">
+<p>In the development branch, the NURBS Boolean evaluation source code
+contains additional calls to <code class="class">DebugPlot</code> functions (implemented
+in <em class="path">debug_plot.cpp</em>) that create wireframe visualizations of
+data produced during the evaluations.</p>
+</div>
+<div class="paragraph">
+<p>For development convenience, these wireframes are not saved as
+database objects, but rather are written as files in the current
+directory, with names of the form <em class="path">bool1</em>*.plot3_.  An
+additional <em class="path">bool1.dplot</em> is written which describes the
+<em class="path">.plot3</em> files that were written in a format understood by the
+<code>dplot</code> command.</p>
+</div>
+<div class="paragraph">
+<p>One set of files is written for each evaluation.  Between evaluations,
+a static counter increments the numeric suffix that&#8217;s used in the
+output filenames.  So for a combination consisting of three objects,
+the <em class="path">bool1*</em> files will hold results from the intermediate
+boolean evaluation between the first two objects in the combination,
+and the <em class="path">bool2*</em> files will hold results from the final
+evaluation between the intermediate evaluated object and the remaining
+leaf of the original comb.</p>
+</div>
+<div class="paragraph">
+<p>The <code class="class">DebugPlot</code> functions always use the same file names and do
+not check if written files already exist.  It is assumed that you will
+run an evaluation, inspect the generated files using the <code>dplot</code>
+command, and then manually remove (or just move) the generated
+<em class="path">.dplot</em> and <em class="path">.plot3</em> files before performing another
+evaluation with the <code>brep</code> command.</p>
+</div>
+<div class="sect4">
+<h5 id="_the_ssx_subcommands"><a class="anchor" href="#_the_ssx_subcommands"></a>4.1.2.1. The ssx Subcommands</h5>
+<div class="ulist">
+<ul>
+<li>
+<p><code><strong>dplot bool1.dplot ssx</strong></code> lets you interactively step through the
+pairs of surfaces whose axis-aligned bounding boxes were found to
+intersect. The wireframes of the B-Rep objects being intersected are
+drawn with the current surface pair highlighted. The
+<code class="var">ssx_index</code> assigned to the pair, which can be used as an
+argument to other dplot commands, is displayed in the command
+window.</p>
+</li>
+<li>
+<p><code><strong>dplot bool1.dplot &lt;ssx_index&gt;</strong></code> lets you interactively step
+through the specific surface-surface intersections found between the
+pair of surfaces identified by an <code class="var">ssx_index</code>, excluding
+isocurve-surface intersections (shown by <code>dplot bool1.dplot
+isocsx</code>).</p>
+<div class="paragraph">
+<p>To make it easier to check that drawn intersection curves are of the
+correct type and are open or closed curves as appropriate,
+intersections are color-coded by type (e.g.  transverse intersections
+are drawn in yellow) and the ends of lines are decorated with arrows
+to indicate open ends or perpendicular segments to indicate coincident
+endpoints.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/compare_endpoint_style.png" alt="compare endpoint style">
+</div>
+<div class="title">Figure 7. Curve Endpoint Decoration</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The ssx pairs are recorded in the <code>find_overlap_boundary_curves()</code>
+function in <em class="path">intersect.cpp</em>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_the_isocsx_subcommands"><a class="anchor" href="#_the_isocsx_subcommands"></a>4.1.2.2. The isocsx Subcommands</h5>
+<div class="ulist">
+<ul>
+<li>
+<p><code><strong>dplot bool1.dplot isocsx &lt;ssx_index&gt;</strong></code> lets you step through the
+isocurve-surface intersections from the pair of intersecting
+surfaces identified by the given <code class="var">ssx_index</code>. Wireframe plots
+of the two surfaces are drawn, with one surface and an intersecting
+isocurve of the second surface highlighted. Each combination of
+isocurve and surface is assigned an <code class="var">isocsx_index</code> (shown in
+the command window) that can be used as an argument in the second
+form of the <code>isocsx</code> subcommand.</p>
+</li>
+<li>
+<p><code><strong>dplot bool1.dplot isocsx &lt;ssx_index&gt; &lt;isocsx_index&gt;</strong></code> shows the
+actual intersection curve found between the isocurve and surface
+pair identified by the given <code class="var">ssx_index</code> and
+<code class="var">isocsx_index</code>.</p>
+<div class="paragraph">
+<p>The plotted intersection curves are color-coded for easy
+type-checking, e.g.  overlap intersections are drawn in green.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The isocsx curves are written in the <code>find_overlap_boundary_curves()</code>
+function in <em class="path">intersect.cpp</em>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_face_evaluation_subcommands"><a class="anchor" href="#_face_evaluation_subcommands"></a>4.1.2.3. Face-Evaluation Subcommands</h5>
+<div class="ulist">
+<ul>
+<li>
+<p><code><strong>dplot bool1.dplot fcurves &lt;ssx_index&gt;</strong></code> lets you step through the
+surface-surface intersection curves identified by the given
+<code class="var">ssx_index</code> after they&#8217;ve been clipped by face trimming curves.</p>
+<div class="paragraph">
+<p>The clipped 2D intersection curves for the first surface are drawn
+projected to 3D, followed by the matching curves for the second
+surface.</p>
+</div>
+</li>
+<li>
+<p><code><strong>dplot bool1.dplot lcurves</strong></code> steps through the final 3D
+intersection curves used to split faces, after contiguous
+face-clipped pieces have been linked together.</p>
+<div class="paragraph">
+<p>After each curve is drawn independently, all curves are drawn at the
+same time.</p>
+</div>
+<div class="paragraph">
+<p>This subcommand doesn&#8217;t draw any contextual geometry; only the linked
+curves.  Manually drawing a transparent shaded view of the original
+geometry usually works well for context.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/lcurves_with_shaded_context.png" alt="lcurves with shaded context">
+</div>
+<div class="title">Figure 8. Linked Curves in Context</div>
+</div>
+</li>
+<li>
+<p><code><strong>dplot bool1.dplot faces</strong></code> lets you step through the new set of
+faces formed by splitting the original faces with the final linked
+intersection curves. Faces that are considered part of the final
+result are drawn highlighted, while faces that are discarded are
+drawn dim.</p>
+<div class="paragraph">
+<p>After each face is drawn independently, all faces are drawn at the
+same time.</p>
+</div>
+<div class="paragraph">
+<p>This subcommand doesn&#8217;t draw any contextual geometry; only the face
+curves.  Manually drawing a transparent shaded view of the original
+geometry usually works well for context.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The clipped face curves are recorded in
+<code>get_face_intersection_curves()</code> in <em class="path">boolean.cpp</em>.</p>
+</div>
+<div class="paragraph">
+<p>The linked curves and the categorized split faces are recorded in
+<code>get_evaluated_faces()</code> in <em class="path">boolean.cpp</em>.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_plotting_arbitrary_evaluation_curves"><a class="anchor" href="#_plotting_arbitrary_evaluation_curves"></a>4.1.3. Plotting Arbitrary Evaluation Curves</h4>
+<div class="paragraph">
+<p>It&#8217;s possible to write out custom curves from any part of the
+evaluation (i.e.  those not covered by <code>dplot</code>) and view them in
+MGED/Archer.</p>
+</div>
+<div class="paragraph">
+<p>You can pass a 3D <code class="class">ON_Curve</code> to the <code>DebugPlot::Plot3DCurve()</code>
+function or a 2D <code class="class">ON_Curve</code> and an associated
+<code class="class">ON_Surface</code> to the <code>DebugPlot::Plot3DCurve()</code> function.</p>
+</div>
+<div class="paragraph">
+<p>Both of these functions take an arbitrary filename for a plot3 file
+the function will write, as well as a color for the curve.  The
+<code>DebugPlot::Plot3DCurve()</code> has an optional <code class="var">vlist</code> parameter
+which you should omit (see the full definitions in
+<em class="path">debug_plot.cpp</em>).</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 4. Writing a 2D Curve as a plot3 File</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">// somewhere in boolean.cpp
+if (face1_curves.Count() &gt; 0 &amp;&amp; face1_curves[0] != NULL) {
+    static int calls = 0;
+    unsigned char mycolor[] = {0, 0, 62};
+    std::ostringstream plotname;
+
+    // generate a unique filename
+    plotname &lt;&lt; "mycurve" &lt;&lt; ++calls &lt;&lt; ".plot3";
+
+    // plot using method of global DebugPlot instance 'dplot'
+    dplot-&gt;Plot3DCurveFrom2D(surf1, face1_curves[0],
+        plotname.str().c_str(), mycolor);
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>After running an evaluation that produces a custom plot3 file, you can
+draw it using the <code>overlay</code> editor command.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 5. Drawing a plot3 File</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre>Archer&gt; overlay mycurve1.plot3 1</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_debugging_with_the_dplot_command"><a class="anchor" href="#_debugging_with_the_dplot_command"></a>4.2. Debugging with the <code>dplot</code> Command</h3>
+<div class="sect3">
+<h4 id="_tracing_output_to_the_code_that_created_it"><a class="anchor" href="#_tracing_output_to_the_code_that_created_it"></a>4.2.1. Tracing Output to the Code That Created It</h4>
+<div class="paragraph">
+<p>After you notice a problem in the output shown by the <code>dplot</code> command,
+you need to locate the source code that created the erroneous geometry
+so you can start debugging.  The following sections provide example
+procedures you can perform in Archer and a debugger to start
+investigating some common issues.</p>
+</div>
+<h5 id="_if_the_ssx_subcommand_shows_that_a_surface_surfaceintersection_is_missing" class="float">If the ssx subcommand shows that a surface-surfaceintersection is missing&#8230;&#8203;</h5>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Use the <code>info</code> and <code>plot</code> subcommands of the <code>brep</code> command to find
+the indexes (<code>&lt;i&gt;</code> and <code>&lt;j&gt;</code>) of the two faces involved in the missing
+intersection.</p>
+<div class="paragraph">
+<p>For a multi-part evaluation, you&#8217;ll need to manually create the
+appropriate intermediate evaluation, corresponding to the
+<em class="path">bool&lt;n&gt;.dplot</em> showing the error, to run the <code>brep</code> command on.</p>
+</div>
+</li>
+<li>
+<p>Set a breakpoint at the <code>ON_Intersect()</code> call in
+<code>get_face_intersection_curves()</code> with the condition <code>i == &lt;i&gt; &amp;&amp; j ==
+&lt;j&gt;</code>.</p>
+<div class="paragraph">
+<p>For a multi-part evaluation, you&#8217;ll need to first skip to the correct
+invocation of <code>ON_Boolean()</code>, either manually, or by conditioning a
+breakpoint on the value of the static <code class="var">calls</code> variable defined at
+the top of that function.</p>
+</div>
+</li>
+<li>
+<p>Start stepping through the <code>ON_Intersect()</code> call.</p>
+</li>
+</ol>
+</div>
+<h5 id="_if_the_isocsx_subcommand_shows_that_anisocurve_surface_intersection_is_missing" class="float">If the <code>isocsx</code> subcommand shows that anisocurve-surface intersection is missing&#8230;&#8203;</h5>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Note the index <code>&lt;n&gt;</code> of the surface-surface intersection used as the
+argument to the <code>isocsx</code> subcommand.</p>
+</li>
+<li>
+<p>Use the <code>info</code> and <code>plot</code> subcommands of the <code>brep</code> command to find
+the indexes (<code>&lt;i&gt;</code> and <code>&lt;j&gt;</code>) of the two faces involved in the missing
+intersection.</p>
+<div class="paragraph">
+<p>For a multi-part evaluation, you&#8217;ll need to manually create the
+appropriate intermediate evaluation, corresponding to the
+<em class="path">bool&lt;n&gt;.dplot</em> showing the error, to run the <code>brep</code> command on.</p>
+</div>
+</li>
+<li>
+<p>Set a breakpoint at the <code>ON_Intersect()</code> call in
+<code>get_face_intersection_curves()</code> with the condition
+<code>dplot&#8594;SurfacePairs() == &lt;n - 1&gt; &amp;&amp; i == &lt;i&gt; &amp;&amp; j == &lt;j&gt;</code>.</p>
+<div class="paragraph">
+<p>For a multi-part evaluation, you&#8217;ll need to first skip to the correct
+invocation of <code>ON_Boolean()</code>, either manually, or by conditioning a
+breakpoint on the value of the static <code class="var">calls</code> variable defined at
+the top of that function.</p>
+</div>
+</li>
+<li>
+<p>When the break is reached, add a breakpoint at
+<code>find_overlap_boundary_curves()</code> and advance to that function.</p>
+</li>
+<li>
+<p>Step through the intersections, printing out the isocurve endpoints
+and visualize them in the context of the geometry in Archer (e.g. by
+centering the view at those points, or creating spheres centered on
+them, etc.) to find the isocurves of interest:</p>
+<div class="listingblock">
+<div class="content">
+<pre>(gdb) print surf1_isocurve-&gt;PointAtStart()
+(gdb) print surf1_isocurve-&gt;PointAtEnd()</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Investigate how the isocurves are processed.</p>
+</li>
+</ol>
+</div>
+<h5 id="_if_the_isocsx_subcommand_shows_that_isocurveintersections_are_incorrect" class="float">If the <code>isocsx</code> subcommand shows that isocurveintersections are incorrect&#8230;&#8203;</h5>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Note the index <code>&lt;n&gt;</code> of the surface-surface intersection used as the
+argument to the <code>isocsx</code> subcommand.</p>
+</li>
+<li>
+<p>Set a break after the call to <code>find_overlap_boundary_curves()</code> in
+<em class="path">intersect.cpp</em> with the condition <code>dplot&#8594;SurfacePairs() ==
+&lt;n&gt;</code>.</p>
+<div class="paragraph">
+<p>For a multi-part evaluation, you&#8217;ll need to first skip to the correct
+invocation of <code>ON_Boolean()</code>, either manually, or by conditioning a
+breakpoint on the value of the static <code class="var">calls</code> variable defined at
+the top of that function.</p>
+</div>
+</li>
+<li>
+<p>Inspect the <code class="var">overlaps</code> array.</p>
+</li>
+</ol>
+</div>
+<h5 id="_if_the_ssx_subcommand_shows_an_incorrectintersection_curve" class="float">If the <code>ssx</code> subcommand shows an incorrectintersection curve&#8230;&#8203;</h5>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Note the index <code>&lt;n&gt;</code> of the surface-surface intersection used as the
+argument to the <code>ssx</code> subcommand, and the index <code>&lt;k&gt;</code> assigned to the
+incorrect intersection event.</p>
+</li>
+<li>
+<p>Set a breakpoint at the <code>ON_Intersect()</code> call in <code>get_face_intersection_curves()</code> with the condition <code>dplot&#8594;SurfacePairs() == &lt;n - 1&gt;</code>.</p>
+<div class="paragraph">
+<p>For a multi-part evaluation, you&#8217;ll need to first skip to the correct
+invocation of <code>ON_Boolean()</code>, either manually, or by conditioning a
+breakpoint on the value of the static <code class="var">calls</code> variable defined at
+the top of that function.</p>
+</div>
+</li>
+<li>
+<p>Step into <code>ON_Intersect()</code> and wait for <code>x.Count() == &lt;k - 1&gt;</code>.</p>
+</li>
+<li>
+<p>Investigate the creation of the next intersection event.</p>
+</li>
+</ol>
+</div>
+<h5 id="_if_the_ssx_subcommand_shows_the_correct_intersections_for_agiven_surface_pair_but_the_fcurves_subcommand_shows_thosecurves_are_not_being_correctly_clipped_by_faces" class="float">If the ssx subcommand shows the correct intersections for agiven surface pair, but the fcurves subcommand shows thosecurves are not being correctly clipped by faces&#8230;&#8203;</h5>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Note the index <code>&lt;n&gt;</code> of the surface-surface intersection used as the
+argument to the <code>ssx</code> and <code>fcurves</code> subcommands, and the index <code>&lt;k&gt;</code>
+assigned by <code>fcurves</code> to the incorrect clipped curves.</p>
+</li>
+<li>
+<p>Set a breakpoint at the <code>get_subcurves_inside_faces()</code> call inside
+<code>get_face_intersection_curves()</code> with the condition
+<code>dplot&#8594;SurfacePairs() == &lt;n + 1&gt; &amp;&amp; k == &lt;k&gt;</code>.</p>
+<div class="paragraph">
+<p>For a multi-part evaluation, you&#8217;ll need to first skip to the correct
+invocation of <code>ON_Boolean()</code>, either manually, or by conditioning a
+breakpoint on the value of the static <code class="var">calls</code> variable defined at
+the top of that function.</p>
+</div>
+</li>
+<li>
+<p>Start stepping through <code>get_face_intersection_curves()</code> to
+investigate how the event intersection curves are being clipped.</p>
+</li>
+</ol>
+</div>
+<h5 id="_if_the_faces_subcommand_shows_that_an_input_facewas_not_split_correctly_but_the_lcurves_subcommand_shows_therelevant_intersection_was_accurate" class="float">If the faces subcommand shows that an input facewas not split correctly, but the lcurves subcommand shows therelevant intersection was accurate&#8230;&#8203;</h5>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Note the index <code>&lt;n&gt;</code> assigned by <code>lcurves</code> to the relevant linked
+curves.</p>
+</li>
+<li>
+<p>Set a breakpoint at the <code>split_trimmed_face()</code> call inside
+<code>get_evaluated_faces()</code> with the condition <code>dplot&#8594;LinkedCurves() &gt;=
+&lt;n + 1&gt;</code>.</p>
+<div class="paragraph">
+<p>For a multi-part evaluation, you&#8217;ll need to first skip to the correct
+invocation of <code>ON_Boolean()</code>, either manually, or by conditioning a
+breakpoint on the value of the static <code class="var">calls</code> variable defined at
+the top of that function.</p>
+</div>
+</li>
+<li>
+<p>Inside <code>split_trimmed_face()</code>, check the input face loops and ssx
+curves:</p>
+<div class="listingblock">
+<div class="content">
+<pre>(gdb) print orig_face-&gt;m_outerloop.m_a[i]-&gt;PointAtStart()
+(gdb) print orig_face-&gt;m_outerloop.m_a[i]-&gt;PointAtEnd()
+(gdb) print orig_face-&gt;m_innerloop.m_a[i]-&gt;PointAtStart()
+(gdb) print orig_face-&gt;m_innerloop.m_a[i]-&gt;PointAtEnd()
+(gdb) print ssx_curves.m_a[i].m_ssi_curves.m_a[i].m_curve-&gt;PointAtStart()
+(gdb) print ssx_curves.m_a[i].m_ssi_curves.m_a[i].m_curve-&gt;PointAtEnd()</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_a_historical_debugging_example"><a class="anchor" href="#_a_historical_debugging_example"></a>4.2.2. A Historical Debugging Example</h4>
+<div class="paragraph">
+<p>What follows is a step-by-step debugging of a real issue affecting the
+<code>X</code> combination from the BRL-CAD sample database <em class="path">axis.g</em>.</p>
+</div>
+<div class="paragraph">
+<p>This issue was fixed in revision 65179 in the NURBS Boolean evaluation
+development branch of the source repository
+(<a href="https://sourceforge.net/p/brlcad/code/HEAD/tree/brlcad/branches/brep-debug/" class="bare">https://sourceforge.net/p/brlcad/code/HEAD/tree/brlcad/branches/brep-debug/</a>).</p>
+</div>
+<div class="paragraph">
+<p>If you want to follow along, you can reinstate the error in a checkout
+of the development branch:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ svn merge -r 65179:65178 ^/brlcad/branches/brep-debug</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open <em class="path">axis.g</em> in Archer and convert the original combination
+to <code class="type">brep</code>.</p>
+<div class="listingblock">
+<div class="content">
+<pre>Archer&gt; opendb axis.g
+Archer&gt; brep X
+X.brep is made.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The file <em class="path">bool1.dplot</em> is created in the current directory, as
+well as a few hundred <em class="path">.plot3</em> files.</p>
+</div>
+</li>
+<li>
+<p>The object <code>X</code> is the union of two intersecting arb8 boxes. The
+arb8s are perpendicularly intersecting plates that create a 3D shape
+that looks like a 2D letter "X" in the X-Y plane that has been
+extruded along the Z axis.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/axis_X.png" alt="axis X">
+</div>
+<div class="title">Figure 9. "X" from axis.g</div>
+</div>
+<div class="paragraph">
+<p>The <code>ssx</code> subcommand of <code>dplot</code> is used to check that all expected
+surface-surface intersections were attempted between the B-Rep NURBS
+versions of the two arb8s, hereafter referred to as <em>brep1</em> and
+<em>brep2</em>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Archer&gt; dplot bool1.dplot ssx
+Press [Enter] to show surface-surface intersection 0
+...
+Press [Enter] to show surface-surface intersection 13</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>All 14 expected intersection events are reported.  Each of the two
+larger-area faces of <em>brep1</em> transversely intersects the two similar
+faces of <em>brep2</em> (<code class="var">ssx_index</code> 0, 1, 4, 5). Two edges of each of
+these faces lie in the same plane (the X-Y plane and another plane
+parallel to it) as two of the four smaller-area faces of the other
+B-Rep (<code class="var">ssx_index</code> 2, 3, 6, 7, 8, 9, 11, 12). These two pairs of
+smaller area faces also intersect each other in square overlap
+intersections (<code class="var">ssx_index</code> 10, 13).</p>
+</div>
+</li>
+<li>
+<p>The <code>ssx &lt;ssx_index&gt;</code> subcommand of <code>dplot</code> is used to check the
+individual intersection events.</p>
+<div class="listingblock">
+<div class="content">
+<pre>Archer&gt; dplot bool1.dplot ssx 0
+...
+Archer&gt; dplot bool1.dplot ssx 13</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The surface-surface intersection with <code class="var">ssx_index</code> 10 appears
+incorrect (compare to the other overlap intersection, <code class="var">ssx_index</code>
+13). It&#8217;s been correctly identified as an overlap intersection, but it
+doesn&#8217;t contain the full, square area of the overlap.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/ssx_10_vs_13.png" alt="ssx 10 vs 13">
+</div>
+<div class="title">Figure 10. Comparison of Surface-Surface Intersection Event 10 Versus 13</div>
+</div>
+</li>
+<li>
+<p>The overlap intersection should have been created by stitching
+together the four isocurve-surface intersections that make each edge
+of the square overlap.</p>
+<div class="paragraph">
+<p>The <code>isocsx &lt;ssx_index&gt;</code> subcommand of the <code>dplot</code> command is used to
+check that all isocurve-surface intersections were attempted.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Archer&gt; dplot bool1.dplot ssx 10</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>All four expected isocurve-surface intersections are reported.</p>
+</div>
+</li>
+<li>
+<p>The <code>isocsx &lt;ssx_index&gt; &lt;isocsx_index&gt;</code> subcommand of the <code>dplot</code>
+command is used to check each isocurve-surface intersection curve.</p>
+<div class="listingblock">
+<div class="content">
+<pre>Archer&gt; dplot bool1.dplot isocsx 10 0
+Archer&gt; dplot bool1.dplot isocsx 10 1
+Archer&gt; dplot bool1.dplot isocsx 10 2
+Archer&gt; dplot bool1.dplot isocsx 10 3</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Each of the four overlap curves appears correct.</p>
+</div>
+<div class="paragraph">
+<p>At this point, the problem doesn&#8217;t seem to be with the intersection
+curves, but with how they were processed.</p>
+</div>
+</li>
+<li>
+<p>The <code>fcurves</code> subcommand of the <code>dplot</code> command is used to check the overlap intersection curve that resulted from stitching together the four (correct) isocurve-surface intersection curves. The command shows the 3D projection of the 2D curve recorded in the <em>brep1</em> and <em>brep2</em> domains, after they were clipped to fit inside the containing face (though clipping was unnecessary in this case, as the outer loops of the faces coincide with the boundaries of the surfaces).</p>
+<div class="listingblock">
+<div class="content">
+<pre>Archer&gt; dplot bool1.dplot fcurves 10</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The clipped curves are shown to be incorrect.  This isolates the
+problem to a point between the time the isocurve-surface intersections
+were found and the time the clipped curves were created.</p>
+</div>
+</li>
+<li>
+<p>The isocsx plots are written by the <code>DebugPlot::IsoCSX()</code> method
+inside the <code>find_overlap_boundary_curves()</code> routine in
+<em class="path">intersect.cpp</em>. The <code>find_overlap_boundary_curves()</code> routine is
+called from the <code>ON_Intersect()</code> surface-surface intersection
+function, also defined in <em class="path">intersect.cpp</em>. The next call after
+<code>find_overlap_boundary_curves()</code> returns is
+<code>split_overlaps_at_intersections()</code>.</p>
+<div class="paragraph">
+<p>To quickly check if the splitting function introduced a problem in the
+overlap curves, we insert code to write out the overlap curves as
+<em class="path">.plot3</em> files just after the
+<code>split_overlaps_at_intersections()</code> call.</p>
+</div>
+<div class="paragraph">
+<p>Since the <code class="var">ssx_index</code> values reported by <code>dplot</code> are numbered
+from 0, the intersection we want to investigate, whose
+<code class="var">ssx_index</code> is 10, will be the 11th intersection recorded during
+the evaluation.</p>
+</div>
+<div class="paragraph">
+<p><code class="var">dplot&#8594;SurfacePairs()</code> reports the number of surface-surface
+intersections that have been recorded, so we write our curves on the
+condition that <code>dplot&#8594;SurfacePairs() == 10</code>.  Then we&#8217;ll only get the
+curves from the 11th surface-surface intersection.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c"> // intersect.cpp, inside
+ // ON_Intersect(const ON_Surface *surfA, const ON_Surface *surfB, ...)
+
+ split_overlaps_at_intersections(overlaps, surfA, surfB, treeA, treeB,
+                                 isect_tol, isect_tolA, isect_tolB);
+
++if (dplot-&gt;SurfacePairs() == 10) {
++    for (int i = 0; i &lt; overlaps.Count(); ++i) {
++        if (!overlaps[i]) {
++            continue;
++        }
++        unsigned char overlap_color[] = {0, 255, 0};
++        std::ostringstream plotname;
++
++        plotname &lt;&lt; "split_overlap" &lt;&lt; i &lt;&lt; ".plot3";
++        dplot-&gt;Plot3DCurve(overlaps[i]-&gt;m_curve3d, plotname.str().c_str(),
++                overlap_color);
++    }
++}
++
+ // add csx_events
+ for (int i = 0; i &amp;lt; csx_events.Count(); ++i) {
+     x.Append(csx_events[i]);</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>After rebuilding the code, the evaluation is run again in Archer to
+produce the custom plot files <em class="path">split_overlap4.plot3</em>,
+<em class="path">split_overlap5.plot3</em>, <em class="path">split_overlap6.plot3</em>, and
+<em class="path">split_overlap7.plot3</em>.</p>
+<div class="paragraph">
+<p>The <code>overlay</code> command is used to draw the contents of the
+<em class="path">.plot3</em> files.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Archer&gt; brep X
+Archer&gt; overlay split_overlap4.plot3 1 ol4
+Archer&gt; overlay split_overlap5.plot3 1 ol5
+Archer&gt; overlay split_overlap6.plot3 1 ol6
+Archer&gt; overlay split_overlap7.plot3 1 ol7</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When the four curves are drawn, we see they are still correct after
+splitting, and enclose the square overlap region.</p>
+</div>
+</li>
+<li>
+<p>The next step in processing the overlap curves is linking contiguous
+curve segments together. We&#8217;ll once again modify the source code, this
+time to write out the intermediate linked overlap curves.</p>
+<div class="paragraph">
+<p>Curve endpoints are tested to see if they coincide, and contiguous
+curves are linked with the <code>link_curves()</code> routine, which returns a
+linked curve that replaces the original curves in the
+<code class="var">overlaps[]</code> array.  We&#8217;ll write out each such curve returned by
+<code>link_curves()</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c"> // intersect.cpp, inside
+ // ON_Intersect(const ON_Surface *surfA, const ON_Surface *surfB, ...)
+ // after the calls to link_curves
+
+         overlaps[i]-&gt;m_curveB = link_curves(overlaps[i]-&gt;m_curveB, overlaps[j]-&gt;m_curveB);
+     }
+ }
++if (dplot-&gt;SurfacePairs() == 10) {
++    unsigned char linked_curve_color[] = {0, 0, 255};
++    std::ostringstream plotname;
++
++    plotname &lt;&lt; "linked_" &lt;&lt; i &lt;&lt; "_" &lt;&lt; j &lt;&lt; ".plot3";
++    dplot-&gt;Plot3DCurve(overlaps[i]-&gt;m_curve3d, plotname.str().c_str(),
++                       linked_curve_color);
++}
+ if (!is_valid_overlap(overlaps[j])) {
+     delete overlaps[j];
+     overlaps[j] = NULL;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>The code is re-compiled, <code>X.brep</code> is removed from the database, and
+the dplot-related files are once again cleared from the working
+directory before re-running the evaluation.</p>
+<div class="paragraph">
+<p>We draw our four new linked curve <em class="path">.plot3</em> files.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Archer&gt; overlay linked_4_5.plot3 1
+Archer&gt; overlay linked_4_6.plot3 1
+Archer&gt; overlay linked_4_7.plot3 1
+Archer&gt; overlay linked_5_4.plot3 1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The intermediate curve represented by <em class="path">linked_4_7.plot3</em> (and
+the subsequent <em class="path">linked_5_4.plot3</em>) is clearly incorrect, as it
+cuts diagonally through the square overlap region.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/intermediate_linked_curves.png" alt="intermediate linked curves">
+</div>
+<div class="title">Figure 11. Overlay Visualization of Intermediate Linked Curves</div>
+</div>
+</li>
+<li>
+<p>We&#8217;ll perform the evaluation again via a debugger. <code>X.brep</code> is
+removed from the database, and the <em class="path">*.dplot</em> and <em class="path">*.plot3</em>
+files are removed from the working directory.</p>
+<div class="paragraph">
+<p>A breakpoint is set just before the calls to <code>link_curves()</code> in the
+<code>ON_Intersect()</code> surface-surface intersection function (line 3885 in
+<em class="path">intersect.cpp</em> at the time of writing), with the condition that
+<code>dplot&#8594;SurfacePairs() == 10</code>, and that the overlap indices <code class="var">i</code>
+and <code class="var">j</code> match the linked curve of interest.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ gdb mged
+(gdb) set args axis.g brep X
+(gdb) start
+(gdb) break intersect.cpp:3885 if dplot-&gt;SurfacePairs() == 10 &amp;&amp; i == 4 &amp;&amp; j == 7
+(gdb) continue</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Stepping from the breakpoint (e.g.  with gdb&#8217;s <code>next</code> command) we see
+that the macro test <code>OVERLAPS_LINKED(Start, End)</code> evaluates as true,
+indicating that the start of the <code class="var">overlaps[i]</code> curves coincide
+with the end of the <code class="var">overlaps[j]</code> curves.</p>
+</div>
+<div class="paragraph">
+<p>Looking at the implementation of <code>link_curves()</code> in
+<em class="path">intersect.cpp</em>, we can see that the second curve argument is
+joined to the first curve argument using the OpenNURBS
+<code>ON_NurbsCurve::Append()</code> member function.  So, the start point of the
+second curve is joined to the end point of the first curve.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">HIDDEN ON_Curve *
+link_curves(ON_Curve *&amp;c1, ON_Curve *&amp;c2)
+{
+    extend_curve_end_to_pt(c1, c2-&gt;PointAtEnd(), ON_ZERO_TOLERANCE);
+
+    ON_NurbsCurve *nc1 = c1-&gt;NurbsCurve();
+    ON_NurbsCurve *nc2 = c2-&gt;NurbsCurve();
+    if (nc1 &amp;&amp; nc2) {
+        nc1-&gt;Append(*nc2);
+        delete c1;
+        delete c2;
+        c1 = NULL;
+        c2 = NULL;
+        delete nc2;
+        return nc1;
+    } else if (nc1) {
+        delete nc1;
+    } else if (nc2) {
+        delete nc2;
+    }
+    return NULL;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>link_curves()</code> is here being called with
+<code class="var">overlaps[j]&#8594;m_curve3d</code> as its first argument and
+<code class="var">overlaps[i]&#8594;m_curve3d</code> as its second argument.  This matches
+our intention to link the end of the <code class="var">overlaps[j]</code> curves to the
+start of the <code class="var">overlaps[i]</code> curves.</p>
+</div>
+<div class="paragraph">
+<p>However, going back to the <code>link_curves()</code> implementation, we also see
+a call to <code>extend_curve_end_to_point()</code> which may modify the first
+curve argument.</p>
+</div>
+<div class="paragraph">
+<p>This intent of this call is to ensure the end point of the first curve
+meets the start point of the second curve as tightly as possible
+(tighter than the <code class="var">isect_tol</code> value that was used to determine
+the points were coincident) before the curves are joined together.</p>
+</div>
+<div class="paragraph">
+<p>However, we see the point argument passed to
+<code>extend_curve_end_to_point()</code> is <code class="var">c2&#8594;PointAtEnd()</code>, when it
+should be <code class="var">c2&#8594;PointAtStart()</code>.</p>
+</div>
+</li>
+<li>
+<p>This error is corrected and the code is rebuilt. The evaluation is
+re-run, and we use the <code>dplot</code> command to verify that the overlap
+intersection associated with <code class="var">ssx_index</code> 10 is now correct.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">HIDDEN ON_Curve *
+link_curves(ON_Curve *&amp;c1, ON_Curve *&amp;c2)
+{
+-    extend_curve_end_to_pt(c1, c2-&gt;PointAtEnd(), ON_ZERO_TOLERANCE);
++    extend_curve_end_to_pt(c1, c2-&gt;PointAtStart(), ON_ZERO_TOLERANCE);
+
+    ON_NurbsCurve *nc1 = c1-&gt;NurbsCurve();
+    ON_NurbsCurve *nc2 = c2-&gt;NurbsCurve();</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. While their license is permissive, the OpenNURBS Toolkit is only intended for and McNeel only supports it being using for reading and writing 3DM files.
+</div>
+<div class="footnote" id="_footnotedef_2">
+<a href="#_footnoteref_2">2</a>. Unless specified otherwise, file references are for LIBBREP source files.  As published, LIBBREP implementation files reside in the src/libbrep/ directory with public header files residing in the include/ directory of a BRL-CAD source hierarchy.
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="../articles/TEMPLATE.html">TEMPLATE</a></span>
+  <span class="next"><a href="../presentations/brlcad-app-devel.html">Application Development</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../ui/js/site.js"></script>
+<script src="../../ui/js/vendor/lunr.js"></script>
+<script src="../../ui/js/vendor/search.js" id="search-script" data-base-path="../.." data-page-path="/docs/devguides/bool_eval_development.html"></script>
+<script async src="../../ui/../search-index.js"></script>
+<script async src="../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

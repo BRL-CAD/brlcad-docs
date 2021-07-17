@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>1. Crear Figuras Primitivas with MGED :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/es/lecciones/mged/01_crear_figuras_primitivas.html">
+    <link rel="prev" href="../mged.html">
+    <link rel="next" href="02_opciones_vistas.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../ui-es/css/site.css">
+    <link rel="stylesheet" href="../../../ui-es/css/search.css">
+    <link rel="stylesheet" href="../../../ui-es/css/custom.css">
+    <script>var uiRootPath = '../../../ui-es'</script>
+    <link rel="icon" href="../../../ui-es/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../../ui-es/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="es" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lecciones</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="01_crear_figuras_primitivas.html">1. Crear Figuras Primitivas with MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02_opciones_vistas.html">2. Reconocer las opciones de vistas en MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03_utilizar_comando_in.html">3. Usar el comando Insert en MGED para dimensionar y ubicar figuras</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="04_prop_materiales.html">4. Asignación de propiedades de los materiales y trazado de rayos (Raytracing) en MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="05_expresiones_booleanas.html">5. Expresiones Booleanas</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="06_crear_una_copa.html">6. Crear una copa</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="07_prop_materiales_copa.html">7. Asignar propiedades de los materiales a una copa</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="08_prop_materiales_copa2.html">8. Asignar más propiedades de los materiales a la copa</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="09_esfera_en_caja_exhibidora.html">9. Crear una esfera en una caja exhibidora transparente</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="10_crear_taza.html">10. Crear una taza</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="11_refinar_taza.html">11. Refinando el modelo de la taza</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="12_taza_desde_gui.html">12. Crear el modelo de una taza utilizando la interfaz de MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="13_ubicar_figuras_en_3d.html">13. Ubicar figuras en espacios 3-D</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="14_ubicar_figuras_en_3d_2.html">14. Ejercicios adicionales de ubicación de imágenes en espacios 3-D</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="15_crear_camion_de_juguete.html">15. Crear un camión de juguete</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="16_mod_tech_struct.html">16. Aprender técnicas de modelado y estructuras</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Spanish</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../../index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">Spanish</a></li>
+    <li>Lecciones</li>
+    <li><a href="../mged.html">MGED</a></li>
+    <li><a href="01_crear_figuras_primitivas.html">1. Crear Figuras Primitivas with MGED</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/translations/es/modules/lecciones/pages/mged/01_crear_figuras_primitivas.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">1. Crear Figuras Primitivas with MGED</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Este tutorial le ayudará a:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Arrancar con el programa <code class="app">MGED</code>.</p>
+</li>
+<li>
+<p>Ingresar los comandos en una terminal de <code class="app">MGED</code>.</p>
+</li>
+<li>
+<p>Usar la interfaz gráfica de usuarios de <code class="app">MGED</code>.</p>
+</li>
+<li>
+<p>Abrir o crear una nueva base de datos al poner en marcha
+<code class="app">MGED</code>.</p>
+</li>
+<li>
+<p>Usar la interfaz gráfica para crear una nueva base de datos.</p>
+</li>
+<li>
+<p>Elegir un título para la base de datos.</p>
+</li>
+<li>
+<p>Seleccionar una unidad de medida para su diseño.</p>
+</li>
+<li>
+<p>Seleccionar una figura primitiva.</p>
+</li>
+<li>
+<p>Crear una forma primitiva utilizando el comando "make".</p>
+</li>
+<li>
+<p>Usar el comando Z para limpiar la ventana gráfica.</p>
+</li>
+<li>
+<p>Dibujar una figura predeterminada usando el comando "draw".</p>
+</li>
+<li>
+<p>Usar el comando "erase" para borrar un objeto de la ventana gráfica.</p>
+</li>
+<li>
+<p>Crear una esfera usando el menú gráfico.</p>
+</li>
+<li>
+<p>Usar el comando "l" para listar los parámetros o atributos de la
+figura.</p>
+</li>
+<li>
+<p>Usar el comando "ls" para listar el contenido de la base de datos.</p>
+</li>
+<li>
+<p>Eliminar una figura u objeto desde la base de datos usando el
+comando "kill" + comando.</p>
+</li>
+<li>
+<p>Editar un comando.</p>
+</li>
+<li>
+<p>Presionar "q" o usar el comando "exit" para salir del programa.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_launching_mged"><a class="anchor" href="#_launching_mged"></a>1. Utilizar el programa <code class="app">MGED</code></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Para abrir el programa <code class="app">MGED</code>, tipee "mged" en una terminal (tty)
+y luego presione <kbd>Enter</kbd>. Esto trae dos ventanas principales: la
+ventana de comandos de <code class="app">MGED</code> y la ventana gráfica de
+<code class="app">MGED</code>.  Ambas ventanas estarán inicialmente en blanco,
+esperando a que ingrese algo.  Para abandonar el programa en cualquier
+momento, en la línea de comandos tipee la letra "q" o la palabra
+"quit" y presione luego <kbd>Enter</kbd>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_entering_commands"><a class="anchor" href="#_entering_commands"></a>2. Ingresar comandos en una ventana de comandos.</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Puede tipear cualquier comando en la terminal de .  Muchos usuarios
+experimentados de UNIX prefieren este método porque les permite crear
+rápidamente un modelo (a lo que preferimos llamar diseño) sin tener
+que buscar y cliquear sobre un montón de opciones.  La lista completa
+de comandos de edición y lo que éstos hacen, se encuentran en al
+Apéndice A.</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Chequee todo lo tipeado antes de presionar <kbd>Enter</kbd>. Si advierte
+que ha cometido un error, simplemente presione el <kbd>BACKSPACE</kbd>
+hasta que haya borrado lo necesario y tipee nuevamente la información.
+Luego irá obteniendo mayor experiencia usando el editor de texto
+<code class="app">vi</code> y el comando de emulación de <code class="app">emacs</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_gui"><a class="anchor" href="#_using_gui"></a>3. Usar el entorno gráfico.</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Los usuarios más acostumbrados a Microsoft Windows tal vez prefieran
+usar el entorno gráfico por medio de menús ubicados arriba de la
+ventana gráfica (que son las mismas en todas las ventanas). Los menús
+están divididos en grupos lógicos para ayudarle a navegarlos a través
+del programa <code class="app">MGED</code>.</p>
+</div>
+<div class="paragraph">
+<p>Antes de crear un modelo, necesita abrir una base de datos, así sea
+por comandos o iniciando el entorno gráfico de <code class="app">MGED</code>, luego de
+iniciar el <code class="app">MGED</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_open_new_database"><a class="anchor" href="#_open_new_database"></a>4. Abrir o crear una nueva base de datos con <code class="app">MGED</code></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Usted puede abrir una base de datos o crear una nueva al mismo tiempo
+que abre <code class="app">MGED</code>.  En la línea de comando, tipee "mged" seguido
+por una nueva o por una ya existente base de datos sin olvidar ponerle
+la extensión .g, por ejemplo:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">mged sphere.g <kbd>Enter</kbd></code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/01_terminal.png" alt="01 terminal">
+</div>
+<div class="title">Figure 1. Desde la Terminal</div>
+</div>
+<div class="paragraph">
+<p>Si estuviera creando una nueva base de datos, un pequeño cuadro de
+diálogo le preguntará si desea crear la nueva base de datos llamada
+sphere.g.  Seleccione Si, y entonces <code class="app">MGED</code> abrirá la nueva base
+de datos.  En el caso de que sphere.g existiera, se abrirá la
+existente.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_create_new_database"><a class="anchor" href="#_create_new_database"></a>5. Usar el entorno gráfico para crear una nueva base de datos</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Al iniciar <code class="app">MGED</code> usted puede crear o abrir una base de datos
+desde el menú superior Archivo (File), seleccionando luego la opción
+Nuevo (New) o Abrir (Open). Ambas opciones abren el mismo cuadro de
+diálogo preguntando por el nombre de la base de datos a crear o el de
+una ya existente, según corresponda.  Para finalizar la selección,
+presione OK.</p>
+</div>
+<div class="paragraph">
+<p>Para esta prueba, cree una nueva base de datos llamada sphere.g.  Para
+hacer eso tipee sphere.g al final de la ruta del nombre, tal como
+muestra la siguiente imagen.  Presione OK para aceptar la selección.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/01_commandwindow.png" alt="01 commandwindow">
+</div>
+<div class="title">Figure 2. La terminal &lt;application&gt;MGED&lt;/application&gt; y el cuadro de di&#xE1;logo de la base de datos</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/01_graphicswindow.png" alt="01 graphicswindow">
+</div>
+<div class="title">Figure 3. Entorno gr&#xE1;fico de &lt;application&gt;MGED&lt;/application&gt;</div>
+</div>
+<div class="paragraph">
+<p>Una de las ventajas de usar el entorno gráfico, sobre todo si usted no
+está familiarizado con el administrador de archivos de UNIX, es que le
+mostrará su nombre de ruta de acceso actual, indicándole exactamente
+dónde va a ser localizada su base de datos.  Será especialmente útil
+si tiene muchos directorios y archivos para manejar.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_assign_title"><a class="anchor" href="#_assign_title"></a>6. Asignarle un título a una base de datos</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Puede ponerle un título a su nueva base de datos para proporcionarle a
+usted y a otros usuarios una idea del contenido de la base de datos.
+En la ventana de la línea de comando, tipee "title" seguido de un
+espacio y un nombre que identifique la base de datos que va a crear.
+Cuando haya terminado, pulse la tecla  <kbd>Enter</kbd>. Por ejemplo:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd"><span class="prompt">mged&gt;</span> title MySphere <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Note que en las versiones de <code class="app">BRL-CAD</code> anteriores a la 6.0, el
+título está limitado a 72 caracteres.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_set_units"><a class="anchor" href="#_set_units"></a>7. Seleccionar una unidad de medida</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code class="app">MGED</code> utiliza milímetros para todo proceso matemático interno.
+A pesar de eso, usted puede crear un diseño usando cualquier otra
+unidad, como por ejemplo, pies.  Para el siguiente ejemplo usaremos
+pulgadas.  Para seleccionar la medida de pulgadas, ingrese al menú
+Archivo (File) y luego la opción Preferencias (Preferences). Aparecerá
+un nuevo menú donde podrá seleccionar Unidades (Units) y luego
+Pulgadas (Inches). Si prefiere la línea de comandos, tipee en una la
+palabra "units" y luego presione  <kbd>Enter</kbd>. En la terminal de
+<code class="app">MGED</code> aparecerá una línea que dirá:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd"><span class="prompt">mged&gt;</span> units in <kbd>Enter</kbd></code></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_select_primitive"><a class="anchor" href="#_select_primitive"></a>8. Seleccionar figuras primitivas</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code class="app">MGED</code> provee de una variedad de figuras primitivas que puede
+usar para construir modelos.  Cada tipo de figura tiene parámetros que
+definen su posición, orientación y tamaño.  La lista de las figuras y
+los parámetros están disponibles en el Apéndice C.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>La palabra "sólido" fue utilizada históricamente para referirse a las
+figuras primitivas.  Esta terminología dificulta a veces el
+entendimiento de los nuevos usuarios.  Cada vez que lea esta palabra
+en la documentación, comandos o programas de <code class="app">BRL-CAD</code>
+identifíquela con el término "figura primitiva".</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_create_sphere_cmd_line"><a class="anchor" href="#_create_sphere_cmd_line"></a>9. Crear una esfera desde la línea de comandos</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Para este ejemplo, crearemos una esfera simple.  Hay dos maneras de
+crear una figura primitiva: por comando o por entorno gráfico.</p>
+</div>
+<div class="paragraph">
+<p>Puede fácilmente crear la esfera desde la terminal con sólo unos pocos
+comandos.  En la terminal de <code class="app">MGED</code> tipee:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">make sph1.s sph <kbd>Enter</kbd></code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Use el dígito <kbd>1</kbd>, no la letra <kbd>l</kbd>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Este comando le dice al programa <code class="app">MGED</code>:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">make</th>
+<th class="tableblock halign-center valign-top">sph1.s</th>
+<th class="tableblock halign-center valign-top">sph</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Hace la figura primitiva</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">y la llama sph1.s</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">siendo la figura de una esfera</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Una esfera por defecto será creada y el marco de la figura primitiva
+aparecerá en la ventana gráfica.  En el tutorial #4, usted le dará a
+la figura un cuerpo tridimensional.</p>
+</div>
+<div class="paragraph">
+<p>Este comando creará la figura primitiva en la ventana gráfica.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_clear_window"><a class="anchor" href="#_clear_window"></a>10. Limpiar la ventana gráfica</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Para construir otro objeto o trabajo sobre otra figura primitiva,
+puede fácilmente limpiar la ventana gráfica desde la línea de comandos
+tipeando la letra Z (de zap) en mayúsculas y luego presionando la
+tecla <kbd>Enter</kbd>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Antes de usar la opción zap, asegúrese de haber hecho foco en la
+ventana de comandos, o sea, de estar sobre la ventana de comandos.  Si
+tipea la Z y aún esta en la ventana gráfica, iniciará la rotación de
+su diseño.  Para detener la rotación, tipee cero (0).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_draw_object"><a class="anchor" href="#_draw_object"></a>11. Dibujar un objeto prediseñado</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Para dibujar una esfera ya guardada, tipee en la linea de comandos lo
+siguiente:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">draw sph1.s <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Este comando le dice al programa <code class="app">MGED</code> que:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">draw</th>
+<th class="tableblock halign-center valign-top">sph1.s</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Dibuje el objeto prediseñado</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">llamado sph1.s</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_erase_from_window"><a class="anchor" href="#_erase_from_window"></a>12. Borrar un objeto de la ventana gráfica</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cuando desee borrar un objeto concreto de la pantalla de la ventana
+gráfica, usted puede utilizar el comando "erase" para eliminar el
+objeto de la ventana, pero no de la base de datos.  Para eliminar el
+objeto sph1.s de la pantalla, en la línea de comandos tipee:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">erase sph1.s <kbd>Enter</kbd></code></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_create_sphere_gui"><a class="anchor" href="#_create_sphere_gui"></a>13. Crear una esfera usando el entorno gráfico</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Otra forma de crear una esfera es utilizar el sistema de menú gráfico
+que se encuentra duplicado en la parte superior de la ventana de
+comandos.  Limpie su ventana gráfica utilizando el comando Z ya
+descrito anteriormente.  Luego, en la ventana de gráficos, haga clic
+en Crear (Create), y un menú desplegable aparecerá con los diferentes
+tipos de forma primitiva disponibles.  Seleccione SPH (por esfera en
+inglés) en la categoría Elipsoides (Ellipsoids). Con ello se abre un
+cuadro de diálogo.  Haga clic en el cuadro de texto vacío y tipee
+sph2.s.  Haga clic en Aplicar (Apply) o presione ENTRAR.  Una nueva
+esfera será creada y dibujada OBen la ventana de gráficos.  Cuando se
+crea una forma a través de la interfaz gráfica de usuario, la forma
+aparecerá automáticamente en modo de edición para que usted pueda
+cambiar los parámetros según sea necesario, definiendo su posición,
+orientación y tamaño a la vista.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_view_params"><a class="anchor" href="#_view_params"></a>14. Ver los parámetros de la figura</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A veces, cuando usted está creando un diseño, desea ver sus parámetros
+(tales como altura, radio, ancho) en la linea de comandos.  Puede
+listar fácilmente estos atributos con el comando l (de lista). El
+siguiente es un ejemplo:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">l shape_name <kbd>Enter</kbd></code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+El comando es la letra <kbd>l</kbd> minúscula, no el número <kbd>1</kbd>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Si intenta escribir en la ventana de comandos y no ve ninguna palabra
+allí, es probable que el foco no se ha establecido en esa ventana (es
+decir, la entrada de teclado sigue a otra ventana). Dependiendo de las
+configuraciones de su sistema, el foco puede establecerse en la
+ventana moviendo el cursor o bien haciendo clic sobre la misma.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Un ejemplo de diálogo que podría darse en la ventana de comandos para
+mostrar los parámetros o atributos de la primera esfera que ha creado
+es el siguiente:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre><span class="prompt">mged></span> <span class="cmd">l sph1.s</span>
+sph1.s: ellipsoid (ELL)
+     V (1, 1, 1)
+     A (1, 0, 0) mag=1
+     B (0, 1, 0) mag=1
+     C (0, 0, 1) mag=1
+     A direction cosines=(0, 90, 90)
+     A rotation angle=0, fallback angle=0
+     B direction cosines=(90, 0, 90)
+     B rotation angle=90 fallback angle=0
+     C direction cosines=(90, 90, 0)
+     C rotation angle=0, fallback angle=90</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>No se preocupe si usted nota en el resultado anterior que <code class="app">MGED</code>
+determina su esfera como un elipsoide, ya que las esferas son un caso
+especial de elipsoides (ver Apéndice C). También tenga en cuenta que
+no es importante si los números de su salida no coinciden con los que
+se muestran en este ejemplo.</p>
+</div>
+<div class="paragraph">
+<p>Use el comando l para listar sph1.s y sph2.s antes de continuar los
+ejemplos</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_list_db_contents"><a class="anchor" href="#_list_db_contents"></a>15. Listar los contenidos de una base de datos</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Además de ver los parámetros de una figura, también puede ser que
+desee ver la lista de los contenidos de la base de datos para ver qué
+artículos han sido creados.  Para esto, escriba en la ventana de línea
+de comandos:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">ls <kbd>Enter</kbd></code></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_kill_object"><a class="anchor" href="#_kill_object"></a>16. Eliminar un objeto de la base de datos</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A veces, cuando crea un modelo, puede que tenga que eliminar una forma
+o un objeto de la base de datos.  El comando kill se utiliza para
+hacer esto.  Por ejemplo, si quiere eliminar la forma sph1.s, tendría
+que escribir en la línea de comandos:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">kill sph1.s <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Haga otra esfera, ya sea a través de la ventana de comandos o la
+interfaz gráfica de usuario con el nombre sph3.s.  Una vez hecha la
+esfera, utilice el comando kill para eliminarlo de la base de datos
+escribiendo en la ventana de comandos:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">kill sph3.s <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Usted puede asegurarse de haber eliminado la figura mediante el
+comando ls, verificando que la misma no aparezca en la lista de la
+base de datos.  En la ventana de comandos del sistema, escriba:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">ls <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Debería ver listados únicamente: sph1.s y sph2.s.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Todos los cambios se aplican inmediatamente a la base de datos, de
+modo que no existen los modos guardar o guardar como.  Del mismo modo,
+no existe actualmente una forma de deshacer la supresión.  Por lo
+tanto, asegúrese de que está seguro que quiere eliminar
+permanentemente los datos antes de utilizar el comando kill.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_editing_commands"><a class="anchor" href="#_editing_commands"></a>17. Editar comandos en la ventana de comandos</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ocasionalmente, cuando usted ingresa comandos, puede equivocarse al
+tipear. <code class="app">MGED</code> puede emular el subrayado de sintaxis de
+<code class="app">emacs</code> y de <code class="app">vi</code> . Por defecto, se usa la sintaxis de
+<code class="app">emacs</code>.  Vea en el apéndice B la lista de atajos de teclado,
+efectos y formas de selección de ambos editores.</p>
+</div>
+<div class="paragraph">
+<p>También puede utilizar las teclas de flechas para modificar los
+comandos.  Las flechas izquierda y derecha mueven el cursor en la
+línea actual de comandos.  Pulsando <kbd>Enter</kbd> en cualquier ubicación
+en la línea de comandos se ejecuta el comando.  Tenga en cuenta que
+tanto el <kbd>BACKSPACE</kbd> como el <kbd>DELETE</kbd> borrarán un carácter a
+la izquierda del cursor.</p>
+</div>
+<div class="paragraph">
+<p><code class="app">MGED</code> guarda un historial de los comandos que se han ingresado.
+Con las flechas arriba y abajo puede seleccionar los comandos
+previamente usados dando la posibilidad de reutilizarlos tal cual
+fueron ejecutados antes, o modificándolos, por ejemplo, en el nombre
+de la figura.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_quitting"><a class="anchor" href="#_quitting"></a>18. Salir de <code class="app">MGED</code></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Recuerde que para salir del programa en cualquier momento, debe tipear
+en la línea de comandos la letra q o el comando quit y luego presionar
+la tecla <kbd>Enter</kbd>.  También puede ir al menú gráfico File (Archivo)
+y seleccionar la opción Exit (Salir).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_creating_primitive_shapes_review"><a class="anchor" href="#_creating_primitive_shapes_review"></a>19. Repasemos</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>En este tutorial usted:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Inició el programa <code class="app">MGED</code>.</p>
+</li>
+<li>
+<p>Ingresó comandos en la línea de comandos.</p>
+</li>
+<li>
+<p>Utilizó el entorno gráfico de <code class="app">MGED</code>.</p>
+</li>
+<li>
+<p>Creó o abrió una base de datos utilizando las convenciones de
+nombrado de <code class="app">MGED</code>.</p>
+</li>
+<li>
+<p>Utilizó el entorno gráfico para crear una base de datos.</p>
+</li>
+<li>
+<p>Tituló una base de datos.</p>
+</li>
+<li>
+<p>Seleccionó una unidad de medida para el diseño.</p>
+</li>
+<li>
+<p>Seleccionó una figura primitiva.</p>
+</li>
+<li>
+<p>Creó una figura primitiva utilizando el comando make.</p>
+</li>
+<li>
+<p>Limpió la pantalla utilizando el comando Z.</p>
+</li>
+<li>
+<p>Dibujó una figura primitiva predefinida con el comando draw.</p>
+</li>
+<li>
+<p>Utilizó el comando erase para borrar una figura de la ventana
+gráfica.</p>
+</li>
+<li>
+<p>Utilizó el entorno gráfico para crear una figura primitiva.</p>
+</li>
+<li>
+<p>Utilizó el comando l para visualizar una lista de parámetros de la
+figura.</p>
+</li>
+<li>
+<p>Utilizó el comando ls para listar los contenidos de una base de
+datos.</p>
+</li>
+<li>
+<p>Utilizó el comando kill para eliminar una figura de la base de
+datos.</p>
+</li>
+<li>
+<p>Editó comandos en la ventana de comandos.</p>
+</li>
+<li>
+<p>Utilizó los comandos q o exit para salir del programa.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="../mged.html">MGED</a></span>
+  <span class="next"><a href="02_opciones_vistas.html">2. Reconocer las opciones de vistas en MGED</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../ui-es/js/site.js"></script>
+<script src="../../../ui-es/js/vendor/lunr.js"></script>
+<script src="../../../ui-es/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/es/lecciones/mged/01_crear_figuras_primitivas.html"></script>
+<script async src="../../../ui-es/../search-index.js"></script>
+<script async src="../../../ui-es/js/vendor/highlight.js"></script>
+  </body>
+</html>

@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>NPUSH(nged) :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/docs/man/n/npush.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../ui/css/site.css">
+    <link rel="stylesheet" href="../../../ui/css/search.css">
+    <link rel="stylesheet" href="../../../ui/css/custom.css">
+    <script>var uiRootPath = '../../../ui'</script>
+    <link rel="icon" href="../../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article manpage">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lessons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../lessons/mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/01_creating_primitive_shapes.html">1. Creating Primitive Shapes in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/02_learning_viewing_options.html">2. Learning Viewing Options in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/03_using_insert_command.html">3. Using the Insert Command in MGED to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/04_assign_mat_prop_rt.html">4. Assigning Material Properties and Raytracing in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/05_learning_boolean_expressions.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/06_creating_a_goblet.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/07_goblet_material_properties.html">7. Assigning Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/08_goblet_material_properties2.html">8. Assigning More Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/09_globe_in_display_box.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/10_creating_mug.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/11_refining_mug.html">11. Refining a Mug Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/12_mug_through_gui.html">12. Creating a Mug Model using the MGED Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/13_placing_shapes_in_3d.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/14_placing_shapes_in_3d_2.html">14. Additional Exercises Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/15_creating_a_toy_truck.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/16_mod_tech_struct.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Books</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../hacking/index.html">Hacking BRL-CAD</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting Started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter1.html">A Call to Arms (and Contributors)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter2.html">Feature Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developers</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter3.html">Working with Our Code</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter4.html">What Code to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter5.html">Contributing Code</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Documenters</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter6.html">Working with Our Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter7.html">Types of Documentation We Maintain</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter8.html">What Documentation to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter9.html">Contributing Documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Other Contributors</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part4/chapter10.html">You Can Help Too</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendix: Resources and Examples</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix1.html">Further References and Resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix2.html">Doc Template: New MGED Command</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix3.html">Code Example: Shooting Rays</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix4.html">Code Example: Walking Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix5.html">Code Example: Command Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix6.html">Example Code: Root Solving</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/index.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../tutorials/overview.html">I. An Overview of BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/mged-intro.html">II. Introduction to MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/preface1.html">Preface</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/preface2.html">Acknowledgments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter1.html">1. Creating Primitive Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter2.html">2. Learning the Viewing Options</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter3.html">3. Using the Insert Command to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter4.html">4. Assigning Material Properties and Raytracing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter5.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter6.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter7.html">7. Assigning Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter8.html">8. Assigning More Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter9.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter10.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter11.html">11. Refining the Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter12.html">12. Creating the Mug Through the GUI</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter13.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter14.html">14. Gaining More Practice Placing Shapes in Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter15.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter16.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/appendix1.html"><code class="app">MGED</code> Commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/modeling.html">III. Modeling</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter2.html">2. The Model Process</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter3.html">3. Measuring data</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter4.html">4. Organizing the Structure</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter5.html">5. Developing Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter6.html">5. Evaluating Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter7.html">7. Logging Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendices</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix1.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix2.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix3.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix4.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix5.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix6.html">Using the build_region Command</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/converting.html">IV. Converting</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter2.html">2. Pertinent Characteristics of the BRL-CAD Format</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter3.html">3. Converting From/to ASCII</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter4.html">4. Converting to BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter5.html">5. Converting From BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter6.html">6. Building a New Converter</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter7.html">7. Postconversion Issues</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/index.html">Articles</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_pattern.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_region.html">Using the build_region Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/camo_shader.html">Camouflage shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ebm_primitive.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/gcv.html">The Geometry Conversion Library</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ged.html">GED: An Interactive Solid Modeling System</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/mged/index.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tutorial.html">Tutorial</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/gui.html">Graphical User Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/command-line-editing.html">Command Line Editing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/user-commands.html">User Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/developer-commands.html">Developer Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tcl-variables.html">Tcl Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/env.html">Environment Variable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/callback.html">Callback</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/brlcad-solid.html">BRL-CAD Solid</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/mgedrc.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/nirt.html">Interactive Raytracing: The nirt Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/overlap_tool.html">The Overlap Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/oed.html">Object Editing - the oed Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/pipes.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/projection_shader.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/tire.html">Vehicle Tire and Wheel Creation in BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/TEMPLATE.html">TEMPLATE</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Misc</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Dev Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../devguides/bool_eval_development.html">NURBS Boolean Evaluation Development Guide</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Presentations</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/brlcad-app-devel.html">Application Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="presentations:_attachments/brlcad-app-devel.html">brlcad-app-devel</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/intro-to-tcltk.html">Introduction to Tcl/Tk</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../specifications/BRL_CAD_g_format_V5.html">BRL-CAD Database Format</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Manual Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../1.html">man1</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../3.html">man3</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../5.html">man5</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../n.html">mann</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Wiki Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">page-1</span>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">BRL-CAD</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../../index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../es/index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../es/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">BRL-CAD</a></li>
+    <li><a href="npush.html">NPUSH(nged)</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/docs/modules/man/pages/n/npush.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">NPUSH(nged)</h1>
+<div class="sect1">
+<h2 id="_name"><a class="anchor" href="#_name"></a>NAME</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>npush - push matrices down a tree hierarchy</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_synopsis"><a class="anchor" href="#_synopsis"></a>SYNOPSIS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>npush</strong> [-h] [-?] [-v] [-f] [-x] [-r] [-s] [-d <em>max_depth</em>] {arg1 [arg2]&#8230;&#8203;}</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_npush_background"><a class="anchor" href="#_npush_background"></a>Background: Matrices in BRL-CAD</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>BRL-CAD uses a global coordinate system in which all objects are
+placed.  This means each region must uniquely occupy its own portion
+of that space in order to avoid overlapping with another region.
+Naively, this means that all objects defined in a .g file need to
+individually describe distinct volumes using unique primitives.  While
+possible, such an approach is quite wasteful if different regions
+define the same shape and vary only in the positioning of that
+shape. A classic example is as a standard bolt used hundereds of times
+in assembling a machine - ideally such a shape should only need to be
+described once, and then <em>instances</em> of that shape are positioned to
+identify individual bolts in the overall model.</p>
+</div>
+<div class="paragraph">
+<p>COMB trees, which describe organized hierarchies of individual shapes
+(or other COMB trees) in BRL-CAD, are the standard mechanism used
+in .g files to reusing otherwise identical object definitions in
+<em>different</em> positions and orientations. Matrices associated with
+instances of objects listed in COMB trees position those individual
+parts, and matrices at different portions of the COMB tree hierarchy
+can position smaller or large components of the whole. For example,
+the tree:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>    sph3/
+	u sph3_1.r/R
+		u sph3.s
+	u sph3_2.r/R
+		u sph3.s</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>appears at first glance to define an overlap, since it includes two
+different regions both of which are defined using the same sphere
+object: sph3.s.  However, if we inspect sph3_1.r and sph3_2.r more
+closely, we see that their definitions incorporate matrices over the
+instances of sph3.s:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sph3_1.r:  REGION id=1002 (air=0, los=100, GIFTmater=1) --
+   u sph3.s [10, 0, 0] scale 1
+sph3_2.r:  REGION id=1003 (air=0, los=100, GIFTmater=1) --
+   u sph3.s [20, 0, 0] scale 1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The instance of sph3.s in sph3_1.r is offset in the X direction by
+10mm, and the sph3_2.r instance is offset by 20mm.  In addition, if we
+inspect sph3&#8217;s tree:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sph3:  --
+   u sph3_1.r
+   u sph3_2.r [100, 0, 0] scale 1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>we see that the instance of sph3_2.r in sph3 also has a matrix
+offsetting its position.  So the instance of sph.s defined by
+sph3/sph3_2.r/sph.s is offset in total by 120mm in the positive X
+direction relative to the global definition of sph.s</p>
+</div>
+<div class="paragraph">
+<p>As useful as these matrices are, users frequently need to consolidate
+multiple levels of positioning within a COMB tree, or even eliminate
+them completely if a client&#8217;s code is not able to properly interpret
+the matrix information of a COMB hierarchy for its own processing.
+Thus, specific logic is available in BRL-CAD to accomplish these
+tasks.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_npush_overview"><a class="anchor" href="#_npush_overview"></a>Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The GED command <strong class="cmd">npush</strong> defines logic for "moving" matrix
+operations within a COMB tree, without changing the position of
+individual object instances in the tree definition.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_npush_depth"><a class="anchor" href="#_npush_depth"></a>A Note on Depth</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>It is worth taking a little time to define what we are referring to
+when we discuss the concept of depth when it comes to applying matrix
+pushing operations.  Consider the hierarchy:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sph_009/
+	u [M1] sph9_g1/
+		u [M2] sph9_g2/
+			u [M3] sph9_g3/
+				u [M4] sph9_g4/
+					u [M5] sph9.r/R
+						u [M6] sph9.s</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>M1, M2, etc. are matrices applied at each level of the hierarchy.
+When discussing M1, we would refer to that matrix as being at "depth
+1" in the hierarchy, as it is defined at one level below the top of
+the tree.  Similarly, M2 would be defined as being at depth 2, and
+so on.</p>
+</div>
+<div class="paragraph">
+<p>When discussing depth in push operations, pushing a matrix to a depth
+means we propagate the matrices down the tree to define a matrix at
+the specified depth.  For example, in the above example, a push of the
+matrices to depth 4 would result in:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sph_009/
+	u sph9_g1/
+		u sph9_g2/
+			u sph9_g3/
+				u [M1234] sph9_g4/
+					u [M5] sph9.r/R
+						u [M6] sph9.s</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>where M1234 is the accumulated application of M1, M2, M3 and M4.  Note
+the new matrix is applied at depth 4, the depth specified as the depth
+limit in the push.  Similarly, a depth limit of 6 would result in:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sph_009/
+	u sph9_g1/
+		u sph9_g2/
+			u sph9_g3/
+				u sph9_g4/
+					u sph9.r/R
+						u [M123456] sph9.s</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>where M123456 is the accumulated application of M1, M2, M3, M4, M5 and
+M6.  Note that the final step of eliminating the matrix by updating
+the parameters of sph.s was not taken.  That operation is defined
+conceptually as being at one depth lower than the matrix applied to
+the object.  Thus, it would require a depth limit of 7 to completely
+eliminate all the matrices in the example and update sph.s:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sph_009/
+	u sph9_g1/
+		u sph9_g2/
+			u sph9_g3/
+				u sph9_g4/
+					u sph9.r/R
+						u sph9.s (updated)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that if an object or comb exists at different levels of the
+hierarchy, depth limits may produce copies of an object even if there
+wouldn&#8217;t otherwise be a need for those copies.  Take the following
+example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sph_010/
+	u [M1] sph10_f/
+		u [M1] sph10_g/
+			u [M1] sph10.r/R
+				u [M2] sph10.s
+	u [M3] sph10_a.r/R
+		u [M3] sph10.s</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>where 3*M1+M2 = 2*M3 (i.e., the matricies on each branch of sph_010&#8217;s
+tree individually evaluate out to the same result).  Since sph10.s
+ends up in the same place in both branches of sph_010, a full push of
+all matrices in this tree shouldn&#8217;t need to create a copy of sph10.s
+with new paramenters.  However, if a push is limited to depth 3, we
+get a different outcome in that respect:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sph_010/
+	u sph10_f/
+		u sph10_g/
+			u [M1*3] sph10.r/R
+				u [M2] sph10.s
+	u sph10_a.r/R
+		u sph10.s_01 (updated sph10.s copy)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Depth 3 is deep enough that the parameters of sph10.s in the second
+branch should be updated.  However, in the first branch, there is an
+instance of sph10.s that will remain unmodified with a depth limit of
+three.  Thus, the database needs to contain both the modified and
+unmodified sph10.s in order to define the requested comb tree.  A
+subsequent full push would result in sph10.s being identical to
+sph10.s_01, but (at least for now) logic to automatically recognize
+this case and simplify it is not built in to the push logic.</p>
+</div>
+<div class="paragraph">
+<p>The same phenomena can occur with comb trees.  Consider the following
+example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sph_011/
+	u sph11_f/
+		u [M1] sph11_g/
+			u sph11.s
+	u sph11_h/
+		u [M2] sph11_g/
+			u sph11.s</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If sph_011 is pushed to depth 3, the matrices will be pushed to the
+level of sph11_g&#8217;s instance references (sph11.s, in this case.)
+However, if M1 != M2, sph11_g would need to have two different
+matrices in its tree for the same instance.  Since a depth limit of 3
+does not push the matrices down to parameter setting of sph11.s, a new
+comb must be created:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sph_011/
+	u sph11_f/
+		u sph11_g/
+			u [M1] sph11.s
+	u sph11_h/
+		u sph11_g_01/ (updated sph11_g copy)
+			u [M2] sph11.s</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_npush_special_depths"><a class="anchor" href="#_npush_special_depths"></a>Pushing relative to Regions and Shapes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In addition to numerical depth limits, <strong class="cmd">npush</strong> offers two
+additional specifiers that are more aware of specific types of objects
+in trees.  The <strong class="opt">r</strong> option will push matrices down to a level just
+above region references, and the <strong class="opt">s</strong> option will push matrices to
+a level just above primitive shapes.  For example, using the following
+hierarchy:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sph_010/
+	u [M1] sph10_f/
+		u [M1] sph10_g/
+			u [M1] sph10.r/R
+				u [M2] sph10.s
+	u [M3] sph10_a.r/R
+		u [M3] sph10.s</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>a <strong class="opt">r</strong> push would result in the following:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sph_010/
+	u sph10_f/
+		u sph10_g/
+			u [M1*3] sph10.r/R
+				u [M2] sph10.s
+	u [M3] sph10_a.r/R
+		u [M3] sph10.s</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A <strong class="opt">s</strong> push, on the other hand, will take the matrices in both
+branches deeper:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sph_010/
+	u sph10_f/
+		u sph10_g/
+			u sph10.r/R
+				u [M1*3+M2] sph10.s
+	u sph10_a.r/R
+		u [M3*2] sph10.s</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that neither option alters the parameters of primitive shapes.</p>
+</div>
+<div class="paragraph">
+<p>Worse still is a case where multiple copies of identical objects are
+referenced at multiple levels. Consider the following example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sph_016/
+	u [M1] sph16a/R
+		u [M2] sph16_1/
+			u sph16.c/
+				u sph16.s
+		u sph16_1/
+			u sph16.c/
+				u sph16.s
+	u [M3] sph16a/R
+		u [M4] sph16_1/
+			u sph16.c/
+				u sph16.s
+		u sph16_1/
+			u sph16.c/
+				u sph16.s</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If we push to depth 3, we end up with four different versions of the
+sph16.c tree:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sph_016/
+	u sph16a/R
+		u sph16_1/
+			u [M12] sph16.c/
+				u sph16.s
+		u sph16_1/
+			u [M1] sph16.c/
+				u sph16.s
+	u sph16a/R
+		u sph16_1/
+			u [M34] sph16.c/
+				u sph16.s
+		u sph16_1/
+			u [M3] sph16.c/
+				u sph16.s</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The first stage of the answer is to create three new combinations and
+redefine the sph16a tree:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sph_016/
+	u sph16a/R
+		u sph16_1_01/
+			u [M12] sph16.c/
+				u sph16.s
+		u sph16_1/
+			u [M1] sph16.c/
+				u sph16.s
+	u sph16a/R
+		u sph16_1_02/
+			u [M34] sph16.c/
+				u sph16.s
+		u sph16_1_03/
+			u [M3] sph16.c/
+				u sph16.s</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>That addresses sph16_1, but the tree updates to sph16a created a new
+problem: now we have two different versions of the sph16a tree.  To
+resolve that problem, we must create a new comb to replace one of the
+conflicting sph16a instances and redefine the sph_016 tree:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sph_016/
+	u sph16a/R
+		u sph16_1_01/
+			u [M12] sph16.c/
+				u sph16.s
+		u sph16_1/
+			u [M1] sph16.c/
+				u sph16.s
+	u sph16a_01/R
+		u sph16_1_02/
+			u [M34] sph16.c/
+				u sph16.s
+		u sph16_1_03/
+			u [M3] sph16.c/
+				u sph16.s</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Unlike sph16a and sph16_1, sph_016 has not seen any changes to its
+volumetric definition.  sph_016 is the "top level" object specified
+for this push, and as such constitutes a reliable termination point
+for any need to propagate tree changes.  Even if any combs elsewhere
+in the database reference sph_016, they will not see any volumetric
+changes as a consequence of the operation and do not need to redefine
+their trees to preserve original sph_016 trees for external use in
+copies of sph_016.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_search_options"><a class="anchor" href="#_search_options"></a>OPTIONS</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>-h or -?</strong></dt>
+<dd>
+<p>Print help and exit.</p>
+</dd>
+<dt class="hdlist1"><strong>-v</strong></dt>
+<dd>
+<p>Verbose processing output (primarily used for debugging).</p>
+</dd>
+<dt class="hdlist1"><strong>-f or -x</strong></dt>
+<dd>
+<p>Force creation of new objects if necessary to avoid
+conflicts while fully pushing matrices. (A.k.a "xpush" mode).</p>
+</dd>
+<dt class="hdlist1"><strong>-r</strong></dt>
+<dd>
+<p>Halt push operations at the hierarchy level above regions.</p>
+</dd>
+<dt class="hdlist1"><strong>-s</strong></dt>
+<dd>
+<p>Halt push operations at the hierarchy level above solids.</p>
+</dd>
+<dt class="hdlist1"><strong>-d max_depth</strong></dt>
+<dd>
+<p>Halt push operations at the hierarchy level specified
+by <em>max_depth</em>.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_examples"><a class="anchor" href="#_examples"></a>EXAMPLES</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="title">Example 1. Default</div>
+<div class="content">
+<div class="paragraph">
+<p><code class="ui">push sph1</code></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright"><a class="anchor" href="#_copyright"></a>COPYRIGHT</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This software is Copyright (c) 1989-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bug_reports"><a class="anchor" href="#_bug_reports"></a>BUG REPORTS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Reports of bugs or problems should be submitted via electronic mail to
+<a href="mailto:devs@brlcad.org">devs@brlcad.org</a></p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../ui/js/site.js"></script>
+<script src="../../../ui/js/vendor/lunr.js"></script>
+<script src="../../../ui/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/docs/man/n/npush.html"></script>
+<script async src="../../../ui/../search-index.js"></script>
+<script async src="../../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

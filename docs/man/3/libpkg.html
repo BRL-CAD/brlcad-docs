@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>LIBPKG(3) :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/docs/man/3/libpkg.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../ui/css/site.css">
+    <link rel="stylesheet" href="../../../ui/css/search.css">
+    <link rel="stylesheet" href="../../../ui/css/custom.css">
+    <script>var uiRootPath = '../../../ui'</script>
+    <link rel="icon" href="../../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article manpage">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lessons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../lessons/mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/01_creating_primitive_shapes.html">1. Creating Primitive Shapes in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/02_learning_viewing_options.html">2. Learning Viewing Options in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/03_using_insert_command.html">3. Using the Insert Command in MGED to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/04_assign_mat_prop_rt.html">4. Assigning Material Properties and Raytracing in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/05_learning_boolean_expressions.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/06_creating_a_goblet.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/07_goblet_material_properties.html">7. Assigning Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/08_goblet_material_properties2.html">8. Assigning More Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/09_globe_in_display_box.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/10_creating_mug.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/11_refining_mug.html">11. Refining a Mug Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/12_mug_through_gui.html">12. Creating a Mug Model using the MGED Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/13_placing_shapes_in_3d.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/14_placing_shapes_in_3d_2.html">14. Additional Exercises Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/15_creating_a_toy_truck.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/16_mod_tech_struct.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Books</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../hacking/index.html">Hacking BRL-CAD</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting Started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter1.html">A Call to Arms (and Contributors)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter2.html">Feature Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developers</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter3.html">Working with Our Code</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter4.html">What Code to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter5.html">Contributing Code</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Documenters</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter6.html">Working with Our Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter7.html">Types of Documentation We Maintain</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter8.html">What Documentation to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter9.html">Contributing Documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Other Contributors</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part4/chapter10.html">You Can Help Too</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendix: Resources and Examples</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix1.html">Further References and Resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix2.html">Doc Template: New MGED Command</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix3.html">Code Example: Shooting Rays</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix4.html">Code Example: Walking Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix5.html">Code Example: Command Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix6.html">Example Code: Root Solving</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/index.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../tutorials/overview.html">I. An Overview of BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/mged-intro.html">II. Introduction to MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/preface1.html">Preface</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/preface2.html">Acknowledgments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter1.html">1. Creating Primitive Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter2.html">2. Learning the Viewing Options</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter3.html">3. Using the Insert Command to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter4.html">4. Assigning Material Properties and Raytracing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter5.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter6.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter7.html">7. Assigning Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter8.html">8. Assigning More Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter9.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter10.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter11.html">11. Refining the Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter12.html">12. Creating the Mug Through the GUI</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter13.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter14.html">14. Gaining More Practice Placing Shapes in Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter15.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter16.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/appendix1.html"><code class="app">MGED</code> Commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/modeling.html">III. Modeling</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter2.html">2. The Model Process</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter3.html">3. Measuring data</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter4.html">4. Organizing the Structure</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter5.html">5. Developing Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter6.html">5. Evaluating Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter7.html">7. Logging Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendices</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix1.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix2.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix3.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix4.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix5.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix6.html">Using the build_region Command</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/converting.html">IV. Converting</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter2.html">2. Pertinent Characteristics of the BRL-CAD Format</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter3.html">3. Converting From/to ASCII</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter4.html">4. Converting to BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter5.html">5. Converting From BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter6.html">6. Building a New Converter</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter7.html">7. Postconversion Issues</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/index.html">Articles</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_pattern.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/build_region.html">Using the build_region Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/camo_shader.html">Camouflage shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ebm_primitive.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/gcv.html">The Geometry Conversion Library</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/ged.html">GED: An Interactive Solid Modeling System</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../articles/mged/index.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tutorial.html">Tutorial</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/gui.html">Graphical User Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/command-line-editing.html">Command Line Editing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/user-commands.html">User Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/developer-commands.html">Developer Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/tcl-variables.html">Tcl Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/env.html">Environment Variable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/callback.html">Callback</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../articles/mged/brlcad-solid.html">BRL-CAD Solid</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/mgedrc.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/nirt.html">Interactive Raytracing: The nirt Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/overlap_tool.html">The Overlap Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/oed.html">Object Editing - the oed Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/pipes.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/projection_shader.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/tire.html">Vehicle Tire and Wheel Creation in BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../articles/TEMPLATE.html">TEMPLATE</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Misc</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Dev Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../devguides/bool_eval_development.html">NURBS Boolean Evaluation Development Guide</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Presentations</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/brlcad-app-devel.html">Application Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="presentations:_attachments/brlcad-app-devel.html">brlcad-app-devel</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/intro-to-tcltk.html">Introduction to Tcl/Tk</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../specifications/BRL_CAD_g_format_V5.html">BRL-CAD Database Format</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Manual Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../1.html">man1</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../3.html">man3</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../5.html">man5</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../n.html">mann</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Wiki Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">page-1</span>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">BRL-CAD</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../../index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../es/index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../es/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">BRL-CAD</a></li>
+    <li><a href="libpkg.html">LIBPKG(3)</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/docs/modules/man/pages/3/libpkg.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">LIBPKG(3)</h1>
+<div class="sect1">
+<h2 id="_name"><a class="anchor" href="#_name"></a>NAME</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>libpkg - Message passing abstraction library supporting communication
+between cooperating processes over TCP connections</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_pkg_background"><a class="anchor" href="#_pkg_background"></a>BACKGROUND</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following is a description of the libpkg routines kindly provided
+by Peter B. Shames on 26 Sept 1986, and updated 14 Nov 1986 by PC
+Dykstra to reflect BRL extensions since the first writing.  It was
+intended that an RFC be published at some point, but at this point
+this document (plus the source code) is all we have. In the CAD
+distribution, the remote framebuffer interface (libfb/if_remote.c) and
+server (fbserv), communicate using this protocol.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_pkg_overview"><a class="anchor" href="#_pkg_overview"></a>Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A prototype interface that implements a fairly simple message passing
+abstraction between cooperating processes running over TCP connections
+has been developed by Mike Muuss, Charles Kennedy, and Phillip Dykstra
+at BRL.  Some experiments have been run at STScI to implement this
+interface on a DECnet link with good success.  A few changes have been
+suggested to improve network throughput for data flows that consist of
+short message traffic or byte-stream traffic.</p>
+</div>
+<div class="paragraph">
+<p>This note describes the motivation for developing such an interface
+and describes the subroutine interfaces and functionality.  The
+interface routine descriptions and portions of the textual
+descriptions have been taken directly from the source code provided by
+Muuss and Kennedy which has been the only available description to
+date.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_why_pkg"><a class="anchor" href="#_why_pkg"></a>Why a message interface?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The interface - PKG provides a simple interface for managing
+client/server connections in a distributed environment.  A server task
+is initialized to wait for incoming requests from clients.  Clients
+open a connection to the server task which executes on some host
+processor waiting for incoming requests.  Messages with identifying
+type codes are passed between processes, with optional appended data
+blocks.  The interface is non-blocking and accepts arbitrary data
+messages of arbitrary length.</p>
+</div>
+<div class="paragraph">
+<p>An example - interaction with a remote data archive may require
+request for services, user authentication, permission granting, index
+hierarchy queries - with manipulation of results, archive request
+processing, delivery of output products - electronically or otherwise.
+The archive is a server that responds to service requests from
+clients, how many may be served at one time and whether public access
+and private services are supported is an implementation issue.  Since
+no direct interactive support is required (if smart client agents are
+in use) the message paradigm can support the requirements.</p>
+</div>
+<div class="paragraph">
+<p>A [counter] example - Athena&#8217;s XWindow uses a client-server model to
+provide screen/window management services for distributed
+processes. XWindow is very permissive of different window management
+policies and provides hooks for implementing various user interfaces.
+At the lowest level, XWindow requires a reliable duplex byte-stream,
+which can be implemented in many operating environments.  Because
+XWindow wants to manage all process-window communications directly, it
+builds its own block stream protocol to manage the connection.  This
+permits the interactive update required by some processes, but
+basically is the same paradigm as PKG, defined within the window
+system.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_pkg_desc"><a class="anchor" href="#_pkg_desc"></a>PKG Interface description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The PKG interface implements an client-server network connection that
+multiplexes synchronous and asynchronous messages across stream
+connections.  Connection control is provided by open/ close routines,
+where the client authentication is handled prior to establishing the
+connection.  Server side actions include initialization, client
+connection, and client request servicing.  Client side actions include
+server request, reply processing, possible connection negotiation, and
+data transfer processing.</p>
+</div>
+<div class="paragraph">
+<p>A connection is established when a client issues an open to a server,
+running on some host.  Which hosts provide required services must be
+determined prior to connection requests, using some service
+directory. Default connection processing is stream oriented, where a
+process may get data as it is available on the connection.  A blocking
+read may also be issued, waiting for any complete message, or just for
+messages of a specified type.  The connection remains open until
+explicitly closed by either client or server.</p>
+</div>
+<div class="paragraph">
+<p>Once the connection is established it may be used to process a full-
+duplex asynchronous byte stream, or a buffered, synchronous
+query/reply exchange.  Message type multiplexing supports user actions
+based upon message type, where the multiplexing is handled in the
+interface. Different message type streams may operate using different
+flow control over the same connection.  Multiplexing is handled in the
+interface by pre-pending a header block to the message before
+transmitting it to the reader.  Data is transmitted as received, but
+the header is transmitted in Internet network byte/bit order.</p>
+</div>
+<div class="paragraph">
+<p>An package connection may incur significant overhead if many short
+messages are passed between processes, so a buffered stream connection
+may be requested.  The application calls the pkg_stream interface
+rather than the usual pkg_send request, and PKG builds a message
+buffer and passes it to the client as it gets filled.  A stream buffer
+may be flushed with an explicit call to the pkg_flush routine.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_pkg_def"><a class="anchor" href="#_pkg_def"></a>PKG Interface Definition</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_control_interfaces"><a class="anchor" href="#_control_interfaces"></a>Control Interfaces:</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">PKG_OPEN </dt>
+<dd>
+<p>Open a connection to a host</p>
+<div class="literalblock">
+<div class="content">
+<pre>pkg_open( host, service, protocol, uname, passwd, pkg_switch, errlog )
+returns ptr_to_connection</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We are a client, make a connection to a server running on some
+host. The return value is the connection handle. Protocol, username,
+and password are optional.</p>
+</div>
+</dd>
+<dt class="hdlist1">PKG_CLOSE </dt>
+<dd>
+<p>Close a connection</p>
+<div class="literalblock">
+<div class="content">
+<pre>pkg_close( ptr_to_connection )
+returns VOID</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We are a client or server wishing to gracefully close a connection.</p>
+</div>
+</dd>
+<dt class="hdlist1">PKG_TRANSERVER </dt>
+<dd>
+<p>Become a one-time network server on the already
+accepted connection.</p>
+<div class="literalblock">
+<div class="content">
+<pre>pkg_transerver( pkg_switch, errlog )
+returns ptr_to_connection</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Given an established connection, this routine creates a pkg_conn
+structure for it and initializes it to use the given pkg_switch and
+error logging function.  This routine is needed by servers which get
+created by some other process after the connection is established.
+Processes started by the UNIX "inetd" are one example.</p>
+</div>
+</dd>
+<dt class="hdlist1">PKG_PERMSERVER </dt>
+<dd>
+<p>Create a network server and listen for connections</p>
+<div class="literalblock">
+<div class="content">
+<pre>pkg_permserver( service, protocol, backlog )
+returns listen_file_desc</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The service port is determined and a listen is hung on the port that
+is bound to the socket.  The return value is the file descriptor of
+the socket. For this kind of server, pkg_getclient is used to accept
+connections from clients.</p>
+</div>
+</dd>
+<dt class="hdlist1">PKG_GETCLIENT </dt>
+<dd>
+<p>Used by a server to accept a client connection</p>
+<div class="literalblock">
+<div class="content">
+<pre>pkg_getclient( listen_file_desc, pkg_switch, errlog, nodelay_flag )
+returns ptr_to_connection or NULL or ERROR</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If possible, the connection request from the client is accepted, a
+pkg_connection block is created and a ptr to it is returned to the
+server.  The server may request non-blocked service by setting the
+nodelay_flag TRUE.</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_io_interfaces"><a class="anchor" href="#_io_interfaces"></a>I/O Interfaces:</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">PKG_GET </dt>
+<dd>
+<p>Read bytes from connection, assembling message</p>
+<div class="literalblock">
+<div class="content">
+<pre>pkg_get( ptr_to_connection ) returns
+returns message_arrived, more_data_coming or ERROR.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Get waits until a message header is received and the calls the user
+specified message handler for that message type.  This routine should
+be called by a program whenever there is data waiting on a connection
+and the program is not otherwise waiting on a specific message type.
+The routine will return directly to the caller if no header is
+available or if only a partial message is received, otherwise it calls
+the user specified message type handler.</p>
+</div>
+</dd>
+<dt class="hdlist1">PKG_SEND </dt>
+<dd>
+<p>Send a message on the connection</p>
+<div class="literalblock">
+<div class="content">
+<pre>pkg_send( message_type, data_buff, buff_len, ptr_to_connection )
+returns bytes_sent or ERROR</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Send constructs a message header for the data buffer and transmits it
+on the connection.  If only part of the message can be sent the actual
+number of bytes transmitted returned. Any data in the stream buffer is
+first flushed.  If the stream buffer needs flushing, and the message
+is less than MAXQLEN (currently 512) bytes long, and sufficient room
+is left in the stream buffer, this message gets "piggybacked" on by
+copying it to the buffer before flushing. If available, "writev" is
+used to send the header and data with one syscall.</p>
+</div>
+</dd>
+<dt class="hdlist1">PKG_2SEND </dt>
+<dd>
+<p>Send a two part message on the connection</p>
+<div class="literalblock">
+<div class="content">
+<pre>pkg_2send( message_type, data_buff1, buff1_len, data_buff2, buff2_len, ptr_to_connection )
+returns bytes_sent or ERROR</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>2Send performs the same job as pkg_send except the data comes in two
+parts.  This is often the case for say a command followed by user
+data.  User data copies can be avoided while still allowing a single
+trip in and out of the kernel on the receiving end.</p>
+</div>
+</dd>
+<dt class="hdlist1">PKG_STREAM </dt>
+<dd>
+<p>Send a buffered data stream on the connection</p>
+<div class="literalblock">
+<div class="content">
+<pre>pkg_stream( message_type, data_buff, buff_len, ptr_to_connection )
+returns bytes_sent or ERROR</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Pkg_stream connections provide a low network overhead connection where
+interactive responsiveness is not required.</p>
+</div>
+<div class="paragraph">
+<p>Connections have a PKG_STREAMLEN (currently 4096) byte stream buffer.
+If the current message is less than MAXQLEN (currently 512) bytes in
+length, and space remains for it, it will be appended onto the end of
+this buffer.  Otherwise the buffer is implicitly flushed by sending
+this message via PKG_SEND.</p>
+</div>
+</dd>
+<dt class="hdlist1">PKG_FLUSH </dt>
+<dd>
+<p>Flush the stream buffer out on the connection</p>
+<div class="literalblock">
+<div class="content">
+<pre>pkg_flush( ptr_to_connection )
+returns bytes_sent or ERROR</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Flush takes the current contents of the stream buffer being
+constructed by stream and flushes it to the connection.  This allows
+programs explicit control over the stream interface where required.</p>
+</div>
+</dd>
+<dt class="hdlist1">PKG_BLOCK </dt>
+<dd>
+<p>Wait for a complete message of any type</p>
+<div class="literalblock">
+<div class="content">
+<pre>pkg_block( ptr_to_connection )
+returns message_arrived or ERROR</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This routine blocks, waiting for a complete message of ant type to
+arrive on the connection.  The user message handler is called to
+process the message.  This routine can be called in a loop waiting for
+asynchronous messages or for the arrival of messages of uncertain
+type.</p>
+</div>
+</dd>
+<dt class="hdlist1">PKG_WAITFOR </dt>
+<dd>
+<p>Wait for a message of specific type, return in user buffer</p>
+<div class="literalblock">
+<div class="content">
+<pre>pkg_waitfor( message_type, user_buff, buff_len, ptr_to_connection )
+returns buff_len or ERROR</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This routine does a blocking read on the connection until a message of
+message_type is received.  Asynchronous messages and messages of other
+types are processed while this routine waits.  The message is returned
+in the user&#8217;s buffer.</p>
+</div>
+</dd>
+<dt class="hdlist1">PKG_BWAITFOR </dt>
+<dd>
+<p>Wait for a message of specific type, return in
+allocated buffer</p>
+<div class="literalblock">
+<div class="content">
+<pre>pkg_bwaitfor( message_type, ptr_to_connection )
+returns ptr_to_buffer or ERROR</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This routine does a blocking read on the connection until a message of
+message_type is received.  Asynchronous messages and messages of other
+types are processed while this routine waits.  The message is returned
+in a newly allocated buffer that the caller must free.</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_user_message_handler_interface"><a class="anchor" href="#_user_message_handler_interface"></a>User Message Handler Interface:</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">PKG_SWITCH </dt>
+<dd>
+<p>Table of User Message Handler Pointers</p>
+<div class="literalblock">
+<div class="content">
+<pre>struct pkg_switch {
+unsigned short  pks_type;       /* Type code */
+int     (*pks_handler)();       /* Message Handler */
+char    *pks_title;             /* Description */
+};
+pks_handler( ptr_to_connection, message_buff )
+returns ignored int</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The user may specify handlers for one or more message types. When
+these routines are called they are passed a pointer to the connection
+and a pointer to a buffer that contains the message.  The user message
+handler routine is responsible for freeing the message buffer after
+processing it.  If there is no message handler for that message type
+the message is discarded and the buffered freed.  The switch routine
+uses an external message handler array, created by the caller, that
+defines message types, handler entry points, and a message descriptor
+field.</p>
+</div>
+<div class="paragraph">
+<p>The pkg_switch list which is passed to some of the above functions is
+a NULL terminated array of structures containing the message type, a
+pointer to an function which handles messages of that type, and a
+descriptive string.  A separate pkg_switch array is kept for each
+connection so that several entirely different PKG conversations can be
+carried out by a single application at the same time.</p>
+</div>
+</dd>
+<dt class="hdlist1">PKG_CONN </dt>
+<dd>
+<p>Connection block structure</p>
+<div class="literalblock">
+<div class="content">
+<pre>struct pkg_conn {
+pkg_file_desc, pkg_magic, mess_len, ptr_to_buffer,
+curr_buffer_pos, pkg_switch, errlog, stream_buff,
+curr_stream_pos
+};</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Connection block structures are created by pkg_open or pkg_getclient
+when a connection is established, and are freed when a connection is
+closed.  This connection block is used during all I/O requests and
+contains the pointer to the start of the current buffer and to the
+current position in the buffer for incomplete read or writes.  The
+mess_len field specifies the number of bytes expected by get. The
+pkg_switch array, and a pointer to an error logging function for this
+connection is included.  The stream buffer is also contained in the
+structure.</p>
+</div>
+<div class="paragraph">
+<p>See pkg.h for the actual names of the structure elements.</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_pkg_impl_notes"><a class="anchor" href="#_pkg_impl_notes"></a>Implementation Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>At least two implementations of the PKG interface have been done, one
+based on TCP/IP connections, the other based on DECnet
+connections. Future releases of PKG will be layered on top of a
+virtual stream library known as NET.</p>
+</div>
+<div class="paragraph">
+<p>The implementation running on 4.2BSD UNIX takes advantage of the
+"writev" syscall which can output the header and data in a single
+syscall/TCP_PUSH cycle.  The advantage of the short data copy is
+realized only when writev can not be used, or when a pkg_flush is not
+required (a la PKG_STREAM).]</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_pkg_future_devel"><a class="anchor" href="#_pkg_future_devel"></a>Future Developments</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Further development of the lower levels of the interface will be
+provided so that this message passing abstraction can be provided on
+top of both DECnet and TCP/IP network layers, with other
+implementations provided as required.  The program interface layer is
+to be as described in the body of this note, the lower layers will
+interface to the network layers using whatever subroutine interfaces
+are most appropriate for the system hosting the interface.  A simple
+read/write/open/close abstraction may be provided at a lower layer to
+further isolate the network layers from the message handling layer.</p>
+</div>
+<div class="paragraph">
+<p>Where it is necessary to cross network protocol boundaries, message
+relay processes will be created to reside on a Janus host that
+straddles the two domains.  Domain routing and relay point information
+will be maintained above the network layer within the extended PKG
+interface. Clients and servers will need to determine server host id
+information from some available database.  Server names must either
+carry domain information or such information must be available as part
+of the server database.  Within the extended PKG interface routing
+information for domain boundary transits must be maintained, and
+appropriate Janus host systems connected to provide relay services.</p>
+</div>
+<div class="paragraph">
+<p>It is not anticipated that full asynchronous I/O implementation will
+work particularly well across domain boundaries, but all other forms
+of message transfer should work quite well.  As already noted,
+buffered stream I/O may be perfectly satisfactory for many
+applications where full interaction is not required.  Where
+applicable, this mode of interface is to be preferred over full
+asynchronous I/O.  Further development of this interface layer on
+other protocol families is possible, perhaps even on low level
+networks like BITNET and certainly on connection oriented X.25 or OSI
+networks.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_author"><a class="anchor" href="#_author"></a>AUTHOR</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Peter B. Shames</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright"><a class="anchor" href="#_copyright"></a>COPYRIGHT</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This software is Copyright (c) 1989-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bug_reports"><a class="anchor" href="#_bug_reports"></a>BUG REPORTS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Reports of bugs or problems should be submitted via electronic mail to
+<a href="mailto:devs@brlcad.org">devs@brlcad.org</a></p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../ui/js/site.js"></script>
+<script src="../../../ui/js/vendor/lunr.js"></script>
+<script src="../../../ui/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/docs/man/3/libpkg.html"></script>
+<script async src="../../../ui/../search-index.js"></script>
+<script async src="../../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

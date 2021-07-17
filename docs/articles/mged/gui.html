@@ -1,0 +1,2336 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Graphical User Interface :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/docs/articles/mged/gui.html">
+    <link rel="prev" href="tutorial.html">
+    <link rel="next" href="command-line-editing.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../ui/css/site.css">
+    <link rel="stylesheet" href="../../../ui/css/search.css">
+    <link rel="stylesheet" href="../../../ui/css/custom.css">
+    <script>var uiRootPath = '../../../ui'</script>
+    <link rel="icon" href="../../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lessons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../lessons/mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/01_creating_primitive_shapes.html">1. Creating Primitive Shapes in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/02_learning_viewing_options.html">2. Learning Viewing Options in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/03_using_insert_command.html">3. Using the Insert Command in MGED to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/04_assign_mat_prop_rt.html">4. Assigning Material Properties and Raytracing in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/05_learning_boolean_expressions.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/06_creating_a_goblet.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/07_goblet_material_properties.html">7. Assigning Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/08_goblet_material_properties2.html">8. Assigning More Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/09_globe_in_display_box.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/10_creating_mug.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/11_refining_mug.html">11. Refining a Mug Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/12_mug_through_gui.html">12. Creating a Mug Model using the MGED Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/13_placing_shapes_in_3d.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/14_placing_shapes_in_3d_2.html">14. Additional Exercises Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/15_creating_a_toy_truck.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/16_mod_tech_struct.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Books</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../hacking/index.html">Hacking BRL-CAD</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting Started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter1.html">A Call to Arms (and Contributors)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter2.html">Feature Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developers</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter3.html">Working with Our Code</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter4.html">What Code to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter5.html">Contributing Code</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Documenters</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter6.html">Working with Our Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter7.html">Types of Documentation We Maintain</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter8.html">What Documentation to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter9.html">Contributing Documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Other Contributors</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part4/chapter10.html">You Can Help Too</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendix: Resources and Examples</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix1.html">Further References and Resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix2.html">Doc Template: New MGED Command</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix3.html">Code Example: Shooting Rays</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix4.html">Code Example: Walking Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix5.html">Code Example: Command Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix6.html">Example Code: Root Solving</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/index.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../tutorials/overview.html">I. An Overview of BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/mged-intro.html">II. Introduction to MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/preface1.html">Preface</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/preface2.html">Acknowledgments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter1.html">1. Creating Primitive Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter2.html">2. Learning the Viewing Options</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter3.html">3. Using the Insert Command to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter4.html">4. Assigning Material Properties and Raytracing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter5.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter6.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter7.html">7. Assigning Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter8.html">8. Assigning More Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter9.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter10.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter11.html">11. Refining the Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter12.html">12. Creating the Mug Through the GUI</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter13.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter14.html">14. Gaining More Practice Placing Shapes in Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter15.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter16.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/appendix1.html"><code class="app">MGED</code> Commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/modeling.html">III. Modeling</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter2.html">2. The Model Process</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter3.html">3. Measuring data</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter4.html">4. Organizing the Structure</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter5.html">5. Developing Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter6.html">5. Evaluating Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter7.html">7. Logging Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendices</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix1.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix2.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix3.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix4.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix5.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix6.html">Using the build_region Command</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/converting.html">IV. Converting</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter2.html">2. Pertinent Characteristics of the BRL-CAD Format</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter3.html">3. Converting From/to ASCII</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter4.html">4. Converting to BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter5.html">5. Converting From BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter6.html">6. Building a New Converter</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter7.html">7. Postconversion Issues</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../index.html">Articles</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../build_pattern.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../build_region.html">Using the build_region Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../camo_shader.html">Camouflage shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../ebm_primitive.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../gcv.html">The Geometry Conversion Library</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../ged.html">GED: An Interactive Solid Modeling System</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial.html">Tutorial</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="gui.html">Graphical User Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="command-line-editing.html">Command Line Editing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="user-commands.html">User Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="developer-commands.html">Developer Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tcl-variables.html">Tcl Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="env.html">Environment Variable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="callback.html">Callback</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="brlcad-solid.html">BRL-CAD Solid</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../mgedrc.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../nirt.html">Interactive Raytracing: The nirt Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../overlap_tool.html">The Overlap Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../oed.html">Object Editing - the oed Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../pipes.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../projection_shader.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tire.html">Vehicle Tire and Wheel Creation in BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../TEMPLATE.html">TEMPLATE</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Misc</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Dev Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../devguides/bool_eval_development.html">NURBS Boolean Evaluation Development Guide</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Presentations</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/brlcad-app-devel.html">Application Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="presentations:_attachments/brlcad-app-devel.html">brlcad-app-devel</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/intro-to-tcltk.html">Introduction to Tcl/Tk</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../specifications/BRL_CAD_g_format_V5.html">BRL-CAD Database Format</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Manual Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/1.html">man1</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/3.html">man3</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/5.html">man5</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/n.html">mann</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Wiki Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">page-1</span>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">BRL-CAD</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../../index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../es/index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../es/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">BRL-CAD</a></li>
+    <li><a href="../index.html">Articles</a></li>
+    <li><a href="index.html">MGED</a></li>
+    <li><a href="gui.html">Graphical User Interface</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/docs/modules/articles/pages/mged/gui.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Graphical User Interface</h1>
+<div class="sect1">
+<h2 id="_gettingstarted"><a class="anchor" href="#_gettingstarted"></a>Getting Started</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code><span class="cmd">mged</span> [-c] [-d display] [-h] [-r] [-x#] [-X#] [database [command]]</code></p>
+</div>
+<div class="paragraph">
+<p>The -c (Classic MGED) option causes MGED to start in the style of
+previous versions of MGED, that is, by prompting the user to select a
+display manager to attach and by remaining attached to the tty.
+Without this option MGED will detach itself from the tty and bring up
+the new GUI.  The -d option provides a way to specify a display
+string.  This string is expected to be in the same format as the X
+DISPLAY environment variable.  The -h option causes the help message
+to print out.  The -r option causes the database to be read-only (i.e.
+no editing allowed). The -x and -X options provide a way for the user
+to specify the debug level of librt and libbu, respectively.  Note
+that if MGED is started by redirecting stdin or stdout, MGED will not
+enter interactive mode.  Similarly, if MGED is started with a command,
+that command will be executed and MGED will exit.  If the user starts
+MGED in "Classic" mode, the new GUI is still available via the <code>gui</code>
+command.  There can be many instances of the GUI running at the same
+time.  Each instance of the GUI owns four display manager windows
+(panes) and by default each of these panes has its view initialized as
+follows:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. MGED GUI COMMANDS</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Pane</th>
+<th class="tableblock halign-center valign-top">Azimuth and Elevation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">upper left</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0 90</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">upper right</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">35 25</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">lower left</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0 0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">lower right</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">90 0</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>All four panes can be displayed simultaneously, or a single large pane
+containing the active pane can be displayed (look in the "Modes"
+menu). The active pane is the pane that is controlled by the GUI. The
+active pane can be changed from the "Settings" menu, or by certain key
+or mouse button actions. Essentially, any key sequence or mouse button
+action that will pop up an MGED menu in the pane will cause the active
+pane to move to the pane wherein this action occurred.  For example,
+alt-f will pop up the file menu and make this pane the active
+pane. Similarly, alt-Button1 will pop up the "Settings" menu and
+alt-Button2 will pop up the "Modes" menu.</p>
+</div>
+<div class="paragraph">
+<p>The new GUI also provides "Help on Context".  This is always available
+via the right mouse button (i.e. button 3). The user can right mouse
+click on some feature of the GUI and a message window pops up with
+information about the feature. This behavior works everywhere except
+in the drawing panes (i.e.  display manager windows) where a right
+mouse button is bound to "zoom 2.0".</p>
+</div>
+<div class="paragraph">
+<p>There are many new features and improvements in MGED providing greater
+access to its underlying power.  The single greatest improvement to
+MGED is the incorporation of Tcl/Tk.  Tcl (tool command language) is
+an interpreted command language that can be embedded into an
+application providing the application with an interpreter as well as a
+built-in command language.  Tk is an extension to Tcl for building
+GUI&#8217;s.  Incorporating Tcl/Tk into MGED gives the user the ability to
+develop their own commands and GUI&#8217;s.  Other new features are:
+command line editing similar to tcsh, multiple display managers opened
+simultaneously, shareable resources among display managers, view axes,
+model axes, edit axes, rubber banding for zoom or raytracing, support
+for color schemes, frame buffer support for display managers, snap to
+grid for accuracy with the mouse, query rays for interrogating the
+geometry, and improved solid/object/combination selection from among
+displayed geometry.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_commandwindow"><a class="anchor" href="#_commandwindow"></a>Command Window</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The main function of the command window is to allow the user to enter
+commands.  The command window supports
+<a href="command-line-editing.html" class="page">command line editing</a> and command
+history.  The two supported command line edit modes are emacs and vi.
+Look under <span class="menuseq"><b class="menu">File</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Preferences</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Command_Line_Edit</b></span> to change the
+edit mode.</p>
+</div>
+<div class="paragraph">
+<p>There are also two command interpretation modes.  One is where MGED
+performs object name matching (i.e.  globbing against the database)
+before passing the command line to MGED&#8217;s built-in Tcl interpreter.
+This is the same behavior seen in previous releases.  The other
+command interpretation mode (Tcl Evaluation) passes the command line
+directly to the Tcl interpreter.  Look under <span class="menuseq"><b class="menu">File</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Preferences</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Special_Characters</b></span> to change the interpretation mode.</p>
+</div>
+<div class="paragraph">
+<p>The command window also supports cut and paste as well as text
+scrolling.  The default bindings for these operations are similar to
+those found in typical X Window applications such as xterm.  For
+example:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. Commands</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Key-Button Sequence</th>
+<th class="tableblock halign-center valign-top">Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">ButtonPress-1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">begin text selection</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">ButtonRelease-1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">end text selection</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Button1-Motion</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">add to text selection</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Shift-Button1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">modify text selection</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Double-Button-1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">select word</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Triple-Button-1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">select line</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">ButtonPress-2</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">begin text operation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">ButtonRelease-2</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">paste text</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Button2-Motion</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">scroll text</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If motion was detected while Button2 was being pressed, no text
+will be pasted.  In this case, it is assumed that scrolling was the
+intended operation.  Of course, the user can also scroll the window
+using the scrollbar.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_panes"><a class="anchor" href="#_panes"></a>Panes (Display Manager Windows)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A pane is a place wherein solids/objects are drawn.  Here the user can
+interact, via the mouse and/or keyboard, with the panes view or with
+solids/objects that are being edited.  The user can also
+<a href="#_accessmenubar">access menus</a> from the menu bar from within the
+pane.</p>
+</div>
+<div class="sect2">
+<h3 id="_shiftgrips"><a class="anchor" href="#_shiftgrips"></a>Shift Grips</h3>
+<div class="paragraph">
+<p>MGED offers the user a unified mouse-based interface for &#8220;grabbing&#8221;
+things and manipulating them.  Since it was built for compatibility on
+top of the older interface:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Mouse Button</th>
+<th class="tableblock halign-center valign-top">View Operation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Button-1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Zoom out</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Button-2</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Recenter view at the specified point</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Button-3</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Zoom in</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>It uses the modifier keys: <kbd>Shift</kbd>, <kbd>Control</kbd>, and <kbd>Alt</kbd>.
+This use of modified mouse clicks to grab things is called the
+&#8220;shift-grip&#8221; interface.  The <kbd>Shift</kbd> and <kbd>Control</kbd> keys are
+assigned in combinations to the three basic transformation operations
+as follows:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Modifier Key</th>
+<th class="tableblock halign-center valign-top">Transformation Operation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><kbd>Shift</kbd></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Translate</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><kbd>Ctrl</kbd></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Rotate</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="keyseq"><kbd>Shift</kbd>+<kbd>Ctrl</kbd></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Scale</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>And the <kbd>Alt</kbd> key is assigned the meaning &#8220;constrained
+transformation&#8221;, which is described below.  Thus, in general, holding
+the <kbd>Shift</kbd> key and a mouse button down and moving the mouse drags
+things around on the screen.  The Control key and a mouse button allow
+one to rotate things, and the combination of Shift, Control, and a
+mouse button allow one to expand and contract things.  These general
+functionalities are consistent throughout MGED, providing a unified
+interface.  The precise meanings of &#8220;drag things around&#8221;, &#8220;rotate
+things&#8221;, and &#8220;expand and contract things&#8221; depends on the operating
+context.</p>
+</div>
+<div class="paragraph">
+<p>When one is merely viewing geometry the shift grips apply by default
+to the view itself.  Thus they amount to panning, rotating, and
+zooming the eye relative to the geometry being displayed.  When one is
+in solid-edit or matrix-edit mode (what used to be called object-edit
+mode), the shift grips apply by default to the model parameters.  In
+this case, they modify the location, orientation, or size of object
+features or entire objects in the database.</p>
+</div>
+<div class="paragraph">
+<p>The default behaviors in the viewing and editing modes may be
+overridden by the &#8220;Transform&#8221; item in the &#8220;Settings&#8221; menu.  This
+allows the user to specify that the shift grips should transform the
+view, the model parameters (if one is currently editing a solid or
+matrix) or the angle-distance cursor (in which case the mouse may be
+used to position the ADC, to change its angles, and to expand and
+contract its distance ticks). The behavior of the shift grips may be
+further changed by the &#8220;Rotate About&#8221; item in the &#8220;Settings&#8221; menu,
+which allows the user to specify the point about which shift-grip
+rotations should be performed.  The choices include the view center,
+the eye, the model origin, and an object&#8217;s key point.</p>
+</div>
+<div class="sect3">
+<h4 id="_constrainedtransformations"><a class="anchor" href="#_constrainedtransformations"></a>CONSTRAINED TRANSFORMATIONS</h4>
+<div class="paragraph">
+<p>When the <kbd>Alt</kbd> key is held down along with either of the
+<kbd>Shift</kbd> and <kbd>Control</kbd> keys the transformations are constrained
+to a particular axis.  For such constrained transformations the mouse
+buttons have the following meanings:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Mouse Button</th>
+<th class="tableblock halign-center valign-top">Axis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Button-1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">x</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Button-2</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">y</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Button-3</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">z</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Thus, if the view is being transformed, <span class="keyseq"><kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>Button-1</kbd></span>
+allows one to drag the objects being viewed left to right along the
+view-x axis.  Similarly, if the model parameters are being
+transformed, <span class="keyseq"><kbd>Alt</kbd>+<kbd>Ctrl</kbd>+<kbd>Button-2</kbd></span> allows one to rotate the
+object about a line passing through the rotate-about point (as
+described above) and parallel to a y-axis.  The coordinate system to
+which these transformations are constrained may be specified by the
+&#8220;Constraint Coords&#8221; item in the &#8220;Settings&#8221; menu, which allows the
+selection of any one of the model, view, and object coordinate
+systems.</p>
+</div>
+<div class="paragraph">
+<p>Besides the default mouse button bindings described above, the user
+can access the "Settings" menu with alt-Button1 and the "Modes" menu
+with alt-Button2.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_defaultkeybindings"><a class="anchor" href="#_defaultkeybindings"></a>Default Key Bindings</h3>
+<div class="paragraph">
+<p>MGED offers the user <em>short cuts</em> to much of the functionality
+available via the menus as well as the command line interface.  The
+table below lists the default key bindings:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Key Sequence</th>
+<th class="tableblock halign-left valign-top">Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><kbd>a</kbd></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">toggle angle distance cursor (ADC)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><kbd>e</kbd></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">toggle edit axes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><kbd>m</kbd></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">toggle model axes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><kbd>v</kbd></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">toggle view axes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><kbd>i</kbd></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">advance illumination pointer forward</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><kbd>I</kbd></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">advance illumination pointer backward</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><kbd>p</kbd></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">simulate mouse press (i.e. to pick a solid)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><kbd>3</kbd></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view - ae 35 25</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><kbd>4</kbd></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view - ae 45 45</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><kbd>f</kbd></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">front view</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><kbd>t</kbd></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">top view</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><kbd>b</kbd></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bottom view</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><kbd>l</kbd></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">left view</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><kbd>r</kbd></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">right view</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><kbd>R</kbd></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rear view</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><kbd>s</kbd></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enter solid illumination state</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><kbd>o</kbd></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enter object illumination state</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><kbd>q</kbd></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">reject edit</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><kbd>u</kbd></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zero knobs and sliders</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><kbd>N</kbd></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">shoot a ray with nirt</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><kbd>F1</kbd></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">toggle depthcue</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><kbd>F2</kbd></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">toggle <a href="#_zclipping">zclipping</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><kbd>F3</kbd></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">toggle perspective</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><kbd>F4</kbd></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">toggle zbuffer</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><kbd>F5</kbd></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">toggle lighting</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><kbd>F6</kbd></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">toggle perspective angle</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><kbd>F7</kbd></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">toggle <a href="#_faceplate">faceplate</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><kbd>F8</kbd></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">toggle <a href="#_faceplategui">Faceplate GUI</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><kbd>F9</kbd></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">toggle <a href="#_keystrokeforwarding">keystroke forwarding</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><kbd>F12</kbd></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zero knobs</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><kbd>Left</kbd></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rotate about y axis</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&lt; Right &gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rotate about y axis</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&lt; Down &gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rotate about x axis</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&lt; Up &gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rotate about x axis</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="keyseq"><kbd>Shift</kbd>+<kbd>Left</kbd></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">translate in X direction</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&lt; Shift-Right &gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">translate in X direction</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&lt; Shift-Down &gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">translate in Z direction</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&lt; Shift-Up &gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">translate in Z direction</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&lt; Control-Shift-Left &gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rotate about z axis</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&lt; Control-Shift-Right &gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rotate about z axis</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&lt; Control-Shift-Down &gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">translate in Y direction</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&lt; Control-Shift-Up &gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">translate in Y direction</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&lt; Control-n &gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">goto next view</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&lt; Control-p &gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">goto previous view</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&lt; Control-t &gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">toggle between the current view and the last view</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&lt; Escape &gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">stop interactive rotation, reject edits, reset mouse behavior</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Besides the default key bindings listed above, the user can access
+menu items with <kbd>Alt</kbd> key sequences.  For example, the <b class="menuref">File</b>
+menu can be popped up with <span class="keyseq"><kbd>Alt</kbd>+<kbd>f</kbd></span>. The raytrace control panel can
+then be popped up by typing <kbd>r</kbd> (i.e. <code>R</code> is underlined in the
+"Raytrace&#8230;&#8203;" menu item).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_controlpanels"><a class="anchor" href="#_controlpanels"></a>Control Panels</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">ADC Control Panel </dt>
+<dd>
+<p>Tool for setting ADC parameters.</p>
+</dd>
+<dt class="hdlist1">Grid Control Panel </dt>
+<dd>
+<p>Tool for setting grid parameters.</p>
+</dd>
+<dt class="hdlist1">Query Ray Control Panel </dt>
+<dd>
+<p>Tool for setting query ray parameters.</p>
+</dd>
+<dt class="hdlist1">Raytrace Control Panel </dt>
+<dd>
+<p>Tool for setting raytrace parameters.</p>
+</dd>
+<dt class="hdlist1">AnimMate Control Panel </dt>
+<dt class="hdlist1">Solid Editor </dt>
+<dd>
+<p>Tool for editing solids.</p>
+</dd>
+<dt class="hdlist1">Solid Editor (Internal) </dt>
+<dd>
+<p>Tool for editing MGED&#8217;s internal solid
+(i.e.  held in es_int while in solid edit state). The internal solid
+is the in-memory copy of a solid that is being edited.</p>
+</dd>
+<dt class="hdlist1">Combination Editor </dt>
+<dt class="hdlist1">Color Editor </dt>
+<dd>
+<p>Tool for specifying colors in either RGB or HSV.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_statusbar"><a class="anchor" href="#_statusbar"></a>Status Bar</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <em>status bar</em> contains two lines for displaying information about
+the state of the active pane.  The first line contains information
+about the view center, view size, local units, azimuth, elevation,
+twist, and rate of rotation about the x, y and z axes.  The second
+line can contain several different things depending on the state.  If
+the angle distance cursor is being drawn, information about its
+parameters are displayed.  Specifically, angle 1, angle 2, tick
+distance, center and delta are displayed.  Otherwise, if in the
+<em>VIEWING</em> state, the frames per second is displayed.  If in <em>SOL PICK</em>
+or <em>OBJ PICK</em> state, the full path of the illuminated solid is
+displayed.  If in <em>OBJ PATH</em> state, the full path of the previously
+selected solid is displayed along with an indication of which matrix
+along the path will be edited.  And finally, if in either <em>SOL EDIT</em>
+or <em>OBJ EDIT</em> state the keypoint is displayed.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_accessmenubar"><a class="anchor" href="#_accessmenubar"></a>Menu Bar</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>File</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>New</strong>&#8201;&#8212;&#8201;open a new database. Note: the database must not already
+exist.</p>
+</li>
+<li>
+<p><strong>Open</strong>&#8201;&#8212;&#8201;open an existing database.</p>
+</li>
+<li>
+<p><strong>Insert</strong>&#8201;&#8212;&#8201;insert another database into the current database.</p>
+</li>
+<li>
+<p><strong>Extract</strong>&#8201;&#8212;&#8201;a tool for extracting objects out of the current
+database. This tool consists of an entry for specifying the
+destination file and an entry for specifying the objects to be
+extracted.</p>
+</li>
+<li>
+<p><strong>g2asc</strong>&#8201;&#8212;&#8201;converts the current database into an ascii file.</p>
+</li>
+<li>
+<p><strong>Raytrace</strong>&#8201;&#8212;&#8201;pops up the raytrace control panel.</p>
+</li>
+<li>
+<p><strong>Save View As</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>RT script</strong>&#8201;&#8212;&#8201;saves the current view as an RT script file.</p>
+</li>
+<li>
+<p><strong>Plot</strong>&#8201;&#8212;&#8201;saves the current view as a plot file.</p>
+</li>
+<li>
+<p><strong>PostScript</strong>&#8201;&#8212;&#8201;saves the current view a postscript file.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Preferences</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Units</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>micrometers</strong>&#8201;&#8212;&#8201;set the unit of measure to micrometers. 1 micrometer = 1/1,000,000 meters</p>
+</li>
+<li>
+<p><strong>millimeters</strong>&#8201;&#8212;&#8201;set the unit of measure to millimeters. 1 millimeter = 1/1000 meters</p>
+</li>
+<li>
+<p><strong>centimeters</strong>&#8201;&#8212;&#8201;set the unit of measure to centimeters. 1 centimeter = 1/100 meters</p>
+</li>
+<li>
+<p><strong>meters</strong>&#8201;&#8212;&#8201;set the unit of measure to meters.</p>
+</li>
+<li>
+<p><strong>kilometers</strong>&#8201;&#8212;&#8201;set the unit of measure to kilometers. 1 kilometer = 1000 meters</p>
+</li>
+<li>
+<p><strong>inches</strong>&#8201;&#8212;&#8201;set the unit of measure to inches. 1 inch = 25.4 mm</p>
+</li>
+<li>
+<p><strong>feet</strong>&#8201;&#8212;&#8201;set the unit of measure to feet. 1 foot = 12 inches.</p>
+</li>
+<li>
+<p><strong>yards</strong>&#8201;&#8212;&#8201;set the unit of measure to yards. 1 yard = 36 inches.</p>
+</li>
+<li>
+<p><strong>miles</strong>&#8201;&#8212;&#8201;set the unit of measure to miles. 1 mile = 5280 feet.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><a href="command-line-editing.html" class="page">Command Line Edit</a></p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="command-line-editing.html#_emacs_bindings" class="page">emacs</a></p>
+</li>
+<li>
+<p><a href="command-line-editing.html#_vi_bindings" class="page">vi</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Special Characters</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Tcl Evaluation</strong>&#8201;&#8212;&#8201;set the command interpretation mode to Tcl
+mode. In this mode, globbing is <strong>not</strong> performed against MGED
+database objects. Rather, the command string is passed,
+unmodified, to the Tcl interpreter.</p>
+</li>
+<li>
+<p><strong>Object Name Matching</strong>&#8201;&#8212;&#8201;set the command interpretation mode to
+MGED object name matching. In this mode, globbing is performed
+against MGED database objects.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Color Schemes</strong>&#8201;&#8212;&#8201;pops up a tool for setting colors used by
+drawing panes (display managers).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Close</strong>&#8201;&#8212;&#8201;close this instance of the MGED GUI.</p>
+</li>
+<li>
+<p><strong>Exit</strong>&#8201;&#8212;&#8201;exits MGED.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Edit</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Solid Selection</strong>&#8201;&#8212;&#8201;pops up a tool for selecting a solid to edit.</p>
+</li>
+<li>
+<p><strong>Matrix Selection</strong>&#8201;&#8212;&#8201;pops up a tool for selecting a matrix to edit.</p>
+</li>
+<li>
+<p><strong>Solid Editor</strong>&#8201;&#8212;&#8201;pops up a tool for creating and editing solids.</p>
+</li>
+<li>
+<p><strong>Combination Editor</strong>&#8201;&#8212;&#8201;pops up a tool for creating and editing combinations.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Create</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Make Solid</strong>&#8201;&#8212;&#8201;gives the user a pulldown menu from which to select
+a solid to create. The following is a list of the available solid
+types that the <code>make</code> command can create: arb8, arb7, arb6, arb5,
+arb4, sph, grip, ell, ellg, tor, tgc, tec, rec, trc, rcc, half,
+rpc, rhc, epa, ehy, eto, part, nmg, pipe.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>View</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Top</strong>&#8201;&#8212;&#8201;view of the top (i.e. azimuth = 270, elevation = 90)</p>
+</li>
+<li>
+<p><strong>Bottom</strong>&#8201;&#8212;&#8201;view of the bottom (i.e. azimuth = 270, elevation = -90)</p>
+</li>
+<li>
+<p><strong>Right</strong>&#8201;&#8212;&#8201;view of the right (i.e. azimuth = 270, elevation = 0)</p>
+</li>
+<li>
+<p><strong>Left</strong>&#8201;&#8212;&#8201;view of the left (i.e. azimuth = 90, elevation = 0)</p>
+</li>
+<li>
+<p><strong>Front</strong>&#8201;&#8212;&#8201;view of the front (i.e. azimuth = 0, elevation = 0)</p>
+</li>
+<li>
+<p><strong>Rear</strong>&#8201;&#8212;&#8201;view of the rear (i.e. azimuth = 180, elevation = 0)</p>
+</li>
+<li>
+<p><strong>az35,el25</strong>&#8201;&#8212;&#8201;an oblique view (i.e. azimuth = 35, elevation = 25)</p>
+</li>
+<li>
+<p><strong>az45,el45</strong>&#8201;&#8212;&#8201;an oblique view (i.e. azimuth = 45, elevation = 45)</p>
+</li>
+<li>
+<p><strong>Zoom In</strong>&#8201;&#8212;&#8201;zoom in by a factor of 2.</p>
+</li>
+<li>
+<p><strong>Zoom Out</strong>&#8201;&#8212;&#8201;zoom out by a factor of 2.</p>
+</li>
+<li>
+<p><strong>Default</strong>&#8201;&#8212;&#8201;same view as top (i.e. azimuth = 270, elevation = 90)</p>
+</li>
+<li>
+<p><strong>Multipane Defaults</strong>&#8201;&#8212;&#8201;sets the view of all four panes to their defaults.</p>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Pane</th>
+<th class="tableblock halign-center valign-top">Azimuth</th>
+<th class="tableblock halign-center valign-top">Elevation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">upper left</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">90</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">upper right</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">35</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">25</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">lower left</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">lower right</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">90</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>Zero</strong>&#8201;&#8212;&#8201;stops all rate transformations.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>ViewRing</strong> A view ring is simply a dynamic list of views owned by a
+pane (display manager). This mechanism supports multiple views
+within a single pane. A view consists of a position in model space,
+a view size and an orientation.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Add View</strong>&#8201;&#8212;&#8201;Adds a view to the view ring.</p>
+</li>
+<li>
+<p><strong>Select View</strong>&#8201;&#8212;&#8201;a pulldown menu that lists the views in the view ring that can be selected.</p>
+</li>
+<li>
+<p><strong>Delete View</strong>&#8201;&#8212;&#8201;a pulldown menu that lists the views in the view ring that can be deleted.</p>
+</li>
+<li>
+<p><strong>Next View</strong>&#8201;&#8212;&#8201;go to the next view on the view ring.</p>
+</li>
+<li>
+<p><strong>Prev View</strong>&#8201;&#8212;&#8201;go to the previous view on the view ring.</p>
+</li>
+<li>
+<p><strong>Last View</strong>&#8201;&#8212;&#8201;go to the last view. This can be used to toggle between two arbitrary views.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Settings</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Mouse Behavior</strong>&#8201;&#8212;&#8201;a menu for selecting among the available mouse behaviors.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Default</strong>&#8201;&#8212;&#8201;enter the default MGED mouse behavior mode. In this
+mode, the user gets mouse behavior that is the same as MGED 4.5
+and earlier.</p>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Mouse Button</th>
+<th class="tableblock halign-left valign-top">Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zoom out by a factor of 2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">center view, or some edit action if in an edit state</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zoom in by a factor of 2</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>Pick edit-solid</strong>&#8201;&#8212;&#8201;enter pick edit-solid mode. In this mode, the
+mouse is used to fire rays for selecting a solid to edit. If more
+than one solid is hit, a listbox of the hit solids is
+presented. The user then selects a solid to edit from this
+listbox. If a single solid is hit, it is selected for editing. If
+no solids were hit, a dialog is popped up saying that nothing
+was hit. The user must then fire another ray to continue
+selecting a solid. When a solid is finally selected, solid edit
+mode is entered. When this happens, the mouse behavior mode is
+set to default mode. Note - When selecting items from a listbox,
+a left buttonpress highlights the solid in question until the
+button is released. To select a solid, double click with the left
+mouse button.</p>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Mouse Button</th>
+<th class="tableblock halign-left valign-top">Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Zoom out by a factor of 2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fire edit-solid ray</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Zoom in by a factor of 2</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>Pick edit-matrix</strong>&#8201;&#8212;&#8201;enter pick edit-matrix mode. In this mode,
+the mouse is used to fire rays for selecting a matrix to edit. If
+more than one solid is hit, a listbox of the hit solids is
+presented. The user then selects a solid from this listbox. If a
+single solid is hit, that solid is selected. If no solids were
+hit, a dialog is popped up saying that nothing was hit. The user
+must then fire another ray to continue selecting a matrix to
+edit. When a solid is finally selected, the user is presented
+with a listbox consisting of the path components of the selected
+solid. From this listbox, the user selects a path component. This
+component determines which matrix will be edited. After selecting
+the path component, object/matrix edit mode is entered. When this
+happens, the mouse behavior mode is set to default mode. Note -
+When selecting items from a listbox, a left buttonpress
+highlights the solid/matrix in question until the button is
+released. To select a solid/matrix, double click with the left
+mouse button.</p>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Mouse Button</th>
+<th class="tableblock halign-left valign-top">Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Zoom out by a factor of 2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fire edit-matrix ray</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Zoom in by a factor of 2</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>Pick edit-combination</strong>&#8201;&#8212;&#8201;enter pick edit-combination mode. In
+this mode, the mouse is used to fire rays for selecting a
+combination to edit. If more than one combination is hit, a
+listbox of the hit combinations is presented. The user then
+selects a combination from this menu. If a single combination is
+hit, that combination is selected. If no combinations were hit, a
+dialog is popped up saying that nothing was hit. The user must
+then fire another ray to continue selecting a combination to
+edit. When a combination is finally selected, the combination
+edit tool is presented and initialized with the values of the
+selected combination. When this happens, the mouse behavior mode
+is set to default mode. Note - When selecting items from a menu,
+a left buttonpress highlights the combination in question until
+the button is released. To select a combination, double click
+with the left mouse button.</p>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Mouse Button</th>
+<th class="tableblock halign-left valign-top">Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Zoom out by a factor of 2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fire edit-combination ray</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Zoom in by a factor of 2</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>Sweep raytrace-rectangle</strong>&#8201;&#8212;&#8201;enter sweep raytrace-rectangle
+mode. If the framebuffer is active, the rectangular area as
+specified by the user is raytraced. The rectangular area is also
+painted with the current contents of the framebuffer. Otherwise,
+only the rectangle is drawn.</p>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Mouse Button</th>
+<th class="tableblock halign-left valign-top">Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Zoom out by a factor of 2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Draw raytrace-rectangle</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Zoom in by a factor of 2</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>Pick raytrace-object(s)</strong>&#8201;&#8212;&#8201;enter pick raytrace-object mode. In
+this mode, the user can pick an object for raytracing or for
+adding to the list of objects to be raytraced.</p>
+</li>
+<li>
+<p><strong>Query ray</strong>&#8201;&#8212;&#8201;enter query ray mode. In this mode, the mouse is
+used to fire rays. The data from the fired rays can be viewed
+textually, graphically or both.</p>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Mouse Button</th>
+<th class="tableblock halign-left valign-top">Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Zoom out by a factor of 2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fire query ray</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Zoom in by a factor of 2</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>Sweep paint-rectangle</strong>&#8201;&#8212;&#8201;enter sweep paint-rectangle mode. If
+the framebuffer is active, the rectangular area as specified by
+the user is painted with the current contents of the
+framebuffer. Otherwise, only the rectangle is drawn.</p>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Mouse Button</th>
+<th class="tableblock halign-left valign-top">Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Zoom out by a factor of 2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Draw paint rectangle</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Zoom in by a factor of 2</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>Sweep zoom-rectangle</strong>&#8201;&#8212;&#8201;enter sweep zoom-rectangle mode. The
+rectangular area as specified by the user is used to zoom the
+view. Note - as the user stretches out the zoom rectangle, the
+rectangle is constrained to be the same shape as the window. This
+insures that the user gets what he or she sees.</p>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Mouse Button</th>
+<th class="tableblock halign-left valign-top">Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Zoom out by a factor of 2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Draw zoom-rectangle</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Zoom in by a factor of 2</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Transform</strong>&#8201;&#8212;&#8201;a menu for selecting a transform mode. The transform
+mode determines what will be transformed when using the mouse.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>View</strong>&#8201;&#8212;&#8201;set the transform mode to VIEW. When in VIEW mode, the
+mouse can be used to transform the view. This is the default.</p>
+</li>
+<li>
+<p><strong>ADC</strong>&#8201;&#8212;&#8201;set the transform mode to ADC. When in ADC mode, the
+mouse can be used to transform the angle distance cursor while
+the angle distance cursor is being displayed. If the angle
+distance cursor is not being displayed, the behavior is the same
+as VIEW mode.</p>
+</li>
+<li>
+<p><strong>Model Params</strong>&#8201;&#8212;&#8201;set the transform mode to Model Params. When in
+Model Params mode, the mouse can be used to transform the model
+parameters.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Constraint Coords</strong>&#8201;&#8212;&#8201;a menu for selecting a coordinate system to
+use while performing constrained transformations with the mouse.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Model</strong>&#8201;&#8212;&#8201;constrained transformations will use model coordinates.</p>
+</li>
+<li>
+<p><strong>View</strong>&#8201;&#8212;&#8201;constrained transformations will use view coordinates.</p>
+</li>
+<li>
+<p><strong>Object</strong>&#8201;&#8212;&#8201;constrained transformations will use object coordinates.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Rotate About</strong>&#8201;&#8212;&#8201;a menu for selecting the point about which to rotate.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>View Center</strong>&#8201;&#8212;&#8201;set the center of rotation to be about the view center.</p>
+</li>
+<li>
+<p><strong>Eye</strong>&#8201;&#8212;&#8201;set the center of rotation to be about the eye.</p>
+</li>
+<li>
+<p><strong>Model Origin</strong>&#8201;&#8212;&#8201;set the center of rotation to be about the model origin.</p>
+</li>
+<li>
+<p><strong>Key Point</strong>&#8201;&#8212;&#8201;set the center of rotation to be about the key point.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Active Pane</strong>&#8201;&#8212;&#8201;a menu for selecting the active pane. The active
+pane is the pane (display manager) that is tied to the GUI,
+effectively becoming the target of GUI interactions that affect
+panes. In other words, if the user types the command, <code>ae 35 25</code>
+in the command window, and the active pane is the upper left pane,
+then its`" view orientation will become azimuth=35 and
+elevation=25. Similarly, if the user selects
+Settings/Grid/Draw_Grid from the pulldown menus the drawing of the
+grid will be toggled in the active pane.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Upper Left</strong>&#8201;&#8212;&#8201;set the active pane to be the upper left pane. Any
+interaction with the GUI that affects a pane will be directed at
+the upper left pane.</p>
+</li>
+<li>
+<p><strong>Upper Right</strong>&#8201;&#8212;&#8201;set the active pane to be the upper right
+pane. Any interaction with the GUI that affects a pane will be
+directed at the upper right pane.</p>
+</li>
+<li>
+<p><strong>Lower Left</strong>&#8201;&#8212;&#8201;set the active pane to be the lower left pane. Any
+interaction with the GUI that affects a pane will be directed at
+the lower left pane.</p>
+</li>
+<li>
+<p><strong>Lower Right</strong>&#8201;&#8212;&#8201;set the active pane to be the lower right
+pane. Any interaction with the GUI that affects a pane will be
+directed at the lower right pane.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Apply To</strong>&#8201;&#8212;&#8201;a menu for selecting the "Apply To" mode. This
+further specifies what pane(s) will be affected by actions that
+affect panes.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Active Pane</strong>&#8201;&#8212;&#8201;set the "Apply To" mode such that the user&#8217;s
+interaction with the GUI is applied to the active pane.</p>
+</li>
+<li>
+<p><strong>Local Panes</strong>&#8201;&#8212;&#8201;set the "Apply To" mode such that the user&#8217;s
+interaction with the GUI is applied to all panes local to this
+instance of the GUI.</p>
+</li>
+<li>
+<p><strong>Listed Panes</strong>&#8201;&#8212;&#8201;set the "Apply To" mode such that the user&#8217;s
+interaction with the GUI is applied to all panes listed in the
+Tcl variable mged_gui(id,apply_list) (Note - id refers to the
+GUI&#8217;s id).</p>
+</li>
+<li>
+<p><strong>All Panes</strong>&#8201;&#8212;&#8201;set the "Apply To" mode such that the user&#8217;s
+interaction with the GUI is applied to all panes.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Query Ray Effects</strong>&#8201;&#8212;&#8201;a menu for selecting the effects the user
+will see as a result of firing a query ray.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Text</strong>&#8201;&#8212;&#8201;set qray effects mode to "text". In this mode, only
+textual output is used to represent the results of firing a
+query ray.</p>
+</li>
+<li>
+<p><strong>Graphics</strong>&#8201;&#8212;&#8201;set qray effects mode to "graphics". In this mode,
+only graphical output is used to represent the results of firing
+a query ray.</p>
+</li>
+<li>
+<p><strong>both</strong>&#8201;&#8212;&#8201;set qray effects mode to "both". In this mode, both
+textual and graphical output is used to represent the results of
+firing a query ray.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Grid</strong>&#8201;&#8212;&#8201;a menu of grid related settings. A grid is a lattice of
+points over the pane. The regular spacing between the points gives
+the user accurate visual cues regarding dimension. After setting
+the anchor point and grid spacing, the user can use snapping to
+gain a high degree of accuracy while using the mouse.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Anchor</strong>&#8201;&#8212;&#8201;this pops up an entry dialog for specifying the grid
+anchor point. The grid anchor point is a point such that when the
+grid is drawn one of its points must be located exactly at the
+anchor point. The anchor point is specified using model
+coordinates and local units.</p>
+</li>
+<li>
+<p><strong>Spacing</strong></p>
+</li>
+<li>
+<p><strong>Draw Grid</strong>&#8201;&#8212;&#8201;toggles drawing the grid.</p>
+</li>
+<li>
+<p><strong>Snap To Grid</strong>&#8201;&#8212;&#8201;toggles snapping to grid points. When snapping
+to grid points is active, the user&#8217;s mouse actions are "snapped"
+to the nearest grid point before being further processed. This
+gives the user a high degree of accuracy while using the mouse.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Grid Spacing</strong>&#8201;&#8212;&#8201;a menu for selecting "canned" grid
+spacings. Note - all of these selections will result in a square
+grid.</p>
+</li>
+<li>
+<p><strong>Autosize</strong>&#8201;&#8212;&#8201;set the grid spacing according to the current view
+size. The number of ticks will be between 20 and 200 in user
+units. The major spacing will be set to 10 ticks per
+major. ole="par</p>
+</li>
+<li>
+<p><strong>Arbitrary</strong>&#8201;&#8212;&#8201;pops up the grid spacing entry dialog. The user can
+use this to set both the horizontal and vertical tick spacing.</p>
+</li>
+<li>
+<p><strong>micrometer</strong>&#8201;&#8212;&#8201;set the horizontal and vertical tick spacing to 1 micrometer.</p>
+</li>
+<li>
+<p><strong>millimeter</strong>&#8201;&#8212;&#8201;set the horizontal and vertical tick spacing</p>
+</li>
+<li>
+<p><strong>centimeter</strong>&#8201;&#8212;&#8201;set the horizontal and vertical tick spacing to 1 millimeter.</p>
+</li>
+<li>
+<p><strong>decimeter</strong>&#8201;&#8212;&#8201;set the horizontal and vertical tick spacing to 1 decimeter.</p>
+</li>
+<li>
+<p>12 <strong>meter</strong>&#8201;&#8212;&#8201;set the horizontal and vertical tick spacing to 1 meter.</p>
+</li>
+<li>
+<p><strong>kilometer</strong>&#8201;&#8212;&#8201;set the horizontal and vertical tick spacing to 1 kilometer.</p>
+</li>
+<li>
+<p><strong>1/10 inch</strong>&#8201;&#8212;&#8201;set the horizontal and vertical tick spacing to 1/10 inches.</p>
+</li>
+<li>
+<p><strong>1/4 inch</strong>&#8201;&#8212;&#8201;set the horizontal and vertical tick spacing to 1/4 inches.</p>
+</li>
+<li>
+<p><strong>1/2 inch</strong>&#8201;&#8212;&#8201;set the horizontal and vertical tick spacing to 1/2 inches.</p>
+</li>
+<li>
+<p><strong>inch</strong>&#8201;&#8212;&#8201;set the horizontal and vertical tick spacing to 1 inch.</p>
+</li>
+<li>
+<p><strong>foot</strong>&#8201;&#8212;&#8201;set the horizontal and vertical tick spacing to 1 foot.</p>
+</li>
+<li>
+<p><strong>yard</strong>&#8201;&#8212;&#8201;set the horizontal and vertical tick spacing to 1 yard.</p>
+</li>
+<li>
+<p><strong>mile</strong>&#8201;&#8212;&#8201;set the horizontal and vertical tick spacing to 1 mile.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Framebuffer</strong>&#8201;&#8212;&#8201;a menu of framebuffer related settings.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>All</strong>&#8201;&#8212;&#8201;use the entire pane for the framebuffer.</p>
+</li>
+<li>
+<p><strong>Rectangle Area</strong>&#8201;&#8212;&#8201;use only the specified rectangular area of the framebuffer.</p>
+</li>
+<li>
+<p><strong>Overlay</strong>&#8201;&#8212;&#8201;put the framebuffer in overlay mode. In this mode, the
+framebuffer data is placed in the pane after the geometry is drawn
+(i.e. the framebuffer data is is drawn on top of the geometry).</p>
+</li>
+<li>
+<p><strong>Underlay</strong>&#8201;&#8212;&#8201;put the framebuffer in underlay mode. In this mode,
+the framebuffer data is placed in the pane before the geometry is
+drawn (i.e. the geometry is drawn on top of the framebuffer data).</p>
+</li>
+<li>
+<p><strong>Framebuffer Active</strong>&#8201;&#8212;&#8201;this toggles the framebuffer.</p>
+</li>
+<li>
+<p><strong>Listen For Clients</strong>&#8201;&#8212;&#8201;this toggles listening for clients. If the
+framebuffer is listening for clients, new data can be passed into
+the framebuffer. Otherwise, the framebuffer is write
+protected. Actually, it is also read protected. In other words, in
+order for programs outside of MGED to communicate with any of
+MGED&#8217;s framebuffers, the intended framebuffers must be listening.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>View Axes Position</strong>&#8201;&#8212;&#8201;a menu of "canned" view axes positions.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Center</strong>&#8201;&#8212;&#8201;locate the view axes in the center of the active pane.</p>
+</li>
+<li>
+<p><strong>Lower Left</strong>&#8201;&#8212;&#8201;locate the view axes in the lower left corner of the active pane.</p>
+</li>
+<li>
+<p><strong>Upper Left</strong>&#8201;&#8212;&#8201;locate the view axes in the upper left corner of the active pane.</p>
+</li>
+<li>
+<p><strong>Upper Right</strong>&#8201;&#8212;&#8201;locate the view axes in the upper right corner of the active pane.</p>
+</li>
+<li>
+<p><strong>Lower Right</strong>&#8201;&#8212;&#8201;locate the view axes in the lower right corner of the active pane.</p>
+</li>
+<li>
+<p><strong>Modes</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Draw Grid</strong>&#8201;&#8212;&#8201;toggle drawing the grid. The grid is a lattice of
+points over the pane (display manager). The regular spacing
+between the points gives the user accurate visual cues regarding
+dimension. This spacing can be set by the user.</p>
+</li>
+<li>
+<p><strong>Snap To Grid</strong>&#8201;&#8212;&#8201;toggles snapping to grid points. When snapping
+to grid points is active, the user&#8217;s mouse actions are "snapped"
+to the nearest grid point before being further processed. This
+gives the user a high degree of accuracy while using the mouse.</p>
+</li>
+<li>
+<p><strong>Framebuffer Active</strong>&#8201;&#8212;&#8201;this toggles the framebuffer.</p>
+</li>
+<li>
+<p><strong>Listen For Clients</strong> this toggles listening for clients. If the
+framebuffer is listening for clients, new data can be passed into
+the framebuffer. Otherwise, the framebuffer is write
+protected. Actually, it is also read protected. In other words,
+in order for programs outside of MGED to communicate with any of
+MGED&#8217;s framebuffers, the intended framebuffers must be
+listening.</p>
+</li>
+<li>
+<p><strong>Persistent sweep rectangle</strong>&#8201;&#8212;&#8201;this toggles drawing the rectangle
+while idle. For example, if the sweep rectangle is not
+persistent, the rectangle will not be drawn unless the user is
+actively sweeping out a rectangle (i.e. for raytracing, zoom
+etc.). And if the sweep rectangle is persistent, the rectangle
+will always be drawn.</p>
+</li>
+<li>
+<p><strong>Angle/Dist Cursor</strong>&#8201;&#8212;&#8201;toggles drawing the angle distance cursor.</p>
+</li>
+<li>
+<p><strong>Faceplate</strong>&#8201;&#8212;&#8201;toggles drawing the "Classic MGED" faceplate.</p>
+</li>
+<li>
+<p><strong>Axes</strong>&#8201;&#8212;&#8201;a menu of axes</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>View</strong>&#8201;&#8212;&#8201;toggle display of the view axes. The view axes are used
+to give the user visual cues indicating the current view of
+model space. These axes are drawn the same as the model axes,
+except that the view axes&#8217; position is fixed in view
+space. This position as well as other characteristics can be set
+by the user using <code>rset</code>.</p>
+</li>
+<li>
+<p><strong>Model</strong>&#8201;&#8212;&#8201;toggle display of the model axes. The model axes are
+used to give the user visual cues indicating the current view of
+model space. The model axes are by default located at the model
+origin and are fixed in model space. So, if the user transforms
+the view, the model axes will move with respect to the view. The
+model axes position as well as other characteristics can be set
+by the user using <code>rset</code>.</p>
+</li>
+<li>
+<p><strong>Edit</strong>&#8201;&#8212;&#8201;toggle display of the edit axes. The edit axes are used
+to give the user visual cues indicating how the edit is
+progressing. They consist of a pair of axes. One remains
+unmoved, while the other moves to indicate how things have
+changed. Characteristics of the edit axes can be changed using
+<code>rset</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Multipane</strong>&#8201;&#8212;&#8201;toggle between multipane and single pane mode. In
+multipane mode there are four panes, each with its own state.</p>
+</li>
+<li>
+<p><strong>Edit Info</strong>&#8201;&#8212;&#8201;Toggle display of edit information. If in solid
+edit state, the edit information is displayed in the internal
+solid editor. This editor, as its name implies, can be used to
+edit the solid as well as to view its contents. If in object edit
+state, the object information is displayed in a dialog box.</p>
+</li>
+<li>
+<p><strong>Status Bar</strong>&#8201;&#8212;&#8201;toggle display of the command window&#8217;s status bar.</p>
+</li>
+<li>
+<p><strong>Collaborate</strong>&#8201;&#8212;&#8201;toggle collaborate mode. When in collaborate
+mode, the upper right pane&#8217;s view can be shared with other
+instances of MGED&#8217;s new GUI that are also collaborating.</p>
+</li>
+<li>
+<p><strong>Rateknobs</strong>&#8201;&#8212;&#8201;toggle rate knob mode. When in rate knob mode,
+transformation with the mouse becomes rate based. For example, if
+the user rotates the view about the X axis, the view continues to
+rotate about the X axis until the rate rotation is stopped.</p>
+</li>
+<li>
+<p><strong>Display Lists</strong>&#8201;&#8212;&#8201;toggle the use of display lists. This currently
+affects only Ogl display managers. When using display lists the
+screen update time is significantly faster. This is especially
+noticeable when running MGED remotely. Use of display lists is
+encouraged unless the geometry being viewed is bigger than the
+Ogl server can handle (i.e. the server runs out of available
+memory for storing display lists). When this happens the machine
+will begin to swap (and little else). If huge pieces of geometry
+need to be viewed, consider toggling off display lists. Note that
+using display lists while viewing geometry of any significant
+size will incur noticeable compute time up front to create the
+display lists.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Misc</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Z Clipping</strong>&#8201;&#8212;&#8201;toggles zclipping. When zclipping is active, the Z
+value of each point is checked against the min and max Z values
+of the viewing cube. If the Z value of the point is found to be
+outside this range, it is clipped (i.e. not drawn). Zclipping can
+be used to remove geometric detail that may be occluding geometry
+of greater interest.</p>
+</li>
+<li>
+<p><strong>Perspective</strong>&#8201;&#8212;&#8201;toggles perspective_mode.</p>
+</li>
+<li>
+<p><strong>Faceplate</strong>&#8201;&#8212;&#8201;toggles drawing the "Classic MGED" faceplate.</p>
+</li>
+<li>
+<p><strong>Faceplate GUI</strong>&#8201;&#8212;&#8201;toggles drawing the "Classic MGED" user
+interface (i.e. faceplate menu and scrollbars)</p>
+</li>
+<li>
+<p><strong>Keystroke Forwarding</strong>&#8201;&#8212;&#8201;toggles keystroke forwarding. When
+keystroke forwarding is active, any key events get forwarded to
+the command window for processing as if the user was typing
+directly into the command window. This behavior can often save
+the user time by not having to move the mouse out of the geometry
+window in order to type commands. The effects of any commands
+apply to the pane wherein the command was entered, regardless of
+whether or not this pane is the active pane.</p>
+</li>
+<li>
+<p><strong>Depth Cueing</strong>&#8201;&#8212;&#8201;toggles depth cueing. When depth cueing is
+active, lines that are farther away appear more faint.</p>
+</li>
+<li>
+<p><strong>Z Buffer</strong>&#8201;&#8212;&#8201;toggles Z buffer.</p>
+</li>
+<li>
+<p><strong>Lighting</strong>&#8201;&#8212;&#8201;toggles lighting.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Tools</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>ADC Control Panel</strong>&#8201;&#8212;&#8201;pops up a tool for controlling the angle distance cursor.</p>
+</li>
+<li>
+<p><strong>Grid Control Panel</strong>&#8201;&#8212;&#8201;pops up a tool for setting grid parameters.</p>
+</li>
+<li>
+<p><strong>Query Ray Control Panel</strong>&#8201;&#8212;&#8201;pops up a tool for setting query ray parameters.</p>
+</li>
+<li>
+<p><strong>Raytrace Control Panel</strong>&#8201;&#8212;&#8201;pops up a tool for raytracing.</p>
+</li>
+<li>
+<p><strong>Solid Editor</strong>&#8201;&#8212;&#8201;pops up a tool for creating and editing solids.</p>
+</li>
+<li>
+<p><strong>Combination Editor</strong>&#8201;&#8212;&#8201;pops up a tool for creating and editing combinations.</p>
+</li>
+<li>
+<p><strong>Color Editor</strong>&#8201;&#8212;&#8201;pops up a tool for defining a color</p>
+</li>
+<li>
+<p><strong>Command Window</strong>&#8201;&#8212;&#8201;this is a convenience button that raises the command window.</p>
+</li>
+<li>
+<p><strong>Geometry Window</strong>&#8201;&#8212;&#8201;this is a convenience button that raises the geometry window.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Help</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>About MGED</strong></p>
+</li>
+<li>
+<p><strong>Help on context</strong>&#8201;&#8212;&#8201;The new GUI provides "Help on Context". This
+is always available via the right mouse button (i.e. button
+3). The user can right mouse click on some feature of the GUI and
+a message window pops up with information about the feature. This
+behavior works everywhere except in the drawing panes
+(i.e. display manager windows) where a right mouse button is
+bound to "zoom 2.0".</p>
+</li>
+<li>
+<p><a href="#_gettingstarted">Getting Started</a></p>
+</li>
+<li>
+<p><a href="#_shiftgrips">Shift Grips</a></p>
+</li>
+<li>
+<p><strong>Commands</strong>&#8201;&#8212;&#8201;pops up a tool for getting information on MGED&#8217;s commands.</p>
+</li>
+<li>
+<p><strong>Apropos</strong>&#8201;&#8212;&#8201;pops up a tool for searching for information about MGED&#8217;s commands.</p>
+</li>
+<li>
+<p><strong>Manual</strong>&#8201;&#8212;&#8201;start a tool for browsing the online MGED manual. The
+web browser that gets started is dependent, first, on the
+WEB_BROWSER environment variable. If this variable exists and the
+browser identified by this variable exists, then that browser is
+used. Failing that the browser specified by the
+mged_default(web_browser) Tcl variable is tried. As a last
+resort, the existence of /usr/bin/netscape,
+/usr/local/bin/netscape and /usr/X11/bin/netscape is checked. If
+a browser has still not been located, the built-in Tcl browser is
+used.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="tutorial.html">Tutorial</a></span>
+  <span class="next"><a href="command-line-editing.html">Command Line Editing</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../ui/js/site.js"></script>
+<script src="../../../ui/js/vendor/lunr.js"></script>
+<script src="../../../ui/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/docs/articles/mged/gui.html"></script>
+<script async src="../../../ui/../search-index.js"></script>
+<script async src="../../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

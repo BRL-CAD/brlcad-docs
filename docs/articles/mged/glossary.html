@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Glossary :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/docs/articles/mged/glossary.html">
+    <link rel="prev" href="callback.html">
+    <link rel="next" href="brlcad-solid.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../ui/css/site.css">
+    <link rel="stylesheet" href="../../../ui/css/search.css">
+    <link rel="stylesheet" href="../../../ui/css/custom.css">
+    <script>var uiRootPath = '../../../ui'</script>
+    <link rel="icon" href="../../../ui/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../../ui/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lessons</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../lessons/mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/01_creating_primitive_shapes.html">1. Creating Primitive Shapes in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/02_learning_viewing_options.html">2. Learning Viewing Options in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/03_using_insert_command.html">3. Using the Insert Command in MGED to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/04_assign_mat_prop_rt.html">4. Assigning Material Properties and Raytracing in MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/05_learning_boolean_expressions.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/06_creating_a_goblet.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/07_goblet_material_properties.html">7. Assigning Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/08_goblet_material_properties2.html">8. Assigning More Material Properties to a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/09_globe_in_display_box.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/10_creating_mug.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/11_refining_mug.html">11. Refining a Mug Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/12_mug_through_gui.html">12. Creating a Mug Model using the MGED Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/13_placing_shapes_in_3d.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/14_placing_shapes_in_3d_2.html">14. Additional Exercises Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/15_creating_a_toy_truck.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../lessons/mged/16_mod_tech_struct.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Books</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../hacking/index.html">Hacking BRL-CAD</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting Started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter1.html">A Call to Arms (and Contributors)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part1/chapter2.html">Feature Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developers</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter3.html">Working with Our Code</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter4.html">What Code to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part2/chapter5.html">Contributing Code</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Documenters</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter6.html">Working with Our Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter7.html">Types of Documentation We Maintain</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter8.html">What Documentation to Work On</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part3/chapter9.html">Contributing Documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Other Contributors</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part4/chapter10.html">You Can Help Too</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendix: Resources and Examples</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix1.html">Further References and Resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix2.html">Doc Template: New MGED Command</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix3.html">Code Example: Shooting Rays</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix4.html">Code Example: Walking Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix5.html">Code Example: Command Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../hacking/part5/appendix6.html">Example Code: Root Solving</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/index.html">Tutorials</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../tutorials/overview.html">I. An Overview of BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/mged-intro.html">II. Introduction to MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/preface1.html">Preface</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/preface2.html">Acknowledgments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter1.html">1. Creating Primitive Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter2.html">2. Learning the Viewing Options</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter3.html">3. Using the Insert Command to Size and Place Shapes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter4.html">4. Assigning Material Properties and Raytracing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter5.html">5. Learning About Boolean Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter6.html">6. Creating a Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter7.html">7. Assigning Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter8.html">8. Assigning More Material Properties to Your Goblet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter9.html">9. Creating a Globe in a Display Box</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter10.html">10. Creating a Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter11.html">11. Refining the Mug</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter12.html">12. Creating the Mug Through the GUI</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter13.html">13. Placing Shapes in 3-D Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter14.html">14. Gaining More Practice Placing Shapes in Space</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter15.html">15. Creating a Toy Truck</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/chapter16.html">16. Learning Modeling Techniques and Structures</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/mged-intro/appendix1.html"><code class="app">MGED</code> Commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/modeling.html">III. Modeling</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter2.html">2. The Model Process</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter3.html">3. Measuring data</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter4.html">4. Organizing the Structure</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter5.html">5. Developing Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter6.html">5. Evaluating Geometry</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/modeling/chapter7.html">7. Logging Documentation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendices</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix1.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix2.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix3.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix4.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix5.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tutorials/modeling/appendix6.html">Using the build_region Command</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../tutorials/converting.html">IV. Converting</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter1.html">1. Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter2.html">2. Pertinent Characteristics of the BRL-CAD Format</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter3.html">3. Converting From/to ASCII</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter4.html">4. Converting to BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter5.html">5. Converting From BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter6.html">6. Building a New Converter</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tutorials/converting/chapter7.html">7. Postconversion Issues</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../index.html">Articles</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../build_pattern.html">Using the Build Pattern Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../build_region.html">Using the build_region Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../camo_shader.html">Camouflage shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../ebm_primitive.html">Using the Extruded Bitmap Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../gcv.html">The Geometry Conversion Library</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../ged.html">GED: An Interactive Solid Modeling System</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial.html">Tutorial</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gui.html">Graphical User Interface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="command-line-editing.html">Command Line Editing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="user-commands.html">User Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="developer-commands.html">Developer Commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tcl-variables.html">Tcl Variables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="env.html">Environment Variable</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="callback.html">Callback</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="brlcad-solid.html">BRL-CAD Solid</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../mgedrc.html">Setting Up a .mgedrc File</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../nirt.html">Interactive Raytracing: The nirt Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../overlap_tool.html">The Overlap Tool</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../oed.html">Object Editing - the oed Command</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../pipes.html">Using the Pipe Primitive</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../projection_shader.html">Using the Projection Shader</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tire.html">Vehicle Tire and Wheel Creation in BRL-CAD</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../TEMPLATE.html">TEMPLATE</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Misc</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Dev Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../devguides/bool_eval_development.html">NURBS Boolean Evaluation Development Guide</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Presentations</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/brlcad-app-devel.html">Application Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="presentations:_attachments/brlcad-app-devel.html">brlcad-app-devel</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../presentations/intro-to-tcltk.html">Introduction to Tcl/Tk</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Specifications</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../specifications/BRL_CAD_g_format_V5.html">BRL-CAD Database Format</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Manual Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/1.html">man1</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/3.html">man3</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/5.html">man5</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../man/n.html">mann</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Wiki Pages</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">page-1</span>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">BRL-CAD</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../../docs-hy/index.html">Armenian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-hy/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../../index.html">BRL-CAD</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-it/index.html">Italian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-it/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../docs-ru/index.html">Russian</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../docs-ru/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../es/index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../es/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">BRL-CAD</a></li>
+    <li><a href="../index.html">Articles</a></li>
+    <li><a href="index.html">MGED</a></li>
+    <li><a href="glossary.html">Glossary</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/docs/modules/articles/pages/mged/glossary.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Glossary</h1>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">acyclic directed graph </dt>
+<dd>
+<p>In an <em>acyclic directed graph</em>, usually
+called a <em>DAG</em>, each node may have arcs pointing to multiple objects,
+and each object may be pointed to by multiple objects.  However, no
+node is permitted to refer to any of its ancestors.</p>
+</dd>
+<dt class="hdlist1">air code </dt>
+<dd>
+<p>See <em>space code</em>.</p>
+</dd>
+<dt class="hdlist1">azimuth </dt>
+<dd>
+<p>Viewing aspects in <em>mged</em> may be specified in terms of
+<em>azimuth</em>, elevation, and twist.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/az_el_sm.gif" alt="az el sm">
+</div>
+</div>
+<div class="paragraph">
+<p><em>Azimuth</em> is the angle (in degrees) around the <em>z</em>-axis through
+which the viewing direction is rotated from the positive
+<em>xz</em>-quarterplane towards the positive <em>y</em>-axis.  When <em>azimuth =
+elevation</em> = 0, for instance, viewing is parallel to the <em>x</em>-axis in
+the direction of decreasing <em>x</em>.  When <em>azimuth</em> = 90 degrees,
+viewing is parallel to the <em>yz</em>-plane along some direction of
+decreasing <em>y</em>: the precise direction within the <em>yz</em>-plane being
+specified by the elevation. <em>Azimuth</em> can take on any real value.</p>
+</div>
+</dd>
+<dt class="hdlist1">Boolean </dt>
+<dd>
+<p>The <em>Boolean</em> (i.e., set-theoretic) operations of
+<em>union</em>, <em>intersection</em>, and <em>subtraction</em> are used in
+constructive solid geometry to build complex objects from simpler
+ones.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/bool.gif" alt="bool">
+</div>
+</div>
+</dd>
+<dt class="hdlist1">boundary representation </dt>
+<dd>
+<p><em>Boundary representation</em> (<em>BREP</em>) is one
+of the two major types of solid modeling, the other being constructive
+solid geometry. <em>BREP</em> objects are built by describing the entire
+enclosing surface of an object.  This will typically involve a variety
+of surface types including, for example, planar, cylindrical, NURB,
+and spherical surfaces.  While objects in a <em>BREP</em> system may be built
+using Boolean operations, the resulting object is typically stored as
+a set of enclosing surfaces.</p>
+</dd>
+<dt class="hdlist1">combination </dt>
+<dd>
+<p>A <em>combination</em> is a formula for combining primitive
+solids and/or other objects into a more complex shape.  Each solid or
+other <em>combination</em> directly in this formula is referred to as a
+member of this <em>combination</em>.  The formula may involve <em>intersection</em>,
+<em>subtraction</em>, and <em>union</em> operations, and the <em>combination</em> may be
+assigned a shader and a color. <em>Combinations</em> are typically built in
+<em>mged</em> using the c, comb, r, or g commands.Regions and groups are
+special types of <em>combinations</em>.</p>
+</dd>
+<dt class="hdlist1">constructive solid geometry </dt>
+<dd>
+<p><em>Constructive solid geometry</em> (<em>CSG</em>),
+sometimes referred to as <em>combinatorial solid geometry</em>, is one of the
+two major types of solid modeling (The other being boundary
+representation). In a <em>CSG</em> system, complex objects are built by
+combining simpler objects, with primitive solids as the basic building
+blocks.  The combinations make use of Boolean operations, and the
+resulting objects are stored as trees. <em>BRL­CAD</em> is actually a hybrid
+of <em>CSG</em> and BREP, but its main emphasis is on the <em>CSG</em> capabilities.</p>
+</dd>
+<dt class="hdlist1">DAG </dt>
+<dd>
+<p>See <em>acyclic directed graph</em>.</p>
+</dd>
+<dt class="hdlist1">elevation </dt>
+<dd>
+<p>Viewing aspects in <em>mged</em> may be specified in terms of
+azimuth, <em>elevation</em>, and twist. <em>Elevation</em> is the angle (in degrees)
+through which the viewing direction is rotated out of the <em>xy</em>-plane
+towards the positive <em>z</em>-axis (see the illustration in the <em>azimuth</em>
+entry). When <em>elevation</em> = 90 degrees, for instance, viewing is
+parallel to the <em>z</em>-axis in the direction of decreasing
+<em>z</em>. <em>Elevation</em> can take on any real value between -90 and +90
+degrees.</p>
+</dd>
+<dt class="hdlist1">group </dt>
+<dd>
+<p>A <em>group</em> is a combination with all <em>union</em> operators.
+Typically a <em>group</em> is used to combine components into a subsystem,
+subsystems into a system, or systems into top-level collections.</p>
+</dd>
+<dt class="hdlist1">ident </dt>
+<dd>
+<p>An <em>ident</em> (also referred to as <em>component ID</em>, <em>region ID</em>,
+<em>item</em>, or <em>ID code</em>) is an integer assigned to a region or regions to
+encode information used by application programs that process <em>BRL­CAD</em>
+models. <em>Idents</em> are assigned by the user and are not directly used by
+<em>BRL­CAD</em>, but are reported to applications that need them.</p>
+</dd>
+<dt class="hdlist1">inheritance </dt>
+<dd>
+<p><em>Inheritance</em> is an attribute of combinations that
+determines how shader attributes are handled when a member of a
+combination is itself a combination.  If the <em>inheritance</em> flag is set
+to 1, then all the shader attributes of combinations lower in the tree
+are overridden by this combination.</p>
+</dd>
+<dt class="hdlist1">key solid </dt>
+<dd>
+<p>The <em>key solid</em> is the solid used to provide a reference
+during matrix editing operation.  Rotations, translations, and scaling
+in this mode are performed about a point on the "key solid".</p>
+</dd>
+<dt class="hdlist1">LOS </dt>
+<dd>
+<p>An <em>LOS</em> is a percentage (0 to 100) assigned to a region
+representing the percentage of the region that consists of material
+substance.  It might be thought of as the region&#8217;s <em>solidity</em>, and is
+somewhat analogous to the alpha channel of a computer graphics
+display. <em>LOS</em> is assigned by the user and is not directly used by
+<em>BRL­CAD</em>, but is reported to applications that need it.</p>
+</dd>
+<dt class="hdlist1">material code </dt>
+<dd>
+<p>A region may be assigned an integer <em>material code</em>
+by the user.  This is intended to identify the material used to build
+the part. <em>Material codes</em> are assigned by the user and are not
+directly used by <em>BRL­CAD</em>, but are reported to applications that need
+them.</p>
+</dd>
+<dt class="hdlist1">matrix edit mode </dt>
+<dd>
+<p>This is the mode that <em>mged</em> is in while editing a
+transformation matrix in a combination.  It is characterized by the
+illumination of one object in the graphics window, and the appearance
+of matrix editing selections in the <em>Edit</em> menu.  This mode may be
+entered through the <em>Matrix Selection..</em> entry of the <em>Edit</em> menu, or
+via the <em>oed</em> command.  Editing operations such as rotation,
+translation, and scale may be performed in this mode and will affect
+all objects below the edited matrix in the tree.  These operations
+will be applied in reference to a key solid that is a leaf of that
+tree.</p>
+</dd>
+<dt class="hdlist1">member </dt>
+<dd>
+<p>An object is referred to as a <em>member</em> of a combination if
+it is directly referenced by the combination.</p>
+</dd>
+<dt class="hdlist1">MGED </dt>
+<dd>
+<p><em>Mged</em> is the interactive graphical editor for <em>BRL­CAD</em>.  It
+may be used to view, modify, and create models.  Normally, the user
+views the model in a wireframe display in <em>mged</em>.</p>
+</dd>
+<dt class="hdlist1">model coordinates </dt>
+<dd>
+<p>In a <em>BRL­CAD</em> model, the <em>model coordinates</em> are
+the actual coordinates of points on the model in <em>real</em> units.  The
+user may position a model at any desired location in <em>model
+coordinates</em>.  By convention in <em>BRL­CAD</em>, a model is oriented so that
+the positive <em>x</em>-axis points from the model&#8217;s back to its front,
+the positive <em>y</em>-axis points from the model&#8217;s right to its left,
+and, since the coordinate system is right handed, the positive
+<em>z</em>-axis points from the model&#8217;s bottom to its top.  All <em>BRL­CAD</em>
+models are stored in millimeters, however the user may operate in
+nearly any units by using the _mged_units command.  See also view
+coordinates.</p>
+</dd>
+<dt class="hdlist1">object </dt>
+<dd>
+<p><em>Objects</em> are the fundamental entities constituting a
+<em>BRL­CAD</em> model.  They are the nodes of the DAG into which the
+database is organized.  The terminal nodes, or leaves, of the DAG are
+the solids and the internal nodes are the combinations, of which two
+types are regions and groups.</p>
+</dd>
+<dt class="hdlist1">path </dt>
+<dd>
+<p>A <em>path</em> to an object in <em>BRL­CAD</em> is a list of combinations
+that ends at the desired object. <em>Paths</em> are specified with a syntax
+similar to the one used in UNIX file systems (with <code>/</code> characters as
+separators). Each element of the <em>path</em> must be a member of the
+previous element.  For example, <code>left_arm/arm/hand/thumb</code> might be a
+<em>path</em> from <code>left_arm</code> to <code>thumb</code> in some <em>BRL­CAD</em> database
+indicating that <code>arm</code> is a member of <code>left_arm</code>, <code>hand</code> is a member of
+<code>arm</code>, and <code>thumb</code> is a member of <code>hand</code>. The <em>path</em> information
+implies a set of transformation matrices (each member of a combination
+has a transformation matrix associated with it). As a <em>path</em> is
+traversed, the effects of encountered transformation matrices are
+accumulated, and typically applied to the object at the end of the
+<em>path</em>.  This means that the <code>thumb</code> referred to by the <em>path</em>
+<code>left_arm/arm/hand/thumb</code> is likely to be in a different location and
+orientation (and possibly scaled) from the <code>thumb</code> referred to by
+<code>right_arm/arm/hand/thumb</code>.</p>
+</dd>
+<dt class="hdlist1">primitive solid </dt>
+<dd>
+<p><em>Primitive solids</em> are the basic building blocks of
+CSGsolid modeling systems.  The <em>primitive solids</em> available in
+<em>BRL­CAD</em> include:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>ARB</p>
+</li>
+<li>
+<p>ARBN</p>
+</li>
+<li>
+<p>arbitrary faceted solid</p>
+</li>
+<li>
+<p>extruded bitmap</p>
+</li>
+<li>
+<p>Right Hyperbolic Cylinder</p>
+</li>
+<li>
+<p>Elliptical Hyperboloid</p>
+</li>
+<li>
+<p>Elliptical Paraboloid</p>
+</li>
+<li>
+<p>Right Parabolic Cylinder</p>
+</li>
+<li>
+<p>Elliptical Torus</p>
+</li>
+<li>
+<p>Ellipsoid</p>
+</li>
+<li>
+<p>Half Space</p>
+</li>
+<li>
+<p>Height Field</p>
+</li>
+<li>
+<p>Non­Manifold Geometry</p>
+</li>
+<li>
+<p>Particle</p>
+</li>
+<li>
+<p>Polysolid</p>
+</li>
+<li>
+<p>Spline</p>
+</li>
+<li>
+<p>Truncated General Cone</p>
+</li>
+<li>
+<p>Torus</p>
+</li>
+<li>
+<p>VOL</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/prims.gif" alt="prims">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">solid edit mode </dt>
+<dd>
+<p>This is the mode that <em>mged</em> is in while editing an
+individual solid.  It is characterized by the illumination of one
+solid in the graphics window, and the appearance of solid editing
+selections in the <em>Edit</em> menu.  This mode may be entered through the
+<em>Solid Selection..</em> entry of the <em>Edit</em> menu, or via the <em>sed</em>
+command.  Solid specific editing may be performed in this mode, as
+well as rotations, translations, and scaling.</p>
+</dd>
+<dt class="hdlist1">quaternion </dt>
+<dd>
+<p>Internal to <em>mged</em>, the viewing orientation is handled
+in terms of <em>quaternions</em>.  A <em>quaternion</em> is a method for
+representing an arbitrary rotation without the ambiguity at the poles
+that accompanies some methods.  A <em>quaternion</em> may be thought of as a
+vector (defining an axis of rotation), and a rotation about that axis.</p>
+</dd>
+<dt class="hdlist1">ray trace </dt>
+<dd>
+<p><em>Ray tracing</em> is the main method for interrogating
+<em>BRL­CAD</em> models.  It is performed by selecting a start point and a
+ray direction, then calculating the intersections of the resulting ray
+with all the primitive solids it encounters.  The segments of the ray
+that intersect each primitive solid are then combined according to the
+Boolean expressions for each region that refers to those solids.  The
+result is a series of intervals on the ray, called <em>partitions</em>, that
+intersect each region along the ray.  If the objective of the <em>ray
+tracing</em> effort is to produce an image, the calculations will
+typically be stopped after the first region is encountered.  The
+<em>BRL­CAD</em> rt program performs such <em>ray tracing</em>.</p>
+</dd>
+<dt class="hdlist1">region </dt>
+<dd>
+<p>A <em>region</em> is a combination with special significance for
+application programs that process <em>BRL­CAD</em> models.  It corresponds to
+a physical entity of uniform material properties.  In addition to all
+the attributes of any combination, a <em>region</em> also has an ident
+number, a material code number, an LOS number, and a space code
+number.  No two <em>regions</em> in a model should share any points in space.
+Such <em>overlaps</em> are reported, for instance, by the <em>BRL­CAD</em> ray
+tracer, <em>rt</em>.</p>
+</dd>
+<dt class="hdlist1">region ID </dt>
+<dd>
+<p>See <em>ident</em>.</p>
+</dd>
+<dt class="hdlist1">RGB </dt>
+<dd>
+<p><em>RGB</em> is an abbreviation for <em>Red</em>, <em>Green</em>, and <em>Blue</em>.  When
+a color is specified in <em>BRL­CAD</em>, it is in terms of its primary color
+components.  Each component may be from 0 to 255.  An <em>RGB</em> of <code>0 0 0</code>
+is black, <code>255 255 255</code> is white, and <code>0 255 0</code> is green.</p>
+</dd>
+<dt class="hdlist1">rt </dt>
+<dd>
+<p><em>Rt</em> is one of the programs in the <em>BRL­CAD</em> package.  It is
+used to ray trace a model and produce a color shaded image. <em>rt</em>
+supports transparency, reflection, refraction, shadows, texture
+mapping, light sources, and animation.</p>
+</dd>
+<dt class="hdlist1">shader </dt>
+<dd>
+<p>A <em>shader</em> is a <em>BRL­CAD</em> module that performs calculations
+to determine the actual pixel color to be displayed when a ray
+intersects an object during rendering by rt. <em>Shaders</em> are assigned to
+combinations by the user, and some allow additional parameters to
+adjust their appearance.  Available <em>shaders</em> include <em>mirror</em>,
+<em>glass</em>, <em>plastic</em>, and <em>texture</em> (for texture mapping). Source code
+modules in the <em>rt</em> directory with names of the form <em>sh.c</em> correspond
+to the available shaders</p>
+</dd>
+<dt class="hdlist1">solid model </dt>
+<dd>
+<p>A <em>solid model</em> is a description of an object or
+objects produced in such a way that any point can be classified
+without ambiguity as lying inside, outside, or on the surface of a
+modeled object.  This means that a true solid model cannot have
+surfaces that do not completely enclose space, and solid objects that
+are defined in the model must not be defined based on irrelevant
+variables such as viewing direction.</p>
+</dd>
+<dt class="hdlist1">space code </dt>
+<dd>
+<p>A <em>space code</em> (or <em>air code</em>) is assigned to regions
+that are intended to represent "empty air" rather than solid parts of
+the model.  The code number may be used to distinguish different air
+spaces from one another.  Regions representing solid parts must have a
+space code of 0. <em>Space codes</em> are assigned by the user and are not
+directly used by <em>BRL­CAD</em>, but are reported to applications that need
+them.</p>
+</dd>
+<dt class="hdlist1">tree </dt>
+<dd>
+<p>A tree is a Boolean expression representing some aggregation
+of objects.  Strictly speaking, this is an abuse of the term <em>tree</em>:
+such Boolean expressions are not trees in either the computer-science
+or the graph-theoretic sense, but are more correctly referred to as
+acyclic directed graphs, also known as DAGs.</p>
+</dd>
+<dt class="hdlist1">twist </dt>
+<dd>
+<p>Viewing aspects in <em>mged</em> may be specified in terms of
+azimuth, elevation, and <em>twist</em>. <em>Twist</em> is the angle (in degrees)
+around the screen-<em>z</em>-axis through which the (model-) <em>z</em>-axis is
+rotated from the positive screen-<em>y</em>-axis towards the positive
+screen-<em>x</em>-axis.  (see the illustration in the <em>azimuth</em>
+entry). When <em>twist</em> = 0, for instance, the positive <em>z</em>-axis is
+some nonnegative scalar multiple of the positive screen-<em>y</em>-axis.</p>
+</dd>
+<dt class="hdlist1">view coordinates </dt>
+<dd>
+<p>When an object is displayed in the <em>mged</em> graphics
+window, it is converted from model to <em>view</em> coordinates.  The <em>view
+coordinate</em> system has its origin at the center of the viewing cube
+(the center of the <em>mged</em> display). The <em>view<em>_x</em>-axis always points
+to the right, the _view<em>_y</em>-axis always points toward the top of the
+display, and the _view<em>_z</em>-axis always points out of the screen
+towards the viewer.  The visible portion of view space (known as the
+<code>viewing cube</code>) extends from -1.0 to +1.0 along each of the _view</em>
+axes.</p>
+</dd>
+</dl>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="callback.html">Callback</a></span>
+  <span class="next"><a href="brlcad-solid.html">BRL-CAD Solid</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../ui/js/site.js"></script>
+<script src="../../../ui/js/vendor/lunr.js"></script>
+<script src="../../../ui/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/docs/articles/mged/glossary.html"></script>
+<script async src="../../../ui/../search-index.js"></script>
+<script async src="../../../ui/js/vendor/highlight.js"></script>
+  </body>
+</html>

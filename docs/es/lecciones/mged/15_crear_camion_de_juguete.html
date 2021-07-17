@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>15. Crear un camión de juguete :: BRL-CAD Documentation</title>
+    <link rel="canonical" href="https://brlcad.fs.al/es/lecciones/mged/15_crear_camion_de_juguete.html">
+    <link rel="prev" href="14_ubicar_figuras_en_3d_2.html">
+    <link rel="next" href="16_mod_tech_struct.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../ui-es/css/site.css">
+    <link rel="stylesheet" href="../../../ui-es/css/search.css">
+    <link rel="stylesheet" href="../../../ui-es/css/custom.css">
+    <script>var uiRootPath = '../../../ui-es'</script>
+    <link rel="icon" href="../../../ui-es/img/icon/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://brlcad.fs.al">
+        <img src="../../../ui-es/img/logo/brlcad.jpg" height="48px">
+        BRL-CAD Documentation
+      </a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="es" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lecciones</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../mged.html">MGED</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01_crear_figuras_primitivas.html">1. Crear Figuras Primitivas with MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02_opciones_vistas.html">2. Reconocer las opciones de vistas en MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03_utilizar_comando_in.html">3. Usar el comando Insert en MGED para dimensionar y ubicar figuras</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="04_prop_materiales.html">4. Asignación de propiedades de los materiales y trazado de rayos (Raytracing) en MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="05_expresiones_booleanas.html">5. Expresiones Booleanas</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="06_crear_una_copa.html">6. Crear una copa</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="07_prop_materiales_copa.html">7. Asignar propiedades de los materiales a una copa</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="08_prop_materiales_copa2.html">8. Asignar más propiedades de los materiales a la copa</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="09_esfera_en_caja_exhibidora.html">9. Crear una esfera en una caja exhibidora transparente</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="10_crear_taza.html">10. Crear una taza</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="11_refinar_taza.html">11. Refinando el modelo de la taza</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="12_taza_desde_gui.html">12. Crear el modelo de una taza utilizando la interfaz de MGED</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="13_ubicar_figuras_en_3d.html">13. Ubicar figuras en espacios 3-D</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="14_ubicar_figuras_en_3d_2.html">14. Ejercicios adicionales de ubicación de imágenes en espacios 3-D</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="15_crear_camion_de_juguete.html">15. Crear un camión de juguete</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="16_mod_tech_struct.html">16. Aprender técnicas de modelado y estructuras</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+
+<div style="display: none;">
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Spanish</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../../index.html">Spanish</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">Spanish</a></li>
+    <li>Lecciones</li>
+    <li><a href="../mged.html">MGED</a></li>
+    <li><a href="15_crear_camion_de_juguete.html">15. Crear un camión de juguete</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/dashohoxha/brlcad-docs/edit/main/translations/es/modules/lecciones/pages/mged/15_crear_camion_de_juguete.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">15. Crear un camión de juguete</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>En este tutorial usted aprenderá a:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Crear un camión de juguete a partir de tres figuras.</p>
+</li>
+<li>
+<p>Hacer copias de figuras utilizando el editor de primitivos.</p>
+</li>
+<li>
+<p>Hacer combinaciones y regiones de objetos más complejos.</p>
+</li>
+<li>
+<p>Controlar el árbol de datos y corregir de ser necesario.</p>
+</li>
+<li>
+<p>Listar los contenidos de la base de datos.</p>
+</li>
+<li>
+<p>Asignar propiedades de los materiales utilizando el Combination
+Editor.</p>
+</li>
+<li>
+<p>Comprender las diferencias entre OK, Accept, Apply, Reset, Cancel, y
+Dismiss. (OK, Aceptar, Aplicar, Restablecer, Cancelar y Salir)</p>
+</li>
+<li>
+<p>Identificar las opciones de ayuda en pantalla.</p>
+</li>
+<li>
+<p>Comprender la opción de Stacker (Apilador).</p>
+</li>
+<li>
+<p>Probar los atributos de sombreado de camuflaje (camo shader).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>En los tutoriales anteriores, ha creado y editado figuras para
+producir objetos simples.  Este tutorial se centra en la creación de
+un objeto algo más complejo, un camión de juguete, utilizando la
+ventana de comandos.  Su camión terminado deberá ser similar al
+siguiente:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/15_truck_design.png" alt="15 truck design">
+</div>
+<div class="title">Figure 1. Raytrace del dise&#xF1;o del cami&#xF3;n de juguete</div>
+</div>
+<div class="paragraph">
+<p>Comience creando una nueva base de datos llamada truck.g.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_truck_cab_in_cmd"><a class="anchor" href="#_truck_cab_in_cmd"></a>1. Crear una rpp para la cabina del camión utilizando el comando in</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Para hacer la cabina del camión, cree un prisma recto paralelo (en
+inglés: right parallel piped &gt; rpp) utilizando el comando in (de
+insert &gt; insertar). En el prompt de la ventana de comandos tipee:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">in cab1.s rpp <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p><code class="app">MGED</code> le preguntará los valores de XMIN, XMAX, YMIN, YMAX, ZMIN,
+y ZMAX.  Tipee entonces:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">0 1 0 1 0 1 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Esto le dirá a <code class="app">MGED</code> que:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">0</th>
+<th class="tableblock halign-center valign-top">1</th>
+<th class="tableblock halign-center valign-top">0</th>
+<th class="tableblock halign-center valign-top">1</th>
+<th class="tableblock halign-center valign-top">0</th>
+<th class="tableblock halign-center valign-top">1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Dé el valor 0 al XMIN del rpp</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Dé el valor 1 al XMAX del rpp</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Dé el valor 0 al YMIN del rpp</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Dé el valor 1 al YMAX del rpp</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Dé el valor 0 al ZMIN del rpp</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Dé el valor 1 al ZMAX del rpp</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Puede también utilizar el comando con formato de una sola línea:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">in cab1.s rpp 0 1 0 1 0 1 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Una figura cúbica debería aparecer en la ventana gráfica, como muestra
+la siguiente imagen:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/15_truck_cab1s.png" alt="15 truck cab1s">
+</div>
+<div class="title">Figure 2. Dise&#xF1;o en Wireframe (malla de alambre) de la figura cab1.s</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_truck_hood_in_cmd"><a class="anchor" href="#_truck_hood_in_cmd"></a>2. Utilizar el comando inside para crear un rpp como frente de la cabina</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Para hacer el capó del coche, deberá crear otra forma rpp utilizando
+el comando inside.  Este comando fue creado originalmente para ahuecar
+objetos como tanques de gasolina y cajas, sin embargo, puede ser
+utilizado para crear cualquier nueva forma que tiene alguna relación
+con otra forma pre-existente.  En este tutorial, se utilizará para
+cortar materiales por encima del capó y delante de la cabina.</p>
+</div>
+<div class="paragraph">
+<p>Si está utilizando la versión 6.0 de <code class="app">BRL-CAD</code> o una posterior,
+en la línea de comandos tipee:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">inside cab1.s caboff1.s .5 -.1 .7 -.1 -.1 -.1 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Este comando le dice a <code class="app">MGED</code> que:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1112%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">inside</th>
+<th class="tableblock halign-center valign-top">cab1.s</th>
+<th class="tableblock halign-center valign-top">caboff1.s</th>
+<th class="tableblock halign-center valign-top">.5</th>
+<th class="tableblock halign-center valign-top">-.1</th>
+<th class="tableblock halign-center valign-top">7</th>
+<th class="tableblock halign-center valign-top">-.1</th>
+<th class="tableblock halign-center valign-top">-.1</th>
+<th class="tableblock halign-center valign-top">-.1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Dentro de la figura&#8230;&#8203;</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">llamada cab1.s&#8230;&#8203;</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">cree un rpp llamado caboff1.s</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Hacer la cara 1234 (inferior) de .5 unidades de espesor</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Hacer la cara 5678 (superior) de -.1 unidades de espesor</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Hacer la cara 1485 (trasera) de .7 unidades de espesor</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Hacer la cara 2376 (frontal) de -.1 unidades de espesor</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Hacer la cara 1265 (derecha) de -.1 unidades de espesor</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Hacer la cara 3478 (isquierda) de -.1 unidades de espesor</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>En este ejemplo, cada espesor con valor negativo indica que caboff1.s
+va a sobresalir de la cara que corresponde a cab1.s.</p>
+</div>
+<div class="paragraph">
+<p>Nota: Tenga en cuenta que en las versiones de <code class="app">BRL-CAD</code> 6.0 en
+adelante las caras de un rpp son numeradas en un orden diferente que
+en versiones anteriores.  Así que, si va a usar una versión anterior a
+6.0, el siguiente orden es el que regirá en el comando inside:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">inside caboff1.s cab1.s un 0,7 -. -. -. 1 1 .5 -. 1  <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>(El orden de las caras en este caso es frontal, posterior, derecha,
+izquierda, inferior y superior)</p>
+</div>
+<div class="paragraph">
+<p>Cuando está en modo Multipane, el diseño debería verse como la
+siguiente ilustración:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/15_truck_cab_cutoff.png" alt="15 truck cab cutoff">
+</div>
+<div class="title">Figure 3. Corte de la cabina del cami&#xF3;n</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_truck_cab_wheel_well"><a class="anchor" href="#_truck_cab_wheel_well"></a>3. Utilizar un rcc para crear la cavidad de la rueda en la cabina</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Crear un cilindro (rcc) a utilizar para cortar un espacio para la
+primera rueda de la cabina.  En la ventana de comandos del sistema,
+escriba:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">make well1.s rcc  <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>En el menú Edit (Edición), diríjase a Primitive Selection (Selección
+de primitivos) y luego seleccione well1.s.  Aplique la vista
+izquierda, vuelva a Edit (Editar) y seleccione Scale (Escala). Reduzca
+el tamaño del rcc, hasta que su diámetro sea el indicado para la
+rueda.  Regrese a Edit (Edición) y seleccione Rotate (Rotación). Como
+se ha dicho, un método sencillo para rotar el CCR es mediante el uso
+de la tecla CTRL y el botón izquierdo del mouse.  Sin embargo, como
+sabemos que queremos voltear el objeto exactamente 90'0 a lo largo del
+eje x, una mejor opción es usar la línea de comandos.  Tipee entonces:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">p 90 0 0 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Después de esto, todavía puede tener que utilizar Set H (Ajuste h - de
+altura) además de las opciones de escala para redimensionar y la tecla
+SHIFT + botón izquierdo del mouse para posicionar su rueda.  Cuando
+haya finalizado, seleccione Aceptar.  Su diseño debe ser similar al
+siguiente en el modo Multipane:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/15_truck_multipane_1stwheel.png" alt="15 truck multipane 1stwheel">
+</div>
+<div class="title">Figure 4. Vista multipanel del cami&#xF3;n con su primer rueda posicionada</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ok_accept_apply_reset_cancel_dismiss"><a class="anchor" href="#_ok_accept_apply_reset_cancel_dismiss"></a>4. Comprender las diferencias entre OK, Accept, Apply, Reset,Cancel, y Dismiss. (OK, Aceptar, Aplicar, Restablecer,Cancelar y Salir)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>El entorno gráfico de <code class="app">MGED</code> ofrece a los usuarios varias
+opciones: aplicar, aceptar o rechazar los cambios realizados a través
+de botones en la parte inferior de la ventanas de diálogo emergentes.
+Para usar cualquiera de estas opciones, basta con colocar el cursor
+sobre el botón deseado y cliquear con el botón izquierdo del ratón.</p>
+</div>
+<div class="paragraph">
+<p>Al seleccionar el botón OK o Accept (Aceptar) le dirá a <code class="app">MGED</code>
+que registre los cambios que ha hecho a una forma, una región o una
+combinación. <code class="app">MGED</code> utiliza los botones OK y Accept (Aceptar)
+indistintamente.  Al cliquear en cualquiera de estas dos opciones la
+ventana que está utilizando se cerrará automáticamente.</p>
+</div>
+<div class="paragraph">
+<p>El botón Apply (Aplicar) le dice a <code class="app">MGED</code> que registre los
+cambios que ha hecho y luego espere más instrucciones.  La ventana no
+se cierra automáticamente.  Esta opción le permite realizar cambios en
+varios ítems sin tener que reabrir la ventana para cada cambio.</p>
+</div>
+<div class="paragraph">
+<p>El botón Reset (Restablecer) le dice a <code class="app">MGED</code> que regrese los
+valores que han sido modificados, a aquellos valores existentes
+previamente a la apertura de la ventana de diálogo.  El botón Reset no
+cerrará el cuadro de diálogo.  Los botones Cancel (Cancelar) o Dismiss
+(Salir) hace que no se tome en cuenta ningun cambio realizado en el
+cuadro de diálogo, dejando activos los últimos valores aceptados.
+Estos dos botones cierran el cuadro de diálogo al ser seleccionados.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_truck_wheel_well_prim_edit_cpy"><a class="anchor" href="#_truck_wheel_well_prim_edit_cpy"></a>5. Uso del Primitive Editor (Editor de primitivos) para hacer una copiade la cavidad de la rueda</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Para realizar una copia de la cavidad de la rueda, vaya al menú Edit
+(Edición) y seleccione Primitive Editor (Editor de primitivos), que
+contendrá la información de la última forma editada (o dirá
+myPrimitive si nada ha sido editado). Borre el nombre de la figura
+anterior en el cuadro de entrada Nombre.  Escriba well1.s y oprima
+Reset (Restablecer) (o pulse Enter mientras el cursor se encuentra
+todavía en el cuadro de entrada Nombre). Los valores de los parámetros
+de la forma antigua se sustituirán por las de la nueva forma.  El
+editor va a cambiar y se verá similar al siguiente ejemplo:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/15_prim_ed_wheel_well.png" alt="15 prim ed wheel well">
+</div>
+<div class="title">Figure 5. El Primitive Editor (Editor de primitivos)</div>
+</div>
+<div class="paragraph">
+<p>Vuelva al cuadro de texto Nombre y cambie el 1 por un 2 y haga clic
+en OK.  Cambie la vista al frente en el menú View (Vista). Diríjase a
+Edit/Primitive Selection (Edición/Selección de primitivos) y cliquee
+en well2.s.  Utilice el SHIFT y botón izquierdo del mouse para
+arrastrar la nueva cavidad de la rueda a su posición, como se muestra
+en la ilustración siguiente.  Verifique su alineación en el modo
+Multipane y presione Accept (Aceptar) cuando haya terminado.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/15_truck_2nd_wheel_wheel_place.png" alt="15 truck 2nd wheel wheel place">
+</div>
+<div class="title">Figure 6. Posicionamiento de la segunda rueda</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_truck_cab_shape_comb"><a class="anchor" href="#_truck_cab_shape_comb"></a>6. Hacer una combinación con las figuras de la cabina</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ahora es el momento de hacer una combinación de las ditintas figuras
+de la cabina.</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">comb cab1.c u cab1.s - caboff1.s - well1.s - well2.s <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Este comando le dice a <code class="app">MGED</code> que:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">comb</th>
+<th class="tableblock halign-center valign-top">cab1.c</th>
+<th class="tableblock halign-center valign-top">u</th>
+<th class="tableblock halign-center valign-top">cab1.s</th>
+<th class="tableblock halign-center valign-top">-</th>
+<th class="tableblock halign-center valign-top">caboff1.s</th>
+<th class="tableblock halign-center valign-top">-</th>
+<th class="tableblock halign-center valign-top">well1.s</th>
+<th class="tableblock halign-center valign-top">-</th>
+<th class="tableblock halign-center valign-top">well2.s</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Cree una cobinación</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">La nombre cab1.c</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Haga una unión</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">de la figura cab1.s</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">menos&#8230;&#8203;</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">la figura caboff1.s</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">menos&#8230;&#8203;</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">la figura well1.s</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">menos&#8230;&#8203;</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">la figura well2.s</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Antes de continuar, debería chequear su árbol de datos tipeando: tree
+cab1.c.  El árbol debería ser:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>   cab1.c/
+   u cab1.s
+   - caboff1.s
+   - well1.s
+   - well2.s</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Si escribe ls (lista) en la ventana de comandos del sistema,
+encontrará que su base de datos se compone de la combinación cab1.c y
+las formas cab1.s, caboff1.s, well1.s y well2.s.  A medida que cree
+objetos más complejos se acostumbrará a referirse a la lista de la
+base de datos para asegurarse de que esté compuesta por lo elementos
+que usted desea.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_truck_body_in_cmd"><a class="anchor" href="#_truck_body_in_cmd"></a>7. Crear un rpp para el cuerpo del camión utilizando el comando in</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Para hacer el cuerpo del camión, tipee en el prompt de la línea de
+comandos:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">in body1.s rpp 0 2 0 1 0 1.5 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>A esta altura ya debería saber qué es lo que este comando le dice a
+<code class="app">MGED</code> que haga.  Si lo ha olvidado, regrese al ejemplo de cuando
+creó la cabina del camión.</p>
+</div>
+<div class="paragraph">
+<p>Edite el cuerpo de la camioneta para que su cara frontal se superponga
+ligeramente con la cara posterior de la cabina.  Compruebe desde
+diferentes puntos de vista que el cuerpo esté correctamente alineado
+con la cabina.  Acepte los cambios cuando haya terminado y, a
+continuación utilice el comando blast para dibujar su diseño.  Su
+camión ahora debería tener el siguiente aspecto:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/15_truck_cab_body.png" alt="15 truck cab body">
+</div>
+<div class="title">Figure 7. Cabina y cuerpo del cami&#xF3;n</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prim_ed_wheel_wells"><a class="anchor" href="#_prim_ed_wheel_wells"></a>8. Utilizar el Primitive Editor para hacer las otras dos cavidades paralas ruedas</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Para hacer los dos huecos de las ruedas traseras en el cuerpo de la
+camioneta, repita los pasos utilizados en la creación de la segunda
+cavidad.  Nombre a las nuevas figuras well3.s y well4.s.  Utilice
+múltiples puntos de vista, y mueva las nuevas formas en la posición
+indicada hasta que su camión tenga una apariencia similar al
+siguiente:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/15_truck_wheel_wells_wireframe.png" alt="15 truck wheel wells wireframe">
+</div>
+<div class="title">Figure 8. Representaci&#xF3;n en malla de alambre del cami&#xF3;n con las cavidades</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_truck_body_wheel_wells_comb"><a class="anchor" href="#_truck_body_wheel_wells_comb"></a>9. Hacer una combinación con el cuerpo del camión y las cavidades</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cree una combinación con el cuerpo y ambas cavidades, nómbrela
+body1.c.  El árbol de body1.c debería decir:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>   body1.c/
+   u body1.s
+   - well3.s
+   - well4.s</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_truck_cab_body_region"><a class="anchor" href="#_truck_cab_body_region"></a>10. Hacer una región con la cabina y el cuerpo del camión</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Antes de agregarle las ruedas al camión, debe crear una región con la
+cabina y el cuerpo.  En el prompt de la línea de comandos tipee:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">r truck1.r u cab1.c u body1.c <kbd>Enter</kbd></code></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_truck_wheels"><a class="anchor" href="#_truck_wheels"></a>11. Crear ruedas para el camión</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Tal vez la mejor forma para la fabricación de ruedas es el toro.
+Puede crear esta forma a través de la ventana de comandos para darles
+un tamaño y una ubicación precisos a su diseño sin su posterior
+edición.  Sin embargo, este tutorial está pensado para darle práctica
+sobre la rotación y traslación de las formas.</p>
+</div>
+<div class="paragraph">
+<p>Cree la primera rueda tipeando en el prompt de la línea de comandos:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">in wheel1.s tor 0 0 0 .5774 .5774 .5774 .18 .08 <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Este comando le dice a <code class="app">MGED</code> que:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">in</th>
+<th class="tableblock halign-center valign-top">wheel1.s</th>
+<th class="tableblock halign-center valign-top">tor</th>
+<th class="tableblock halign-center valign-top">0 0 0</th>
+<th class="tableblock halign-center valign-top">.5774 .5774 .5774</th>
+<th class="tableblock halign-center valign-top">.18</th>
+<th class="tableblock halign-center valign-top">.08</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Cree una figura</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Nómbrela wheel1.s</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Que la figura sea un toro</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Asigne los valores 0 0 0 para el vértice</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Asigne los valores .5774 .5774 .5774 a x, y, y z del vector normal</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Asigne el valor .18 al radio externo</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Asigne el valor .08 al radio 2 (el espesor del neumático)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Cambie a la vista izquierda y luego edite la posición de la rueda.
+Para una correcta alineación de la rueda con el camión, deberá girar
+el neumático con la tecla CTRL y cualquier botón del ratón.  Escale y
+traslade la rueda a su posición y verifique la alineación desde varios
+puntos de vista distintos.  Acepte los cambios cuando haya terminado.</p>
+</div>
+<div class="paragraph">
+<p>Utilice el Primitive Editor (Editor de Primitivos) de la misma forma
+con el resto de las ruedas.  Mueva cada una de las ruedas a su
+posición hasta que su camioneta sea similar a la siguiente:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/15_truck_wheels.png" alt="15 truck wheels">
+</div>
+<div class="title">Figure 9. Dise&#xF1;o en malla de alambre del cami&#xF3;n con sus ruedas</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_truck_wheels_region"><a class="anchor" href="#_truck_wheels_region"></a>12. Hacer una región con las ruedas</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cree una región con las ruedas.  Cuando haya terminado, chequee su
+árbol de datos de wheel1.r.  Deberá decir:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>   wheel1.r/R
+   u wheel1.s
+   u wheel2.s
+   u wheel3.s
+   u wheel4.s</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_truck_regions_mater_props"><a class="anchor" href="#_truck_regions_mater_props"></a>13. Asignar propiedades de los materiales a las regiones del camión</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Su camión se compone de dos regiones: truck1.r y wheel1.r.  Utilice el
+Combinación Editor y seleccione truck1.r.</p>
+</div>
+<div class="paragraph">
+<p>En el Combination Editor (Editor de combinaciones), el sombreado de
+camuflaje (camo shader) crea un patrón tricolor pseudo-aleatorio de
+camuflaje en el objeto utilizando un patrón de ruido fractal.  El
+sombreado ofrece gran cantidad de atributos entre los que elegir.  Por
+ahora, seleccione un color de fondo de negro (0 0 0) y complete el
+Color #1 con verde (0 134 0), y el Color #2 con marrón pardo (164 96
+38). Para hacer el patrón proporcional al diseño de la camioneta,
+seleccione un tamaño de .25 de ruido y, a continuación acepte las
+selecciones.  La ventana del editor de sombreado debería tener este
+aspecto:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/mged/15_cameo_shader.png" alt="15 cameo shader">
+</div>
+<div class="title">Figure 10. Camo Shader (Sombreado de camuflaje)</div>
+</div>
+<div class="paragraph">
+<p>Aplique sombreado de plástico y color negro a las ruedas (wheel1.r) y
+cliquee OK.  Luego genere el Raytrace de su diseño.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_on_screen_help"><a class="anchor" href="#_on_screen_help"></a>14. Utilizar las opciones de ayuda disponibles en pantalla</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Probablemente habrá notado que muchos de los menús de aplicaciones de
+<code class="app">MGED</code> ofrecen una amplia variedad de opciones de donde escoger.
+Con tantas opciones disponibles, es fácil olvidar lo que una selección
+en particular hace.  Para ayudar a los usuarios a acceder rápidamente
+a la información básica sobre las diferentes opciones de <code class="app">MGED</code>,
+el programa ofrece funciones de ayuda en pantalla sensible al
+contexto, es decir, cambia según sobre lo que se esté trabajando.</p>
+</div>
+<div class="paragraph">
+<p>Se puede acceder a la ayuda en pantalla desde cualquier menú
+desplegable, colocando el cursor sobre el nombre de cualquier opción
+en el menú o en la ventana y haciendo clic en el botón derecho del
+mouse.  En el único lugar en que esta función no se puede aplicar es
+en la parte de la ventana gráfica, donde se encuentra el diseño.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_stacker_shading"><a class="anchor" href="#_stacker_shading"></a>15. La opción de apilado de sombreados (Stacker Option)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>En los tutoriales anteriores, se aplicó color y sombreado a un objeto
+para hacerlo ver más realista.  Sin embargo, a veces tendrá que
+aplicar dos o tres sombreados a un objeto hasta obtener el resultado
+deseado.</p>
+</div>
+<div class="paragraph">
+<p><code class="app">MGED</code> ofrece tres categorías de sombreado: pintura, plástico,
+y luz.  Cualquier combinación de estos tres tipos de sombreados se
+puede aplicar a un mismo objeto utilizanso la opción del menú Stacker
+Option (Apilado).</p>
+</div>
+<div class="paragraph">
+<p>Hay tres sombreados de plástico: glass, mirror, y plastic (vidrio,
+espejo, y plástico). El sombreado de plástico se utiliza para dar una
+percepción del espacio.  Para ello, toma la superficie del objeto y le
+da brillo para que pueda reflejar la luz.  El sombreado plástico
+normalmente se aplica último en el proceso de apilación.</p>
+</div>
+<div class="paragraph">
+<p>El sombreado de pintura se utiliza para aplicar pigmento y textura a
+la superficie de un objeto.  El color es el pigmento y la textura es
+la calidad en tres dimensiones de la superficie del material (como la
+pintura de estuco).</p>
+</div>
+<div class="paragraph">
+<p>Los sombreados de pigmento incluyen camo (camuflaje), textura (color),
+textura (negro/blanco), falsa estrella, nube, corrector, mapa de
+prueba y proyección.  Los sombreados de textura incluyen bump map, fbm
+bump y tur bump.  Los sombreados de pintura se aplican normalmente
+primeros en el proceso de apilado y se utilizan en combinación con el
+sombreado de plástico.</p>
+</div>
+<div class="paragraph">
+<p>El sombreado de luz se utiliza para producir la iluminación en la
+escena.  Esto ayuda a producir el realismo necesario en la imagen
+final.  El sombreado de luz es técnicamente complejo y no se analiza
+en este tutorial.</p>
+</div>
+<div class="paragraph">
+<p>El sombreado de camuflaje consiste en aplicar pigmentos, con un patrón
+aleatorio, a la superficie de un objeto.  El sombreado de camuflaje no
+indica la naturaleza tridimensional de un objeto.  Si desea que su
+diseño muestre profundidad, necesitará apilar el sombreado de
+camuflaje y el de plástico.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_stacker_shading"><a class="anchor" href="#_using_stacker_shading"></a>16. El uso del Stacker Option (Apilado de sombreados)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Para utilizar la opción Stacker, abra el editor de combinaciones y
+seleccione truck1.r.  Cliquee en el botón a la derecha del cuadro de
+entrada Shader y seleccione Stack en el menú desplegable.  Un botón
+con las palabras Add Shader (Agregar sombreado) aparecerá en el cuadro
+de texto.  Cliquee ese botón y luego seleccione camouflage
+(camuflaje). Ajuste el color de fondo a negro (0 0 0), Color #1 a
+verde (0 134 0), y Color #2 a la marrón pardo (164 96 38). En Noise
+Size (Tamaño de ruido) complete con .25.  Cliquee en Add Shader
+(Añadir sombreado) una vez más y seleccione Plastic (plástico).</p>
+</div>
+<div class="paragraph">
+<p>En este punto, la ventana del editor de combinaciones puede haberse
+movido hacia la parte baja de la pantalla.  Si esto sucede, reduzca el
+tamaño de la ventana lo más que pueda y luego arrástrela hasta la
+parte superior.  Deberán aparecer unos botones en parte inferior del
+cuadro para que pueda aplicar sus selecciones.</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Al utilizar la opción de apilación, necesita hacer un seguimiento del
+número de caracteres y espacios en el cuadro de texto sombreado.  Las
+versiones de <code class="app">MGED</code> anteriores a la 6.0 sólo reconocen 64
+caracteres (incluídos los espacios), por lo que debe tener cuidado con
+los sombreados demasiado complejos.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_truck_combine_regions"><a class="anchor" href="#_truck_combine_regions"></a>17. Hacer una combinación con las regiones del camión</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Para hacer una combinación con las dos regiones del camión, tipee en
+el prompt de la línea de comandos:</p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">comb truck1.c u truck1.r u wheel1.r <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p><code class="cmd">B truck1.c <kbd>Enter</kbd></code></p>
+</div>
+<div class="paragraph">
+<p>Su árbol de datos de truck1.c debería decir:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>   truck1.c/
+   u truck1.r/R
+   u cab1.c/
+   u cab1.s
+   - caboff1.s
+   - well1.s
+   - well2.s
+   u body1.c
+   u body1.s
+   - well3.s
+   - well4.s
+   u wheel1.r/R
+   u wheel1.s
+   u wheel2.s
+   u wheel3.s
+   u wheel4.s</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_truck_raytracing"><a class="anchor" href="#_truck_raytracing"></a>18. Generar el Raytrace del camión</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>El último paso en la creación de su camión es generar el Raytrace de
+su diseño.  Cuando el trazador de rayos haya terminado, observe que la
+parte superior de uno de los laterales del camión queda muy oscuro.
+Esto es porque hay muy poca luz sobre ese lado.  Al no haber
+especificado ninguna fuente de luz para la escena, <code class="app">MGED</code> le
+proporciona un conjunto de luces de forma predeterminada.  Estos
+valores consisten en una luz tenue proveniente de la ubicación del
+espectador y un brillo situado a la izquierda y por debajo del mismo.
+Puesto que la luz principal no es realmente brillante, un lado de la
+camioneta queda oscuro.</p>
+</div>
+<div class="paragraph">
+<p>Hay un ajuste especial que puede hacer para mejorar el brillo general
+de la escena, ajustando la cantidad de luz ambiente, que es la luz que
+no viene de una fuente de luz en particular, sino que es una medida de
+luz presente en toda la escena.  Para ajustar la cantidad de la luz
+ambiental, haga clic en el botón Advanced Settings (Configuración
+avanzada) en el panel de control de Raytrace.  Junto a la otras
+opciones preexistentes, tipee -A .9.  Ahora cuando genere el Raytrace,
+obtendrá una imagen mucho más iluminada.</p>
+</div>
+<table class="tableblock frame-none grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../_images/mged/15_truck_default_lighting.png" alt="15 truck default lighting">
+</div>
+<div class="title">Figure 11. Camión con iluminación predeterminada</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../_images/mged/15_truck_ambient_lighting.png" alt="15 truck ambient lighting">
+</div>
+<div class="title">Figure 12. Camión con luz ambiente agregada</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_creating_toy_truck_review"><a class="anchor" href="#_creating_toy_truck_review"></a>19. Repasemos&#8230;&#8203;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>En este tutorial usted aprendió a:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Crear un camión de juguete a partir de tres figuras.</p>
+</li>
+<li>
+<p>Hacer copias de figuras utilizando el editor de primitivos.</p>
+</li>
+<li>
+<p>Hacer combinaciones y regiones de objetos más complejos.</p>
+</li>
+<li>
+<p>Controlar el árbol de datos y corregir de ser necesario.</p>
+</li>
+<li>
+<p>Listar los contenidos de la base de datos.</p>
+</li>
+<li>
+<p>Asignar propiedades de los materiales utilizando el Combination
+Editor.</p>
+</li>
+<li>
+<p>Comprender las diferencias entre OK, Accept, Apply, Reset, Cancel, y
+Dismiss. (OK, Aceptar, Aplicar, Restablecer, Cancelar y Salir)</p>
+</li>
+<li>
+<p>Identificar las opciones de ayuda en pantalla.</p>
+</li>
+<li>
+<p>Comprender la opción de Stacker (Apilador).</p>
+</li>
+<li>
+<p>Probar los atributos de sombreado de camuflaje (camo shader).</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="14_ubicar_figuras_en_3d_2.html">14. Ejercicios adicionales de ubicación de imágenes en espacios 3-D</a></span>
+  <span class="next"><a href="16_mod_tech_struct.html">16. Aprender técnicas de modelado y estructuras</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../ui-es/js/site.js"></script>
+<script src="../../../ui-es/js/vendor/lunr.js"></script>
+<script src="../../../ui-es/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/es/lecciones/mged/15_crear_camion_de_juguete.html"></script>
+<script async src="../../../ui-es/../search-index.js"></script>
+<script async src="../../../ui-es/js/vendor/highlight.js"></script>
+  </body>
+</html>
