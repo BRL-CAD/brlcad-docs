@@ -12,6 +12,8 @@ jobs:
 
       - name: Install Antora and Build Site
         run: |
+          wget -q -O install-nvm.sh https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh
+          bash install-nvm.sh
           nvm install --lts
           node --version
           nvm alias default 14
