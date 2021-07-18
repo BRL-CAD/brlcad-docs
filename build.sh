@@ -7,4 +7,3 @@ export NODE_PATH="$(npm -g root)"
 
 antora='antora --generator antora-site-generator-lunr'
 $antora build.yml
-$antora translations/build-es.yml
