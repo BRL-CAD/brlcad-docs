@@ -1,0 +1,27 @@
+== Description
+
+link:FullHostListREQ[FullHostListREQ] sends a
+link:IBME_GeometryService#NetMsg_Class[NetMsg] to request +++<BSRJ>+++that contains a list of all attached Hosts in [String](IBME_NETWORKPROTO_STRING "wikilink") format.+++</BSRJ>+++
+
+== Byte Format
+
+|===
+| *Element* | *Length*
+
+| NumberOfHostnames
+| int (4 byte)
+|===
+
+_Repeated for each Item_
+
+|===
+| *Element* | *Length*
+
+| Hostname
+| link:IBME_NETWORKPROTO_STRING[String (Variable bytes)]
+|===
+
+== Google Code In
+
+This page was edited for link:Google_Code_In[Google_Code_In]
+by BSRJ.

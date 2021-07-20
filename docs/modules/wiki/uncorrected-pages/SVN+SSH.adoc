@@ -1,0 +1,41 @@
+This page describes how to get set up with an svn+ssh protocol
+Subversion checkout from a Sourceforge repository so that you don't have
+to specify a password. The svn+ssh method is also more robust and
+usually faster than the https method as well.
+
+*1) Generate a password-less ssh keypair.* With OpenSSH it's really
+easy, keep hitting Enter to leave the password blank. Obviously, you
+need to replace SFUSERNAME with your actual Sourceforge username:
+
+`$ ssh-keygen -C "svn+ssh://SFUSERNAME@svn.code.sf.net/p/brlcad" -f sf_brlcad`
+
+*2) Install the keypair.* Copy the files to ~/.ssh on each system you
+use:
+
+`mv sf_brlcad* ~/.ssh/.`
+
+*3) Edit your SSH configuration.* Specify using that key with
+Sourceforge. Edit ~/.ssh/config to contain this:
+
+`Host svn.code.sf.net`
+`Host svn.code.sourceforge.net`
+`Hostname svn.code.sourceforge.net`
+`IdentitiesOnly yes`
+`IdentityFile ~/.ssh/sf_brlcad`
+
+*4) Publish the public key.* Upload the contents of _sf_brlcad.pub_
+to your Sourceforge account:
+
+. Login to the sourceforge.net website.
+. Select "Account" from the "Me" menu.
+. Paste the contents of your public key file under the "SSH Settings"
+tab.
+
+*5) Wait 10 minutes.* It takes time for Sourceforge to update its list
+of authorized keys across all their servers.
+
+Once your keys are updated, you should be able to svn checkout
+svn+ssh:... and svn up without using a password.
+
+If you run into any problems, there are more details here:
+https://sourceforge.net/p/forge/documentation/SSH%20Keys/

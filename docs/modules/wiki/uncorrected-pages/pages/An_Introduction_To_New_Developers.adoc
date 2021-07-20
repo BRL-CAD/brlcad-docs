@@ -1,0 +1,64 @@
+If you are new to BRL-CAD community and planning to contribute with your
+valuable efforts, you are highly encouraged to go through brief
+technical background history of BRL-CAD that will help you to get
+familiar with various fundamental and major aspects of BRL-CAD. If
+you're really new to software development in general, check out these
+two videos: https://www.youtube.com/watch?v=WCuUWGmatpU[#1] and
+http://www.youtube.com/watch?v=kqFcF_jRrx0&list=PLhyKYa0YJ_5Dl0a5h20NBoYQqAb7nO4yF[#2]
+
+BRl-CAD always appreciate and encourage new developers to contribute to
+community and for the sake of their convenience to get quickly started,
+we summed up following a brief technical summary.
+
+=== User Interface of BRL-CAD
+
+BRL-CAD is exceptionally capable yet lacking in usability. Flexibility
+is one of our greatest assets and detriments. Interface is our biggest
+problem. Addressing our fundamental usability issues are heavily tied to
+our mathematical geometry representation format and is something we're
+in the middle of fixing (Wu's GSoC project is actually a critical piece
+to that puzzle).
+
+Qt (a cross-platform complete development framework for creation of
+amazing user interfaces) has been in our development roadmap for many
+years. We expect we'll probably have initial useful user capability in
+late 2014. Vlad's GSoC project involves implementing a Qt display
+manager, which is also a critical piece of that puzzle.
+
+Moreover, Archer (the new GUI; under development) is a step in a complex
+refactoring process. It's predominantly a mechanism for abstracting the
+useful logic from within MGED (present GUI) into reusable library form.
+Specifically, this gave us the GED library, which is letting us reuse
+tremendous amounts of useful code that was previously held within MGED.
+That library supports the development of a new Qt-based interface.
+
+=== Why do BRL-CAD display wireframes, and not the shaded geometry like games or blender or any other 3D?
+
+Only certain types of geometry can be represented in one of the explicit
+forms that OpenGL supports (points, lines, polygons). OpenGL does not
+have inherent support for many types of geometry representation formats,
+particularly any of the implicit forms, volumetric forms, level sets,
+NURBS boundary representation, and more. There are some conversion
+libraries that help describe such data in a form that OpenGL can
+display, but it is not "inherent" capability.
+
+We've been working on NURBS infrastructure to make wireframes not be the
+default but there is no plan to remove wireframes as some users prefer
+them, some models cannot be visualized in full without them. When most
+people say shaded display, they usually think of OpenGL, Direct3D,
+games, other modeling systems, etc. Those systems are driven by polygons
+(triangles). To have that style of shaded display, you have to have
+polygons. We do not have a robust method for getting polygons. NURBS
+gives us a robust method.
+
+When we can 1) convert any geometry to NURBS, 2) evaluate any booleans,
+and 3) tessellate NURBS robustly, it will be possible to have robust
+shaded displays for all geometry. #1 was finished last year primarily
+thanks to Cliff and Wu. #3 was finished just this year primarily due to
+Keith. Work on #2 is underway and is scheduled to be finished in 2013.
+
+We all are here to help make BRL-CAD better. How to go about making
+those improvements is key. Having background understanding helps to do
+that effectively without completely wasting time. It would be best to
+understand what the current roadmap already looks like to know about
+what is or is not already happening.

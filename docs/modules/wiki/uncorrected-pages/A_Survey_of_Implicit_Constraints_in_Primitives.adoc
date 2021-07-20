@@ -1,0 +1,125 @@
+== Types of Implicit Parameters
+
+At the level of constraint networks, calculations are done in terms of
+Variables or indpendent real values / floating point numbers. But in the
+construction of geometry these are clustered together in terms of
+implicit parameters. Typical implicit parameters are
+
+. *Vectors* - A 3 dimensional vector is a 3-tuple which is used to
+hold direction as well as magnitude. In BRL-CAD primitives, they may
+represent
+ .. Radius vectors ( Center of a sphere)
+ .. Direction vectors (Direction of a plane)
+
+== Types of Implicit Constraints
+
+An enumeration of the set of contraints observed in the primitives below
+
+. *Modulus Comparison* : Comparison of the modulus of a vector to a
+real number ( 0 for non-negativity ) or the modulus of another
+vector
+. *Perpendicularity of Vectors*
+
+== Implict Constraints by Primitive
+
+=== ell (Ellipse)
+
+Ellipse is built using the Center (radius vector V) and 3 Vectors (A, B,
+C st. |A| = radius) 2 types: Non-negativity/Modulus comparison,
+Perpendicularity Constraints:
+
+. |A| > 0
+. |B| > 0
+. |C| > 0
+. A.B = 0
+. B.C = 0
+. C.A = 0
+
+=== rec (Right elliptical cylinder)
+
+3 types: Non-negativity/Modulus comparison, Perpendicularity, Vector
+equality
+
+Constraints:
+
+. |H| > 0
+. |A| > 0
+. |B| > 0
+. A = C
+. B = D
+. A.B = 0
+. H.A = 0
+. H.B = 0
+
+=== rhc (Right hyperbolic cylinder)
+
+3 types: Non-negativity/Modulus comparison, Perpendicularity
+
+Constraints:
+
+. |H| > 0
+. |B| > 0
+. |R| > 0
+. H • B = 0
+. c > 0
+. |B| ≥ c
+
+=== rpc (Right parabolic cylinder)
+
+2 types: Non-negativity/Modulus comparison, Perpendicularity
+
+Constraints:
+
+. |H| > 0
+. |B| > 0
+. |R| > 0
+. H.B = 0
+
+=== sph (Sphere)
+
+Sphere is a particular case of the ellipse
+
+Constraints: 2 types: Modulus comparison, Perpendicularity
+
+. |A| > 0
+. |B| > 0
+. |C| > 0
+. |A| = |B|
+. |A| = |C|
+. |B| = |C|
+. A.B = 0
+. B.C = 0
+. C.A = 0
+
+=== tgc (Truncated General Cone)
+
+Constraints: 5 types: Modulus comparison, Logical Combination,
+Perpendicularity, Non-planarity, Parallelism
+
+. |H| > 0
+. |A| & |B| not zero together
+. |B| & |D| not zero togehter
+. |A|*|B| and |C|*|D| not zero together
+. H is nonplanar to AB plane
+. A.B = 0
+. C.D = 0
+. A || C ( A is parallel to C )
+
+=== tor (Torus)
+
+Tor is built using the following input fields
+
+`V    V from origin to center`
+`H    Radius Vector, Normal to plane of torus.  |H| = R2`
+`A, B     perpindicular, to CENTER of torus.  |A|==|B|==R1`
+`F5, F6   perpindicular, for inner edge (unused)`
+`F7, F8   perpindicular, for outer edge (unused)`
+
+Constraints: 2 types: Modulus comparison, Perpendicularity
+
+. |A| = |B|
+. A.B = 0
+. B.H = 0
+. H.A = 0
+. |H| > 0
+. |H| < |A|

@@ -1,0 +1,78 @@
+== Getting Ready
+
+Since Meteor installer doesn't support freeBSD operating system, we need
+to manually build and compile the meteor source code. Currently, this
+method is tested on version *10.2-RELEASE-p18*
+
+If possible, use a freshly installed freeBSD system. Any trace of
+node/npm can create problems while compilation, Most of the problems I
+faced were because of some old/unsupported version of node and npm.
+
+== Installing a few packages
+
+We need to install some packages in order to start our meteor
+compilation.
+
+`$ sudo pkg install -y bash git gmake mongodb node npm python`
+
+== Installing Meteor
+
+=== Step 1 : Clone the Repository
+
+The first step is to get the meteor source code on your machine. I
+cloned it in home directory, so it's easy to execute meteor script,
+using $HOME variable.
+`$ cd $HOME`
+
+`$ git clone --depth 1 `https://github.com/4commerce-technologies-AG/meteor[`+https://github.com/4commerce-technologies-AG/meteor+`]
+
+=== Step 2: Build the node module
+
+Next cd into the cloned directory by
+`$ cd $HOME/meteor`
+
+Execute the build node script in scripts folder
+`$ scripts/build-node-for-dev-bundle.sh`
+
+Execute the generate bundle script
+`$ scripts/generate-dev-bundle.sh`
+
+_The above two scripts execution may take some time depending upon the
+configuration of the host machine. So have a little patience while
+executing them ;)_
+
+=== Step 3: Give meteor it's first try
+
+Now meteor is installed successfully and you can give it first try by
+`$ $HOME/meteor/meteor --version`
+
+_The above-mentioned code of line assumes that your meteor folder is in
+the home directory_
+
+== Get OGV
+
+Now that meteor is successfully installed, it's time to run OGV on
+system. Clone OGV from it's official repository by
+`git clone `https://github.com/BRL-CAD/OGV.git[`+https://github.com/BRL-CAD/OGV.git+`]
+
+Go to the OGV app directory
+`$ cd /path/to/clone/OGV-Meteor/OGV`
+
+Run meteor using the following command
+`$ $HOME/meteor/meteor`
+
+== Keep OGV running on a server
+
+If you are working on a cloud server and want OGV to keep running, even
+if you close the connection, you can do so by using tmux.
+
+Install tmux by
+`$ sudo pkg install tmux`
+
+Start tmux session by
+`$ tmux`
+
+Run meteor inside tmux session in the usual way. Get out of the session
+using `Ctrl + b` and then press the key *D* on keyboard to detach from
+that session. Now you can safely log out and it won't end the meteor
+process you started inside tmux session.

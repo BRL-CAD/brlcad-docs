@@ -1,0 +1,148 @@
+:doctype: book
+
+link:category:tutorials[category:tutorials]
+link:category:animation[animation] The question often comes up
+about how to make an animation in BRL-CAD. As BRL-CAD is primarily a
+solid modeling system for engineering and analysis purposes, there is
+(presently) only limited support for generating animations but it is
+possible with the assistance of some third-party tools. The basic method
+is to make your model, decide what keyframes and sequencing you want to
+have in your movie, render those keyframes as images, and then composite
+them into an animation. BRL-CAD can help will all but the last
+compositing step.
+
+So basically you need to render frames for your animation and then
+composite them together into a movie.
+
+= Rendering image frames for an animation
+
+There are a variety of rendering and image processing tools that support
+a wide range of visualization techniques. Tools that may be of interest
+include *link:rt[rt]*, *link:rtedge[rtedge]*,
+*rtxray*, *pixmatte*, and *pixblend* as well as a variety of other
+rendering and image processing tools.
+
+If the animation you want is very simple like having an animation of
+something spinning, the relatively simple process is described in the
+<<Fly-around_animation,#Fly-around animation>> section. If,
+however, what you want to animate is considerably more complex, there
+are a variety of tools that become important for setting up animation
+paths, managing keyframes, interpolating between frames, and previewing
+the animation. There are animation tools in MGED (see the _'animmate_
+command' (yes, it's actually spelled that way) for starters, the
+AnimMate Control Panel (under Tools), as well as a variety of animation
+table processing tools outside of MGED.
+
+== Detailed arbitrary path animation
+
+See http://brlcad.org/OLD/reports/tr-313/index.html[Animation Techniques in
+BRL-CAD].
+
+== Fly-around animation
+
+It can be really easy to make a simple fly-around animation of your
+geometry. The *rt* command has options for azimuth and elevation that
+will let you render animation frames around a given object. The first
+step is to render your images. You can create a shell script like this:
+
+`#!/bin/sh`
+`for i in `loop 000 359 10` ; do `
+`   rt -a $i -e 35 -w 640 -n 480 -o image$i.png database.g top_level_object `
+`done`
+
+This renders 36 images of the object top_level_object from a geometry
+database that was named *database.g*, creating images every 10 degrees
+(azimuth) at an elevation of 35 degrees. The images are named
+_image000.png_ through _image350.png_.
+
+Walking through the shell script, the second line *''(for i in `loop
+000 359 10` ; do)*'' just sets up a loop to run with variable *i*
+set to the next number each pass through the for loop. You can see the
+expansion by running the loop command directly:
+
+`[sean@bz (Fri Feb 13 11:23:07) ~]$ loop 000 359 10`
+`000`
+`010`
+`020`
+`+...+`
+`350`
+
+The third line calls *rt* to render an image. The *-a* option sets
+the azimuth value and the *-e* option sets the elevation value. The
+*-w* and *-n* options set the width and height of the image
+respectively. The *-o* option specifies the filename for the output
+image that is generated. Finally, there is the name of the database to
+read from and the name of the object in that database that we want to
+render. The object is automatically centered in the view.Please make
+sure that the commands *loop* and *rt* are in the your search PATH
+using the linux *export* command.
+
+= Compositing an animation
+
+Once you run the script and have generated your image frames, you're
+done with BRL-CAD. The next step is to take those image frames that were
+rendered and provide them as input to any number of tools that will
+generate a movie for you.
+
+== With ImageMagick
+
+Assuming all of your images are numbered sequentially with padded zeros,
+this should do the trick for a simple animation using
+http://www.imagemagick.org/[ImageMagick]:
+
+`convert *.png movie.mpg`
+
+== With MJPEG
+
+For more control of the animation, the
+http://mjpeg.sourceforge.net[MJPEG] project is another toolset that
+may help. See http://www.stillhq.com/jpeg2mpeg/000001.html[this
+tutorial] for example
+steps.
+
+== With ffmpeg
+
+A simple way to convert an image sequence to a mpeg movie is :
+
+ffmpeg -f image2 -i image%d.png video.mpg
+
+http://www.catswhocode.com/blog/19-ffmpeg-commands-for-all-needs[More information
+here]
+
+== With Photoshop
+
+To be written.
+
+== On a Mac OS X using iPhoto
+
+Open iPhoto and import the images (File->Import).
+
+To create the movie, select all of the images, and then choose
+File->Export. Since they are numbered sequentially with padded zeros,
+they should already be in order.
+
+Select the "QuickTime" tab. You may wish to un-check the "Add currently
+selected music to movie" button. Now click the Export button.
+
+Type a filename and click "Save".
+
+That's it. At this point you should have a quicktime movie of your
+geometry.
+
+== With Mencoder
+
+In the directory where the .png files are in the command line do:
+
+`mencoder mf://*.png -mf w=800:h=600:fps=25:type=png -ovc lavc -lavcopts vcodec=mpeg4:mbd=2:trell -oac copy -o movie.avi`
+
+If you modify in the 'Fly-aroundAnimation' shell script the line:
+
+`for i in `loop 000 359 10` ; do`
+
+to
+
+`for i in `loop 000 359 2` ; do`
+
+then you get a smooth animation of your geometry.
+
+The resulting .avi file one can to import in Kino, the Video Editor. :)

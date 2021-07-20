@@ -1,0 +1,203 @@
+:doctype: book
+
+This article provides knowledge about different types of geometric
+primitive objects that can be exported from BRL-CAD to POV-Ray geometry
+file. Their properties, functions used for them, parameters are
+discussed in section below.
+
+To Know more about POV-Ray, here are some links below:
+
+* http://www.povray.org/documentation/3.7.0/t2_1.html#t2_1_3[Introduction to
+POV-Ray]
+* http://www.povray.org/documentation/3.7.0/t2_2.html#t2_2_1_2[Adding Standard include files, Camera, Light source in POV-Ray
+Geometry
+file]
+
+Below is the list of primitives that are working/exported correctly,
+partially and not touched yet.
+
+= Primitives that are working properly
+
+= Arbitrary convex polyhedra
+
+== ARB8
+
+This primitive is formed in POV-Ray using mesh.The mesh object can be
+used to efficiently store large numbers of triangles. Example:
+
+`    mesh{triangle{a,b,c}triangle{a,c,d}triangle{a,d,f}`
+`    triangle{g,h,c}triangle{e,f,g}triangle{e,g,h}}`
+
+== ARBN
+
+An arbn record is specified by N sets of intersecting planes, each
+defined by four coefficients:
+
+* the {X, Y, Z} coefficients of the plane's normal vector pointing
+outward from the center of the arbn shape, and
+* the perpendicular distance of that plane from the origin.
+
+Its exported in POV-Ray by using intersection of Planes. Example:
+
+`+    intersection{ plane{<x, y, z coefficients>, normal} .... }+`
+
+= Ellipsoids
+
+== ELL
+
+This primitive is named as spheroid in POV-Ray. It is having Center
+Vector, Radius Vector Example:
+
+`+     Spheroid(<-1.50,3.00,-2.00>,<2.0,1.2,2.5> )+`
+
+== ELLG, ELL1
+
+These primitives are exported under Ell
+
+== EHY
+
+Elliptical Hyperboloid of BRL-CAD can be formed by POV-Ray. Currently
+its coordinates are exported successfully and is done by using quadric
+equartions of POV-Ray
+
+== EPA
+
+Elliptical Paraboloid in BRL-CAD. Its coordinates are exported
+successfully and is done by using quadric equartions of POV-Ray
+
+== Sphere
+
+Sphere is formed by Center and Radius Example:
+
+`+     sphere { Center, Radius [OBJECT_MODIFIERS...]}+`
+
+= Cones and Cylinders
+
+== Truncated General Cone
+
+This primitive of BRL-CAD is formed by using Supercone of POV-Ray.
+Example:
+
+`    Supercone( //point A, axis Ax, axis Az:<0.0,0.0,0.0>, 0.5, 1.0,`
+`               // point B, axis Bx, axis Bz:<0.0,1.5,0.0>, 0.7, 0.4)}`
+
+== Cone
+
+This primitive of BRL-CAD is named as Cone in POV-Ray. It is formed as
+Center and radius of one end Center and radius of other end Example:
+
+`     cone {<0, 1, 0>, 0.3  <1, 2, 3>, 1.0 texture { T_Stone25 scale 4 }}`
+
+== TEC
+
+Its also exported under TGC.
+
+== REC
+
+Its exported nuder TGC.
+
+== TRC
+
+Its also under TGC
+
+== Cylender
+
+This is formed by Cylender of POV-Ray. center_of_one_end,
+center_of_other_end and Radius Example:
+
+`     cylinder { <0, 1, 0>,<1, 2, 3>,0.5 }}`
+
+== RHC
+
+Right Hyperbolic Cylinder in BRL-CAD. Coordinates are exported
+successfully. It can be formed by using function
+
+`     function { pow(x,2) + y }`
+
+of POV-Ray.
+
+== RPC
+
+Right Parabolic Cylinder in BRL-CAD. Coordinates are exported
+successfully. It also formed by the using functions of POV-Ray.
+
+= Other Solids
+
+== Torus
+
+Torus is created using major radius and minor radius Example:
+
+`    torus { 4, 1 pigment { Green }}`
+
+== Particle
+
+This primitives of BRL-CAD is formed in POV-Ray by using Round_Cone2 of
+POV-Ray. Example:
+
+`    Round_Cone2(`
+`    //point A, radius A: <0,0,0>,0.70,`
+`    // point B, radius B:<0,1,0>, 0.40,)`
+
+== half
+
+Half primitive of BRL-CAD is export into POV-Ray as Plane. Example:
+
+`     plane { `+++<Normal>+++`, Distance }`+++</Normal>+++
+
+== BOT
+
+Bag of triangles in BRL-CAD. Its exported by using triangles in POV-Ray.
+
+= Primitives that are under progress
+
+== ETO
+
+Elliptical torus of BRL-CAD can be formed by using some methods. One of
+them is by using function i.e. f_torus Example:
+
+`     f_torus(x,y,z,1*(y+0.4),0.1 )`
+
+== extrude
+
+Currently, data of extrude is exported successfully. Remaining part is
+how to export sketch and relate it with extrude.
+
+= Primitives that are not under work yet
+
+== derived from 2d
+
+=== revolve
+
+=== dsp
+
+=== ebm
+
+=== hf
+
+== Other solids
+
+=== pipe
+
+=== ars
+
+=== metaball
+
+=== nurb
+
+=== spline
+
+=== vol
+
+=== poly
+
+=== hrt
+
+== Other
+
+=== Sketch
+
+=== grip
+
+=== binunif
+
+=== submodel

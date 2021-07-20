@@ -1,0 +1,108 @@
+:pp: {plus}{plus}
+
+link:Compiling/Eclipse[Setting up in Eclipse]
+
+BRL-CAD build system uses CMake and so I will show you how to build a
+project from cross-platform CMake on Eclipse. The CMake 2.8 project
+generator for Eclipse does not work, so you must create the project and
+configure it to build with GNU Make. Here's how to do it on Linux.
+
+== Create an Eclipse Project
+
+Create an Eclipse CDT (C/C{pp} Development Tooling) project using the
+_File > New > C{pp}_ Project command for your C{pp} project, or _File
+> New > C_ Project for a C project. Do not create the project
+using the CMake Eclipse project generator.
+
+image::Compiling-Eclipse-Manually-1.png[Image:Compiling-Eclipse-Manually-1.png]
+
+== Create Eclipse Make Targets
+
+The conventional approach to using CMake with Eclipse is to create an
+_external tool_ in Eclipse. However, a _Make Target_ is simpler, and
+because it is stored in the Eclipse *.project* file, you can check it
+into your version control system and it will work in every one of your
+working copies, on every computer. Create a Make Target for each
+configuration that you want to build. Here I assume that you have the
+usual _Release_ and _Debug_ configurations:
+
+* Display the _Make Target_ window using the _Window > Show
+View > Make Target_ menu command. It should appear on the right,
+with the _Outline_ window.
+* Select the folder for the project for which you want to add CMake.
+CMake will run with this folder as its working directory.
+* Right click on the folder and select _New_ from the context menu.
+The _Create Make Target_ dialog will appear.
+ ** Type _Target name_ *CMake Release*
+ ** In _Make target_, deselect Same _as the target name_, and make
+sure that the _Make target_ field is empty
+ ** In _Build Command_, deselect _Use builder settings_ and set the
+_Build command_ to
+  *** `cmake -E chdir Release/ cmake -G "Unix Makefiles" ../ -DCMAKE_BUILD_TYPE:STRING=Release`
+ ** Click OK
+  *** image::Compiling-Eclipse-Manually-2.png[Image:Compiling-Eclipse-Manually-2.png]
+* Repeat, this time for _Target name_ *CMake Debug*, and _Build
+command_:
+ ** `cmake -E chdir Debug/ cmake -G "Unix Makefiles" ../ -DCMAKE_BUILD_TYPE:STRING=Debug`
+* Create the *Release/* and *Debug/* directories
+ ** `mkdir Release Debug`
+
+== Set Up the Eclipse CDT Builder
+
+Next, set up the CDT builder to run the Makefiles that CMake builds.
+
+* Right click on a CDT project. In the context menu, select
+_Properties_.
+* On the left, select C/C{pp} _Build_
+ ** Set _Configuration_ to _Release_
+  *** Choose the _Builder Settings_ tab
+   **** Deselect _Use default build command_
+   **** Specify the _Build command_:
+    ***** `+make -C ${ConfigName}+`
+   **** Deselect _Generate Makefiles automatically_
+   **** Make the _Build directory_ field blank
+   **** The form should appear as shown below:
+    ***** image::Compiling-Eclipse-Manually-3.png[Image:Compiling-Eclipse-Manually-3.png]
+  *** Choose the _Behavior_ tab
+   **** Select _Build (Incremental build)_ and specify the
+target name _all_
+   **** Select _Clean_ and specify the target name _clean_
+   **** The form should appear as shown below:
+    ***** image::Compiling-Eclipse-Manually-4.png[Image:Compiling-Eclipse-Manually-4.png]
+ ** Set _Configuration_ to _Debug_
+  *** Choose the _Builder Settings_ tab
+   **** Set all values exactly the same as the _Release_
+configuration
+  *** Choose the _Behavior_ tab
+   **** Set all values exactly the same as the _Release_
+configuration
+    ***** image::Compiling-Eclipse-Manually-5.png[Image:Compiling-Eclipse-Manually-5.png]
+    ***** image::Compiling-Eclipse-Manually-6.png[Image:Compiling-Eclipse-Manually-6.png]
+   **** Click OK
+
+== Build the Project
+
+Use CMake to generate an out-of-source GNU Make build system:
+
+* In the _Make Targets_ window, double click on _CMake Release_ or
+_CMake Debug_ to generate the GNU Make build system in *Release/*
+or *Debug/*, respectively
+
+image::Compiling-Eclipse-Manually-7.PNG[Image:Compiling-Eclipse-Manually-7.PNG]
+
+* If necessary, edit your *CMakeLists.txt* control files
+* Delete the contents of the corresponding build directory. For
+example:
+* `rm -r Release/*`
+* and repeat.
+
+Actually, for minor edits to your *CMakeLists.txt* control files, you
+need not delete the build directory. However, I cannot tell you exactly
+what the threshold for "`minor edits`" is.
+
+Now, build the project the usual way with Eclipse:
+
+* Select the configuration to build (_Release of Debug_) with the
+_Project > Build Configurations > Set Active_ command
+* Build with the _Project > Build Project_ command
+* Edit your source code files, and repeat
