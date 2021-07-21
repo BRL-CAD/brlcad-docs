@@ -1,7 +1,8 @@
-* {blank}
- ** BRL-CAD Recently moved from SVN to Github. Building from SVN
-works as of 3 Jul 2021, but you may need to build from Github in
-the future. ***
+= Building from SVN
+
+CAUTION: *BRL-CAD Recently moved from SVN to Github. Building from SVN
+works as of 3 Jul 2021, but you may need to build from Github in the
+future.*
 
 == Obtain the sources via Subversion
 
@@ -10,14 +11,18 @@ For Windows:
 Install a Subversion client for Windows, such as TortoiseSVN:
 https://sourceforge.net/projects/tortoisesvn/
 
-To get a checkout after installing TortoiseSVN, right-click in a folder
-where you want to download the sources, select SVN Checkout and specify
-https://svn.code.sf.net/p/brlcad/code/brlcad/trunk for the repository
+To get a checkout after installing TortoiseSVN, right-click in a
+folder where you want to download the sources, select SVN Checkout and
+specify https://svn.code.sf.net/p/brlcad/code/brlcad/trunk for the
+repository
 URL.
 
 For Linux/Mac/BSD:
 
- svn checkout https://svn.code.sf.net/p/brlcad/code/brlcad/trunk brlcad
+[source,bash]
+....
+svn checkout https://svn.code.sf.net/p/brlcad/code/brlcad/trunk brlcad
+....
 
 NOTE: If you do not yet have an SVN client installed, go to
 http://subversion.tigris.org for information on obtaining an
@@ -27,24 +32,29 @@ repositories.
 
 == Configure the build system with CMake
 
-BRL-CAD also requires the build tool CMake. Most Linux/BSD/UNIX systems
-provide a package for CMake. For platforms that do not, CMake is
-available from http://www.cmake.org
+BRL-CAD also requires the build tool CMake. Most Linux/BSD/UNIX
+systems provide a package for CMake. For platforms that do not, CMake
+is available from http://www.cmake.org
 
 Once installed, create a directory where you will compile BRL-CAD and
 run CMake.
 
 For Windows, you can use the CMake GUI where you specify build and
-source
-directories:image:Running_cmake_on_windows.png[Running_cmake_on_windows.png,200]
+source directories:
+
+.Running CMake GUI on Windows
+image::Running_cmake_on_windows.png[]
 
 For Linux/Mac/BSD, this looks like:
 
-`cd brlcad`
-`mkdir build`
-`cd build`
-`cmake .. (for a default build)`
-`cmake .. -DBRLCAD_BUNDLED_LIBS=ON -DCMAKE_BUILD_TYPE=Release (for a release build)`
+[source,bash]
+....
+cd brlcad
+mkdir build
+cd build
+cmake ..  # for a default build
+cmake .. -DBRLCAD_BUNDLED_LIBS=ON -DCMAKE_BUILD_TYPE=Release  # for a release build
+....
 
 == Compile and test your build
 
@@ -62,24 +72,25 @@ You can also run a performance test:
 
 `make benchmark`
 
-Both the test and benchmark should report successfully if everything is
-working correctly. Report any failures to the BRL-CAD http://sourceforge.net/tracker/?group_id=105292&atid=640802[bug
-tracker].
+Both the test and benchmark should report successfully if everything
+is working correctly. Report any failures to the BRL-CAD
+http://sourceforge.net/tracker/?group_id=105292&atid=640802[bug
+tracker^].
 
 == Doxygen (OPTIONAL)
 
-If you have doxygen installed somewhere CMake can find it, then you can
-build a browsable HTML documentation of the source code. This is useful
-if you want to use BRL-CAD's libraries directly, or if you just want a
-better overview of how things are structured.
+If you have doxygen installed somewhere CMake can find it, then you
+can build a browsable HTML documentation of the source code. This is
+useful if you want to use BRL-CAD's libraries directly, or if you just
+want a better overview of how things are structured.
 
-To build the HTML files on a Linux/Mac/BSD system, run (from your build
-directory):
+To build the HTML files on a Linux/Mac/BSD system, run (from your
+build directory):
 
 `make dox`
 
-and then open doc/doxygen_output/html/index.xhtml with your web browser
-of choice.
+and then open doc/doxygen_output/html/index.xhtml with your web
+browser of choice.
 
 == Install (OPTIONAL)
 
@@ -87,49 +98,53 @@ On all systems, you can simply run directly from the build directory
 without installing.
 
 That said, by default BRL-CAD installs into /usr/brlcad or /opt/brlcad
-on Linux/Mac/BSD and into the standard program directory on Windows. To
-check your build or install of BRL-CAD, browse to the "bin" directory
-from the GUI or from cmd.exe and run "mged".
+on Linux/Mac/BSD and into the standard program directory on
+Windows. To check your build or install of BRL-CAD, browse to the
+"bin" directory from the GUI or from cmd.exe and run "mged".
 
 == Setup environment (OPTIONAL)
 
-At this point, all that remains is setting your system PATH environment
-variable so BRL-CAD utilities can be found. Installation does not set
-PATH for you automatically.
+At this point, all that remains is setting your system PATH
+environment variable so BRL-CAD utilities can be found. Installation
+does not set PATH for you automatically.
 
 For Windows, setting PATH can be helpful but isn't necessary. Simply
 navigate to where you installed BRL-CAD and run from there.
 
 For Linux/Mac/BSD, you'll either need to specify full paths to
-applications (e.g., /usr/brlcad/bin/rt) or set your PATH. If the default
-installation prefix (/usr/brlcad or /opt/brlcad) was used, you should
-only need to add /usr/brlcad/bin to your PATH in order to find
+applications (e.g., /usr/brlcad/bin/rt) or set your PATH. If the
+default installation prefix (/usr/brlcad or /opt/brlcad) was used, you
+should only need to add /usr/brlcad/bin to your PATH in order to find
 applications (optionally setting MANPATH as well):
 
 For bash:
 
-`export PATH="/usr/brlcad/bin:$PATH"`
-`export MANPATH="/usr/brlcad/man:$MANPATH"`
+[source,bash]
+....
+export PATH="/usr/brlcad/bin:$PATH"
+export MANPATH="/usr/brlcad/man:$MANPATH"
+....
 
 For csh/tcsh:
 
-`set path=( /usr/brlcad/bin $path )`
-`setenv MANPATH "/usr/brlcd/man:$MANPATH"`
-`rehash`
+[source,sh]
+....
+set path=( /usr/brlcad/bin $path )
+setenv MANPATH "/usr/brlcd/man:$MANPATH"
+rehash
+....
 
 To find BRL-CAD manual pages without setting your MANPATH, use the
-provided "brlman" binary instead of "man" (e.g., /usr/brlcad/bin/brlman
-rt).
+provided "brlman" binary instead of "man" (e.g.,
+/usr/brlcad/bin/brlman rt).
 
 == Test your Build
 
-If compilation went well, there should now be more than 400 command-line
-applications at your disposal for processing images and geometry. You
-should be able to run the main modeling application:
+If compilation went well, there should now be more than 400
+command-line applications at your disposal for processing images and
+geometry. You should be able to run the main modeling application:
 
 `mged`
 
 If you didn't install, you may need to specify the path to the tool
 (e.g., "bin/mged") from the build directory.
-
-link:Category:Documentation[Category:Documentation]
