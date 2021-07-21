@@ -1,0 +1,123 @@
+<TITLE>IGES 4.0 to BRL-CAD Translator for CSG Models</TITLE>
+<H2>IGES</H2>
+One might ask that if translators between CAD system A 
+and B were required, then why not produce those direct 
+translators instead of using the neutral file format scheme of IGES?  
+For a small number of CAD systems that solution may be reasonable, 
+but consider how many translators would be needed for exchange between 
+a large number of systems.  For each and every pair of CAD systems 
+two translators are required, one for each direction (i.e., one to 
+produce the data file and another to read the data file).  The number 
+of translators required for full exchange capability among a group 
+of n CAD systems is <EM>n x ( n - 1 )</EM>.
+The number of translators required for a data exchange via IGES is 
+simply <EM>2n</EM>,
+because every CAD system requires just two translators (one for incoming 
+and one for outgoing).  Note that the number of IGES translators required 
+for the IGES scheme increases only linearly with the number of CAD 
+systems, while the number required for direct translation increases 
+as the square of the number of CAD systems.<P>
+Nearly every CAD system on the market today supports exchange 
+of two-dimensional drawings via IGES.  An example of a drawing received 
+at ARL in IGES format is shown in figure 1. <A HREF="ref.html#IGES[7]"><STRONG>IGES[7]</STRONG></A><P>
+<PRE>
+<IMG SRC="GRAPHICS/lhx.gif">
+Figure 1. Sample IGES Drawing
+</PRE><P>
+Although the IGES form of that drawing has no direct application 
+to generating a solid model of the helicopter in the <EM>BRL-CAD</EM> system, 
+it must be noted that the IGES file does contain data suitable for 
+capture by a preprocessor that could simplify the making of the solid 
+model.  Work is in progress with just that objective; however, that 
+exploitation of IGES is beyond the scope of this report.<P>
+The IGES specification defines a neutral file format for the 
+exchange of product definition data.  This neutral file may be in 
+one of three formats:  ASCII, compressed ASCII, or binary.  The ASCII 
+form is the most commonly used and is the only form considered in 
+this report.  This format is based on fixed-length 80-character records.  
+The ASCII file format consists of five sections, a start section, 
+a global section, a directory section, a parameter section, and a 
+terminate section.  Figure 2 shows an example of an ASCII format IGES 
+file.<P>
+<PRE>
+<IMG SRC="GRAPHICS/sample.gif">
+Figure 2. Sample IGES FIle
+</PRE><P>
+The start section is merely a place for any human-readable comments 
+that the sender wishes to include.  The global section contains information 
+for use by the post-processor (receiving translator) such as the units 
+used in the IGES file, a scale factor, the date the file was generated, 
+the sender's name, and so forth.  The actual data in the IGES file 
+are recorded as a number of entities.  Each entity 
+has a specific purpose and a specific format within the file.  Each 
+entity must have its own entry in the directory section.  Directory 
+section entries consist of two 80-character records that contain 
+information about that particular entity such as what type of entity 
+it is, whether this entity requires a transformation matrix applied 
+to it (and where the directory entry for the matrix can be found), 
+the form number (if required), the color of the object, and where 
+the parameters that define this entity are located.  The pointers 
+in the directory section that indicate where other data are to be 
+found are simply sequence numbers (literally, line numbers) usually 
+in the parameter section.  The parameter section contains the detailed 
+data for each entity in a free-form style with each field separated 
+by an end-of-field delimiter and each record terminated with an end-of-record 
+delimiter.  Both these delimiters are defined in the global section.  
+The parameter section is followed by the terminate section which consists 
+of a single 80-character record containing the number of records used 
+for each section of the file.<P>
+IGES supports the following entities for a CSG solid model
+<OL>
+<LI>Block
+<LI>Right Angular Wedge
+<LI>Right Circular Cylinder
+<LI>Right Circular Cone Frustum
+<LI>Sphere
+<LI>Torus
+<LI>Ellipsoid
+<LI>Solid of Revolution
+<LI>Solid of Linear Extrusion
+<LI>Solid Instance
+<LI>Boolean Tree
+<LI>Solid Assembly
+</OL>
+The first seven of these entity types are simple primitive shapes, 
+and the directory section entry for each would contain a pointer to 
+a parameter section entry that contains data such as vertices, radii, 
+length vectors, and so forth.  The parameter section entry 
+for the solid of revolution would contain a pointer to another directory 
+entry for some type of curve definition entity as well as a point, 
+axis, and a rotation angle.  The curve is rotated about the axis through 
+the rotation angle to generate (define) the solid.  The solid of linear 
+extrusion specifies a closed curve (representing the cross section 
+of the extrusion) and a vector to define the direction and distance 
+the cross section is to be extruded.<P>
+Both the solid of revolution and the solid of linear extrusion 
+may make use of any of the IGES curve entities.  These curves may 
+be specified using any of the following entity types:
+<OL>
+<LI>Circular Arc
+<LI>Conic Arc
+<LI>Line
+<LI>Copious Data
+<LI>Parametric Spline
+<LI>Rational B-Spline
+<LI>Composite Curve
+</OL>
+The first three of these are obvious curve types.  The copious data 
+curve is merely a series of data points to be connected by straight 
+lines.  The splines offer two types of smooth curves, and the composite 
+curve is a single curve with a series of segments made up of any mix 
+of the above curve types (including more composite curves).<P>
+The solid instance entity allows a copy of another solid to be 
+used without redefining it and includes the capability to apply a 
+different transformation matrix to the copy.  The boolean tree entity 
+describes the operations and operands to build an object which may 
+be the entire model under consideration or just a small part.  The 
+operators allowed in the boolean tree are intersection, union, and 
+subtraction.  The operands may be any CSG solid, solid instances, 
+or other boolean trees.  The solid assembly entity defines a collection 
+of items that share a fixed geometric relationship.  Any solid objects 
+may be grouped by this entity.<P>
+<A HREF="approach.html"><EM>Next Section</EM></A><P>
+<A HREF="index.html"><EM>Table of Contents</EM></A><P>

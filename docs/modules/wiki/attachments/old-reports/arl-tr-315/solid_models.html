@@ -1,0 +1,67 @@
+<TITLE>IGES 4.0 to BRL-CAD Translator for CSG Models</TITLE>
+<H2>SOLID MODELS</H2>
+
+Generally, there are three accepted types of solid modeling techniques
+<UL>
+<LI>Constructive Solid Geometry (CSG)
+<LI>Boundary Representation (BREP)
+<LI>Hybrids
+</UL>
+
+
+The CSG system uses a variety of (generally simple) primitive solid 
+shapes, such as cones, cylinders, spheres, ellipsoids, boxes, and 
+so forth, as the basis for the construction of more complex objects 
+by employing combining operators such as union, intersection, and 
+subtraction.  Often the combining operators are called booleans.
+Sometimes the familiar combining operations are hidden from 
+the user, but they are still there nevertheless.  For example, in 
+a feature-based CSG system, the user can <EM>drill</EM> a hole through 
+an object by specifying a hole command, rather than 
+by explicitly defining the <EM>hole</EM> as a subtraction of the appropriate 
+cylinder from the object.  However, the subtraction operator and the 
+operands are stored by the CSG system (as a form of boolean tree
+) to define the new object.<P>
+
+The BREP systems create solid objects by defining a surface (or 
+a collection of surfaces) that completely encloses the volume of the 
+object.  The shape of the surface(s) defines the shape of the object.  
+These surface definitions often include a variety of forms such as 
+B-splines, Bezier patches, Coons patches, simple planes, or merely 
+faceted (tesselated) surfaces.<P>
+
+Hybrid systems are a combination of both CSG and BREP.  The user, 
+typically, can choose from a palette of simple shapes and then use 
+combining operations to produce a model; or the user may select from 
+a variety of surfaces and trim, cut, or otherwise manipulate them 
+to define the model.  However, nearly all hybrid systems evaluate 
+their CSG constructs to produce a final BREP form of the model.  The 
+current release of the Army Research Laboratory's (ARL) Computer-Aided 
+Design package (BRL-CAD 4.0) is a hybrid system, although its CSG capabilities 
+are most visible and available to the user in the interactive editor 
+mged, and <EM>BRL-CAD</EM> does not generally produce the final model 
+as a BREP.  The spline-surfaced solid, the ARS solid, 
+the polysolid, and the new NMG solid 
+are all examples of BREP-type objects.<P>
+
+As designers became more dependent on CAD systems, there was 
+a logical progression into solid modeling because of its useful potential.  
+Remember, human beings invented engineering drawings to capture and 
+communicate design intent among humans.  But now humans 
+are coming to realize that machines can recognize design intent more 
+easily in forms other than three-view engineering drawings.  Today's 
+emphasis is on machine-to-machine communication, often linking the 
+design of a part (on one machine) to ultimately the computer-driven 
+machine tool (on another machine).  Thus, the solid model is emerging 
+as the specification of the part (the product definition).  
+Accordingly, many CAD vendors include solid modeling capabilities 
+in their systems and some are including additional applications capabilities 
+such as finite element analysis based on the solid model.  (The term 
+computer-aided engineering (CAE) is evolving as the descriptor 
+used to distinguish the workstation with these new capabilities from 
+the traditional CAD faculty.)  As the engineers in the 1970s realized 
+that some method was needed for exchanging CAD-generated engineering 
+drawings between CAD systems, now they realize that the same need 
+exists for CAD-generated solid models.<P>
+<A HREF="iges.html"><EM>Next Section</EM></A><P>
+<A HREF="index.html"><EM>Table of Contents</EM></A><P>

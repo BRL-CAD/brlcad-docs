@@ -1,0 +1,113 @@
+<TITLE>IGES 4.0 to BRL-CAD Translator for CSG Models</TITLE>
+<H2>CURRENT STATUS</H2>
+
+An IGES to BRL-CAD translator (post-processor) has been developed 
+based on the ANSI standard ASME Y14.26M-1989, which is essentially 
+IGES 4.0.  Therefore, this translator accommodates (with approximations 
+in some cases) all the ANSI (i.e., IGES) CSG entities.  The translator 
+does not support the IGES BREP entities from IGES Version 5.1  The 
+current translator reads the IGES file, checks for correct syntax, 
+then proceeds to construct the <EM>BRL-CAD</EM> model.  The translator makes 
+extensive use of the <EM>BRL-CAD</EM> <I>libwdb</I> package, thus avoiding 
+concerns about the details of the <EM>BRL-CAD</EM> database format as well 
+as future concerns about changes to that format.  The following routines 
+from <I>libwdb</I> are used:
+<UL>
+<LI><I>mk_id</I> creates an ident record for the entire database
+<LI><I>mk_rcc</I> creates a right-circular cylinder
+<LI><I>mk_trc</I> creates a truncated right-circular cone
+<LI><I>mk_tgc</I> creates a truncated general cone
+<LI><I>mk_arb8</I> creates a polyhedron of eight vertices
+<LI><I>mk_sph</I> creates a sphere
+<LI><I>mk_ell</I> creates a general ellipsoid
+<LI><I>mk_tor</I> creates a torus
+<LI><I>mk_addmember</I> adds a name to a list of members for future inclusion in a group
+<LI><I>mk_lcomb</I> creates a combination, region, or group
+</UL>
+When transformation matrices and translations are present 
+in an IGES file, they follow the same convention as <EM>BRL-CAD</EM> does and 
+can be used as arguments in the <I>mk_addmember</I> calls 
+for building combinations.  Any transformations applied to top level 
+objects are applied by creating a new top level group named <EM>all</EM> 
+that contains all unreferenced objects with their transformations 
+applied.<P>
+
+The IGES to BRL-CAD post-processor described above has been implemented 
+and has been successfully exercised on a number of actual IGES CSG 
+files.  Some of these files were obtained from CAD systems that support 
+IGES and some were hand developed for the purpose of testing this 
+software.  The four following illustrations show solid models that were originally 
+generated on a Calma CAD system and translated to <EM>BRL-CAD</EM> via IGES. <A HREF="ref.html#SDRC[8]"><STRONG>SDRC[8]</STRONG></A>
+The models were converted to <EM>BRL-CAD</EM> using the IGES to BRL-CAD 
+translator and then rendered by <EM>BRL-CAD</EM>'s ray-tracer <I>rt</I>.<P>
+<A HREF="GRAPHICS/ge6.512.gif"><IMG SRC="GRAPHICS/ge6.128.gif"></A>
+<A HREF="GRAPHICS/ge8.512.gif"><IMG SRC="GRAPHICS/ge8.128.gif"></A>
+<A HREF="GRAPHICS/ge8a.512.gif"><IMG SRC="GRAPHICS/ge8a.128.gif"></A>
+<A HREF="GRAPHICS/ge9.512.gif"><IMG SRC="GRAPHICS/ge9.128.gif"></A><P>
+These models contained some of the IGES entities that are not 
+supported by <EM>BRL-CAD</EM>.  However, the resulting models are certainly 
+acceptable for most applications.  The necked-down cylinder portion 
+of the part in the first illustration is a solid of revolution (and approximated 
+by a combination of <EM>BRL-CAD</EM> <I>gentgc</I> primitives as described 
+above).  The three <I>ears</I> on the same part are solids of linear 
+extrusion (and are <EM>BRL-CAD</EM> polysolid approximations).  
+The next two are views of a model that was used as the AUTOFACT 
+V demonstration part.  AUTOFACT is a national convention focusing 
+on manufacturing technology and the transfer of part designs from 
+system to system.  The model in the fourth illustration contains three solids of 
+linear extrusions and five solids of revolution.  In spite of our 
+translator's approximations, we think the reader will agree that the 
+resulting <EM>BRL-CAD</EM> model looks like a reasonable object (whatever it 
+is).<P>
+The following four figures illustrate original <EM>BRL-CAD</EM> models that 
+have been converted to the IGES format and then translated back to 
+<EM>BRL-CAD</EM> via the current IGES translator.<P>
+<A HREF="GRAPHICS/woodie.512.gif"><IMG SRC="GRAPHICS/woodie.128.gif"></A>
+<A HREF="GRAPHICS/woodie_igs.512.gif"><IMG SRC="GRAPHICS/woodie_igs.128.gif"></A><P>
+<A HREF="GRAPHICS/bldg391.512.gif"><IMG SRC="GRAPHICS/bldg391.128.gif"></A>
+<A HREF="GRAPHICS/bldg391_igs.512.gif"><IMG SRC="GRAPHICS/bldg391_igs.128.gif"></A><P>
+The translation to IGES was 
+performed by a rudimentary translator with some manual file editing.  
+For practical purposes, the tin
+woodsman model shown in the first pair of figures translated to and from IGES without 
+loss of precision or geometry.  Some nongeometry information was lost 
+in the process, such as object names and material properties.  In 
+the third figure, a building rests on a mirrored surface, but that same building 
+after translation to IGES and back rests on a geometrically equivalent 
+surface that does not possess the mirror property.  Also, the colors for
+this object have not been converted to IGES because the colors in the original
+model were not assigned to the objects, but were listed in a color table
+that associates ranges of object ident numbers with colors.  Object colors 
+are translated by using a field in the object directory entry.  This 
+color field may contain either a color index referring to a predefined 
+set of colors or a pointer to a color definition entity.  The color 
+definition entity allows colors to be specified by a three-tuple indicating 
+red, green, and blue intensities similar to that used in <EM>BRL-CAD</EM>, so 
+the object color gets translated exactly.  The current translator 
+does not handle material properties, object names, or color tables although there 
+are IGES entities available to support all these items.<P>
+
+IGES 4.0 also includes the capability to exchange a variety of 
+three-dimensional surfaces.  The <EM>BRL-CAD</EM> translator takes advantage 
+of this capability in a limited way by converting Non-Uniform Rational 
+B-spline surfaces (NURBS) to a <EM>BRL-CAD</EM> <I>spline</I> solid.  Since there is 
+no topology present for BREP models in IGES 4.0, there is no way to 
+infer how to combine the NURBS to produce solids.  This translator 
+makes the assumption that all the NURBS in the IGES file are part 
+of a single solid.  This may not always be a correct assumption, but 
+it at least provides a minimal translation capability for CAD systems 
+that produce NURBS and NURB-surfaced solids.  This feature is not 
+intended to be a true BREP translator and will likely be replaced 
+in future releases with a more rigorous approach.<P>
+
+This translator is distributed as part of the <EM>BRL-CAD</EM> 
+package and may be obtained by contacting the Survivability/Vulnerability 
+Information Analysis Center (SURVIAC) at:
+<PRE>
+	SURVIAC Aberdeen Satellite Office
+	1003 Old Philadelphia Road, Suite 103
+	Aberdeen, MD 21001 USA
+</PRE>
+by electronic mail to &lt;cad-dist@brl.mil&gt;, or via <A HREF="file://ftp.brl.mil/brl-cad/how-to-get.txt">FTP</A>.<P>
+<A HREF="plans.html"><EM>Next Section</EM></A><P>
+<A HREF="index.html"><EM>Table of Contents</EM></A><P>

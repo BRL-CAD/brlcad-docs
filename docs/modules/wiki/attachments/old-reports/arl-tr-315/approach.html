@@ -1,0 +1,120 @@
+<TITLE>IGES 4.0 to BRL-CAD Translator for CSG Models</TITLE>
+<H2>IGES TO BRL-CAD APPROACH</H2>
+
+
+Most of the CSG entities in IGES can be directly converted to 
+a corresponding object in 
+<EM>BRL-CAD</EM> however, there are a few exceptions.  The block and the 
+right angular wedges convert directly to the <EM>BRL-CAD</EM> <EM>genarb8</EM> 
+solid.  The right circular cylinder and right circular cone frustum 
+entities convert directly to the <EM>gentgc</EM> solid; the 
+sphere and ellipsoid entities convert to the genell 
+solid; and, of course, the torus entity converts directly to the <EM>BRL-CAD</EM> 
+tor solid.  The solid instance entity is implemented by simply 
+creating another copy of the instanced solid in the <EM>BRL-CAD</EM> model.<P>
+
+The solid of linear extrusionone of the exceptions noted 
+aboveis not currently a supported primitive in <EM>BRL-CAD</EM>, so we 
+approximate it by using a combination of other <EM>BRL-CAD</EM> primitives.  
+In cases where the curve to be extruded is simply a single circular 
+or conic arc, then a <EM>BRL-CAD</EM> <EM>gentgc</EM> solid is produced.  
+If the curve to be extruded is anything else, we approximate the curve 
+by a series of straight line segments and a <EM>BRL-CAD</EM> polysolid 
+is built.  The sides are all polygons of four vertices and the top 
+and bottom surfaces are simply additional polygons to close the ends.<P>
+
+The solid of revolution is also implemented by approximating 
+the defining curve as a series of straight line segments.  When the 
+approximating curve is revolved, each straight line segment generates 
+a <EM>BRL-CAD</EM> <EM>gentgc</EM> solid.  This <EM>stack</EM> of solids is 
+then combined to form the final approximation to the IGES entity.  
+Exactly how these solids are combined depends on the form 
+number of the IGES solid.  The form number is another piece of 
+data that is included in the directory section entry for each entity.  
+For a solid of revolution, the form number indicates whether the curve 
+to be revolved is closed upon itself or is closed upon the axis of 
+revolution.  If the curve is closed upon the axis of revolution, then 
+the final object is merely the union of all the approximating 
+solids.  If the curve is closed upon itself, then the final object 
+must have a hollow section through the center, and the approximation 
+must be built with the appropriate combination of unions and subtractions 
+of the <EM>stack</EM> of solids.<P>
+
+The solid assembly entity is directly analogous to the <EM>BRL-CAD</EM>
+group and is converted directly to that form.  The boolean tree 
+entity, however, presented some difficulties.  IGES defines the boolean 
+tree in a postorder notation that allows for easy construction of 
+a binary tree in memory through the use of a stack algorithm.  An 
+example of a boolean tree is shown in figure 3.<P>
+<PRE>
+<IMG SRC="GRAPHICS/booltree.gif">
+Figure 3. Boolean Tree Example
+</PRE><P>
+The postorder notation 
+that an IGES translator would produce for this tree is
+<PRE>
+	<EM>A B C u + D E + u</EM>.
+</PRE>
+The equivalent infix notation for this tree is
+<PRE>
+	<EM>(A + (B u C)) u (D + E)</EM>.
+</PRE>
+where &quot;+&quot; represents the intersection operator and &quot;u&quot
+represents the union operator.
+Note that the parentheses are required for correct evaluation of this 
+tree.<P>
+
+Since <EM>BRL-CAD</EM> does not support postorder notation nor permit parenthetical 
+expressions in region definitions, an IGES boolean tree cannot be 
+directly converted to a <EM>BRL-CAD</EM> region, in general.  Because of its 
+ancestry, <EM>BRL-CAD</EM> has inherited the property that there are implied 
+parentheses at the union operators, i.e., all the operations between 
+the union operators are performed first, then the unions are evaluated.  
+These facts lead to some restrictions on the form of the boolean trees 
+that may be directly converted to <EM>BRL-CAD</EM> regions.  These restrictions 
+may be summed up by saying that no union operator may appear 
+at a node in the tree below any nonunion operator.  In general, any 
+boolean tree may be rewritten to satisfy that requirement  by applying 
+a series of transformations to its subtrees.  An example of just such 
+a transformation is shown in figure 4.<P>
+<PRE>
+<IMG SRC="GRAPHICS/subtrans.gif">
+Figure 4. Subtree Transformation
+</PRE><P>
+Here, a subtree of the previous 
+example illustrates a situation where a union operator appears below 
+an intersection operator.  This subtree is easily rewritten (as shown 
+in the figure) to move the union operation up the tree.  When this 
+subtree is placed back in the original tree, the result is a tree 
+that conforms to the <EM>BRL-CAD</EM> syntaxwhile still producing the 
+same resultant object.<P>
+<PRE>
+<IMG SRC="GRAPHICS/brltree.gif">
+Figure 5. Final Tree Structure
+</PRE><P>
+Figure 5 illustrates the final tree structure, which can now be expressed 
+in <EM>BRL-CAD</EM> syntax as
+<PRE>
+	<EM>A + B u A + C u D + E</EM>
+</PRE>
+This region is then constructed in the <EM>BRL-CAD</EM> model.<P>
+
+A series of transformations was developed to convert from IGES 
+postorder notation to <EM>BRL-CAD</EM> syntax by examining all possible subtree 
+situations where a union operator appears below a nonunion operator 
+and constructing an equivalent tree with the union operator at the 
+top.  The only remaining difficulty is the fact that IGES allows boolean 
+trees to reference other boolean trees.  In <EM>BRL-CAD</EM>, a group may reference 
+another group, but a region referencing another region is generally 
+not supported.  Since <EM>BRL-CAD</EM> groups are only unions of a collection 
+of objects, it appears that after having solved the boolean tree problem, 
+neither the <EM>BRL-CAD</EM> region nor the <EM>BRL-CAD</EM> group 
+will satisfy our requirements.  However, the regions and groups in 
+<EM>BRL-CAD</EM> are really just varieties of the same type of object called 
+a combination in <EM>BRL-CAD</EM> with a flag in 
+the structure indicating that a particular object is a region.  <EM>BRL-CAD</EM> 
+actually supports combinations that reference other combinations as 
+long as the combination isn't flagged as a region.  So the resulting 
+boolean trees from IGES may be converted to <EM>BRL-CAD</EM> combinations.<P>
+<A HREF="status.html"><EM>Next Section</EM></A><P>
+<A HREF="index.html"><EM>Table of Contents</EM></A><P>

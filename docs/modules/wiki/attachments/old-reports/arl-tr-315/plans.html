@@ -1,0 +1,119 @@
+<TITLE>IGES 4.0 to BRL-CAD Translator for CSG Models</TITLE>
+<H2>FUTURE PLANS</H2>
+The current translator has limitations, as pointed out in the 
+previous section, and is based on the current ANSI standard.  We propose 
+to continue work on the IGES to BRL-CAD translator to eliminate the 
+shortcomings discussed above and to extend its capabilities to include 
+the latest IGES release (IGES 5.1).  This would allow <EM>BRL-CAD</EM> users 
+to import solid models from virtually any CAD system that supports 
+the IGES solid model transfer.  The advantage of such a capability 
+should be obvious:  when solid models of military systems are available 
+in a contractor's IGES-capable CAD system, it would virtually eliminate 
+the duplication of effort now required to model that system in <EM>BRL-CAD</EM> 
+for vulnerability studies.  Furthermore, such a capability would be 
+in concert with the Department of Defense's Computer-aided Acquisition 
+and Logistics Support (CALS) initiative.<P>
+We believe that the two IGES CSG solids that are approximated 
+by the translator can be more accurately represented by either improving 
+the approximation methods or by implementing and supporting a solid 
+of revolution and a solid of linear extrusion into <EM>BRL-CAD</EM>.  The introduction 
+of these solids as full-fledged <EM>BRL-CAD</EM> primitives would eliminate 
+any need for approximation.  Short of adding new solids, improvements 
+to these approximations are possible.  For example, a circular arc 
+in a solid of revolution can be accurately modeled by a portion of 
+a torus, or an elliptical section of curve in a solid of linear extrusion 
+can be modeled as a section of a <EM>BRL-CAD</EM> <EM>gentgc</EM>.  These 
+types of improvements require considerable programming and cannot 
+completely eliminate the need for a last resort approximation similar 
+to the current method.  However, because both of these solid types 
+are based on two-dimensional curves and have simple generation schemes, 
+they are both candidates for the application of the <EM>BRL-CAD</EM> spline 
+solid.  To apply a spline approach, each section of the defining curve 
+would be converted to a spline curve of appropriate order.  Then the 
+curves would be used to generate <EM>BRL-CAD</EM> spline surfaces, which, when 
+combined into a single <EM>BRL-CAD</EM> spline solid, would create an extremely 
+accurate model of the intended solid.<P>
+We hope to begin development of a BRL-CAD-to-IGES translator.  
+Development of a complete IGES translator package would position <EM>BRL-CAD</EM> 
+for easy introduction into any established CAD oriented work place.  
+The capability to transfer designs back and forth between a designer's 
+commercial CAD systems and <EM>BRL-CAD</EM> would allow him access to <EM>BRL-CAD</EM>'s 
+applications codes without disrupting his normal design process.  
+This would also allow the designer to quickly and easily prepare a 
+<EM>BRL-CAD</EM> model of his design for submission in response to an Army Request 
+for Proposals (RFP) or Source Selection Evaluation Board (SSEB), 
+resulting in a cost saving for the Army.  Such submissions have been 
+required of Army materiel providers in the past and will likely continue 
+to be required.<P>
+There are two inherent difficulties in developing a BRL-CAD-to-IGES 
+translator.  First, <EM>BRL-CAD</EM> has very flexible definitions for its primitive 
+solids, allowing a wide range of possible shapes for the <EM>gentgc</EM>
+and the <EM>genarb8</EM> solids, for example.  The IGES 
+entities include special cases of these <EM>BRL-CAD</EM> solids, but are not 
+general enough to handle all cases.  One approach to overcoming this 
+problem is to persuade the IGES community to modify the IGES specification.  
+The mechanism for accomplishing just that starts with a cooperative 
+development and use of proposed, new IGES entities by two or more 
+independent organizations.  After a demonstrated implementation and 
+exchange of data, the proposed entities may then be submitted to the 
+IGES committee for review with the intent of inclusion in the specification 
+(ultimately, inclusion in the ANSI standard).  Another possible approach, 
+which does not require modifying the specification, is to convert 
+each unsupported (by IGES) <EM>BRL-CAD</EM> CSG primitive into a BREP object.  
+This approach also appears to be a viable solution, but actually leads 
+us to the second difficulty.<P>
+<EM>BRL-CAD</EM> is, for all practical purposes, a hybrid CAD system.  
+Although <EM>BRL-CAD</EM> primarily acts as a CSG system, it allows BREP objects 
+to be intermingled among the CSG primitives.  The IGES specification 
+maintains a definite separation between CSG and BREP systems and does 
+not allow the two to mix.  The distinction is drawn in the definition 
+of the IGES boolean tree, allowing only CSG primitives, solid instances, 
+and other boolean trees as operands.  No BREP entities may occur in 
+an IGES boolean tree.  Again, there are two possible solutions to 
+the general incompatibility of <EM>BRL-CAD</EM> trees containing BREPs and the 
+IGES trees that cannot contain BREPS.  Since IGES does not allow a 
+mingling of CSG and BREP objects, one solution is to convert all the 
+<EM>BRL-CAD</EM> objects to BREP objects prior to translation.  This may be 
+possible in the near future as the <EM>BRL-CAD</EM> NMG technology 
+is perfected.  In the near term, software can be written to tesselate 
+all <EM>BRL-CAD</EM> objects to form a type of BREP object with all flat, faceted 
+faces.  This approach will solve the problem, but the entire model 
+would then be reduced to approximations.  However, the reader should 
+be aware that many CAD systems reduce their objects to faceted BREPs 
+as the final form and usually permit the level of approximation (such 
+as approximating a circle by a series of straight line segments) to 
+be set by the user.  Therefore, one can argue that although the resulting 
+approximations might not be rigorously correct from a perfectionist's 
+point of view, the faceted BREPs are usually acceptable for most applications
+except for some signature applications.   Eventually, the NMG
+objects are expected to be capable of supporting nonplanar surfaces 
+such as spline surfaces; thus, more accurate versions of CSG objects 
+could be constructed using the NMG solid.  Even so, 
+the conversion of the <EM>BRL-CAD</EM> model to all NMG objects 
+for the purpose of translation to IGES BREP will cause the loss of 
+the original architecture of the model because only the BREP counterpart 
+to the boolean tree (not the boolean tree itself) will be 
+translated.  Also, translation of the  IGES BREP (formerly NMG) back 
+to <EM>BRL-CAD</EM> will not produce a model that is as easily edited and modified 
+as the original boolean tree form of the CSG model.  For example, 
+a simple object that has a hole through it (in boolean tree form) 
+is easily edited to change the size of the hole.  However, the same 
+object, after conversion to BREP and translation to/from IGES, presents 
+some challenge to modify the surfaces that define the object's hole 
+if the user requires the hole's size to be changed.  But it should 
+be noted that such a scenario would only occur if a <EM>BRL-CAD</EM> model must 
+be handed off to another CAD system and modified, then for some reason 
+had to be translated back into <EM>BRL-CAD</EM>.  However one could make the 
+assumption that once received from the other CAD system, the existing 
+object(s) need no further modification; thus, the loss of the boolean 
+tree in the process is not a significant shortcoming.<P>
+The second approach to this problem is, again, to influence 
+the specification itself.  Here, a small modification of just the 
+IGES definition of the boolean tree would allow the faithful representation 
+of any <EM>BRL-CAD</EM> object in an IGES file.  The complete and unaltered 
+structure of a <EM>BRL-CAD</EM> model could be preserved through translation 
+to IGES and back to <EM>BRL-CAD</EM> if the IGES boolean tree allowed BREP objects 
+as operands.  This is clearly the optimal approach and one that the 
+authors support.<P>
+<A HREF="recc.html"><EM>Next Section</EM></A><P>
+<A HREF="index.html"><EM>Table of Contents</EM></A><P>

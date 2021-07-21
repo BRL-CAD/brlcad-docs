@@ -1,0 +1,67 @@
+<title>model</title>
+<p>
+<h1>Modeling Philosophy</h1>
+<p>
+       Probably one of the difficult parts of geometric modeling is
+       where and how to begin the process.  As with most
+       procedures, the first step should consist of a review,
+       analysis, and planning phase.  Hopefully, some of what has
+       been presented up to this point will help in this initial
+       phase.  The modeler should think about the task that lies
+       ahead, considering such things as the following:  just
+       exactly what is the final expected product; what will the
+       model be used for; how much descriptive information is
+       available, and what form is it in; what, if anything, has
+       been done in the past; and can existing ("library")
+       components be used.  Next, one should devise a general plan
+       on how to accomplish the actual construction of the model,
+       including rough time estimates for each phase.  This general
+       plan should include all the major subsystems of the target
+       that must be modeled.  For most military targets, the
+       tersest general plan would consist of the following:  (1)
+       model the exterior shell, (2) model the internal air, and
+       (3) model all the remaining components.  Of course we are
+       being facetious about step (3), but steps (1) and (2) of
+       this general plan are genuine.  The goal is to get a
+       "correct" exterior shell (with internal air if necessary)
+       before any components are added.  If a tank were being
+       modeled, the first steps might become as follows:  model the
+       hull shell, model the hull air, model the turret shell, and
+       model the turret air.
+<p>
+       Finally, since much of the modeling effort goes into step
+       (3) (model all remaining components), we will discuss how to
+       model components.  This discussion will be more "cookbook"
+       oriented, but we still will not go into the details.  Other
+       publications <a href="refer.html#Ellis[16]"<b>[16]</b></a>
+        have discussed geometric modeling with
+       BRL-CAD in detail.  As always, initially, time should be
+       spent analyzing and planning.  First analyze the component
+       to be modeled and decide on the detail required, formulating
+       exactly how to represent the component, including what
+       solids to use and how to combine them into regions.  Then
+       create the solids, so they have the desired shape, size, and
+       orientation.  To take advantage of any symmetry, create the
+       solids at the origin.  Next combine the solids into the
+       regions, then group these regions into a combination
+       representing the completed component.  At this point check
+       for and fix any interferences (regions occupying the same
+       volume) within the component and create pictures for visual
+       verification.  Note that both of these actions are performed
+       using ray-tracing.  The model of the component is now
+       completed, so it's time to move it to its location within
+       the target.  This task is accomplished by editing the
+       combination (translate, scale, and/or rotate).  Recall, this
+       editing is stored in the matrices of the member records, so
+       the components primitives (solid records) are still at the
+       origin.  It is recommended to "push" (an MGED command) this
+       editing down to the solid records at this time.  Next check
+       for and fix any interferences between this component at its
+       new location and the rest of the description.  This process
+       is repeated for every component that is to be modeled.
+<p>
+<a href="summary.html"><i>Next Section</i></a>
+<p>
+<a href="manage.html"><i>Previous Section</i></a>
+<p>
+<a href="index.html"><i>Index</i></a>
