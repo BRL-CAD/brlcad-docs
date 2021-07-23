@@ -1,4 +1,4 @@
-link:category:Getting_started[category:Getting started]
+= FAQ
 
 == What is BRL-CAD?
 
@@ -30,14 +30,14 @@ Priorities]
 
 BRL-CAD is a suite of more than 400 tools and utilities. The suite of
 applications are intentionally designed to perform a succinct task so
-that they can be chained together, scripted, and expanded upon in order
-to provide powerful flexibility.
+that they can be chained together, scripted, and expanded upon in
+order to provide powerful flexibility.
 
 That said, most users will be interested in using
-link:mged[mged] as a first step in getting started with BRL-CAD.
-Documentation on mged can be found in the share directory where BRL-CAD
-was installed. There is also extensive mged documentation available on
-the website under link:Documentation[Documentation].
+xref:man:1/mged[mged] as a first step in getting started with BRL-CAD.
+Documentation on mged can be found in the share directory where
+BRL-CAD was installed. There is also extensive mged documentation
+available on the website under xref:wiki:Documentation.adoc[].
 
 If you're on Windows, there should be an icon for MGED in your start
 menu or on your desktop. For any other platform, you should be able to
@@ -45,8 +45,8 @@ run this in an X11 terminal: */usr/brlcad/bin/mged*
 
 == What does the "BRL" in BRL-CAD mean?
 
-The "BRL" in BRL-CAD comes from the project's origins at the *Ballistic
-Research Laboratory*.
+The "BRL" in BRL-CAD comes from the project's origins at the
+*Ballistic Research Laboratory*.
 http://en.wikipedia.org/wiki/Ballistic_Research_Laboratory[BRL] was
 later absorbed into the U.S. Army Research Laboratory in 1992 but
 BRL-CAD retained its original distinctive name and trademark heritage.
@@ -56,9 +56,9 @@ BRL-CAD retained its original distinctive name and trademark heritage.
 BRL-CAD is correctly pronounced as "*be are el cad*".
 
 Incorrect albeit perhaps humorous mispronunciations overheard include
-"burl cad", "burly cad", "brill cad", "brail cad", just "be are el" and
-other variations without the "cad" designation, and of course "brazilian
-real canadian dollars".
+"burl cad", "burly cad", "brill cad", "brail cad", just "be are el"
+and other variations without the "cad" designation, and of course
+"brazilian real canadian dollars".
 
 == How do you pronounce mged?
 
@@ -68,22 +68,22 @@ development team, the pronunciation is "em ged" with a hard "g" as in
 
 == How should BRL-CAD be spelled?
 
-The proper name of the project is "BRL-CAD", with specific importance to
-spell the name in uppercase and utilizing a hyphen for consistency and
-uniformity of name recognition. The "BRL-CAD" name should be used for
-all materials that will be publicly displayed or published.
+The proper name of the project is "BRL-CAD", with specific importance
+to spell the name in uppercase and utilizing a hyphen for consistency
+and uniformity of name recognition. The "BRL-CAD" name should be used
+for all materials that will be publicly displayed or published.
 
-While it is acceptable to use the non-hyphenated and lowercase "brlcad"
-name for files and directories that refer to the package, e.g.
-brlcad-7.8.2.tar.gz will compile and install into the /usr/brlcad
-directory by default, the "BRL-CAD" name should be used as the official
-name of the project wherever possible unless technical limitations
-prohibit it. Similarly, the source code may utilize variations on the
-name due to technical limitations, but they are considered private
-internal use.
+While it is acceptable to use the non-hyphenated and lowercase
+"brlcad" name for files and directories that refer to the package,
+e.g.  brlcad-7.8.2.tar.gz will compile and install into the
+/usr/brlcad directory by default, the "BRL-CAD" name should be used as
+the official name of the project wherever possible unless technical
+limitations prohibit it. Similarly, the source code may utilize
+variations on the name due to technical limitations, but they are
+considered private internal use.
 
-Unacceptable variations of the project name for public documentation and
-articles include BRLCAD, BrlCAD, BrlCad, Brlcad, BRLcad, BrlCAD,
+Unacceptable variations of the project name for public documentation
+and articles include BRLCAD, BrlCAD, BrlCad, Brlcad, BRLcad, BrlCAD,
 Brl-CAD, Brl-Cad, Brl-cad, BrLcAd, etc.
 
 == How can I check out the Archer prototype (on Windows)?
@@ -100,26 +100,26 @@ model rendered
 
 == How do I get a hard copy of what I'm looking at in MGED?
 
-The File->Raytrace and File->Render_View->RT_Script menu
-options in MGED will generate a raster image of MGED's current view. The
-link:pix-png[pix-png] utility can be used to convert from
+The File->Raytrace and File->Render_View->RT_Script menu options in
+MGED will generate a raster image of MGED's current view. The
+xref:man:1/pix-png[pix-png] utility can be used to convert from
 BRL-CAD's .pix raw image file format to the .png file format, and can
 then be printed or embedded into other documents using other tools.
 
 Additionally, the other File->Render_View options for generating
-standard Plot and PostScript output files of the MGED wireframe suitable
-for printing. The link:pl-fb[pl-fb] and
-link:fb-png[fb-png] tools can be used to rasterize a Plot file
+standard Plot and PostScript output files of the MGED wireframe
+suitable for printing. The xref:man:1/pl-fb[pl-fb] and
+xref:man:1/fb-png[fb-png] tools can be used to rasterize a Plot file
 to the .png format.
 
-Finally, there are a variety of renderers and lighting models available
-in BRL-CAD that are useful for various purposes. The link:rt[rt]
-tool is the primary ray-tracer that is used for shaded view rendering.
-The link:rtedge[rtedge] and link:rthide[rthide] commands
-are used for hidden-line renderings similar to what you'd want for
-generating drafting documents. link:rtwizard[rtwizard] is a
-graphical 'wizard' tool that can be used to generate a variety of hybrid
-renderings.
+Finally, there are a variety of renderers and lighting models
+available in BRL-CAD that are useful for various purposes. The
+xref:man:1/rt[rt] tool is the primary ray-tracer that is used for
+shaded view rendering.  The xref:man:1/rtedge[rtedge] and
+xref:man:1/rthide[rthide] commands are used for hidden-line renderings
+similar to what you'd want for generating drafting
+documents. xref:man:1/rtwizard[rtwizard] is a graphical 'wizard' tool
+that can be used to generate a variety of hybrid renderings.
 
 == How can I fix the huge transparent yellow cursor when I run MGED?
 
