@@ -1,0 +1,22 @@
+= How to use asciidoctor-revealjs
+
+== Installation
+
+[source,bash]
+....
+gem install bundler
+bundle config --local github.https true
+bundle --path=.bundle/gems --binstubs=.bundle/.bin
+git clone -b 3.9.2 --depth 1 \
+    https://github.com/hakimel/reveal.js.git
+....
+
+== Generate HTML presentations
+
+[source,bash]
+....
+./build.sh
+....
+
+For more details see:
+https://docs.asciidoctor.org/reveal.js-converter/latest/setup/ruby-setup/
