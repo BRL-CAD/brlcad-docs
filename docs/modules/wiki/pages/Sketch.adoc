@@ -1,26 +1,27 @@
-link:category:tutorials[category:tutorials]
+= Sketch
 
 image::Example_sketch.png[]
 
 Sketches are presently usually created and edited using the graphical
 sketch editor interface. The sketch editor interface should display
-whenever a sketch is created via the Create menu or whenever an existing
-sketch primitive is selected for editing.
+whenever a sketch is created via the Create menu or whenever an
+existing sketch primitive is selected for editing.
 
 That said, it is possible using the low-level database I/O "get" and
-"put" commands to create and edit a sketch. Those commands are actually
-what the GUI-based sketch editor uses under the hood.
+"put" commands to create and edit a sketch. Those commands are
+actually what the GUI-based sketch editor uses under the hood.
 
-One of the better ways to describe the format of the sketch primitive is
-with an example. Here's a mildly detailed sketch that contains lots of
-points and several entity types. Shown in following is a case where we
-have a simple sketch named "mysketch". If you run the "get" command, you
-can see the overall structure:
+One of the better ways to describe the format of the sketch primitive
+is with an example. Here's a mildly detailed sketch that contains lots
+of points and several entity types. Shown in following is a case where
+we have a simple sketch named "mysketch". If you run the "get"
+command, you can see the overall structure:
 
  mged> get mysketch
 
 The result is:
 
+....
 sketch V {0 0 -4.999999999999999646464397e-40} A {1 0 0} B {0 1 0} VL {
 {0.59800664451827234557868 -4.674418604651163100527356}
 {2.501661129568105934595224 -1.833887043189368792894811}
@@ -38,12 +39,14 @@ sketch V {0 0 -4.999999999999999646464397e-40} A {1 0 0} B {0 1 0} VL {
 S 0 E 1 } { carc S 2 E 1 R -1 L 0 O 0 } { bezier D 3 P { 1 3 4 5 } } {
 carc S 5 E 6 R 1.644755298192071224505639 L 0 O 0 } { line S 6 E 7 } {
 bezier D 6 P { 7 8 9 10 11 12 0 } } }
+....
 
 Most of that is floating point conversion goo of course, but it boils
 down to what is shown in following with a V position, AxB vectors to
 scale/orient the sketch, a VL list of 2D vertices, and then any number
 of SL segment lists for lines, arcs, and bezier curves. Note that the
-'sketch' prefix is not the name of the primitive but, rather, its type.
+'sketch' prefix is not the name of the primitive but, rather, its
+type.
 
  sketch
  V {0 0 -4.999999999999999646464397e-40}
@@ -73,9 +76,9 @@ of SL segment lists for lines, arcs, and bezier curves. Note that the
     { bezier D 6 P { 7 8 9 10 11 12 0 } }
  }
 
-You can run the 'l' (ell not one) command on an existing sketch to get a
-descriptive summary. For example, S and E reference the corresponding VL
-vertex starting and ending point respectively.
+You can run the 'l' (ell not one) command on an existing sketch to get
+a descriptive summary. For example, S and E reference the
+corresponding VL vertex starting and ending point respectively.
 
 ....
 mged> l mysketch
@@ -124,9 +127,9 @@ Example box with big rounded edges (barbell shape):
    {line S 0 E 1} {carc S 1 E 2 R 1 L 0 O 0} {line S 2 E 3} {carc S 3 E 0 R 1 L 0 O 0} }
 
 Finally, as of BRL-CAD 7.22 functionality was restored for creating a
-default sketch (shown above) with the "make" command instead of an empty
-sketch ready for editing. This default shape is can be created by
-setting the LIBGED_MAKE_SKETCH environment variable:
+default sketch (shown above) with the "make" command instead of an
+empty sketch ready for editing. This default shape is can be created
+by setting the LIBGED_MAKE_SKETCH environment variable:
 
 ....
 mged> set env(LIBGED_MAKE_SKETCH) 1
@@ -162,5 +165,5 @@ sketch2:  2D sketch (SKETCH)
 ....
 
 There is, of course, plenty of room for improvement when it comes to
-creating, editing, and managing sketches and sketch data. Contributions
-are always welcome!
+creating, editing, and managing sketches and sketch
+data. Contributions are always welcome!
