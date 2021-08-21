@@ -1,78 +1,101 @@
-== Shaders
+= Shaders
 
-A shader is a way to assign visual material properties to geometry. They
-are applied to regions.
-To apply a shader to a specific region:
-1.Create the model (in our case a sphere: my.sph) and save it as a
-combination/region(sph.r).
+A shader is a way to assign visual material properties to
+geometry. They are applied to regions.  To apply a shader to a
+specific region:
 
-link:image:_ShadersShot1.png[Create a Sphere Using MGED]
+1. Create the model (in our case a sphere: my.sph) and
+save it as a combination/region(sph.r).
++
+.Create a Sphere Using MGED
+image::ShadersShot1.png[]
 
-2. Go to the "`Edit`" button on your Graphics Window/Command Window then
-click "`Combination Editor`" button.
-
-link:image:_ShadersShot2.png[MGED Edit Menu]
+2. Go to the "`Edit`" button on your Graphics Window/Command Window
+then click "`Combination Editor`" button.
++
+.MGED Edit Menu
+image::ShadersShot2.png[]
 
 3. A new window will open. Hit the button on the right of the Name
 zone, click "`Select from all`" and chose the region you want to edit.
-
-link:image:_ShadersShot3.png[Combination Editor]
+.Combination Editor
+image::ShadersShot3.png[]
 
 4. Hit the "`Show Shader`" button.
-
-link:image:_ShadersShot4.png[Show Shader]
++
+.Show Shader
+image::ShadersShot4.png[]
 
 5. The window will change and you will be able to see the appearance
 properties of your region. Default shader for unspecified geometry is
-"`plastic`". You can edit it by choosing from the list that opens if you
-click the button on the right of the shader zone.
-
-For you to get the 3D shape you have to raytrace your model. To do that
-you must write in the Command Window "`B sph.r`" and then "`rt`", after
-avery change you make to your model. A new window will open with the
-raytraced model.
+"`plastic`". You can edit it by choosing from the list that opens if
+you click the button on the right of the shader zone.
++
+--
+For you to get the 3D shape you have to raytrace your model. To do
+that you must write in the Command Window "`B sph.r`" and then "`rt`",
+after avery change you make to your model. A new window will open with
+the raytraced model.
 
 (sph.r is the example model. Where sph.r is written you should write
 your models name.)
 
-link:image:_ShadersShot5.png[Raytracing in MGED]
+.Raytracing in MGED
+image::ShadersShot5.png[]
 
 *Default:*
 
-link:image:_ShadersShot6.png[Default Raytraced Sphere]
-link:image:_ShadersShot7.png[Modifying Attributes] link:image:_ShadersShot8.png[Object
-Properties]
+.Default Raytraced Sphere
+image::ShadersShot6.png[]
+
+.Modifying Attributes
+image::ShadersShot7.png[]
+
+.Object Properties
+image::ShadersShot8.png[]
+--
 
 6. Change the Transparency, mirror reflectance, Specular reflectivity,
 Difuse reflectivity, Refractive index, Extinction, Shininess and
-Emission values, raytracing at the same time, so you can find the shader
-you want.
-
+Emission values, raytracing at the same time, so you can find the
+shader you want.
++
 *Blue mirror:*
-
-link:image:_ShadersShot9.png[Blue Mirror Attributes] link:image:_ShadersShot10.png[Blue
-Mirror]
++
+.Blue Mirror Attributes
+image::ShadersShot9.png[]
++
+.Blue Mirror
+image::ShadersShot10.png[]
 
 7. If you want to apply more then one material property you can choose
-stack from the list. Use the "`Add shader`" button to add as many shaders
-you want.
-
-link:image:_ShadersShot11.png[Add Shader]
+stack from the list. Use the "`Add shader`" button to add as many
+shaders you want.
++
+--
+.Add Shader
+image::ShadersShot11.png[]
 
 *Example:*
 
-link:image:_ShadersShot12.png[Set up Shader] link:image:_ShadersShot13.png[New Settings
-Example]
+.Set up Shader
+image::ShadersShot12.png[]
+
+.New Settings Example
+image::ShadersShot13.png[]
 
 You should note that the ordering of the shaders matter.
 
 If you change their order...
 
-link:image:_ShadersShot14.png[Different Order]
+.Different Order
+image::ShadersShot14.png[]
 
 You get...
 
-link:image:_ShadersShot15.png[New Example]
+.New Example
+image::ShadersShot15.png[]
+--
 
 Here you can find an Introduction to MGED and Shaders presentation:
-link:Documentation[Documentation]
+xref:Documentation.adoc[Documentation]
