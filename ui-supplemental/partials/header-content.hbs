@@ -3,7 +3,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="{{{or site.url (or siteRootUrl siteRootPath)}}}">
         <img src="{{@root.uiRootPath}}/img/logo/brlcad.png" height="48px">
-        {{site.title}}
+        &nbsp;{{site.title}}
       </a>
       {{#if env.DOCSEARCH_ENABLED}}
         <div class="navbar-item">
@@ -19,6 +19,8 @@
     <div id="topbar-nav" class="navbar-menu">
       <div class="navbar-end">
         <a class="navbar-item" href="{{site.url}}">Home</a>
+        <a class="navbar-item" href="https://brl-cad.github.io/gallery/" target="_blank">Gallery</a>
+        <a class="navbar-item" href="https://brl-cad.github.io/wiki/" target="_blank">Wiki</a>
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Translations</a>
           <div class="navbar-dropdown">
