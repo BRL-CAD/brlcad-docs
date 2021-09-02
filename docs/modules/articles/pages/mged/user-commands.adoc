@@ -1,4 +1,5 @@
 = User Commands
+:page-toclevels: 0
 
 .MGED User Commands
 [cols="1,1,1,1,1", frame="all"]
@@ -256,13 +257,15 @@
 |===
 
 [[_percent]]
-% :: Start a `/bin/sh` shell process for the user.  The _mged_ prompt
+== %
+
+Start a `/bin/sh` shell process for the user.  The _mged_ prompt
 will be replaced by a system prompt for the shell, and the user may
 perform any legal shell commands.  The _mged_ process waits for the
 shell process to finish, which occurs when the user exits the shell.
 This only works in a command window associated with a tty (i.e., the
 window used to start _mged_ in classic mode).
-+
+
 .Example:
 ....
 mged> %   <1>
@@ -276,7 +279,10 @@ mged>     <4>
 <4> Continue editing in `mged`.
 
 [[_ptarb]]
-3ptarb [__arb_name x1 y1 z1 x2 y2 z2 x3 y3 z3 x|y|z coord1 coord2 thickness__] ::
+== 3ptarb
+
+3ptarb [__arb_name x1 y1 z1 x2 y2 z2 x3 y3 z3 x|y|z coord1 coord2 thickness__]
+
 Build an <<_arb,ARB8>> shape by extruding a quadrilateral through a given __thickness__.
 The arguments may be provided on the command line; if they are not, they will be prompted for.
 The _x1,
@@ -286,7 +292,7 @@ Only two coordinates of the fourth point are specified, and the code calculates 
 The _x|y|z_ parameter indicates which coordinate of the fourth point will be calculated by the code.
 The _coord1_ and _coord2_ parameters supply the other two coordinates.
 The direction of extrusion for the quadrilateral is determined from the order of the four resulting points by the right-hand rule; the quadrilateral is extruded toward a viewer for whom the points appear in counter-clockwise order. 
-+
+
 .Examples:
 [subs="+quotes"]
 ....
@@ -311,11 +317,13 @@ Enter thickness for this arb: [in]#3#  <8>
 <9> Same as above example, but with all arguments supplied on the command line.
 
 [[_questionmark]]
- ? :: Provide a list of available _mged_ commands.  The
+== ?
+
+Provide a list of available _mged_ commands.  The
 <<_questionmarkdevel,?devel>>, <<_questionmarklib,?lib>>,
 <<_help,help>>, <<_helpdevel,helpdevel>>, and <<_helplib,helplib>>
 commands provide additional information on available commands.
-+
+
 .Example:
 [subs="+quotes"]
 ....
@@ -323,7 +331,9 @@ commands provide additional information on available commands.
 ....
 <1> Get a list of available commands. 
 
-?devel ::
+[[_questionmarkdevel]]
+== ?devel
+
 Provide a list of available _mged
 developer_ commands.
 The <<_questionmark,?>>, <<_questionmarklib,?lib>>, <<_help,help>>, <<_helpdevel,helpdevel>>, and <<_helplib,helplib>> commands provide additional information on available commands. 
@@ -332,8 +342,9 @@ mged> ?devel
 
 – Get a list of available _developer_ commands. 
 
-**
- ?lib ::
+[[_questionmarklib]]
+== ?lib
+
 Provide a list of available _BRL-CAD_ library interface commands.
 The <<_questionmark,?>>, <<_questionmarkdevel,?devel>>, <<_help,help>>, <<_helpdevel,helpdevel>>, and <<_helplib,helplib>> commands provide additional information on available commands. 
  Examples: ::
@@ -341,8 +352,11 @@ mged> ?lib
 
 – Get a list of available _BRL-CAD_ library interface commands. 
 
-**
- B [__-R -A -o -s C#/#/#__] <__objects | attribute name/value pairs__> ::
+[[_b]]
+== B
+
+`B [__-R -A -o -s C#/#/#__] <__objects | attribute name/value pairs__>`
+
 Clear the _mged_ display of any currently displayed objects, then display the list of objects provided in the parameter list.
 Equivalent to the <<_z,Z>> command followed by the command <<_draw,draw>> <__objects__>. The _-C_ option provides the user a way to specify a color that overrides all other color specifications including combination colors and region id-based colors.
 The _-A_ and _-o_ options allow the user to select objects by attribute.
@@ -359,8 +373,11 @@ mged> B -A -o Comment {First comment} Comment {Second comment}
 – Clear the display, then draw objects that have a "`Comment`" attribute with a value of either "`First
     comment`" or "`Second comment.`"
 
-**
- E [__-s__] <__objects__> ::
+[[_e]]
+== E
+
+`E [__-s__] <__objects__>`
+
 Display _objects_ in an evaluated form.
 All the Boolean operations indicated in each object in _objects_ will be performed, and a resulting faceted approximation of the actual objects will be displayed.
 Note that this is usually much slower than using the usual <<_draw,_draw_>> command.
@@ -370,8 +387,11 @@ mged> E some_object
 
 – Display a faceted approximation of __some_object__. 
 
-**
- M 1|0 xpos ypos ::
+[[_m]]
+== M
+
+`M 1|0 xpos ypos`
+
 Send an _mged_ mouse (i.e., defaults to a middle mouse button) event.
 The first argument indicates whether the event should be a button press (__1__) or release (__0__). The _xpos_ and _ypos_ arguments specify the mouse position in _mged_ screen coordinates between -2047 and +2047.
 With the default bindings, an _mged_ mouse event while in the viewing mode moves the view so that the point currently at screen position (__xpos__, __ypos__) is repositioned to the center of the _mged_ display (compare to the <<_center,center>> command). The _M_ command may also be used in other editing modes to simulate an _mged_ mouse event. 
@@ -380,16 +400,20 @@ mged> M 1 100 100
 
 – Translate the point at screen coordinates (100, 100) to the center of the __mged__display. 
 
-**
- Z ::
+[[_z]]
+== Z
+
 Zap (i.e., clear) the _mged_ display. 
  Examples: ::
 mged> Z 
 
 – Clear the _mged_ display. 
 
-**
- adc [__-i__] [__subcommand__] ::
+[[_adc]]
+== adc
+
+`adc [__-i__] [__subcommand__]`
+
 This command controls the angle/distance cursor.
 The _adc_ command with no arguments toggles the display of the angle/distance cursor (ADC). The _-i_ option, if specified, causes the given value(s) to be treated as increments.
 Note that the _-i_ option is ignored when getting values or when used with subcommands where this option makes no sense.
@@ -460,8 +484,11 @@ mged> *adc a1* 37.5 – Get angle1.
 
 mged> *adc xyz 100 0 0*  – Move ADC position to (100, 0, 0), model coordinates and local units. 
 
-**
- ae [__-i__] _azimuth elevation_ [__twist__] ::
+[[_ae]]
+== ae
+
+`ae [__-i__] _azimuth elevation_ [__twist__]`
+
 Set the view orientation for the _mged_ display by rotating the eye position about the <<_center,center>> of the viewing cube.
 The eye position is determined by the supplied <<_azimuth,azimuth>> and <<_elevation,elevation>> angles (degrees). The _azimuth_ angle is measured in the _xy_ plane with the positive _x_ direction corresponding to an azimuth of 0˚. Positive azimuth angles are measured counter-clockwise about the positive _z_ axis.
 Elevation angles are measured from the _xy_ plane with +90˚ corresponding to the positive _z_ direction and -90 corresponding to the negative _z_ direction.
@@ -482,8 +509,11 @@ mged> ae -90 90
     -i 0 0 5** – Rotate the current view through 5˚ about the viewing direction. 
 
 
-**
- analyze [__arb_name__] ::
+[[_analyze]]
+== analyze
+
+`analyze [__arb_name__]`
+
 The "`analyze`" command displays the rotation and fallback angles, surface area, and plane equation for each face of the <<_arb,ARB>> specified on the command line.
 The total surface area and volume and the length of each edge are also displayed.
 If executed while editing an _ARB,_ the _arb_name_ may be omitted, and the _ARB_ being edited will be analyzed. 
@@ -492,21 +522,28 @@ mged> analyze arb_name
 
 – Analyze the _ARB_ named _arb_name._
 
-**
- animmate ::
+[[_animmate]]
+== animmate
+
 The "`animmate`" command starts the Tcl/Tk-based animation tool.
 The capabilities and correct use of this command are too extensive to be described here, but there is a tutorial available. 
 
-**
- apropos keyword ::
+[[_apropos]]
+== apropos
+
+`apropos keyword`
+
 The "`apropos`" command searches through the one-line usage messages for each _mged_ command and displays the name of each command where a match is found. 
  Examples: ::
 mged> apropos region 
 
 – List all commands that contain the word "`region`" in their one-line usage messages. 
 
-**
- aproposdevel keyword ::
+[[_aproposdevel]]
+== aproposdevel
+
+`aproposdevel keyword`
+
 The "`aproposdevel`" command searches through the one-line usage messages for each _mged
 developer_ command and displays the name of each command where a match is found. 
  Examples: ::
@@ -514,16 +551,22 @@ mged> aproposdevel region
 
 – List all _developer_ commands that contain the word "`region`" in their one-line usage messages. 
 
-**
- aproposlib keyword ::
+[[_aproposlib]]
+== aproposlib
+
+`aproposlib keyword`
+
 The "`aproposlib`" command searches through the one-line usage messages for each _BRL-CAD_ library interface command and displays the name of each command where a match is found. 
  Examples: ::
 mged> aproposlib mat 
 
 – List all commands that contain the word "`mat`" in their one-line usage messages. 
 
-**
- arb arb_name rotation fallback ::
+[[_arb]]
+== arb
+
+`arb arb_name rotation fallback`
+
 The "`arb`" command creates a new <<_arb,ARB>> shape with the specified __arb_name__.
 The new _ARB_ will be 20 inches by 20 inches and 2 inches thick.
 The square faces will be perpendicular to the direction defined by the rotation and fallback angles.
@@ -536,8 +579,11 @@ mged> arb new_arb 35 25
 `mged>`<<_ae,*ae*>>**35
     25** – Rotate view to look straight on at square face of _new_arb_
 
-**
- arced comb/memb anim_command ::
+[[_arced]]
+== arced
+
+`arced comb/memb anim_command`
+
 The objects in a _BRL-CAD_ model are stored as Boolean combinations of primitive shapes and/or other combinations.
 These combinations are stored as Boolean trees, with each leaf of the tree including a corresponding transformation matrix.
 The "`arced`" command provides a means for directly editing these matrices.
@@ -558,8 +604,11 @@ By default, the _matrix_ commands expect a list of 16 matrix elements to define 
 The _xlate_ option may be used along with three translation distances in the __x__, __y__, and _z_ directions (in mm) as a shorthand notation for a matrix that is pure translation.
 Similarly, the _rot_ option along with rotation angles (degrees) about the __x__, __y__, and _z_ axes may be used as shorthand for a matrix that is pure rotation. 
 
-**
- area [__tolerance__] ::
+[[_area]]
+== area
+
+`area [__tolerance__]`
+
 The "`area`" command calculates an approximate presented area of one region in the _mged_ display.
 For this command to work properly, a single _BRL-CAD_<<_r,region>> must be displayed using the <<_e,E>> command.
 The _tolerance_ is the distance required between two vertices in order for them to be recognized as distinct vertices.
@@ -573,8 +622,11 @@ mged> <<_z,*Z*>>
 
 `mged>`**area** – Calculate the presented area of the enclosing polygon of the region. 
 
-**
- arot x y z angle ::
+[[_arot]]
+== arot
+
+`arot x y z angle`
+
 The "`arot`" command performs a rotation about the specified axis (__x y z__) using screen units (-2048 to +2048). The amount of rotation is determined by _angle,_ which is in degrees.
 Exactly what is rotated and how it is rotated are dependent on MGED s state as well as the state of the display manager.
 For example, in normal viewing mode, this command simply rotates the view.
@@ -584,8 +636,11 @@ mged> arot 0 0 1 10
 
 – Rotate 10 degrees about z axis. 
 
-**
- attach [__-d display_string__] [__-i init_script__] [__-n name__] [__-t is_toplevel__] [__-W width__] [__-N height__] [__-S square_size__] win_type ::
+[[_attach]]
+== attach
+
+`attach [__-d display_string__] [__-i init_script__] [__-n name__] [__-t is_toplevel__] [__-W width__] [__-N height__] [__-S square_size__] win_type`
+
 The "`attach`" command is used to open a display window.
 The set of supported window types includes X and ogl.
 It should be noted that _attach_ no longer releases previously attached display windows (i.e., multiple attaches are supported). To destroy a display window, use the <<_release,release>> command. 
@@ -621,8 +676,11 @@ mged> *attach -n myX -d remote_host:0 -i
 
 `mged>`**attach** – List the help message that includes the valid display types. 
 
-**
- attr get|set|rm|append|show object_name [arguments] ::
+[[_attr]]
+== attr
+
+`attr get|set|rm|append|show object_name [arguments]`
+
 The "`attr`" command is used to create, change, retrieve, or view attributes of database 
 +
 objects.
@@ -646,7 +704,10 @@ comment for region_1"
 mged> attr show region_1 comment 
 +
 – List all the attributes for region_1 
- autoview ::
+
+[[_autoview]]
+== autoview
+
 The "`autoview`" command resets the view_size and the view center such that all displayed objects are within the view. 
 +
 Examples: 
@@ -654,7 +715,12 @@ Examples:
 mged> autoview 
 +
 – Adjust the view to see everything displayed. 
- bev [__-t__] [__-P#__] new_obj Boolean_formula ::
+
+[[_bev]]
+== bev
+
+`bev [__-t__] [__-P#__] new_obj Boolean_formula`
+
 The "`bev`" command performs the operations indicated in the _Boolean_formula_ and stores the result in __new_obj__.
 The _new_obj_ will be stored as an NMG shape (it may be converted to a <<_polysolid,polysolid>> by using the <<_nmg_simplify,nmg_simplify>> command). If the _-t_ option is specified, then the resulting object will consist entirely of triangular facets.
 The default is to allow facets of any complexity, including holes.
@@ -666,8 +732,10 @@ mged> bev -t triangulated_lens sphere1 + sphere2
 
 – Create a triangulated object by intersecting objects _sphere1_ and _sphere2._
 
-**bo**__[-o|-i pattern type]
-    dest source__
+[[_bo]]
+== bo
+
+`**bo**__[-o|-i pattern type] dest source__`
 
 The "`bo`" command is used to create or retrieve binary opaque objects.
 One of _-i_ or _-o_ must be specified. 
@@ -712,9 +780,10 @@ Examples:
 
 – Copy the contents of the binary object named _cmds_ into the file named _/home/jim/cmds.html._
 
-**
+[[_bot_condense]]
+== bot_condense
 
-bot_condense new_bot_primitive old_bot_primitive 
+`bot_condense new_bot_primitive old_bot_primitive`
 
 The "`bot_condense`" command is used to eliminate unused vertices from a BOT primitive.
 It returns the number of vertices eliminated. 
@@ -729,9 +798,10 @@ mged> bot_condense bot1_condensed bot1_original
 
 – Eliminate any unused vertices from the primitive named _bot1_original_ and store the result in the new BOT primitive named bot1_condensed. 
 
-**
+[[_bot_decimate]]
+== bot_decimate
 
-bot_decimate  c maximum_chord_error  n maximum_normal_error  e minimum_edge_length new_bot_primitive old_bot_primitive 
+`bot_decimate  c maximum_chord_error  n maximum_normal_error  e minimum_edge_length new_bot_primitive old_bot_primitive`
 
 The "`bot_decimate`" command reduces the number of triangles in the _old_bot_primitive_ and saves the results to the __new_bot_primitive__.
 The reduction is accomplished through an edge decimation algorithm.
@@ -778,9 +848,10 @@ mged> bot_decimate -n 5.0 bot_c bot_b
 
 relationships to "`bot_a`". 
 
-**
+[[_bot_face_fuse]]
+== bot_face_fuse
 
-bot_face_fuse new_bot_primitive old_bot_primitive 
+`bot_face_fuse new_bot_primitive old_bot_primitive`
 
 The "`bot_face_fuse`" command is used to eliminate duplicate faces from a BOT solid.
 It returns the number of faces eliminated. 
@@ -793,9 +864,10 @@ mged> bot_face_fuse bot1_fused bot1_original
 
 – Eliminate any duplicate faces from the primitive named _bot1_original_ and store the result in the new BOT primitive named bot1_fused. 
 
-**
+[[_bot_face_sort]]
+== bot_face_sort
 
-bot_face_sort triangles_per_piece bot_primitive1 [bot_primitive2 bot_primitive3 ...] 
+`bot_face_sort triangles_per_piece bot_primitive1 [bot_primitive2 bot_primitive3 ...]`
 
 The "`bot_face_sort`" command is used to sort the list of triangles that constitutes the BOT primitive to optimize it for raytracing with the specified number of triangles per piece.
 Most BRL-CAD primitives are treated as a single object when a model is being prepared for raytracing, but BOT primitives are normally broken into "`pieces`" to improve performance.
@@ -809,9 +881,10 @@ mged> bot_face_sort 4 bot1 bot2
 
 – Sort the faces of _bot1_ and _bot2_ to optimize them for raytracing with four triangles per piece. 
 
-**
+[[_bot_vertex_fuse]]
+== bot_vertex_fuse
 
-bot_vertex_fuse _new_bot_solid old_bot_primitive_
+`bot_vertex_fuse _new_bot_solid old_bot_primitive_`
 
 The "`bot_vertex_fuse`" command is used to eliminate duplicate vertices from a BOT solid.
 It returns the number of vertices eliminated.
@@ -825,9 +898,10 @@ mged> bot_vertex_fuse bot1_fused bot1_original
 
 – Eliminate any duplicate vertices from the primitive named _bot1_original_ and store the result in the new BOT primitive named bot1_fused. 
 
-**
+[[_build_region]]
+== build_region
 
-build_region [-a region_num] tag start_num end_num 
+`build_region [-a region_num] tag start_num end_num`
 
 The "`build_region`" command builds a region from existing solids that have specifically formatted names based on the provided tags and numbers.
 The created region will be named "`tag.rx`", where "`x`" is the first number (starting from 1) that produces an unused region name.
@@ -854,9 +928,10 @@ u abc.s2
 
 provided that the above shapes already exist in the database. 
 
-**
+[[_c]]
+== c
 
-c [__-c|r__] _combination_name_ [__Boolean_expression__] 
+`c [__-c|r__] _combination_name_ [__Boolean_expression__]`
 
 The "`c`" command creates a _BRL-CAD_ combination with the name __combination_name__.
 The _-r_ option indicates that the combination is a _BRL-CAD_ region.
@@ -876,8 +951,11 @@ mged> c -c abc (a u b) - (a + d)
 – Create a combination named _abc_ according to the formula _(a u b) - (a + d)._
 
 
-**
- cat __<objects__> ::
+[[_cat]]
+== cat
+
+`cat __<objects__>`
+
 The "`cat`" command displays a brief description of each item in the list of __objects__.
 If the item is a primitive shape, the type of shape and its vertex are displayed.
 If the item is a combination, the Boolean formula for that combination including operands, operators, and parentheses is displayed.
@@ -887,8 +965,11 @@ mged> cat region_1 region_2
 
 – Display the Boolean formulas for some regions. 
 
-**
- center [x y z] ::
+[[_center]]
+== center
+
+`center [x y z]`
+
 The "`center`" command positions the center of the _mged_ viewing cube at the specified model coordinates.
 This is accomplished by moving the eye position while not changing the viewing direction.
 (The <<_lookat,lookat>> command performs a related function by changing the viewing direction, but not moving the eye location.) The coordinates are expected in the current editing units.
@@ -930,8 +1011,11 @@ mged> units mm
 `mged>`**db
     adjust sphere.s V [center]**
 
-**
- check {__subcommand__} [__options__][__objects...__] ::
+[[_check]]
+== check
+
+`check {__subcommand__} [__options__][__objects...__]`
+
 The _check_ command computes and reports a variety of characteristics of the objects specified from the  opened database.
 The characteristics which can be computed include _mass, centroid, moments of inertia, volume, overlaps, 
 surface area, exposed air, gaps/voids, adjacent air and unconfined
@@ -1000,8 +1084,11 @@ mged> check overlaps -g10,10 box
 
 – Run the _check_ command with rays fired from a uniform grid with the rays spaced every 10 mm, and reports any overlaps seen while raytracing. 
 
-**
- color low high r g b str ::
+[[_color]]
+== color
+
+`color low high r g b str`
+
 The "`color`" command creates an entry in the database that functions as part of a color lookup table for displayed regions.
 The ident number for the region is used to find the appropriate color from the lookup table.
 The _low_ and _high_ values are the limits of region ident numbers to have the indicated _rgb_ color (0-255) applied.
@@ -1013,8 +1100,11 @@ mged> color 1100 1200 255 0 0 fake_string
 
 – Make an entry in the color lookup table for regions with idents from 1100 to 1200 using the color red. 
 
-**
- comb __combination_name <operation object__> ::
+[[_comb]]
+== comb
+
+`comb __combination_name <operation object__>`
+
 The "`comb`" command creates a new combination or extends an existing one.
 If _combination_name_ does not already exist, then it will be created using the indicated list of _operations_ and __objects__.
 If it does exist, the list of _operations_ and _objects_ will be appended to the end of the existing combination.
@@ -1026,16 +1116,22 @@ mged> comb abc u a - b + c
 
 – Create combination abc as ((a - b) + c). 
 
-**
- comb_color combination_name r g b ::
+[[_comb_color]]
+== comb_color
+
+`comb_color combination_name r g b`
+
 The "`comb_color`" command assigns the color _rgb_ (0-255) to the existing combination named __combination_name__. 
  Examples: ::
 mged> comb_color region1 0 255 0 
 
 – Assign the color green to _region1._
 
-**
- copyeval new_primitive path_to_old_ primitive ::
+[[_copyeval]]
+== copyeval
+
+`copyeval new_primitive path_to_old_ primitive`
+
 Objects in a _BRL-CAD_ model are stored as Boolean trees (combinations), with the members being primitive shapes or other Boolean trees.
 Each member has a transformation matrix associated with it.
 This arrangement allows a primitive to be a member of a combination, and that combination may be a member of another combination, and so on.
@@ -1048,16 +1144,22 @@ mged> copyeval shapeb comb1/comb2/comb3/shapea
 
 – Create _shapeb_ from _shapea_ by applying the accumulated transformation matrices from the path comb1/comb2/comb3. 
 
-**
- copymat comb1/memb1 comb2/memb2 ::
+[[_copymat]]
+== copymat
+
+`copymat comb1/memb1 comb2/memb2`
+
 The "`copymat`" command copies the transformation matrix from a member of one combination to the member of another. 
  Examples: ::
 mged> copymat comb1/memb1 comb2/memb2 
 
 – Set the matrix for member _memb2_ in combination _comb2_ equal to the matrix for member _memb1_ in combination _comb1._
 
-**
- cp from_object to_object ::
+[[_cp]]
+== cp
+
+`cp from_object to_object`
+
 The "`cp`" command makes a duplicate of an object (shape or combination). If _from_object_ is a shape, then it is simply copied to a new shape named __to_object__.
 If _from_object_ is a combination, then a new combination is created that contains exactly the same members, transformation matrices, etc., and it is named __to_object__. 
  Examples: ::
@@ -1065,8 +1167,11 @@ mged> cp comb1 comb2
 
 – Make a duplicate of combination _comb1_ and call it _comb2._
 
-**
- cpi old_tgc new_tgc ::
+[[_cpi]]
+== cpi
+
+`cpi old_tgc new_tgc`
+
 The "`cpi`" command copies _old_tgc_ (an existing <<_tgc,TGC>> shape) to a new TGC shape (__new_tgc__), positions the new TGC such that its base vertex is coincident with the center of the top of __old_tgc__, and puts _mged_ into the primitive edit state with _new_tgc_ selected for editing.
 This command was typically used in creating models of wiring or piping runs; however, a <<_pipe,pipe>> primitive has since been added to _BRL-CAD_ to handle such requirements. 
  Examples: ::
@@ -1074,8 +1179,11 @@ mged> cpi tgc_a tgc_b
 
 – Copy _tgc_a_ to _tgc_b_ and translate _tgc_b_ to the end of _tgc_a._
 
-**
- d __<objects__> ::
+[[_d]]
+== d
+
+`d __<objects__>`
+
 The "`d`" command deletes the specified list of objects from the _mged_ display.
 This is a synonym for the <<_erase,erase>> command.
 Only objects that have been explicitly displayed may be deleted with the "`d`" command (use the <<_who,who>> command to see a list of explicitly displayed objects). Objects that are displayed as members of explicitly displayed combinations cannot be deleted from the display with this command (see <<_erase,erase -r>>). Note that this has no effect on the _BRL-CAD_ database itself.
@@ -1089,8 +1197,11 @@ mged> d region1 shapea
 
 – Delete _region1_ and _shapea_ from the _mged_ display. 
 
-**
- db _command_ [__args...__] ::
+[[_db]]
+== db
+
+`db _command_ [__args...__]`
+
 The "`db`" command provides an interface to a number of database manipulation routines.
 Note that this command always operates in units of millimeters.
 The _command_ must be one of the following with appropriate arguments: 
@@ -1123,7 +1234,8 @@ mged> db match *.s
 
 mged *db form tgc* – Display the format used by the _get_ and _put_ commands for the <<_tgc,TGC>> shape type. 
 
-**
+[[_db_glob]]
+== db_glob
 
 .db glob
 * db_glob cmd_string *::
@@ -1133,8 +1245,11 @@ mged> db_glob "`l r23\[0-9\]`"
 
 l r230 r231 r232 r233 r234 r235 r236 r237 r238 r239 – Returns a command string to list objects r230 through r239. 
 
-**
- dbconcat [-s/-p] [-t] [-u] [-c] _database_file_ [__affix__] ::
+[[_dbconcat]]
+== dbconcat
+
+`dbconcat [-s/-p] [-t] [-u] [-c] _database_file_ [__affix__]`
+
 The "`dbconcat`" command concatenates an existing _BRL-CAD_ database to the database currently being edited.
 If an _affix_ is supplied, then all objects from the _database_file_ will have that _affix_ added to their names.
 The _-s_ option indicates that the _affix_ is a suffix, while the _-p_ option (default) indicates that the _affix_ is a prefix.
@@ -1154,8 +1269,11 @@ model_two.g two_**
 `mged>`**dbconcat
 -c -p model_two.g two_**
 
-**
- debugbu [__hex_code__] ::
+[[_debugbu]]
+== debugbu
+
+`debugbu [__hex_code__]`
+
 The "`debugbu`" command allows the user to set or check the debug flags used by __libbu__.
 With no arguments, the _debugbu_ command displays all the possible settings for the _bu_debug_ flag and the current value.
 When a _hex_code_ is supplied, that value is used as the new value for __bu_debug__.
@@ -1167,7 +1285,8 @@ Similar debug commands for other _BRL-CAD_ libraries are <<_debuglib,debuglib>> 
 
 – Set _bu_debug_ to <MEM_CHECK>. 
 
-debugdir 
+[[_debugdir]]
+== debugdir
 
 The "`debugdir`" command displays a dump of the in-memory directory for the current database file.
 The information listed for each directory entry includes: 
@@ -1186,8 +1305,11 @@ mged> debugdir
 
 – Get a dump of the in-memory directory. 
 
-**
- debuglib [__hex_code__] ::
+[[_debuglib]]
+== debuglib
+
+`debuglib [__hex_code__]`
+
 The "`debuglib`" command allows the user to set or check the debug flags used by __librt__.
 With no arguments, the _debuglib_ command displays all the possible settings for the _librt_ debug flag and the current value.
 When a _hex_code_ is supplied, that value is used as the new value for the flag.
@@ -1199,8 +1321,11 @@ mged> debuglib
 
 `mged>`**debuglib 1**  – Set the _librt_ debug flag to <DEBUG_ALLRAYS> (print info about rays). 
 
-**
- debugnmg [__hex_code__] ::
+[[_debugnmg]]
+== debugnmg
+
+`debugnmg [__hex_code__]`
+
 The "`debugnmg`" command with no options displays a list of all possible debug flags available for NMG processing.
 If the command is invoked with a hex number argument, that value is used as the new value for the _NMG_ debug flag.
 Similar debug commands for other _BRL-CAD_ libraries are <<_debuglib,debuglib>> for _librt_ and <<_debugbu,debugbu>> for __libbu__. 
@@ -1209,8 +1334,11 @@ mged> debugnmg 100
 
 – Set the _NMG_ debug flag to get details on the classification process. 
 
-**
- decompose _NMG_shape_ [__prefix__] ::
+[[_decompose]]
+== decompose
+
+`decompose _NMG_shape_ [__prefix__]`
+
 The "`decompose`" command processes an NMG shape and produces a series of new _NMG_ shapes consisting of each maximally connected shell in the original _NMG_ shape.
 If an optional prefix is supplied, the resulting _NMG_ shapes will be named by using the prefix and adding an underscore character and a number to make the name unique.
 If no prefix is supplied, the default prefix "`sh`" will be used. 
@@ -1219,16 +1347,22 @@ mged> decompose shape.nmg part
 
 – Decompose the _NMG_ shape named _shape.nmg_ into maximally connected shells and put each resulting shell into a separate _NMG_ shape named __part_1__, __part_2__, .... 
 
-**
- delay seconds microseconds ::
+[[_delay]]
+== delay
+
+`delay seconds microseconds`
+
 The "`delay`" command provides a delay of the specified time before the next command will be processed. 
  Examples: ::
 mged> delay 5 0 
 
 – Delay for 5 seconds. 
 
-**
- dm _subcommand_ [__args__] ::
+[[_dm]]
+== dm
+
+`dm _subcommand_ [__args__]`
+
 The "`dm`" command provides a means to interact with the display manager at a lower level.
 The _dm_ command accepts the following subcommands: 
  set [__var__ [__val__]] ::
@@ -1295,8 +1429,11 @@ mged> *dm size 900 900*  – Request that the display manager window be resized 
 `mged>`**dm
     idle**  – End drag. 
 
-**
- draw [__-R -A -s -o -C#/#/#__] <__objects | attribute name/value pairs__> ::
+[[_draw]]
+== draw
+
+`draw [__-R -A -s -o -C#/#/#__] <__objects | attribute name/value pairs__>`
+
 Add <__objects__> to the display list so that they will appear on the _MGED_ display.
 The <<_e,e>> command is a synonym for __draw__. 
 
@@ -1319,8 +1456,11 @@ mged> draw -A -o Comment {First comment} Comment {Second comment}
     comment.`"
 
 
-**
- dup _file_ [__prefix__] ::
+[[_dup]]
+== dup
+
+`dup _file_ [__prefix__]`
+
 The "`dup`" command checks the specified _file_ (which is expected to contain a _BRL-CAD_ model) for names that are the same as those in the current model.
 If a _prefix_ is included on the command line, all names in the specified _file_ will have that _prefix_ added to their names before comparison with the current model.
 This command is often used prior to invoking the <<_dbconcat,dbconcat>> command to ensure that there are no name clashes. 
@@ -1333,8 +1473,11 @@ mged> dup other_model.g
 
 mged> *dup other_model.g abc*  – Do the same check as above, but prefix all the names in _other_model.g_ with _abc_ before comparing with the names in the current model. 
 
-**
- e [__-R -A -o -s -C#/#/#__] <__objects| attribute name/value pairs__> ::
+[[_e]]
+== e
+
+`e [__-R -A -o -s -C#/#/#__] <__objects| attribute name/value pairs__>`
+
 The "`e`" command adds the objects in the argument list to the display list so that they will appear on the _MGED_ display.
 This is a synonym for the <<_draw,draw>> command; see that entry for a full list of options.
 The _-C_ option provides the user a way to specify a color that overrides all other color specifications including combination colors and region-id-based colors.
@@ -1351,8 +1494,11 @@ mged> e-A -o Comment {First comment} Comment {Second comment}
 – Draw objects that have a "`Comment`" attribute with a value of either "`First comment`" or "`Second
     comment`". 
 
-**
- eac <__aircodes__> ::
+[[_eac]]
+== eac
+
+`eac <__aircodes__>`
+
 The "`eac`" command adds all the regions in the current model that have one of the <<_aircodes,aircodes>> in the argument list to the display list so that they will appear on the _MGED_ display.
 Regions that have nonzero <<_ident,ident numbers>> will not be listed by this command.
 The <<_whichair,whichair>> command will perform the same search, but just lists the results. 
@@ -1361,8 +1507,11 @@ mged> eac 1 2 3
 
 – Draw all regions with _aircodes_ 1, 2, or 3 in the _MGED_ display. 
 
-**
- echo text ::
+[[_echo]]
+== echo
+
+`echo text`
+
 The "`echo`" command merely echos whatever text is provided as an argument on the command line.
 This is intended for use in _MGED_ scripts. 
  Examples: ::
@@ -1370,8 +1519,11 @@ mged> echo some text goes here
 
 – Display the text, "`some text goes here.`"
 
-**
- edcodes <__objects__> ::
+[[_edcodes]]
+== edcodes
+
+`edcodes <__objects__>`
+
 The "`edcodes`" command puts the user into an editor to edit a file that has been filled with the <<_ident,ident>>, <<_aircodes,air
 code>>, <<_material_code,material code>>, <<_los,LOS>>, and name of all the <<_region,regions>> in the specified objects.
 The user may then modify the entries (except for the names). The editor used is whatever the user has set in the environment variable __EDITOR__.
@@ -1381,8 +1533,9 @@ mged> edcodes object1 object2
 
 – Edit the region codes for all regions below object1 and object2. 
 
-**
- edcolor ::
+[[_edcolor]]
+== edcolor
+
 The "`edcolor`" command puts the user into an editor to edit a file that has been filled with the <<_ident,ident>> based color lookup table.
 The entire table may be seen with the <<_prcolor,prcolor>> command, and entries may be added using the <<_color,color>> command.
 The editor used is whatever the user has set in the environment variable __EDITOR__.
@@ -1392,8 +1545,11 @@ mged> edcolor
 
 – Edit the color table. 
 
-**
- edcomb _combname R|G regionid air_code los_ [__material_code__] ::
+[[_edcomb]]
+== edcomb
+
+`edcomb _combname R|G regionid air_code los_ [__material_code__]`
+
 The "`edcomb`" command allows the user to modify the attributes of a combination.
 The _combname_ is the name of the combination to be modified.
 An _R_ flag indicates that the <<_region,region>> flag should be set; otherwise, the region flag is unset.
@@ -1407,8 +1563,11 @@ mged> edcomb comb1 R 1001 0 50 8
 
 `mged>`**edcomb comb1 0 0 0 0**  – Unset the _region_ flag for combination _comb1._
 
-**
- edgedir [__x y z__]|[__rot fb__] ::
+[[_edgedir]]
+== edgedir
+
+`edgedir [__x y z__]|[__rot fb__]`
+
 The "`edgedir`" command allows the user to set the direction of an edge by specifying a direction vector in the form of __x, y,__and__z__ components or via rotation and fallback angles.
 This can only be done while moving an edge of an <<_arb,ARB>>. 
  Examples: ::
@@ -1416,8 +1575,11 @@ mged> edgedir 0 1 0
 
 – Rotate the edge being edited to be parallel to the _y_ axis. 
 
-**
- edmater <__combinations__> ::
+[[_edmater]]
+== edmater
+
+`edmater <__combinations__>`
+
 The "`edmater`" command places the user in an editor ready to edit a file filled with <<_shader,shader>> arguments for the <<_combination,combinations>> listed on the command line.
 The arguments placed in the file for editing are the _shader_ name and its own arguments, <<_rgb,RGB>> color, _RGB_valid_ flag, and the <<_inheritance,inheritance>> flag.
 The editor used is whatever the user has set in the environment variable __EDITOR__.
@@ -1427,8 +1589,11 @@ mged> edmater comb1 comb2
 
 – Edit the _shader_ parameters for combinations named _comb1_ and __comb2__. 
 
-**
- eqn A B C ::
+[[_eqn]]
+== eqn
+
+`eqn A B C`
+
 The "`eqn`" command allows the user to rotate the face of an <<_arb,ARB>> shape by providing the coefficients of an equation of the desired plane for the face.
 The coefficients __A, B__, and _C_ are from the plane equation: 
 
@@ -1445,8 +1610,11 @@ mged> eqn 0 0 1
 
 – Rotate the face of the _ARB_ being edited to be parallel to the _xy_ plane. 
 
-**
- erase __<objects__> ::
+[[_erase]]
+== erase
+
+`erase __<objects__>`
+
 The "`erase`" command deletes the specified list of objects from the MGED____display.
 This is a synonym for the <<_d,d>> command.
 Only objects that have been explicitly displayed may be deleted with the "`erase`" command (use the <<_who,who>> command to see a list of explicitly displayed objects). Objects that are displayed as members of explicitly displayed combinations cannot be deleted from the display with this command (see <<_erase,erase -r>>). Note that this has no effect on the _BRL-CAD_ database itself.
@@ -1460,8 +1628,11 @@ mged> erase region1 shapea
 
 – Delete _region1_ and _shapea_ from the MGED display. 
 
-**
- ev [__-dfnrstuvwST__] [__-P#__] [-C#/#/#] <__objects__> ::
+[[_ev]]
+== ev
+
+`ev [__-dfnrstuvwST__] [__-P#__] [-C#/#/#] <__objects__>`
+
 The "`ev`" command evaluates the _objects_ specified by tessellating all <<_primitive,primitive shapes>> in the objects and then performing any <<_boolean,Boolean
 operations>> specified in the __objects__.
 The result is then displayed in the MGED display according to the specified options: 
@@ -1488,8 +1659,9 @@ mged> ev region1 shapea
 `mged>`**ev
     -wT region1**  – Display evaluated _region1_ as wireframe without triangulating. 
 
-**
- exit ::
+[[_exit]]
+== exit
+
 The "`exit`" command ends the MGED process.
 This is a synonym for the <<_quit,quit>> command. 
  Examples: ::
@@ -1499,7 +1671,10 @@ mged> exit
 
   
 
-*expand* regular_expression 
+[[_expand]]
+== expand
+
+`*expand* regular_expression`
 
 The "`expand`" command performs matching of the _regular_expression_ with the names of all the objects in the database.
 It returns all those that successfully match. 
@@ -1512,9 +1687,10 @@ mged> expand *.r
 
 – Display a list of all database object names that end in "`$$.$$r`". 
 
-**
+[[_expand_comb]]
+== expand_comb
 
-expand_comb _prefix comb ..._
+`expand_comb _prefix comb ..._`
 
 The _expand_comb_ will create a new combination object __prefix__.
 For each Boolean node in the original tree of the combination a new combination will be created.
@@ -1564,9 +1740,10 @@ foo.r_xpand/R
                 + e
 ----
 
-**
+[[_extrude]]
+== extrude
 
-extrude #### distance 
+`extrude #### distance`
 
 The "`extrude`" command modifies an <<_arb,ARB>> shape by extruding the specified face through the specified _distance_ to determine the position of the opposing face.
 The face to be extruded is identified by listing its vertex numbers as they are labeled in the MGED display when the _ARB_ is edited.
@@ -1579,8 +1756,11 @@ mged> extrude 1234 5
 
 – Move face 5678 so that it is 5 <<_units,units>> from face 1234. 
 
-**
- eye_pt x y z ::
+[[_eye_pt]]
+== eye_pt
+
+`eye_pt x y z`
+
 The "`eye_pt`" command positions the _eye
 point_ to the given __x, y__, and _z_ coordinates (specified in mm). 
  Examples: ::
@@ -1588,8 +1768,11 @@ mged> eye_pt 100 0 0
 
 – Position the eye at 100 mm along the __x__axis. 
 
-**
- facedef _\####_ [__a|b|c|d parameters__] ::
+[[_facedef]]
+== facedef
+
+`facedef _\####_ [__a|b|c|d parameters__]`
+
 The "`facedef`" command allows the user to redefine any face of an <<_arb,ARB8>> shape.
 The user must be in Primitive Edit Mode with an _ARB_ selected for editing.
 The optional parameters may be omitted, and MGED will prompt for the missing values.
@@ -1617,8 +1800,11 @@ mged> facedef 1234 a 1 0 0 20
 `mged>`**facedef 5678 b 0 0 10 10 0 10 10 10
     10**  – Move face 5678 such that it is in the plane formed by the three points (0 0 10), (10 0 10), and (10 10 10). 
 
-**
- facetize [__-ntT__] [__-P#__] new_object old_object ::
+[[_facetize]]
+== facetize
+
+`facetize [__-ntT__] [__-P#__] new_object old_object`
+
 The "`facetize`" command creates _new_object_ as a <<_bot,BOT>> shape by tessellating all the <<_primitive,primitive shapes>> in _old_object_ and then performing any <<_boolean,Boolean operations>> specified in __old_object__.
 The _-T_ option indicates that all faces in the _new_object_ should be triangulated.
 The _-n_ option specifies that the resulting shape should be saved as an NMG shape.
@@ -1628,16 +1814,22 @@ mged> facetize region1.nmg region1.r
 
 – Create a facetized _BOT_ version of existing object _region1.r._
 
-**
- find <__objects__> ::
+[[_find]]
+== find
+
+`find <__objects__>`
+
 The "`find`" command displays all <<_combination,combinations>> that have any of the _objects_ specified as a <<_member,member>>. 
  Examples: ::
 mged> find shapea 
 
 – List all _combinations_ that refer to _shapea._
 
-**
- fracture _NMG_shape_ [__prefix__] ::
+[[_fracture]]
+== fracture
+
+`fracture _NMG_shape_ [__prefix__]`
+
 The "`fracture`" command creates a new NMG shape for every "`face`" in the specified __NMG_shape__.
 The new shapes will be named by adding an underscore and a number to the __prefix__.
 If no _prefix_ is specified, then the _NMG_shape_ name provided is used in place of the __prefix__. 
@@ -1646,8 +1838,11 @@ mged> fracture shape1.nmg f
 
 – Create a series of _NMG_ shapes named "`f_#`", one for each face in _shape1.nmg._
 
-**
- g _groupname_ <__objects__> ::
+[[_g]]
+== g
+
+`g _groupname_ <__objects__>`
+
 The "`g`" command creates a special type of combination often referred to as a <<_group,group>>.
 This builds a _combination_ by unioning together all the listed __objects__.
 If _groupname_ already exists, then the list of _objects_ will be unioned to the end of it.
@@ -1657,16 +1852,20 @@ mged> g shape1.nmg f
 
 – Create or extend shape1.nmg by unioning in _f._
 
-**
- garbage_collect ::
+[[_garbage_collect]]
+== garbage_collect
+
 The "`garbage_collect`" command eliminates unused space in a BRL-CAD database file. 
  Examples: ::
 mged> garbage_collect 
 
 – Clean out unused space in the database. 
 
-**
- gui [__-config b|c|g__] [__-d display_string__] [__-gd graphics_display_string__] [__-dt graphics_type__] [__-id name__] [__-c -h -j -s__] ::
+[[_gui]]
+== gui
+
+`gui [__-config b|c|g__] [__-d display_string__] [__-gd graphics_display_string__] [__-dt graphics_type__] [__-id name__] [__-c -h -j -s__]`
+
 This command is used to create an instance of MGED s default Tcl/Tk graphical user interface (GUI). The following options are allowed: 
 
 [source]
@@ -1702,8 +1901,11 @@ This command is used to create an instance of MGED s default Tcl/Tk graphical us
        -h                      Print the help message.
 ----
 
-**
- help [__command__] ::
+[[_help]]
+== help
+
+`help [__command__]`
+
 The "`help`" command returns a list of available MGED commands along with a one-line usage message for each.
 If a command is supplied as an argument, the one-line usage message for that command is returned.
 The <<_helpdevel,helpdevel>>, <<_helplib,helplib>>, <<_questionmark,?>>, <<_questionmarkdevel,?devel>>, and <<_questionmarklib,?lib>> commands provide additional information on available commands. 
@@ -1712,8 +1914,11 @@ mged> help ae
 
 – Display a one-line usage message for the _ae_ command. 
 
-**
- helpdevel [__command__] ::
+[[_helpdevel]]
+== helpdevel
+
+`helpdevel [__command__]`
+
 The "`helpdevel`" command returns a list of available _developer_ commands along with a one-line usage message for each.
 If a command is supplied as an argument, the one-line usage message for that command is returned.
 The <<_help,help>>, <<_helplib,helplib>>, <<_questionmark,?>>, <<_questionmarkdevel,?devel>>,and <<_questionmarklib,?lib>> commands provide additional information on available commands. 
@@ -1722,8 +1927,11 @@ mged> helpdevel winset
 
 – Display a one-line usage message for the _winset_ command. 
 
-**
- helplib [__command__] ::
+[[_helplib]]
+== helplib
+
+`helplib [__command__]`
+
 The "`helplib`" command returns a list of available _library_ commands along with a one-line usage message for each.
 If a command is supplied as an argument, the one-line usage message for that command is returned.
 The <<_help,help>>, <<_helpdevel,helpdevel>>, <<_questionmark,?>>, <<_questionmarkdevel,?devel>>, and <<_questionmarklib,?lib>> commands provide additional information on available commands. 
@@ -1732,9 +1940,10 @@ mged> helplib mat_trn
 
 – Display a one-line usage message for the _mat_trn_ command. 
 
-**
+[[_hide]]
+== hide
 
-hide <objects> 
+`hide <objects>`
 
 The "`hide`" command sets the "`hidden`" flag for the specified objects.
 When this flag is set, the objects do not appear in <<_hist_add,t>> or <<_hist_add,ls>> command outputs.
@@ -1748,9 +1957,10 @@ mged> hide sol_a
 
 – Mark _sol_a_ as hidden. 
 
-**
+[[_history]]
+== history
 
-history [__-delays__] 
+`history [__-delays__]`
 
 The "`history`" command displays the list of commands executed during the current MGED session.
 The one exception is the <<_hist_add,hist_add>> command, which can add a command to the history list without executing it.
@@ -1764,8 +1974,11 @@ mged> history
 
 – Display the command history list. 
 
-**
- i _obj_name comb_name_ [__operation__] ::
+[[_i]]
+== i
+
+`i _obj_name comb_name_ [__operation__]`
+
 The "`i`" command adds _obj_name_ to the end of the combination named __comb_name__.
 The _operation_ may be "`+,`""`-,`" or "`u.`" If no _operation_ is specified, "`u`" is assumed.
 If _comb_name_ does not exist, it is created. 
@@ -1774,8 +1987,11 @@ mged> i region3 group5
 
 – Add _region3_ to the combination _group5._
 
-**
- idents _file_name_ <__objects__> ::
+[[_idents]]
+== idents
+
+`idents _file_name_ <__objects__>`
+
 The "`idents`" command places a summary of the <<_region,regions>> in the list of _objects_ specified in the file specified.
 If any regions include other regions, then only the first encountered region in that tree will be listed.
 The resulting file will contain two lists of regions, one in the order encountered in the list of __objects__, and the other ordered by <<_ident,ident>> number.
@@ -1785,8 +2001,12 @@ mged> idents regions_file group1 group2 region3
 
 – Create a file named _regions_file_ and list all the regions in _group1, group2,_ and _region3_ in the file. 
 
-**
- ill obj_name ::
+
+[[_ill]]
+== ill
+
+`ill obj_name`
+
 The "`ill`" command performs the function of selecting an object after entering __solid__(i.e., primitive)__illuminate__ or _object
 illuminate_ mode.
 In _solid
@@ -1801,8 +2021,11 @@ mged> ill shapea
 
 – Select _shapea_ for editing. 
 
-**
- in [__-f__] [__-s__] _new_shape_name shape_type_ <__parameters__> ::
+[[_in]]
+== in
+
+`in [__-f__] [__-s__] _new_shape_name shape_type_ <__parameters__>`
+
 The "`in`" command allows the user to type in the arguments needed to create a shape with the name _new_shape_name_ of the type __shape_type__.
 The command may be invoked with no arguments, and it will prompt the user for all needed information.
 The _-s_ option will invoke the primitive edit mode on the new shape immediately after creation.
@@ -1848,8 +2071,11 @@ mged> in new1 raw 0 0 0 0 0 1 1 0 0 0 1 0
 
 – Create an _ARB_ named _new1_ in the form of a right angle wedge. 
 
-**
- inside [__outside_shape_name new_inside_shape_name__ <__parameters__>] ::
+[[_inside]]
+== inside
+
+`inside [__outside_shape_name new_inside_shape_name__ <__parameters__>]`
+
 The "`inside`" command creates a new shape that is _inside_ an existing shape.
 This command is typically used to create an _inside_ shape that can be subtracted from the original shape to produce a hollow shell.
 The command is typically used with no arguments, and it prompts the user for all needed information; however, all the parameters may be supplied on the command line.
@@ -1863,8 +2089,11 @@ mged> inside out_arb in_arb 1 1 1 1 1 1
 
 `mged>`**inside in_arb 1 1 1 1 1 1**  – Create a shape named _in_arb_ such that each face is 1 <<_units,unit>> from the corresponding face in the current key shape or the shape currently being edited. 
 
-**
- item _region_name ident_number_ [__air_code__ [__material_code__ [__LOS__]]] ::
+[[_item]]
+== item
+
+`item _region_name ident_number_ [__air_code__ [__material_code__ [__LOS__]]]`
+
 The "`item`" command sets the values of <<_ident,ident_number>>, <<_air_code,aircode>>, <<_material_code,material_code>>, and <<_los,LOS>> for the specified <<_region,region>>. 
  Examples: ::
 mged> item region_1 1137 0 8 100 
@@ -1872,9 +2101,10 @@ mged> item region_1 1137 0 8 100
 – Set _ident number_ to 1137, _air
     code_ to 0, _material code_ to 8, and _los_ to 100 for _region_1._
 
-**
+[[_joint]]
+== joint
 
-joint _command_ [__options__] 
+`joint _command_ [__options__]`
 
 articulation/animation commands (experimental) 
 
@@ -1936,8 +2166,11 @@ test file_name
 
 unload 
 
-**
- journal [__-d__] [__journal_file_name__] ::
+[[_journal]]
+== journal
+
+`journal [__-d__] [__journal_file_name__]`
+
 The "`journal`" command starts or stops the journaling of MGED commands to a file.
 If executed with no arguments, the command stops journaling.
 If _journal_file_name_ is provided, that file will become the recipient of the journaling.
@@ -1948,8 +2181,11 @@ mged> journal journal_file
 
 – Start journaling to _journal_file._
 
-**
- keep _keep_file_ <__objects__> ::
+[[_keep]]
+== keep
+
+`keep _keep_file_ <__objects__>`
+
 The "`keep`" command copies the _objects_ specified to the __keep_file__.
 If _keep_file_ does not exist, it is created.
 If _keep_file_ does exist, the _objects_ are appended to it.
@@ -1960,8 +2196,11 @@ mged> keep sample.g sample1 sample2
 
 – Create _sample.g_ file with objects _sample1_ and _sample2_ in it. 
 
-**
- keypoint [__x y z | reset__] ::
+[[_keypoint]]
+== keypoint
+
+`keypoint [__x y z | reset__]`
+
 The "`keypoint`" command without any options displays the current keypoint setting.
 If a point is specified, then that point becomes the __keypoint__.
 If _reset_ is specified, then the default _keypoint_ is restored.
@@ -1972,8 +2211,11 @@ mged> keypoint 10 20 30
 
 – Set the _keypoint_ to the point (10 20 30) in model units. 
 
-**
- kill [__-f__] <__objects__> ::
+[[_kill]]
+== kill
+
+`kill [__-f__] <__objects__>`
+
 The "`kill`" command deletes the specified _objects_ from the current database.
 This command affects only the _objects_ actually listed on the command line.
 If a combination is killed, its members are not affected.
@@ -1987,8 +2229,11 @@ mged> kill group1 region2 shapeb
 
 – Destroy __group1__, __region2__, and _shapeb._
 
-**
- killall <__objects__> ::
+[[_killall]]
+== killall
+
+`killall <__objects__>`
+
 The "`killall`" command deletes the specified _objects_ from the current database and removes all references to them from all <<_combination,combinations>> in the database.
 Note that the _objects_ are killed immediately.
 There is no need for a "`write
@@ -1999,8 +2244,11 @@ mged> killall group1 region2 shapeb
 
 – Destroy __group1__, __region2__, and _shapeb_ and remove all references to these objects from the database. 
 
-**
- killtree <__objects__> ::
+[[_killtree]]
+== killtree
+
+`killtree <__objects__>`
+
 The "`killtree`" command deletes the specified _objects_ from the current database and recursively deletes all objects referenced by any of those objects.
 If one of the _objects_ listed is a combination, then that _combination_ as well as any objects that are members of that _combination_ will be deleted.
 If a member of that _combination_ is itself a __combination__, then all of its members will also be destroyed.
@@ -2015,8 +2263,11 @@ mged> killtree group1 region2 shapeb
 
 – Destroy __group1__, __region2__, and _shapeb_ and remove all references to these objects from the database. 
 
-**
- knob [__-e -i -m -v__] [__-o v|m|e|k__] [__zap|zero|(id__ [__val__])] ::
+[[_knob]]
+== knob
+
+`knob [__-e -i -m -v__] [__-o v|m|e|k__] [__zap|zero|(id__ [__val__])]`
+
 The "`knob`" command is used internally by MGED in the processing of knob input devices and is not recommended for users.
 The _knob_ command provides a method for simulating knob input.
 With no options, it will display the current values for the knobs.
@@ -2057,8 +2308,11 @@ mged> knob y 1
 
 – Start the view rotating about the vertical axis. 
 
-**
- l [-__r__] <__objects__> ::
+[[_l]]
+== l
+
+`l [-__r__] <__objects__>`
+
 The "`l`" command displays a verbose description about the specified list of objects.
 If a specified _object_ is a <<_path,path>>, then any transformation matrices along that _path_ are applied.
 If the final _path_ component is a combination, the command will list the <<_boolean,Boolean>> formula for the _combination_ and will indicate any accumulated transformations (including any in that __combination__). If a <<_shader,shader>> and/or color has been assigned to the __combination__, the details will be listed.
@@ -2078,8 +2332,11 @@ mged> l region1
 `mged>`**l
     -r a/b**  – Display all possible paths that start with _a/b_ and end in a primitive _shape_  – The shape parameters with the accumulated transformation applied will be displayed. 
 
-**
- labelvert <__objects__> ::
+[[_labelvert]]
+== labelvert
+
+`labelvert <__objects__>`
+
 The "`labelvert`" command labels the vertices of the indicated _objects_ with their coordinate values in the MGED display window.
 The _objects_ must have already been displayed using <<_e,e>>, <<_e,E>>, <<_ev,ev>>, <<_b,B>>, or any other command that results in the display of an object. 
  Examples: ::
