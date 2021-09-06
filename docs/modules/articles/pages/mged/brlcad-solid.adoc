@@ -1,129 +1,185 @@
 = BRL-CAD Solid
 
-ARB :: The ARB is a planar-faced convex solid with between four and
-eight unique vertices.  The specific type of ARB is often referred to
-by adding the number of unique vertices to the word ARB.  For example,
-an ARB8 is the usual solid block, an ARB4 is a tetrahedron, and an
-ARB6 may be a wedge shape.
+[[arb]]
+== ARB
 
-arbitrary faceted solid :: The arbitrary faceted solid (Also referred
-to as ARS) is a planar-faced solid defined by any number of curves
-(more precisely closed polylines). These curves are typically planar
-waterline or station curves, but they are not restricted to being
-planar.  Each curve in a particular ARS must have the same number of
-points.  The first and last curves are normally degenerate, each
-consisting of repetitions of a single point to make up the correct
-number of points for a curve.  Faces are built by connecting
-corresponding points on adjacent curves.  Since the curves are assumed
-to be closed, the last point on any curve is implicitly connected to
-the first point on the same curve
+The ARB is a planar-faced convex solid with between four and eight
+unique vertices.  The specific type of ARB is often referred to by
+adding the number of unique vertices to the word ARB.  For example, an
+ARB8 is the usual solid block, an ARB4 is a tetrahedron, and an ARB6
+may be a wedge shape.
 
-ARBN :: The ARBN is a planar faced convex solid defined by any number
-of bounding planes.
+[[ars]]
+== arbitrary faceted solid
 
-BOT :: The BOT solid is a collection of triangular facets.  It may
-represent a zero thickness surface, a finite thickness plate, or a
-solid volume bounded by the triangles.  The surface normal for each
-triangle may be unoriented, oriented according to the right-hand rule,
-or oriented according to the left-hand rule.
+The arbitrary faceted solid (Also referred to as ARS) is a
+planar-faced solid defined by any number of curves (more precisely
+closed polylines). These curves are typically planar waterline or
+station curves, but they are not restricted to being planar.  Each
+curve in a particular ARS must have the same number of points.  The
+first and last curves are normally degenerate, each consisting of
+repetitions of a single point to make up the correct number of points
+for a curve.  Faces are built by connecting corresponding points on
+adjacent curves.  Since the curves are assumed to be closed, the last
+point on any curve is implicitly connected to the first point on the
+same curve
 
-ellipsoid :: The ellipsoid is a solid defined by three mutually
-perpendicular semi­axes.  When the axes are of unequal length, an
-ellipsoid is generated.  When the axes are all the same length, a
-sphere is generated.
+[[arbn]]
+== ARBN
 
-elliptical hyperboloid :: The elliptical hyperboloid (also referred to
-as EHY) is a solid with an elliptical base the remainder of the
-surface of which is defined by hyperbolas that run from any point on
-the ellipse through a common vertex at a specified distance from the
-ellipse and back to the ellipse at the point diametrically opposite
-the starting point.  Further control of the surface may be obtained by
-specifying the distance from the hyperbolas to the vertex of the
-asymptotes.
+The ARBN is a planar faced convex solid defined by any number of
+bounding planes.
 
-elliptical paraboloid :: The elliptical paraboloid (also referred to
-as EPA) is a solid with an elliptical base the remainder of the
-surface of which is defined by parabolas that run from any point on
-the ellipse through a common vertex at a specified distance from the
-ellipse and back to the ellipse at a point diametrically opposite the
-starting point.
+[[bot]]
+== BOT
 
-elliptical torus :: The Elliptical Torus (Also referred to as ETO) is
-defined by sweeping an ellipse through a circular path.  The plane of
-the ellipse and the plane of the circular path are mutually
-perpendicular.
+The BOT solid is a collection of triangular facets.  It may represent
+a zero thickness surface, a finite thickness plate, or a solid volume
+bounded by the triangles.  The surface normal for each triangle may be
+unoriented, oriented according to the right-hand rule, or oriented
+according to the left-hand rule.
 
-extruded bitmap :: The extruded bitmap (also referred to as EBM) is a
-solid based on a greyscale bitmap.  The bitmap is an array of unsigned
-char values, see bw(5), and is extruded by some distance.  The EBM
-solid requires the dimensions of the bitmap file (height and width in
-bytes), an extrusion length, and a transformation matrix to position
-the EBM.  Each byte in the bitmap file is treated as the base of a
-cell that is extruded by the specified extrusion length.  If the value
-of the byte is non­zero, then that cell is considered solid.
+[[ell]]
+== ellipsoid
 
-half space :: A half space is the portion of space on one side of a
-plane.  It is represented by its boundary (the plane) and its
-outward-pointing normal vector.
+The ellipsoid is a solid defined by three mutually perpendicular
+semi­axes.  When the axes are of unequal length, an ellipsoid is
+generated.  When the axes are all the same length, a sphere is
+generated.
 
-height field :: The height field is a solid defined by a series of
-height measurements on a regular grid.  In addition to a file of
-height measurements, this solid also requires a location vector, width
-and height direction vectors, and some scale factors.
+[[ehy]]
+== elliptical hyperboloid
 
-n­manifold geometry :: (also referred to as NMG) The n­manifold
-geometry solid, sometimes known as a non­manifold geometry, is based
-on the description by Kevin Weiler in "The Radial Edge Structure: A
-Topological Representation for Non­Manifold Geometric Modeling" from
-Geometric Modeling for CAD Applications (Springer Verlag, 1987). A
-useful reference for the NMG solid is Combinatorial Solid Geometry,
-Boundary Representations, and Non_Manifold Geometry.
+The elliptical hyperboloid (also referred to as EHY) is a solid with
+an elliptical base the remainder of the surface of which is defined by
+hyperbolas that run from any point on the ellipse through a common
+vertex at a specified distance from the ellipse and back to the
+ellipse at the point diametrically opposite the starting point.
+Further control of the surface may be obtained by specifying the
+distance from the hyperbolas to the vertex of the asymptotes.
 
-particle :: The particle solid is a lozenge-shaped object defined by a
-vertex, a height vector and radii at both ends.  The body of the
-particle is either a cylinder or a truncated cone, depending on the
-values of the radii.  Each end of the particle is a hemisphere of the
-specified radius.
+[[epa]]
+== elliptical paraboloid
 
-pipe :: The pipe solid is defined by a sequence of control points,
-each with values for inner radius, outer radius, and bend radius.  The
-actual pipe starts at the first control point and ends at the last
-control point.  The intervening control points are replaced by
-circular bends with the specified bend radius, so the pipe is not
-likely to actually pass through these points.  An inner radius of zero
-indicates a solid pipe or wire.
+The elliptical paraboloid (also referred to as EPA) is a solid with an
+elliptical base the remainder of the surface of which is defined by
+parabolas that run from any point on the ellipse through a common
+vertex at a specified distance from the ellipse and back to the
+ellipse at a point diametrically opposite the starting point.
 
-polysolid :: The polysolid is defined by a set of planar polygons.
-Each polygon may have up to 5 unique vertices.  The vertices of each
-polygon must be in counter­clockwise order when viewed from outside
-the solid.  The set of polygons must completely enclose the interior
-of the polysolid.
+[[eto]]
+== elliptical torus
 
-right hyperbolic cylinder :: The right hyperbolic cylinder (also
-referred to as RHC) is a solid built by extruding a truncated
-hyperbola through a height vector.
+The Elliptical Torus (Also referred to as ETO) is defined by sweeping
+an ellipse through a circular path.  The plane of the ellipse and the
+plane of the circular path are mutually perpendicular.
 
-right parabolic cylinder :: The right parabolic cylinder (also
-referred to as RPC) is a solid built by extruding a truncated parabola
-through a height vector.
+[[ebm]]
+== extruded bitmap
 
-spline :: The spline solid is defined by a set of non­uniform rational
-B­spline surfaces (NURBS). There are no trimming curves in the spline
-solid, so each NURB surface must exactly adjoin its neighbor so that
-the interior of the spline solid is completely enclosed and no parts
-of any NURB surface are dangling outside the solid.
+The extruded bitmap (also referred to as EBM) is a solid based on a
+greyscale bitmap.  The bitmap is an array of unsigned char values, see
+bw(5), and is extruded by some distance.  The EBM solid requires the
+dimensions of the bitmap file (height and width in bytes), an
+extrusion length, and a transformation matrix to position the EBM.
+Each byte in the bitmap file is treated as the base of a cell that is
+extruded by the specified extrusion length.  If the value of the byte
+is non­zero, then that cell is considered solid.
 
-torus :: The torus is defined by sweeping one circle through a larger
-circular path.  The planes of the circles are mutually perpendicular.
+[[half]]
+== half space
 
-truncated general con (also referred to as TGC) :: The TGC solid is a
-truncated cone with elliptical (or circular) base and top. The base
-and top must be parallel, but the height vector connecting the center
-of the base with the center of the top does not need to be
-perpendicular to them.
+A half space is the portion of space on one side of a plane.  It is
+represented by its boundary (the plane) and its outward-pointing
+normal vector.
 
-vol :: The vol solid is defined by a 3-dimensional array of unsigned
-char values.  The solid requires a file of these values, the extent of
-the file (in bytes) in each dimension, the size of each cell, and high
-and low thresholds.  Any value in the file that is between the
-thresholds (inclusive) represents a solid cell.
+[[hf]]
+== height field
+
+The height field is a solid defined by a series of height measurements
+on a regular grid.  In addition to a file of height measurements, this
+solid also requires a location vector, width and height direction
+vectors, and some scale factors.
+
+[[nmg]]
+== n­manifold geometry
+
+(also referred to as NMG) The n­manifold geometry solid, sometimes
+known as a non­manifold geometry, is based on the description by Kevin
+Weiler in "The Radial Edge Structure: A Topological Representation for
+Non­Manifold Geometric Modeling" from Geometric Modeling for CAD
+Applications (Springer Verlag, 1987). A useful reference for the NMG
+solid is Combinatorial Solid Geometry, Boundary Representations, and
+Non_Manifold Geometry.
+
+[[part]]
+== particle
+
+The particle solid is a lozenge-shaped object defined by a vertex, a
+height vector and radii at both ends.  The body of the particle is
+either a cylinder or a truncated cone, depending on the values of the
+radii.  Each end of the particle is a hemisphere of the specified
+radius.
+
+[[pipe]]
+== pipe
+
+The pipe solid is defined by a sequence of control points, each with
+values for inner radius, outer radius, and bend radius.  The actual
+pipe starts at the first control point and ends at the last control
+point.  The intervening control points are replaced by circular bends
+with the specified bend radius, so the pipe is not likely to actually
+pass through these points.  An inner radius of zero indicates a solid
+pipe or wire.
+
+[[poly]]
+== polysolid
+
+The polysolid is defined by a set of planar polygons.  Each polygon
+may have up to 5 unique vertices.  The vertices of each polygon must
+be in counter­clockwise order when viewed from outside the solid.  The
+set of polygons must completely enclose the interior of the polysolid.
+
+[[rhc]]
+== right hyperbolic cylinder
+
+The right hyperbolic cylinder (also referred to as RHC) is a solid
+built by extruding a truncated hyperbola through a height vector.
+
+[[rpc]]
+== right parabolic cylinder
+
+The right parabolic cylinder (also referred to as RPC) is a solid
+built by extruding a truncated parabola through a height vector.
+
+[[spline]]
+== spline
+
+The spline solid is defined by a set of non­uniform rational B­spline
+surfaces (NURBS). There are no trimming curves in the spline solid, so
+each NURB surface must exactly adjoin its neighbor so that the
+interior of the spline solid is completely enclosed and no parts of
+any NURB surface are dangling outside the solid.
+
+[[tor]]
+== torus
+
+The torus is defined by sweeping one circle through a larger circular
+path.  The planes of the circles are mutually perpendicular.
+
+[[tgc]]
+== truncated general con (also referred to as TGC)
+
+The TGC solid is a truncated cone with elliptical (or circular) base
+and top. The base and top must be parallel, but the height vector
+connecting the center of the base with the center of the top does not
+need to be perpendicular to them.
+
+[[vol]]
+== vol
+
+The vol solid is defined by a 3-dimensional array of unsigned char
+values.  The solid requires a file of these values, the extent of the
+file (in bytes) in each dimension, the size of each cell, and high and
+low thresholds.  Any value in the file that is between the thresholds
+(inclusive) represents a solid cell.
