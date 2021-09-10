@@ -1,5 +1,7 @@
 = Developer Commands
 :page-toclevels: 0
+:glossary: xref:mged/glossary.adoc
+:user-cmd: xref:mged/user-commands.adoc
 
 .MGED Developer Commands
 [cols="1,1,1,1,1"]
@@ -54,509 +56,682 @@
 |===
 
 [[aip]]
-== aip [_f|b_]
+== aip
 
-The `aip` command advances the <<ill,illumination>>
-pointer when MGED is in the xref:mged/user-commands.adoc#\_ill[solid illuminate] state or the
-<<ill,object illuminate>> state.  In either of the _illuminate_
-states, a single primitive shape is highlighted at one time, and the
-path to that shape is displayed.  Moving the mouse vertically in the
-MGED display causes different shapes to be highlighted and their paths
-to be displayed.  The _aip_ command causes the next shape in the list
-to be highlighted (if used with no arguments or the _f_ argument), or
-it causes the previous shape in the list to be highlighted (if used
-with the _b_ argument). When the desired shape is highlighted, it is
-selected by clicking the middle mouse button or by using the <<m,M>>
-command.  If MGED is in the <<ill,object path>> state, the place
-along the path where the edit is to take place will advance.  Once the
-desired path position is displayed, it is selected by clicking the
-middle mouse button or by using the <<m,M>> command.
+`[cmd]#aip# [_f_ | _b_]`
+
+The [cmd]`aip` command advances the {user-cmd}#ill[illumination]
+pointer when MGED is in the {user-cmd}#ill[solid illuminate] state or
+the {user-cmd}#ill[object illuminate] state.  In either of the
+_illuminate_ states, a single primitive shape is highlighted at one
+time, and the path to that shape is displayed.  Moving the mouse
+vertically in the MGED display causes different shapes to be
+highlighted and their paths to be displayed.  The [cmd]`aip` command
+causes the next shape in the list to be highlighted (if used with no
+arguments or the [opt]`f` argument), or it causes the previous shape
+in the list to be highlighted (if used with the [opt]`b`
+argument). When the desired shape is highlighted, it is selected by
+clicking the middle mouse button or by using the {user-cmd}#M[M]
+command.  If MGED is in the {user-cmd}#ill[object path] state, the
+place along the path where the edit is to take place will advance.
+Once the desired path position is displayed, it is selected by
+clicking the middle mouse button or by using the {user-cmd}#M[M]
+command.
 
 .Examples:
 [subs="+quotes"]
 ....
-mged> *press* sill  <1> 
-mged *aip*          <2>
-mged *aip b*        <3>
-mged *M 1 0 0*      <4>
+[prompt]#mged># [in]#sill#   <1> 
+[prompt]#mged># [in]#aip#   <2>
+[prompt]#mged># [in]#aip b#   <3>
+[prompt]#mged># [in]#M 1 0 0#   <4>
 ....
+
 <1> Enter solid (i.e., primitive) illuminate mode.
 <2> Highlight the next shape.
 <3> Highlight the previous shape.
 <4> Select the highlighted shape. 
 
+
 [[cmd_win]]
 == cmd_win
 
-This command is used to maintain internal
-command window structures.
+This command is used to maintain internal command window structures.
 
-The _cmd_win_ command accepts the following subcommands:
+The [cmd]`cmd_win` command accepts the following subcommands:
 
-open _id_ ::: This subcommand is used to create the internal data
-structures for a new command window.  If _id_ is already in use,
+`[cmd]#open# id` :: This subcommand is used to create the internal
+data structures for a new command window.  If `id` is already in use,
 nothing is changed.
 
-close _id_ ::: This subcommand releases _id_'s internal data
+`[cmd]#close# id` :: This subcommand releases ``id``'s internal data
 structures. If the referenced command window is tied to a display
 manager, then that association is also removed.
 
-set _id_ ::: This subcommand sets the current command window to
-_id_. If this command window is tied to a display manager, that
+`[cmd]#set# id` :: This subcommand sets the current command window to
+`id`. If this command window is tied to a display manager, that
 display manager becomes the current display manager.
 
-get ::: This subcommand returns the id of the current command window.
+`[cmd]#get#` :: This subcommand returns the id of the current command
+window.
 
 .Examples:
 [subs="+quotes"]
 ....
-mged> [cmd]*cmd_win open my_id*   <1>
-mged> [cmd]*cmd_win close my_id*  <2>
-mged> [cmd]*cmd_win set my_id*    <3>
-mged> [cmd]*cmd_win get*          <4>
+[prompt]#mged># [in]#cmd_win open my_id#   <1>
+[prompt]#mged># [in]#cmd_win close my_id#  <2>
+[prompt]#mged># [in]#cmd_win set my_id#    <3>
+[prompt]#mged># [in]#cmd_win get#          <4>
 ....
-<1> Create a command window named _my_id_.
-<2> Closes the command window _my_id_.
-<3> _my_id_ becomes the current command window.
+
+<1> Create a command window named `my_id`.
+<2> Closes the command window `my_id`.
+<3> `my_id` becomes the current command window.
 <4> Gets the current command window.
+
 
 [[collaborate]]
 == collaborate
 
-This command is used to maintain the "`collaborative
-session`". The collaborative session is a list whose members share a view and view ring among the upper right display manager panes.
+This command is used to maintain the "collaborative session". The
+collaborative session is a list whose members share a view and view
+ring among the upper right display manager panes.
 
-The _collaborate_ command accepts the following subcommands: 
+The [cmd]`collaborate` command accepts the following subcommands:
 
-join _id_ ::: This causes the GUI associated with _id_ to join the collaborative session. 
+`[cmd]#join# id` :: This causes the GUI associated with `id` to join
+the collaborative session.
 
-quit _id_ ::: This causes the GUI associated with _id_ to quit the collaborative session.
+`[cmd]#quit# id` :: This causes the GUI associated with `id` to quit
+the collaborative session.
 
-show ::: This returns the list of participants (ids) in the collaborative session.
+`[cmd]#show#` :: This returns the list of participants (ids) in the
+collaborative session.
 
 .Examples:
+[subs="+quotes"]
 ....
-mged> collaborate join bill   <1>
-mged *collaborate quit bill*  <2>
-mged *collaborate show*       <3>
+[prompt]#mged># [in]#collaborate join bill#   <1>
+[prompt]#mged># [in]#collaborate quit bill#   <2>
+[prompt]#mged># [in]#collaborate show#        <3>
 ....
-<1> _bill_ is added to the collaborative session.
-<2> _bill_ is removed from the collaborative session.
+
+<1> `bill` is added to the collaborative session.
+<2> `bill` is removed from the collaborative session.
 <3> Show list of collaborative participants.
 
+
 [[get_comb]]
-== get_comb comb_name
+== get_comb
 
-The "`get_comb`" command returns a Tcl list of information about __comb_name__.
-If _comb_name_ is a region, the following information is returned: 
+`[cmd]#get_comb# comb_name`
 
-_NAME REGION REGION_ID AIRCODE
-    GIFT_MATERIAL_  LOS COLOR SHADER INHERIT BOOLEAN_FORMULA 
+The [cmd]`get_comb` command returns a Tcl list of information about
+`comb_name`.  If `comb_name` is a region, the following information is
+returned:
+
+_NAME REGION REGION_ID AIRCODE GIFT_MATERIAL LOS COLOR SHADER INHERIT
+BOOLEAN_FORMULA_
 
 Otherwise, the following shorter list is returned: 
 
-__
+_NAME REGION COLOR SHADER INHERIT BOOLEAN_FORMULA_
 
-NAME REGION COLOR SHADER INHERIT BOOLEAN_FORMULA 
- Examples: ::
-mged> get_comb some_region 
-
+.Examples:
+[subs="+quotes"]
+....
+[prompt]#mged># [in]#get_comb some_region#   <1>
 some_region Yes 1000 0 1 100 {0 220 220} plastic No { u box - ball } 
 
-mged *get_comb some_non_region*  some_non_region No {0 220 220} plastic No { u box2 - ball2 } 
+[prompt]#mged># [in]#get_comb some_non_region#
+some_non_region No {0 220 220} plastic No { u box2 - ball2 } 
+....
+
 
 [[get_dm_list]]
 ==  get_dm_list
-The "`get_dm_list`" command returns a list of all open display managers.
-The members of this list are the actual Tcl/Tk window names of the open display managers. 
+
+The [cmd]`get_dm_list` command returns a list of all open display
+managers.  The members of this list are the actual Tcl/Tk window names
+of the open display managers.
+
 
 [[get_more_default]]
 == get_more_default
 
 Returns the current default input value. 
 
-[[grid2model_lu]]
-== grid2model_lu gx gy
 
-Given a point in grid coordinates (local units), convert it to model coordinates (local units). 
+[[grid2model_lu]]
+== grid2model_lu
+
+`[cmd]#grid2model_lu# gx gy`
+
+Given a point in grid coordinates (local units), convert it to model
+coordinates (local units).
+
 
 [[grid2view_lu]]
-== grid2view_lu gx gy
+== grid2view_lu
 
-Given a point in grid coordinates (local units), convert it to view coordinates (local units). 
+`[cmd]#grid2view_lu# gx gy`
+
+Given a point in grid coordinates (local units), convert it to view
+coordinates (local units).
+
 
 [[gui_destroy]]
-== gui_destroy id
+== gui_destroy
 
-Destroy the GUI (Graphical User Interface) represented by __id__.
-Note that this GUI must have been created with the <<gui,gui>> command. 
+`[cmd]#gui_destroy# id`
+
+Destroy the GUI (Graphical User Interface) represented by `id`.  Note
+that this GUI must have been created with the {user-cmd}#gui[gui]
+command.
+
 
 [[hist]]
-== hist subcommand
+== hist
 
-This command is used to maintain command history. _Hist_ accepts the following subcommands: 
- add command ::
-This adds _command_ to the <<history,history>> list of commands executed during the current MGED session.
-If _command_ is more than one word, it must be surrounded by braces (i.e., {make box arb8}). 
- next ::
-This returns the next command in the command history list. 
- prev ::
-This returns the previous command in the command history list. 
- Examples: ::
-mged> hist add {ae 35 25} 
+`[cmd]#hist# subcommand`
 
-– Add the command "`ae 35 25`" to the history list. 
+This command is used to maintain command history. [cmd]`hist` accepts
+the following subcommands:
 
-mged *ae 0 90*
+`[cmd]#add# command` :: This adds `command` to the
+{user-cmd}#history[history] list of commands executed during the
+current MGED session.  If `command` is more than one word, it must be
+surrounded by braces (i.e., `{make box arb8}`).
+ `[cmd]#next#` :: This returns the next command in the command history
+list.
+ `[cmd]#prev#` :: This returns the previous command in the command
+history list.
 
-mged *hist prev*  – Return the previous command (i.e., **ae 0 90**). 
+.Examples:
+[subs="+quotes"]
+....
+[prompt]#mged># [in]#hist add {ae 35 25}#   <1>
+[prompt]#mged># [in]#ae 0 90#
+[prompt]#mged># [in]#hist prev#   <2>
+....
+
+<1> Add the command "ae 35 25" to the history list. 
+
+<2> Return the previous command (i.e., "ae 0 90").
+
 
 [[make_name]]
-== make_name template make_name -s [num]
+== make_name
 
-This command generates an object name that does not occur in the database.
-The name, which is generated in the format specified by __template__, contains an integer count.
-By default, this count appears at the end of the generated name, but if _template_ contains the  @  character, then the count appears at that position in the name. 
- Examples: ::
-mged> make_name wheel 
+`[cmd]#make_name# template make_name [opt]#-s# [num]`
 
-– Returns, say "`wheel5.`"
+This command generates an object name that does not occur in the
+database.  The name, which is generated in the format specified by
+`template`, contains an integer count.  By default, this count
+appears at the end of the generated name, but if `template` contains
+the `@` character, then the count appears at that position in the name.
 
-mged *make_name
-    tree@trunk*  – Returns "`tree@trunk.`" The two-character string  @@  is interpreted as the literal  @ , and thus is ignored for the purposes of positioning the name count.
-The integer counter starts at 0, and, by default, it is incremented each time _make_name_ is executed.
-The _-s_ option resets this counter.
-If the argument _num_ is specified, the counter is set to this value.
-Otherwise, it is set to 0. 
+.Examples:
+[subs="+quotes"]
+....
+[prompt]#mged># [in]#make_name wheel#   <1>
+[prompt]#mged># [in]#make_name tree@trunk#   <2>
+....
+
+<1> Returns, say "wheel5."
+
+<2> Returns "tree@trunk". The two-character string `@@` is interpreted
+as the literal `@`, and thus is ignored for the purposes of positioning
+the name count.  The integer counter starts at 0, and, by default, it
+is incremented each time [cmd]`make_name` is executed.  The [opt]`-s` option
+resets this counter.  If the argument `num` is specified, the counter
+is set to this value.  Otherwise, it is set to 0.
+
 
 [[mged_update]]
-== mged_update non_blocking
+== mged_update
 
-This command is used to handle outstanding events and to refresh the MGED display(s). This may be useful in certain Tcl scripts to maintain interactivity while waiting for user input.
-Note that if _non_blocking_ is negative, outstanding events will not be processed.
-That is, only the MGED display(s) will be refreshed. 
- Examples: ::
-mged> mged_update 0 
+`[cmd]#mged_update# non_blocking`
 
-– Update the MGED display, blocking (i.e., handle all outstanding events; if none, wait for one). 
+This command is used to handle outstanding events and to refresh the
+MGED display(s). This may be useful in certain Tcl scripts to maintain
+interactivity while waiting for user input.  Note that if
+`non_blocking` is negative, outstanding events will not be processed.
+That is, only the MGED display(s) will be refreshed.
 
-mged *mged_update 1*  – Update the MGED display, nonblocking (i.e., handle all outstanding events; if none, return immediately). 
+.Examples:
+[subs="+quotes"]
+....
+[prompt]#mged># [in]#mged_update 0#   <1>
+[prompt]#mged># [in]#mged_update 1#   <2>
+....
+
+<1> Update the MGED display, blocking (i.e., handle all outstanding
+events; if none, wait for one).
+
+<2> Update the MGED display, nonblocking (i.e., handle all outstanding
+events; if none, return immediately).
+
 
 [[mmenu_get]]
-== mmenu_get [__i__]
+== mmenu_get
 
-This command is used to get MGED s internal menus.
-If _i_ is not specified, return all three internal menus.
-Otherwise, return the _i_
-+
-// <superscript>th</superscript>
- menu.
-Note - valid values for _i_ are 0, 1, or 2. 
- Examples: ::
-mged> mmenu_get 
+`[cmd]#mmenu_get# [__i__]`
 
-– Return all internal menus. 
+This command is used to get MGED's internal menus.  If `i` is not
+specified, return all three internal menus.  Otherwise, return the
+`i^th^` menu.  Note - valid values for `i` are 0, 1, or 2.
 
-mged *mmenu_get 2*  – Return the internal menu number 2. 
+.Examples:
+[subs="+quotes"]
+....
+[prompt]#mged># [in]#mmenu_get#   <1>
+[prompt]#mged># [in]#mmenu_get 2#   <2>
+....
+<1> Return all internal menus. 
+<2> Return the internal menu number 2.
+
 
 [[mmenu_set]]
-== mmenu_set id i
+== mmenu_set
 
-This Tcl proc is used to set/install MGED s _i_
-+
-// <superscript>th</superscript>
- internal menu in the Tcl/Tk button menu owned by __id__. 
-+
-mged> mmenu_set bill 0 
+`[cmd]#mmenu_set# id i`
 
-– Install MGED s 0
-// <superscript>th</superscript>
- internal menu into _id_ s button menu. 
+This Tcl proc is used to set/install MGED's `i^th^` internal menu in
+the Tcl/Tk button menu owned by __id__.
+
+.Examples:
+[subs="+quotes"]
+....
+[prompt]#mged># [in]#mmenu_set bill 0#   <1>
+....
+<1> Install MGED's `0^th^` internal menu into `id` s button menu.
+
 
 [[model2grid_lu]]
-== model2grid_lu mx my m
+== model2grid_lu
 
-Convert a point in model coords (local units) to a point in grid coords (local units). 
+`[cmd]#model2grid_lu# mx my m`
+
+Convert a point in model coords (local units) to a point in grid
+coords (local units).
+
 
 [[model2view]]
-== model2view x y z
+== model2view
 
-The "`model2view`" command converts the supplied point (in model coordinates) to view coordinates.
-View coordinates are the coordinates in the viewing cube with values between -1.0 and +1.0 being inside the viewing cube. 
- Examples: ::
-mged> model2view 10 20 30 
+`[cmd]#model2view# x y z`
 
-– Display the view coordinates that correspond to the point (10 20 30) in model space. 
+The [cmd]`model2view` command converts the supplied point (in model
+coordinates) to view coordinates.  View coordinates are the
+coordinates in the viewing cube with values between -1.0 and +1.0
+being inside the viewing cube.
+
+.Examples:
+[subs="+quotes"]
+....
+[prompt]#mged># [in]#model2view 10 20 30#   <1>
+....
+<1> Display the view coordinates that correspond to the point (10 20
+30) in model space.
+
 
 [[model2view_lu]]
-== model2view_lu mx my mz
+== model2view_lu
 
-Convert a point in model coordinates (local units) to a point in view coordinates (local units). 
+`[cmd]#model2view_lu# mx my mz`
+
+Convert a point in model coordinates (local units) to a point in view
+coordinates (local units).
+
 
 [[output_hook]]
-== output_hook [__hook_cmd__]
+== output_hook
 
-Set up to have output from bu_log sent to __hook_cmd__.
-If _hook_cmd_ is not specified, the output hook is deleted. 
+`[cmd]#output_hook# [__hook_cmd__]`
+
+Set up to have output from bu_log sent to `hook_cmd`.  If `hook_cmd`
+is not specified, the output hook is deleted.
+
 
 [[put_comb]]
-== put_comb _comb_name is_Region_ [__id air gift los__] color shader inherit Boolean_expr
+== put_comb
 
-The "`put_comb`" command defines the combination __comb_name__.
-If _is_Region_ is __Yes__, then _id, air, gift_ and _los_ must be specified.
-If _is_Region_ is __No__, then _id, air, gift,_ and _los_ must not be specified. 
- Examples: ::
-mged> put_comb not_region No \"`0 220 220\`" plastic No \"`u box\\n- ball\`"
+`[cmd]#put_comb# _comb_name_ _is_Region_ [__id__ _air_ _gift_ _los_] color shader inherit Boolean_expr`
 
-– Defines a combination called _not_region._
+The [cmd]`put_comb` command defines the combination `comb_name`.  If
+`is_Region` is `Yes`, then `id`, `air`, `gift` and `los` must be
+specified.  If `is_Region` is `No`, then `id`, `air`, `gift`, and
+`los` must not be specified.
 
-mged *put_comb my_region Yes
-    1000 0 1 100 \"`0 220 220\`" plastic No \"`u box\\n-
-    ball\`"*  – Defines a region called _my_region._
+.Examples:
+[subs="+quotes"]
+....
+[prompt]#mged># [in]#put_comb not_region No \"0 220 220\" plastic No \"u box\\n- ball\"#   <1>
+[prompt]#mged># [in]#put_comb my_region Yes 1000 0 1 100 \"0 220 220\" plastic No \"u box\\n- ball\"#   <2>
+....
+<1> Defines a combination called `not_region`.
+<2> Defines a region called `my_region`.
+
 
 [[reset_edit_solid]]
 == reset_edit_solid
 
-Reset the parameters for the currently edited shape (i.e.
-es_int) to the database values. 
+Reset the parameters for the currently edited shape (i.e.  es_int) to
+the database values.
+
 
 [[rset]]
-== rset [_res_type_ [_res_ [_vals_]]]
+== rset
 
+`[cmd]#rset# [_res_type_ [_res_ [_vals_]]]`
 
-Provides a mechanism to get/set resource values for the given resource types.
-The supported resource types are: ax (Axes), c (Color Schemes), g (Grid), r (Rubber Band), and var (MGED Variables). Basically, _rset_ always gets a value unless enough information is given to set a value.
-For example, with no parameters, _rset_ returns a list of all resource values for the supported resource types.
-If _rset_ is executed with only the _res_type_ given, a list of all resource values for the given _res_type_ is returned. 
+Provides a mechanism to get/set resource values for the given resource
+types.  The supported resource types are: ax (Axes), c (Color
+Schemes), g (Grid), r (Rubber Band), and var (MGED
+Variables). Basically, `rset` always gets a value unless enough
+information is given to set a value.  For example, with no parameters,
+`rset` returns a list of all resource values for the supported
+resource types.  If `rset` is executed with only the `res_type` given,
+a list of all resource values for the given `res_type` is returned.
 
-Examples: 
-
-mged> rset g 
-
+.Examples:
+[subs="+quotes"]
+....
+[prompt]#mged># [in]#rset g#
 Grid 
+        draw=0
+        snap=0
+        anchor=0,0,0
+        rh=1
+        rv=1
+        mrh=5
+        mrv=5 
+[prompt]#mged># [in]#rset g snap#    #-- Get value for grid snapping 0.#
+[prompt]#mged># [in]#rset g snap 1#  #-- Enable snapping.#
+[prompt]#mged># [in]#rset r#
+Rubber Band
+        draw=0
+	linewidth=0
+	linestyle=s
+	pos=0,0 m=0,0 
+[prompt]#mged># [in]#rset r draw#    #-- Get value for "Rubber Band s" draw variable 0.#
+[prompt]#mged># [in]#rset r draw 1#  #-- Draw rubber band.#
+[prompt]#mged># [in]#rset ax#        #-- Prints the values of the axes.#
+Axes
+        model_draw=0
+	model_size=500
+	model_linewidth=1
+	model_pos=0,0,0
+	view_draw=0
+	view_size=500
+	view_linewidth=1
+	view_pos=0,0
+	edit_draw=0
+	edit_size1=500
+	edit_size2=500
+	edit_linewidth1=1
+	edit_linewidth2=1
+[prompt]#mged># [in]#rset ax model_size#  #-- Get size of model axes 500.#
+....
 
-draw=0  snap=0  anchor=0,0,0  rh=1  rv=1  mrh=5  mrv=5 
-
-mged *rset g snap*  – Get value for grid snapping 0. 
-
-mged *rset g snap 1*  – Enable snapping. 
-
-mged *rset r*  Rubber Band  draw=0  linewidth=0  linestyle= s   pos=0,0  dim=0,0 
-
-mged *rset r draw*  – Get value for "`Rubber Band s`" draw variable 0. 
-
-mged *rset r draw 1*  – Draw rubber band. 
-
-mged *rset ax*
-
-Axes  model_draw=0  model_size=500  model_linewidth=1  model_pos=0,0,0  view_draw=0  view_size=500  view_linewidth=1  view_pos=0,0  edit_draw=0  edit_size1=500  edit_size2=500  edit_linewidth1=1  edit_linewidth2=1. 
-
-–Prints the values of the axes 
-
-mged *rset ax model_size*  – Get size of model axes 500. 
 
 [[set_more_default]]
-== set_more_default more_default
+== set_more_default
 
-Set the current default input value. 
+`[cmd]#set_more_default# more_default`
+
+Set the current default input value.
+
 
 [[share]]
-== share [-u] resource dm1 [dm2]
+== share
 
-The "`share`" command provides a mechanism to share (or unshare with the * u* option) resources among display managers.
-When a resource is shared between two or more display managers, any change to that resource is seen only in the sharing display managers.
-The supported resource types are: ad (ADC), ax (Axes), c (Color Schemes), d (Display Lists), g (Grid), m (Menu), r (Rubber Band), vi (View), and var (MGED Variables). 
- Examples: ::
-mged> share g .dm_ogl0 .dm_ogl1 
+`[cmd]#share# [-u] resource dm1 [dm2]`
 
-– .dm_ogl0 shares its grid resource with .dm_ogl1. 
+The [cmd]`share` command provides a mechanism to share (or unshare
+with the * u* option) resources among display managers.  When a
+resource is shared between two or more display managers, any change to
+that resource is seen only in the sharing display managers.  The
+supported resource types are: ad (ADC), ax (Axes), c (Color Schemes),
+d (Display Lists), g (Grid), m (Menu), r (Rubber Band), vi (View), and
+var (MGED Variables).
 
-mged *share -u g
-    .dm_ogl1*  – .dm_ogl1 acquires a private copy of the grid resource. 
+.Examples:
+[subs="+quotes"]
+....
+[prompt]#mged># [in]#share g .dm_ogl0 .dm_ogl1#   <1>
+[prompt]#mged># [in]#share -u g .dm_ogl1#   <2>
+....
+
+<1> `.dm_ogl0` shares its grid resource with `.dm_ogl1`. 
+
+<2> `.dm_ogl1` acquires a private copy of the grid resource.
+
 
 [[solids_on_ray]]
-== solids_on_ray h v
+== solids_on_ray
+
+`[cmd]#solids_on_ray# h v`
 
 List all displayed shapes along a ray. 
 
-[[stuff_str]]
-== stuff_str string
 
-Sends a string to MGED s tty, while leaving the current command line alone.
-This is used to relay the activity of Tcl/Tk command windows to MGED s tty.
-If MGED is no longer attached to a tty, nothing happens. 
+[[stuff_str]]
+== stuff_str
+
+`[cmd]#stuff_str# string`
+
+Sends a string to MGED's tty, while leaving the current command line
+alone.  This is used to relay the activity of Tcl/Tk command windows
+to MGED's tty.  If MGED is no longer attached to a tty, nothing
+happens.
 
 [[svb]]
 == svb
 
-The "`svb`" command sets the view reference base variables, which are used internally by the <<knob,knob>> command to implement absolute rotation, translation, and scale. 
- Examples: ::
-mged> svb 
+The [cmd]`svb` command sets the view reference base variables, which
+are used internally by the {user-cmd}#knob[knob] command to implement
+absolute rotation, translation, and scale.
 
-– Set the view reference base variables with respect to the current view. 
+.Examples:
+[subs="+quotes"]
+....
+[prompt]#mged># [in]#svb#   <1>
+....
+<1> Set the view reference base variables with respect to the current
+view.
+
 
 [[tie]]
-== tie [[-u_] _command_window_ [_display_window_]]
+== tie
 
-The "`tie`" command is used to create (or untie/destroy with the *-u* option) an association between a command window and a display window.
-When there exists such an association, all commands entered from the command window will be directed at the associated display window.
-The _command_window_ can be specified with MGED to refer to the tty from which MGED was started or an id associated with a Tcl/Tk interface window <<gui,created with _gui_>>.
-The _display_window_ is specified with its Tcl/Tk pathname.
-If no parameters are given, a listing of the current __command_window__/__display_window__ pairs is returned.
-If only the _command_window_ is given, the _display_window_ associated with _command_window_ is returned.
-If both parameters are given, the __command_window__/__display_window__ association is created. 
- Examples: ::
-mged> tie my_id .my_display_window 
+`[cmd]#tie# +++[++++++[+++[opt]#-u#] _command_window_ [_display_window_]]`
 
-– Create the association between my_id and .my_display_window. 
+The [cmd]`tie` command is used to create (or untie/destroy with the
+[opt]`-u` option) an association between a command window and a
+display window.  When there exists such an association, all commands
+entered from the command window will be directed at the associated
+display window.  The `command_window` can be specified with MGED to
+refer to the tty from which MGED was started or an id associated with
+a Tcl/Tk interface window {user-cmd}#gui[created with [cmd]`gui`].
+The `display_window` is specified with its Tcl/Tk pathname.  If no
+parameters are given, a listing of the current
+_command_window_/_display_window_ pairs is returned.  If only the
+`command_window` is given, the _display_window_ associated with
+`command_window` is returned.  If both parameters are given, the
+_command_window_/_display_window_ association is created.
 
-mged *tie my_id*  .my_display_window  – Returns the display window associated with my_id. 
+.Examples:
+[subs="+quotes"]
+....
+[prompt]#mged># [in]#tie my_id .my_display_window#   <1>
+[prompt]#mged># [in]#tie my_id  .my_display_window#   <2>
+[prompt]#mged># [in]#tie  {my_id .my_window} {mged {}}#   <3>
+....
 
-mged *tie*  {my_id .my_window} {mged {}}  – List all of the command_window/display_window pairs. 
+<1> Create the association between `my_id` and `.my_display_window`.
+
+<2> Returns the display window associated with my_id.
+
+<3> List all of the command_window/display_window pairs.
+
 
 [[view2grid_lu]]
-== view2grid_lu vx vy vz
+== view2grid_lu
 
-Given a point in view coordinates (local units), converts to grid coordinates (local units). 
+`[cmd]#view2grid_lu# vx vy vz`
+
+Given a point in view coordinates (local units), converts to grid
+coordinates (local units).
+
 
 [[view2model]]
-== view2model x y z
+== view2model
 
-The "`view2model`" command converts the specified point (__x y z__) in view coordinates to model coordinates (mm). The part of view space displayed by MGED is the cube -1.0 <= x,y,z <= +1.0. 
- Examples: ::
-mged> view2model 1 1 0 
+`[cmd]#view2model# x y z`
 
-– List the model coordinates of the upper right corner of the MGED display (in a plane at the center of the viewing cube). 
+The [cmd]`view2model` command converts the specified point (`x y z`)
+in view coordinates to model coordinates (mm). The part of view space
+displayed by MGED is the cube [math]`-1.0 \<= x,y,z \<= +1.0`.
+
+.Examples:
+[subs="+quotes"]
+....
+[prompt]#mged># [in]#view2model 1 1 0#   <1>
+....
+<1> List the model coordinates of the upper right corner of the MGED
+display (in a plane at the center of the viewing cube).
+
 
 [[view2model_lu]]
-== view2model_lu vx vy vz
+== view2model_lu
 
-Given a point in view coordinates (local units), converts to model coordinates (local units). 
+`[cmd]#view2model_lu# vx vy vz`
+
+Given a point in view coordinates (local units), converts to model
+coordinates (local units).
+
 
 [[view2model_vec]]
-== view2model_vec vx vy vz
+== view2model_vec
 
-Given a vector in view coordinates, convert it to model coordinates. 
+`[cmd]#view2model_vec# vx vy vz`
+
+Given a vector in view coordinates, convert it to model coordinates.
+
 
 [[view_ring]]
-== view_ring subcommand
+== view_ring
 
-This manipulates the view ring for the current display manager.
-The view ring is a list of views owned by a display manager.
-Views can be added or removed and can also be traversed or queried. _View_ring_ accepts the following subcommands: 
+`[cmd]#view_ring# subcommand`
 
-**
+This manipulates the view ring for the current display manager.  The
+view ring is a list of views owned by a display manager.  Views can be
+added or removed and can also be traversed or
+queried. [cmd]`view_ring` accepts the following subcommands:
 
-add 
+`add` :: This subcommand adds the current view to the view ring.
+`next` :: This subcommand makes the next view on the view ring the
+current view.
+`prev` :: This subcommand makes the previous view on the view ring the
+current view.
+`toggle` :: This subcommand toggles between the current view and the
+last view.
+`delete vid` :: This subcommand removes/deletes the view with a view
+id of _vid_ from the view ring.  The last view cannot be removed
+(i.e., there is always one view on the view ring).
+`goto vid` :: This subcommand makes the view with a view id of `vid`
+the current view.
+`get [-a]` :: Returns the id of the current view.  If [opt]`-a` is
+specified, all view ids on the view ring are returned.
 
-This subcommand adds the current view to the view ring. 
+.Examples:
+[subs="+quotes"]
+....
+[prompt]#mged># [in]#view_ring add#   <1>
+[prompt]#mged># [in]#view_ring goto 1#   <2>
+[prompt]#mged># [in]#view_ring delete 1#   <3>
+....
 
-**
+<1> Add the current view to the view ring.
 
-next 
+<2> Go to view 1.
 
-This subcommand makes the next view on the view ring the current view. 
+<3> Delete view 1 from the view ring.
 
-**
-
-prev 
-
-This subcommand makes the previous view on the view ring the current view. 
-
-**
-
-toggle 
-
-This subcommand toggles between the current view and the last view. 
-
-**
-
-delete vid 
-
-This subcommand removes/deletes the view with a view id of _vid_ from the view ring.
-The last view cannot be removed (i.e., there is always one view on the view ring). 
-
-**
-
-goto vid 
-
-This subcommand makes the view with a view id of _vid_ the current view. 
-
-**
-
-get [__-a__] 
-
-Returns the id of the current view.
-If _-a_ is specified, all view ids on the view ring are returned. 
-
-Examples: 
-
-mged> view_ring add 
-
-– Add the current view to the view ring. 
-
-mged *view_ring goto
-    1*  – Go to view 1. 
-
-mged *view_ring delete
-    1*  – Delete view 1 from the view ring. 
 
 [[viewget]]
-== viewget parameter
+== viewget
 
-The "`viewget`" command displays various _mged_ view parameters.
+`[cmd]#viewget# parameter`
+
+The [cmd]`viewget` command displays various _mged_ view parameters.
 The possible parameters are: 
 
-* aet – list the <<azimuth,azimuth>>, <<elevation,elevation>>, and <<twist,twist>> for the current viewing aspect. 
-* center – list the model coordinates (mm) of the center of the viewing cube. 
-* size – list the size (mm) of a side the current MGED display. 
-* eye – list the model coordinates (mm) of the current eye point. 
-* ypr – list the yaw, pitch, and roll angles (degrees) of the current viewing aspect. 
-* quat – list the quaternion for the current viewing aspect. 
+* `aet` – list the {glossary}#azimuth[azimuth],
+  {glossary}#elevation[elevation], and {glossary}#twist[twist] for the
+  current viewing aspect.
+* `center` – list the model coordinates (mm) of the center of the
+  viewing cube.
+* `size` – list the size (mm) of a side the current MGED display.
+* `eye` – list the model coordinates (mm) of the current eye point. 
+* `ypr` – list the yaw, pitch, and roll angles (degrees) of the
+  current viewing aspect.
+* `quat` – list the quaternion for the current viewing aspect.
 
-Examples: 
+.Examples:
+[subs="+quotes"]
+....
+[prompt]#mged># [in]#viewget center#   <1>
+....
+<1> List the model coordinates of the center of the MGED viewing cube.
 
-mged> viewget center 
-
-– List the model coordinates of the center of the MGED viewing cube. 
 
 [[viewset]]
-== viewset <__parameter value__>
+== viewset
 
-The "`viewset`" command sets various MGED view parameters.
-More than one parameter may be set with one command.
-The possible parameters are: 
+`[cmd]#viewset# <__parameter value__>`
 
-* aet – set the <<azimuth,azimuth>>, <<elevation,elevation>>, and <<twist,twist>> for the current viewing aspect. 
-* center – set the model coordinates (mm) of the center of the viewing cube. 
-* size – set the size (mm) of a side of the current MGED display. 
-* eye – set the model coordinates (mm) of the current eye point. 
-* ypr – set the yaw, pitch, and roll angles (degrees) of the current viewing aspect. 
-* quat – set the quaternion for the current viewing aspect. 
+The [cmd]`viewset` command sets various MGED view parameters.  More
+than one parameter may be set with one command.  The possible
+parameters are:
 
- Examples: ::
-mged> viewset center 1 2 3 size 100 
+* `aet` – set the {glossary}#azimuth[azimuth],
+  {glossary}#elevation[elevation], and {glossary}#twist[twist] for the
+  current viewing aspect.
+* `center` – set the model coordinates (mm) of the center of the
+  viewing cube.
+* `size` – set the size (mm) of a side of the current MGED display.
+* `eye` – set the model coordinates (mm) of the current eye point.
+* `ypr` – set the yaw, pitch, and roll angles (degrees) of the current
+  viewing aspect.
+* `quat` – set the quaternion for the current viewing aspect.
 
-– Set the model coordinates of the center of the MGED viewing cube to the point (1 2 3) and set the size of the viewing cube to 100 mm. 
+.Examples:
+[subs="+quotes"]
+....
+[prompt]#mged># [in]#viewset center 1 2 3 size 100#   <1>
+....
+<1> Set the model coordinates of the center of the MGED viewing cube
+to the point (1 2 3) and set the size of the viewing cube to 100 mm.
+
 
 [[winset]]
-== winset [_pathName_]
+== winset
 
-The "`winset`" command sets the current display manager to __pathName__.
-If _pathName_ is not given, the current display manager is returned. 
- Examples: ::
-mged> winset .my_window 
+`[cmd]#winset# [_pathName_]`
 
-– .my_window is now the current display manager. 
+The [cmd]`winset` command sets the current display manager to
+`pathName`.  If `pathName` is not given, the current display manager
+is returned.
 
-mged *winset*  – Returns the current display manager (i.e., .my_window). 
+.Examples:
+[subs="+quotes"]
+....
+[prompt]#mged># [in]#winset .my_window#   <1>
+[prompt]#mged># [in]#winset#   <2>
+....
+<1> `.my_window` is now the current display manager. 
+<2> Returns the current display manager (i.e., .my_window).
 
-.Mged
-[cols="1,1"]
-|===
-|<<mgedusercommands,MGED
-            User Commands>>
-|<<mgeddevelopercommands,MGED
-            Developer Commands>>
-|===
-    
