@@ -85,3 +85,72 @@ refresh the browser in order to view them. The Bash script
 https://github.com/BRL-CAD/brlcad-docs/blob/main/utils/watch.sh[`utils/watch.sh`^]
 may be used to rebuild the docs automatically whenever there are some
 modifications.
+
+
+== Submitting Contributions
+
+Assuming that you have write access on the
+https://github.com/BRL-CAD/brlcad-docs[BRL-CAD/brlcad-docs^]
+repository, you can `commit` and `push` your changes directly.
+However a better way is to follow the
+https://guides.github.com/introduction/flow/[GitHub flow] and make a
+_pull request_ in order to get some review and feedback from other
+people, before these changes are merged to the main docs.
+
+The workflow could be like this:
+
+. Before starting any changes create a new local branch, with a name
+that somehow describes the changes that are going to be made. For
+example:
++
+[source,bash]
+....
+git clone https://github.com/BRL-CAD/brlcad-docs
+cd brlcad-docs/
+git checkout -b update-the-hacking-book
+....
+
+. Then start making the changes and testing them locally (by building
+the docs with `antora build-dev.yml`). Commit these changes to the
+local branch as well.
+
+. Push this branch to GitHub:
++
+[source,bash]
+....
+git push origin update-the-hacking-book
+....
+
+. At this moment, if you go to https://github.com/BRL-CAD/brlcad-docs
+you will be able to create easily a _pull request_ that aims to merge
+all the commits from the new branch to the *main* branch.
+
+. Then you can ask someone to review your changes. One way they can
+review your changes is by checking out your branch and building the
+docs locally:
++
+[source,bash]
+....
+git clone https://github.com/BRL-CAD/brlcad-docs
+cd brlcal-docs/
+git pull
+git branch -a
+git checkout update-the-hacking-book
+antora build-dev.yml
+....
+
+. To refine the changes, both of you can make new commits to the
+branch, and when you push them to GitHub they will appear
+automatically on the _pull request_.
+
+. When you are happy with the changes, you can merge the _pull
+request_ and delete the branch from GitHub. You can delete the branch
+locally as well, like this:
++
+[source,bash]
+....
+git checkout main
+git pull -p
+git branch -a
+git branch -d update-the-hacking-book
+....
