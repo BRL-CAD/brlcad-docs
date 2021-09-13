@@ -58,7 +58,7 @@ those cases.
 
 .Examine entire database for all defect categories
 ====
-[prompt]#mged># [ui]`lint`
+[prompt]#mged># [in]`lint`
 
 ....
 Checking for cyclic paths...
@@ -79,7 +79,7 @@ Found invalid objects:
 
 .Check the validity of a single geometry object
 ====
-[prompt]#mged># [ui]`lint -I nonsolid.bot`
+[prompt]#mged># [in]`lint -I nonsolid.bot`
 
 ....
 Checking for invalid objects...
@@ -90,7 +90,7 @@ Found invalid objects:
 
 .Examine all non-BoT objects in the database matching the name pattern "*_1.*" for invalidity
 ====
-[prompt]#mged># [ui]`lint -F "! -type bot -name *_1.*"`
+[prompt]#mged># [in]`lint -F "! -type bot -name *_1.*"`
 
 ....
 Checking for invalid objects...

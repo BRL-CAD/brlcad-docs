@@ -25,20 +25,20 @@ open ogl and X display windows.
 
 .Opening an ogl display window
 ====
-[prompt]#mged># [ui]`attach ogl`
+[prompt]#mged># [in]`attach ogl`
 
 Opens an ogl display window named .dm_ogl0 (assuming this is the first
 ogl display window opened using the default naming scheme)
 
-[prompt]#mged# [ui]`attach ogl`
+[prompt]#mged# [in]`attach ogl`
 
 Opens an ogl display window named .dm_ogl1.
 
-[prompt]#mged># [ui]`attach -n myOgl -W 720 -N 486 ogl`
+[prompt]#mged># [in]`attach -n myOgl -W 720 -N 486 ogl`
 
 Opens a 720 x 486 OpenGL display window named myOgl.
 
-[prompt]#mged># [ui]`attach -n myX -d remote_host:0 -i myInitX`
+[prompt]#mged># [in]`attach -n myX -d remote_host:0 -i myInitX`
 
 Open an X display window named myX on remote_host that is initialized
 by myInit.
@@ -46,28 +46,28 @@ by myInit.
 myInit might contain user-specified bindings like those found in the
 default bindings.
 
-[prompt]#mged># [ui]`toplevel.t`
+[prompt]#mged># [in]`toplevel.t`
 
 A top-level window named .t was created. 
 
-[prompt]#mged># [ui]`attach -t 0 -S 800 -n .t.ogl ogl`
+[prompt]#mged># [in]`attach -t 0 -S 800 -n .t.ogl ogl`
 
 Opens a 800 x 800 OpenGL display window named .t.ogl that is not a
 top-level window.
 
-[prompt]#mged># [ui]`button .t.dismiss -text Dismiss -command "release .t.ogl; destroy .t"`
+[prompt]#mged># [in]`button .t.dismiss -text Dismiss -command "release .t.ogl; destroy .t"`
 
 Creates a button that dismisses the display manager, etc.
 
-[prompt]#mged># [ui]`pack .t.ogl -expand 1 -fill both`
+[prompt]#mged># [in]`pack .t.ogl -expand 1 -fill both`
 
 Packs the display manager inside .t. 
 
-[prompt]#mged># [ui]`pack .t.dismiss`
+[prompt]#mged># [in]`pack .t.dismiss`
 
 Packs the Dismiss button inside .t. 
 
-[prompt]#mged># [ui]`attach`
+[prompt]#mged># [in]`attach`
 
 Lists the help message that includes the valid display types.
 ====

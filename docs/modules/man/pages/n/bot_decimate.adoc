@@ -40,7 +40,7 @@ Creating a new BOT primitive by reducing the number of triangles in
 the old BOT primitive and specifying the maximum chord error and
 maximum normal error between the old and new primitives.
 
-[prompt]#mged># [ui]`bot_decimate -c 0.5 -n 10.0 bot.new abot`
+[prompt]#mged># [in]`bot_decimate -c 0.5 -n 10.0 bot.new abot`
 
 Creates a new BOT primitive named _bot.new_ by reducing the number of
 triangles in _abot_ while keeping the resulting surface within 0.5
@@ -53,16 +53,16 @@ command. Repeated application of this command on its own BOT output
 will result in a final BOT primitive that has unknown relationships to
 the original BOT primitive. For example:
 
-[prompt]#mged># [ui]`bot_decimate -c 10.0 bot_b bot_a`
+[prompt]#mged># [in]`bot_decimate -c 10.0 bot_b bot_a`
 
-[prompt]#mged>#[ui]`bot_decimate -c 10.0 bot_c bot_b`
+[prompt]#mged>#[in]`bot_decimate -c 10.0 bot_c bot_b`
 
 This sequence of commands will produce primitive _bot_c_ with up to
 20.0 units of chord error between _bot_a_ and _bot_c_.
 
-[prompt]#mged># [ui]`bot_decimate -c 10.0 bot_b bot_a`
+[prompt]#mged># [in]`bot_decimate -c 10.0 bot_b bot_a`
 
-[prompt]#mged># [ui]`bot_decimate -n 5.0 bot_c bot_b`
+[prompt]#mged># [in]`bot_decimate -n 5.0 bot_c bot_b`
 
 This sequence of commands will produce primitive _bot_c_ with no
 guaranteed relationships to _bot_a_.

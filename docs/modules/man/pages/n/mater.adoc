@@ -116,7 +116,7 @@ parameters, color, and inheritance to a region.
 
 .Assigning shader parameters, color, and inheritance to a region.
 ====
-[prompt]#mged># [ui]`mater region1 "plastic {tr 0.5 re 0.2}" 210 100 100 0`
+[prompt]#mged># [in]`mater region1 "plastic {tr 0.5 re 0.2}" 210 100 100 0`
 
 Sets _region1_ to use the plastic shader with 50% transparency, 20%
 reflectivity, a base color of (210 100 100), and inheritance set to 0.
@@ -124,7 +124,7 @@ reflectivity, a base color of (210 100 100), and inheritance set to 0.
 
 .Importing Density Data
 ====
-[prompt]#mged># [ui]`mater -d import /home/user/.density`
+[prompt]#mged># [in]`mater -d import /home/user/.density`
 
 After this operation, the density valued defined in
 /home/user/.density are now stored in the .g file.
@@ -132,14 +132,14 @@ After this operation, the density valued defined in
 
 .Viewing Density Data
 ====
-[prompt]#mged># [ui]`mater -d get --name \*Rubber\*`
+[prompt]#mged># [in]`mater -d get --name \*Rubber\*`
 
 Lists all density entries with a material name containing "Rubber".
 ====
 
 .Names from IDs
 ====
-[prompt]#mged># [ui]`mater -d map --names-from-ids /home/user/.density`
+[prompt]#mged># [in]`mater -d map --names-from-ids /home/user/.density`
 
 Assigns *material_name* names from a density file assuming existing
 *material_id* attributes.
@@ -147,7 +147,7 @@ Assigns *material_name* names from a density file assuming existing
 
 .IDs from Names
 ====
-[prompt]#mged># [ui]`mater -d map --ids-from-names /home/user/.density /home/user/mapping_file`
+[prompt]#mged># [in]`mater -d map --ids-from-names /home/user/.density /home/user/mapping_file`
 
 Assigning or updating *material_id* attributes based on
 *material_name* attribute values, density file names, and mapping file

@@ -63,19 +63,19 @@ there are argument processing or usage errors.
 
 == EXAMPLES
 
-[ui]`pixcmp -d file1 file2`
+[in]`pixcmp -d file1 file2`
 
 The two files are compared pixel by pixel with each difference printed
 instead of just the summary.
 
-[ui]`pixdiff file1.pix file2.pix | pixcmp - file3.pix`
+[in]`pixdiff file1.pix file2.pix | pixcmp - file3.pix`
 
 The _pixdiff_ tool compares the pixels in file1.pix with those in
 file2.pix and then outputs a resulting `diff` image which is then
 processed by [cmd]*pixcmp* as input and compared against file3.pix,
 reporting on the differences.
 
-[ui]`echo -n "aabcddeg" | pixcmp -b -s -d - -`
+[in]`echo -n "aabcddeg" | pixcmp -b -s -d - -`
 
 Here, pixcmp reads interleaved data from the system [cmd]*echo*
 command (-n avoids a trailing newline) provided via standard input.

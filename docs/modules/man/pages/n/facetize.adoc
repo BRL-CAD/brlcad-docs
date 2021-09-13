@@ -71,7 +71,7 @@ facetized BOT version of an existing object (_old_object_) and
 renaming that facetized object (_new_object_).  It will try first NMG
 conversion, and if that fails attempts CM conversion.
 
-[prompt]#mged># [ui]`facetize region1.r region1.bot`
+[prompt]#mged># [in]`facetize region1.r region1.bot`
 ====
 
 .Facetize all regions in a hierarchy.
@@ -79,7 +79,7 @@ conversion, and if that fails attempts CM conversion.
 This runs the per region conversion on all regions under the "model"
 assembly and creates a new conversion hierarchy under model_facetized.
 
-[prompt]#mged># [ui]`facetize -r model model.f`
+[prompt]#mged># [in]`facetize -r model model.f`
 ====
 
 .Facetize all regions in a hierarchy, attempting only NMG conversion.
@@ -87,7 +87,7 @@ assembly and creates a new conversion hierarchy under model_facetized.
 This runs the per region conversion on all regions, but in the case of
 failure will not attempt any fallback conversion methods.
 
-[prompt]#mged># [ui]`facetize -r --NMG model model.f`
+[prompt]#mged># [in]`facetize -r --NMG model model.f`
 ====
 
 .Retry failed conversion objects in a previous facetization attempt with new methodology.
@@ -96,12 +96,12 @@ This retries the per region conversion on all regions that didn't
 originally succeed in the initial conversion attempt, attempting only
 CM reconstruction without first retrying NMG conversion.
 
-[prompt]#mged># [ui]`facetize -r --resume model.f`
+[prompt]#mged># [in]`facetize -r --resume model.f`
 ====
 
 .Increase Decimation in CM Mode
 ====
-[prompt]#mged># [ui]`facetize --CM --feature-size 0.06 --decimation-feature-size 2.0 ellipse.r ell.bot`
+[prompt]#mged># [in]`facetize --CM --feature-size 0.06 --decimation-feature-size 2.0 ellipse.r ell.bot`
 
 ....
 CM: completed in 16 seconds with size 0.06
@@ -119,7 +119,7 @@ dramatically reduced the count to 104.
 
 .Decrease Decimation in CM Mode
 ====
-[prompt]#mged># [ui]`facetize --CM --feature-size 0.06 --decimation-feature-size .01 ellipse.r ell.bot`
+[prompt]#mged># [in]`facetize --CM --feature-size 0.06 --decimation-feature-size .01 ellipse.r ell.bot`
 
 ....
 CM: completed in 16 seconds with size 0.06
@@ -231,14 +231,14 @@ triggering the full retry of all methods entailed by the --retry
 option.)  More targeted searches can do this reset for more narrow
 subsets of the .g database.
 
-[prompt]#mged># [ui]`search -attr facetize:CM -exec attr rm "{}" facetize:CM ";"`
+[prompt]#mged># [in]`search -attr facetize:CM -exec attr rm "{}" facetize:CM ";"`
 ====
 
 .List invalid BoT objects below a comb
 ====
 Use lint -M to report on invalid objects below a comb. 
 
-[prompt]#mged># [ui]`lint -M model.f`
+[prompt]#mged># [in]`lint -M model.f`
 ====
 
 == AUTHOR

@@ -214,7 +214,7 @@ desired type (we will use port 0 and /dev/X for a Linux-based X11
 rendering - windows users can try /dev/wgl.) For a somewhat larger
 render we specify a size of 2048 pixels square.
 
-[ui]`fbserv -s2048 -p0 -F/dev/X`
+[in]`fbserv -s2048 -p0 -F/dev/X`
 
 If an graphical framebuffer was specified, a window should appear.
 Otherwise, fbserv will silently wait for input.
@@ -222,7 +222,7 @@ Otherwise, fbserv will silently wait for input.
 In MGED, set up the scene you wish to render and then save a script
 with [cmd]*saveview*
 
-[ui]`saveview remrt.rt`
+[in]`saveview remrt.rt`
 
 Edit the script and replace the [cmd]*rt* command with [cmd]*remrt*.
 Replace the output file specification ([opt]*-o filename*) with a -F0
@@ -235,7 +235,7 @@ program has launched.  (Note: the port number printed by the default
 output is not useful - you want to use 4446 by default to connect to
 remrt.)
 
-[ui]`$$.$$/remrt.rt`
+[in]`$$.$$/remrt.rt`
 
 ....
 08/22 21:51:41 machinename BRL-CAD Release 7.30.0  Network-Distributed RT (REMRT)
@@ -264,7 +264,7 @@ we used to set up the scene, and from that directory run
 see more of what is happening. Without this option, if anything isn't
 set up correctly rtsrv can fail with cryptic errors.)
 
-[ui]`rtsrv -d machinename 4446`
+[in]`rtsrv -d machinename 4446`
 
 If successful, both [cmd]*remrt* and [cmd]*rtsrv* will being producing
 output. The [cmd]*rtsrv* will be more verbose, and should look like
@@ -338,7 +338,7 @@ host_lookup_by_hostent(localhost) got localhost?
 The framebuffer started in the beginning will now hold the image
 results.  To save those results to a file, the [cmd]*fb-png* is used:
 
-[ui]`fb-png -F0 -s2048 image.png`
+[in]`fb-png -F0 -s2048 image.png`
 ====
 
 == SEE ALSO

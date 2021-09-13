@@ -58,13 +58,13 @@ no distinction can be made between color planes.
 
 == EXAMPLES
 
-The command [ui]*bwmod -m-1 -a255 < file.bw > file2.bw*
+The command [in]*bwmod -m-1 -a255 < file.bw > file2.bw*
 
 will produce the negative of a file by first multiplying by minus one,
 and then adding 255 to shift the pixels back into the 0->255
 range. (I.e., replace each pixel value by 255 minus that value.)
 
-One can apply a gamma factor to a file as follows: [ui]*bwmod -d255
+One can apply a gamma factor to a file as follows: [in]*bwmod -d255
 -r2.2 -m255 < file.bw > file2.bw*
 
 which will first normalize the pixel values (i.e., put them into 0->1,
@@ -75,7 +75,7 @@ function call per pixel results!]
 
 Suppose you ran [cmd]*bwstat* on a file and found min=80, max=210,
 mean=100. If you wish to expand the range of intensities, while still
-preserving the mean, this can be done by: [ui]*bwmod -s100 -m1.409
+preserving the mean, this can be done by: [in]*bwmod -s100 -m1.409
 -a100 < file.bw > file2.bw*
 
 where 1.409 results from (255.0-100.0)/(210.0-100.0), which is what
@@ -85,9 +85,9 @@ multiply occur "about that point"; i.e., values less than 100 get
 smaller, and those above get higher.  A [rep]_file.bw_ for this
 example can be created with these three command lines:
 
-[ui]*gencolor -r 11 80 >file.bw* +
-[ui]*gencolor -r 262131 100 >>file.bw* +
-[ui]*gencolor -r 2 210 >>file.bw*
+[in]*gencolor -r 11 80 >file.bw* +
+[in]*gencolor -r 262131 100 >>file.bw* +
+[in]*gencolor -r 2 210 >>file.bw*
 
 == SEE ALSO
 

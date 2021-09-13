@@ -75,7 +75,7 @@ assigned that numerical value.
 
 .Display help and available libraries
 ====
-[prompt]#mged># [ui]`debug -h`
+[prompt]#mged># [in]`debug -h`
 
 ....
 debug [-h] [-l [lib]] [-C [lib]] [-V [lib] [val]] [lib [flag]]
@@ -90,7 +90,7 @@ Available libs:
 
 .List available flags for _LIBBU_
 ====
-[prompt]#mged># [ui]`debug -l BU`
+[prompt]#mged># [in]`debug -l BU`
 
 ....
 BU flags:
@@ -109,13 +109,13 @@ BU flags:
 
 .Set _LIBBU_ flags for bu_avs and path debugging
 ====
-[prompt]#mged># [ui]`debug BU AVS`
+[prompt]#mged># [in]`debug BU AVS`
 
 ....
            AVS (0x00000400): bu_avs_() loggin
 ....
 
-[prompt]#mged># [ui]`debug BU PATHS`
+[prompt]#mged># [in]`debug BU PATHS`
 
 ....
            AVS (0x00000400): bu_avs_() logging 
@@ -125,7 +125,7 @@ BU flags:
 
 .Set _LIBRT_ flag for rt_shootray processing
 ====
-[prompt]#mged>#[ui]`debug RT SHOOT`
+[prompt]#mged>#[in]`debug RT SHOOT`
 
 ....
          SHOOT (0x00000004): 3 Info about rt_shootray() processing
@@ -134,14 +134,14 @@ BU flags:
 
 .List LIBBU's active debugging flags and all active debugging flags
 ====
-[prompt]#mged># [ui]`debug BU`
+[prompt]#mged># [in]`debug BU`
 
 ....
            AVS (0x00000400): bu_avs_() logging 
          PATHS (0x00001000): File and path debug logging
 ....
 
-[prompt]#mged># [ui]`debug`
+[prompt]#mged># [in]`debug`
 
 ....
 BU flags:
@@ -155,9 +155,9 @@ RT flags:
 
 .Clear LIBRT debug flags
 ====
-[prompt]#mged># [ui]`debug -C RT`
+[prompt]#mged># [in]`debug -C RT`
 
-[prompt]#mged># [ui]`debug`
+[prompt]#mged># [in]`debug`
 
 ....
 BU flags:
@@ -168,7 +168,7 @@ BU flags:
 
 .Clear all active debug flags for all libraries
 ====
-[prompt]#mged># [ui]`debug -C`
+[prompt]#mged># [in]`debug -C`
 ====
 
 == AUTHOR

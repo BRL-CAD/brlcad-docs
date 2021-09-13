@@ -133,7 +133,7 @@ file. Once the table has been verified as correct and complete, it is
 imported to the database as the binary object *_DENSITIES* . To import
 the text file into the database, the following command is used:
 
-[prompt]#mged># [ui]`bo -i u c _DENSITIES [rep]_filename_`
+[prompt]#mged># [in]`bo -i u c _DENSITIES [rep]_filename_`
 
 == GEOMETRY ERROR DETECTION
 
@@ -320,7 +320,7 @@ starts at 5 in. and will not be refined below 0.3 mm spacing.
 For an example of some independent analysis type, consider the
 following:
 
-[prompt]#%# [ui]`check overlaps -g50,50 -u m,m^3,kg overlaps`
+[prompt]#%# [in]`check overlaps -g50,50 -u m,m^3,kg overlaps`
 
 ....
 Units:
@@ -338,7 +338,7 @@ SUMMARY
 	2 unique overlapping objects detected
 ....
 
-[prompt]#%# [ui]`check exp_air -u m,m^3,kg exposed_air.g`
+[prompt]#%# [in]`check exp_air -u m,m^3,kg exposed_air.g`
 
 ....
 Units:
@@ -348,7 +348,7 @@ list Exposed Air:
 /exposed_air.g/exposed_air.r count:25921 dist:9m @ (10000 1000 1000)
 ....
 
-[prompt]#%# [ui]`check unconf_air -u m,m^3,kg unconf_air.g`
+[prompt]#%# [in]`check unconf_air -u m,m^3,kg unconf_air.g`
 
 ....
 Units:
@@ -358,7 +358,7 @@ list Unconfined Air:
 /unconf_air.g/air1.r /unconf_air.g/air2.r count:23921 dist:7m @ (10000 1000 1000)
 ....
 
-[prompt]#%# [ui]`check gap -u m,m^3,kg gap.g`
+[prompt]#%# [in]`check gap -u m,m^3,kg gap.g`
 
 ....
 Units:
@@ -369,7 +369,7 @@ list Gaps:
 /gap.g/adj_air2.r /gap.g/closed_box.r count:25921 dist:4m @ (1000 5000 1000)
 ....
 
-[prompt]#%# [ui]`check volume -u m,m^3,kg closed_box.r`
+[prompt]#%# [in]`check volume -u m,m^3,kg closed_box.r`
 
 ....
 Units:
@@ -382,7 +382,7 @@ grid spacing 12.5mm  799 x 799 x 799
     Average total volume: 488.327 m^3
 ....
 
-[prompt]#%# [ui]`check surf_area -u m,m^3,kg closed_box.r`
+[prompt]#%# [in]`check surf_area -u m,m^3,kg closed_box.r`
 
 ....
 Units:  length: m volume: m^3 mass: kg
@@ -396,7 +396,7 @@ Surface Area:
   Average total surface area: 384.485 m^2
 ....
 
-[prompt]#%# [ui]`check weight -u m,m^3,kg closed_box.r`
+[prompt]#%# [in]`check weight -u m,m^3,kg closed_box.r`
 
 ....
 Units:

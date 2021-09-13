@@ -74,7 +74,7 @@ An example file might look like the following:
 To import an existing density file into the database, use the
 [cmd]*mater -d import* command:
 
-[prompt]#mged># [ui]`mater -d import [rep]_filename_`
+[prompt]#mged># [in]`mater -d import [rep]_filename_`
 
 If existing density values need to be corrected in the .g file, the
 [cmd]*mater -d set* command may be used to alter them.  For more about
@@ -380,7 +380,7 @@ suspension.  Results are reported in cubic centimeters (cc) and ounces
 For an example of each independent analysis type, consider the
 following:
 
-[prompt]#%# [ui]`gqa -u m,m^3,kg -Ao geometry.g overlaps`
+[prompt]#%# [in]`gqa -u m,m^3,kg -Ao geometry.g overlaps`
 
 ....
 Units:
@@ -391,7 +391,7 @@ list Overlaps:
 /overlaps/overlap_obj.r /overlaps/closed_box.r count:32039 dist:8m @ (9050 1000 1000)
 ....
 
-[prompt]#%# [ui]`gqa -u m,m^3,kg -Ae geometry.g exposed_air.g`
+[prompt]#%# [in]`gqa -u m,m^3,kg -Ae geometry.g exposed_air.g`
 
 ....
 Units:
@@ -402,7 +402,7 @@ list Exposed Air:
 /exposed_air.g/exposed_air.r count:25921 dist:9m @ (10000 1000 1000)
 ....
 
-[prompt]#%# [ui]`gqa -u m,m^3,kg -Ag geometry.g gap.g`
+[prompt]#%# [in]`gqa -u m,m^3,kg -Ag geometry.g gap.g`
 
 ....
 Units:
@@ -414,7 +414,7 @@ list Gaps:
 /gap.g/adj_air2.r /gap.g/closed_box.r count:25921 dist:4m @ (1000 5000 1000)
 ....
 
-[prompt]#%# [ui]`gqa -u m,m^3,kg -Av geometry.g closed_box.r`
+[prompt]#%# [in]`gqa -u m,m^3,kg -Av geometry.g closed_box.r`
 
 ....
 Units:
@@ -428,7 +428,7 @@ Summary:
     Average total volume: 488.327 m^3
 ....
 
-[prompt]#%# [ui]`gqa -u m,m^3,kg -Aw geometry.g closed_box.r`
+[prompt]#%# [in]`gqa -u m,m^3,kg -Aw geometry.g closed_box.r`
 
 ....
 Units:

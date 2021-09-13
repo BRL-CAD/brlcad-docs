@@ -88,7 +88,7 @@ subcommands to assign and list attributes of database objects.
 
 .Assigns an attribute to an object.
 ====
-[prompt]#mged># [ui]`attr set region_1 material_id 10`
+[prompt]#mged># [in]`attr set region_1 material_id 10`
 
 Assigns an attribute name "material_id" to _region_1_. Its value
 is 10.
@@ -96,7 +96,7 @@ is 10.
 
 .Assigns an attribute (with embedded white space in its value) to an object.
 ====
-[prompt]#mged># [ui]`attr set region_1 comment {This is a comment for region_1}`
+[prompt]#mged># [in]`attr set region_1 comment {This is a comment for region_1}`
 
 Assigns an attribute named "comment" to _region_1_. Its value is "This
 is a comment for region_1."
@@ -104,14 +104,14 @@ is a comment for region_1."
 
 .List all the attributes for an object
 ====
-[prompt]#mged># [ui]`attr show region_1 comment`
+[prompt]#mged># [in]`attr show region_1 comment`
 
 Lists all the attributes for _region_1_. 
 ====
 
 .List all the attribute types present on one or more objects in a database
 ====
-[prompt]#mged># [ui]`attr list *`
+[prompt]#mged># [in]`attr list *`
 
 ....
 aircode
@@ -136,7 +136,7 @@ the m35.g sample database.
 
 .List all the material_id attribute values in use in a database
 ====
-[prompt]#mged># [ui]`attr list * material_id *`
+[prompt]#mged># [in]`attr list * material_id *`
 
 ....
 material_id=1

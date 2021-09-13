@@ -9,7 +9,7 @@ facedef - Allows the user to redefine any face of an ARB8 shape.
 
 == SYNOPSIS
 
-*facedef* {_+++####+++_} [ [a] | [b] | [c] | [d] | [_parameters_]]
+*facedef* {_+++####+++_} +[+[a] | [b] | [c] | [d] | [_parameters_]]
 
 == DESCRIPTION
 
@@ -43,14 +43,14 @@ formed by three points.
 
 .Moving a specified face so that it is in another plane.
 ====
-[prompt]#mged># [ui]`facedef 1234 a 1 0 0 20`
+[prompt]#mged># [in]`facedef 1234 a 1 0 0 20`
 
 Moves face 1234 such that it is in the _yz_ plane at _x_ = 20.
 ====
 
 .Moving a specified face so that it is in another plane formed by three points.
 ====
-[prompt]#mged# [ui]`facedef 5678 b 0 0 10 10 0 10 10 10 10`
+[prompt]#mged# [in]`facedef 5678 b 0 0 10 10 0 10 10 10 10`
 
 Moves face 5678 such that it is in the plane formed by the three
 points (0 0 10), (10 0 10), and (10 10 10).

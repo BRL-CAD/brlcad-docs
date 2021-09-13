@@ -9,7 +9,7 @@ displays the list of objects provided in the parameter list.
 
 == SYNOPSIS
 
-*B* [ [-A -o] | _attribute name_ {_value_}...] [-s] [-C +#/#/#+] [-R] [_objects_]
+*B* +[+[-A -o] | _attribute name_ {_value_}...] [-s] [-C +#/#/#+] [-R] [_objects_]
 
 == DESCRIPTION
 
@@ -32,14 +32,14 @@ The following are run from the MGED command prompt.
 
 .Display a named object
 ====
-[prompt]#mged># [ui]`B some_object`
+[prompt]#mged># [in]`B some_object`
 
 The display clears, and the object named _some_object_ is displayed. 
 ====
 
 .Draw objects having an attribute with a value 
 ====
-[prompt]#mged># [ui]`B -A -o Comment {First comment} Comment {Second comment}`
+[prompt]#mged># [in]`B -A -o Comment {First comment} Comment {Second comment}`
 
 The display clears, then draws objects that have a "Comment" attribute
 with a value of either "First comment" or "Second comment."

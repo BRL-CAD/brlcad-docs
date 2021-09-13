@@ -40,7 +40,7 @@ from it any subsequently specified objects.
 ====
 [subs="+quotes"]
 ....
-[prompt]#mged># [ui]`analyze box.s`
+[prompt]#mged># [in]`analyze box.s`
 
 box.s:  ARB8
 	1 (30.0283, -5.21153, -16.3791)
@@ -83,7 +83,7 @@ box.s:  ARB8
 ====
 [subs="+quotes"]
 ....
-[prompt]#mged># [ui]`analyze tor`
+[prompt]#mged># [in]`analyze tor`
 
 tor:  torus (TOR)
 	V (4.91624, -32.8022, 31.7118), r1=25.4 (A), r2=5.08 (H)
@@ -107,7 +107,7 @@ tor:  torus (TOR)
 ====
 [subs="+quotes"]
 ....
-[prompt]#mged># [ui]`l sph.s`
+[prompt]#mged># [in]`l sph.s`
 
 sph.s:  ellipsoid (ELL)
 	V (0, 0, 0)
@@ -124,7 +124,7 @@ sph.s:  ellipsoid (ELL)
 
 [subs="+quotes"]
 ....
-[prompt]#mged># [ui]`l pnts.s`
+[prompt]#mged># [in]`l pnts.s`
 
 pnts.s:  Point Cloud (PNTS)
 Total number of points: 6
@@ -140,14 +140,14 @@ point#, (point)
 
 [subs="+quotes"]
 ....
-[prompt]#mged># [ui]`analyze intersect -o inside.s pnts.s sph.s`
+[prompt]#mged># [in]`analyze intersect -o inside.s pnts.s sph.s`
 
 3
 ....
 
 [subs="+quotes"]
 ....
-[prompt]#mged># [ui]`l inside.s`
+[prompt]#mged># [in]`l inside.s`
 
 inside.s:  Point Cloud (PNTS)
 Total number of points: 3
@@ -163,7 +163,7 @@ point#, (point)
 ====
 [subs="+quotes"]
 ....
-[prompt]#mged># [ui]`l sph.s`
+[prompt]#mged># [in]`l sph.s`
 
 sph.s:  ellipsoid (ELL)
 	V (0, 0, 0)
@@ -180,7 +180,7 @@ sph.s:  ellipsoid (ELL)
 
 [subs="+quotes"]
 ....
-[prompt]#mged># [ui]`l pnts.s`
+[prompt]#mged># [in]`l pnts.s`
 
 pnts.s:  Point Cloud (PNTS)
 Total number of points: 6
@@ -196,14 +196,14 @@ point#, (point)
 
 [subs="+quotes"]
 ....
-[prompt]#mged># [ui]`analyze subtract -o outside.s pnts.s sph`
+[prompt]#mged># [in]`analyze subtract -o outside.s pnts.s sph`
 
 3
 ....
 
 [subs="+quotes"]
 ....
-[prompt]#mged># [ui]`l outside.s`
+[prompt]#mged># [in]`l outside.s`
 
 outside.s:  Point Cloud (PNTS)
 Total number of points: 3

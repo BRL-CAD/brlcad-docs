@@ -442,7 +442,7 @@ to run [cmd]*rtedge* .
 
 .[cmd]*rtedge* rendering of havoc.g
 ====
-[ui]`rtedge -s 1024 -o new.pix havoc.g havoc`
+[in]`rtedge -s 1024 -o new.pix havoc.g havoc`
 
 results in a 1024 by 1024 BRL-CAD image file showing the edges on a
 Havoc helicopter. The default settings are used, so the image has
@@ -450,11 +450,11 @@ white edges on a black background. Edges exist where there are
 differences in component id, hit distance, surface normal, or between
 hits and misses.
 
-[ui]`rtedge -s1024 -o new.pix -c"set fg=0/255/0 bg=255/0/0" havoc.g havoc`
+[in]`rtedge -s1024 -o new.pix -c"set fg=0/255/0 bg=255/0/0" havoc.g havoc`
 
 changes the edge color to be green and the background color to be red. 
 
-[ui]`rtedge -s1024 -o new.pix -c"set rc=1 dr=1" havoc.g havoc`
+[in]`rtedge -s1024 -o new.pix -c"set rc=1 dr=1" havoc.g havoc`
 
 activates region detection and uses the region colors for the edges. 
 

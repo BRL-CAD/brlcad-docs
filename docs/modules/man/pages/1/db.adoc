@@ -57,7 +57,7 @@ formats.
 ====
 [subs="+quotes"]
 ....
-[prompt]#mged># [ui]`db match *.s`
+[prompt]#mged># [in]`db match *.s`
 ....
 
 Gets a list of all objects in the database that end with ".s".
@@ -67,7 +67,7 @@ Gets a list of all objects in the database that end with ".s".
 ====
 [subs="+quotes"]
 ....
-[prompt]#mged># [ui]`db get cone.s`
+[prompt]#mged># [in]`db get cone.s`
 ....
 
 Gets a list of all the attributes and their values for shape
@@ -78,7 +78,7 @@ _cone.s_.
 ====
 [subs="+quotes"]
 ....
-[prompt]#mged># [ui]`db get cone.s V`
+[prompt]#mged># [in]`db get cone.s V`
 ....
 
 Gets the value of the _V_ (vertex) attribute of shape _cone.s_
@@ -88,7 +88,7 @@ Gets the value of the _V_ (vertex) attribute of shape _cone.s_
 ====
 [subs="+quotes"]
 ....
-[prompt]#mged># [ui]`db put new_cone.s tgc V {0 0 0} H {0 0 1} A {1 0 0} B {0 1 0} C {5 0 0} D {0 5 0}`
+[prompt]#mged># [in]`db put new_cone.s tgc V {0 0 0} H {0 0 1} A {1 0 0} B {0 1 0} C {5 0 0} D {0 5 0}`
 ....
 
 Creates a new TGC shape named _new_cone.s_ with the specified
@@ -99,7 +99,7 @@ attributes.
 ====
 [subs="+quotes"]
 ....
-[prompt]#mged># [ui]`db adjust new_cone.s V {0 0 10}`
+[prompt]#mged># [in]`db adjust new_cone.s V {0 0 10}`
 ....
 
 Adjusts the _V_ (vertex) attribute of _new_cone.s_ to the value {0 0
@@ -110,7 +110,7 @@ Adjusts the _V_ (vertex) attribute of _new_cone.s_ to the value {0 0
 ====
 [subs="+quotes"]
 ....
-[prompt]#mged>#[ui]`db form tgc`
+[prompt]#mged>#[in]`db form tgc`
 ....
 
 Displays the format used by the [cmd]*get* and [cmd]*put* commands for

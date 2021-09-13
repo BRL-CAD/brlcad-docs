@@ -57,7 +57,7 @@ size is not included in the data file.
 
 .Create basic point cloud
 ====
-[prompt]#mged># [ui]`make_pnts cloud1.s /home/user/cloud1_data.txt xyz mm 1.0`
+[prompt]#mged># [in]`make_pnts cloud1.s /home/user/cloud1_data.txt xyz mm 1.0`
 
 Creates a "pnts" primitive named "cloud1.s" using the data file
 "/home/user/cloud1_data.txt" where the data file only contains the
@@ -67,7 +67,7 @@ data is "mm" and the default point size is set to "1.0".
 
 .Create basic point cloud from data file with reversed coordinate ordering
 ====
-[prompt]#mged># [ui]`make_pnts cloud1.s /home/user/cloud1_data.txt zyx in 1.0`
+[prompt]#mged># [in]`make_pnts cloud1.s /home/user/cloud1_data.txt zyx in 1.0`
 
 Creates a "pnts" primitive named "cloud1.s" using the data file
 "/home/user/cloud1_data.txt" where the data file only contains the
@@ -77,7 +77,7 @@ data is "in" and the default point size is set to "1.0".
 
 .Create point cloud with color
 ====
-[prompt]#mged># [ui]`make_pnts cloud1.s /home/user/cloud1_data.txt xyzrgb 2 1.0`
+[prompt]#mged># [in]`make_pnts cloud1.s /home/user/cloud1_data.txt xyzrgb 2 1.0`
 
 Creates a "pnts" primitive named "cloud1.s" using the data file
 "/home/user/cloud1_data.txt" which contains point and point-color
@@ -88,7 +88,7 @@ default point size is set to "1.0".
 
 .Create point cloud with color and normals
 ====
-[prompt]#mged># [ui]`make_pnts cloud1.s /home/user/cloud1_data.txt xyzrgbijk m 1.0`
+[prompt]#mged># [in]`make_pnts cloud1.s /home/user/cloud1_data.txt xyzrgbijk m 1.0`
 
 Creates a "pnts" primitive named "cloud1.s" using the data file
 "/home/user/cloud1_data.txt" which contains point, point-color and
@@ -99,7 +99,7 @@ and the default point size is set to "1.0".
 
 .Create point cloud with only normals from data file containing normals and colors
 ====
-[prompt]#mged># [ui]`make_pnts cloud1.s /home/user/cloud1_data.txt xyz???ijk cm 1.0`
+[prompt]#mged># [in]`make_pnts cloud1.s /home/user/cloud1_data.txt xyz???ijk cm 1.0`
 
 Creates a "pnts" primitive named "cloud1.s" using the data file
 "/home/user/cloud1_data.txt" which contains point, point-color and

@@ -43,14 +43,14 @@ current center of view.
 
 .Printing the coordinates of the center of the _mged_ display.
 ====
-[prompt]#mged># [ui]`center`
+[prompt]#mged># [in]`center`
 
 Prints out the coordinates of the center of the mged display.
 ====
 
 .Moving the center of the _mged_ display to a specified point.
 ====
-[prompt]#mged># [ui]`center 12.5 5.6 8.7>`
+[prompt]#mged># [in]`center 12.5 5.6 8.7>`
 
 The center of the _mged_ display is moved to the point (12.5, 5.6,
 8.7).
@@ -58,29 +58,29 @@ The center of the _mged_ display is moved to the point (12.5, 5.6,
 
 .Set Tcl variable $oldcent to the display center coordinates.
 ====
-[prompt]#mged># [ui]`set oldcent [center]`
+[prompt]#mged># [in]`set oldcent [center]`
 
 Sets the Tcl variable $oldcent to the display center coordinates.
 ====
 
 .Move the center point a given distance in a given direction.
 ====
-[prompt]#mged># [ui]`set glob_compat_mode 0`
+[prompt]#mged># [in]`set glob_compat_mode 0`
 
 
-[prompt]#mged# [ui]`units mm`
+[prompt]#mged# [in]`units mm`
 
 
-[prompt]#mged# [ui]`eval center [vadd2[center] {2 0 0}]`
+[prompt]#mged# [in]`eval center [vadd2[center] {2 0 0}]`
 
 Moves the center point 2 mm in the model + x direction.
 ====
 
 .Update the vertex of a shape in the database to be located at the currentview center.
 ====
-[prompt]#mged># [ui]`units mm`
+[prompt]#mged># [in]`units mm`
 
-[prompt]#mged# [ui]`db adjust sphere.s  V [center]`
+[prompt]#mged# [in]`db adjust sphere.s  V [center]`
 ====
 
 == AUTHOR
