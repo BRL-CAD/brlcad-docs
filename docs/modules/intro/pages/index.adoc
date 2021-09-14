@@ -1,5 +1,6 @@
 = Introduction to BRL-CAD
 :sectnums:
+:experimental:
 
 This document aims at introducing you to BRL-CAD through a basic
 step-by-step tutorial. In this tutorial, you will model a chess set in
@@ -31,6 +32,7 @@ out the http://brlcad.org/wiki/FAQ[BRL-CAD FAQs].
 
 Let’s begin this journey and get BRL-CAD installed in your system.
 Downloading BRL-CAD is just a few clicks:
+
 * Go to https://brlcad.org/ and click on the *Download* link at the
 top left corner.
 * On the next page, click on the folder for your computer. For Windows
@@ -43,40 +45,45 @@ http://brlcad.org/wiki/Tutorial/Newbie[tutorial for newbies].
 
 
 == Intro to MGED
+
 BRL-CAD has many applications, but in this tutorial you will work in
 an editor called “MGED”. The Multi-Device Geometry Editor (MGED) is
 the main way to create geometry in BRL-CAD.
-Launching MGED on Windows or Mac OS X:
-* Double-click the application icon for MGED.
-Launching MGED on Linux:
-* Open a terminal (tty) prompt, using Ctrl+Alt+T (if you are on
-Ubuntu). Type ​mged​​in the terminal prompt and then press
-ENTER​
-.
-* There is a chance that you might get an error when you type
-mged​in the command prompt stating
-mged is not recognized as a command​or ​mged command not
-found
-In that case, you need to specify the full path to where you
-installed BRL-CAD.
 
-Two new windows should pop up: the MGED Command Window​ ​and
-the MGED Graphics Window (sometimes called the Geometry
-Window). The former is for entering commands and later for
-displaying the output.
+Launching MGED on Windows or Mac OS X :: Double-click the application
+icon for MGED.
 
+Launching MGED on Linux :: Open a terminal (tty) prompt, using
+kbd:[Ctrl+Alt+T] (if you are on Ubuntu). Type [cmd]`mged` in the terminal
+prompt and then press kbd:[ENTER].
++
+NOTE: There is a chance that you might get an error when you type
+[cmd]`mged` in the command prompt stating #mged is not recognized as a
+command# or #mged command not found#. In that case, you need to
+specify the full path to where you installed BRL-CAD.
+
+Two new windows should pop up: the _MGED Command Window_ and the _MGED
+Graphics Window_ (sometimes called the _Geometry Window_). The former
+is for entering commands and the later for displaying the output.
+
+[cols="2*^.^~a",frames="none"]
+|===
+|
 .MGED Command Window
-image::00.jpg[]
-
+image::00-mged-command-window.jpg[]
+|
 .MGED Graphics Window
-image::01.jpg[]
+image::01-mged-graphics-window.jpg[]
+|===
 
 Both windows are empty at the moment.
-While there are ways to do nearly everything in MGED via the
-graphical user interface menus, this tutorial is going to introduce
-you to modeling by way of MGED commands.
+
+While there are ways to do nearly everything in MGED via the graphical
+user interface menus, this tutorial is going to introduce you to
+modeling by way of MGED commands.
 
 == Opening a database:
+
 Before you start modeling anything in MGED, create a database.
 Move your mouse over or click anywhere on the Command Window
 to make it active and type ​opendb​followed by the name of the
