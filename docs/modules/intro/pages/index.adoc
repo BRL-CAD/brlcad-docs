@@ -84,39 +84,54 @@ modeling by way of MGED commands.
 
 == Opening a database:
 
-Before you start modeling anything in MGED, create a database.
-Move your mouse over or click anywhere on the Command Window
-to make it active and type ​opendb​followed by the name of the
-database with the ​.g​extension:
-opendb demo.g<ENTER>
-If the database with name ​demo.g​doesn’t already exist or you are
-creating a new one, the Command Window confirms if you want to
+Before you start modeling anything in MGED, create a database.  Move
+your mouse over or click anywhere on the _Command Window_ to make it
+active and type [cmd]`opendb` followed by the name of the database
+with the [path]`.g` extension:
+
+[subs="+quotes,+macros"]
+....
+[cmd]#opendb# [path]#demo.g# kbd:[ENTER]
+....
+
+If the database with name [path]`demo.g` doesn’t already exist or you
+are creating a new one, the _Command Window_ confirms if you want to
 create a new database as shown below:
 
-Type ​y​and press ​ENTER​
-.
-If ​demo.g​already exists, the database opens up.
+image::02-opendb.jpg[]
+
+Type kbd:[y] and press kbd:[ENTER].
+
+If [path]`demo.g` already exists, the database opens up.
+
 
 == Modeling in BRL-CAD
+
 Let’s understand in brief how modeling in BRL-CAD works:
 
-* Using primitive shapes​: Now, what are primitive shapes? A
-primitive shape is a basic 3D object whose parameters can be
-changed without changing the shape’s type. For example, a
-sphere is a basic 3D shape and is one of over two dozen
-primitives available in BRL-CAD. Click ​here​ to see the
-primitives used in BRL-CAD.
+* {blank}
++
+Using primitive shapes :: Now, what are primitive shapes? A primitive
+shape is a basic 3D object whose parameters can be changed without
+changing the shape’s type. For example, a sphere is a basic 3D shape
+and is one of over two dozen primitives available in BRL-CAD. Click
+https://brl-cad.github.io/gallery/media/large/diagrams/primitives.png[here^]
+to see the primitives used in BRL-CAD.
 
-* Employing basic Boolean operations on the shapes​: Not every
-shape we model is a primitive shape; so, to get the required
-output we apply basic boolean operations of union,
-subtraction, and intersection on these shapes. For example, a
-hollow cylinder can be made by subtracting a cylinder from
-another larger cylinder.
+* {blank}
++
+Employing basic Boolean operations on the shapes :: Not every shape we
+model is a primitive shape; so, to get the required output we apply
+basic boolean operations of union, subtraction, and intersection on
+these shapes. For example, a hollow cylinder can be made by
+subtracting a cylinder from another larger cylinder.
+
 Once you are comfortable with a few of the commands, it will get
 easier to model anything to everything.
 
+
 == The modeling target:
+
 In this tutorial, you are going to model a complete chess set. We’re
 going to base our 3D modeling on a 2D design by Arthur Shlain.
 
@@ -125,9 +140,26 @@ command is going to be thrilling. First, you will model all the unique
 chess pieces which include a pawn, rook, king, queen, knight, and
 bishop:
 
-Click ​here​ to see other chess piece designs by Arthur Shlain.
+[cols="^", frame="none"]
+|===
+|
+image:03-pawn.jpg[width=15%]
+image:04-rook.jpg[width=15%]
+image:05-king.jpg[width=15%]
+image:06-queen.jpg[width=15%]
+image:07-knight.jpg[width=15%]
+image:08-bishop.jpg[width=15%]
+|===
+
+Click
+https://thenounproject.com/ArtZ91/collection/chess/?i=629003[here^] to
+see other chess piece designs by Arthur Shlain.
+
 After modeling the chess pieces, you will move on to the chessboard
 which will look like this:
+
+image::09-chessboard.jpg[]
+
 
 == Modeling Pawn
 
