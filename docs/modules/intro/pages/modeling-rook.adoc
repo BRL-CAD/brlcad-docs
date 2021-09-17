@@ -1,0 +1,220 @@
+= Modeling Rook
+:sectnums:
+:experimental:
+
+image::20-rook.jpg[]
+
+Before you start modeling this piece, create a new database named
+[path]`rook.g`. Create this new database as we did in the previous
+case.
+
+Type in the _Command Window_:
+
+`[in]#opendb rook.g#` kbd:[ENTER]
+
+****
+If you didn’t open the MGED _Command Window_ again and used the above
+command in the already opened window, you will see that the raytraced
+image didn’t disappear. So, in order to get the blue screen back for
+making other shapes, go to *Modes* from the menu bar and uncheck the
+*Framebuffer Active* option by clicking on it.
+****
+
+Now, you are ready to model the rook. Since you are already familiar
+with the [cmd]`in` command, therefore you will be using the shorthand
+method of this command for making shapes.
+
+
+== Making the base and body
+
+Making the base is the same as we did in pawn. Type the following in
+the MGED command window:
+
+`[in]#in base.rcc rcc 0 0 0 0 0 0.8 2.25#` kbd:[ENTER]
+
+This command will make a cylinder at vertex `0 0 0` with height `0 0
+0.8` and radius `2.25`.
+
+As we did in pawn, we will create the body using two shapes: *rcc* and
+*trc*. To create the body, type:
+
+`[in]#in body.trc trc 0 0 0.8 0 0 3 2.25 1.1#` kbd:[ENTER]
+
+This command creates a trc at vertex `0 0 0.8` with height `0 0 1.5`,
+radius of the base `2.25` and radius of top `1.1`. Now, to create the
+curve, type:
+
+`[in]#in curve.tor tor 0 0 3 0 0 1 3.6 2.6#` kbd:[ENTER]
+
+In pawn, we had the vertex at a distance greater than the height of
+*trc* because we wanted the curve to start right when the body starts
+but in this case we want to have a straight portion before the curve
+part. So, we have the vertex at `0 0 3`. The normal vector is `0 0 1`
+to make our shape perpendicular to **z**-axis. Radius 1 is `3.6` and
+Radius 2 is `2.6`.
+
+You will get something like this (after zooming out by clicking the
+left mouse button, to zoom in click the right mouse button):
+
+image::21-rook-azel-view.jpg[]
+
+In *Front* view:
+
+image::22-rook-front-view.jpg[]
+
+== Constructing the hollow cylinder for the head
+
+Now comes the tricky part; we need to model the head. To understand it
+completely, type [cmd]`Z` to clear the _Graphic Window_ temporarily.
+Make sure your _Command Window_ is active while you do so.
+
+****
+One of the common mistakes we make as a beginner is that we forget to
+make the _Command Window_ active and end up typing on the _Graphics
+Window_. For those who have typed kbd:[Z] but the design started
+rotating, you need not worry. Go to the *View* option on the Menu bar
+and click on the last option *Zero* . Now to get back your design in
+the original orientation, go to *View* option once again and click on
+the view you were previously in. By default, the view is
+*az35,el25* . Click on this option and you are ready to move further.
+****
+
+To make a cylinder for neck:
+
+`[in]#in neck.rcc rcc 0 0 3.8 0 0 1 1.75#` kbd:[ENTER]
+
+The value of vertex `0 0 3.8` came after adding the height of the
+base and the body. I hope you are familiar with how we use the value
+of the vertex.
+
+For the head, we have to make a hollow cylinder first, which comes
+after subtracting a cylinder from another cylinder with a
+comparatively larger radius. Therefore, the vertex and height of both
+the inner and outer cylinders should be the same. The radius of the
+inner cylinder depends on the thickness of the required hollow
+cylinder.
+
+To construct the outer cylinder type:
+
+`[in]#in outer.rcc rcc 0 0 4.8 0 0 0.6 1.75#` kbd:[ENTER]
+
+To make the inner cylinder with the same vertex and height, type:
+
+`[in]#in inner.rcc rcc 0 0 4.8 0 0 0.6 1.25#` kbd:[ENTER]
+
+Your graphics window will look like:
+
+image::23-rook-neck.jpg[]
+
+== The first cuboid for the rook head
+
+Generally, when you see a rook piece its head seems as in a hollow
+cylinder is cut in pieces. To replicate that, we will make two cuboids
+with length equal to or greater than the radius of the outer cylinder,
+and height equal to the height of either one of the cylinders (both
+inner and outer cylinders have the same height). Then you will
+subtract these cuboids from the hollow cylinder. Now you will make two
+cuboids that can be placed perpendicular to each other like an X mark
+(a cross). For that, we will make *rpp* (Rectangular Parallelopiped).
+
+To make the first one, type:
+
+`[in]#in cross1.rpp rpp#` kbd:[ENTER]
+
+Then MGED will ask for `XMIN`, `XMAX`, `YMIN`, `YMAX`, `ZMIN`, `ZMAX`
+values. Type:
+
+`[in]#-1.75 1.75 -0.5 0.5 4.8 5.4#` kbd:[ENTER]
+
+To check the coordinate system, press kbd:[m] making sure the Graphics
+window is active. You won’t see the coordinate lines because you are a
+little above the origin. So, left-click on the graphics window to
+zoom out. You will see that the **Z**-axis is along the diameter.
+Therefore the `XMIN` should be `-1.75` (radius of the outer cylinder)
+and `XMAX` should be `1.75`. The breadth is along the
+**Y**-axis. Therefore, `-0.5` for `YMIN` and `0.5` for `YMAX`. The
+height is along the **Z**-axis. Since the cuboid must start from the
+base of the outer cylinder, therefore `ZMIN` is `4.8` and `ZMAX` is
+`5.4` i.e., `ZMIN` plus height of outer cylinder (`0.6`).
+
+image::24-rook-neck-cuboid.jpg[]
+
+== Constructing a cuboid perpendicular to the first
+
+Since you need another cuboid perpendicular to the first one, we use
+the clone command as follows:
+
+`[in]#clone -r 0 0 90 cross1.rpp#` kbd:[ENTER]
+
+You are not yet familiar with the clone command which will be
+explained in detail in the _Modeling Chessboard_ section.
+
+Now, MGED will respond with
+
+....
+cross101.rpp {cross101.rpp)
+....
+
+This means we have both shapes for the cross. To view the other shape,
+type:
+
+`[in]#draw cross101.rpp#` kbd:[ENTER]
+
+You can look at the head from different views by changing it from the
+*View* Menu. Don’t get discouraged if you only see the head, the other
+shapes are still right there but since we cleared the Graphics Window
+using [cmd]`Z` they are not visible. To get the list of all the shapes
+in your database, type in the command window:
+
+`[in]#ls#` kbd:[ENTER]
+
+You will get a list of all your shapes. To view all your shapes on the
+Graphics Window, use the draw command. Draw all the remaining shapes
+as follows:
+
+`[in]#draw base.rcc body.trc curve.tor#` kbd:[ENTER]
+
+Make sure to add spaces between the names. This command tells MGED to
+draw the three specified shapes. In the *az35, el25* view, your design
+will look like:
+
+image::25-rook-azel-view.jpg[]
+
+Before you raytrace, make the region of the rook:
+
+`[in]#r rook.r u base.rcc u body.trc - curve.tor u neck.rcc u
+outer.rcc - inner.rcc - cross1.rpp - cross101.rpp#` kbd:[ENTER]
+
+Here we have subtracted `curve.tor` from `body.trc` to make the
+curve. Subtracted `inner.rcc` from `outer.rcc` to make a hollow
+cylinder and subtracted both cuboids `cross1.rpp` and `cross101.rpp`
+from the outer hollow cylinder to give the finishing look. This
+command makes a region named `rook.r`.
+
+
+== Assigning material properties and raytracing
+
+We will assign material properties as we did in the case of pawn. We
+will use the shorthand method of the mater command. Type:
+
+`[in]#mater rook.r plastic 0 0 0 0#` kbd:[ENTER]
+
+Don’t forget to clear the graphics window and redraw the design using
+Blast command as follows:
+
+`[in]#B rook.r#` kbd:[ENTER]
+
+Now, raytrace your design from the *File* menu. Change the background
+color to white and select the *Overlay* option from *Framebuffer*
+option in the Raytrace Menu Bar. For details check the instructions in
+the previous model of the pawn. This is what we get after raytracing:
+
+[cols="2*a",frame="none"]
+|===
+|
+.az35, el25 view
+image::26-rook-rt-azel-view.jpg[]
+|
+.Left view
+image::27-rook-rt-left-view.jpg[]
+|===

@@ -1,0 +1,79 @@
+= Modeling King
+:sectnums:
+:experimental:
+
+image::28-king.jpg[]
+
+Now it’s time to model the king. It is comparatively easier than the
+above pieces. To begin modeling, create a new database, type in the
+command prompt:
+
+`[in]#opendb king.r#` kbd:[ENTER]
+
+You have your Command and Graphics ready after confirming in the
+dialog box.
+
+If you look at all the chess pieces, you see that the base and body of
+almost all the pieces are the same and they only differ in the head
+area. To make the base and the body, type in:
+
+`[in]#in base.rcc rcc 0 0 0 0 0 0.7 2.25#` kbd:[ENTER]
+
+
+`[in]#in body.trc trc 0 0 0.7 0 0 2.2 2.25 0.85#` kbd:[ENTER]
+
+
+`[in]#in curve.tor tor 0 0 2.9 0 0 1 3.2 2.4#` kbd:[ENTER]
+
+
+To make a cylinder for the neck, type:
+
+`[in]#in neck.rcc rcc 0 0 2.9 0 0 0.5 1.4#` kbd:[ENTER]
+
+As described in the above pieces, the shape `neck.rcc` must be placed
+at the top of `body.trc`. Once we have made the base, body, and curve
+we get something like this:
+
+image::29-king-base-body-curve.jpg[]
+
+When we look closely at the end product, the head can be divided into
+three parts, the head bottom, the middle section, and the tiny top
+section. All of these are *trc*. To make the bottom part of the head,
+type:
+
+`[in]#in headbottom.trc trc 0 0 3.4 0 0 1.5 0.8 1.4#` kbd:[ENTER]
+
+Here the base radius of the `headbottom.trc` is equal to the top
+radius of `body.trc`.
+
+Since the top radius of `headbottom.trc` should be equal to the base
+radius of the `headmid.trc`. Therefore, to make the mid part, type:
+
+`[in]#in headmid.trc trc 0 0 4.9 0 0 0.3 1.4 1.1#` kbd:[ENTER]
+
+Now to make the top part this head, type:
+
+`[in]#in headtop.trc trc 0 0 5.2 0 0 0.6 0.3 0.5#` kbd:[ENTER]
+
+After this, your Graphics Window looks like:
+
+image::30-king-all-parts.jpg[]
+
+You have all your shapes now. It is time to make a region of it:
+
+`[in]#r king.r u base.rcc u body.trc - curve.tor u neck.rcc u
+headbottom.trc u headmid.trc u headtop.trc#` kbd:[ENTER]
+
+Now, assign material properties using the following command:
+
+`[in]#mater king.r plastic 0 0 0 0#` kbd:[ENTER]
+
+Before raytracing, use the blast command as follow:
+
+`[in]#B king.r#` kbd:[ENTER]
+
+To achieve the target design, change the view to *Front* from the
+*View* menu. Now raytrace your design from the *File* menu.
+
+image::31-king-rt-front-view.jpg[]
+

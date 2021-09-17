@@ -1,0 +1,56 @@
+= Modeling Bishop
+:sectnums:
+:experimental:
+
+image::36-bishop.jpg[]
+
+Begin by creating a new database, name it [path]`bishop.g`.
+
+Using the same commands for the base:
+
+`[in]#in base.rcc rcc 0 0 0 0 0 0.7 2.25#` kbd:[ENTER]
+
+`[in]#in body.trc trc 0 0 0.7 0 0 2.2 2.25 0.85#` kbd:[ENTER]
+
+`[in]#in curve.tor tor 0 0 2.9 0 0 1 3.2 2.4#` kbd:[ENTER]
+
+`[in]#in neck.rcc rcc 0 0 2.9 0 0 0.5 1.4#` kbd:[ENTER]
+
+Now, coming to the head of the bishop, you will use two shapes for it,
+*sph* and *trc*.
+The sphere starts from the base of `neck.rcc`, therefore the vertex of
+this sphere equals to vertex of `neck.rcc` + radius of the sphere i.e.,
+`2.9` + `1.1` = `4`. Type:
+
+`[in]#in head.sph sph 0 0 4.0 1.1#` kbd:[ENTER]
+
+
+The top has vertex `0 0 4.4`, where `4.4` = z value vertex of
+`head.sph` (`4.0`) + (`0.4`)
+
+`[in]#in headtop.trc trc 0 0 4.4 0 0 1.2 1 0.25#` kbd:[ENTER]
+
+Since you have got all the shapes, you have an output like this in the
+*Front* view:
+
+image::37-bishop-front-view.jpg[]
+
+Make the region:
+
+`[in]#r bishop.r u base.rcc u body.trc - curve.tor u neck.rcc u
+head.sph u headtop.trc#` kbd:[ENTER]
+
+Assign material properties:
+
+`[in]#mater bishop.r plastic 0 0 0 0#` kbd:[ENTER]
+
+Before you Raytrace, don’t forget to blast your region using the
+command
+
+`[in]#B bishop.r#` kbd:[ENTER]
+
+Now Raytrace it with a white background. The front view after we
+raytracing looks like this:
+
+image::38-bishop-rt-front-view.jpg[]
+

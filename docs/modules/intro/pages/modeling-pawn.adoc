@@ -1,0 +1,274 @@
+= Modeling Pawn
+:sectnums:
+:experimental:
+
+image::10-pawn.jpg[]
+
+Let’s begin by creating a new database for your pawn and name it
+[path]`pawn.g`. As discussed earlier, to create a new database type the
+following command in the _Command Window_:
+
+`[in]#opendb pawn.g#` kbd:[ENTER]
+
+== Creating a cylinder for the base
+
+Begin by making the _Command Window_ active (usually by clicking
+anywhere in the window). To make the right circular cylinder, type the
+following command in the MGED prompt:
+
+`[in]#in base.rcc rcc#` kbd:[ENTER]
+
+Here, `in` is the command which is used to _**IN**sert a primitive
+shape_, `base.rcc` is the name of the shape and `rcc` means it is a
+_**R**ight **C**ircular **C**ylinder_.
+
+MGED asks you to enter [rep]*x*, [rep]*y* and [rep]*z* values of the
+vertex (where you want to place the center of the bottom of the
+shape). Type:
+
+`[in]#0 0 0#` kbd:[ENTER]
+
+Make sure to add spaces between the values.
+
+Next, MGED will ask you to enter the [rep]*x*, [rep]*y* and [rep]*z*
+values of the height (H) vector (the height of your cylinder). Type:
+
+`[in]#0 0 0.6#` kbd:[ENTER]
+
+Then, the last value MGED will ask you to enter is the radius. Type:
+
+`[in]#2.25#` kbd:[ENTER]
+
+Your MGED _Command Window_ will look something like:
+
+[subs="+quotes"]
+....
+[prompt]#mged># [in]#in base.rcc rc#
+[prompt]#Enter X, Y, Z of vertex:# [in]#0 0 0#
+[prompt]#Enter X, Y, Z of height (H) vector:# [in]#0 0 0.6#
+[prompt]#Enter radius:# [in]#2.25#
+Base.rcc
+....
+
+You will get something like this on your _Graphics Window_:
+
+image::11-base.jpg[]
+
+Rather than following this lengthy method, there is another short way
+to use the [cmd]`in` command. It allows entering all the parameters in
+one go. The above command can also be written as:
+
+`[in]#in base.rcc rcc 0 0 0 0 0 0.6 2.25#` kbd:[ENTER]
+
+Meaning of the above command is:
+
+* `in` -- Insert a primitive shape
+* `base.rcc` -- Name it base.rcc
+* `rcc` -- Shape should be a right circular cylinder
+* `0` -- x value of the vertex is 0
+* `0` -- y value of the vertex is 0
+* `0` -- z value of the vertex is 0
+* `0` -- x value of the height vector is 0
+* `0` -- y value of the height vector is 0
+* `0.6` -- z value of the height vector is 0.6
+* `2.25` -- radius is 2.25
+
+This is how you will be making the rest of the shapes.
+
+Moving on to the upper portion of the pawn.
+
+== Making the curve
+
+This portion is a little tricky. To make the curve, you will first
+make a _Truncated Right Cone_ (trc) and then subtract a _Torus_ (tor)
+from the outer portion of trc.
+
+[cols="2*.>~a"]
+|===
+|
+.trc
+image::12-trc.jpg[]
+|
+.tor
+image::13-tor.jpg[]
+|===
+
+To make the trc, type:
+
+`[in]#in body.trc trc#` kbd:[ENTER]
+
+The *trc* should start from the top of the *rcc* i.e., at the height
+of `0.6`.  MGED will ask for the [rep]*x*, [rep]*y*, [rep]*z* values
+of the vertex (center of the bottom part). Type:
+
+`[in]#0 0 0.6#` kbd:[ENTER]
+
+Then MGED will ask us to enter [rep]*x*, [rep]*y*, [rep]*z* values of
+height vector. Type:
+
+`[in]#0 0 1.7#` kbd:[ENTER]
+
+The next entry we have to make is the radius of the base which must
+be the same as the radius of the `base.rcc`. Therefore, type:
+
+`[in]#2.25#` kbd:[ENTER]
+
+The last value MGED asks for is the top radius. Type:
+
+`[in]#0.5#` kbd:[ENTER]
+
+The graphics window will look like:
+
+image::14-base-and-body.jpg[]
+
+To make the curve use the short-hand method of using the [cmd]`in`
+command. Type in the _Command Window_:
+
+`[in]#in curve.tor tor 0 0 2.8 0 0 1 2.85 2.35#` kbd:[ENTER]
+
+Here,
+
+* [in]`0 0 2.8` are the [rep]*x*, [rep]*y*, [rep]*z* values of the
+  vertex, where:
++
+[subs="+quotes"]
+....
+*2.8* = *0.6* (_z_ value of vertex of _body.trc_)
+    + *1.7* (_height_ of _body.trc_)
+    + *0.5* (_radius_ of the top of _body.trc_)
+....
+* [in]`0 0 1` are the [rep]*x*, [rep]*y*, [rep]*z* values of the
+  normal vector to make the tube perpendicular to the **z**-axis.
+* [in]`2.85` is radius1 (radius from Vertex to the center of the
+  tube).
+* [in]`2.35` is radius2 (radius of the tube).
+
+The following image visually explains radius1 and radius2.
+
+image::15-tor-radius1-radius2.jpg[]
+
+
+== Making a cylinder for the neck
+
+The cylinder should have vertex `0 0 2.3` where `2.3` came after
+adding vertex and height of `body.trc` such that the neck is placed
+right on top of the body. The height vector of the cylinder should be
+`0 0 0.5` and the radius should be `1.4`. Therefore, type:
+
+`[in]#in neck.rcc rcc 0 0 2.3 0 0 0.5 1.4#` kbd:[ENTER]
+
+
+== Making a sphere for the head
+
+Make a sphere with vertex `0 0 3.6` and radius `1.1`. Technically the
+vertex of the sphere should be
+
+[subs="+quotes"]
+....
+*3.6* = *2.3*  (the vertex of _neck.rcc_)
+    + *0.25* (half of the height of _neck.rcc_)
+    + *1.1*  (radius of this sphere)
+....
+
+But we want to cut some portion of the head from below. Type:
+
+`[in]#in head.sph sph 0 0 3.6 1.1#` kbd:[ENTER]
+
+To zoom out of the view click the left mouse button and to zoom back
+in click the right mouse button. This is what your pawn looks like
+till now:
+
+image::16-pawn-azel-view.jpg[]
+
+Go to *View* from menu bar and click on *Front*. This is what your
+pawn looks in the front view:
+
+image::17-pawn-front-view.jpg[]
+
+
+== Making a region
+
+Before you can raytrace your design, you have to make of region of
+all the shapes. Making a region basically means that the shape has
+uniform material properties i.e., it has mass and occupies space.
+Constructing a region involves using Boolean operations of union,
+subtraction, and intersection. To make the region, type:
+
+`[in]#r pawn.r u base.rcc u body.trc - curve.tor u neck.rcc u head.sph#` kbd:[ENTER]
+
+This command tells MGED that
+
+* `*#r#*` -- Make a region
+* `*#pawn.r#*` -- Name it pawn.r
+* `*#u#*` -- Add the volume of the shape
+* `*#-#*` -- Subtract the volume of the shape
+
+Here, we are adding the volume of all the shapes except `curve.tor`,
+which we are subtracting from `body.trc` to achieve the required look.
+
+== Assigning Material Properties to the Region
+
+Now type the following in the MGED command window:
+
+`[in]#mater pawn.r#`
+
+MGED will respond with:
+
+....
+Current shader string =
+Specify shader. Enclose spaces within quotes.
+Shader?
+....
+
+MGED asks us to enter the type of material we want our region to be
+made of. To make the region of plastic. Type in:
+
+`[in]#plastic#` kbd:[ENTER]
+
+Next, MGED will ask for the color. To make our pawn black in color,
+type:
+
+`[in]#0 0 0#` kbd:[ENTER]
+
+At last MGED will ask us if we want to inherit the material properties.
+To answer with NO, type:
+
+`[in]#0#` kbd:[ENTER]
+
+
+== Clearing the _Graphic Window_ and drawing the new region
+
+We have shapes visible on our graphics window but it is not our
+region. To clear the graphics Window of the old design and draw the
+new region, type:
+
+`[in]#B pawn.r#` kbd:[ENTER]
+
+image::18-clear-and-draw-region.jpg[]
+
+You will see your pawn and the curve.tor is dotted which indicates
+that it subtracted from the region. This command tells MGED to _Blast_
+i.e., clear the graphics window and draw the specified region which in
+our case is `pawn.r`. The _Blast_ command is a combination of
+[cmd]`Z` and [cmd]`draw` commands. On a side note, [cmd]`draw` command
+is used to draw an existing shape. For example, to draw the sphere you
+made for the head, type : `[in]#draw head.sph#` which tells MGED to
+draw `head.sph`. If the specified shape does not exist, MGED will give
+an error.
+
+
+== Raytracing your model
+
+Go to the *File* menu and select *Raytrace*. A dialog box called the
+_Raytrace Control Panel_ appears. Next, change the background color by
+the raytraced by selecting [label]#Background Color#. A dropdown will
+appear with some predefined color choices and a color tool. Select the
+white option. To eliminate the wireframing i.e., the outlines of the
+shapes, go to *Framebuffer* (in the _Raytrace Control Panel_) and
+select *Overlay*. The display should appear similar to the following
+illustration:
+
+image::19-pawn-raytraced.jpg[]
+
+Your pawn is ready to serve the King. Now it’s time to model the rest
+of the pieces.

@@ -1,0 +1,61 @@
+= Modeling Queen
+:sectnums:
+:experimental:
+
+image::32-queen.jpg[]
+
+As always, begin by creating a new database using the following
+command in the command prompt:
+
+`[in]#opendb queen.r#` kbd:[ENTER]
+
+The King piece and the queen differ only in the top part. So, we will
+reuse the commands we used in the upper section. Type in the Command
+Window:
+
+`[in]#in base.rcc rcc 0 0 0 0 0 0.7 2.25#` kbd:[ENTER]
+
+`[in]#in body.trc trc 0 0 0.7 0 0 2.2 2.25 0.85#` kbd:[ENTER]
+
+`[in]#in curve.tor tor 0 0 2.9 0 0 1 3.2 2.4#` kbd:[ENTER]
+
+`[in]#in neck.rcc rcc 0 0 2.9 0 0 0.5 1.4#` kbd:[ENTER]
+
+If you look closely, the only difference is the height of the
+`headmid.trc` and the top section of the queen is a sphere. So, type:
+
+`[in]#in headbottom.trc trc 0 0 3.4 0 0 1.5 0.8 1.4#` kbd:[ENTER]
+
+`[in]#in headmid.trc trc 0 0 4.9 0 0 0.6 1.4 0.6#` kbd:[ENTER]
+
+`[in]#in headtop.sph sph 0 0 5.6 0.4#` kbd:[ENTER]
+
+The portion of the sphere at the top is slightly larger in size than a
+semi-sphere. So, the vertex of the sphere is `0 0 0.5` i.e., vertex of
+`headmid.trc` + height of `headmid.trc` + `0.1` . The value 0.1 is
+added to make it slightly larger than a semi-sphere.
+
+The output is:
+
+image::33-queen-azel-view.jpg[]
+
+Make a region using the following command:
+
+`[in]#r queen.r u base.rcc u body.trc - curve.tor u neck.rcc u
+headbottom.trc u headmid.trc u headtop.sph#` kbd:[ENTER]
+
+The front view looks like:
+
+image::34-queen-front-view.jpg[]
+
+Now, comes the part of assigning the material properties and finally
+Raytracing the design. Type:
+
+`[in]#mater queen.r plastic 0 0 0 0#` kbd:[ENTER]
+
+`[in]#B queen.r#` kbd:[ENTER]
+
+After Raytracing, the queen in *Front* view looks like:
+
+image::35-queen-rt-front-view.jpg[]
+
