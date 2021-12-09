@@ -1,0 +1,67 @@
+'\" t
+.\"     Title: edcodes
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "EDCODES" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+edcodes \- Puts the user into an editor to edit a file that has been filled with the ident, air code, material code, LOS, and name of all the regions in the specified objects.
+.SH "SYNOPSIS"
+.sp
+\fBedcodes\fP {\fIobjects\fP} []
+.SH "DESCRIPTION"
+.sp
+Puts the user into an editor to edit a file that has been filled with
+the ident, air code, material code, LOS, and name of all the regions
+in the specified objects. The user may then modify the entries (except
+for the names). The editor used is whatever the user has set in the
+environment variable \fIEDITOR\fP. If \fIEDITOR\fP is not set, then \fI/bin/ed\fP
+is used.
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBedcodes\fP command for editing
+the region codes in the files of two objects.
+.sp
+.B Example 1. Edit the region codes of two objects.
+.br
+.RS 4
+.sp
+mged> \f(CRedcodes object1 object2\fP
+.sp
+Enables the user to edit the region codes for all regions below
+\fIobject1\fP and \fIobject2\fP.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

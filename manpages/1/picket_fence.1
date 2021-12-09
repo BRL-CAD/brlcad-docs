@@ -1,0 +1,81 @@
+'\" t
+.\"     Title: picket_fence
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "PICKET_FENCE" "1" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+picket_fence \- Creates a BRL\-CAD .g file containing picket fences.
+.SH "SYNOPSIS"
+.sp
+\fBpicket_fence\fP [\fIfilename\fP] [\fIprefix\fP] [\fIheight\fP] [\fIspacing\fP] [\fIx0\fP] [\fIy0\fP] [\fIz0\fP] []... [\fIxn\fP] [\fIyn\fP] [\fIzn\fP] [\-r]
+.SH "DESCRIPTION"
+.sp
+\fBpicket_fence\fP creates a geometry file in \fIfilename\fP of a picket
+fence.  All parameters for the fence are in mm.  If more than two
+points are specified, it will generate a fence with multiple sections
+connecting the points.  Parts of the fence are created starting at the
+origin.  The two backing boards are created in the negative x
+halfspace.  The pickets are created in the positive x halfspace and
+translated down the y\-axis to their proper positions.  The entire
+segment is then rotated and translated to the position specified by
+the user.  To create a box of fence with the pickets on the outside,
+the points must be specified in a counter\-clockwise order.  Parts of
+the model are named according to the format
+.sp
+.if n .RS 4
+.nf
+<prefix><partname><sec_name><[>part_num<].<obj_type>
+.fi
+.if n .RE
+.sp
+The \fI<prefix>\fP above is the second argument to the program.  The
+\fIspacing\fP parameter specifies the amount of space (in mm) between
+pickets.  The \fB\-r\fP option specifies round fronts for the pickets.
+.SH "EXAMPLES"
+.sp
+.B Example 1. \fBpicket_fence\fP Example
+.br
+.RS 4
+.sp
+\f(CRpicket_fence fence.g Imy 2000 15 0 0 0 100 6000 0\fP
+.RE
+.sp
+Creates an example fence two meters high and six meters long with
+fifteen millimeter spaces between the pickets.  "Imy" will be used as
+a name prefix for the \fBmged\fP objects. The fence will be started
+at the origin and be stretched out to (100,6000,0).
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

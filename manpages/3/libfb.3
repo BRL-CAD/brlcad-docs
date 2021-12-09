@@ -1,0 +1,330 @@
+'\" t
+.\"     Title: libfb - framebuffer library
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "LIBFB" "3" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+libfb \- multiple device, generic frame buffer library
+.SH "GENERIC FRAME BUFFER ROUTINES"
+.sp
+.if n .RS 4
+.nf
+fb *fb_open (* fbfile,
+             int fb_close ( fbp ) fb * fbp,
+             int fb_read ( fbp , x , y , addr , count ) fb * fbp,
+             RGBpixel *addr;,
+             long count;);
+.fi
+.if n .RE
+.SH "HARDWARE SPECIFIC FRAME BUFFER ROUTINES"
+.sp
+.if n .RS 4
+.nf
+int fb_cursor (* fbp,
+               int fb_scursor ( fbp , mode , x , y ) fb * fbp,
+               int fb_setcursor ( fbp , bits , xbits , ybits , xorig , yorig ) fb * fbp,
+               unsigned char bits[],
+               int xbits, ybits;,
+               int xorig, yorig;);
+.fi
+.if n .RE
+.SH "DESCRIPTION"
+.sp
+These routines are designed to provide a device\-independent method of
+using frame buffers or files containing frame buffer images. The
+coordinate system used is first\-quadrant (0..width\-1, 0..height\-1),
+with integer addressing.  Translation to hardware coordinate systems
+is handled by the library.
+.sp
+This version of the library assumes that red, green, and blue
+intensities are described by unsigned 8\-bit bytes in the range
+(0..255). The library interface uses arrays of \fIRGBpixel\fPs, which is
+a typedef for an array of three unsigned chars (this was done to avoid
+structure padding).  Note that a pointer to an \fIRGBpixel\fP is thus the
+name of the \fIRGBpixel\fP itself, i.e. no ampersand is needed.
+.sp
+The exact interpretation of color maps tends to be somewhat device
+specific. The three ColorMap arrays each have 256 entries of unsigned
+16\-bit values. In order to accommodate color maps with differing
+amounts of output resolution, the color map entries are fixed\-point
+fractions in the range (0.0..1.0).  In integer notation, the range is
+(0..65525). For devices with less than 16 bits of output from their
+color maps, the left\-most portion of each entry is used.
+.sp
+\fIFb_open\fP
+.RS 4
+is used to open a frame buffer file \fIfbfile\fP. The file
+may be either the name of a supported frame buffer interface,
+referenced as "/dev/interface", or the name of a UNIX file. The
+routine will try to determine if the file opened was a real frame
+buffer by examining the name, and if so will perform whatever
+initialization actions are necessary. If the value of \fIfbfile\fP is
+\f(CRNULL\fP and the environment variable \f(CRFB_FILE\fP is set, then the
+value of \f(CRFB_FILE\fP is used; otherwise the default frame buffer
+device for the system is used. See below for more details. The \fIwidth\fP
+and \fIheight\fP parameters specify the initial size of display
+desired. If these are zero the default sizes for that device will be
+used. On a successful open, the frame buffer I/O (fb) structure
+pointer is returned. This structure contains size you were actually
+given, as well as the maximum possible size for the selected device. A
+return of FB_NULL indicates failure.
+.RE
+.sp
+\fIFb_close\fP
+.RS 4
+simply closes the frame buffer.
+.RE
+.sp
+\fIFb_read\fP
+.RS 4
+reads \fIcount\fP pixels from the frame buffer starting at
+the location specified by \fIx\fP and \fIy\fP, and places them at program
+memory address specified by \fIaddr\fP. \fIFb_read\fP returns the number of
+pixels actually read, or \-1 on error.
+.RE
+.sp
+\fIFb_write\fP
+.RS 4
+writes \fIcount\fP pixels from program address \fIaddr\fP into
+the frame buffer starting at the location specified by \fIx\fP and
+\fIy\fP. \fIFb_write\fP returns the number of pixels actually written, or \-1
+on error.
+.RE
+.sp
+\fIFb_rmap\fP
+.RS 4
+reads in the color map from the frame buffer and leaves
+at the location pointed to by \fIcmap\fP.
+.RE
+.sp
+\fIFb_wmap\fP
+.RS 4
+writes the color map pointed to by \fIcmap\fP into the frame
+buffer.  If the value of \fIcmap\fP is \f(CRNULL\fP then a linear color map is
+used as the default.
+.RE
+.sp
+\fIFb_clear\fP
+.RS 4
+erases the frame buffer by setting all pixels to the
+given color. If the color pointer is NULL, black will be used. On a
+UNIX file, this entails writing the entire file, which is an expensive
+operation, whereas on most frame buffer displays this can be done in
+less than a second by a special command.
+.RE
+.sp
+\fIFb_gettype\fP
+.RS 4
+returns a pointer to a string describing the frame
+buffer specified by the fb pointer.
+.RE
+.sp
+\fIFb_getwidth\fP and \fIFb_getheight\fP
+.RS 4
+returns the current size of the fb
+frame buffer.
+.RE
+.sp
+The following routines work in conjunction with those described above
+to provide functions which only apply if the frame buffer file is
+actually a hardware frame buffer display.
+.sp
+\fIFb_cursor\fP
+.RS 4
+places the cursor at the image space coordinates given
+by \fIx\fP and \fIy\fP. If the mode is non\-zero, the cursor is made visible,
+and if mode is zero, the cursor is turned off.
+.RE
+.sp
+\fIFb_scursor\fP
+.RS 4
+is the same as \fIfb_cursor\fP except that it places the
+cursor at the \fIscreen\fP space coordinates given by \fIx\fP and \fIy\fP.
+.RE
+.sp
+\fIFb_setcursor\fP
+.RS 4
+allows the user to set the bitmap used to represent the
+cursor, thereby changing the cursor shape. This is not necessarily
+supported by all hardware. The argument \fIbits\fP is a pointer to an
+array of unsigned chars containing the bits of the cursor. The
+arguments \fIxbits\fP and \fIybits\fP specify the size of the cursor bitmap.
+The number of bytes in the \f(CRbits\fP array will be the width rounded up
+to a multiple of eight (so that the cursor "scanlines" are byte
+aligned) times the height. \f(CRbits\fP[0] is the lower left corner,
+\f(CRbits\fP[1] is to the right of it, etc.  The next line of the \f(CRbits\fP
+array goes above the current one.  Within a byte the most significant
+bit is the leftmost.  The values \fIxorig\fP and \fIyorig\fP specify which bit
+in the bitmap actually gets placed at the location specified in the
+cursor move routines.  Again, a first quadrant coordinate system is
+used.
+.RE
+.sp
+\fIFb_window\fP
+.RS 4
+sets the frame buffer window center position to the image
+space coordinates given by \fIx\fP and \fIy\fP. This command is usually used
+in conjunction with the \fIfb_zoom\fP routine.
+.RE
+.sp
+\fIFb_zoom\fP
+.RS 4
+sets the zoom factor for the X coordinate to \fIx\fP and the
+zoom factor for the Y coordinate to \fIy\fP. Zooming is generally done by
+pixel replication in hardware.
+.RE
+.sp
+The following routines work in conjunction with those described above
+to provide buffered reading and writing of frame buffer images either
+to a real frame buffer or a UNIX file. The routines use a simple
+paging strategy to hold \(lqbands\(rq of the image in core. Since
+horizontal bands are buffered, the ideal motion is to scan left to
+right, then bottom to top.
+.sp
+\fIFb_ioinit\fP
+.RS 4
+should be called before using any of the other buffered
+I/O routines and repeated whenever the frame buffer is reopened.
+.RE
+.sp
+\fIFb_seek\fP
+.RS 4
+is used to position the current read/write pointer to the
+location to the next position to be read or written. It is not
+necessary to do a \fIfb_seek\fP after every read or write since both
+\fIfb_rpixel\fP and \fIfb_wpixel\fP imply an automatic move to the next
+pixel. If you read or write the last pixel on a scan line, the pointer
+will automatically move to the beginning of the following scan line.
+.RE
+.sp
+\fIFb_tell\fP
+.RS 4
+returns the current location of the read write pointer in
+terms of (X,Y) coordinates on the frame buffer. The X and Y values are
+returned into the integers pointed to by \fIxp\fP and \fIyp\fP.
+.RE
+.sp
+\fIFb_rpixel\fP
+.RS 4
+reads the pixel at the current frame buffer location
+and returns it into the location specified by \fIpixelp\fP.
+.RE
+.sp
+\fIFb_wpixel\fP
+.RS 4
+writes the pixel pointed to by \fIpixelp\fP at the current
+frame buffer location.
+.RE
+.sp
+\fIFb_flush\fP
+.RS 4
+caused any current buffered frame buffer pages to be
+written out. Unnecessary writes are avoided by the use of page
+reference bits.
+.RE
+.sp
+The following is a printing routine which this library uses to
+indicate errors.
+.sp
+\fIFb_log\fP
+.RS 4
+will convert, format and print its \fIargs\fP under control of
+\fIformat\fP to the standard error output. For more detailed information
+on the specification of the control string, see
+\fBprintf\fP(3S). This function may be supplied
+by the application if different behavior is desired.
+.RE
+.SH "FB_FILE DEVICES"
+.sp
+The following devices are supported by the library; not all may be
+available on any given system.  New device support can be incorporated
+by the addition of a single module to the library.
+.sp
+\fI/dev/debug\fP \fI[num]\fP
+.RS 4
+The "/dev/debug" interface prints one
+line to logs each call to the frame buffer library. \fInum\fP is a
+bitvector indicating the levels of verbosity of the output.  See
+\fIfb.h\fP for the bit definitions.
+.RE
+.sp
+\fIfilename\fP
+.RS 4
+Disk file interface
+.RE
+.sp
+\fIhostname:\fP \fI[devicename]\fP
+.RS 4
+TCP\-based network links to a remote
+framebuffer, where \fIdevicename\fP is any from this list, for example,
+fictitious.brlcad.org:/dev/ik0 or fictitious.brlcad.org:/dev/sgi. A
+\fIhostname\fP with a null \fIdevicename\fP will select the default display
+device on that host. If explicitly specifying a remote device, be
+careful not to omit the colon between the host and device name, or you
+will be specifying a local disk file as the result. Note that for
+security reasons, it is not permitted to access a disk file via the
+remote interface.
+.RE
+.SH "EXAMPLES"
+.sp
+\fILibfb\fP can be loaded with any C program:
+.sp
+.if n .RS 4
+.nf
+$ /bin/cc program.c \-lfb \-l<system\-library>...
+.fi
+.if n .RE
+.sp
+where \fI<system\-library>\fP denotes specific libraries necessary on a
+particular machine.  All machines with networking will require the
+"\-lpkg" option.  Machines which support the X Windows(tm) system will
+require the "\-lX11" option.
+.SH "RETURN VALUES"
+.sp
+\fIfb_close\fP, \fIfb_write\fP, \fIfb_read\fP, \fIfb_wmap\fP, \fIfb_rmap\fP, \fIfb_clear\fP,
+\fIfb_cursor\fP, \fIfb_scursor\fP, \fIfb_setcursor\fP, \fIfb_window\fP, \fIfb_zoom\fP,
+\fIfb_ioinit\fP, \fIfb_seek\fP, \fIfb_wpixel\fP, \fIfb_rpixel\fP and \fIfb_flush\fP return
+\-1 to indicate failure. \fIFb_open\fP returns FB_NULL to indicate failure,
+and a non\-null fb structure pointer upon success. \fIfb_read\fP, and
+\fIfb_write\fP return the number of pixels actually read or
+written. \fIfb_gettype\fP returns a pointer to a NULL terminated
+description string.
+.SH "SEE ALSO"
+.sp
+\fBfbhelp\fP(1),
+\fBbrlcad\fP(1).
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

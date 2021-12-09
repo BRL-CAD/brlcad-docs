@@ -1,0 +1,90 @@
+'\" t
+.\"     Title: pixrot
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "PIXROT" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+pixrot \- rotate, invert, or reverse a color pix file
+.SH "SYNOPSIS"
+.sp
+\fBpixrot\fP [\-#bytes] [\-rifb] [\-s \fIsquaresize\fP] [\-w \fIin_width\fP] [\-n \fIin_height\fP] [\fIfile.pix\fP] > \fInewfile.pix\fP
+.SH "DESCRIPTION"
+.sp
+\fBpixrot\fP will rotate, invert, or reverse a color
+\fBpix\fP(5) format file or read from standard input
+if a file name is not given.  The \fB\-w\fP and \fB\-n\fP flags
+specify the input file width and number of scan lines in pixels; they
+can be set to the same value via \fB\-s\fP.
+.sp
+The \fB\-r\fP flag reverses the scan lines left to right. The
+\fB\-i\fP flag inverts the image top to bottom. The \fB\-f\fP and
+\fB\-b\fP flag will rotate the image ninety degrees forward or
+backward respectively. The sense of the rotation is relative to a
+first quadrant coordinate system, i.e. origin lower left, where
+"forward" means clockwise.
+.sp
+Note that a 180 degree rotation can be obtained by both reversing and
+inverting.
+.sp
+By default three byte pixels are assumed as in the
+\fBpix\fP(5) format.  However, the \fB\-#\fP
+\fIbytes\fP flag can be used to specify some other pixel size, where
+\fIbytes\fP is the number of bytes per pixel.  Thus this program can be
+used to manipulate rectangles of other data types, such as an array of
+floating point numbers, files of text, etc.
+.SH "METHOD"
+.sp
+A fairly large buffer is kept in memory so that, file size permitting,
+the entire rotation can occur without seeking on input or output. In
+any event, the algorithm is designed to process the input
+sequentially, so that if any seeking is required, it will happen on
+output only.  If these seeks fail, e.g. the output is a pipe, the user
+will be told that it needs a file on output. A more general solution
+to this problem would be to see if seeks can be done on input instead,
+and switch the algorithm to seek on input only.
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1),
+\fBpixscale\fP(1),
+\fBpixrect\fP(1), \fBpix\fP(5)
+.SH "BUGS"
+.sp
+If the file size is very large, excessive seeking may occur on output
+and the rotation will take a very long time.  More complicated
+algorithms could remedy this. Rotations of arbitrary angle are not
+supported.
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

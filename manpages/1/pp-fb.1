@@ -1,0 +1,63 @@
+'\" t
+.\"     Title: pp-fb
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "PP\-FB" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+pp\-fb \- display a GIFT pretty\-picture file on a frame buffer
+.SH "SYNOPSIS"
+.sp
+\fBpp\-fb\fP [\-F \fIframebuffer\fP] [\-W \fIout_width\fP] [\-N \fIout_height\fP] \fIfile.pp\fP
+.SH "DESCRIPTION"
+.sp
+\fBpp\-fb\fP reads \fIfile.pp\fP, determines the size, and displays a
+color shaded image represented therein on a frame buffer. The \fB.pp\fP
+files are the output of the pretty\-picture option of the
+\fBgift\fP(1V) ray\-tracing program. The options are
+standard \fBbrlcad\fP(1) options specifying
+framebuffer, output width, and output height. Some information
+pertaining to the color assignment of region identification numbers
+and the background color is prompted for on the standard input. The
+environment variable \f(CRFB_FILE\fP is used to select the display
+device (see \fBbrlcad\fP(1)). If this variable is
+not set, the default device for your system will be used. Commands for
+manipulating the display are documented on\-line. The file format is
+not documented anywhere.
+.SH "SEE ALSO"
+.sp
+\fBgift\fP(1V), \fBbrlcad\fP(1)
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

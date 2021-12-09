@@ -1,0 +1,136 @@
+'\" t
+.\"     Title: rtweight
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "RTWEIGHT" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+rtweight \- Calculate mass, centroid, and volume of geometry using raytracing
+.SH "SYNOPSIS"
+.sp
+\fBrtweight\fP [\fIoptions\fP]... \fImodel.g\fP \fIobjects\fP...
+.SH "DESCRIPTION"
+.sp
+\fBrtweight\fP operates on the indicated \fIobjects\fP in \fImodel.g\fP.
+Material density information and region line of sight (LOS) thickness
+measurements obtained via ray tracing are used to calculate the mass
+for each region encountered. It will calculate and report volume of
+the objects specified.  With material properties, it will also report
+per\-region mass information as well as the overall geometric centroid.
+All calculations take any Boolean operations into consideration.
+.sp
+\fBrtweight\fP can either use density information stored directly in
+a .g database or read a density file specified by the \fB\-d\fP
+option.
+.sp
+If using a density file the file must contain lines with the material
+number, density in g/cc, and material name, each separated by some
+white space.  See the \fBgqa\fP(1) manual page for
+more information about defining and managing density information.
+.sp
+The following options are recognized.
+.sp
+\fB\-s#\fP
+.RS 4
+Number of rays to fire in X and Y directions (square
+grid). Default is 512 (512x512).  Conflicts with \fB\-g\fP
+.RE
+.sp
+\fB\-g#\fP
+.RS 4
+Distance between rays in the X and Y directions in
+millimeters.  Conflicts with \fB\-s\fP
+.RE
+.sp
+\fB\-a#\fP
+.RS 4
+Select azimuth in degrees.  Used with \fB\-e\fP and conflicts
+with \fB\-M\fP
+.RE
+.sp
+\fB\-e#\fP
+.RS 4
+Select elevation in degrees.  Used with \fB\-a\fP and
+conflicts with \fB\-M\fP
+.RE
+.sp
+\fB\-d file\fP
+.RS 4
+Read density information from the specified file.
+.RE
+.sp
+\fB\-M\fP
+.RS 4
+Read model2view matrix from standard input. Conflicts with
+\fB\-a\fP and \fB\-e\fP
+.RE
+.sp
+\fB\-r\fP
+.RS 4
+Report individual region weights by region path name and also
+by region id number.  The default only prints the total weight for all
+the objects specified.
+.RE
+.sp
+\fB\-o file\fP
+.RS 4
+Send the output to a specified file.  The default is to
+standard output.
+.RE
+.sp
+\fB\-P#\fP
+.RS 4
+Specify the maximum number of processors (in a multi\-processor
+system) to be used for this execution.  The default is the maximum
+number for the machine.
+.RE
+.sp
+\fBrtweight\fP also accepts all other options that the
+\fBrt\fP(1) program implements, such as for non\-square
+views, perspective, etc.
+.SH "SEE ALSO"
+.sp
+\fBmged\fP(1), \fBrt\fP(1),
+\fBlibrt\fP(3)
+.SH "DIAGNOSTICS"
+.sp
+Numerous error conditions are possible.  Descriptive messages are
+printed on standard error (file descriptor 2).
+.SH "BUGS"
+.sp
+Most deficiencies observed while using the \fBrtweight\fP program are
+usually with the \fBlibrt\fP(3) package instead.
+.SH "AUTHOR"
+.sp
+James E. Hunt
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

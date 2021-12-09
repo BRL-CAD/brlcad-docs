@@ -1,0 +1,66 @@
+'\" t
+.\"     Title: fbgrid
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "FBGRID" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+fbgrid \- draw a grid on a frame buffer
+.SH "SYNOPSIS"
+.sp
+\fBfbgrid\fP [\-cbdo] [\-F \fIframebuffer\fP] [\-S \fIsquaresize\fP] [\-W \fIwidth\fP] [\-N \fIheight\fP]
+.SH "DESCRIPTION"
+.sp
+\fBfbgrid\fP is used to generate a grid on a frame buffer. The
+environment variable \f(CRFB_FILE\fP is used to select the display
+device (see \fBbrlcad\fP(1)). If this variable is
+not set, the default device for your system will be used. The
+\fB\-SWN\fP options can all be used in the normal way to specify the
+size of the grid (see \fBbrlcad\fP(1)). The
+default grid size is 512x512. The framebuffer can be declared with the
+\fB\-F\fP flag. \fB\-c\fP will clear the screen before drawing.
+.sp
+The available patterns are: \fB\-b\fP for binary spacing with lines at
+8, 64, and 128 line intervals. \fB\-d\fP for decimal spacing with
+lines at 10, 50, and 100 line intervals (the default). \fB\-o\fP for
+the old cross grid pattern.
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1),
+\fBfbpoint\fP(1),
+\fBfbzoom\fP(1),
+\fBfbframe\fP(1)
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

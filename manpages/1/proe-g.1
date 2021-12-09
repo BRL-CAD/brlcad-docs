@@ -1,0 +1,92 @@
+'\" t
+.\"     Title: proe-g
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "PROE\-G" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+proe\-g \- Pro/Engineer Translator (Pro/Engineer to BRL\-CAD)
+.SH "SYNOPSIS"
+.sp
+\fBproe\-g\fP [\-darS] [\-i \fIinitial_ident\fP] [\-I \fIconstant_ident\fP] [\-m \fImaterial_code\fP] [\-u \fIreg_exp\fP] [\-x \fIRT_DEBUG_FLAG\fP] \fIfile.brl\fP \fIfile.g\fP
+.SH "DESCRIPTION"
+.sp
+\fBproe\-g\fP converts the specified \fIfile.brl\fP to a BRL\-CAD \fIfile.g\fP
+file. The \fB\-d\fP option prints debugging information. The \fB\-a\fP
+option implies that all the parts in the Pro/E model should be
+converted to BRL\-CAD \fIair\fP regions. The \fB\-i\fP option sets the
+starting ident number for the regions created. As each new region is
+created, this number will be incremented before assigning the next
+ident number (conflicts with \fB\-I\fP ). The \fB\-I\fP option sets a
+constant ident number that will be assigned to all the regions created
+(conflicts with \fB\-i\fP ). The \fB\-m\fP option sets a material code
+that will be assigned to all the regions created (default is 1). The
+\fB\-r\fP flag indicates that the model should not be rotated,
+translated, or scaled, but left in the same orientation and size as it
+was created in \fIPro/E\fP. This allows the user to convert parts that are
+referenced by previously converted assemblies, so that the
+transformation matrix in the referencing assembly will size and
+position the part. The \fB\-x\fP option sets an RT debug flags (see
+raytrace.h). The \fIfile.brl\fP file is expected to be output from the
+\fIBRL\-CAD\fP menu option of the Pro/Engineer \fIEXPORT\fP menu. This menu
+option is a Pro/Develop application produced by the USARL.
+.sp
+Note that the routine documented here is obsolete, and only maintained
+for compatibility with older versions of Pro/Engineer. The current
+method of converting from Pro/Engineer to BRL\-CAD is still a two step
+process, but a newer Pro/Toolkit application must be installed (see
+"install.doc" in the "pro\-engineer" directory of the BRL\-CAD
+distribution). From within Pro/Engineer, the "proe\-brl" option must be
+selected from the "File" menu, and the user will be prompted for an
+output file name, a starting ident number, a maximum tessellation
+error, and an additional curvature correction. The output from this
+new routine, is a Tcl script that may be converted to a BRL\-CAD model
+using \fBasc2g\fP or by sourcing the file during an MGED session.
+.SH "EXAMPLE"
+.sp
+.if n .RS 4
+.nf
+$ proe\-g sample.brl sample.g
+.fi
+.if n .RE
+.SH "SEE ALSO"
+.sp
+\fIPro/Engineer Modeling User\(cqs Guide,\fP Version 13.0, Parametric
+Technology Corporation
+.SH "DIAGNOSTICS"
+.sp
+Error messages are intended to be self\-explanatory.
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

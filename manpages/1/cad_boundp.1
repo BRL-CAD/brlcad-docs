@@ -1,0 +1,103 @@
+'\" t
+.\"     Title: cad_boundp
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "CAD_BOUNDP" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+cad_boundp \- find bounding polygon of two\-dimensional view
+.SH "SYNOPSIS"
+.sp
+\fBcad_boundp\fP [\-i \fIinput\fP] [\-o \fIoutput\fP] [\-t \fItolerance\fP] [\-v]
+.SH "DESCRIPTION"
+.sp
+\fBcad_boundp\fP reads from \fIinput\fP (standard input if not specified)
+a series of line segment endpoint (\fIx\fP,\fIy\fP) coordinate values
+describing a two\-dimensional view of the edges of a (possibly
+transparent) three\-dimensional object and writes to \fIoutput\fP (standard
+output if not specified) the (\fIx\fP,\fIy\fP) coordinates of vertices of the
+bounding polygon in counter\-clockwise order, starting with the vertex
+having the smallest \fIy\fP coordinate. If the \fB\-v\fP argument is used,
+instead of points the output will consist of line segment data
+suitable for input into another invocation of \fBcad_boundp\fP .
+.sp
+Input lines not beginning with a number are silently skipped. This
+feature can be used to accommodate comments or additional control
+information in the data stream.
+.sp
+When a \fItolerance\fP is specified, a point is considered to be identical
+to a previously\-input point if its \fIx\fP and \fIy\fP coordinates are both
+within \fItolerance\fP of the first point encountered within a group
+passing the tolerance test. Otherwise, point coordinates must match
+precisely or the algorithm will produce erroneous results.
+.SH "RESTRICTIONS"
+.sp
+\fBcad_boundp\fP may output a polygon smaller than desired or produce
+a "degenerate input" message if the \fItolerance\fP is too tight or if
+input is incomplete. It may be wise to specify double the expected
+\fItolerance\fP.
+.sp
+Holes within the view cannot be recognized.
+.sp
+Silhouette thickness must everywhere exceed \fItolerance\fP (no narrow
+necking\-down) or a portion of the silhouette will be "lost"; in
+particular, the view should not consist of disjoint parts.
+.SH "EXAMPLE"
+.sp
+.if n .RS 4
+.nf
+$ cad_boundp \-t 0.1 # _comment_ 0 2 0 1 3 2 3 1 2 0 1 0 0 2 3 2 0 2 3 1 0 1 3 2 2 2 2 0 1 0 1 2 2 2 1 2 0 1 3 1 _^D_ 1 0 2 0 2 1 3 1 3 2 2 2 1 2 0 2 0 1 1 1
+.fi
+.if n .RE
+.SH "SEE ALSO"
+.sp
+\fBcad_parea\fP(1)
+.SH "DIAGNOSTICS"
+.sp
+Any error condition causes \fBcad_boundp\fP to terminate with
+non\-zero exit status after it prints an error message on the standard
+error output.
+.sp
+An illegal argument or improperly formatted input produces an
+appropriate message.
+.sp
+If a vertex having only one line segment connected to it is found on
+the perimeter, \fBcad_boundp\fP produces the message "degenerate
+input".
+.sp
+If there is too much data for \fBcad_boundp\fP to handle, the message
+"out of memory" is produced.
+.SH "AUTHOR"
+.sp
+Douglas A. Gwyn, BRL/VLD\-VMB
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

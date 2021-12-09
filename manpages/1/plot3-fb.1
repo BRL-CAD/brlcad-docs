@@ -1,0 +1,84 @@
+'\" t
+.\"     Title: plot3-fb
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "PLOT3\-FB" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+plot3\-fb \- display 3\-D UNIX plot on a framebuffer
+.SH "SYNOPSIS"
+.sp
+\fBplot3\-fb\fP [\-id] [\-O|o] [\-t \fIline_thickness\fP] [\-F \fIframebuffer\fP] [\-S|s \fIsquaresize\fP] [\-W|w \fIwidth\fP] [\-N|n \fIheight\fP] [<] \fIfile.plot3\fP
+.SH "DESCRIPTION"
+.sp
+\fBplot3\-fb\fP displays a BRL extended three dimensional UNIX plot
+file on a framebuffer. The environment variable \f(CRFB_FILE\fP is used
+to select the display device (see
+\fBbrlcad\fP(1)); if this variable is not set, the
+default device for your system will be used. Alternatively, the
+framebuffer may be explicitly specified by using the \fB\-F\fP
+flag. By default, the display size is assumed to be 512x512
+pixels. The \fB\-S\fP, \fB\-W\fP, and \fB\-N\fP (or \fB\-s\fP,
+\fB\-w\fP, and \fB\-n\fP) flags allow different screen sizes to
+be set.  The plotting space will fill the given screen dimensions.  No
+attempt is made at present to preserve aspect.
+.sp
+The \fB\-O\fP (or \fB\-o\fP) flag is for overlay mode, where the
+current framebuffer image will be left in the background. The
+\fB\-i\fP flag causes the rasterized image to be plotted immediately,
+rather than buffering up rasterized data into bands.  While useful for
+quick feedback on small plots, this mode is generally more expensive
+in CPU time. The \fB\-d\fP flag outputs a very verbose debugging
+stream to standard error listing every UNIX plot command and the
+corresponding framebuffer coordinates. The \fB\-t\fP flag causes all
+lines to be thickened perpendicular to their length, to the given
+number of pixels. This is especially useful when making images for
+recording on videotape, as single pixel lines are difficult to
+resolve. The thickening will be reduced so that a line will never be
+wider than it is long.
+.sp
+If \fIfile.plot3\fP is not specified, the plot commands are read from
+standard input.
+.sp
+Note that 3\-D UNIX plot is a superset of the standard UNIX plot
+format, thus this program can display normal plot files as well.
+.SH "SEE ALSO"
+.sp
+\fBplot3rot\fP(1),
+\fBplot3debug\fP(1),
+\fBlibplot3\fP(3),
+\fBbrlcad\fP(1)
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

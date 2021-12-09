@@ -1,0 +1,101 @@
+'\" t
+.\"     Title: wire
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "WIRE" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+wire \- Creates a BRL\-CAD .g file containing wiring or fuel lines.
+.SH "SYNOPSIS"
+.sp
+\fBwire\fP [\fIoptions\fP]...
+.SH "DESCRIPTION"
+.sp
+\fBwire\fP is a program to create a BRL\-CAD database of solid wires
+or fuel lines.  The user enters the coordinates of the starting and
+ending points of the different segments of wires along with the radius
+at each of these points.  Currently the program is limited to 10
+segments.  This number may be changed by changing the variable MAXSEG.
+MAXSEG may be no greater than 100 without changing other parts of the
+program.  The wires are composed of cones and spheres.  This program
+is designed to be run interactively.
+.SH "EXAMPLES"
+.sp
+.B Example 1. Interactive \fBwire\fP Session
+.br
+.RS 4
+.sp
+.if n .RS 4
+.nf
+Enter mged file name (25 char max).
+        wire.g
+Enter the number of segments (maximum of 10).
+        3
+Enter starting point of segment # 1.
+        0 0 0
+Enter radius at the starting point of segment # 1.
+        .25
+Enter ending point of segment # 1.
+        0 5 \-3
+Enter radius at the ending point of segment # 1.
+        .25
+Enter ending point of segment # 2.
+        0 10 \-3
+Enter radius at the ending point of segment # 2.
+        .25
+Enter ending point of segment # 3.
+        0 12 \-2
+Enter radius at the ending point of segment # 3.
+        .25
+
+
+mged file created:  wire.g
+Segment # 1:  (0.000000, 0.000000, 0.000000) 0.250000
+              (0.000000, 5.000000, \-3.000000)0.250000
+Segment # 2:  (0.000000, 5.000000, \-3.000000) 0.250000
+              (0.000000, 10.000000, \-3.000000)0.250000
+Segment # 3:  (0.000000, 10.000000, \-3.000000) 0.250000
+              (0.000000, 12.000000, \-2.000000)0.250000
+.fi
+.if n .RE
+.RE
+.sp
+In this example, a wire of three segments is made.  These segments are
+joined together with spheres.  All dimensions are in millimeters.
+.SH "AUTHOR"
+.sp
+Susan A. Coates
+.SH "SEE ALSO"
+.sp
+bolt(1), handle(1), window(1), window_frame(1), gastank(1)
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

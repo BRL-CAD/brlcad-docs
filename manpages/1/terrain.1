@@ -1,0 +1,154 @@
+'\" t
+.\"     Title: terrain
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "TERRAIN" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+terrain \- Generate terrain field from mathematical noise
+.SH "SYNOPSIS"
+.sp
+\fBterrain\fP [\-w \fIx_postings\fP] [\-n \fIy_postings\fP] [\-s \fIxy_postings\fP] [\-L \fInoise_Lacunarity\fP] [\-H \fInoise_H_value\fP] [\-O \fInoise_octaves\fP] [\-o \fInoise_offset\fP] [\-S \fInoise_scale\fP] [\-V \fInoise_Vector_scale\fP] [\-D \fInoise_Delta\fP] [\-f \fInoise_function\fP] [\-c \fIhost/net\fP \fIformat\fP \fIconversion\fP \fIoff\fP] > \fIfile.dsp\fP
+.SH "DESCRIPTION"
+.sp
+The \fBterrain\fP program produces pseudo\-terrain from procedural
+noise suitable for use with a BRL\-CAD dsp primitive.  Noise values are
+computed for the grid points of the lattice and the resultant values
+are output on the standard output as unsigned shorts in network byte
+order.  The size of the grid is specified with the \fB\-w\fP and
+\fB\-n\fP options.
+.SH "OPTIONS"
+.sp
+\fB\-w\fP \fIgrid_x_postings\fP
+.RS 4
+Specifies the number of grid points in the X
+dimension.  Default is 256.
+.RE
+.sp
+\fB\-n\fP \fIgrid_y_postings\fP
+.RS 4
+Specifies the number of grid points in the Y
+dimension.  Default is 256.
+.RE
+.sp
+\fB\-c\fP
+.RS 4
+Turns of the conversion of the data from host to network
+format.  This only has an effect on little\-endian machines.
+.RE
+.sp
+\fB\-v\fP
+.RS 4
+Turns on verbose mode.  Information about which filter is
+running is printed.
+.RE
+.sp
+\fB\-f\fP \fInoise_type\fP
+.RS 4
+Selects the type of noise field to be used.
+Options include
+.RE
+.sp
+\fIL\fP
+.RS 4
+A lunar\-like surface.
+.RE
+.sp
+\fIf\fP
+.RS 4
+Fractional Brownian motion (fBm).
+.RE
+.sp
+\fIt\fP
+.RS 4
+Turbulence.
+.RE
+.sp
+\fIT\fP
+.RS 4
+Turbulence inverted: 1.0 \- turb(pt).
+.RE
+.sp
+\fIm\fP
+.RS 4
+A Multi\-fractal.
+.RE
+.sp
+\fIr\fP
+.RS 4
+A Ridged multi\-fractal.
+.RE
+.SS "Noise Options"
+.sp
+\fB\-O\fP \fInoise_octaves\fP
+.RS 4
+Specifies the number of octaves of noise to
+layer. Typical values are 2 through 8.
+.RE
+.sp
+\fB\-L\fP \fInoise_Lacunarity\fP
+.RS 4
+Specifies the scaling factor between
+successive octaves of noise.  Practical values are non\-integer numbers
+between 1.7 and 4.0.
+.RE
+.sp
+\fB\-H\fP \fInoise_H_val\fP
+.RS 4
+Specifies the value of H in the noise equation.
+Usually 1.0
+.RE
+.sp
+\fB\-S\fP \fInoise_scale\fP
+.RS 4
+Scales the noise uniformly in X, Y and Z
+dimensions by the value \fInoise_scale\fP. Values below 1.0 cause the
+noise pattern to become smaller. Values above 1.0 cause it to get
+bigger
+.RE
+.sp
+\fB\-V\fP \fIscale_x,scale_y,scale_z\fP
+.RS 4
+Allows non\-uniform scaling of the X,
+Y and Z dimensions.  See \fB\-S\fP above.
+.RE
+.sp
+\fB\-D\fP \fIdelta_x,delta_y,delta_z\fP
+.RS 4
+Specifies a translation in noise
+space.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

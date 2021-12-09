@@ -1,0 +1,59 @@
+'\" t
+.\"     Title: bw-pix
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "BW\-PIX" "1" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+bw\-pix \- convert a black and white image to color format
+.SH "SYNOPSIS"
+.sp
+\fBbw\-pix\fP [[\-s \fIsquaresize\fP] [\-w \fIwidth\fP] [\-n \fIheight\fP] ] [\-o \fIout.pix\fP] [[<] \fIin.bw\fP] > [\fIout.pix\fP]
+.SH "DESCRIPTION"
+.sp
+\fBbw\-pix\fP converts a black and white \fBbw\fP(5) format
+file to a color \fBpix\fP(5) format file. Each input
+value is replicated three times, thus the resulting output file has
+the same value in all three color planes. An input file name can be
+given, else input comes from stdin. Output will go to stdout unless an
+optional output file name is given.
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1),
+\fBpix\-bw\fP(1),
+\fBpix\-bw3\fP(1), \fBpix\fP(5),
+\fBbw\fP(5)
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

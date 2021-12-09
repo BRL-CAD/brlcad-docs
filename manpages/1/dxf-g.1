@@ -1,0 +1,114 @@
+'\" t
+.\"     Title: dxf-g
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "DXF\-G" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+dxf\-g \- DXF Translator (DXF to BRL\-CAD)
+.SH "SYNOPSIS"
+.sp
+\fBdxf\-g\fP [\-c] [\-d] [\-v] [\-s \fIscale_factor\fP] [\-t \fItolerance\fP] \fIfile.dxf\fP \fIdatabase.g\fP
+.SH "DESCRIPTION"
+.sp
+\fBdxf\-g\fP converts the specified \fIfile.dxf\fP to a BRL\-CAD
+\fIdatabase.g\fP file.
+.sp
+The following options are available:
+.sp
+\fB\-c\fP
+.RS 4
+Only the first color seen for a layer should be used. Without
+this option, layers may be broken into separate BOT primitives
+according to color assigned.
+.RE
+.sp
+\fB\-d\fP
+.RS 4
+Sets a debug flag. The only effect is to cause a core dump on
+failure. This is probably not useful except for developers.
+.RE
+.sp
+\fB\-v\fP
+.RS 4
+Produces very verbose output on stderr.
+.RE
+.sp
+\fB\-s\fP \fIscale_factor\fP
+.RS 4
+Provides a scale factor to be applied to the DXF
+input. This can be used for DXF files that do not provide units
+information.
+.RE
+.sp
+\fB\-t\fP \fItolerance\fP
+.RS 4
+Specifies the maximum distance (in mm) between two
+vertices at which the two vertices will be considered to be the same
+vertex.
+.RE
+.sp
+The \fIfile.dxf\fP file is expected to be in the ASCII Autodesk DXF format
+as defined in the Autocad 2006 manuals. This converter handles
+entities of types:
+.sp
+POLYLINE LWPOLYLINE LEADER DIMENSION VERTEX LINE CIRCLE ARC ELLIPSE
+3DFACE TEXT MTEXT ATTRIB SOLID SPLINE
+.sp
+The POLYLINE entities in AUTOCAD are actually a container for numerous
+different entity types. The types of POLYLINE entities converted
+include:
+.sp
+3D polylines; 3D polygon meshes; polyface meshes
+.sp
+SOLID entities are 2D shapes with a solid fill, but this converter
+does not do any filling. Each layer is converted to a separate
+object. Colors are also converted.
+.SH "EXAMPLE"
+.sp
+.if n .RS 4
+.nf
+$ dxf\-g sample.dxf sample.g
+.fi
+.if n .RE
+.SH "SEE ALSO"
+.sp
+\fI\c
+.URL "http://images.autodesk.com/adsk/files/dxf_format.pdf" "" "\fP"
+.SH "DIAGNOSTICS"
+.sp
+Error messages are intended to be self\-explanatory.
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

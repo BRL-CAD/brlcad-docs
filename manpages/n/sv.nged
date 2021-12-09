@@ -1,0 +1,74 @@
+'\" t
+.\"     Title: sv
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "SV" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+sv \- Moves the view center to (x, y, z).
+.SH "SYNOPSIS"
+.sp
+\fBsv\fP {\fIx y\fP} [\fIz\fP]
+.SH "DESCRIPTION"
+.sp
+Moves the view center to (\fIx, y, z\fP). If \fIz\fP is not provided, then
+\fIz\fP=0 is used. The parameters \fIx, y, z\fP are integer values relative
+to the screen. For example, the center of the screen is (0, 0, 0) and
+the upper left corner is (\-2048, 2047, 0).
+.SH "EXAMPLES"
+.sp
+The two examples show the use of the \fBsv\fP command to move the
+view center to a particular location on the screen.
+.sp
+.B Example 1. Keep the view center at the center of the screen.
+.br
+.RS 4
+.sp
+mged> \f(CRsv 0 0 0\fP
+.sp
+The view is unchanged.
+.RE
+.sp
+.B Example 2. Move the view center half way between the current view center and the right side of the view screen.
+.br
+.RS 4
+.sp
+mged> \f(CRsv 1024 0 0\fP
+.sp
+The view center is moved half way between the current view center and
+the right side of the view screen.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

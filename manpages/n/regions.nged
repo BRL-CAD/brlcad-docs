@@ -1,0 +1,67 @@
+'\" t
+.\"     Title: regions
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "REGIONS" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+regions \- Creates a summary of all the regions in the specified list of objects.  The summary is written in the specified output_file.
+.SH "SYNOPSIS"
+.sp
+\fBregions\fP {\fIoutput_file\fP} {\fIobjects\fP}
+.SH "DESCRIPTION"
+.sp
+Creates a summary of all the regions in the specified list of
+\fIobjects\fP. The summary is written in the specified \fIoutput_file\fP. The
+summary includes, for each region, a sequential region number, its
+ident, air code, material code, los, the path from one of the
+\fIobjects\fP to the region, and the Boolean formula for the region.
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBregions\fP command to create a
+summary of the regions that are in the specified objects. The summary
+is written in a specified file.
+.sp
+.B Example 1. Create a summary of regions contained in specified objects.
+.br
+.RS 4
+.sp
+mged> \f(CRregions regions_file group1 group2\fP
+.sp
+Places a summary of all the regions from \fIgroup1\fP and \fIgroup2\fP in the
+file named \fIregions_file\fP.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

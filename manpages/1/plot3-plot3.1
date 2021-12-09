@@ -1,0 +1,75 @@
+'\" t
+.\"     Title: plot3-plot3
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "PLOT3\-PLOT3" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+plot3\-plot3 \- convert an extended to a simple UnixPlot file
+.SH "SYNOPSIS"
+.sp
+\fBplot3\-plot3\fP [\-v] [\-S] < \fIunix_plot\fP > \fIunix_plot\fP
+.SH "DESCRIPTION"
+.sp
+UnixPlot is a simple machine and device independent plotting file
+format found on both System V and BSD Unix systems.  BRL has extended
+that format to include color, three dimensional plotting, machine
+independent floating point coordinates, and a flush command for
+interactive output.
+.sp
+\fBplot3\-plot3\fP converts an extended UnixPlot file to the simpler
+format for use by older, and non\-extended, programs.  It drops color
+and flush commands, strips the Z coordinate of 3D commands, and
+converts floating point coordinates to integer.  By default,
+conversion to integer is done by simple truncation.  If the \fB\-S\fP
+option is given, the "space" command in the plot file is used to
+center and scale the plot to the full 16 bit signed integer plotting
+space (\-32767 to +32767).  This is particularly useful for converting
+floating point files.  The \fB\-v\fP verbose option causes each plot
+command to be described as it is being converted.
+.SH "DIAGNOSTICS"
+.sp
+A warning message is given if the input plot file did not contain a
+space command since most older UnixPlot programs require them.
+.SH "SEE ALSO"
+.sp
+\fBplot\fP(1),
+\fBplot3rot\fP(1),
+\fBplot3\-fb\fP(1),
+\fBplot3debug\fP(1),
+\fBlibplot3\fP(3),
+\fBplot3\fP(5)
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

@@ -1,0 +1,75 @@
+'\" t
+.\"     Title: fbframe
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "FBFRAME" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+fbframe \- place a colored frame around a framebuffer
+.SH "SYNOPSIS"
+.sp
+\fBfbframe\fP [\-F \fIframebuffer\fP] [\-w|W \fIframe_width\fP] [\-n|N \fIframe_height\fP] [\-s|S \fIsquareframesize\fP]
+.SH "DESCRIPTION"
+.sp
+\fBfbframe\fP places a colored frame around the edge pixels of a
+framebuffer. It is mostly for purposes of framebuffer alignment. The
+\fB\-F\fP option can be used to specify the framebuffer. If this
+option is omitted, the environment variable \f(CRFB_FILE\fP is used to
+select the display device (see
+\fBbrlcad\fP(1)). If the variable is not set, the
+default device for your system will be used.
+.sp
+The frame starts in the lower left with a red line running to the
+right to the next to last pixel.  Next, a green line from there up to
+the next to top scan line is drawn.  Then blue across the top scan
+line to the next to first column.  Finally a white line down the left
+edge stopping just above the red line.
+.sp
+By default, the dimensions of the frame will be taken from the
+framebuffer used.  Alternatively, one or more of the options
+\fB\-s\fP, \fB\-w\fP, \fB\-n\fP (or \fB\-S\fP, \fB\-W\fP, \fB\-N\fP)
+may be used to set the dimensions of the frame drawn.
+.sp
+The options \fB\-w\fP (or \fB\-W\fP) \fIframe_width\fP and \fB\-n\fP
+(or \fB\-N\fP) \fIframe_height\fP are used to specify the width (in
+pixels) and height (in scanlines) of the frame on the framebuffer
+respectively. The \fB\-s\fP (or \fB\-S\fP) \fIsquareframesize\fP
+option specifies both the height and width of the frame to be drawn.
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1),
+\fBfbgrid\fP(1)
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

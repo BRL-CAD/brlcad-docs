@@ -1,0 +1,163 @@
+'\" t
+.\"     Title: lint
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "LINT" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+lint \- Detect and report problems with subsets or all of a .g database.
+.SH "SYNOPSIS"
+.sp
+\fBlint\fP [\-h] [\-C] [\-M] [\-I] [\-F "filters"] [\fIObjectName\fP]
+.SH "DESCRIPTION"
+.sp
+The \(aqlint\(aq command analyzes the currently open geometry database (or a
+subset of that database if object names are supplied as arguments) and
+searches for a variety of problems know to sometimes occur.  By
+default all defect types are searched for \- if one or more of the
+options enabling a search for a specific type of problem are supplied,
+only those searches will be performed.
+.SH "OPTIONS"
+.sp
+\fB\-h\fP
+.RS 4
+Print help message.
+.RE
+.sp
+\fB\-C\fP, \fB\-\-cyclic\fP
+.RS 4
+Check for full paths that are cyclic \- i.e. a
+situation where a high level object incorporates in its definition
+tree a reference to itself. Such definitions are always considered
+invalid, and are sometimes problematic for tools working with geometry
+hierarchy.
+.RE
+.sp
+\fB\-M\fP, \fB\-\-missing\fP
+.RS 4
+Check for references to objects or files that are
+missing (not present in the database or on the file system.)
+Primarily this is a check for comb objects referring to missing
+objects, but it will also check for and report invalid object and file
+references in extrude and dsp primitives.
+.RE
+.sp
+\fB\-I\fP, \fB\-\-invalid\fP
+.RS 4
+Check for shapes in the database that do not
+satisfy one or more properties required for them to be valid
+definitions, where correcting the problem requires a change to the
+object\(cqs definition.  (As of this writing the only implemented check
+is for BoT object solidity, but many more are possible and planned.)
+(Objects invalid due to missing objects are potentially valid without
+the necessity of changing the object\(cqs own definition \- e.g. the
+missing object/file can be added. That category of error can be
+searched for with the \fB\-M\fP check.)
+.RE
+.sp
+\fB\-F\fP, \fB\-\-filter\fP
+.RS 4
+Apply search command style filters to the set of
+objects to be tested.  Allows, (for example) a user to test only brep
+objects and not bot objects or only objects matching a particular name
+pattern.  Does not impact the checks for missing or cylic geometry \-
+the underlying search mechanism assumes inputs do not have those
+particular categories of problem and thus can\(cqt be reliably applied in
+those cases.
+.RE
+.SH "EXAMPLES"
+.sp
+.B Example 1. Examine entire database for all defect categories
+.br
+.RS 4
+.sp
+mged> \f(CRlint\fP
+.sp
+.if n .RS 4
+.nf
+Checking for cyclic paths...
+Checking for references to non\-extant objects...
+Checking for invalid objects...
+Found cyclic paths:
+  /c1/c2/c1
+  /c2/c1/c2
+Found references to missing objects:
+  invalid_dsp_missing_binary_obj.s/missing_binary_object.s
+  invalid_dsp_missing_file.s/missing_file.data
+  invalid_extrude_missing_sketch.s/missing_sketch.s
+  missingentry.c/missing.s
+Found invalid objects:
+  nonsolid.bot[bot] failed solidity test, but BoT type is RT_BOT_SOLID
+.fi
+.if n .RE
+.RE
+.sp
+.B Example 2. Check the validity of a single geometry object
+.br
+.RS 4
+.sp
+mged> \f(CRlint \-I nonsolid.bot\fP
+.sp
+.if n .RS 4
+.nf
+Checking for invalid objects...
+Found invalid objects:
+  nonsolid.bot[bot] failed solidity test, but BoT type is RT_BOT_SOLID
+.fi
+.if n .RE
+.RE
+.sp
+.B Example 3. Examine all non\-BoT objects in the database matching the name pattern "\fB_1.\fP" for invalidity
+.br
+.RS 4
+.sp
+mged> \f(CRlint \-F "! \-type bot \-name \fB_1.\fP"\fP
+.sp
+.if n .RS 4
+.nf
+Checking for invalid objects...
+Found invalid objects:
+  Brep_1.s[brep] failed OpenNURBS validity test
+brep.m_L[27] loop is not valid.
+        end of brep.m_T[loop.m_ti[5]=147]=(0,\-1.309) and start
+        of brep.m_T[loop.m_ti[6]=148]=(0,\-5.63995e\-08) do not match.
+brep.m_F[25] face is not valid.
+        brep.m_L[face.m_li[0]=27] is not valid.
+ON_Brep.m_F[25] is invalid.
+.fi
+.if n .RE
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

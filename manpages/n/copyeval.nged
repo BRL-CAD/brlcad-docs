@@ -1,0 +1,77 @@
+'\" t
+.\"     Title: copyeval
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "COPYEVAL" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+copyeval \- Creates a new primitive object called new_ primitiveby applying the transformation matrices accumulated along the path_to_old_primitive to the leaf primitive shape object at the end of the path and saving the result under the name new_ primitive.
+.SH "SYNOPSIS"
+.sp
+\fBcopyeval\fP {\fInew_primitive path_to_old_primitive\fP}
+.SH "DESCRIPTION"
+.sp
+Objects in a \fIBRL\-CAD\fP model are stored as Boolean trees
+(combinations), with the members being primitive shapes or other
+Boolean trees. Each member has a transformation matrix associated
+with it. This arrangement allows a primitive to be a member of a
+combination, and that combination may be a member of another
+combination, and so on. When a combination is displayed, the
+transformation matrices are applied to its members and passed down
+through the combinations to the leaf (primitive shape) level. The
+accumulated transformation matrix is then applied to the primitive
+before it is drawn on the screen. The \fBcopyeval\fP command creates
+a new primitive object called \fInew\fP primitive_ by applying the
+transformation matrices accumulated along the \fIpath_to_old_primitive\fP
+to the leaf primitive shape object at the end of the path and saving
+the result under the name \fInew_primitive\fP. The \fIpath_to_old_primitive\fP
+must be a legitimate path ending with a primitive shape.
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBcopyeval\fP command to create a
+new primitive by applying the transformation matrices along the path
+to the old primitive.
+.sp
+.B Example 1. Create a new primitive object by applying the transformation matrices along the pathto the old primitive.
+.br
+.RS 4
+.sp
+mged> \f(CRcopyeval shapeb comb1/comb2/comb3/shapea\fP
+.sp
+Creates \fIshapeb\fP from \fIshapea\fP by applying the accumulated
+transformation matrices from the path comb1/comb2/comb3.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

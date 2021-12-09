@@ -1,0 +1,349 @@
+'\" t
+.\"     Title: vdraw
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "VDRAW" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+vdraw \- Allows drawing of lines and polygons (optionally with per vertex normals) in the MGED graphics display. It is used to build a named list of drawing commands for MGED, send the list to the MGED display, modify the list, or delete all or part of the list.
+.SH "SYNOPSIS"
+.sp
+\fBvdraw\fP {\fIcommand\fP} [\fIargs\fP]
+.SH "DESCRIPTION"
+.sp
+Allows drawing of lines and polygons (optionally with per vertex
+normals) in the MGED graphics display. It is used to build a named
+list of drawing commands for MGED, send the list to the MGED display,
+modify the list, or delete all or part of the list. All vertices in
+the \fIvdraw\fP command are in millimeters. The MGED drawing commands are
+represented by integers in the \fIvdraw\fP command. The MGED drawing
+commands and the integers that \fIvdraw\fP uses for them are:
+.sp
+.it 1 an-trap
+.nr an-no-space-flag 1
+.nr an-break-flag 1
+.br
+.B Table 1. Drawing Commands
+.TS
+allbox tab(:);
+lt lt lt.
+T{
+.sp
+MGED Drawing Command
+T}:T{
+.sp
+Vdraw integer
+T}:T{
+.sp
+MGED Action
+T}
+T{
+.sp
+RT_VLIST_LINE_MOVE
+T}:T{
+.sp
+0
+T}:T{
+.sp
+Begin a new line at this point
+T}
+T{
+.sp
+RT_VLIST_LINE_DRAW
+T}:T{
+.sp
+1
+T}:T{
+.sp
+Draw line from previous point to this point
+T}
+T{
+.sp
+RT_VLIST_POLY_START
+T}:T{
+.sp
+2
+T}:T{
+.sp
+Start polygon (argument is surface normal)
+T}
+T{
+.sp
+RT_VLIST_POLY_MOVE
+T}:T{
+.sp
+3
+T}:T{
+.sp
+move to first polygon vertex
+T}
+T{
+.sp
+RT_VLIST_POLY_DRAW
+T}:T{
+.sp
+4
+T}:T{
+.sp
+Subsequent polygon vertices
+T}
+T{
+.sp
+RT_VLIST_POLY_END
+T}:T{
+.sp
+5
+T}:T{
+.sp
+Last polygon vertex (should be same as first)
+T}
+T{
+.sp
+RT_VLIST_POLY_VERTNORM
+T}:T{
+.sp
+6
+T}:T{
+.sp
+Vertex normal (for shading interpolation)
+T}
+.TE
+.sp
+.sp
+The \fBvdraw\fP commands are as follows:
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+open \(em with no arguments, this returns "1" if there is a open list;
+"0" otherwise. If an argument is supplied, a command list is opened
+with the provided name.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+write \(em with arguments of \fIi c x y z\fP, the MGED drawing command
+\fB#c\fP is placed in the \fIith\fP position of the command list
+with the vertex as (\fIx y z\fP).
+.sp
+ \(em with arguments of \fInext c x y z\fP, the command is placed at the end
+of the list.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+insert \(em with arguments of \fIi c x y z\fP, the MGED drawing command
+\fI#c\fP is inserted just before the \fIith\fP position of the command
+list.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+delete \(em with an integer argument of i, the \fIith\fP command is
+deleted.
+.sp
+ \(em with an argument of "last", the last command on the list is
+deleted.
+.sp
+ \(em with an argument of "all", all the commands on the list are
+deleted.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+params \(em with an argument of \fIcolor rrggbb\fP, the color of all
+objects on this list is set. The \fIrrggbb\fP is a hex number
+representing the color, "ffffff" is white, "ff0000" is red, "00ff00"
+is green, etc.
+.sp
+ \(em with a single string argument, the name of the current list is
+changed.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+read \(em with an integer argument of \fIi\fP, the \fIith\fP command is
+returned.
+.sp
+ \(em with an argument of "color", the current color is returned.
+.sp
+ \(em with an argument of "length", the number of commands in the current
+list is returned.
+.sp
+ \(em with an argument of "name", the name of the current command list is
+returned.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+send \(em send the current command list to the MGED display manager.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+vlist \(em with an argument of "list", return a list of the names of
+all existing command lists.
+.sp
+ \(em with an argument of \fIdelete list_name\fP, delete the specified
+command list.
+.RE
+.sp
+All textual arguments may be abbreviated by their first letter.
+.SH "EXAMPLES"
+.sp
+The eight examples show the use of the \fBvdraw\fP command with four
+different commands and various arguments to build a list of commands
+to draw a square.
+.sp
+.B Example 1. Open a specified list.
+.br
+.RS 4
+.sp
+mged> \f(CRvdraw open square\fP
+.sp
+Opens a list named \fIsquare\fP.
+.RE
+.sp
+.B Example 2. Set the color.
+.br
+.RS 4
+.sp
+mged> \f(CRvdraw params color ff00\fP
+.sp
+Sets the color to green.
+.RE
+.sp
+.B Example 3. Start a line at the origin.
+.br
+.RS 4
+.sp
+mged> \f(CRvdraw write next 0 0 0 0\fP
+.sp
+Starts a line at the origin.
+.RE
+.sp
+.B Example 4. Draw a line from the previous point to a specified point.
+.br
+.RS 4
+.sp
+mged> \f(CRvdraw write next 1 100 0 0\fP
+.sp
+Draws a line from the origin to (100 0 0).
+.RE
+.sp
+.B Example 5. Draw a line from the previous point to a specified point.
+.br
+.RS 4
+.sp
+mged> \f(CRvdraw write next 1 100 100 0\fP
+.sp
+Draws a line from the previous point to (100 100 0).
+.RE
+.sp
+.B Example 6. Draw a line from the previous point to a specified point.
+.br
+.RS 4
+.sp
+mged> \f(CRvdraw write next 1 0 100 0\fP
+.sp
+Draws a line from the previous point to (0 100 0).
+.RE
+.sp
+.B Example 7. Draw a line from the previous point to the origin.
+.br
+.RS 4
+.sp
+mged> \f(CRvdraw write next 1 0 0 0\fP
+.sp
+Draws a line from the previous point to the origin.
+.RE
+.sp
+.B Example 8. Send the command list to the display manager.
+.br
+.RS 4
+.sp
+mged> \f(CRvdraw send\fP
+.sp
+Draws the square in the MGED display.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

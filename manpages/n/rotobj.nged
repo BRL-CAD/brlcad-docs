@@ -1,0 +1,69 @@
+'\" t
+.\"     Title: rotobj
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "ROTOBJ" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+rotobj \- Rotates the currently edited object by z angle degrees about the z direction, y angle degrees about the y direction, and x angle degrees about the x direction in that order.
+.SH "SYNOPSIS"
+.sp
+\fBrotobj\fP [\-i] [\fIx\-angle\fP] [\fIy\-angle\fP] [\fIz\-angle\fP]
+.SH "DESCRIPTION"
+.sp
+Rotates the currently edited object by \fIz\fP angle degrees about the \fIz\fP
+direction, \fIy\fP angle degrees about the \fIy\fP direction, and \fIx\fP angle
+degrees about the \fIx\fP direction in that order. If an \fI\-i\fP option is
+included, then the rotations are treated as increments to the previous
+rotations. MGED must be in the matrix edit mode for this command to be
+useful. The \fBp\fP command provides a similar capability for
+primitive editing.
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBrotobj\fP command to rotate the
+currently edited object by a given number of degrees in the \fIx\fP, \fIy\fP,
+and \fIz\fP directions.
+.sp
+.B Example 1. Rotate the current object by a specified number of degrees in the \fIx, y,\fP and \fIz\fP directions.
+.br
+.RS 4
+.sp
+mged> \f(CRrotobj 0 0 25\fP
+.sp
+Rotates the currently edited object by 25° about the \fIz\fP direction
+from the original orientation.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

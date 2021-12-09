@@ -1,0 +1,66 @@
+'\" t
+.\"     Title: edmater
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "EDMATER" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+edmater \- Places the user in an editor ready to edit a file filled with shader arguments for the combinations listed on the command line.
+.SH "SYNOPSIS"
+.sp
+\fBedmater\fP {\fIcombinations\fP} []
+.SH "DESCRIPTION"
+.sp
+Places the user in an editor ready to edit a file filled with shader
+arguments for the combinations listed on the command line. The
+arguments placed in the file for editing are the \fIshader\fP name and its
+own arguments, RGB color, \fIRGB_valid\fP flag, and the inheritance
+flag. The editor used is whatever the user has set in the environment
+variable \fIEDITOR\fP. If \fIEDITOR\fP is not set, then \fI/bin/ed\fP is used.
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBedmater\fP command to edit
+\fIshader\fP parameters for two combinations.
+.sp
+.B Example 1. Editing \fIshader\fP parameters for two combinations.
+.br
+.RS 4
+.sp
+mged> \f(CRedmater comb1 comb2\fP
+.sp
+The \fIshader\fP parameters can now be edited for \fIcomb1\fP and\fIcomb2\fP.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

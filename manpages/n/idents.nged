@@ -1,0 +1,69 @@
+'\" t
+.\"     Title: idents
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "IDENTS" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+idents \- Places a summary of the regions in the list of objects specified in the file specified.
+.SH "SYNOPSIS"
+.sp
+\fBidents\fP {\fIfile_name\fP} {\fIobjects\fP}
+.SH "DESCRIPTION"
+.sp
+Places a summary of the regions in the list of \fIobjects\fP specified in
+the file specified. If any regions include other regions, then only
+the first encountered region in that tree will be listed. The
+resulting file will contain two lists of regions, one in the order
+encountered in the list of objects, and the other ordered by ident
+number. The data written for each region includes (in this order) a
+sequential region count, the ident number, the air code, the material
+code, the LOS, and the path to the region.
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBidents\fP command to create a
+file that will list all regions in specified objects.
+.sp
+.B Example 1. Create a file that lists all regions contained in specified objects.
+.br
+.RS 4
+.sp
+mged> \f(CRidents regions_file group1 group2 region3\fP
+.sp
+Creates a file named \fIregions_file\fP and lists all the regions in
+\fIgroup1, group2,\fP and \fIregion3\fP in the file.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

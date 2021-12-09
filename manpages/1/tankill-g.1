@@ -1,0 +1,70 @@
+'\" t
+.\"     Title: tankill-g
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "TANKILL\-G" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+tankill\-g \- TANKILL Translator (TANKILL to BRL\-CAD)
+.SH "SYNOPSIS"
+.sp
+\fBtankill\-g\fP [\-n] [\-t \fItolerance\fP] [\-i \fIinput_tankill_file\fP] [\-o \fIdatabase.g\fP]
+.SH "DESCRIPTION"
+.sp
+\fBtankill\-g\fP converts the specified \fIinput_tankill_file\fP to a
+BRL\-CAD \fIdatabase.g\fP file. The \fItolerance\fP provided is the maximum
+distance (in mm) between two vertices at which they will be considered
+to be the same vertex. The \fB\-n\fP option provides output in the
+form of NMG primitives rather than the default which is BOT
+objects. The \fIinput_tankill_file\fP is expected to be in the \fITANKILL\fP
+format used by the British Defense Research Agency. This is a simple
+triangular patch format where each object is described by a series of
+vertices. Triangular facets are built from the first, second, and
+third vertices; from the second, third, and fourth vertices; from the
+third, fourth and fifth; and so on. Each object is converted to a
+single BOT object which is then placed into its own region and
+assigned the component code provided in the TANKILL file.
+.SH "EXAMPLE"
+.sp
+.if n .RS 4
+.nf
+$ tankill\-g sample.tankill sample.g
+.fi
+.if n .RE
+.SH "DIAGNOSTICS"
+.sp
+Error messages are intended to be self\-explanatory.
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

@@ -1,0 +1,123 @@
+'\" t
+.\"     Title: 3ptarb
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "3PTARB" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+3ptarb \- Build an ARB8 shape by extruding a quadrilateral through a given thickness.
+.SH "SYNOPSIS"
+.sp
+\fB3ptarb\fP [arb_name] [x1] [y1] [z1] [x2] [y2] [z2] [x3] [y3] [z3] [x/y/z] [coord1] [coord2] [thickness]
+.SH "DESCRIPTION"
+.sp
+Build an ARB8 shape by extruding a quadrilateral through a given
+thickness. The arguments may be provided on the command line; if they
+are not, they will be prompted for. The x1, y1, and z1 are the
+coordinates of one corner of the quadrilateral. x2, y2, z2, and x3,
+y3, z3 are the coordinates of two other corners. Only two coordinates
+of the fourth point are specified, and the code calculates the third
+coordinate to ensure all four points are coplanar. The x|y|z parameter
+indicates which coordinate of the fourth point will be calculated by
+the code. The coord1 and coord2 parameters supply the other two
+coordinates. The direction of extrusion for the quadrilateral is
+determined from the order of the four resulting points by the
+right\-hand rule; the quadrilateral is extruded toward a viewer for
+whom the points appear in counter\-clockwise order.
+.SH "EXAMPLES"
+.sp
+The following are run from the MGED command prompt:
+.sp
+.B Example 1. 3ptarb example with BRL\-CAD prompting for information
+.br
+.RS 4
+.sp
+.if n .RS 4
+.nf
+mged> \f(CR3ptarb\fP    \fB(1)\fP
+Enter name for this arb: \f(CRthing\fP    \fB(2)\fP
+Enter X, Y, Z for point 1: \f(CR0 0 0\fP  \fB(3)\fP
+Enter X, Y, Z for point 2: \f(CR1 0 0\fP  \fB(4)\fP
+Enter X, Y, Z for point 3: \f(CR1 1 0\fP  \fB(5)\fP
+Enter coordinate to solve for (x, y, or z): \f(CRz\fP  \fB(6)\fP
+Enter the X, Y coordinate values: \f(CR0 1\fP          \fB(7)\fP
+Enter thickness for this arb: \f(CR3\fP                \fB(8)\fP
+.fi
+.if n .RE
+.TS
+tab(:);
+r lw(\n(.lu*75u/100u).
+\fB(1)\fP\h'-2n':T{
+Start the \fB3ptarb\fP command.
+T}
+\fB(2)\fP\h'-2n':T{
+The new ARB8 will be named \fIthing\fP.
+T}
+\fB(3)\fP\h'-2n':T{
+Point one is at the origin.
+T}
+\fB(4)\fP\h'-2n':T{
+Point two is at (1, 0, 0).
+T}
+\fB(5)\fP\h'-2n':T{
+Point three is at (1, 1, 0).
+T}
+\fB(6)\fP\h'-2n':T{
+The code will calculate the z coordinate of the fourth point.
+T}
+\fB(7)\fP\h'-2n':T{
+The x and y coordinates of the fourth point are 0 and 1.
+T}
+\fB(8)\fP\h'-2n':T{
+The new ARB8 will be 3 units thick.
+T}
+.TE
+.RE
+.sp
+.B Example 2. 3ptarb command as single line input
+.br
+.RS 4
+.sp
+.if n .RS 4
+.nf
+mged> \f(CR3ptarb thing 0 0 0 1 0 0 1 1 0 z 0 1 3\fP
+.fi
+.if n .RE
+.sp
+Same as above example, but with all arguments supplied on the command
+line.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

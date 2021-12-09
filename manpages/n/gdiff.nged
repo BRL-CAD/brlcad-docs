@@ -1,0 +1,108 @@
+'\" t
+.\"     Title: gdiff
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "GDIFF" "nged" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+gdiff \- a BRL\-CAD differential geometry comparator
+.SH "SYNOPSIS"
+.sp
+\fBgdiff\fP [\fIoptions\fP]... \fIleft_object\fP \fIright_object\fP
+.SH "DESCRIPTION"
+.sp
+\fBgdiff\fP compares BRL\-CAD geometry objects using LIBRT\(cqs solid
+raytracing capabilities and visualizes differences in the display
+manager.
+.sp
+Red segments are those generated only from intersections with the
+\fIleft_obj\fP object while blue segments represent intersections unique
+to the \fIright_obj\fP object.  White segments represent intersections
+common to both objects. By default, only segments unique to the left
+and/or right objects are displayed.
+.sp
+Users will want to pay careful attention to grid size.  By default
+gdiff will try to guess a reasonable grid spacing using the bounding
+boxes of the objects in question, but depending on the visual quality
+of the result users may want to adjust the spacing up or down.  Be
+careful of specifying tolerances that are too fine \- performance will
+drop off rapidly as grid spacing becomes very small.
+.SH "OPTIONS"
+.sp
+\fB\-h\fP
+.RS 4
+Prints help.
+.RE
+.sp
+\fB\-g #\fP
+.RS 4
+Controls grid spacing.  Units are mm.
+.RE
+.sp
+\fB\-l\fP
+.RS 4
+Visualize solid segments occurring only in the left object.
+.RE
+.sp
+\fB\-r\fP
+.RS 4
+Visualize solid segments occurring only in the right object.
+.RE
+.sp
+\fB\-b\fP
+.RS 4
+Visualize solid segments occurring in both the left and right
+object (i.e. common or shared volume).
+.RE
+.sp
+\fB\-G\fP
+.RS 4
+Report differences in grazing hits.  By default, differences
+are reported only when they can be verified by shooting parallel rays
+offset around the original shotline reporting a difference. This
+options disables that filter.
+.RE
+.sp
+\fB\-S\fP
+.RS 4
+The "S" option enables a completely different difference
+testing mode \- rather than using rays to interrogate geometries, it
+checks tree structures, boolean operations, matrices and leaf objects.
+It deliberately does \fInot\fP check object names, in order to compare the
+actual volumetric definitions of the trees.  Since there is no ray
+sampling, this option will not currently produce any visual output.
+.RE
+.SH "AUTHOR"
+.sp
+Clifford Yapp
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

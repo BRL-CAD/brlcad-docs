@@ -1,0 +1,65 @@
+'\" t
+.\"     Title: conv-vg2g
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "CONV\-VG2G" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+conv\-vg2g \- upgrade old to new format binary MGED database
+.SH "SYNOPSIS"
+.sp
+\fBconv\-vg2g\fP \fIfile.vg\fP \fIfile.g\fP
+.SH "DESCRIPTION"
+.sp
+\fBconv\-vg2g\fP converts several older forms of binary
+\fBmged\fP(1) databases to the current form.
+.sp
+The conversion from version 3 to version 4 (the current version) is
+fairly straightforward. Conversion from older versions requires
+additional information, for which the user is prompted.  The units of
+the database must be specified as: 1=mm, 2=cm, 3=meters, 4=inches,
+5=feet. A title for the database is also requested.
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1), \fBmged\fP(1),
+\fBlibged\fP(3)
+.SH "DIAGNOSTICS"
+.sp
+Error messages are intended to be self\-explanatory, and usually
+indicate errors in the input database. It may be possible to rescue a
+damaged old database by suitably modifying the source code to the
+converter.
+.SH "AUTHOR"
+.sp
+Keith A. Applin
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

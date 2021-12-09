@@ -1,0 +1,156 @@
+'\" t
+.\"     Title: pixautosize
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "PIXAUTOSIZE" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+pixautosize \- determine if a file size or byte count is a standard image size
+.SH "SYNOPSIS"
+.sp
+\fBpixautosize\fP [\-b \fIbytes_per_sample\fP] [\-f \fIfile_name\fP] [\-l \fIfile_length\fP]
+.SH "DESCRIPTION"
+.sp
+\fBpixautosize\fP determines if a given file is one of the standard
+sizes used in the BRL\-CAD package, \fIi.e.\fP one of the sizes recognized
+by the \fB\-a\fP option on \fBpix\-fb\fP(1). If the
+dimensions are recognized, it prints a string suitable for use in a
+Bourne shell \fBsh\fP(1) script to set the variables
+WIDTH and HEIGHT, \fIe.g.\fP
+.sp
+.if n .RS 4
+.nf
+WIDTH=512; HEIGHT=512
+.fi
+.if n .RE
+.sp
+The file name can be specified by using the \fB\-f\fP \fIfile_name\fP
+commandline option, or the file length (in bytes) can be specified by
+using the \fB\-l\fP \fIfile_length\fP commandline option. One of
+these two options must be present. In either case, the \fB\-b\fP
+\fIbytes_per_sample\fP option can be used to specify the number of
+bytes which are used for each sample (pixel) in the file. The default
+value is three (3), which is appropriate for use with
+\fBpix\fP(5) files. This should be changed to one
+with \fB\-b\fP \f(CR1\fP when processing a \fBbw\fP(5)
+file. Similarly, the proper value for a \fBdbw\fP(5)
+file is 8 (1 channel of 8 byte samples), and the value for
+\fBdpix\fP(5) files is 24 (3 channels of 8 byte
+samples).
+.SH "EXAMPLES"
+.sp
+These two examples both give the result of
+.sp
+.if n .RS 4
+.nf
+WIDTH=50; HEIGHT=50;
+.fi
+.if n .RE
+.sp
+the first could be for a \fBbw\fP(5) file and the
+second for a \fBpix\fP(5) file:
+.sp
+.if n .RS 4
+.nf
+pixautosize \-b 1 \-l 2500
+.fi
+.if n .RE
+.sp
+.if n .RS 4
+.nf
+pixautosize \-b 3 \-l 7500
+.fi
+.if n .RE
+.sp
+This example shows how to determine the size of a
+\fBpix\fP(5) file by giving the file name:
+.sp
+.if n .RS 4
+.nf
+pixautosize \-b 3 \-f ../pix/moss.pix
+.fi
+.if n .RE
+.sp
+with the result being
+.sp
+.if n .RS 4
+.nf
+WIDTH=512; HEIGHT=512
+.fi
+.if n .RE
+.sp
+This command can be used easily in shell scripts with a line like
+this:
+.sp
+.if n .RS 4
+.nf
+eval `pixautosize \-b 3 \-f $FILE`        # sets WIDTH, HEIGHT
+.fi
+.if n .RE
+.sp
+For a major shell script which uses this program, examine
+\fBpixinfo.sh\fP(1) .
+.SH "SEE ALSO"
+.sp
+pixinfo.\fBsh\fP(1),
+\fBpix\-fb\fP(1),
+\fBlibfb\fP(3), \fBbw\fP(5),
+\fBpix\fP(5)
+.SH "DIAGNOSTICS"
+.sp
+If the file or file_length specified does not match any of the
+standard sizes, one of these messages is printed on standard error:
+.sp
+.if n .RS 4
+.nf
+pixautosize: unable to autosize nsamples=999
+.fi
+.if n .RE
+.sp
+.if n .RS 4
+.nf
+pixautosize: unable to autosize file \(aq/dev/null\(aq
+.fi
+.if n .RE
+.sp
+In this case, the string printed on standard output is:
+.sp
+.if n .RS 4
+.nf
+WIDTH=0; HEIGHT=0
+.fi
+.if n .RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

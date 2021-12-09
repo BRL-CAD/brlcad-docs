@@ -1,0 +1,52 @@
+'\" t
+.\"     Title: pixsubst
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "PIXSUBST" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+pixsubst \- Change color values used in a PIX(5) format image
+.SH "SYNOPSIS"
+.sp
+\fBpixsubst\fP [\fIR_in\fP \fIG_in\fP \fIB_in\fP] \fIR_out\fP \fIG_out\fP \fIB_out\fP < \fIpixfile_in\fP > \fIpixfile_out\fP
+.SH "DESCRIPTION"
+.sp
+\fBpixsubst\fP reads \fIpix(5)\fP format pixels on the standard input and
+converts all pixels matching {R_in G_in B_in} to {R_out G_out
+B_out}. The pixels\(aq values are specified as integers from 0 to 255. If
+{R_in G_in B_in} is not specified, the first pixel in the input stream
+is used as the value to be changed.
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

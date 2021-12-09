@@ -1,0 +1,127 @@
+'\" t
+.\"     Title: bo
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "BO" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+bo \- Used to create or retrieve binary opaque objects.
+.SH "SYNOPSIS"
+.sp
+\fBbo\fP {[\-i u {type}] | [\-o]} {\fIdestination\fP} {\fIsource\fP}
+.SH "DESCRIPTION"
+.sp
+Used to create or export binary opaque objects.  One of \fI\-i\fP or \fI\-o\fP
+must be specified to input or output data respectively. The \fI\-i\fP
+option will create a binary object, and the \fI\-o\fP option will write out
+a binary object\(cqs data. Currently, only uniform binary objects (arrays
+of values) are supported on input.  On input, the \fIdestination\fP is the
+name of the object to be created, and the source is the path to a file
+to read. On output, \fIdestination\fP is the path to a file to write out
+with the contents of the binary object specified as the \fIsource\fP. The
+\fItype\fP may be one of:
+.sp
+f \(-> float
+.br
+d \(-> double
+.br
+c \(-> char (8 bit)
+.br
+s \(-> short (16 bit)
+.br
+i \(-> int (32 bit)
+.br
+l \(-> long (64 bit)
+.br
+C \(-> unsigned char (8 bit)
+.br
+S \(-> unsigned short (16 bit)
+.br
+I \(-> unsigned int (32 bit)
+.br
+L \(-> unsigned long (64 bit)
+.if n .sp
+.RS 4
+.it 1 an-trap
+.nr an-no-space-flag 1
+.nr an-break-flag 1
+.br
+.ps +1
+.B Note
+.ps -1
+.br
+.sp
+this command was previously named "dbbinary".
+.sp .5v
+.RE
+.SH "EXAMPLES"
+.sp
+The examples show the use of the \fBbo\fP command to both create
+(\fI\-i\fP option) and to retrieve a binary object (\fI\-o\fP option).
+.sp
+.B Example 1. Create an opaque uniform binary object of characters with a specified namecontaining the contents of a particular file.
+.br
+.RS 4
+.sp
+mged> \f(CRbo \-i u c cmds /usr/brlcad/html/manuals/mged/mged_cmds.html\fP
+.sp
+Creates an opaque uniform binary object of characters with the name
+\fIcmds\fP that contains the contents of the file
+\fI/usr/brlcad/html/manuals/mged/mged_cmds.html\fP.
+.RE
+.sp
+.B Example 2. Import data for a displacement map (DSP) object
+.br
+.RS 4
+.sp
+mged> \f(CRbo \-i u S dsp.data /path/to/file.dsp\fP
+.sp
+This imports a file named \fIfile.dsp\fP that contains DSP data, i.e., raw
+data in unsigned short (16\-bit) format.  The data is saved in the .g
+database into an object named \fIdsp.data\fP.  When creating a DSP, this
+\fIdsp.data\fP object can be specified as the data source.
+.RE
+.sp
+.B Example 3. Copy the contents of a particular binary object into a specified file.
+.br
+.RS 4
+.sp
+mged> \f(CRbo \-o /home/jim/cmds.html cmds\fP
+.sp
+Copies the contents of the binary object named \fIcmds\fP into the file
+named \fI/home/jim/cmds.html\fP.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

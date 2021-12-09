@@ -1,0 +1,104 @@
+'\" t
+.\"     Title: dbupgrade
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "DBUPGRADE" "nged" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+dbupgrade \- Upgrade the currently open BRL\-CAD mged geometry database to the current geometry database format version.
+.SH "SYNOPSIS"
+.sp
+\fBdbupgrade\fP
+.SH "DESCRIPTION"
+.sp
+\fBdbupgrade\fP operates on the currently open input geometry
+databasefile in MGED.  After dbupgrade is complete, the working
+database will be upgraded and a backup file will be saved preserving
+the original "pre\-upgrade" version of the .g file.  Keep the backup
+file until it is clear all necessary information was successfully
+preserved.
+.sp
+Starting with v5, the geometry file format is platform
+independent. For v4 .g files, however, there is a potential problem in
+that the floating point storage format within the file is platform
+dependent.  Consequently the safest way to upgrade a v4 file is to run
+\fBdbupgrade\fP on the file before transferring it from the platform
+on which it was created.  If that system is no longer available, the
+\fBdbupgrade\fP will attempt to automatically \(aqfix\(aq an existing (v4
+format) binary database that was transferred from a
+binary\-incompatible platform.
+.sp
+The older process of running \fBg2asc\fP(1) and
+\fBasc2g\fP(1) on a database to preserve a text
+version as a work\-around for platform specific binary files is no
+longer necessary.
+.SH "SEE ALSO"
+.sp
+\fBmged\fP(1), \fBg2asc\fP(1),
+\fBasc2g\fP(1).
+.SH "DIAGNOSTICS"
+.sp
+Numerous error conditions are possible, usually due to errors in the
+geometry database.  In the case of a binary\-incompatible v4 file, some
+errors may reflect incomplete conversion code. Descriptive messages
+are printed on standard error (file descriptor 2).
+.sp
+.B Example 1. Binary Incompatible v4 .g File Upgrade from MGED
+.br
+.RS 4
+.sp
+.if n .RS 4
+.nf
+bash4.0$ mged \-c \-a nu model.g
+BRL\-CAD Release 7.22.1  Geometry Editor (MGED)
+    Fri, 08 Feb 2013 15:36:52 \-0500, Compilation 0
+    user@machine:/usr/brlcad/dev\-7.22.1
+
+WARNING: Binary\-incompatible v4 geometry database detected.
+Endianness flipped.  Converting to READ ONLY.
+Opened in READ ONLY mode
+/home/user/model.g: READ ONLY
+Historical Model (units=in)
+
+mged> dbupgrade
+upgrade, cancel, or help? [default: help] upgrade
+mged> q
+bash4.0$ ls
+model.g model.g.R4.g
+.fi
+.if n .RE
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

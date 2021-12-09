@@ -1,0 +1,282 @@
+'\" t
+.\"     Title: mged
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "MGED" "1" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+mged \- multi\-display interactive combinatorial solid geometry editor
+.SH "SYNOPSIS"
+.sp
+\fBmged\fP [\-a attach] [\-b] [\-c] [\-d display] [\-h|?] [\-r] [\-x#] [\-X#] [\-v] [\fIdatabase.g\fP] [\fImged_command\fP]
+.SH "DESCRIPTION"
+.sp
+\f(CRMGED\fP, a.k.a. the "Multi\-Device Geometry Editor", is the central
+interaction environment for the BRL\-CAD package.  It offers both
+command line and menu driven interactions, as well as wireframe
+displays and integrated raytracing capabilities.  It is the primary
+tool for BRL\-CAD geometry creation and interactive manipulation.
+.sp
+\f(CRMGED\fP\(cqs history traces back to the earlier "GED"
+(a.k.a. "Geometry Editor"), and much of GED\(cqs functionality is
+preserved in \f(CRMGED\fP. A full description of MGED\(cqs abilities is
+beyond the scope of this document \- the reader is referred to Volumes
+II and III of the BRL\-CAD Tutorial Series, available at
+.URL "http://brlcad.org" "" ","
+for a more comprehensive introduction.  This
+document will deal with the various options available when it comes to
+starting MGED.
+.sp
+The primary mode for modern \f(CRMGED\fP usage is the Tcl/Tk based
+environment, which offers menu support and a number of Tcl based
+tools.  It is also possible to run more minimalist environments of
+terminal \(rs+ framebuffer and a terminal without any display
+window. \f(CRMGED\fP also allows users to execute single commands from
+the command line without starting any environment, allowing for
+activities such as scripting.  Some examples of such usage are present
+in the Examples section of this document.
+.sp
+Technically, \f(CRMGED\fP can be opened without a database file being
+supplied, but until one \fIis\fP supplied it will not be terribly
+useful. This can be done either by supplying a file name on the
+command line or by opening a database from within \f(CRMGED\fP using
+the File\(->Open... menu or the \fBopendb\fP command.
+.sp
+\fB\-a attach\fP
+.RS 4
+The \fB\-a\fP option specifies a display manager to
+automatically attach to when starting \f(CRMGED\fP.
+.sp
+Without specifying the \fB\-a\fP attach option, \f(CRMGED\fP will
+prompt which display manager to attach during startup: attach
+(nu|X|ogl)[nu]?
+.sp
+The list of available display managers varies from platform to
+platform and across releases.  However, some commonly available
+options are the \fInu\fP (NULL) display manager, which will start
+\f(CRMGED\fP without any display manager attached; the \fIX\fP display
+manager, which provides an X11 graphical wireframe display; and the
+\fIogl\fP display manager, which is similar to \fIX\fP but starts up a display
+manager that uses the OpenGL protocol for drawing wireframes.
+.RE
+.sp
+\fB\-b\fP
+.RS 4
+Supplying the \fB\-b\fP to \fBmged\fP will result in
+\f(CRMGED\fP being started as a background process.  This is handy if
+the users still wishes to make use of the terminal from which
+\f(CRMGED\fP is being started.
+.RE
+.sp
+\fB\-c\fP
+.RS 4
+Instructs \f(CRMGED\fP to start using classic mode instead of
+the default Tcl/Tk\-based GUI.  The \fB\-c\fP option is often used when
+specifying an \fBmged_command\fP to indicate that \f(CRMGED\fP is
+being run in a command\-mode without a default GUI.  Example:
+\fBmged\fP \fB\-c\fP db/moss.g tops
+.RE
+.sp
+\fB\-d display\fP
+.RS 4
+The \fB\-d\fP option to \f(CRMGED\fP specifies which X
+server to connect to for platforms that have a running X11 server
+available.  This option is an analogous alternative to setting the
+DISPLAY environment variable.  You can specify a local or remote
+display in X11 HOST:PORT format (e.g., "\-d :0" or "\-d host:0") and
+\f(CRMGED\fP should draw windows to that display.
+.RE
+.sp
+\fB\-h\fP or \fB\-?\fP
+.RS 4
+Prints out a brief help statement showing the options
+available when starting \f(CRMGED\fP.
+.RE
+.sp
+\fB\-r\fP
+.RS 4
+Opens the database.g file in read\-only mode.
+.RE
+.sp
+\fB\-x #\fP
+.RS 4
+Specify the debug level of librt.
+.RE
+.sp
+\fB\-X #\fP
+.RS 4
+Specify the debug level of libbu.
+.RE
+.sp
+\fB\-v\fP
+.RS 4
+Display the version and exit.
+.RE
+.SH "SCRIPTING (BATCHING) MGED"
+.sp
+Often it is convenient to generate a series of \f(CRMGED\fP commands
+outside \f(CRMGED\fP and then submit the command list to \f(CRMGED\fP,
+which will react as if each command were being manually entered
+within it. Simply create a file (say, "cmds.txt") with each line being
+a desired command, and then have \f(CRMGED\fP execute the list.  At the
+normal shell prompt, execute
+.sp
+.if n .RS 4
+.nf
+$ mged \-c tgm.g < cmds.txt
+.fi
+.if n .RE
+.sp
+Note that the procedure described above is very useful in rapid
+prototyping or automated TGM processing without resorting to low\-level
+library programming in C or C++.
+.SH "HINTS"
+.sp
+\f(CRMGED\fP database names conventionally end with \fB.g\fP.
+.sp
+SIGINT aborts the current command.
+.sp
+"q" or EOF exits the program.
+.sp
+The ".mgedrc" file is searched for in three places. The first one
+found is used, and any others are ignored.
+.sp
+.RS 4
+.ie n \{\
+\h'-04' 1.\h'+01'\c
+.\}
+.el \{\
+.  sp -1
+.  IP " 1." 4.2
+.\}
+If the environment variable MGED_RCFILE is set, it is used as a path
+name for the file to be used.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04' 2.\h'+01'\c
+.\}
+.el \{\
+.  sp -1
+.  IP " 2." 4.2
+.\}
+If the environment variable HOME is set, then HOME/.mgedrc is used.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04' 3.\h'+01'\c
+.\}
+.el \{\
+.  sp -1
+.  IP " 3." 4.2
+.\}
+If the file ".mgedrc" exists in the current directory, it is used.
+.RE
+.SH "EXAMPLES"
+.sp
+The following are run from the operating system command prompt:
+.sp
+.B Example 1. Running the \f(CRMGED\fP \fBl\fP from the operatingsystem command line.
+.br
+.RS 4
+.sp
+user:~ \f(CRmged /usr/brlcad/share/brlcad/7.12.2/db/m35.g l component\fP
+.sp
+.if n .RS 4
+.nf
+Opened in READ ONLY mode
+component:  \-\-
+   u bed
+   u frame
+   u cab
+   u suspension
+   u misc
+   u power.train
+.fi
+.if n .RE
+.RE
+.sp
+.B Example 2. Running \f(CRMGED\fP without a display manager.
+.br
+.RS 4
+.sp
+user:~ \f(CRmged \-c\fP
+.sp
+.if n .RS 4
+.nf
+BRL\-CAD Release 7.13.0  Geometry Editor (MGED)
+    Thu, 09 Oct 2008 22:31:41 \-0400, Compilation 1
+    user@localhost:/usr/brlcad/
+
+attach (nu|X|ogl)[nu]? nu
+mged>
+.fi
+.if n .RE
+.RE
+.sp
+.B Example 3. Running \f(CRMGED\fP and bypassing the attach prompt by specifyingthe X11 display manager.
+.br
+.RS 4
+.sp
+user:~ \f(CRmged \-a X \-c\fP
+.sp
+.if n .RS 4
+.nf
+BRL\-CAD Release 7.15.0  Geometry Editor (MGED)
+    Tue, 22 Sep 2009 12:40:01 \-0400, Compilation 1
+    user@localhost:/usr/brlcad/
+
+ATTACHING X (X Window System (X11))
+
+mged>
+.fi
+.if n .RE
+.RE
+.SH "SEE ALSO"
+.sp
+\fIComputer Graphics for Target Descriptions\fP, BRL Technical Report
+ARBRL\-TR\-02480, \fIGED: An Interactive Solid Modeling System for
+Vulnerability Assessments\fP
+.sp
+\fBbrlcad\fP(1), \fBrt\fP(1),
+\fBcomgeom\-g\fP(1),
+\fBvdeck\fP(1), \fBlibrt\fP(3)
+.SH "DIAGNOSTICS"
+.sp
+Error messages are intended to be self\-explanatory.
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

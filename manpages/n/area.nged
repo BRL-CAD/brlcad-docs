@@ -1,0 +1,56 @@
+'\" t
+.\"     Title: area
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "AREA" "nged" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+area \- Calculates an approximate presented area of one region in the mged display.
+.SH "SYNOPSIS"
+.sp
+\fBarea\fP [\fItolerance\fP]
+.SH "DESCRIPTION"
+.sp
+Calculates an approximate presented area of one region in the mged
+display. For this command to work properly, a single BRL\-CAD region
+must be displayed using the \fBE\fP command. The \fItolerance\fP is the
+distance required between two vertices in order for them to be
+recognized as distinct vertices. This calculation considers only the
+minimum bounding polygon of the region and ignores holes.
+.SH "EXAMPLES"
+.sp
+\fBneed working example here\fP
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

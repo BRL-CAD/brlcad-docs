@@ -1,0 +1,68 @@
+'\" t
+.\"     Title: reid
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "REID" "nged" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+reid \- Sequentially renumber the \(aqregion_id\(aq attribute of all regions within a group.
+.SH "SYNOPSIS"
+.sp
+\fBreid\fP [\-n | {\fInum\fP}] {comb} {regionID}
+.SH "DESCRIPTION"
+.sp
+The \(aqreid\(aq command sequentially assigns the \(aqregion_id\(aq attribute
+value for all regions within a specified combination. Optionally, the
+increment between consecutive \(aqregion_id\(aq can be specified.  Once the
+command is complete, the highest \(aqregion_id\(aq set is reported.
+.SH "OPTIONS"
+.sp
+\fB\-n num\fP
+.RS 4
+Increment to use between consecutive region
+identifiers. The default is 1.
+.RE
+.sp
+\fBcomb\fP
+.RS 4
+Name of the combination to search for regions.
+.RE
+.sp
+\fBregionID\fP
+.RS 4
+Region ID to start re\-numbering with.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

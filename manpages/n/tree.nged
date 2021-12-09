@@ -1,0 +1,98 @@
+'\" t
+.\"     Title: tree
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "TREE" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+tree \- Lists the contents of the specified objects in a tree\-like format that displays the hierarchical structure of the objects, and all objects referenced by them, down to the primitive shape level.
+.SH "SYNOPSIS"
+.sp
+\fBtree\fP {\fIobjects(s)\fP} [\-a] [\-c] [\-i \fI#\fP] [\-o \fIoutfile\fP]
+.SH "DESCRIPTION"
+.sp
+Lists the contents of the specified \fIobjects\fP in a tree\-like format
+that displays the hierarchical structure of the objects, and all
+objects referenced by them, down to the primitive shape level. If \fI\-c\fP
+is given, the shapes are not printed. The \fI\-a\fP option adds a list of
+any attributes for each object. Attributes are shown with a leading "@
+" and are followed by their values. The \fI\-o outfile\fP option prints the
+results to \fIoutfile\fP. The \fI\-i #\fP option allows the user to set the
+number of spaces to indent.
+.SH "EXAMPLES"
+.sp
+The first example shows the use of the \fBtree\fP command to list the
+contents of specified objects hierarchically.  The second and third
+examples show the use of the \fBtree\fP command with arguments.
+.sp
+.B Example 1. Show the structure of an object down to the primitive shape level.
+.br
+.RS 4
+.sp
+mged> \f(CRtree group1\fP
+.sp
+Shows the structure of the tree rooted at \fIgroup1\fP down to the
+primitive shape level.
+.RE
+.sp
+.B Example 2. Specify the amount of indentation in the tree.
+.br
+.RS 4
+.sp
+mged> \f(CRtree \-i2 group1\fP
+.sp
+Uses two spaces for each level of indentation.
+.RE
+.sp
+.B Example 3. Specify that no shapes are to be printed.
+.br
+.RS 4
+.sp
+mged> \f(CRtree \-c group1\fP
+.sp
+No shapes are printed.
+.RE
+.sp
+.B Example 4. Specify that attributes are listed for each object printed.
+.br
+.RS 4
+.sp
+mged> \f(CRtree \-a \-c group1\fP
+.sp
+No shapes are printed, but attributes are shown for the printed
+objects.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

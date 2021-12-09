@@ -1,0 +1,294 @@
+'\" t
+.\"     Title: burst shotline file format
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "BURST_SHOTLINE_FILES" "5" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+burst_shotline_files \- Data output by the shotline\-file command from the burst tool.
+.SH "FORMAT"
+.sp
+Burst shotline files are composed of single\-line records. Each line
+begins with a digit that identifies the type of record it
+represents. The file is composed of one or more runs that begin with a
+run header. Each shotline that intersects the target will result in a
+shotline header that is followed by one or more shotline intersection
+records.
+.sp
+.it 1 an-trap
+.nr an-no-space-flag 1
+.nr an-break-flag 1
+.br
+.B Table 1. Shotline File Format
+.TS
+allbox tab(:);
+lt lt lt.
+T{
+.sp
+Record Description
+T}:T{
+.sp
+Field Format
+T}:T{
+.sp
+Field Description
+T}
+T{
+.sp
+run header
+T}:T{
+.sp
+\(aq1\(aq
+T}:T{
+.sp
+record number 1
+T}
+T{
+.sp
+
+T}:T{
+.sp
+1x,f9.4
+T}:T{
+.sp
+attack azimuth (degrees)
+T}
+T{
+.sp
+
+T}:T{
+.sp
+1x,f8.4
+T}:T{
+.sp
+attack elevation (degrees)
+T}
+T{
+.sp
+
+T}:T{
+.sp
+1x,f7.2
+T}:T{
+.sp
+shotline separation
+T}
+T{
+.sp
+
+T}:T{
+.sp
+1x,f7.2
+T}:T{
+.sp
+maximum Y\(aq coordinate of target
+T}
+T{
+.sp
+
+T}:T{
+.sp
+1x,f7.2
+T}:T{
+.sp
+minimum Y\(aq coordinate of target
+T}
+T{
+.sp
+
+T}:T{
+.sp
+1x,f7.2
+T}:T{
+.sp
+maximum Z\(aq coordinate of target
+T}
+T{
+.sp
+
+T}:T{
+.sp
+1x,f7.2
+T}:T{
+.sp
+minimum Z\(aq coordinate of target
+T}
+T{
+.sp
+
+T}:T{
+.sp
+1x,6a
+T}:T{
+.sp
+units (mm,cm,inches,feet,meters)
+T}
+T{
+.sp
+shotline header
+T}:T{
+.sp
+\(aq2\(aq
+T}:T{
+.sp
+record number 2
+T}
+T{
+.sp
+
+T}:T{
+.sp
+1x,f8.3
+T}:T{
+.sp
+Y\(aq coordinate of shotline
+T}
+T{
+.sp
+
+T}:T{
+.sp
+1x,f8.3
+T}:T{
+.sp
+Z\(aq coordinate of shotline
+T}
+T{
+.sp
+shotline intersections
+T}:T{
+.sp
+\(aq3\(aq
+T}:T{
+.sp
+record number 3
+T}
+T{
+.sp
+
+T}:T{
+.sp
+1x,f8.2
+T}:T{
+.sp
+X\(aq coordinate of component intersection
+T}
+T{
+.sp
+
+T}:T{
+.sp
+1x,f7.3
+T}:T{
+.sp
+sine of fallback angle of exit normal
+T}
+T{
+.sp
+
+T}:T{
+.sp
+1x,f7.2
+T}:T{
+.sp
+rotation angle of exit normal in degrees
+T}
+T{
+.sp
+
+T}:T{
+.sp
+1x,i4
+T}:T{
+.sp
+component code number
+T}
+T{
+.sp
+
+T}:T{
+.sp
+1x,f8.2
+T}:T{
+.sp
+normal thickness of component
+T}
+T{
+.sp
+
+T}:T{
+.sp
+1x,f8.2
+T}:T{
+.sp
+line\-of\-sight thickness of component
+T}
+T{
+.sp
+
+T}:T{
+.sp
+1x,i2
+T}:T{
+.sp
+space code following component
+T}
+T{
+.sp
+
+T}:T{
+.sp
+1x,f7.2
+T}:T{
+.sp
+obliquity angle at entry to component in degrees
+T}
+T{
+.sp
+
+T}:T{
+.sp
+1x,f7.2
+T}:T{
+.sp
+obliquity angle at exit from component in degrees
+T}
+.TE
+.sp
+.SH "SEE ALSO"
+.sp
+\fBburst\fP(1)
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

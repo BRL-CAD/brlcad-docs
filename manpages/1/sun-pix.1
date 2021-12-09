@@ -1,0 +1,88 @@
+'\" t
+.\"     Title: sun-pix
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "SUN\-PIX" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+sun\-pix \- convert Sun bitmaps from screendump(1) into pix(5) or bw(5) raster image
+.SH "SYNOPSIS"
+.sp
+\fBsun\-pix\fP [\-b] [\-H] [\-i] [\-P] [\-v] [\-C] [\fIsun.bitmap\fP]
+.SH "DESCRIPTION"
+.sp
+\fBsun\-pix\fP is a program to take Sun bitmap files created with
+Sun\(cqs \fBscreendump\fP(1) command, and convert
+them to a \fBpix\fP(5) format file.  If the \fB\-b\fP
+flag is specified, a \fBbw\fP(5) format file is
+created instead.  Note that \fBsun\-pix\fP will refuse to write to a
+terminal; its output must be redirected unless it\(cqs invoked with the
+\fB\-H\fP flag.  The dimensions of the input file are the dimensions
+of the output file, and use of the \fB\-H\fP flag will cause the image
+size to be printed without further processing of the input, or
+generation of any other output; the image size is output as a pair of
+command line options (\fIi.e.\fP, \fI\-w1152 \-n900\fP) suitable for use with
+other \fBbrlcad\fP(1) tools such as
+\fBpix\-fb\fP(1). When the \fB\-v\fP flag is
+specified, all the fields of the header are printed on stderr, to aid
+debugging.  Note that the "encoded" format is not supported.
+.sp
+Specifying the \fB\-i\fP flag will invert the sense of a one\-bit wide
+input image, \fIi.e.\fP, exchanging black for white.  The default Sun
+image is black print on white background; the \fB\-i\fP flag will give
+a white image on black background, which is often better for purposes
+of creating overlays to be composited with
+\fBpixmerge\fP(1) on top of color images.
+.sp
+The \fB\-P\fP flag indicates that the input is a pure bitmap with no
+Sun\-style header on it.  The first bit to be processed will be the
+most significant bit (MSB), \fIi.e.\fP, the left\-most bit in the byte.
+.sp
+The \fB\-C\fP flag indicates that the color map is to be output.
+.sp
+Note that the input file is expected to be in Sun ("network") byte
+order (\fIi.e.\fP, "big\-endian", with byte 0 on the left), regardless of
+the byte order of the machine running this program.
+.SH "BUGS"
+.sp
+24\-bit images are not supported yet.
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1),
+\fBpix\-fb\fP(1),
+\fBpixmerge\fP(1),
+\fBpix\fP(5), \fBbw\fP(5)
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

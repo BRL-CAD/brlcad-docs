@@ -1,0 +1,88 @@
+'\" t
+.\"     Title: dbcp
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "DBCP" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+dbcp \- double buffered copy
+.SH "SYNOPSIS"
+.sp
+\fBdbcp\fP [\-v] \fIblocksize\fP < \fIinfile\fP > \fIoutfile\fP
+.SH "DESCRIPTION"
+.sp
+\fBdbcp\fP is a program for copying data rapidly between devices.
+.sp
+This command is DEPRECATED.  Use \fBdd\fP instead.
+.sp
+While the primary application is to move data between raw devices such
+as tape and disk, it can also be used with pipes. No special support
+is required from the operating system; \fBdbcp\fP forks into two
+processes which communicate over a pair of regular pipes using a token
+passing scheme to synchronize their reading and writing activities.
+They continue copying until an end of file or error is
+detected. \fBdbcp\fP reads from the standard input and copies to the
+standard output. The argument \fIblocksize\fP specifies the number of 512
+byte "blocks" to be read or written in each record.
+.sp
+If the \fB\-v\fP flag is given, the number of records processed is
+printed upon exit.
+.SH "EXAMPLES"
+.sp
+.if n .RS 4
+.nf
+$ dbcp 16 < /dev/rdk1a > /dev/rmt0
+.fi
+.if n .RE
+.sp
+\fBdbcp\fP copies the filesystem on dk1a to tape with a record size
+of 8K bytes (16 * 512). This allows "streaming" tape drives to operate
+a peak speed.
+.sp
+.if n .RS 4
+.nf
+$ tar cf \- . | dbcp 20 > /dev/rmt0
+.fi
+.if n .RE
+.sp
+The \fItar\fP process runs independently of the \fBdbcp\fP, which rapidly
+copies the data to tape with the usual \fItar\fP tape record size of 10K
+bytes (20 * 512).
+.SH "SEE ALSO"
+.sp
+\fBcp\fP(1), \fBdd\fP(1)
+.SH "AUTHOR"
+.sp
+Douglas P. Kingston III (Davis, Polk, and Wardwell, Chase Manhattan
+Building, New York, NY)
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

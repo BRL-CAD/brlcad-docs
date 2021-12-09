@@ -1,0 +1,64 @@
+'\" t
+.\"     Title: copymat
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "COPYMAT" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+copymat \- Copies the transformation matrix from a member of one combination to the member of another.
+.SH "SYNOPSIS"
+.sp
+\fBcopymat\fP {\fIcomb1/memb1 comb2/memb2\fP}
+.SH "DESCRIPTION"
+.sp
+Copies the transformation matrix from a member of one combination to
+the member of another.
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBcopymat\fP command to set the
+matrix for a member in one combination equal to the matrix for another
+member in another combination.
+.sp
+.B Example 1. Set the matrix for a member in one combination equal to the matrix for another member in another combination.
+.br
+.RS 4
+.sp
+mged> \f(CRcopymat comb1/memb1 comb2/memb2\fP
+.sp
+Sets the matrix for member \fImemb2\fP in combination \fIcomb2\fP equal to the
+matrix for member \fImemb1\fP in combination \fIcomb1\fP.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

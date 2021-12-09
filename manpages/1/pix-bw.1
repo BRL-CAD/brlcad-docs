@@ -1,0 +1,130 @@
+'\" t
+.\"     Title: pix-bw
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "PIX\-BW" "1" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+pix\-bw \- combine pix color planes into a bw black and white image
+.SH "SYNOPSIS"
+.sp
+\fBpix\-bw\fP [\-s \fIsquaresize\fP] [\-w \fIwidth\fP] [\-n \fIheight\fP] [[\-e \fIntsc|crt|hdtv|hdr|avg\fP] [[\-R \fIr_weight\fP] [\-G \fIg_weight\fP][\-B \fIb_weight\fP]]] [\-o \fIout.bw\fP][ [<] \fIin.pix\fP] > \fIout.bw\fP
+.SH "DESCRIPTION"
+.sp
+\fBpix\-bw\fP will combine or select the color planes of a
+\fBpix\fP(5) format file from its standard input and
+produce a black and white \fBbw\fP(5) file on its
+standard output.
+.sp
+The \fB\-w\fP \fIfile_width\fP flag specifies the width of each
+scanline in the input file, in pixels. The \fB\-n\fP
+\fIfile_height\fP flag specifies the height in scanlines of the input
+file. They are set to the same value using \fB\-s\fP
+\fIsquarefilesize\fP.
+.sp
+By default all three colors are weighted equally. The \fB\-e\fP
+\fItype\fP flag can be used to specify a standard weighting scheme;
+the \fItype\fP choices include:
+.sp
+\fIntsc\fP
+.RS 4
+Weighting used is based on the NTSC primaries and white
+alignment.  Conforming with Rec.ITU\-R BT.601\-7, this uses
+0.299/0.587/0.114 RGB weights.  This gives a simplified linear
+conversion of perceived luminance that reflects human physiological
+sensitivity to green and least to blue.
+.RE
+.sp
+\fIcrt\fP
+.RS 4
+Weighting scheme matches "historic" CRT phosphor
+chromaticities and a D6500 white alignment.  Uses 0.26/0.66/0.08 RGB
+weights.
+.RE
+.sp
+\fIhdtv\fP
+.RS 4
+Weighting scheme matches "modern" HDTV display
+chromacities. Uses 0.2126/0.7152/0.0722 RGB weights per Rec.ITU\-R
+BT.709
+.RE
+.sp
+\fIhdr\fP
+.RS 4
+Weighting scheme matches high dynamic range (HDR)
+chromacities. Uses 0.2627/0.6780/0.0593 RGB weights per Rec.ITU\-R
+BT.2020
+.RE
+.sp
+\fIavg\fP
+.RS 4
+Weighting scheme simply takes the average of all three values
+(i.e., R + G + B / 3.0).
+.RE
+.sp
+Individual color plane(s) can be selected via the \fB\-R#\fP,
+\fB\-G#\fP, and \fB\-B#\fP options. The value used with each flag will
+be treated as a weight to be applied to that color.
+.sp
+If 0 is supplied by the user for weights, then the weights assigned
+are 1.0 divided by the number of colors selected.
+.SH "EXAMPLES"
+.sp
+.if n .RS 4
+.nf
+pix\-bw \-R0.0 \-B0.0 < file.pix > file.bw
+.fi
+.if n .RE
+.sp
+will equally blend the red and blue color planes; because \-G is
+omitted, the green color plane is not considered. (Had "\-G0.0" been
+included in this example, the three colors would have been weighted
+equally, as in the default condition.)
+.sp
+.if n .RS 4
+.nf
+pix\-bw \-R0.3 \-G0.6 \-B0.1 < file.pix > file.bw
+.fi
+.if n .RE
+.sp
+applies weights close to the \fB\-ntsc\fP flag.
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1),
+\fBpix\-bw3\fP(1),
+\fBbw\-pix\fP(1), \fBpix\fP(5),
+\fBbw\fP(5)
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

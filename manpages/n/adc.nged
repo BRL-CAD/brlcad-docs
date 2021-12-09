@@ -1,0 +1,207 @@
+'\" t
+.\"     Title: adc
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "ADC" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+adc \- This command controls the angle/distance cursor.
+.SH "SYNOPSIS"
+.sp
+\fBadc\fP [\-i] \fIsubcommand\fP
+.SH "DESCRIPTION"
+.sp
+This command controls the angle/distance cursor. The \fBadc\fP
+command with no arguments toggles the display of the angle/distance
+cursor (ADC). The \fI\-i\fP option, if specified, causes the given value(s)
+to be treated as increments. Note that the \fI\-i\fP option is ignored when
+getting values or when used with subcommands where this option makes
+no sense. You can also control the position, angles, and radius of the
+ADC using a knob or the knob command. This command accepts the
+following subcommands:
+.sp
+\fBvars\fP
+.RS 4
+Returns a list of all ADC variables and their values (i.e., var = val).
+.RE
+.sp
+\fBdraw [0|1]\fP
+.RS 4
+Set or get the draw parameter.
+.RE
+.sp
+\fBa1 [angle]\fP
+.RS 4
+Set or get angle1 in degrees.
+.RE
+.sp
+\fBa2 [angle]\fP
+.RS 4
+Set or get angle2 in degrees.
+.RE
+.sp
+\fBdist [distance]\fP
+.RS 4
+Set or get radius (distance) of tick in local units.
+.RE
+.sp
+\fBodist [distance]\fP
+.RS 4
+Set or get radius (distance) of tick (+\-2047).
+.RE
+.sp
+\fBhv [position]\fP
+.RS 4
+Set or get position (grid coordinates and local units).
+.RE
+.sp
+\fBxyz [position]\fP
+.RS 4
+Set or get position (model coordinates and local units).
+.RE
+.sp
+\fBx [xpos]\fP
+.RS 4
+Set or get horizontal position (+\-2047).
+.RE
+.sp
+\fBy [ypos]\fP
+.RS 4
+Set or get vertical position (+\-2047).
+.RE
+.sp
+\fBdh\fP \fIdistance\fP
+.RS 4
+Add to horizontal position (grid coordinates and local units).
+.RE
+.sp
+\fBdv\fP \fIdistance\fP
+.RS 4
+Add to vertical position (grid coordinates and local units).
+.RE
+.sp
+\fBdx\fP \fIdistance\fP
+.RS 4
+Add to \fIx\fP position (model coordinates and local units).
+.RE
+.sp
+\fBdy\fP \fIdistance\fP
+.RS 4
+Add to \fIy\fP position (model coordinates and local units).
+.RE
+.sp
+\fBdz\fP \fIdistance\fP
+.RS 4
+Add to \fIz\fP position (model coordinates and local units).
+.RE
+.sp
+\fBanchor_pos [0|1]\fP
+.RS 4
+Anchor ADC to current position in model coordinates.
+.RE
+.sp
+\fBanchor_a1 [0|1]\fP
+.RS 4
+Anchor angle1 to go through anchorpoint_a1.
+.RE
+.sp
+\fBanchor_a2 [0|1]\fP
+.RS 4
+Anchor angle2 to go through anchorpoint_a2.
+.RE
+.sp
+\fBanchor_dst [0|1]\fP
+.RS 4
+Anchor tick distance to go through anchorpoint_dst.
+.RE
+.sp
+\fBanchorpoint_a1 [x y z]\fP
+.RS 4
+Set or get anchor point for angle1 (model coordinates and local units).
+.RE
+.sp
+\fBanchorpoint_a2 [x y z]\fP
+.RS 4
+Set or get anchor point for angle2 (model coordinates and local units).
+.RE
+.sp
+\fBanchorpoint_dst [x y z]\fP
+.RS 4
+Set or get anchor point for tick distance (model coordinates and local units).
+.RE
+.sp
+\fBreset\fP
+.RS 4
+Reset all values to their defaults.
+.RE
+.sp
+\fBhelp\fP
+.RS 4
+Print the help message.
+.RE
+.SH "EXAMPLES"
+.sp
+The examples show the use of the \fBadc\fP command with no arguments,
+with \fIi\fP, and with subcommands.
+.sp
+.RS 4
+.sp
+mged> \f(CRadc\fP
+.sp
+Toggle display of angle/distance cursor.
+.RE
+.sp
+.RS 4
+.sp
+mged> \f(CRadc a1 37.5\fP
+.sp
+Sets angle1 to 37.5 degrees.
+.RE
+.sp
+.RS 4
+.sp
+mged> \f(CRadc a1 37.5\fP
+.sp
+Gets angle1.
+.RE
+.sp
+.RS 4
+.sp
+mged> \f(CRadc xyz 100 0 0\fP
+.sp
+Moves ADC position to (100,0,0), model coordinates and local units.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

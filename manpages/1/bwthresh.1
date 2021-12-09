@@ -1,0 +1,77 @@
+'\" t
+.\"     Title: bwthresh
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "BWTHRESH" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+bwthresh \- threshold a black\-and\-white bw file
+.SH "SYNOPSIS"
+.sp
+\fBbwthresh\fP \fIval\fP... < \fIfile.bw\fP
+.SH "DESCRIPTION"
+.sp
+\fBbwthresh\fP reads from standard input a stream of black\-and\-white
+data in \fBbw\fP(5) format and thresholds it among the
+\fIval\fPs, writing the resulting \fBbw\fP(5) data to
+standard output. The \fIval\fPs must appear on the command line in
+strictly increasing order.
+.sp
+The grey scale 0..255 is divided evenly into \fIn\fP+1 bins, and each
+pixel of input is compared to the \fIval\fPs, to determine which of the
+\fIn\fP+1 grey levels should be output.
+.SH "EXAMPLE"
+.sp
+The command
+.sp
+.if n .RS 4
+.nf
+bwthresh 37 143 < _file.bw_ > _file2.bw_
+.fi
+.if n .RE
+.sp
+performs the following mapping:
+.sp
+.if n .RS 4
+.nf
+if (pixel_in < 37) pixel_out = 0 else if (pixel_in < 143) pixel_out = 128 else pixel_out = 255
+.fi
+.if n .RE
+.SH "SEE ALSO"
+.sp
+\fBbwmod\fP(1),
+\fBbwstat\fP(1), \fBbw\fP(5)
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

@@ -1,0 +1,75 @@
+'\" t
+.\"     Title: rcc-cap
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "RCC\-CAP" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+rcc\-cap \- Used to round the end of a cylinder with an ellipsoid.
+.SH "SYNOPSIS"
+.sp
+\fBrcc\-cap\fP {\fIrccname newname\fP} [\fIheight\fP] [b] [t]
+.SH "DESCRIPTION"
+.sp
+Used to round the end of a cylinder with an ellipsoid. It creates an
+ELL shape with the given height at one end (base [\fIb\fP] or top [\fIt\fP])
+of the specified RCC. If the height option is not specified, a
+spherical cap will be generated. The default end is the base.
+.SH "EXAMPLES"
+.sp
+The two examples show the use of the \fBrcc\-cap\fP command to round
+the base and the top of a cylinder with an ellipsoid.
+.sp
+.B Example 1. Round the base of a specified cylinder.
+.br
+.RS 4
+.sp
+mged> \f(CRrcc\-cap rcc.s cap.s 20\fP
+.sp
+Creates an ELL shape named \fIcap.s\fP with a radius of 20 units at the
+base of \fIrcc.s\fP.
+.RE
+.sp
+.B Example 2. Round the top of a specified cylinder.
+.br
+.RS 4
+.sp
+mged> \f(CRrcc\-cap rcc.s cap.s 20 t\fP
+.sp
+Creates an ELL shape named \fIcap.s\fP with a radius of 20 units at the
+top of \fIrcc.s\fP.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

@@ -1,0 +1,72 @@
+'\" t
+.\"     Title: pix2asc/asc2pix
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "PIX2ASC" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+pix2asc \- encode and decode color pixel files
+.SH "SYNOPSIS"
+.sp
+\fBpix2asc\fP < \fIfile.pix\fP > \fIfile.asc\fP
+.sp
+\fBasc2pix\fP < \fIfile.asc\fP > \fIfile.pix\fP
+.SH "DESCRIPTION"
+.sp
+\fBpix2asc\fP and \fBasc2pix\fP are simple filters which convert
+color \fIpix(5)\fP files from their binary form to a portable ASCII
+form, and back. \fBpix2asc\fP reads the binary file on standard in
+and writes ASCII on standard out. \fBasc2pix\fP does the reverse.
+.sp
+The binary file consists of a sequence of three\-tuples of \fIunsigned
+chars\fP representing the red, green, and blue intensities for each
+pixel. The ASCII version of the file has one RGB pixel per
+newline\-terminated line, with each pixel represented as six
+hexadecimal digits.
+.sp
+When moving \fIpix(5)\fP files between UNIX systems via tape (see \fItar(1)\fP
+and \fIcpio(1)\fP) or via network (see \fIrcp(1)\fP and \fIftp(1)\fP), this
+conversion to ASCII is unnecessary, as all UNIX files are byte
+streams, regardless of the underlying hardware. However, when
+transporting images to non\-UNIX machines, these tools are
+invaluable. Note that \fBrt\fP(1) can directly
+generate the ASCII form of an image file using the \fB\-O\fP flag,
+allowing it to be easily used on non\-UNIX systems.
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1), \fBpix\fP(5),
+\fBbw\fP(5)
+.SH "AUTHOR"
+.sp
+\fIBRL\-CAD Team\fP
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

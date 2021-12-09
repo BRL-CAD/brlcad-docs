@@ -1,0 +1,283 @@
+'\" t
+.\"     Title: plot3
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "PLOT3" "5" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+plot3 \- 3\-D and color graphic plotting interface
+.SH "DESCRIPTION"
+.sp
+Files of this format are produced by programs such as
+\fBpixhist3d\-plot3\fP(1), using the
+routines described in \fBlibplot3\fP(3) and are
+interpreted for various devices by standard programs described in
+\fBplot\fP(1G), as well as additional programs such
+as \fBplot3\-fb\fP(1). The format of output from
+\fIlibplot3\fP differs from that of \fIlibplot\fP only in the addition of 3\-D
+primitives and color. A graphics file is a stream of plotting
+instructions. Each instruction consists of an ASCII letter usually
+followed by bytes of binary information. The instructions are executed
+in order. A point is designated by four bytes representing the \fIx\fP and
+\fIy\fP values; each value is a signed 16\-bit integer. These integers are
+written with the most significant byte first. Three\-dimensional data
+have an additional \fIz\fP value, which is assumed to be zero for
+two\-dimensional instructions. The last designated point in an \fIl\fP,
+\fIm\fP, \fIn\fP, \fIp\fP, \fIL\fP, \fIM\fP, \fIN\fP, or \fIP\fP instruction becomes the "current
+point" for the next instruction.
+.sp
+Each of the following descriptions begins with the name of the
+corresponding routine in \fBlibplot3\fP(3).
+.sp
+\fIm\fP
+.RS 4
+move: The next four bytes give a new current point.
+.RE
+.sp
+\fIn\fP
+.RS 4
+cont: Draw a line from the current point to the point given by
+the next four bytes. See \fBplot\fP(1G).
+.RE
+.sp
+\fIp\fP
+.RS 4
+point: Plot the point given by the next four bytes.
+.RE
+.sp
+\fIl\fP
+.RS 4
+line: Draw a line from the point given by the next four bytes
+to the point given by the following four bytes.
+.RE
+.sp
+\fIt\fP
+.RS 4
+label: Place the following ASCII string so that its first
+character falls on the current point. The string is terminated by a
+new\-line.
+.RE
+.sp
+\fIa\fP
+.RS 4
+arc: The first four bytes give the center, the next four give
+the starting point, and the last four give the end point of a
+circular arc. The least significant coordinate of the end point is
+used only to determine the quadrant. The arc is drawn
+counter\-clockwise.
+.RE
+.sp
+\fIc\fP
+.RS 4
+circle: The first four bytes give the center of the circle, the
+next two the radius. Circles and arcs are not supported on all
+devices.
+.RE
+.sp
+\fIe\fP
+.RS 4
+erase: Start another frame of output.
+.RE
+.sp
+\fIf\fP
+.RS 4
+linmod: Take the following string, up to a new\-line, as the
+style for drawing further lines. The styles are "dotted", "solid",
+"longdashed", "shortdashed", and "dotdashed". Effective only for the
+\fB\-T4014\fP and \fB\-Tver\fP options of
+\fBplot\fP(1G) (TEKTRONIX 4014 terminal and
+Versatec plotter).
+.RE
+.sp
+\fIs\fP
+.RS 4
+space: The next four bytes give the lower left corner of the
+plotting area; the following four give the upper right corner. The
+plot will be magnified or reduced to fit the device as closely as
+possible.
+.RE
+.sp
+The following were added at BRL. Three\-dimensional primitives have
+their \fIz\fP values ignored when displayed on two\-dimensional devices.
+.sp
+\fIC\fP
+.RS 4
+color: The next three bytes give respectively the intensities
+(0..255) of the three color components (additive colors red, green,
+and blue if a terminal; subtractive colors cyan, magenta, and yellow
+if hardcopy) to be used for subsequent plotting. The initial color is
+assumed to be (255,255,255), which is white on a terminal and black on
+hardcopy. Color specifications are ignored for black\-and\-white
+devices.
+.RE
+.sp
+\fIM\fP
+.RS 4
+3move: The next six bytes give a new current point.
+.RE
+.sp
+\fIN\fP
+.RS 4
+3cont: Draw a line from the current point to the point given by
+the next six bytes. See \fBplot\fP(1G).
+.RE
+.sp
+\fIP\fP
+.RS 4
+3point: Plot the point given by the next six bytes.
+.RE
+.sp
+\fIL\fP
+.RS 4
+3line: Draw a line from the point given by the next six bytes
+to the point given by the following six bytes.
+.RE
+.sp
+\fIS\fP
+.RS 4
+3space: The next six bytes give the minimum corner of the
+plotting area; the following six give the maximum corner. The plot
+will be magnified or reduced to fit the device as closely as possible.
+.RE
+.sp
+\fIF\fP
+.RS 4
+3flush:
+.RE
+.sp
+\fIx\fP
+.RS 4
+double_point: The double\-precision version of point.
+.RE
+.sp
+\fIv\fP
+.RS 4
+double_line: The double\-precision version of line.
+.RE
+.sp
+\fIo\fP
+.RS 4
+double_move: The double\-precision version of move.
+.RE
+.sp
+\fIq\fP
+.RS 4
+double_cont: The double\-precision version of cont.
+.RE
+.sp
+\fIw\fP
+.RS 4
+double_space: The double\-precision version of space.
+.RE
+.sp
+\fIi\fP
+.RS 4
+double_circle: The double\-precision version of circle.
+.RE
+.sp
+\fIr\fP
+.RS 4
+double_arc: The double\-precision version of arc.
+.RE
+.sp
+\fIW\fP
+.RS 4
+double_3space: The double\-precision, 3_D version of space.
+.RE
+.sp
+\fIX\fP
+.RS 4
+double_3point: The double\-precision, 3_D version of point.
+.RE
+.sp
+\fIO\fP
+.RS 4
+double_3move: The double\-precision, 3_D version of move.
+.RE
+.sp
+\fIQ\fP
+.RS 4
+double_3cont: The double\-precision, 3_D version of cont.
+.RE
+.sp
+\fIV\fP
+.RS 4
+double_3line: The double\-precision, 3_D version of line.
+.RE
+.sp
+Space settings that exactly fill the plotting area with unity scaling
+appear below for devices supported by the filters of
+\fBplot\fP(1G). The upper limit is just outside the
+plotting area, except for the Megatek which displays the entire range
+of possible coordinates. In every case the plotting area is taken to
+be square; points outside may be displayable on devices whose face is
+not square.
+.sp
+\fIDASI 300\fP
+.RS 4
+space(0, 0, 4096, 4096);
+.RE
+.sp
+\fIDASI 300s\fP
+.RS 4
+space(0, 0, 4096, 4096);
+.RE
+.sp
+\fIDASI 450\fP
+.RS 4
+space(0, 0, 4096, 4096);
+.RE
+.sp
+TEKTRONIX 4014
+.RS 4
+space(0, 0, 3120, 3120);
+.RE
+.sp
+Versatec plotter
+.RS 4
+space(0, 0, 2048, 2048);
+.RE
+.sp
+Megatek display
+.RS 4
+space(\-32768, \-32768, 32767, 32767);
+.RE
+.SH "SEE ALSO"
+.sp
+\fBlibplot3\fP(3), \fBplot\fP(n).
+.sp
+\fBgraph\fP(1G), \fBplot\fP(1G) in the \fIUNIX System User Reference Manual\fP.
+.SH "AUTHOR"
+.sp
+Douglas A. Gwyn made the 3\-D and color extensions to UNIX\-plot.
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

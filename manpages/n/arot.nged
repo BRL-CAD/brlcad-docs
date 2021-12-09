@@ -1,0 +1,67 @@
+'\" t
+.\"     Title: arot
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "AROT" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+arot \- Performs a rotation about the specified axis (x y z) using screen units (\-2048 to +2048).
+.SH "SYNOPSIS"
+.sp
+\fBarot\fP {\fIx\fP} {\fIy\fP} {\fIz\fP} {\fIangle\fP}
+.SH "DESCRIPTION"
+.sp
+Performs a rotation about the specified axis (\fIx y z\fP) using screen
+units (\-2048 to +2048). The amount of rotation is determined by
+\fIangle\fP, which is in degrees. Exactly what is rotated and how it is
+rotated are dependent on MGED\(cqs state as well as the state of the
+display manager. For example, in normal viewing mode, this command
+simply rotates the view. However, in primitive edit mode, it rotates
+the shape being edited.
+.SH "EXAMPLES"
+.sp
+The example demonstrates the use of the \fBarot\fP command to rotate
+a view or shape about the z axis.
+.sp
+.B Example 1. Rotating a view or shape 10 degrees about the z axis.
+.br
+.RS 4
+.sp
+mged> \f(CRarot 0 0 1 10\fP
+.sp
+The view or shape is rotated 10 degrees about the z axis.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

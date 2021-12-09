@@ -1,0 +1,95 @@
+'\" t
+.\"     Title: pixborder
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "PIXBORDER" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+pixborder \- add a 1\-pixel\-wide border to regions of a specified color
+.SH "SYNOPSIS"
+.sp
+\fBpixborder\fP [\-b \fI\(aqRGB\(aq\fP] [\-e \fI\(aqRGB\(aq\fP] [\-i \fI\(aqRGB\(aq\fP] [\-t \fI\(aqRGB\(aq\fP] [\-B \fI\(aqHSV\(aq\fP] [\-E \fI\(aqHSV\(aq\fP] [\-I \fI\(aqHSV\(aq\fP] [\-T \fI\(aqHSV\(aq\fP] [\-x \fIleft_edge\fP] [\-y \fIbottom_edge\fP] [\-X \fIright_edge\fP] [\-Y \fItop_edge\fP] [\-a] [\-n \fIfile_height\fP] [\-s \fIsquaresize\fP] [\-w \fIfile_width\fP] [\fIfile.pix\fP]
+.SH "DESCRIPTION"
+.sp
+\fBpixborder\fP reads an input stream of \fIpix\fP data, looking for
+maximal contiguous regions of a specified interior color, and writes
+out the \fIpix\fP data with all pixels on the boundaries of these regions
+changed to a specified border color.
+.sp
+The way \fBpixborder\fP decides if a given pixel is on the boundary
+depends on how the user specified the interior and exterior. The
+\fB\-i\fP option causes \fBpixborder\fP to replace the default
+interior color of 255 255 255 by \fIR G B\fP, while the \fB\-I\fP option
+replaces it by \fIH S V\fP, which are reals, with \fIH\fP in [0, 360) and \fIS\fP,
+\fIV\fP in [0, 1]. Similarly, the \fB\-e\fP and \fB\-E\fP options replace
+the default exterior color of 1 1 1. If the user specified colors for
+both or neither of the interior and exterior, then a pixel is on the
+boundary provided that it has the interior color and at least one of
+its four neighbors (left, right, above, and below) has the exterior
+color. If, on the other hand, the user specified only the interior
+(exterior) color, then a pixel is on the boundary provided that it has
+the interior color (does not have the exterior color) and at least one
+of its neighbors does not have the interior color (has the exterior
+color).
+.sp
+The \fB\-b\fP and \fB\-B\fP options are for the specification of what
+will be used for the border.
+.sp
+Variability in the interior and exterior colors may be accommodated by
+the \fB\-t\fP and \fB\-T\fP options, with which one specifies a
+symmetric tolerance for each of the red, green, and blue channels or
+hue, saturation, and value. Any color within the specified tolerance
+of the nominal interior (exterior) color is treated as though it were
+the nominal color.
+.sp
+The \fB\-a\fP option is for autosizing. The \fB\-w\fP option is for
+file width, the \fB\-n\fP option is for file height, and the \fB\-s\fP
+option sets file width and height to the same value. (Values are in
+pixels.)
+.sp
+Changes are restricted to a specified rectangular portion of the image
+(by default this is the entire image). The \fB\-x\fP option sets the
+left edge of that rectangle: no pixels to the left of this edge are
+changed. The \fB\-X\fP, \fB\-y\fP, and \fB\-Y\fP options respectively
+set the right, bottom, and top edges in the same manner.
+.SH "HINT"
+.sp
+To obtain borders more than one pixel wide, one can run several copies
+of \fBpixborder\fP in a pipeline. In doing this to get, for instance,
+a border made up of constant\-thickness segments of different colors,
+one should produce all the segments of a given layer before beginning
+any segments of the next inner layer.
+.SH "AUTHOR"
+.sp
+Paul Tanenbaum
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

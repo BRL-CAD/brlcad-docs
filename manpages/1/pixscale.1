@@ -1,0 +1,85 @@
+'\" t
+.\"     Title: pixscale
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "PIXSCALE" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+pixscale \- change the size of a color pix file
+.SH "SYNOPSIS"
+.sp
+\fBpixscale\fP [\-r] [\-s \fIsquareinsize\fP] [\-w \fIin_width\fP] [\-n \fIin_height\fP] [\-S \fIsquareoutsize\fP] [\-W \fIout_width\fP] [\-N \fIout_height\fP] [\fIinfile.pix\fP] > \fIoutfile.pix\fP
+.SH "DESCRIPTION"
+.sp
+\fBpixscale\fP will take a color \fBpix\fP(5) format
+file of given dimensions and produce a larger or smaller scaled
+version. The \fB\-w\fP and \fB\-n\fP flags specify the input file
+width and number of scan lines in pixels. They can both be set to the
+same value via \fB\-s.\fP Similarly, the \fB\-W\fP and \fB\-N\fP flags
+specify the desired output file width and number of scan lines in
+pixels.  They can both be set to the same value via \fB\-S.\fP
+Defaults of 512 are assumed for any unspecified dimensions.
+.sp
+The algorithm used is bilinear interpolation if scaling up, and a box
+filter of arbitrary size if scaling down.  For the box filter a
+"square pixel" assumption is made; that is, all whole and fractional
+input pixels falling into a rectangle the size of an output pixel
+contribute equally according to the fraction of the output pixel area
+they cover. When interpolating, the edge pixels are preserved,
+i.e. all of the interpolated pixels fall inside of the edges.  This
+can be a bit surprising when say doubling the size of a file as only
+the edge pixels will fall at exactly the location of an output pixel.
+.sp
+Specifying the \fB\-r\fP flag changes from bilinear interpolation to
+nearest neighbor interpolation, i.e. it enlarges the image by pixel
+replication.
+.sp
+For 2X interpolation, a much faster alternative is
+\fBpixinterp2x\fP(1).
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1),
+\fBpixcrop\fP(1),
+\fBpixrect\fP(1),
+\fBpixinterp2x\fP(1),
+\fBpix\fP(5)
+.SH "BUGS"
+.sp
+This program cannot scale up in one dimension and down in the other at
+the same time. The box filter used for scaling down results in the
+usual high\-frequency ripple. Optional cubic interpolation would be
+nice.
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

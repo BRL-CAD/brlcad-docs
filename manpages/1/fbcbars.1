@@ -1,0 +1,88 @@
+'\" t
+.\"     Title: fbcbars
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "FBCBARS" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+fbcbars \- display standard color bars on a framebuffer
+.SH "SYNOPSIS"
+.sp
+\fBfbcbars\fP [\-e] [\-f] [\-s] [\-F \fIframebuffer\fP] [\-S \fIsquarescrsize\fP] [\-W \fIscr_width\fP] [\-N \fIscr_height\fP]
+.SH "DESCRIPTION"
+.sp
+\fBfbcbars\fP displays a color bar scale on the currently selected
+framebuffer. The default pattern is the standard SMPTE color bars.
+.sp
+With the \fB\-f\fP flag, FCC/EBU color bars are made. The entire
+screen will contain 8 colors: 100% white, 75% yellow, 75% cyan, 75%
+green, 75% magenta, 75% red, 75% blue, and black.
+.sp
+By specifying the \fB\-e\fP flag, the standard EIA color bars are
+displayed, arranged horizontally on screen. The bottom quarter of the
+screen will be \-I, 100% white, Q, black. The upper portion of the
+screen will be seven colors at 75% intensity: grey, yellow, cyan,
+green, magenta, red, blue.
+.sp
+By specifying the \fB\-s\fP flag, SMPTE color bars are displayed.
+This is the EIA pattern with the upper quarter of the bottom quarter
+of the screen containing a reversed and shifted version of the upper
+pattern, which is very useful for aligning color demodulators in
+monitors. Using a dichroic blue filter, observe the magenta and cyan
+bars on the NTSC monitor. Adjust the phase of the chroma demodulator
+until they have visually equal intensity. At this point, all the other
+color bars will display the correct chroma.
+.sp
+The environment variable FB_FILE specifies the current framebuffer;
+see \fBbrlcad\fP(1). Alternatively, the
+framebuffer may be explicitly specified by using the \fB\-F\fP flag.
+.sp
+Ordinarily, the requested framebuffer size is the device default.
+.sp
+The \fB\-W\fP \fIscr_width\fP option specifies the width of each
+output scanline, in pixels.
+.sp
+The \fB\-N\fP \fIscr_height\fP option specifies the desired height in
+scanlines of the display device.
+.sp
+\fB\-S\fP \fIsquarescrsize\fP sets both the height and width to the
+size given.
+.SH "INSPIRATIONS"
+.sp
+Mike Pique, University of North Carolina
+.sp
+Doris Kochanek, National Film Board of Canada
+.SH "AUTHOR"
+.sp
+\fIBRL\-CAD Team\fP
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

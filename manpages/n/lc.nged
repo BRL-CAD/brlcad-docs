@@ -1,0 +1,104 @@
+'\" t
+.\"     Title: lc
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "LC" "nged" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+lc \- Lists codes (i.e. region attributes) \(aqregion_id\(aq, \(aqmaterial_id\(aq, \(aqlos\(aq, \(aqregion name\(aq, \(aqregion parent\(aq within a group or combination.
+.SH "SYNOPSIS"
+.sp
+\fBlc\fP [\-d | \-m | \-s] [\-r] [\-z] [\-0 | \-1 | \-2 | \-3 | \-4 | \-5] [\-f | {\fIFileName\fP}] {\fIGroupName\fP}
+.SH "DESCRIPTION"
+.sp
+The \(aqlc\(aq command lists a set of codes (i.e. attributes) of regions
+within a group/combination. Listed in columns are the following:
+\(aqregion_id\(aq, \(aqmaterial_id\(aq, \(aqlos\(aq, \(aqregion name\(aq, \(aqregion parent\(aq. If
+a value is unset, it is reported as \(aq\-\-\(aq.
+.SH "OPTIONS"
+.sp
+\fB\-d\fP
+.RS 4
+Specifies to list only one region with each \(aqregion_id\(aq.
+.RE
+.sp
+\fB\-s\fP
+.RS 4
+Specifies to list only one region with each combination of
+\(aqregion_id\(aq, \(aqmaterial_id\(aq and \(aqlos\(aq.  In addition to the output of
+\(aq\-d\(aq, it lists those cases where \(aqregion_id\(aq is the same but
+\(aqmaterial_id\(aq and/or \(aqlos\(aq are different.
+.RE
+.sp
+\fB\-m\fP
+.RS 4
+Specifies to list only regions with shared \(aqregion_id\(aq values
+where one or more of the objects in the set of objects defined by
+shared \(aqregion_id\(aq value reports a different \(aqmaterial_id\(aq and/or
+\(aqlos\(aq.  Essentially, this allows users to quickly find and resolve
+inconsistent \(aqmaterial_id\(aq and \(aqlos\(aq settings within a \(aqregion_id\(aq
+group.
+.RE
+.sp
+\fB\-r\fP
+.RS 4
+Remove regions from the list in which their parent is a region
+and the region is subtracted within the parent. The \(aq\-r\(aq option can be
+combined with any other option.
+.RE
+.sp
+\fB\-z\fP
+.RS 4
+Specifies descending (z\-a) sort order.
+.RE
+.sp
+\fB\-0\fP
+.RS 4
+Specifies sort column 1, 2, 3, 4 or 5 (referring to columns
+listed in the description of this command); 1 is default. If 0 is
+specified, the regions are listed in the order in which they are
+stored, but this will be overridden if \fB\-d\fP or \fB\-s\fP is used,
+because of the sorting which needs to be done when either of those
+options is used.
+.RE
+.sp
+\fB\-f FileName\fP
+.RS 4
+Identifies output should be to a file and specifies
+the file name. If the path is not included as part of the \(aqFileName\(aq
+the path will be the \(aqcurrent directory\(aq.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

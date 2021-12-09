@@ -1,0 +1,88 @@
+'\" t
+.\"     Title: pixinterp2x
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "PIXINTERP2X" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+pixinterp2x \- interpolate a color pix file twice as large as the original
+.SH "SYNOPSIS"
+.sp
+\fBpixinterp2x\fP [\-s \fIsquarefilesize\fP] [\-w \fIfile_width\fP] [\-n \fIfile_height\fP] [\fIinfile.pix\fP] > \fIoutfile.pix\fP
+.SH "DESCRIPTION"
+.sp
+\fBpixinterp2x\fP does a bilinear interpolation between the pixels of
+the input \fBpix\fP(5) file to create the output
+file. This program is most useful when creating images for
+photographing. Even though no additional image information is created,
+there may be significant photographic advantages to operating the
+display at its highest resolution.
+.sp
+This is a very fast implementation of one special case of
+interpolation; the general tool for interpolation is
+\fBpixscale\fP(1).
+.sp
+\fB\-w\fP \fIfile_width\fP
+.RS 4
+Specify the width (in pixels) of the scanlines in
+the input file. The default is 512.
+.RE
+.sp
+\fB\-n\fP \fIfile_height\fP
+.RS 4
+Specify the number of scanlines of input to be
+processed. The default is 512.
+.RE
+.sp
+\fB\-s\fP \fIsquarefilesize\fP
+.RS 4
+Specify both the number of pixels per scanline
+and the number of scanlines in the file to process.
+.RE
+.sp
+The interpolated scanlines fall exactly half way between the input
+lines, and the input lines are exactly preserved.  Rather than
+extrapolate beyond the edges of the file, the first X and Y line is
+duplicated (left and bottom edge).  This differs from the behavior of
+\fBpixscale\fP(1).
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1),
+\fBpixscale\fP(1), \fBpix\fP(5)
+.SH "BUGS"
+.sp
+More memory is used than is strictly necessary.
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

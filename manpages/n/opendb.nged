@@ -1,0 +1,96 @@
+'\" t
+.\"     Title: opendb
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "OPENDB" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+opendb \- Closes the current database file and opens database.g.
+.SH "SYNOPSIS"
+.sp
+\fBopendb\fP [\-f] [\fIdatabase.g\fP]
+.SH "DESCRIPTION"
+.sp
+Closes the current database file and opens \fIdatabase.g\fP. If
+\fIdatabase.g\fP is not found, the current database is left open.  If
+\fIdatabase.g\fP is not specified on the command line, the name of the
+current database file is returned.
+.sp
+If the \-f option is specified and the database.g is a v4 geometry
+database, the file will be read with a flipped binary endianness
+encoding.  This is useful for binary\-incompatible v4 geometry files
+that were created on a different platform type.
+.sp
+Binary\-incompatible v4 geometry database files that can be
+auto\-detected will be automatically converted if all resulting
+matrices are valid.
+.SH "EXAMPLES"
+.sp
+The first example shows the use of the \fBopendb\fP command to close
+the current database file and open the one specified.  The second
+example shows the use of the command with no database name, which
+returns the name of the current database file.
+.sp
+.B Example 1. Close the current database and open another one.
+.br
+.RS 4
+.sp
+mged> \f(CRopendb model.g\fP
+.sp
+Closes the current database file and opens \fImodel.g\fP.
+.RE
+.sp
+.B Example 2. Return the name of the current database file.
+.br
+.RS 4
+.sp
+mged> \f(CRopendb\fP
+.sp
+Returns the name of the current database file.
+.RE
+.sp
+.B Example 3. Open and upgrade a binary\-incompatible v4 file.
+.br
+.RS 4
+.sp
+mged> \f(CRopendb \-f model.g\fP
+.sp
+mged> \f(CRdbupgrade\fP
+.sp
+Closes any currently open database and opens \fImodel.g\fP as a
+binary\-incompatible v4 geometry database.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

@@ -1,0 +1,67 @@
+'\" t
+.\"     Title: pixdiff
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "PIXDIFF" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+pixdiff \- highlight pixel colors which differ between two files
+.SH "SYNOPSIS"
+.sp
+\fBpixdiff\fP \fIfile1.pix\fP \fIfile2.pix\fP > \fIout.pix\fP
+.SH "DESCRIPTION"
+.sp
+\fBpixdiff\fP highlights the pixels which differ between two color
+\fBpix\fP(5) format files. The input files are read
+pixel by pixel and if any of the color planes red, green, or blue
+differ, those colors are specially marked. Bytes that differ by +/\-1
+are drawn with intensity 192; bytes that differ more are displayed at
+full intensity of 255.  If none of the color values differ, an NTSC
+converted black and white equivalent at one half the original
+intensity is displayed. This is to aid in seeing where in the image
+the different pixels lie. Upon completion, \fBpixdiff\fP reports the
+number of bytes matching, the number off by 1, and the number off by
+many.
+.sp
+Also see \fBbwdiff\fP(1), which can still be used
+on \fIpix\fP files, yet can produce different kinds of output.
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1),
+\fBbwdiff\fP(1),
+\fBpix\-fb\fP(1),
+\fBpixstat\fP(1), \fBpix\fP(5)
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

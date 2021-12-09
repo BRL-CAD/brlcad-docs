@@ -1,0 +1,67 @@
+'\" t
+.\"     Title: bwhist
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "BWHIST" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+bwhist \- display a histogram of a black and white bw file on a framebuffer
+.SH "SYNOPSIS"
+.sp
+\fBbwhist\fP [\-v] [\fIfile.bw\fP]
+.SH "DESCRIPTION"
+.sp
+\fBbwhist\fP displays a histogram of the pixel values in a
+\fBbw\fP(5) format file.  If a file is not given,
+standard input is read. The output will be displayed on the frambuffer
+selected via the \f(CRFB_FILE\fP environment variable (see
+\fBlibfb\fP(3)).
+.sp
+The relative frequency is displayed on the x axis scaled so that the
+maximum is full screen.  The value 0 is at the bottom of the screen,
+255 is at the top. The output is overlaid on whatever is currently on
+the display.
+.sp
+The \fB\-v\fP flag will output the histogram values on the terminal.
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1),
+\fBbwhisteq\fP(1),
+\fBbwstat\fP(1), \fBbw\fP(5)
+.SH "BUGS"
+.sp
+This program assumes it has at least 512 lines in y to work with.
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

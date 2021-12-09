@@ -1,0 +1,162 @@
+'\" t
+.\"     Title: irdisp
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "IRDISP" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+irdisp \- combines the two programs showtherm and ir\-sgi or ir\-X
+.SH "SYNOPSIS"
+.sp
+\fBirdisp\fP
+.SH "DESCRIPTIONS"
+.sp
+\fBirdisp\fP is an interactive program that combines the two programs
+\fBshowtherm\fP and \fBir\-sgi\fP or \fBir\-X\fP .  Ultimately it can
+read a temperature output file and display the image on the screen
+without having the user call two different programs.
+.SH "EXAMPLE"
+.sp
+The following is an example from an interactive session.
+.sp
+.if n .RS 4
+.nf
+$ irdisp
+This takes a BRL\-CAD mged model with a PRISM
+temperature output file and raytraces and/or
+displays it.  Make your selection.
+        0 \- raytrace & store file
+        1 \- raytrace, store, & showtherm file
+        2 \- showtherm file
+1
+Enter .g file to be raytraced (15 char max).
+        test.veh.g
+Enter the number of groups to be raytraced.
+        1
+Enter group 0 (25 char max).
+        vehicle
+
+The program showtherm is now being run.
+
+Type of output file to be read 0=>PRISM, 1=>generic.
+        0
+Enter name of the PRISM output file to be read (26 char max).
+        veh.prm
+Enter the number of regions in the PRISM file, must be more
+than eight (not including the background).
+        18
+Enter name of region # & name file to be read (26 char max).
+        veh.f.rnn
+Enter name of output file (26 char max).
+        veh.dis
+Enter the elapsed time to create graphical representation of.
+        4
+Number of regions (including the background):  19
+7/19/1984 7.000000:0.000000
+Prism out file read.
+Region # & name file opened.
+The number of regions read from the output file and the region # & name
+file was the same, 18 (does not include background in number).
+Building directory.
+File:  test.veh.g
+Database Title:  test vehicle for use with irprep programs
+        vehicle loaded
+The number of regions read from the output
+file, the region # & name file, and the .g
+file are all equal.  The number of regions
+read, including the background is 19
+Preparation started.
+
+Minimum & maximum X:  \-3001.000000 \- 3714.000000
+Minimum & maximum Y:  \-1350.000000 \- 1350.000000
+Minimum & maximum Z:  0.000000 \- 2500.000000
+Center of bounding sphere:  356.500000, 0.000000, 1250.000000
+Radius of bounding sphere:  3829.551456
+Enter multiplication factor for radius.
+        .75
+Enter grid size.
+        512
+Enter azimuth & elevation.
+        35 25
+gridsize:  512 x 512
+azimuth:  35.000000 degrees
+elevation:  25.000000 degrees
+
+Select display (\(aqX\(aq or \(aqsgi\(aq) \->sgi
+
+The program ir\-sgi is now being run.  If option
+0 or 1 was used when the name of a file is asked
+for enter the name of the file that was just
+stored.
+
+Enter name of file to be read (26 char max)
+        veh.dis
+Indicate color scale to be used.
+        0 \- gray
+        1 \- black\-blue\-cyan\-green\-yellow\-white
+        2 \- black\-blue\-magenta\-red\-yellow\-white
+0
+Print scan line number (0\-yes, 1\-no)?
+        1
+Do you wish to create a pix file (0\-no, 1\-yes)?
+        0
+Setting color scale \- gray scale \- set.
+Reading file \- file read.
+Width:  512
+Height:  512
+Finding min & max.
+Minimum:  22.590000
+Maximum:  46.830000
+Finding pixel bins \- pixel bins found.
+Setting color for each pixel \- colors found.
+Press \(aqz\(aq return to end.  z
+THE END
+
+$
+.fi
+.if n .RE
+.SH "SEE ALSO"
+.sp
+\fBfirpass\fP(1),
+\fBsecpass\fP(1),
+\fBshapefact\fP(1),
+\fBall_sf\fP(1),
+\fBshowtherm\fP(1),
+\fBir\-X\fP(1), \fBir\-sgi\fP(1),
+\fBpictx\fP(1), User\(cqs Manual for IRPREP
+(BRL\-SP\-96), Computer Programs for Generating an Input File for PRISM
+and Displaying PRISM Results (BRL report in progress)
+.SH "AUTHOR"
+.sp
+Susan A. Coates
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

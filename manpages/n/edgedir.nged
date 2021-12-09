@@ -1,0 +1,64 @@
+'\" t
+.\"     Title: edgedir
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "EDGEDIR" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+edgedir \- Allows the user to set the direction of an edge by specifying a direction vector in the form of x, y, and z components or via rotation and fallback angles.
+.SH "SYNOPSIS"
+.sp
+\fBedgedir\fP [{\fIxyz\fP}] [{\fIrot fb\fP}]
+.SH "DESCRIPTION"
+.sp
+Allows the user to set the direction of an edge by specifying a
+direction vector in the form of \fIx, y,\fP and \fIz\fP components or via
+rotation and fallback angles. This can only be done while moving an
+edge of an ARB.
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBedgedir\fP command to rotate an
+edge to be parallel to the \fIy\fP axis.
+.sp
+.B Example 1. Rotate an edge to be parallel to the \fIy\fP axis.
+.br
+.RS 4
+.sp
+mged> \f(CRedgedir 0 1 0\fP
+.sp
+Rotates the edge being edited to be parallel to the \fIy\fP axis.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

@@ -1,0 +1,80 @@
+'\" t
+.\"     Title: debuglib
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "DEBUGLIB" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+debuglib \- Allows the user to set or check the debug flags used by librt.
+.SH "SYNOPSIS"
+.sp
+\fBdebuglib\fP [\fIhex_code\fP]
+.SH "DESCRIPTION"
+.sp
+Allows the user to set or check the debug flags used by \fIlibrt\fP. With
+no arguments, the \fBdebuglib\fP command displays all the possible
+settings for the \fIlibrt\fP debug flag and the current value. When a
+\fIhex_code\fP is supplied, that value is used as the new value for the
+flag. Similar debug commands for other \fIBRL\-CAD\fP libraries are
+\fBdebugbu\fP for \fIlibbu\fP and \fBdebugnmg\fP for the NMG portion of
+\fIlibrt\fP.
+.SH "EXAMPLES"
+.sp
+The first example shows the use of the \fBdebuglib\fP command
+(without an argument) to list the available debug values for \fIlibrt\fP
+and the current value.  The second example shows the use of the
+\fBdebuglib\fP command with a hex code, which sets the \fIlibrt\fP debug
+flag to that value.
+.sp
+.B Example 1. List available debug values for \fIlibrt\fP and the current value.
+.br
+.RS 4
+.sp
+mged> \f(CRdebuglib\fP
+.sp
+Lists available debug values for \fIlibrt\fP and the current value.
+.RE
+.sp
+.B Example 2. Set the \fIlibrt\fP debug flag to a specific value.
+.br
+.RS 4
+.sp
+mged> \f(CRdebuglib 1\fP
+.sp
+Sets the \fIlibrt\fP debug flag to <DEBUG_ALLRAYS> (prints info about
+rays).
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

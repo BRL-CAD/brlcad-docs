@@ -1,0 +1,440 @@
+'\" t
+.\"     Title: mater
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "MATER" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+mater \- Assigns shader parameters, RGB color, and inheritance to an existing combination.
+.SH "SYNOPSIS"
+.sp
+\fBmater\fP [\-s] {\fIcombination\fP} [shader_parameters [RGB [inheritance]]]
+.sp
+\fBmater\fP {\-d} {source}
+.sp
+\fBmater\fP {\-d} {clear}
+.sp
+\fBmater\fP {\-d} {import} [\-v] {\fIfile.density\fP}
+.sp
+\fBmater\fP {\-d} {export} {\fIfile.density\fP}
+.sp
+\fBmater\fP {\-d} {validate} {\fIfile.density\fP}
+.sp
+\fBmater\fP {\-d} {get} [\-\-tol <tolerance>] [\-\-id \fI[[>|<][=]id]|[id pattern]\fP] [\-\-density \fI[[>|<][=]val\fP] [\-\-name \fIpattern\fP] [\fIpattern\fP]
+.sp
+\fBmater\fP {\-d} {set} {\fIid,density,name\fP}
+.sp
+\fBmater\fP {\-d} {map} {\-\-ids\-from\-names} {\-d \fIdensity_file\fP} {\-m \fImap_file\fP} [\fIdensity_file\fP] [\fImap_file\fP]
+.sp
+\fBmater\fP {\-d} {map} {\-\-names\-from\-ids} [\fIdensity_file\fP]
+.SH "DESCRIPTION"
+.sp
+In its default mode, \fBmater\fP assigns shader parameters, RGB
+color, and inheritance to an existing combination. The information may
+be included on the command line; otherwise the user will be prompted
+for it. Some available shaders are:
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+bump \(em bump maps.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+bwtexture \(em black and white texture maps.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+camo \(em camouflage.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+checker \(em checkerboard design.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+cloud \(em 2D Geoffrey Gardner style cloud texture map.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+envmap \(em environment mapping.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+fakestar \(em a fake star pattern.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+fbmbump \(em fbm noise applied to surface normal.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+fbmcolor \(em fbm noise applied to color.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+fire \(em flames simulated with turbulence noise.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+glass \(em Phong shader with values set to simulate glass.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+gravel \(em turbulence noise applied to color and surface normal.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+light \(em light source.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+marble \(em marble texture.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+mirror \(em Phong shader with values set to simulate mirror.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+plastic \(em Phong shader with values set to simulate plastic.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+rtrans \(em random transparency.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+scloud \(em 3D cloud shader.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+spm \(em spherical texture maps.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+stack \(em allows stacking of shaders.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+stxt \(em shape texture mapping.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+texture \(em full color texture mapping.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+turbump \(em turbulence noise applied to surface normals.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+turcolor \(em turbulence noise applied to color.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+wood \(em wood texture.
+.RE
+.SH "DENSITY DATABASE MANIPULATION"
+.sp
+In the event the .g file has an internal density database defined (or
+the user wishes to define such a database) the \fBmater\fP command
+provides a number of options.
+.sp
+To import a density file into the .g file, use the \fBimport\fP
+subcommand.  By default this will update and append to an existing
+database if present.  If the \fB\-v\fP is added, a validation will be
+performed on the specified density file before import. To completely
+replace any pre\-existing definitions in the database, first run the
+\fBclear\fP subcommand.  To write out the current density definitions
+to a file use the \fBexport\fP subcommand.
+.sp
+To simply test a density file for validity without attempting to
+import it, use the \fBvalidate\fP subcommand.  The \fBsource\fP
+subcommand will report where commands using density information will
+draw their data from \- if data is present in the .g file the current
+database name will be returned, otherwise the system path to the
+currently active .density file will be returned.
+.sp
+For manipulation of subsets of the data, the \fBget\fP and \fBset\fP
+subcommands are provided. \fBget\fP will return either one or a set
+of tuples matching the provided patterns. For density matching a
+tolerance may be specified to allow for approximate matches. The glob
+style of pattern matching is supported.
+.SH "DENSITY DATABASE MANIPULATION \- MAPPING MODE"
+.sp
+The \fBmap\fP mode of operation uses density information (either from
+a file or from the current database) to syncronize the \fBmaterial_id\fP
+and \fBmaterial_name\fP properties of objects.  The
+\fB\-\-ids\-from\-names\fP mode will use \fBmaterial_name\fP properties,
+perform a lookup on the density database to find a corresponding id
+number, and update the \fBmaterial_id\fP.  If an optional mapping file is
+supplied, the name lookup will also find id assignments based on the
+name equivalencies specified by the map.
+.sp
+For situations where a file has \fBmaterial_id\fP attributes but no names,
+the \fB\-\-names\-from\-ids\fP option will use density information to
+assign \fBmaterial_name\fP attributes to those objects whose \fBmaterial_id\fP
+values are present.  It will also update existing \fBmaterial_name\fP
+values.
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBmater\fP command to assign shader
+parameters, color, and inheritance to a region.
+.sp
+.B Example 1. Assigning shader parameters, color, and inheritance to a region.
+.br
+.RS 4
+.sp
+mged> \f(CRmater region1 "plastic {tr 0.5 re 0.2}" 210 100 100 0\fP
+.sp
+Sets \fIregion1\fP to use the plastic shader with 50% transparency, 20%
+reflectivity, a base color of (210 100 100), and inheritance set to 0.
+.RE
+.sp
+.B Example 2. Importing Density Data
+.br
+.RS 4
+.sp
+mged> \f(CRmater \-d import /home/user/.density\fP
+.sp
+After this operation, the density valued defined in
+/home/user/.density are now stored in the .g file.
+.RE
+.sp
+.B Example 3. Viewing Density Data
+.br
+.RS 4
+.sp
+mged> \f(CRmater \-d get \-\-name *Rubber\(rs*\fP
+.sp
+Lists all density entries with a material name containing "Rubber".
+.RE
+.sp
+.B Example 4. Names from IDs
+.br
+.RS 4
+.sp
+mged> \f(CRmater \-d map \-\-names\-from\-ids /home/user/.density\fP
+.sp
+Assigns \fBmaterial_name\fP names from a density file assuming existing
+\fBmaterial_id\fP attributes.
+.RE
+.sp
+.B Example 5. IDs from Names
+.br
+.RS 4
+.sp
+mged> \f(CRmater \-d map \-\-ids\-from\-names /home/user/.density /home/user/mapping_file\fP
+.sp
+Assigning or updating \fBmaterial_id\fP attributes based on
+\fBmaterial_name\fP attribute values, density file names, and mapping file
+associations.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

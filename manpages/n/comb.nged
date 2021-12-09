@@ -1,0 +1,440 @@
+'\" t
+.\"     Title: comb
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "COMB" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+comb \- Create and manipulate BRL\-CAD combination with the name combination_name.
+.SH "SYNOPSIS"
+.sp
+\fBcomb\fP [[\-c] | [\-r]] [[\-w] | [\-f] | [\-l]] [[\-S]] {\fIcombination_name\fP} [\fI<operator object_name>\fP]...
+.SH "DESCRIPTION"
+.sp
+The \fBcomb\fP command creates and manipulates \fIBRL\-CAD\fP combination
+objects.  For combination creation or appending,
+\fIoperator/object_name\fP pairs of boolean operators and object names are
+parsed into comb tree entries.  (TODO \- integrate full expression
+evaluation like that in \fBc\fP.)
+.sp
+The following options are recognized:
+.sp
+\fB\-c\fP
+.RS 4
+Ensures that the combination does not have the region
+flag set. Conflicts with \fB\-r\fP.
+.RE
+.sp
+\fB\-r\fP
+.RS 4
+Ensures that the combination does have the region
+flag set. Conflicts with \fB\-c\fP.
+.RE
+.sp
+\fB\-w\fP
+.RS 4
+Moves the contents of a combination to a new combination and
+makes that combination the sole child of the original combination.
+See the "fixing nested regions" example below for an illustration of
+how this option is used. Conflicts with \fB\-f\fP and \fB\-l\fP.
+.RE
+.sp
+\fB\-f\fP
+.RS 4
+Flattens a combination that contains only unions into a single
+top level combination with all of the solids unioned into it, and
+remove all combinations that were below the input combination that are
+not used elsewhere in the .g file.  (In essence, the latter behavior
+prevents "orphaned" combinations that are no longer used from showing
+up as new top level objects in the database.)  This feature will not
+work on any combination containing non\-union boolean operations.  The
+following \fBsearch\fP command can be used to find combs that are
+candidates for flattening:
+.sp
+.if n .RS 4
+.nf
+mged> search \-type comb ! \-below ( \-bool + \-or \-bool \- )
+.fi
+.if n .RE
+.sp
+Conflicts with \fB\-w\fP and \fB\-l\fP.
+.RE
+.sp
+\fB\-l\fP
+.RS 4
+"Lift" a region flag to the top comb, and clear all region
+flags below the comb in the tree.  Like the \fBf\fP option this
+option will work to respect the integrity of other geometry in the
+database, but it is more aggressive in the steps it will take and it
+will operate on trees that contain non\-union booleans.  The decision
+logic is as follows:
+.sp
+.RS 4
+.ie n \{\
+\h'-04' 1.\h'+01'\c
+.\}
+.el \{\
+.  sp -1
+.  IP " 1." 4.2
+.\}
+Check if regions below the current comb are used elsewhere in the .g
+file.  If they are not, they will simply be converted to combs.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04' 2.\h'+01'\c
+.\}
+.el \{\
+.  sp -1
+.  IP " 2." 4.2
+.\}
+For regions that are used elsewhere in the .g file, determine if
+their parent comb (if that comb is not the original comb supplied to
+the command) is also used elsewhere in the .g file.  If not, the
+\fBw\fP wrapping behavior is used to produce a non\-region equivalent
+comb, and the parent comb is updated to use that new comb instead of
+the region.  If one or more parent combs \fIare\fP used elsewhere
+(i.e. the parent comb cannot be altered without altering other
+geometry) the command will fail \- manual intervention is required to
+resolve the situation.
+.RE
+.sp
+Conflicts with \fB\-w\fP and \fB\-f\fP.
+.RE
+.sp
+\fB\-S\fP
+.RS 4
+Stop if the combination object already exists.
+.RE
+.SH "EXAMPLES"
+.sp
+This example shows how to use the \fBcomb\fP command to create a
+combination according to a given formula.
+.sp
+.B Example 1. Creating a combination.
+.br
+.RS 4
+.sp
+mged> \f(CRcomb abc u a u b \- a + d\fP
+.sp
+Creates a combination named \fIabc\fP.
+.RE
+.sp
+.B Example 2. Fixing a nested region.
+.br
+.RS 4
+.sp
+Nested regions (a region containing another region in its tree) are
+generally viewed as poor modelling practice.  This example shows how
+to fix an instance of this nesting with minimal disruption to the
+model.
+.sp
+Suppose we have a situation where \fIregion2.r\fP is unioned into
+\fIregion1.r\fP, and both \fIregion1.r\fP and \fIregion2.r\fP have the region flag
+set, as seen in the tree below.
+.sp
+.if n .RS 4
+.nf
+mged> tree region1.r
+region1.r/R
+        u region2.r/R
+                u sph.s
+        u comb.c/
+                u arb.s
+.fi
+.if n .RE
+.sp
+This geometry has an error in that one region is not supposed to be
+combined into another using boolean operations. Further, suppose that
+one or more assemblies use \fIregion2.r\fP and expect it to be a region \-
+i.e., \fIregion2.r\fP needs to remain a region with the same contents.  To
+fix this problem without disturbing other geometry using \fIregion2.r\fP,
+first make a combination below \fIregion2.r\fP using the \fBw\fP flag to
+\fBcomb\fP:
+.sp
+.if n .RS 4
+.nf
+mged> comb \-w region2.r
+mged> tree region2.r
+region2.r/R
+        u region2.r.c/
+                  u sph.s
+.fi
+.if n .RE
+.sp
+The next step is to adjust the \fIregion1.r\fP tree definition to
+reference the non\-region combination instead of \fIregion2.r\fP:
+.sp
+.if n .RS 4
+.nf
+mged> set glob_compat_mode 0
+0
+mged> get region1.r tree
+u {l region2.r} {l comb.c}
+mged> adjust region1.r tree {u {l region2.r.c} {l comb.c}}
+mged> tree region1.r
+region1.r/R
+        u region2.r.c/
+                u sph.s
+        u comb.c/
+                u arb.s
+.fi
+.if n .RE
+.sp
+Because the tree is manipulated as a Tcl list, we need glob
+compatibility mode to be off on the MGED command line.  Once the tree
+is re\-defined, \fIregion1.r\fP no longer has \fIregion2.r\fP below it, but
+still defines the same physical volume via \fIregion2.r.c\fP.
+.sp
+Optionally, the name \fIregion2.r.c\fP can be changed to the name
+\fIregion2.c\fP with the \fBmvall\fP command:
+.sp
+.if n .RS 4
+.nf
+mged> mvall region2.r.c region2.c
+mged> tree region1.r
+region1.r/R
+        u region2.c/
+                u sph.s
+        u comb.c/
+                u arb.s
+mged> tree region2.r
+region2.r/R
+        u region2.c/
+                u sph.s
+.fi
+.if n .RE
+.RE
+.sp
+.B Example 3. Flattening a Combination.
+.br
+.RS 4
+.sp
+When a combination contains only unioned objects, it can be flattened
+with the \fBf\fP option.
+.sp
+First, create an appropriate example to properly illustrate the
+option\(cqs behavior:
+.sp
+.if n .RS 4
+.nf
+mged> make sph1.s sph
+mged> make sph2.s sph
+mged> comb sph1.c u sph1.s
+mged> comb sph2.c u sph2.s
+mged> comb spheres.c u sph1.c u sph2.c
+mged> comb misc.c u sph2.c
+mged> tree spheres.c
+spheres.c/
+         u sph1.c/
+                 u sph1.s
+         u sph2.c/
+                 u sph2.s
+
+mged> tree misc.c
+misc.c/
+         u sph2.c/
+                 u sph2.s
+
+mged> tops
+misc.c/               spheres.c
+.fi
+.if n .RE
+.sp
+Note that \fIsph2.c\fP is used in both \fIspheres.c\fP and \fImisc.c\fP, but
+\fIsph1.c\fP is only used in \fIspheres.c\fP In the \fBtops\fP command
+output, \fImisc.c\fP and \fIspheres.c\fP are the only top level objects.
+Targeting \fIspheres.c\fP with the \fBf\fP option reworks the tree as
+follows:
+.sp
+.if n .RS 4
+.nf
+mged> comb \-f spheres.c
+mged> tree spheres.c
+spheres.c/
+        u sph1.s
+        u sph2.s
+
+mged> tree misc.c
+misc.c/
+         u sph2.c/
+                 u sph2.s
+
+mged> tops
+misc.c/               spheres.c
+.fi
+.if n .RE
+.sp
+Notice that while \fIspheres.c\fP has indeed been flattened and no longer
+has the intermediate combinations over its solids, \fImisc.c\fP is still
+intact.  Notice also that while \fIsph2.c\fP was preserved, since it is
+used by \fImisc.c\fP, \fIsph1.c\fP was removed and does not show up in the
+\fBtops\fP command\(cqs output since it was no longer used by any object
+in the database.
+.RE
+.sp
+.B Example 4. Example Of Comb Region Lifting.
+.br
+.RS 4
+.sp
+The \fBl\fP option is useful in cases where many \fBw\fP type operations are
+needed.
+.sp
+Suppose a geometry has the following structure:
+.sp
+.if n .RS 4
+.nf
+mged> make sph1.s sph
+mged> make sph2.s sph
+mged> r r1 u sph1.s
+mged> r r2 u sph2.s
+mged> comb assembly u r1 u r2
+mged> r r3 u r1 \- r2
+mged> tops
+assembly/           r3/R
+
+mged> tree assembly
+assembly/
+        u r1/R
+                u sph1.s
+        u r2/R
+                u sph2.s
+mged> tree r3
+r3/R
+        u r1/R
+                u sph1.s
+        \- r2/R
+                u sph2.s
+.fi
+.if n .RE
+.sp
+There are regions below region \fIr3\fP, which is not good modeling
+practice. The \fBl\fP option applied to \fIr3\fP makes \fIr3\fP a region that
+no longer has regions below it, while at the same time preserving the
+geometric volumes defined by all existing combs and preserving the
+meaning of the \fIassembly\fP region definitions:
+.sp
+.if n .RS 4
+.nf
+mged> comb \-l r3
+mged> tree assembly
+assembly/
+        u r1/R
+                u r1.c/
+                         u sph1.s
+        u r2/R
+                u r1.c/
+                         u sph1.s
+mged> tree r3
+r3/R
+        u r1.c/
+                u sph1.s
+        \- r2.c/
+                u sph2.s
+.fi
+.if n .RE
+.RE
+.sp
+.B Example 5. Example Tree Structure That Will Prevent Successful Region Lifting.
+.br
+.RS 4
+.sp
+While the \fBl\fP option can handle many tree configurations, there are
+some situations where manual intervention is required.  This example
+illustrates one such case.
+.sp
+Suppose a geometry has the following structure:
+.sp
+.if n .RS 4
+.nf
+mged> make sph1.s sph
+mged> make sph2.s sph
+mged> make sph3.s sph
+mged> r r1 u sph1.s
+mged> r r2 u sph2.s
+mged> comb subassembly u r1 u r2
+mged> r r3 u sph3.s \- subassembly
+mged> comb assembly u subassembly
+mged> tops
+assembly/           r3/R
+
+mged> tree assembly
+assembly/
+        u subassembly/
+                u r1/R
+                        u sph1.s
+                u r2/R
+                        u sph2.s
+mged> tree r3
+r3/R
+        u sph3.s
+        \- subassembly/
+                u r1/R
+                        u sph1.s
+                u r2/R
+                        u sph2.s
+.fi
+.if n .RE
+.sp
+This geometry has regions below region \fIr3\fP, which is not ideal.
+However, attempting to use the \fBl\fP option on \fIr3\fP will produce
+the following error:
+.sp
+.if n .RS 4
+.nf
+mged> comb \-l r3
+Comb region lift failed \- the following combs in the tree contain
+regions and are also used outside the tree of r3:
+
+subassembly, containing region r1
+subassembly, containing region r2
+
+The above combs must be reworked before region lifting the tree
+of r3 can succeed.
+.fi
+.if n .RE
+.sp
+While \fIr3\fP has problems, the geometry tree under \fIassembly\fP is
+entirely correct.  For \fIr3\fP to become a toplevel region with no
+regions under it, the definition of \fIsubassembly\fP would have to
+change too.  Because \fIsubassembly\fP is used in the definition of
+\fIassembly\fP, as well as the definition of \fIr3\fP, changing
+\fIsubassembly\fP\(cqs contents would destroy the meaning of the (valid)
+\fIassembly\fP comb.  Hence, the command fails and does not change the
+geometry.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

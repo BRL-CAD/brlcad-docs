@@ -1,0 +1,66 @@
+'\" t
+.\"     Title: qorot
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "QOROT" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+qorot \- Rotates an object through the specified angle (in degrees).
+.SH "SYNOPSIS"
+.sp
+\fBqorot\fP {\fIx y z dx dy dz angle\fP}
+.SH "DESCRIPTION"
+.sp
+Rotates an object through the specified \fIangle\fP (in degrees). This
+command requires that MGED already be in \fImatrix edit\fP mode. The
+edited object is rotated about the axis defined by the start point
+(\fIx y z\fP) and the direction vector (\fIdx dy dz\fP).
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBqorot\fP command to rotate a
+currently edited object through a specified angle and starting point
+and in a particular direction.
+.sp
+.B Example 1. Rotate a currently edited object.
+.br
+.RS 4
+.sp
+mged> \f(CRqorot 1 2 3 0 0 1 25\fP
+.sp
+Rotates the currently edited object through 25° about the axis through
+the point (1, 2, 3) and in the Z\-direction.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

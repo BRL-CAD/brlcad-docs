@@ -1,0 +1,93 @@
+'\" t
+.\"     Title: brlcad-config
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "BRLCAD\-CONFIG" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+brlcad\-config \- script to get information about the installed version of BRL\-CAD
+.SH "SYNOPSIS"
+.sp
+\fBbrlcad\-config\fP [\-\-prefix[\fI=DIR\fP]] [\-\-libs] [\-\-cflags] [\-\-version] [\-\-help]
+.SH "DESCRIPTION"
+.sp
+\fBbrlcad\-config\fP is a script that describes the compile and linker
+flags that should be used to compile and link programs that use
+\fIBRL\-CAD\fP\(cqs libraries.
+.SH "OPTIONS"
+.sp
+\fBbrlcad\-config\fP accepts the following options:
+.sp
+\fB\-\-prefix=PREFIX\fP
+.RS 4
+If specified, use the provided installation
+PREFIX instead of the prefix that \fIBRL\-CAD\fP was compiled with when
+providing the output for the other \fBbrlcad\-config\fP script
+options.
+.RE
+.sp
+\fB\-\-libs\fP
+.RS 4
+Prints out library linker flags that are generally needed
+when creating a program that links to \fIBRL\-CAD\fP libraries.
+.RE
+.sp
+\fB\-\-cflags\fP
+.RS 4
+Prints out compilation flags that are generally needed
+when creating a program that refers to \fIBRL\-CAD\fP headers.
+.RE
+.sp
+\fB\-\-version\fP
+.RS 4
+Prints out the version of \fIBRL\-CAD\fP that is installed.
+.RE
+.sp
+\fB\-\-help\fP
+.RS 4
+Display usage.
+.RE
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1),
+\fBlibbu\fP(3),
+\fBlibbn\fP(3),
+\fBlibrt\fP(3),
+\fBlibwdb\fP(3)
+.SH "BUGS"
+.sp
+No bugs known for \fBbrlcad\-config\fP.
+.SH "AUTHOR"
+.sp
+Christopher Sean Morrison
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

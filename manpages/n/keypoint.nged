@@ -1,0 +1,66 @@
+'\" t
+.\"     Title: keypoint
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "KEYPOINT" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+keypoint \- Without any options, keypoint displays the current keypoint setting. If a point is specified, then that point becomes the keypoint . If reset is specified, then the default keypoint is restored.
+.SH "SYNOPSIS"
+.sp
+\fBkeypoint\fP [\fIxyz\fP] [reset]
+.SH "DESCRIPTION"
+.sp
+Without any options, \fBkeypoint\fP displays the current keypoint
+setting.  If a point is specified, then that point becomes the
+\fIkeypoint\fP. If \fIreset\fP is specified, then the default \fIkeypoint\fP is
+restored. The \fIkeypoint\fP is used as the center of rotation and scaling
+in primitive edit or matrix edit (formerly known as object edit)
+modes. This command has no effect when used in nonediting modes.
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBkeypoint\fP command to set the
+keypoint in model units.
+.sp
+.B Example 1. Set the keypoint.
+.br
+.RS 4
+.sp
+mged> \f(CRkeypoint 10 20 30\fP
+.sp
+Sets the \fIkeypoint\fP to the point (10 20 30) in model units.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

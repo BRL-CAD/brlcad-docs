@@ -1,0 +1,86 @@
+'\" t
+.\"     Title: edcomb
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "EDCOMB" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+edcomb \- Allows the user to modify the attributes of a combination.
+.SH "SYNOPSIS"
+.sp
+\fBedcomb\fP {\fIcombname\fP} [\fIregionflag regionID airID los% materialID\fP]
+.SH "DESCRIPTION"
+.sp
+Allows the user to modify the attributes of a combination. The
+\fIcombname\fP is the name of the combination to be modified. The
+\fIregionflag\fP controls whether the combination is identified as a
+region \- supplying either \fIR\fP or \fI1\fP for the \fIregionflag\fP indicates
+that the combination is a region; to indicate the combination is NOT a
+region simply supply any other character (\fIC\fP or \fI0\fP are useful
+conventions here.) If the region flag is not being set, then the
+remainder of the attributes are ignored.  However, the \fBedcomb\fP
+command requires that something is supplied for those arguments in
+order to work \- so if using \fBedcomb\fP to turn off the region flag
+on a combination simply supply 0 for each of the remaining arguments
+to \fBedcomb\fP. If the region flag is being set, then the
+\fIregion_id, aircode, los,\fP and \fImaterial_code\fP are set according to
+the arguments supplied.
+.SH "EXAMPLES"
+.sp
+The first example shows the use of the \fBedcomb\fP command with the
+\fIR\fP flag (region) added along with the \fIregion_id, air_code, los\fP and
+\fImaterial_code\fP. The second example shows how to unset the region flag
+for a particular combination.
+.sp
+.B Example 1. Make a combination a region having specific attributes.
+.br
+.RS 4
+.sp
+mged> \f(CRedcomb comb1 R 1001 0 50 8\fP
+.sp
+Makes \fIcomb1\fP a \fIregion\fP and set its \fIident\fP to 1001, its \fIair code\fP
+to 0, its \fIlos\fP to 50, and its \fImaterial code\fP to 8.
+.RE
+.sp
+.B Example 2. Unset a \fIregion\fP flag for a particular combination.
+.br
+.RS 4
+.sp
+mged> \f(CRedcomb comb1 C 0 0 0 0\fP
+.sp
+Unsets the \fIregion\fP flag for combination \fIcomb1\fP.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

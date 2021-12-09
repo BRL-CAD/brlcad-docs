@@ -1,0 +1,96 @@
+'\" t
+.\"     Title: fblabel
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "FBLABEL" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+fblabel \- display a text string on a framebuffer
+.SH "SYNOPSIS"
+.sp
+\fBfblabel\fP [\-dca] [\-F \fIframebuffer\fP] [\-f \fIfontname\fP] [\-{sS} \fIsquaresize\fP] [\-{wW} \fIwidth\fP] [\-{nN} \fIheight\fP] [\-C \fIr/g/b\fP] \fIx_position\fP \fIy_position\fP \fItext_string\fP
+.SH "DESCRIPTION"
+.sp
+\fBfblabel\fP writes a text string to the image on the currently
+selected framebuffer. The text string will be filtered to the image
+currently displayed. Use \fBfbpoint\fP(1) to
+determine where to position the text string. The lower left corner of
+the text string starts displaying at the x and y position given. The
+environment variable FB_FILE specifies the current framebuffer; see
+\fBbrlcad\fP(1). Alternatively, the framebuffer
+may be explicitly specified by using the \fB\-F\fP flag.
+.sp
+By default, the requested framebuffer size is assumed to be 512x512
+pixels.
+.sp
+The \fB\-d\fP flag is for debugging.
+.sp
+The \fB\-c\fP flag causes the screen to be cleared before the text
+string is displayed. The default behavior is to label the current
+image without clearing the screen.
+.sp
+The \fB\-a\fP flag causes the text not to be filtered against the
+frame buffer image.
+.sp
+The \fB\-C\fP \fIr/g/b\fP option specifies red, green, and blue
+(r/g/b) values [0..255] for the text. The default color is white.
+.sp
+The \fB\-f\fP \fIfontname\fP option will change the current default
+font from nonie.r.12 to "/usr/lib/vfont/fontname".
+.sp
+The \fB\-S\fP (or \fB\-s\fP) flag sets the width and the height to the
+same value; the \fB\-W\fP (or \fB\-w\fP) and \fB\-N\fP (or \fB\-n\fP)
+flags are used for setting them individually.
+.SH "FONTS"
+.sp
+\fBfblabel\fP expects the Berkeley fonts in the directory
+/usr/lib/vfont. The fonts are expected to be in Vax byte order, even
+if that is not the natural byte order of the machine, to avoid having
+to create a font converter.
+.SH "EXAMPLE"
+.sp
+.if n .RS 4
+.nf
+fblabel \-f "oldenglish.14"
+fbpoint \-H "Hello"
+.fi
+.if n .RE
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1), \fBfbed\fP(1),
+\fBfbpoint\fP(1),
+\fBlibfb\fP(3), \fBpix\fP(5)
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

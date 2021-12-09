@@ -1,0 +1,67 @@
+'\" t
+.\"     Title: gif2fb
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "GIF2FB" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+gif2fb \- display GIF file on frame buffer
+.SH "SYNOPSIS"
+.sp
+\fBgif2fb\fP [\-H] [\-v] [\-F \fIframe_buffer_name\fP] \fIGIF_file_name\fP
+.SH "DESCRIPTION"
+.sp
+\fBgif2fb\fP displays on a frame buffer the images described by a
+CompuServe GIF (Graphics Interchange Format) file. The \fB\-F\fP
+option outputs to the specified frame buffer instead of the one
+specified by the \fIFB_FILE\fP environment variable (or the default frame
+buffer, if \fIFB_FILE\fP is not set). The frame buffer size requested will
+be the same as the input GIF screen size. The actual size obtained
+depends on details of the specific frame buffer. The \fB\-H\fP option
+prints the GIF screen size on stderr. The \fB\-v\fP option prints
+additional information about the GIF file on stderr. The
+\fIGIF_file_name\fP specifies the GIF input file to be translated, rather
+than reading the file from the standard input.
+.SH "SEE ALSO"
+.sp
+A Standard Defining a Mechanism for the Storage and Transmission of
+Raster\-Based Graphics Information, June 15, 1987 (CompuServe
+Incorporated). \fBlibfb\fP(3) ,
+\fBgif\-fb\fP(1)
+.SH "DIAGNOSTICS"
+.sp
+Error messages are intended to be self\-explanatory.
+.SH "AUTHOR"
+.sp
+Christopher T. Johnson
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

@@ -1,0 +1,314 @@
+'\" t
+.\"     Title: step
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "STEP" "5" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+STEP \- ISO 10303 Standard for the Exchange of Product model data
+.SH "BACKGROUND"
+.sp
+In 1984, the International Organization for Standardization (ISO)
+began working to create a standard to allow for the electronic
+exchange of product data between computer\-based product life\-cycle
+systems.  This scope was intentionally much broader than just geometry
+information, and the resulting standard (ISO 10303: Industrial
+automation systems and integration \(em Product data representation and
+exchange) is extremely large.  Consequently, the standard is
+subdivided into \fIparts\fP, which are referred to individually as ISO
+10303\-xxx where xxx is the part number.  Because of the large scope,
+there is a numbering convention used to represent more focused
+sub\-scopes in order to make locating specific types of information
+simpler:
+.sp
+.it 1 an-trap
+.nr an-no-space-flag 1
+.nr an-break-flag 1
+.br
+.B Table 1. ISO 10303 Part Numbering Scopes
+.TS
+allbox tab(:);
+lt lt.
+T{
+.sp
+Series
+T}:T{
+.sp
+Scope Of Series
+T}
+T{
+.sp
+00x
+T}:T{
+.sp
+Overview, fundamental principles
+T}
+T{
+.sp
+01x
+T}:T{
+.sp
+Definitional resources
+T}
+T{
+.sp
+02x
+T}:T{
+.sp
+Implementation methods
+T}
+T{
+.sp
+03x
+T}:T{
+.sp
+Validation of translators for standard conformance
+T}
+T{
+.sp
+04x
+T}:T{
+.sp
+Integrated Generic Resources (basic building blocks)
+T}
+T{
+.sp
+1xx
+T}:T{
+.sp
+Integrated Application Resources (higher level than 04x)
+T}
+T{
+.sp
+2xx
+T}:T{
+.sp
+Application Protocols
+T}
+T{
+.sp
+5xx
+T}:T{
+.sp
+Application Interpreted Constructs \- reusable components of Application Protocols
+T}
+.TE
+.sp
+.sp
+The lowest level parts that define STEP in a practical sense are
+\c
+.URL "http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=38047" "ISO
+10303\-011" ,
+\c
+.URL "http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=33713" "ISO
+10303\-21" , and
+\c
+.URL "http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=25097" "
+ISO 10303\-022" .  10303\-011 defines the EXPRESS language, which is in
+turn the language in which application protocol schemas are written.
+10303\-21 defines a clear text encoding of the STEP exchange
+structure \- files using this schema are referred to as "STEP" or "Part
+21" files. 10303\-022 defines a Standard Data Access Interface (SDAI)
+which is used to automatically generate practical computer code from
+the EXPRESS schema protocol descriptions.  Collectively, these define
+the "container" aspects of the STEP file format and a method to access
+the information from the file.  (This is similar to using XML with a
+schema file to store information, and newer schemas are also available
+in an XML form in addition to EXPRESS.)
+.sp
+A number of
+\c
+.URL "https://en.wikipedia.org/wiki/List_of_STEP_%28ISO_10303%29_parts#AIC_\-_Application_interpreted_constructs" "other"
+low level parts and higher level Application Interpreted Constructs
+(AICs) form the foundation on which the more complete "high level"
+parts are defined.  This separation is performed mainly to allow
+maximal sharing and compatibility between different high level parts
+that need the same lower level foundations.
+.sp
+Within that context, the primary components of interest for practical
+data import and export are the Application Protocols (AP) that focus
+on shape models and assembly structure (among other things.)  The
+first such protocol was AP203 \- "Configuration\-controlled design". As
+experience using the standard in real world applications accumulated,
+new revisions and new application protocols were developed.  Today,
+the following protocols exist:
+.sp
+.it 1 an-trap
+.nr an-no-space-flag 1
+.nr an-break-flag 1
+.br
+.B Table 2. Application Protocols relating to Shape Modeling and Assembly Structure
+.TS
+allbox tab(:);
+lt lt lt.
+T{
+.sp
+Application Protocol
+T}:T{
+.sp
+Title
+T}:T{
+.sp
+Notes
+T}
+T{
+.sp
+AP203
+T}:T{
+.sp
+\c
+.URL "https://www.iso.org/standard/20597.html" "Configuration controlled 3D
+designs of mechanical parts and assemblies"
+T}:T{
+.sp
+Most recent version is 10303\-203:1994 with additions and corrections
+as follows: the original document was subsequently revised by one
+amendment \c
+.URL "https://www.iso.org/standard/34177.html" "10303\-203:1994/Amd
+1:2000 "  and three corrections:
+.URL "https://www.iso.org/standard/26904.html" "10303\-203:1994/Cor 1:1996 " ","
+.URL "https://www.iso.org/standard/30943.html" "10303\-203:1994/Cor 2:1998 " ","
+and \c
+.URL "https://www.iso.org/standard/40190.html" "10303\-203:1994/Cor 3:2004
+" . \c
+.URL "https://www.iso.org/standard/39522.html" "10303\-203:2005" " "
+is
+considered a revision to this standard.
+T}
+T{
+.sp
+AP203e2
+T}:T{
+.sp
+\c
+.URL "https://www.iso.org/standard/44305.html" "Configuration controlled 3D
+designs of mechanical parts and assemblies"
+T}:T{
+.sp
+Most recent version is 10303\-203:2011.  Revises
+.URL "https://www.iso.org/standard/39522.html" "10303\-203:2005" ","
+which is
+listed as a modular version that is harmonized with ISO
+10303\-214. \c
+.URL "https://www.iso.org/standard/57620.html" "10303\-242:2014" " "
+is
+considered a revision to this standard.
+T}
+T{
+.sp
+AP214
+T}:T{
+.sp
+\c
+.URL "https://www.iso.org/standard/43669.html" "Core data for automotive
+mechanical design processes"
+T}:T{
+.sp
+Most recent version is 10303\-214:2010 (a.k.a AP214e3). Two earlier
+versions exist:
+.URL "https://www.iso.org/standard/38727.html" "10303\-214:2003" " "
+and
+.URL "https://www.iso.org/standard/23643.html" "10303\-214:2001" "."
+.URL "https://www.iso.org/standard/57620.html" "10303\-242:2014"
+is considered a revision to this standard.
+T}
+T{
+.sp
+AP242
+T}:T{
+.sp
+\c
+.URL "https://www.iso.org/standard/57620.html" "Managed model\-based 3D
+engineering"
+T}:T{
+.sp
+Most recent version is 10303\-242:2014. This standard is intended to
+consolidate and replace AP203e2 and AP214. One correction has been
+published: \c
+.URL "https://www.iso.org/standard/72059.html" "10303\-242:2014/Cor
+1:2016" .
+T}
+.TE
+.sp
+.sp
+AP203e2 is sufficiently different from AP203 that practically speaking
+it merits being called out as its own distinct protocol, but in the
+nomenclature of the ISO standards it is still considered a revision to
+AP203.
+.sp
+These protocols are the portion of ISO 10303 that address the problem
+domain previously handled by the Initial Graphics Exchange
+Specification (\fBIGES\fP(5)).  In a computer aided
+design context where transfer of "STEP files" is being discussed,
+those files will most likely correspond to one of the previous
+protocols.
+.sp
+TODO \- Determine what MIM, AIM and AAM are and document them...
+.SH "SCHEMAS AND IMPLEMENTATION RESOURCES"
+.sp
+To obtain the latest schema files (which, unlike the ISO standards
+themselves, are freely available) check the
+.URL "http://stepmod.sourceforge.net/" "STEP Module Repository Project" " "
+\- in
+particular, the
+\c
+.URL "http://stepmod.cvs.sourceforge.net/viewvc/stepmod/stepmod/data/modules/" "modules"
+directory.
+.sp
+The standards define the structure of the schemas, but in general when
+it comes to the nuts and bolts of implementing a practical importer
+and exporter more resources are needed.  Below are links to some
+implementation resources:
+.sp
+PDES, Inc. Industry consortium
+\c
+.URL "http://www.oasis\-open.org/committees/download.php/11728/recprac8.pdf" "Recommended
+Practices for AP203" , April 1998
+.sp
+PDM Implementer Forum,
+\c
+.URL "http://www.cax\-if.org/documents/pdmug_release4_3.pdf" "Usage Guide for
+the STEP PDM Schema V1.2 Release 4.3" , January 2002.
+.sp
+CAx Implementer Forum Recommended Practices:
+.URL "https://www.cax\-if.org/joint_testing_info.html#recpracs" "" ""
+.SH "SEE ALSO"
+.sp
+Pratt, Michael J.; \c
+.URL "http://www.mel.nist.gov/msidlibrary/doc/jcise1.pdf" "
+Introduction to ISO 10303 \- the STEP Standard for Product Data
+Exchange" ; NIST; 2001.
+.SH "AUTHOR"
+.sp
+Clifford Yapp
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

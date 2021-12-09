@@ -1,0 +1,85 @@
+'\" t
+.\"     Title: voxelize
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "VOXELIZE" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+voxelize \- Takes as input a primitive or a collection of primitives ,old_obj, and creates a region new_obj which is the collection of voxels(RPPs) approximating the old_obj.
+.SH "SYNOPSIS"
+.sp
+\fBvoxelize\fP [[\-d] | {n}] [[\-s] | {"%s %s %s"}] [[\-t] | {f}] {\fInew_obj old_obj\fP} [\fIold_obj1 old_obj2 ...\fP]
+.SH "DESCRIPTION"
+.sp
+Takes as input a primitive or a collection of primitives , \fIold_obj\fP,
+and creates a region \fInew_obj\fP which is the collection of voxels(RPPs)
+approximating the \fIold_obj\fP. The \fI\-d\fP option specifies the level of
+detail(precision in approximation of volume) required. An argument of
+n means that n * n rays will be shot through each row, and an
+approximation of volume filled in each voxel region is reached
+averaging these n * n values. The \fI\-s\fP option lets the user specify
+the voxel size in each direction. The \fI\-t\fP option specifies the
+threshold volume to decide if voxel is to be included in the voxelized
+output. The threshold should always be a value between 0 and 1.
+.SH "EXAMPLES"
+.sp
+The following example shows the use of the \fBvoxelize\fP command to
+create a voxelized version of an existing object (\fIold_object\fP) and
+naming the output(\fInew_object\fP).
+.sp
+.B Example 1. Create a voxelized version of an existing primitive or collection.
+.br
+.RS 4
+.sp
+mged> \f(CRvoxelize \-d 2 \-s "0.5 0.5 0.5" \-t 0.3 newregion.r oldregion.r\fP
+.sp
+Creates a voxelized region corresponding to the original region
+\fIoldregion.r\fP.
+.sp
+The region \fInewregion.r\fP consists of the resulting voxels.
+.sp
+The \fI\-d 2\fP option means that on each voxel row, 2*2(=4) rays are
+uniformly shot over the area and an approximation of the volume is
+reached from the raytrace data of these four rays.
+.sp
+\fI\-s "0.5 0.5 0.5"\fP sets the size of the voxels as 0.5 units (user\(cqs
+choice of units) in each dimension.
+.sp
+\fI\-t 0.3\fP means that a voxel region is considered to be "filled" if the
+approximated volume of \fIoldregion.r\fP filling this voxel region is 30%
+of its total volume.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

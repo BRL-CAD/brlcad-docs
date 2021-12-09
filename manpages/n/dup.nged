@@ -1,0 +1,80 @@
+'\" t
+.\"     Title: dup
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "DUP" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+dup \- Checks the specified file (which is expected to contain a BRL\-CAD model) for names that are the same as those in the current model.
+.SH "SYNOPSIS"
+.sp
+\fBdup\fP {\fIfile\fP} [\fIprefix\fP]
+.SH "DESCRIPTION"
+.sp
+Checks the specified \fIfile\fP (which is expected to contain a \fIBRL\-CAD\fP
+model) for names that are the same as those in the current model. If a
+\fIprefix\fP is included on the command line, all names in the specified
+\fIfile\fP will have that \fIprefix\fP added to their names before comparison
+with the current model. This command is often used prior to invoking
+the \fBdbconcat\fP command to ensure that there are no name clashes.
+.SH "EXAMPLES"
+.sp
+The first example shows the use of the \fBdup\fP command to check for
+files having the same name as those in the current model. The second
+example shows how to prefix the file names in the other model before
+comparing them with the names of the current model files.
+.sp
+.B Example 1. Check for files having the same name as those in the current model.
+.br
+.RS 4
+.sp
+mged> \f(CRdup other_model.g\fP
+.sp
+Checks \fIother_model.g\fP for names duplicating those in the current
+model.
+.RE
+.sp
+\&.
+.sp
+.RS 4
+.sp
+mged> \f(CRdup other_model.g abc\fP
+.sp
+Does the same check as in the first example, but prefixes all the
+names in \fIother_model.g\fP with \fIabc\fP before comparing with the names in
+the current model.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

@@ -1,0 +1,61 @@
+'\" t
+.\"     Title: rpatch
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "RPATCH" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+rpatch \- convert FASTGEN ASCII databases into a format suitable for
+.SH "SYNOPSIS"
+.sp
+\fBrpatch\fP [\-D] [\-3] < \fIFASTGEN_FILE\fP > \fIOUTPUT_FILE\fP
+.SH "DESCRIPTION"
+.sp
+This program reformats FASTGEN files to a form usable by
+\fBpatch\-g\fP . The \fB\-D\fP option handles type 3 components as
+donuts rather than triangles. The \fB\-3\fP option reads FASTGEN3
+format files (coordinates are each 10 columns wide).
+.SH "EXAMPLE"
+.sp
+rpatch < \fIfastgen_file\fP > \fIfile.rpatch\fP
+.SH "DIAGNOSTICS"
+.sp
+The diagnostics are intended to be self\-explanatory.
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1), \fBmged\fP(1),
+\fBpatch\-g\fP(1)
+.SH "AUTHOR"
+.sp
+John R. Anderson
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

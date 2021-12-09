@@ -1,0 +1,136 @@
+'\" t
+.\"     Title: vdeck
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "VDECK" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+vdeck \- generate COM\-GEOM decks from a GED file
+.SH "SYNOPSIS"
+.sp
+\fBvdeck\fP \fIfile.vg\fP
+.SH "DESCRIPTION"
+.sp
+The \fBvdeck\fP tool converts a model into an ASCII text
+representation separating regions (combinations with the region flag
+set) and primitives (also known as solids) into separate files.  A
+list of objects to be converted are selected interactively from the
+table of contents. String matching operators (wild cards) like those
+used to specify file or directory names in \fBsh\fP(1)
+are provided for this purpose, as well as to search for names in the
+table of contents.
+.sp
+One or more COM\-GEOM decks can be output.  Each deck consists of three
+files: the solid, region, and region\-id tables.  These can be combined
+with \fBcat\fP(1).
+.sp
+A menu of the commands and their usage is available by typing \fI?\fP to
+the program.
+.SH "WARNING"
+.sp
+The \fBvdeck\fP tool is intended for v5 BRL\-CAD geometry databases
+only.  Files produced by older (v4 and earlier) versions of BRL\-CAD
+may be incompatible with \fBvdeck\fP .
+.SH "EXAMPLE"
+.sp
+In the following example, \fI<model>\fP is the name of the BRL\-CAD model
+and \fI<groupname>\fP is a group or region. \fIVdeck\fP converts all of the
+primitives and regions within the specified group into text and writes
+them out to files:
+.sp
+.if n .RS 4
+.nf
+> vdeck <model>.g
+command ( ? for menu ) >> i <groupname>
+command ( ? for menu ) >> d
+===================================================
+O U T P U T F I L E S
+solid table = "solids"
+region table = "regions"
+region identification table = "region_ids"
+command ( ? for menu ) >> q
+quitting...
+.fi
+.if n .RE
+.SH "FILES"
+.sp
+\fIsolids\fP
+.RS 4
+default solid table output
+.RE
+.sp
+\fIregions\fP
+.RS 4
+default region table output
+.RE
+.sp
+\fIregion_ids\fP
+.RS 4
+default region \f(CRID\fP table output
+.RE
+.sp
+\fI*.st\fP
+.RS 4
+unique solid table output
+.RE
+.sp
+\fI*.rt\fP
+.RS 4
+unique region table output
+.RE
+.sp
+\fI*.id\fP
+.RS 4
+unique region \f(CRID\fP table output
+.RE
+.sp
+\fI/tmp/dis???\fP
+.RS 4
+temporary file used during processing
+.RE
+.sp
+\fI/tmp/reg???\fP
+.RS 4
+temporary file used during processing
+.RE
+.SH "SEE ALSO"
+.sp
+\fBcat\fP(1),
+\fBgedplot\fP(1V),
+\fBmged\fP(1B)
+.SH "AUTHORS"
+.sp
+Gary S. Moss, BRL/VLD\-VMB
+.sp
+Keith Applin, BRL/VLD\-TAB
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

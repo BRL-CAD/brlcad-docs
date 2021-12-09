@@ -1,0 +1,65 @@
+'\" t
+.\"     Title: helpdevel
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "HELPDEVEL" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+helpdevel \- Returns a list of available developer commands along with a one\-line usage message for each. If a command is supplied as an argument, the one\-line usage message for that command is returned.
+.SH "SYNOPSIS"
+.sp
+\fBhelpdevel\fP [\fIcommand\fP]
+.SH "DESCRIPTION"
+.sp
+Returns a list of available \fIdeveloper\fP commands along with a one\-line
+usage message for each. If a command is supplied as an argument, the
+one\-line usage message for that command is returned. The \fBhelp,
+helplib, ?, ?devel,\fP and \fB?lib\fP commands provide additional
+information on available commands.
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBhelpdevel\fP command to display a
+one\-line usage message for a specified developer command.
+.sp
+.B Example 1. Display a one\-line usage message for a specified developer command.
+.br
+.RS 4
+.sp
+mged> \f(CRhelpdevel winset\fP
+.sp
+Displays a one\-line usage message for the \fBwinset\fP command.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

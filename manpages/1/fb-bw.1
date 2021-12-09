@@ -1,0 +1,77 @@
+'\" t
+.\"     Title: fb-bw
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "FB\-BW" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+fb\-bw \- save a framebuffer image in a black and white bw file
+.SH "SYNOPSIS"
+.sp
+\fBfb\-bw\fP [\-i] [\-F \fIframebuffer\fP] [\-X \fIscr_xoff\fP] [\-Y \fIscr_yoff\fP] [\-s \fIsquaresize\fP] [\-w \fIwidth\fP] [\-n \fIheight\fP] [\fIfile.bw\fP]
+.SH "DESCRIPTION"
+.sp
+\fBfb\-bw\fP will take a region of a framebuffer display and save it
+as a black and white \fBbw\fP(5) format file. The
+environment variable \f(CRFB_FILE\fP is used to select the display
+device (see \fBbrlcad\fP(1)). If this variable is
+not set, the default device for your system will be
+used. Alternatively, the framebuffer may be explicitly specified by
+using the \fB\-F\fP flag.
+.sp
+By default, the output file will be size 512x512 pixels. The \fB\-s\fP
+flag will set both the file height and width to be the given size,
+while \fB\-w\fP and \fB\-n\fP are used for setting them individually.
+.sp
+A first quadrant coordinate system is used (origin in lower left of
+screen), and the area saved is normally from this origin.  The
+\fB\-X\fP and \fB\-Y\fP flags can be used to move the origin to an
+offset position on the screen. The \fB\-i\fP flag switches to a fourth
+quadrant system, both in the storage order as well as the origin
+offset coordinates (i.e. origin is now the upper left corner of the
+screen).
+.sp
+An equal blending of red, green, and blue is done.  For more
+complicated black and white conversion use
+\fBfb\-pix\fP(1) and
+\fBpix\-bw\fP(1).
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1),
+\fBbw\-fb\fP(1),
+\fBfb\-pix\fP(1),
+\fBpix\-bw\fP(1), \fBbw\fP(5)
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

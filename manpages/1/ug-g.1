@@ -1,0 +1,86 @@
+'\" t
+.\"     Title: ug-g
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "UG\-G" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+ug\-g \- Unigraphics Translator (Unigraphics to BRL\-CAD)
+.SH "SYNOPSIS"
+.sp
+\fBug\-g\fP [\-d \fIlevel\fP] [\-i \fIstarting_ident_number\fP] [\-n \fIpart_no_to_part_name_mapping_file\fP] [\-t \fIsurface_tolerance\fP] [\-a \fIsurface_normal_tolerance\fP] [\-R \fIuse_refset_name\fP] [\-c \fImin_chamfer\fP] [\-r \fImin_round\fP] [\-f] [\-s] [\-u] \-o \fIdatabase.g\fP \fIpart_filename\fP [\fIsubpart1\fP \fIsubpart2\fP...]
+.SH "DESCRIPTION"
+.sp
+\fBug\-g\fP converts the specified \fIpart_filename\fP model to a BRL\-CAD
+\fIdatabase.g\fP file. The \fIpart_filename\fP is expected to be a Unigraphics
+part file. The \fB\-d\fP specifies a debug \fIlevel\fP. Currently this is
+either on or off for levels 0 or 1. The \fB\-i\fP option specifies a
+starting ident number for the conversion. Each part converted will be
+assigned an ident number, starting with the one specified. The
+\fB\-n\fP option provides a part number to name mapping file. This can
+be provided if the Unigraphics model uses part numbers instead of part
+names. If provided, the mapping file will be consulted for part names
+during the conversion, and the BRL\-CAD model will use the names rather
+than the part numbers. The \fB\-t\fP option specifies the surface
+error tolerance for tesellation (in mm). The \fB\-a\fP option
+specifies an surface normal tolerance for tesellation (in
+degrees). The \fB\-R\fP option specifies a Unigraphics reference set
+name. If supplied, only the specified reference set will be
+converted. The \fB\-c\fP option specifies a minimum chamfer
+dimension. Any chamfers with dimensions of this minimum or less will
+be ignored. The \fB\-r\fP option specifies a minimum round radius. Any
+rounds or blends with radii of curvature of this minimum or less will
+be ignored. The \fB\-f\fP option requests that no CSG conversion be
+attempted, so that all BRL\-CAD geometry will be Bot primitives. The
+\fB\-s\fP option requests that all features get listed rather than
+only those successfully converted to CSG. This option has no effect if
+the \fB\-f\fP option is specified. The \fB\-u\fP option requests
+surface normals to be extracted from the Unigraphics model and
+assigned to Bot primitives. The \fB\-o\fP option specifies a BRL\-CAD
+output file for the conversion. If a list of optional \fIsubparts\fP is
+specified on the command line, only those subparts of the Unigraphics
+\fIpart_filename\fP are converted.
+.sp
+Note that this converter requires the Unigraphics \fIugopen\fP
+module. This may be obtained from Unigraphics.
+.SH "EXAMPLE"
+.sp
+.if n .RS 4
+.nf
+$ ug\-g \-o sample.g sample.prt
+.fi
+.if n .RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

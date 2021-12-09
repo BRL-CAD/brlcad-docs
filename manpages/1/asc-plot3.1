@@ -1,0 +1,72 @@
+'\" t
+.\"     Title: asc-plot3
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "ASC\-PLOT3" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+asc\-plot3 \- produce Plot3 instructions from ASCII representation
+.SH "SYNOPSIS"
+.sp
+\fBasc\-plot3\fP [\fIfile.asc\fP [\fIunix_plot\fP]]
+.SH "DESCRIPTION"
+.sp
+Reads a stream of ASCII data representing Plot3 instructions and
+converts it to \fBplot3\fP(5)
+format. \fBasc\-plot3\fP reads from standard input and writes to
+standard output if file names are not supplied.
+.sp
+The input should consist of lines of the form
+.sp
+.if n .RS 4
+.nf
+c arg arg ...
+.fi
+.if n .RE
+.sp
+where \fIc\fP is one of the single\-character Plot3 command names, and it
+is followed by white\-space\-separated arguments of appropriate number
+and types for that command. Optional white space and lines beginning
+with the comment character \f(CR#\fP are ignored.
+.SH "SEE ALSO"
+.sp
+\fBplot3\-asc\fP(1),
+\fBplot3\-plot3\fP(1),
+\fBplot3rot\fP(1),
+\fBplot3\-fb\fP(1),
+\fBlibplot3\fP(3),
+\fBplot3\fP(5)
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

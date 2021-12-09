@@ -1,0 +1,101 @@
+'\" t
+.\"     Title: loop
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "LOOP" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+loop \- generate numerical indices for shell loops, etc.
+.SH "SYNOPSIS"
+.sp
+\fBloop\fP [\-c] \fIstart\fP \fIfinish\fP [\fIincrement\fP]
+.SH "DESCRIPTION"
+.sp
+\fBloop\fP generates a sequence of numbers between \fIstart\fP and
+\fIfinish\fP inclusive, one per line, on stdout. This is mostly useful for
+driving loops when writing Shell programs
+\fBsh\fP(1). The default increment is +1 when \fIstart\fP
+< \fIfinish\fP, and \-1 when \fIstart\fP > \fIfinish\fP. An optional \fIincrement\fP
+may be specified. If \fIincrement\fP is zero, then the \fIstart\fP value will
+be generated continuously.
+.sp
+Both floating point and integer arguments can be used.  On integer
+arguments, if leading zeros are specified, they will be preserved on
+output.  This is useful for generating sequences of file names which
+are numbered with leading zeros.
+.sp
+\fB\-c\fP is used for character (char) looping.
+.SH "EXAMPLES"
+.sp
+.if n .RS 4
+.nf
+for i in `loop 10 30 5`
+do
+  echo $i
+done
+.fi
+.if n .RE
+.sp
+will display the values 10, 15, 20, 25, 30 .
+.sp
+.if n .RS 4
+.nf
+for i in `loop 008 005`
+do
+  echo $i
+done
+.fi
+.if n .RE
+.sp
+will display the values 008, 007, 006, 005 .
+.sp
+.if n .RS 4
+.nf
+for i in `loop 0.1 2.9 0.5`
+do
+  echo $i
+done
+.fi
+.if n .RE
+.sp
+will display the values 0.1, 0.6, 1.1, 1.6, 2.1, 2.6 .
+.SH "BUGS"
+.sp
+This program just scratches the surface. The shells could benefit from
+a greater ability to perform math. Limitless opportunities for
+extensions exist, but this simple version is adequate for most shell
+scripts dealing with sequences of images, etc.
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

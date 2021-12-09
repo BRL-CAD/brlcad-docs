@@ -1,0 +1,129 @@
+'\" t
+.\"     Title: g2asc
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "G2ASC" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+g2asc \- convert a BRL\-CAD mged geometry database from binary to ASCII form.
+.SH "SYNOPSIS"
+.sp
+\fBg2asc\fP \fIinput.g\fP \fIoutput.asc\fP
+.SH "DESCRIPTION"
+.sp
+\fBg2asc\fP is a utility provided by BRL\-CAD used to convert
+\fBmged(1)\fP geometry databases in binary format to ASCII form to be
+later converted back by \fBasc2g(1)\fP. Databases in the new format
+will be converted to the new (Tcl script) ASCII format and databases
+in the old format will be converted to the old ASCII format (see
+\fIHISTORY\fP).
+.sp
+The local machine binary representation of a mged database is
+inherently non\-portable. \fBg2asc\fP and its converse,
+\fBasc2g\fP , are simple filters which convert between the binary
+form and an ASCII representation.
+.sp
+This was traditionally performed so the files could be transferred to
+another machine in a portable format.  Although no longer necessary
+for the current binary geometry database files that are created by
+mged ("v5" format), the conversion process is still necessary if
+manipulating older ("v4" format) geometry database files.
+.SH "EXAMPLE"
+.sp
+.if n .RS 4
+.nf
+g2asc file.g file.asc
+.fi
+.if n .RE
+.sp
+On the local machine, convert the mged databases to ASCII using \fBg2asc\fP.
+.sp
+.if n .RS 4
+.nf
+scp file.asc remote:file.asc
+.fi
+.if n .RE
+.sp
+Transfer the converted databases to the remote machine.
+.sp
+.if n .RS 4
+.nf
+ssh remote "asc2g file.asc file.g"
+.fi
+.if n .RE
+.sp
+On the remote machine, convert the files back to the binary
+representation for that machine using \fBasc2g\fP.
+.SH "OPTIONS"
+.sp
+\fBg2asc\fP does not take any options. However, you have to supply
+the input and output files.
+.SH "FILES"
+.sp
+\fIinput.g\fP is a geometry database previously created using
+\fBmged\fP and \fIoutput.asc\fP is the name of the file in which the
+ASCII representation should be stored.
+.SH "SEE ALSO"
+.sp
+\fBasc2g\fP(1),
+\fBbrlcad\fP(1), \fBmged\fP(1)
+.SH "DIAGNOSTICS"
+.sp
+The diagnostics are intended to be self\-explanatory. Any warning
+messages are written to standard error.
+.SH "BUGS"
+.sp
+Reports of bugs or problems should be submitted via e\-mail to
+\fI\c
+.MTO "devs\(atbrlcad.org" "" "\fP."
+.SH "HISTORY"
+.sp
+Release 6.0 introduced a new ASCII format. This format is simply a Tcl
+script that, when executed by a simplified geometry command
+interpreter (in essence, a properly empowered Tcl interpreter),
+rebuilds the database from which it was derived.
+.sp
+In contrast, the old ASCII format consisted of a sequence of one\-line
+records that corresponded to the old database format records.
+.SH "AUTHORS"
+.sp
+\fIBRL\-CAD Team\fP
+.SH "DISCLAIMER"
+.sp
+The ASCII representation of BRL\-CAD geometry databases is not a fixed
+format and is allowed to change without deprecation notice. In
+general, this will not occur any more frequently than the binary
+geometry database format changes, though both are open
+specifications. Regardless, the ASCII representation is subject to
+change without notice and should not be relied upon by external
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

@@ -1,0 +1,64 @@
+'\" t
+.\"     Title: rcc-tor
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "RCC\-TOR" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+rcc\-tor \- Used to round the edges of the specified RCC by creating a torus based on the parameters of that RCC.
+.SH "SYNOPSIS"
+.sp
+\fBrcc\-tor\fP {\fIrccname newname\fP}
+.SH "DESCRIPTION"
+.sp
+Used to round the edges of the specified RCC by creating a torus based
+on the parameters of that RCC. The radius values of the RCC must be
+greater than half its height.
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBrcc\-tor\fP command to round the
+edges of an RCC by creating a torus shape based on the parameters of
+that RCC.
+.sp
+.B Example 1. Round the edges of an RCC.
+.br
+.RS 4
+.sp
+mged> \f(CRrcc\-tor rcc.s tor.s\fP
+.sp
+Creates a TOR shape named \fItor.s\fP using the parameters of \fIrcc.s\fP.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

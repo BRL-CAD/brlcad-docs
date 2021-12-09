@@ -1,0 +1,70 @@
+'\" t
+.\"     Title: g-voxel
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "G\-VOXEL" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+g\-voxel \- generates a list of voxels from a BRL\-CAD database
+.SH "SYNOPSIS"
+.sp
+\fBg\-voxel\fP [\-s "\fIdx\fP \fIdy\fP \fIdz\fP"] [\-d \fIn\fP] [\-t \fIf\fP] \fImodel.g\fP \fIobjects\fP...
+.SH "DESCRIPTION"
+.sp
+The \fBg\-voxel\fP command generates a list of voxels from a .g file
+(BRL\-CAD database) and writes them to a voxels.txt file.
+.sp
+The command takes two compulsory arguments: a BRL\-CAD database and at
+least one geometry object (though there can be as many of the latter
+as you like).
+.SH "OPTIONS"
+.sp
+\fB\-s "dx dy dz"\fP
+.RS 4
+The voxel\(cqs size in the x, y and z axes.
+.RE
+.sp
+\fB\-d n\fP
+.RS 4
+The level of detail used (influences the number of rays
+used).
+.RE
+.sp
+\fB\-t f\fP
+.RS 4
+The threshold upon which the voxel is considered.
+.RE
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team

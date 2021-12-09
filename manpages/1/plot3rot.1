@@ -1,0 +1,145 @@
+'\" t
+.\"     Title: plot3rot
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "PLOT3ROT" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+plot3rot \- rotate, translate, or scale a UnixPlot file
+.SH "SYNOPSIS"
+.sp
+\fBplot3rot\fP [\-x# \-y# \-z#] [\-X# \-Y# \-Z#] [\-s#] [\-a# \-e#] [\-g#] [\-M] [\-m#] [\-v] [\-S#] < \fIunix_plot\fP > \fIunix_plot\fP
+.SH "DESCRIPTION"
+.sp
+\fBplot3rot\fP will rotate translate or scale a UnixPlot file (see
+\fBplot3\fP(5)). Any number of the above options
+can be given. Each operation is performed left to right in the order
+in which they appear on the command line, and the operations are
+concatenated. It is important to note that rotations are not
+commutative, so the order they are specified in is important. Typing
+the command without any arguments gives a useful summary.
+.sp
+The lower case \fB\-x# \-y# \-z#\fP flags perform a rotation about the
+X, Y, and Z axes respectively by the given number of degrees.  A
+positive value indicates a right handed rotation.  Upper case
+\fB\-X# \-Y# \-Z#\fP are translations along these axes in whatever units
+the plot file is in. The \fB\-s#\fP flag applies a scale factor up (>
+1) or down (< 1) to the plot.
+.sp
+The \fB\-a# \-e#\fP flags are for azimuth and elevation about the
+center point. They are really shorthands for positive Z axis and
+negative X axis rotations respectively, and should be used in the
+order shown for the proper combined effect to occur.  These flags also
+cause the plot to auto\-center based on the "space" command in the plot
+file, and the new "space" command will be shrunk to fit the rotated
+plot as tightly as possible.
+.sp
+The \fB\-M\fP flag causes the plot to auto\-center based on the "space"
+command in the plot file in much the same way that the
+\fBrt\fP(1) ray tracer does to a model bounding box.
+I.e. a sphere is fit to this space and the diameter and center of this
+sphere are used as the center and width of the plot in all three
+dimensions.  This has the advantage of keeping the entire model in
+view from any angle, and is invariant with respect to viewing
+direction. It has the disadvantage that the "space" will be enlarged
+on every cascaded pass through \fBplot3rot\fP(1)
+where the \fB\-M\fP flag is used.
+.sp
+The \fB\-S#\fP flag takes a quoted string of 6 floating point numbers
+("min_x min_y min_z max_x max_y max_z"), which are immediately output
+as a "space" command, and which override any spaces specified by
+"space" commands found in the input file, as well as any spaces which
+are computed by translating, rotating, or scaling from those input
+spaces as directed by other flags.
+.sp
+The \fB\-v\fP flag signals that verbose mode is requested. When set,
+the initial transformation matrix is printed. In addition, every time
+a \fIspace\fP command is encountered in the input file, the old and new
+bounding RPP is printed.
+.sp
+The \fB\-m#\fP flag takes a quoted string of 16 floating point numbers
+as its parameter. This string is a 4x4 rotation matrix (see h/vmath.h
+for details). Note that when using this flag, do not use \fB\-a#,
+\-e#,\fP or \fB\-g.\fP
+.sp
+UnixPlot is traditionally a first quadrant 2D plotting space with X
+increasing to the right of the plot, and Y increasing up the plot. The
+"front" of a solid model in the BRL\-CAD Package is traditionally
+defined by the right handed system of X coming out of the screen
+toward you, Y increasing to the right, and Z increasing up the display
+(elevation above the XY ground plane).  The \fB\-g\fP flag is a
+convenient shorthand to transform azimuths and elevations described in
+\fIgift\fP notation (as degrees off the front or \-X view) into the
+UnixPlot coordinate system for display. If used, this option should
+usually appear as the last argument, because it acts by modifying the
+rotation already established. The \fB\-g\fP command has exactly the
+same effect as giving \fB\-z\-90 \-x\-90\fP in the same place.
+.SH "EXAMPLES"
+.sp
+The command
+.sp
+.if n .RS 4
+.nf
+plot3rot \-z30 \-x20 < file.plot3 > file2.plot3
+.fi
+.if n .RE
+.sp
+performs a 30 degree positive rotation about the Z axis (counter
+clockwise as viewed from the top), and then translates by 20 units
+\fIalong this rotated axis\fP. If the order of these arguments was
+reversed the effect would not be the same.
+.sp
+To view a plot of a model the way one would see it from a ray trace
+command, you could use:
+.sp
+.if n .RS 4
+.nf
+rthide \-a35 \-e25 \-o file.plot3
+
+plot3rot \-a35 \-e25 \-g < file.plot3 | plot3\-fb
+.fi
+.if n .RE
+.sp
+The final \fB\-g\fP converts the \fIgift\fP style azimuth and elevations
+into the conventional UnixPlot (screen) X,Y coordinate system.
+.SH "SEE ALSO"
+.sp
+\fBplot3\-plot3\fP(1),
+\fBplot3debug\fP(1),
+\fBplot3\-fb\fP(1),
+\fBlibplot3\fP(3),
+\fBplot3\fP(5)
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

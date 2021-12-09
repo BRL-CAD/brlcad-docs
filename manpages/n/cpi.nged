@@ -1,0 +1,70 @@
+'\" t
+.\"     Title: cpi
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "CPI" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+cpi \- Copies old_tgc(an existing TGC shape) to a new TGC shape (new_tgc), positions the new TGC such that its base vertex is coincident with the center of the top of old_tgc, and puts mged into the primitive edit state with new_tgc selected for editing.
+.SH "SYNOPSIS"
+.sp
+\fBcpi\fP {\fIold_tgc new_tgc\fP}
+.SH "DESCRIPTION"
+.sp
+Copies \fIold_tgc\fP(an existing TGC shape) to a new TGC shape
+(\fInew_tgc\fP), positions the new TGC such that its base vertex is
+coincident with the center of the top of \fIold_tgc\fP, and puts \fImged\fP
+into the primitive edit state with \fInew_tgc\fP selected for editing.
+This command was typically used in creating models of wiring or piping
+runs; however, a pipe primitive has since been added to \fIBRL\-CAD\fP to
+handle such requirements.
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBcpi\fP command to copy an
+existing TGC shape to a new TGC shape and position the new shape with
+its base vertex coincident with the center of the top of the existing
+shape.
+.sp
+.B Example 1. Copy an existing TGC shape to a new TGC shape.
+.br
+.RS 4
+.sp
+mged> \f(CRcpi tgc_a tgc_b\fP
+.sp
+Copies \fItgc_a\fP to \fItgc_b\fP and translates \fItgc_b\fP to the end of
+\fItgc_a\fP.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

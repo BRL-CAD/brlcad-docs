@@ -1,0 +1,114 @@
+'\" t
+.\"     Title: fast4-g
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "FAST4\-G" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+fast4\-g \- FASTGEN4 Translator (FASTGEN4 to BRL\-CAD)
+.SH "SYNOPSIS"
+.sp
+\fBfast4\-g\fP [\-dwq] [\-o \fIplot_file\fP] [\-m \fImuves_warnings\fP] [\-c \fIid_list\fP] [\-x \fIRT_DEBUG_FLAG\fP] [\-b \fIBU_DEBUG_FLAG\fP] \fIfile.fastgen4\fP \fIfile.g\fP
+.SH "DESCRIPTION"
+.sp
+\fBfast4\-g\fP converts the specified \fIfile.fastgen4\fP to a BRL\-CAD
+\fIfile.g\fP file.
+.sp
+The \fB\-d\fP option prints debugging information and the \fB\-w\fP
+option prints warnings whenever an object is assigned a default name
+(no name specified in the FASTGEN4 file).
+.sp
+The \fB\-q\fP option requests quiet mode, so that nothing will be
+printed except errors.
+.sp
+The \fB\-b\fP option specifies a value for a debug flag for libbu and
+the \fB\-x\fP option specifies a value for the librt debug flag.
+.sp
+The \fB\-o\fP option indicates that all CTRI and CQUAD elements that
+get processed should be output to the specified plot_file in libplot3
+format.  This plot file can be viewed in MGED using the \fIoverlay\fP
+command.
+.sp
+The \fB\-m\fP option requests that information about any CHGCOMP and
+CBACKING elements be output in the specified \fImuves_warnings\fP file.
+.sp
+The \fB\-c\fP option allows the user to specify a restricted set of
+components to process from the input file. The \fIid_list\fP may be a
+comma\-separated list of ident numbers and ranges. For example,
+\fB\-c 3002,5678,9213,1002\-1100\fP will convert only the regions with
+idents of 3002,5678,9213, and everything from 1002 through 1100.
+.sp
+If you have a FASTGEN2 or FASTGEN3 format file, they can be converted
+by processing them with \fBrpatch\fP and then providing the resulting
+rpatch file to the \fBpatch\-g\fP converter.  See their respective
+manual pages for more information.
+.sp
+The \fIfile.fastgen4\fP file is expected to be in the FASTGEN 4.1 format
+as defined in the FASTGEN 4.1 User Manual.
+.sp
+\fICCONE1\fP, \fICCONE2\fP, and \fICCONE3\fP elements are converted to BRL\-CAD
+truncated right cylinders (\fITRC\fP). \fICHEX2\fP elements are converted to
+BRL\-CAD arbitrary convex polyhedrons (\fIARB8\fP). \fICLINE\fP elements are
+converted to BRL\-CAD cline solids. \fICQUAD\fP, \fICTRI\fP, and \fICHEX1\fP
+elements are converted to faces of a BRL\-CAD BOT (Bag Of
+Triangles). \fICSPHERE\fP elements are converted to BRL\-CAD sphere (\fISPH\fP)
+solids. BRL\-CAD region ident numbers are assigned by combining the
+FASTGEN4 group and component numbers:
+.sp
+.if n .RS 4
+.nf
+ident = group x 1000 + component
+.fi
+.if n .RE
+.sp
+and object names are assigned from the FASTGEN4 \fI$NAME\fP elements using
+an algorithm to create unique BRL\-CAD names.
+.SH "EXAMPLE"
+.sp
+.if n .RS 4
+.nf
+$ fast4\-g sample.fastgen4 sample.g
+.fi
+.if n .RE
+.SH "SEE ALSO"
+.sp
+\fBrpatch\fP(1),
+\fBpatch\-g\fP(1) \fIFASTGEN 4.1 User\(cqs Manual\fP,
+XRESV Tech Note 94\-01, Hugh Griffis and Maty Lentz, April 1994
+.SH "DIAGNOSTICS"
+.sp
+Error messages are intended to be self\-explanatory.
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

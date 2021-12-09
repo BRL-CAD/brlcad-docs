@@ -1,0 +1,88 @@
+'\" t
+.\"     Title: g-step
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "G\-STEP" "1" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+g\-step \- STEP Translator/Exporter (BRL\-CAD to STEP AP203)
+.SH "SYNOPSIS"
+.sp
+\fBg\-step\fP \-o \fIoutput_file.stp\fP \fIdatabase.g\fP [\fIobject(s)\fP]
+.SH "DESCRIPTION"
+.sp
+\fBg\-step\fP converts the specified objects of the BRL\-CAD database,
+\fIdatabase.g\fP, to a STEP AP203 file, \fIoutput_file.stp\fP.
+.sp
+The following options are recognized.
+.sp
+\fB\-o\fP \fIoutput_file_or_directory\fP
+.RS 4
+Specifies the output file to which
+the STEP output is written.
+.RE
+.sp
+There are some inherent limits when writing BRL\-CAD geometry to the
+AP203 format.  The primary solid object representation used by STEP is
+the NURBS Boundary Representation, and BRL\-CAD\(cqs CSG models must be
+converted to that representation upon export.  Boolean operations are
+not supported in AP203, so the objects are either to write out all
+objects and post\-process them in another system to get the final forms
+or have BRL\-CAD itself perform the boolean evaluation at the region
+level.  The latter will eventually be the default, but for the moment
+that feature is not yet ready for general deployment.
+.SH "EXAMPLES"
+.sp
+.B Example 1. Export All .g File Contents
+.br
+.RS 4
+.sp
+\f(CRg\-step \-o m35.stp m35.g\fP
+.sp
+Writes out the full hierarchy of the .g file to m35.stp .
+.RE
+.sp
+.B Example 2. Export Parts of a .g File
+.br
+.RS 4
+.sp
+\f(CRg\-step \-o m35.stp m35.g cab suspension\fP
+.sp
+Writes out the hierarchies associated with the combs cab and
+suspension, along with all combs and solids needed to define those
+hierarchies.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

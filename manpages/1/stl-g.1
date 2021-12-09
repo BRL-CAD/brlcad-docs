@@ -1,0 +1,75 @@
+'\" t
+.\"     Title: stl-g
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "STL\-G" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+stl\-g \- Stereolithography Translator (STL to BRL\-CAD)
+.SH "SYNOPSIS"
+.sp
+\fBstl\-g\fP [\-db] [\-i \fIinitial_ident\fP] [\-I \fIconstant_ident\fP] [\-m \fImaterial_code\fP] [\-N \fIforced_name\fP] [\-c \fIunits\fP] [\-t \fItolerance\fP] [\-x \fIRT_DEBUG_FLAG\fP] \fIfile.stl\fP \fIfile.g\fP
+.SH "DESCRIPTION"
+.sp
+\fBstl\-g\fP converts the specified \fIfile.stl\fP to a BRL\-CAD \fIfile.g\fP
+file. Use the \fB\-b\fP option if you have a binary STL file (the
+default is ASCII). The \fB\-d\fP option prints debugging
+information. The \fB\-c\fP option specifies the units that are used in
+the STL file. The \fIunits\fP string may be "mm", "in", "ft", ... (default
+is "mm"). The \fB\-t\fP option specifies a tolerance distance (in mm)
+such that any two vertices within tolerance distance of each other are
+treated as the same vertex. The \fB\-i\fP option sets the starting
+ident number for the regions created. As each new region is created,
+this number will be incremented before assigning the next ident number
+(conflicts with \fB\-I\fP ). The \fB\-I\fP option sets a constant
+ident number that will be assigned to all the regions created
+(conflicts with \fB\-i\fP ). The \fB\-m\fP option sets a material code
+that will be assigned to all the regions created (default is 1). The
+\fB\-N\fP option sets a name for the resulting BRL\-CAD object. STL
+files typically do not contain any object names. The \fB\-x\fP option
+sets an RT debug flag (see raytrace.h). The \fIfile.stl\fP file is
+expected to be a stereolithography file.
+.SH "EXAMPLE"
+.sp
+.if n .RS 4
+.nf
+$ stl\-g sample.stl sample.g
+.fi
+.if n .RE
+.SH "DIAGNOSTICS"
+.sp
+Error messages are intended to be self\-explanatory.
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

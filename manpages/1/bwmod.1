@@ -1,0 +1,128 @@
+'\" t
+.\"     Title: bwmod
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "BWMOD" "1" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+bwmod \- arithmetically modify pixel values in black and white bw file
+.SH "SYNOPSIS"
+.sp
+\fBbwmod\fP [\-c] [\-a \fIadd\fP \-s \fIsub\fP \-m \fImult\fP \-d \fIdiv\fP \-A \-e \fIexp\fP \-r \fIroot\fP \-S \fIshift\fP \-M \fIand\fP \-O \fIor\fP \-X \fIxor\fP \-R \-t] \fIfile.bw\fP > \fIfile2.bw\fP
+.SH "DESCRIPTION"
+.sp
+\fBbwmod\fP will perform a series of arithmetic operations on each
+8\-bit pixel of its input/output stream.  This is a
+\fBbw\fP(5) file format. The pixel values range from 0
+to 255 and are internally operated on in floating point form (unless
+the \fB\-c\fP option has been specified) so that dynamic range,
+truncation, and sign are not a problem.  On output they are converted
+back to 8\-bit unsigned values, with clipping to 0 and 255 for values
+less than 0 and greater than 255.  If any pixels are clipped, the
+numbers of pixels clipped, low and high, are reported to standard
+error on completion.
+.sp
+If the \fB\-c\fP option is specified, then intermediate results are
+stored as signed characters, though the command line arguments remain
+in floating point format. This is useful when one wishes to take
+advantage of wrap\-around characteristics of binary mathematics.
+.sp
+Any number of operations can be given and they are applied in
+order. The choices are: \fB\-a\fP \fIval\fP to add a value. \fB\-s\fP
+\fIval\fP to subtract a value. \fB\-m\fP \fIval\fP to multiply by a
+value. \fB\-d\fP \fIval\fP to divide by a value. \fB\-A\fP to take
+absolute value. \fB\-e\fP \fIval\fP to exponentiate, i.e. raise to
+the power \fIval\fP. \fB\-r\fP \fIval\fP to take the \fIval\fPth
+root. \fB\-S\fP \fIval\fP to shift by \fIval\fP bits. If \fIval\fP is
+positive, this uses C\-language "^<<" operator, doing left\-shift; if
+\fIval\fP is negative, this uses C\-language ">>" operator, doing
+right\-shift by \-\fIval\fP bits.  This is a bitwise operation, and if it
+is about to be used, both the pixel value and \fIval\fP are truncated
+to integer. Unless \fB\-c\fP is in effect, the resulting new value
+will again be placed in floating\-point.  (So it\(cqs "user beware" if
+this option is applied to a non\-integer value.)  \fB\-M\fP \fIval\fP
+to do "and" operation with \fIval\fP.  See \fB\-S\fP for "user beware"
+about bitwise operation. \fB\-O\fP \fIval\fP to do (inclusive) "or"
+operation with \fIval\fP.  See \fB\-S\fP for "user beware" about bitwise
+operation. \fB\-X\fP \fIval\fP to do "exclusive or" operation with
+\fIval\fP.  See \fB\-S\fP for "user beware" about bitwise
+operation. \fB\-R\fP to do rounding to the nearest integer. \fB\-t\fP
+to do truncation to integer; notice the automatic use of truncation
+for the bitwise options (\fB\-S\fP, \fB\-M\fP, \fB\-O\fP, and
+\fB\-X\fP).
+.sp
+All arguments can be floating point values.  Note that this command
+can be applied to color \fBpix\fP(5) files also, but
+no distinction can be made between color planes.
+.SH "EXAMPLES"
+.sp
+The command \fBbwmod \-m\-1 \-a255 < file.bw > file2.bw\fP
+.sp
+will produce the negative of a file by first multiplying by minus one,
+and then adding 255 to shift the pixels back into the 0\(->255
+range. (I.e., replace each pixel value by 255 minus that value.)
+.sp
+One can apply a gamma factor to a file as follows: \fBbwmod \-d255
+\-r2.2 \-m255 < file.bw > file2.bw\fP
+.sp
+which will first normalize the pixel values (i.e., put them into 0\(->1,
+noting the internal use of floating point), then take the 2.2 root of
+each value, and finally scale the pixel values back to 0\(->255. [Note
+however that applying gammas this way is not recommended since a
+function call per pixel results!]
+.sp
+Suppose you ran \fBbwstat\fP on a file and found min=80, max=210,
+mean=100. If you wish to expand the range of intensities, while still
+preserving the mean, this can be done by: \fBbwmod \-s100 \-m1.409
+\-a100 < file.bw > file2.bw\fP
+.sp
+where 1.409 results from (255.0\-100.0)/(210.0\-100.0), which is what
+one would use to boost the max value (210) to full scale (255) after
+subtracting the mean (100).  Subtracting and adding 100 makes the
+multiply occur "about that point"; i.e., values less than 100 get
+smaller, and those above get higher.  A \fIfile.bw\fP for this
+example can be created with these three command lines:
+.sp
+\fBgencolor \-r 11 80 >file.bw\fP
+.br
+\fBgencolor \-r 262131 100 >>file.bw\fP
+.br
+\fBgencolor \-r 2 210 >>file.bw\fP
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1), \fBpix\fP(5),
+\fBbw\fP(5)
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

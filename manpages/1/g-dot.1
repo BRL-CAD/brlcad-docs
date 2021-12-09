@@ -1,0 +1,64 @@
+'\" t
+.\"     Title: g-dot
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "G\-DOT" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+g\-dot \- BRL\-CAD to DOT language converter
+.SH "SYNOPSIS"
+.sp
+\fBg\-dot\fP [\-o \fIoutput.dot\fP] \fIdatabase.g\fP \fIobject(s)\fP
+.SH "DESCRIPTION"
+.sp
+\fBg\-dot\fP converts the specified \fIobject(s)\fP from a BRL\-CAD
+\fIdatabase.g\fP file to the \fIDOT\fP language format. The \fB\-o\fP option
+specifies an output .dot file (writes to stdout by default).
+.sp
+The DOT language format is a plain text format for describing
+graphs. Programs like Graphviz, Tulip, OmniGraffle, and others can
+render .dot files (such as those produced by \fBg\-dot\fP) as images.
+.SH "EXAMPLE"
+.sp
+.if n .RS 4
+.nf
+$ g\-dot \-o sample.dot sample.g sample_object
+.fi
+.if n .RE
+.SH "DIAGNOSTICS"
+.sp
+Error messages are intended to be self\-explanatory.
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

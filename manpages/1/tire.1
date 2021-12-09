@@ -1,0 +1,179 @@
+'\" t
+.\"     Title: tire
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "TIRE" "1" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+tire \- Generate a tire model, given standard tire dimensional information
+.SH "SYNOPSIS"
+.sp
+\fBtire\fP [\fIoptions ...\fP]... [\fIname\fP]
+.SH "DESCRIPTION"
+.sp
+\fBtire\fP creates a curved sidewall tire in either the current open
+database (when run from within MGED) or in \fItire.g\fP when run from the
+command line.  If no dimensions are supplied defaults are used.  The
+default is to \fInot\fP model tread (due to performance issues), but tread
+modeling is implemented and available as a user option with the
+\fB\-p\fP flag and the \fB\-t\fP flag.
+.sp
+\fB\-a #\fP instructs \fBtire\fP to automatically add dimensional
+information to the toplevel object name used in the generated BRL\-CAD
+database tree.  Works with the \fB\-n\fP option or as stand\-alone.
+Output format uses \(aq\-\(aq instead of \(aq/\(aq because the latter has
+significance in BRL\-CAD object trees.
+.SH "OPTIONS"
+.sp
+\fB\-c count\fP
+.RS 4
+sets the number of tread \fIpatterns\fP used when adding
+tread to a tire.  A tread pattern is the repeated shape or combination
+of shapes used in tire tread definitions.
+.RE
+.sp
+\fB\-d width/ratio/wheeldiam #\fP
+.RS 4
+This option accepts tire dimensions in
+the form of width of the tire (in mm), ratio of sidewall height to
+tire width, and the diameter of the wheel the tire is designed to fit
+over (in inches).  This is a fairly standard method for specifying
+automotive tire dimensions, and BRL\-CAD can use these dimensions to
+create a model with approximately those dimensions.  The \(aq/\(aq character
+will work but other options are also allowed provided they don\(cqt have
+numeric significance \- for example the common notation
+width/ratioRwheeldiam will work as\-is.
+.RE
+.sp
+\fB\-W width #\fP
+.RS 4
+Specify the maximum sidewall width of the tire in mm.
+This option overrides the \-d option if used together, or the default
+if used alone.  Can be used with the \-R and \-D flags.  Unlike the \-d
+flag, this flag allows floating point input \- use this flag if you
+need to specify width more precisely than 1mm.
+.RE
+.sp
+\fB\-R ratio #\fP
+.RS 4
+Specify the ratio of the sidewall height to the maximum
+tire width.  This option overrides the \-d option if used together, or
+the default if used alone.  Can be used with the \-W and \-D flags.
+Unlike the \-d flag, allows floating point input for more precise
+definition of ratio.
+.RE
+.sp
+\fB\-D rim diameter #\fP
+.RS 4
+Specify the diameter of the rim (a.k.a. the
+steel wheel) in inches. This option overrides the \-d option if used
+together, or the default if used alone.  Can be used with the \-W and
+\-R flags.  Unlike the \-d flag, allows floating point input for more
+precise definition of rim diameter.
+.RE
+.sp
+\fB\-g depth #\fP
+.RS 4
+Specify the tread depth in 32nds of an inch.  So, for
+example, \-g 13 would create a tread depth of 13/32in.
+.RE
+.sp
+\fB\-j width #\fP
+.RS 4
+Specify the rim width in inches.
+.RE
+.sp
+\fB\-n name #\fP
+.RS 4
+allows the user to specify a name other than \(aqtire\(aq for
+the root name of the toplevel database object.  Works with the \fI\-a\fP
+option or as stand\-alone.
+.RE
+.sp
+\fB\-p type#\fP
+.RS 4
+Select tread pattern to model.  Note: tread modeling can
+SIGNIFICANTLY lengthen raytracing times, depending on the tread.
+.RE
+.sp
+\fB\-s radius#\fP
+.RS 4
+Set the radius from the tire center of the maximum
+width point on the sidewall.
+.RE
+.sp
+\fB\-t type#\fP
+.RS 4
+Select tread shape to model.  Note: tread modeling can
+SIGNIFICANTLY lengthen raytracing times, depending on the tread.
+.RE
+.sp
+\fB\-u thickness#\fP
+.RS 4
+Specify tire thickness in mm.
+.RE
+.sp
+\fB\-w #\fP
+.RS 4
+Specify wheel/rim type.  If 0, include no wheel.  As of
+7.12.6 only one wheel type is included by default.
+.RE
+.SH "EXAMPLE"
+.sp
+The following will create a tire with width=185mm, ratio=65mm, and
+wheel diameter = 15in.  The \fB\-t\fP flag will instruct the procedure
+to model using tread type one, the \fB\-n\fP flag will set the root
+name to \(aqautowheel\(aq instead of tire, and the \fB\-a\fP flag will
+append \(aq\-185\-65R15\(aq to \(aqautowheel\(aq to create the final toplevel name
+\(aqautowheel\-185\-65R15\(aq in the database rather than \(aqtire\(aq.
+.sp
+.B Example 1. Creating a 185/65R15 tire with wheel
+.br
+.RS 4
+.sp
+\f(CRtire \-d 185/65R15 \-t 1 \-a \-n autowheel\fP
+.RE
+.SH "DIAGNOSTICS"
+.sp
+Not much error checking yet \- need to add.
+.SH "AUTHOR"
+.sp
+Clifford Yapp
+.SH "BUGS"
+.sp
+There is a known problem where specifying very thin tires with a large
+inner wheel will cause incorrect geometry to be produced \- this has to
+do with how the elliptical torus primitive is handled.  Other extreme
+cases such as extremely thin tire walls would also be expected to
+cause problems.
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

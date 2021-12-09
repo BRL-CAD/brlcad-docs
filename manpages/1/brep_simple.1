@@ -1,0 +1,79 @@
+'\" t
+.\"     Title: brep_simple
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "BREP_SIMPLE" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+brep_simple \- constructs a simple boundary representation (b\-rep) twisted cube
+.SH "SYNOPSIS"
+.sp
+\fBbrep_simple\fP
+.SH "DESCRIPTION"
+.sp
+\fBbrep_simple\fP constructs a simple b\-rep twisted cube directly
+using the openNURBS API. The constructed twisted cube is written to a
+geometry database (brep_simple.g) using the wdb interface. The cube is
+constructed by first defining and creating the vertices, then the
+twisted edges (using trimming curves), and finally the faces to get a
+final topology like the following:
+.sp
+.if n .RS 4
+.nf
+                       H\-\-\-\-\-\-\-e6\-\-\-\-\-\-\-G
+                      /                /|
+                     / |              / |
+                    /  e7            /  e5
+                   /   |            /   |
+                  /                e10  |
+                 /     |          /     |
+                e11    E\- \- e4\- \-/\- \- \- F
+               /                /      /
+              /      /         /      /
+             D\-\-\-\-\-\-\-\-\-e2\-\-\-\-\-C      e9
+             |     /          |     /
+             |    e8          |    /
+             e3  /            e1  /
+             |                |  /
+             | /              | /
+             |                |/
+             A\-\-\-\-\-\-\-e0\-\-\-\-\-\-\-B
+.fi
+.if n .RE
+.SH "SEE ALSO"
+.sp
+\fBmged\fP(1), \fBlibwdb\fP(3)
+.SH "AUTHORS"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

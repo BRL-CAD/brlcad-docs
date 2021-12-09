@@ -1,0 +1,73 @@
+'\" t
+.\"     Title: color
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "COLOR" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+color \- Creates an entry in the database that functions as part of a color lookup table for displayed regions.
+.SH "SYNOPSIS"
+.sp
+\fBcolor\fP {\fIlow high r g b str\fP}
+.SH "DESCRIPTION"
+.sp
+Creates an entry in the database that functions as part of a color
+lookup table for displayed regions. The ident number for the region is
+used to find the appropriate color from the lookup table. The \fIlow\fP
+and \fIhigh\fP values are the limits of region ident numbers to have the
+indicated \fIrgb\fP color (0\-255) applied. The \fIstr\fP parameter is intended
+to be an identifying character string, but is currently ignored. The
+current list of color table entries may be displayed with the
+\fBprcolor\fP command, and the entire color table may be edited using
+the \fBedcolor\fP command. If a color lookup table exists, its
+entries will override any color assigned using the \fBmater\fP
+command.
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBcolor\fP command to make an entry
+in the color lookup table for regions within a specified range of
+idents.
+.sp
+.B Example 1. Making an entry in the color lookup table for regions within a specifiedrange of idents using the color red.
+.br
+.RS 4
+.sp
+mged> \f(CRcolor 1100 1200 255 0 0 fake_string\fP
+.sp
+Makes an entry in the color lookup table for regions with idents from
+1100\-1200 using the color red.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

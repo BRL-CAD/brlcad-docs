@@ -1,0 +1,100 @@
+'\" t
+.\"     Title: dbconcat
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "DBCONCAT" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+dbconcat \- Concatenates an existing BRL\-CAD database to the database currently being edited.
+.SH "SYNOPSIS"
+.sp
+\fBdbconcat\fP [\fI\-t\fP] [\fI\-u\fP] [\fI\-c\fP] [\fI\-s|\-p\fP] {\fIdatabase_file\fP} [\fIaffix\fP]
+.SH "DESCRIPTION"
+.sp
+Concatenates an existing \fIBRL\-CAD\fP database to the database currently
+being edited. If an \fIaffix\fP is supplied, then all objects from the
+\fIdatabase_file\fP will have the \fIaffix\fP added to their names as a suffix
+(if the \fI\-s\fP option is specified), or as a prefix (if the \fI\-p\fP option
+is specified). The \fI\-p\fP is the default. Note that each \fIBRL\-CAD\fP
+object must have a unique name, so care must be taken not to
+"dbconcat" a database that has objects with names the same as objects
+in the current database.  The \fBdup\fP command may be used to check
+for duplicate names. If the \fBdup\fP command finds duplicate names,
+use the \fIprefix\fP option to both the \fBdup\fP and \fBdbconcat\fP
+commands to find a \fIprefix\fP that produces no duplicates. If duplicate
+names are encountered during the "dbconcat" process,
+computer\-generated prefixes will be added to the object names coming
+from the \fIdatabase_file\fP (but member names appearing in combinations
+will not be modified, so this is a dangerous practice and should be
+avoided). The \fI\-t\fP option indicates that the title of the
+\fIdatabase_file\fP should become the title of the currently edited
+database. The \fI\-u\fP option indicates that the units of the
+\fIdatabase_file\fP should become the units of the currently edited
+database. Similarly, the \fI\-c\fP option indicates that the region color
+table of the currently edited database should be replaced with that of
+the \fIdatabase_file\fP.
+.SH "EXAMPLES"
+.sp
+This example shows the use of the \fBdbconcat\fP command to copy all
+objects in a particular database to the current database. It also
+shows how to add a particular prefix to every object copied.
+.sp
+.B Example 1. Copy objects in a specified database to the current one and add a prefix to all the copied objects.
+.br
+.RS 4
+.sp
+mged> \f(CRdbconcat model_two.g two_\fP
+.sp
+Copies all the objects in \fImodel_two.g\fP to the current database, but
+prefixes the name of every object copied with the string \fItwo\fP_.
+.RE
+.sp
+Another example shows a usage to import the title, units, color table,
+and all the objects of a database file into the current database. This
+is particularly useful if the current database is empty or just
+created by mged.
+.sp
+.B Example 2. Copy an entire database, including title, units, and color table, to the current database without any affix
+.br
+.RS 4
+.sp
+mged> \f(CRdbconcat \-t \-u \-c model_two.g\fP
+.sp
+Copies all the objects in \fImodel_two.g\fP to the current database,
+including the title, units, and color table. No suffix or prefix is
+added to the object names.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

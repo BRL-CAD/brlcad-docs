@@ -1,0 +1,69 @@
+'\" t
+.\"     Title: plot3line2
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "PLOT3LINE2" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+plot3line2 \- output a 2D UnixPlot line
+.SH "SYNOPSIS"
+.sp
+\fBplot3line2\fP \fIx1\fP \fIy1\fP \fIx2\fP \fIy2\fP [\fIr\fP \fIg\fP \fIb\fP] [<] \fIunix_plot\fP > \fIunix_plot\fP
+.SH "DESCRIPTION"
+.sp
+\fBplot3line2\fP outputs a UnixPlot command to draw a line in the XY
+plane from the point (\fIx1 y1\fP) to the point (\fIx2 y2\fP). These points
+can be floating point and the output is always written as a floating
+point plotting command.  If you need an integer command then feed the
+output of this through
+\fBplot3\-plot3\fP(1). If an optional [\fIr g
+b\fP] is given, where \fIr\fP, \fIg\fP, and \fIb\fP are values from 0 to 255
+representing Red, Green, and Blue color values, the line will be drawn
+in that color.  Otherwise the current drawing color (white by default)
+is used.
+.sp
+To allow this command to be used in pipelines, an optional input file
+can be given.  All of the input will be passed through until end of
+file, and then the line will be appended to the end.
+.sp
+This command exists mostly as an aid for making graphs and things from
+shell commands.
+.SH "SEE ALSO"
+.sp
+\fBplot3color\fP(1),
+\fBplot3\-plot3\fP(1),
+\fBplot3\fP(5)
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

@@ -1,0 +1,126 @@
+'\" t
+.\"     Title: asc-nmg
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "ASC\-NMG" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+asc\-nmg \- ascii\-to\-NMG converter
+.SH "SYNOPSIS"
+.sp
+\fBasc\-nmg\fP \fIascii_file\fP \fInmg.g\fP
+.SH "DESCRIPTION"
+.sp
+\fBasc\-nmg\fP converts the specified \fIascii_file\fP (not a .asc
+geometry database) to a binary BRL\-CAD \fInmg.g\fP geometry database
+file containing NMG objects. The \fIascii_file\fP is expected to contain
+lines of the following forms:
+.sp
+To start a new outer loop for a face:
+.sp
+.if n .RS 4
+.nf
+        l
+.fi
+.if n .RE
+.sp
+To start a new "hole" loop in the current face:
+.sp
+.if n .RS 4
+.nf
+        l hole
+.fi
+.if n .RE
+.sp
+To indicate a vertex in the current loop:
+.sp
+.if n .RS 4
+.nf
+        v# x y z
+.fi
+.if n .RE
+.sp
+where # is the vertex number and x, y, and z are the coordinates of
+that vertex.
+.sp
+To extrude a face:
+.sp
+.if n .RS 4
+.nf
+        e x y z
+.fi
+.if n .RE
+.sp
+where x, y, and z compose the extrusion vector for the face.
+.sp
+If an extrusion vector is specified, then the first face in the NMG
+objects list of faces will be extruded. This is intended for cases
+where only one face is described and then extruded to form a
+solid. Supplying an extrusion vector when more than one face is
+described may produce erroneous results. A solid may be built by
+extruding a face or by building enough faces to produce a closed
+shell. Each execution of \fBasc\-nmg\fP will produce a single NMG
+object.
+.SH "EXAMPLE"
+.sp
+If the file \fIascii_file\fP contains the following:
+.sp
+.if n .RS 4
+.nf
+l
+        e        \-1 0 0
+        v0        1 \-1 \-1
+        v1        1 1 \-1
+        v2        1 1 0
+        v3        1 0 0
+        v4        1 0 1
+        v5        1 \-1 1
+.fi
+.if n .RE
+.sp
+the command:
+.sp
+.if n .RS 4
+.nf
+$ asc\-nmg ascii_file sample.g
+.fi
+.if n .RE
+.sp
+will produce an \(aqL\(aq\-shaped NMG solid to the \fIsample.g\fP database file.
+.SH "DIAGNOSTICS"
+.sp
+Error messages are intended to be self\-explanatory.
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

@@ -1,0 +1,145 @@
+'\" t
+.\"     Title: status
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "STATUS" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+status \- Without a subcommand, the status command returns the following information: current state, view size of the current display manager, the conversion factor from local model units to the base units (mm) stored in the database, and the view matrices of the current display manager.
+.SH "SYNOPSIS"
+.sp
+\fBstatus\fP [\fIsubcommands\fP]
+.SH "DESCRIPTION"
+.sp
+Without a subcommand, the \fBstatus\fP command returns the following
+information: current state, view size of the current display manager,
+the conversion factor from local model units to the base units (mm)
+stored in the database, and the view matrices of the current display
+manager. \fBStatus\fP accepts the following subcommands:
+.sp
+\fBstate\fP
+.RS 4
+Get the current state of MGED (i.e., "VIEWING", "SOL
+PICK", "SOL EDIT", "OBJ PICK", "OBJ PATH", "OBJ EDIT", or "VERTPICK").
+.RE
+.sp
+\fBViewscale\fP
+.RS 4
+Get the view scale.
+.RE
+.sp
+\fBbase2local\fP
+.RS 4
+Get the conversion factor from base units (mm) to
+local units.
+.RE
+.sp
+\fBlocal2base\fP
+.RS 4
+Get the conversion factor from local units to base
+units (mm).
+.RE
+.sp
+\fBtoViewcenter\fP
+.RS 4
+Get the matrix that describes the location of
+the view center.
+.RE
+.sp
+\fBViewrot\fP
+.RS 4
+Get the matrix that describes the view orientation.
+.RE
+.sp
+\fBmodel2view\fP
+.RS 4
+Get the model to view conversion matrix.
+.RE
+.sp
+\fBview2model\fP
+.RS 4
+Get the view to model conversion matrix.
+.RE
+.sp
+\fBmodel2objview\fP
+.RS 4
+Get the model to view conversion matrix. This
+matrix also includes changes made during editing.
+.RE
+.sp
+\fBobjview2model\fP
+.RS 4
+Get the view to model conversion matrix. This
+matrix also includes changes made during editing.
+.RE
+.sp
+\fBhelp\fP
+.RS 4
+Print the usage message.
+.RE
+.SH "EXAMPLES"
+.sp
+The three examples show the use of the \fBstatus\fP command with and
+without subcommands.
+.sp
+.B Example 1. Get default information such as current state, view size of the current display manager, the conversion factor from local model units to the base units (mm) stored in the database, and the view matricesof the current display manager.
+.br
+.RS 4
+.sp
+mged> \f(CRstatus\fP
+.sp
+Gets default information (i.e., state, view size, local2base,
+toViewcenter, Viewrot, model2view and view2model).
+.RE
+.sp
+.B Example 2. Get the view rotation matrix.
+.br
+.RS 4
+.sp
+mged> \f(CRstatus Viewrot\fP
+.sp
+Gets the view rotation matrix.
+.RE
+.sp
+.B Example 3. Get the edit state.
+.br
+.RS 4
+.sp
+mged> \f(CRstatus state\fP
+.sp
+Gets the edit state.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

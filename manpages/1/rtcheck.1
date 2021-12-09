@@ -1,0 +1,152 @@
+'\" t
+.\"     Title: rtcheck
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "RTCHECK" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+rtcheck \- Make UNIX\-Plot of overlaps in an mged model, using raytracing
+.SH "SYNOPSIS"
+.sp
+\fBrtcheck\fP [\fIoptions\fP]... \fImodel.g\fP \fIobjects\fP... > \fIoverlaps.plot3\fP
+.SH "DESCRIPTION"
+.sp
+\fBrtcheck\fP operates on the indicated \fIobjects\fP in the input
+\fImodel.g\fP and produces a floating point 3\-D BRL\-style
+\fBplot3\fP(5) format file on standard output, in
+millimeters.
+.sp
+The orientation of the rays to be fired may be specified by the
+\fB\-a\fP and \fB\-e\fP options, in which case the model will be
+autosized, and the grid will be centered on the centroid of the model,
+with ray spacing chosen to span the entire set of \fIobjects.\fP
+Alternatively, with the \fB\-M\fP option, a transformation matrix may
+be provided on standard input which maps model\-space to view\-space. In
+this case, the grid ranges from \-1.0 < = X,Y < = +1.0 in view space,
+with the size of the grid (number of rays fired) specified with the
+\fB\-s\fP option. The \fB\-M\fP option is most useful when
+\fBrtcheck\fP is being automatically invoked from within
+\fBmged\fP(1) using the \fBrtcheck\fP command in
+\fImged\fP.
+.sp
+The following options are recognized.
+.sp
+\fB\-g#\fP
+.RS 4
+The grid cell width, in millimeters.  Ordinarily, the cell
+width is computed by dividing the view size by the number of pixels of
+width. This option provides an alternate direct means to set the grid
+cell width.
+.RE
+.sp
+\fB\-s#\fP
+.RS 4
+Number of rays to fire in X and Y directions (square
+grid). Default is 512 (512 x 512).
+.RE
+.sp
+\fB\-r\fP
+.RS 4
+Report unique overlaps. At the end of a view, a list of unique
+pairs of overlapping regions is printed, along with a count of the
+number of detected overlaps for each pair. Not all detected overlap
+combinations are necessarily listed, as the overlap partition may mask
+a second overlap that is a continuation of an already detected
+overlap.
+.RE
+.sp
+\fB\-a#\fP
+.RS 4
+Select azimuth in degrees.  Used with \fB\-e\fP and conflicts
+with \fB\-M\fP
+.RE
+.sp
+\fB\-e#\fP
+.RS 4
+Select elevation in degrees.  Used with \fB\-a\fP and
+conflicts with \fB\-M\fP
+.RE
+.sp
+\fB\-G\fP
+.RS 4
+Sets the grid cell height, in millimeters.
+.RE
+.sp
+\fB\-M\fP
+.RS 4
+Read model2view matrix from standard input. Conflicts with
+\fB\-a\fP and \fB\-e\fP
+.RE
+.sp
+\fB\-P#\fP
+.RS 4
+Specify the maximum number of processors (in a multi\-processor
+system) to be used for this execution.  The default is 1.
+.RE
+.sp
+\fB\-+ t\fP
+.RS 4
+Specify that rtcheck should output plot file data in text
+format. Default is binary plot data.
+.RE
+.sp
+\fBrtcheck\fP also accepts all other options that the
+\fBrt\fP(1) program implements, such as for non\-square
+views, perspective, etc.
+.sp
+The \fBrtcheck\fP program is a simple front\-end to
+\fBlibrt\fP(3) which is most useful when used from
+\fBmged\fP(1). The output can be independently
+viewed using the UNIX\-plot viewers like
+\fBplot3\-fb\fP(1),
+\fBtplot\fP(1), etc.
+.SH "SEE ALSO"
+.sp
+\fBmged\fP(1), \fBrt\fP(1),
+\fBrtray\fP(1), \fBrtpp\fP(1),
+\fBplot3\-fb\fP(1),
+\fBtplot\fP(1),
+\fBlibplot3\fP(3),
+\fBlibrt\fP(3), \fBplot3\fP(5)
+.SH "DIAGNOSTICS"
+.sp
+Numerous error conditions are possible. Descriptive messages are
+printed on stderr (file descriptor 2).
+.SH "AUTHORS"
+.sp
+\fIBRL\-CAD Team\fP
+.SH "BUGS"
+.sp
+Most deficiencies observed while using the \fBrtcheck\fP program are
+a consequence of problems in xref:man:3/librt..adoc[\fBlibrt.\fP(3)
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

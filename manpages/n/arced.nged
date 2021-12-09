@@ -1,0 +1,90 @@
+'\" t
+.\"     Title: arced
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "ARCED" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+arced \- Provides a means for directly editing transformation matrices of Boolean tree leaves.
+.SH "SYNOPSIS"
+.sp
+\fBarced\fP {\fIcomb/memb\fP} {\fIanim_command\fP}
+.SH "DESCRIPTION"
+.sp
+The objects in a BRL\-CAD model are stored as Boolean combinations of
+primitive shapes and/or other combinations. These combinations are
+stored as Boolean trees, with each leaf of the tree including a
+corresponding transformation matrix. The \fBarced\fP command provides
+a means for directly editing these matrices. The first argument to the
+\fBarced\fP command must identify the combination and which member\(cqs
+matrix is to be edited. The \fIcomb/memb\fP argument indicates that member
+\fImemb\fP of combination \fIcomb\fP has the matrix to be edited. The
+remainder of the \fBarced\fP command line consists of an animation
+command to be applied to that matrix. The available animation commands
+are:
+.sp
+\fBmatrix rarc <xlate|rot> matrix elements\fP
+.RS 4
+Replace the members matrix with the given matrix.
+.RE
+.sp
+\fBmatrix lmul <xlate|rot> matrix elements\fP
+.RS 4
+Left multiply the members matrix with the given matrix.
+.RE
+.sp
+\fBmatrix rmul <xlate|rot> matrix elements\fP
+.RS 4
+Right multiply the members matrix with the given matrix.
+.RE
+.SH "EXAMPLES"
+.sp
+.B Example 1. Rotate body/head 45 degrees about Z axis
+.br
+.RS 4
+.sp
+mged> \f(CRarced body/head matrix rot 0 0 45\fP
+.sp
+Rotates member head (in combination body) about the \fIz\fP axis through a
+45° angle. By default, the \fBmatrix\fP commands expect a list of 16
+matrix elements to define a matrix. The \fIxlate\fP option may be used
+along with three translation distances in the \fIx\fP, \fIy\fP, and \fIz\fP
+directions (in mm) as a shorthand notation for a matrix that is pure
+translation. Similarly, the \fIrot\fP option along with rotation angles
+(degrees) about the \fIx\fP, \fIy\fP, and \fIz\fP axes may be used as shorthand
+for a matrix that is pure rotation.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

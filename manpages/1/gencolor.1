@@ -1,0 +1,86 @@
+'\" t
+.\"     Title: gencolor
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "GENCOLOR" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+gencolor \- output a pattern of byte values
+.SH "SYNOPSIS"
+.sp
+\fBgencolor\fP [\-r \fI#\fP] [\-p \-b][\-{sS} \fIsquaresize\fP] [\-{wW} \fIwidth\fP] [\-{nN} \fIheight\fP] [\fIval1\fP...\fIvalN\fP]
+.SH "DESCRIPTION"
+.sp
+\fBgencolor\fP repeats a pattern of up to 8192 8\-bit values on its
+standard output. The values, which range from 0 to 255, are taken
+either from the command line, or in binary (as stored in a .bw or .pix
+file) from standard input; if the values are not supplied, a single
+value of 0, for black, is used.  The \fB\-r\fP flag can be used to
+specify the number of times to repeat the given pattern, the default
+being infinity (unless any other "\-" options are used \(em see
+below). This program is useful for producing a given grey value or
+color. Note that \fBgencolor\fP will refuse to write its output to a
+window; you must redirect the output to a file.
+.sp
+\fB\-p\fP and \fB\-b\fP are used to specify \fIpix\fP file and
+\fIbw\fP file, respectively. \fB\-w\fP (or \fB\-W\fP) indicates the
+width; \fB\-n\fP (or \fB\-N\fP) indicates the height; width and height
+are set to the same value using \fB\-s\fP (or \fB\-S\fP). By default,
+a pix file of size 512x512 is assumed; however, use of \fB\-r\fP
+overrules use of any other "\-" options.
+.SH "EXAMPLE"
+.sp
+.if n .RS 4
+.nf
+gencolor \-r512 0 255 0 > foo.pix
+.fi
+.if n .RE
+.sp
+will output 512 "green" pixels (0 255 0 being used as RGB values).
+.sp
+.if n .RS 4
+.nf
+gencolor \-r1 0 255 0 | gencolor \-r512 > foo.pix
+.fi
+.if n .RE
+.sp
+will do the same as above, using standard input instead of having the
+values on the command line.
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1), \fBpix\fP(5),
+\fBbw\fP(5)
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

@@ -1,0 +1,224 @@
+'\" t
+.\"     Title: ev
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "EV" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+ev \- Evaluates the objects specified by tessellating all primitive shapes in the objects and then performing any Boolean operations specified in the objects.  The result is then displayed in the MGED display according to specified options.
+.SH "SYNOPSIS"
+.sp
+\fBev\fP [\-dfnrstuvwST] [\-P \fI#\fP] [\-C \fI#/#/#\fP] {\fIobjects\fP} []
+.SH "DESCRIPTION"
+.sp
+Evaluates the \fIobjects\fP specified by tessellating all primitive shapes
+in the objects and then performing any Boolean operations specified in
+them. The result is then displayed in the MGED display according to
+specified options.
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fId\fP \(em Do not perform Boolean operations or any checking; simply
+convert shapes to polygons and draw them. Useful for visualizing BOT
+and polysolid primitives.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fIf\fP \(em Fast path for quickly visualizing polysolid primitives.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fIw\fP \(em Draw wireframes (rather than polygons).
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fIn\fP \(em Draw surface normals as little "hairs".
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fIs\fP \(em Draw shape lines only (no dot\-dash for subtract and
+intersect).
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fIt\fP \(em Perform CSG\-to\-tNURBS conversion (still under development).
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fIv\fP \(em Shade using per\-vertex normals, when present.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fIu\fP \(em Draw NMG edgeuses (for debugging).
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fIS\fP \(em Draw tNURBS with trimming curves only, no surfaces.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fIT\fP \(em Do not triangulate after evaluating the Boolean (may produce
+unexpected results if not used with the \fIw\fP option).
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fIP#\fP \(em Use # processors in parallel. Default=1.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fIr\fP \(em Draw all objects in red. Useful for examining objects colored
+black.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fIC#/#/#\fP \(em Draw all objects in the specified rgb color.
+.RE
+.SH "EXAMPLES"
+.sp
+The first example shows the use of the \fBev\fP command to display
+two evaluated objects as shaded polygons.  The second example shows
+the use of the \fBev\fP command to display an evaluated object as
+wireframe without triangulating.
+.sp
+.B Example 1. Display evaluated objects as polygons.
+.br
+.RS 4
+.sp
+mged> \f(CRev region1 shapea\fP
+.sp
+Displays evaluated \fIregion1\fP and \fIshapea\fP as shaded polygons.
+.RE
+.sp
+.B Example 2. Display an evaluated object as wireframe without triangulation.
+.br
+.RS 4
+.sp
+mged> \f(CRev \-wT region1\fP
+.sp
+Displays an evaluated object, \fIregion1\fP, as wireframe without
+triangulation.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

@@ -1,0 +1,202 @@
+'\" t
+.\"     Title: pixmorph
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "PIXMORPH" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+pixmorph \- morph two pix(5) images
+.SH "SYNOPSIS"
+.sp
+\fBpixmorph\fP [\-w \fIwidth\fP] [\-n \fIheight\fP] \fIpicA.pix\fP \fIpicB.pix\fP \fIlinesfile\fP \fIwarpfrac\fP \fIdissolvefrac\fP > \fIout.pix\fP
+.SH "DESCRIPTION"
+.sp
+\fBpixmorph\fP performs feature\-based image metamorphosis between
+"picA.pix" and "picB.pix". The feature correspondences are specified
+in the file "linesfile", which can be created using a utility such as
+\fImorphedit.tcl\fP (see \fImorphedit(1)\fP).
+.sp
+The output image is computed in the following fashion. First, for each
+pixel in the output image, we choose a set \fIA\fP of pixels (and
+associated weights) from "picA.pix" and another set \fIB\fP of pixels from
+"picB.pix" (how these sets and weights are chosen will be described
+momentarily). The pixel values from \fIA\fP are then averaged (using the
+associated weights) to determine the contribution \fIcA\fP from the
+original image; the contribution \fIcB\fP is computed similarly.  Then,
+the values \fIcA\fP and \fIcB\fP are interpolated by the value \fIdissolvefrac\fP
+to compute the final value of the output pixel.
+.sp
+Now, the contribution \fIcA\fP from the original image is intended to be
+the value from \fIpicA.pix\fP that gets "warped to" the location in
+question. It is this computation (more specifically, the computation
+of \fIA\fP and associated weights) that is the heart of the morphing
+algorithm, and is described briefly here.
+.sp
+First, the linesfile is processed.  The linesfile is of the form a b p
+n lineseg1_initial lineseg1_final lineseg2_initial lineseg2_final
+linesegn_initial linesegn_final , where \fIn\fP equals the number of line
+segments, and \fIa\fP, \fIb\fP, and \fIp\fP are constants that alter the nature of
+the morph. A line segment is represented as a list of four real
+numbers (and is interpreted as a directed line segment). For example,
+0.1 2.0 0.2 2 0.714844 0.560547 0.988281 0.277344 0.347656 0.646484
+0.654297 0.896484 0.341797 0.611328 0.757812 0.265625 0.628906
+0.519531 0.925781 0.763672 is a valid lines file. Typically, the pairs
+\fIlinesegi_initial linesegi_final\fP have been placed by the user in the
+lines file to match up particular features of \fIpicA.pix\fP and
+\fIpicB.pix\fP (the feature at \fIlinesegi_initial\fP in \fIpicA.pix\fP
+corresponds to the feature at \fIlinesegi_final\fP in \fIpicB.pix\fP). For
+instance, \fIlineseg1_initial\fP might be a line segment running down the
+length of the nose of a person displayed in \fIpicA.pix\fP; then
+\fIlineseg1_final\fP would be a line segment running down the length of
+the nose of the person featured in \fIpicB.pix\fP. See \fImorphedit(1)\fP for
+more information about creating a lines file.
+.sp
+Now, for each line segment pair \fI(s,t)\fP, we perform the following
+procedure: We interpolate between \fIs\fP and \fIt\fP by factor \fIwarpfrac\fP to
+yield the interpolated line segment \fIs\(aq\fP. From the change in position,
+scale, and orientation of a line segment from its initial position \fIs\fP
+to its interpolated counterpart \fIs\(aq\fP we may deduce a linear
+transformation in the image space. More specifically, if the line
+segment \fIs\fP must undergo translation, stretching, and rotation to
+yield \fIs\(aq\fP, we compute a linear transformation \fIT\fP of the image space
+that performs the same translation, stretching, and rotation. (So \fIT\fP
+applied to \fIs\fP yields \fIs\(aq\fP.) The inverse \fIT*\fP of this transformation
+maps \fIs\(aq\fP to \fIs\fP; for instance, \fIT*\fP will take an endpoint of \fIs\(aq\fP to
+the corresponding endpoint of \fIs\fP, and will preserve the relationship
+of every other point to the line segment. We apply this inverse \fIT*\fP
+to the coordinates \fI(x,y)\fP to find an appropriate pixel in the
+original image. Along with this, we compute a weight based on the
+length of the line segment \fIs\fP along with its distance from
+\fI(x,y)\fP. This weight is equal to ( (length ** p) / (a + dist) )
+** b (where \fI**\fP denotes exponentiation, \fIlength\fP is the length
+of \fIs\fP, \fIdist\fP is the distance from \fIs\fP to \fI(x,y)\fP, and \fIa\fP, \fIb\fP, \fIp\fP
+are constants chosen by the user and stored in the lines file).
+.sp
+The set \fIA\fP of pixels is then collected by performing these
+computations for each line segment, and the resulting contribution
+\fIcA\fP is then computed by averaging over \fIA\fP with the appropriate
+weights.
+.sp
+In practice, \fIa\fP = 0.1, \fIb\fP = 2.0, and \fIp\fP = 0.2 seems to work well.
+.sp
+In general, the user will wish to set \fIwarpfrac\fP =
+\fIdissolvefrac\fP. Typically, a morph animation will be produced by
+computing a sequence of images using \fIpixmorph\fP, each with slightly
+greater \fIwarpfrac\fP (and \fIdissolvefrac\fP) (see the example). For a
+clearer and more thorough explanation, see T. Beier and S. Neely,
+Feature\-Based Image Metamorphosis, "SIGGRAPH 1992 Computer Graphics
+Proceedings (volume 26 number 2)", (Chicago, July 26\-31, 1992), pp
+35\-42, which presents the algorithm used by \fIpixmorph\fP.
+.SH "OPTIONS"
+.sp
+\fB\-w\fP \fIWIDTH\fP
+.RS 4
+Tells \fBpixmorph\fP that the input images have width
+WIDTH.
+.RE
+.sp
+\fB\-n\fP \fIHEIGHT\fP
+.RS 4
+Tells \fBpixmorph\fP that the input images have
+height HEIGHT.
+.RE
+.SH "EXAMPLES"
+.sp
+.if n .RS 4
+.nf
+pixmorph face1.pix face2.pix lf 0.0 0.0 > frame0.pix
+.fi
+.if n .RE
+.sp
+.if n .RS 4
+.nf
+pixmorph face1.pix face2.pix lf 0.2 0.2 > frame1.pix
+.fi
+.if n .RE
+.sp
+.if n .RS 4
+.nf
+pixmorph face1.pix face2.pix lf 0.4 0.4 > frame2.pix
+.fi
+.if n .RE
+.sp
+.if n .RS 4
+.nf
+pixmorph face1.pix face2.pix lf 0.6 0.6 > frame3.pix
+.fi
+.if n .RE
+.sp
+.if n .RS 4
+.nf
+pixmorph face1.pix face2.pix lf 0.8 0.8 > frame4.pix
+.fi
+.if n .RE
+.sp
+.if n .RS 4
+.nf
+pixmorph face1.pix face2.pix lf 1.0 1.0 > frame5.pix
+.fi
+.if n .RE
+.sp
+Note that the example above will result in \fIframe0.pix\fP = \fIface1.pix\fP
+and \fIframe5.pix\fP = \fIface2.pix\fP.
+.sp
+.if n .RS 4
+.nf
+pixmorph face1.pix face2.pix lf 0.5 0.0 > out.pix
+.fi
+.if n .RE
+.sp
+Note that in this example, \fIdissolvefrac\fP = 0. This will warp
+\fIface1.pix\fP and \fIface2.pix\fP by the appropriate amount, but will ignore
+the contributions of \fIface2.pix\fP at the cross\-dissolve stage. So the
+final image \fIout.pix\fP will consist entirely of values from \fIface1.pix\fP
+warped 50% according to the linesfile \fIlf\fP.
+.sp
+.if n .RS 4
+.nf
+pixmorph face1.pix face2.pix lf 0.0 0.5 > out.pix
+.fi
+.if n .RE
+.sp
+In this example, \fIwarpfrac\fP = 0. This will perform a simple 50%
+cross\-dissolve between \fIface1.pix\fP and \fIface2.pix\fP.
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1),
+\fBmorphedit\fP(1),
+\fBpix\fP(5)
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

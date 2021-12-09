@@ -1,0 +1,63 @@
+'\" t
+.\"     Title: sph-part
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "SPH\-PART" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+sph\-part \- Creates a PART shape that encompasses two specified SPH shapes based on their parameters.
+.SH "SYNOPSIS"
+.sp
+\fBsph\-part\fP {\fIsph1name sph2name newname\fP}
+.SH "DESCRIPTION"
+.sp
+Creates a PART shape that encompasses two specified SPH shapes based
+on their parameters.
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBsph\-part\fP command to create a
+PART shape that surrounds two specified spheres.
+.sp
+.B Example 1. Create a PART shape that surrounds two specified spheres.
+.br
+.RS 4
+.sp
+mged> \f(CRsph\-part sph1.s sph2.s part.s\fP
+.sp
+Creates a PART shape named \fIpart.s\fP that surrounds the spheres
+\fIsph1.s\fP and \fIsph2.s\fP.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

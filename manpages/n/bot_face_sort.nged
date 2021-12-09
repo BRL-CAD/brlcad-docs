@@ -1,0 +1,68 @@
+'\" t
+.\"     Title: bot_face_sort
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "BOT_FACE_SORT" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+bot_face_sort \- Sorts the list of triangles that constitutes the BOT primitive to optimize it for raytracing with the specified number of triangles per piece.
+.SH "SYNOPSIS"
+.sp
+\fBbot_face_sort\fP {\fItriangles_per_piece\fP} {\fIbot_primitive1>\fP} [\fIbot_primitive2\fP \fIbot_primitive3\fP]...
+.SH "DESCRIPTION"
+.sp
+Used to sort the list of triangles that constitutes the BOT primitive
+to optimize it for raytracing with the specified number of triangles
+per piece. Most BRL\-CAD primitives are treated as a single object when
+a model is being prepared for raytracing, but BOT primitives are
+normally broken into "pieces" to improve performance. The raytracer
+normally uses four triangles per piece.
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBbot_face_sort\fP command to sort
+the list of triangles that constitutes the BOT primitive to optimize
+it for raytracing.
+.sp
+.B Example 1. Sorting the faces of two primitives (each having four triangles per piece) to optimize them for raytracing
+.br
+.RS 4
+.sp
+mged> \f(CRbot_face_sort 4 bot1 bot2\fP
+.sp
+The faces of \fIbot1\fP and \fIbot2\fP to optimize them for raytracing with
+four triangles per piece.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

@@ -1,0 +1,68 @@
+'\" t
+.\"     Title: bwcrop
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "PIXCROP" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+pixcrop \- crop color pix files
+.SH "SYNOPSIS"
+.sp
+\fBpixcrop\fP \fIin.pix\fP \fIout.pix\fP
+.sp
+\fBpixcrop\fP \fIin.pix\fP \fIout.pix\fP \fIinwidth\fP \fIoutwidth\fP \fIoutheight\fP \fIulx\fP \fIuly\fP \fIurx\fP \fIury\fP \fIlrx\fP \fIlry\fP \fIllx\fP \fIlly\fP
+.SH "DESCRIPTION"
+.sp
+\fBpixcrop\fP crops any quadrilateral out of an arbitrarily large
+\fBpix\fP(5) input file (\fIin.pix\fP), squares that
+region to a given height and width output size, and writes the result
+to \fIout.pix\fP. The first form of \fBpixcrop\fP prompts for all
+parameters it needs to do the cropping. All responses should be pixel
+counts or first quadrant coordinates. The second form allows all of
+the needed parameters to be given on the command line and is intended
+for use from shell scripts. The coordinate names (the eight arguments
+listed above after \fIoutheight\fP) refer to the input file, and more
+specifically to upper\-left\-x (ulx), lower\-right\-y (lry), etc., in
+clockwise\-from\-upper\-left order.
+.sp
+The nearest input pixel is selected for each output pixel.  No
+interpolation is done by this program.
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1),
+\fBpixrect\fP(1),
+\fBpixscale\fP(1), \fBpix\fP(5)
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

@@ -1,0 +1,66 @@
+'\" t
+.\"     Title: regdef
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "REGDEF" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+regdef \- Sets the default region attributes used by the r and c commands when building a BRL\-CAD region.
+.SH "SYNOPSIS"
+.sp
+\fBregdef\fP {\fIregionID\fP} [\fIairID\fP[\fIlos%\fP[\fImaterialID\fP]]]
+.SH "DESCRIPTION"
+.sp
+Sets the default region attributes used by the \fBr\fP and \fBc\fP
+commands when building a BRL\-CAD region. The default \fIident\fP number is
+incremented each time a new region is created with the \fBr\fP
+or[cmd]\fBc\fP commands.
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBregdef\fP command to set the
+default region attributes used by the \fBr\fP and \fBc\fP commands
+when building a BRL\-CAD region.
+.sp
+.B Example 1. Set region default attributes.
+.br
+.RS 4
+.sp
+mged> \f(CRregdef 1003 0 100 8\fP
+.sp
+Sets the region default attributes to an ident of 1003, an air code of
+0, an los of 100%, and a material code of 8.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

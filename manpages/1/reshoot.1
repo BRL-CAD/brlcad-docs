@@ -1,0 +1,135 @@
+'\" t
+.\"     Title: reshoot
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "RESHOOT" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+reshoot \- re\-shoot rays and compare results
+.SH "SYNOPSIS"
+.sp
+\fBreshoot\fP \fImodel.g\fP \fIobjects\fP... < \fIraylist\fP
+.SH "DESCRIPTION"
+.sp
+This program is designed to shoot a set of rays and compare the
+results with previous results. The program exits with a non\-zero
+status if any rays are different from the previous run, and a 0 status
+if no differences were found.
+.sp
+Typically, an application (probably other than \fBreshoot\fP) is run
+with the RT_G_DEBUG flag DEBUG_ALLHITS set. This will cause librt to
+log all calls to the application \fIhit\fP routine to the standard
+error. The logged output can be processed by an \fIawk\fP program to
+produce input to \fBreshoot\fP. Consider the file p.awk with the
+following contents:
+.sp
+.if n .RS 4
+.nf
+/Pnt/ { START=index($0,"(") + 1
+       STR=substr($0, START, index($0,")") \- START)
+       gsub(  ", "  , "," , STR)
+       printf "Pnt=%s\(rsn",STR
+       }
+/Dir/ { START=index($0,"(") + 1
+       STR=substr($0, START, index($0,")") \- START)
+       gsub(  ", "  , "," , STR)
+       printf "Dir=%s\(rsn",STR
+       }
+/PT/  { PIN=$3; POUT=$5 }
+/InHIT/ { INHIT=$2 }
+/OutHIT/ { OUTHIT=$2 }
+/Region/ { printf "        region=%s in=%s in%s out=%s out%s\(rsn",
+        $2,PIN,INHIT,POUT,OUTHIT
+        }
+.fi
+.if n .RE
+.sp
+Given this \fIawk\fP program The log file from the application can be
+processed as follows:
+.sp
+.if n .RS 4
+.nf
+awk \-f p.awk < logfile > shotlist
+.fi
+.if n .RE
+.sp
+to produce input for \fBreshoot\fP. An example of the input file
+format for \fBreshoot\fP is:
+.sp
+.if n .RS 4
+.nf
+Pnt=0,0,1
+Dir=0,0,\-1
+        region=r1.r in=p1.s indist=10016.8 out=p2.s outdist=10017.8
+        region=r2.r in=p3.s indist=10018.8 out=p4.s outdist=10019.8
+        ... (arbitrary many region lines)
+Pnt=0,0,10
+Dir=0,0,\-1
+        region=r1.r in=p1.s indist=10016.8 out=p2.s outdist=10017.8
+        region=r2.r in=p3.s indist=10018.8 out=p4.s outdist=10019.8
+        ... (arbitrary many region lines)
+.fi
+.if n .RE
+.sp
+There can be an arbitrary number of rays specified in the file. There
+must not be whitespace between the values of Pnt and between the
+values of Dir; it is best to comma\-separate the three coordinate
+values. The keywords "Pnt" and "Dir" must occur at the beginning of a
+line. There can be an arbitrary number of regions along the ray
+path. Each region must be described on a single line. A new ray is
+started by a "Pnt" value. Then \fBreshoot\fP can be run as follows:
+.sp
+.if n .RS 4
+.nf
+reshoot geom.g obj ... < shotlist
+.fi
+.if n .RE
+.sp
+Differences are reported for each ray as they are found:
+.sp
+Ray Pt 0,0,1 Dir 0,0,\-1 inhit mismatch 17.8177 16.8 outhit mismatch
+24.7685 23.8 region name mismatch /oops.r sb r1.r in primitive name
+mismatch p8.s sb p1.s
+.SH "BUGS"
+.sp
+The floating point values logged when the DEBUG_ALLHITS flag is set in
+RT_G_DEBUG are printed with a %g format. This causes some truncation
+of precision.  This is accounted for by \fBreshoot\fP by
+re\-formatting the numbers computed into ascii and re\-parsing them
+back in. This causes the same amount of precision loss as the original
+values have undergone.  However, small actual differences are also
+overlooked as a result.
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

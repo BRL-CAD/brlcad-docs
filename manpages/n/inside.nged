@@ -1,0 +1,87 @@
+'\" t
+.\"     Title: inside
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "INSIDE" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+inside \- Creates a new shape that is inside an existing shape.
+.SH "SYNOPSIS"
+.sp
+\fBinside\fP [\fIoutside_shape_name\fP \fInew_inside_shape_name\fP] {\fIparameters\fP}
+.SH "DESCRIPTION"
+.sp
+Creates a new shape that is \fIinside\fP an existing shape. This command
+is typically used to create an \fIinside\fP shape that can be subtracted
+from the original shape to produce a hollow shell. The command is
+typically used with no arguments, and it prompts the user for all
+needed information; however, all the parameters may be supplied on the
+command line. If MGED is in primitive edit mode when the \fBinside\fP
+command is issued, then the shape currently being edited will be used
+as the \fIoutside_shape\fP.  Similarly, if MGED is in matrix edit mode
+when the \fBinside\fP command is executed, then the current key shape
+will be used as the outside shape.
+.SH "EXAMPLES"
+.sp
+The first example shows the use of the \fBinside\fP command to create
+a shape inside another shape such that all its faces are 1 unit from
+the corresponding faces of the outside shape. The second example shows
+the use of the \fBinside\fP command to create a shape inside the
+current key shape or the shape currently being edited. The faces of
+the new shape will be 1 unit from the corresponding faces of the
+current outside shape.
+.sp
+.B Example 1. Create a shape inside of an existing shape.
+.br
+.RS 4
+.sp
+mged> \f(CRinside out_arb in_arb 1 1 1 1 1 1\fP
+.sp
+Creates a shape named \fIin_arb\fP such that each face is 1 unit from the
+corresponding face in \fIout_arb\fP.
+.RE
+.sp
+.B Example 2. Creates a shape inside of the current key shape or the shape being edited.
+.br
+.RS 4
+.sp
+mged> \f(CRinside in_arb 1 1 1 1 1 1\fP
+.sp
+Creates a shape named \fIin_arb\fP such that each face is 1 unit from the
+corresponding face in the current key shape or the shape currently
+being edited.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

@@ -1,0 +1,76 @@
+'\" t
+.\"     Title: xpush
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "XPUSH" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+xpush \- "Pushes" the effects of transformation matrices in the paths, from the specified object to the primitive shapes, into the shapes and replaces all the transformation matrices with identity matrices.
+.SH "SYNOPSIS"
+.sp
+\fBxpush\fP {\fIobject\fP}
+.SH "DESCRIPTION"
+.sp
+"Pushes" the effects of transformation matrices in the paths, from the
+specified \fIobject\fP to the primitive shapes, into the shapes and
+replaces all the transformation matrices with identity matrices. The
+\fBpush\fP command performs a similar function, but will refuse to
+make any changes if any shape needs to be transformed into more than
+one location/orientation/scale. The \fBxpush\fP command will
+recognize such situations and create extra copies of such shapes to
+accept the different transformation effects. New shapes created by
+this command will have a suffix appended to the original name to make
+the new name unique. Combinations referring to the new shape will also
+be modified to reflect the name change. The \fBpush\fP command
+performs the same function but will refuse to make any changes if it
+cannot accomplish the "push" without creating any new shapes.
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBxpush\fP command to move all the
+effects of the transformation matrices in a tree rooted at an object
+down to the shape level(creating new shapes if needed).
+.sp
+.B Example 1. Move effects of transformation matrices in a tree rooted at an object to the shape level.
+.br
+.RS 4
+.sp
+mged> \f(CRxpush group1\fP
+.sp
+Moves all the effects of the transformation matrices in the tree
+rooted at \fIgroup1\fP down to the shape level (creating new shapes if
+needed).
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

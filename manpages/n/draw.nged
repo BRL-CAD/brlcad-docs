@@ -1,0 +1,184 @@
+'\" t
+.\"     Title: draw
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "DRAW" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+draw \- Adds objects> to the display list so that they will appear on the MGED display. The e command is a synonym for draw.
+.SH "SYNOPSIS"
+.sp
+\fBdraw\fP [\-A \fIattribute name/value pairs\fP] [\-s] [\-A \-o_attribute name/value pairs_] [\-C #/#/#] [\-L #] [\-R] [\-S] [\fI\-m1\fP] {\fIobjects\fP}
+.SH "DESCRIPTION"
+.sp
+Adds \fIobjects\fP to the display list so that they will appear on the
+MGED display. The \fBe\fP command is a synonym for draw.
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+The \fI\-C\fP option provides the user a way to specify a color that
+overrides all other color specifications including combination
+colors and region\-id\-based colors.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+The \fI\-s\fP option specifies that subtracted and intersected objects
+should be drawn with shape lines rather than dot\-dash lines.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+The \fI\-A\fP option specifies that the arguments provided to this
+command are attribute name/value pairs, and only objects having the
+specified attributes and values are to be displayed. The default
+(without \fI\-o\fP) is that only objects having all the specified
+attribute name/value pairs will be displayed.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+The \fI\-m1\fP option will display BOTs shaded if the display manager is
+OpenGL and the zbuffer and lighting is enabled. To enable these
+settings, from the MGED GUI, choose "Modes/Display Manager/OpenGL",
+"Misc/Z\-buffer" and "Misc/Lighting". If the zbuffer and lighting is
+already enabled, toggle them off then back on to ensure they are
+enabled.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+The \fI\-L\fP option allows the user to specify a face count.  BoT
+primitives with more faces than the user set threshold will be
+represented in wireframe drawing by their bounding boxes rather than
+the full BoT wireframe.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+The \fI\-R\fP option tells draw to not change the view size when drawing
+new objects. Without this flag, \fBdraw\fP will automatically size
+the view to make the new object(s) visible when the view was
+previously empty.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+The \fI\-S\fP option tells draw to be "simplified" by skipping
+subtraction objects when drawing, not drawing NMG interior surfaces,
+and potentially more. Skipping subtractions is useful in situations
+where an object has many large objects subtracted from it but those
+objects have relatively minimal impact on the shape.  This results
+in the default wireframe bearing little resemablance to the
+evaluated shape.
+.RE
+.SH "EXAMPLES"
+.sp
+The following examples show the use of the \fBdraw\fP command to draw
+particular objects, to specify color, to draw with shape lines rather
+than dot\-dash lines, and to limit the objects to be drawn to those
+having specific attribute names and value pairs.
+.sp
+.B Example 1. Draw specific objects in the \fIMGED\fP display.
+.br
+.RS 4
+.sp
+mged> \f(CRdraw object1 object2\fP
+.sp
+\fIObject1\fP and \fIobject2\fP are drawn in the \fIMGED\fP display.
+.RE
+.sp
+.B Example 2. Specify the color used to draw the object.
+.br
+.RS 4
+.sp
+mged> \f(CRdraw \-C 255/255/255 object2\fP
+.sp
+Object2 is drawn in white.
+.RE
+.sp
+.B Example 3. Limit the objects to be drawn to those having specific attribute names and value pairs.
+.br
+.RS 4
+.sp
+mged> \f(CRdraw \-A \-o Comment {First comment} Comment {Second comment}\fP
+.sp
+Objects having a Comment attribute with a value of either "First
+comment" or "Second comment" are drawn.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

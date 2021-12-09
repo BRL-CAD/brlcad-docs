@@ -1,0 +1,74 @@
+'\" t
+.\"     Title: x
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "X" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+x \- Lists all the primitive shapes currently drawn in the MGED display.
+.SH "SYNOPSIS"
+.sp
+\fBx\fP [\fIlevel\fP]
+.SH "DESCRIPTION"
+.sp
+Lists all the primitive shapes currently drawn in the MGED
+display. The \fIlevel\fP determines how much detail should be included in
+the list. For \fIlevel\fP zero (the default), only a list of paths to
+shapes in the display list is produced. Each shape is prefixed by
+"VIEW" or "\-no\-", indicating that the shape is actually being drawn or
+that it is being skipped, respectively.  If \fIlevel\fP is greater than
+zero, the center, size, ident number, RGB color assigned to the
+region, and the actual color used to draw the shape are also listed.
+If \fIlevel\fP is greater than one, the number of vlist structures and the
+number of points in each vlist structure are also listed for each
+shape.  If \fIlevel\fP is greater than two, then the actual lines drawn
+for each shape are also listed. The \fBwho\fP command performs a
+similar function, but lists only the top\-level objects that are
+displayed.
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBx\fP command with no arguments to
+list the paths to the displayed shapes.
+.sp
+.B Example 1. List the paths to the displayed shapes.
+.br
+.RS 4
+.sp
+mged> \f(CRx\fP
+.sp
+Lists the paths to the displayed shapes.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

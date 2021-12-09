@@ -1,0 +1,60 @@
+'\" t
+.\"     Title: fbfree
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "FBFREE" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+fbfree \- free any frame buffer resources
+.SH "SYNOPSIS"
+.sp
+\fBfbfree\fP [\-F \fIframebuffer\fP]
+.SH "DESCRIPTION"
+.sp
+\fBfbfree\fP is used to free any resources associated with a frame
+buffer. Its most common use is to close down an
+\fBfbserv\fP(1) process and its associated frame
+buffer. This command can also be used to free any shared memory
+segments on, e.g., Sun and SGI frame buffers.
+.sp
+This program simply calls the fb_free() routine in
+\fBlibfb\fP(3).
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1),
+\fBfbclear\fP(1),
+\fBlibfb\fP(3)
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

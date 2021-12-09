@@ -1,0 +1,234 @@
+'\" t
+.\"     Title: dm
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "DM" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+dm \- Provides a means to interact with the display manager at a lower level.
+.SH "SYNOPSIS"
+.sp
+\fBdm\fP {\fIsubcommand\fP} [\fIargs\fP]
+.SH "DESCRIPTION"
+.sp
+Provides a means to interact with the display manager at a lower
+level. The \fBdm\fP command accepts the following subcommands:
+.sp
+\fBset\fP \fIvar\fP \fIval\fP
+.RS 4
+The "set" subcommand provides a means to set
+or query display manager\-specific variables. Invoked without any
+arguments, the \fIset\fP subcommand will return a list of all available
+internal display manager variables. If only the \fIvar\fP argument is
+specified, the value of that variable is returned. If both \fIvar\fP and
+\fIval\fP are given, then \fIvar\fP will be set to \fIval\fP.
+.RE
+.sp
+\fBsize\fP \fIwidth\fP \fIheight\fP
+.RS 4
+The "size" subcommand provides a means
+to set or query the window size. If no arguments are given, the
+display manager\(cqs window size is returned. If \fIwidth\fP and \fIheight\fP are
+specified, the display manager makes a request to have its window
+resized. Note that a size request is just that, a request, so it may
+be ignored, especially if the user has resized the window using the
+mouse.
+.RE
+.sp
+\fBm\fP \fIbutton\fP \fIx\fP \fIy\fP
+.RS 4
+The "m" subcommand is used to simulate an
+\fBM\fP command. The \fIbutton\fP argument determines which mouse button
+is being used to trigger a call to this command. This value is used in
+the event handler to effect dragging the faceplate scrollbars. The \fIx\fP
+and \fIy\fP arguments are in X screen coordinates, which are converted to
+MGED screen coordinates before being passed to the \fBM\fP command.
+.RE
+.sp
+\fBam\fP [r] [t] [s] \fIxy\fP
+.RS 4
+The "am" subcommand effects \fImged\fP\(cqs
+alternate mouse mode. The alternate mouse mode gives the user a
+different way of manipulating the view or an object. For example, the
+user can drag an object or perhaps rotate the view while using the
+mouse. The first argument indicates the type of operation to perform
+(i.e., \fIr\fP for rotation, \fIt\fP for translation, and \fIs\fP for scale). The
+\fIx\fP and \fIy\fP arguments are in X screen coordinates and are transformed
+appropriately before being passed to the knob command.
+.RE
+.sp
+\fBadc\fP [1] [2] [t] [d] \fIxy\fP
+.RS 4
+The "adc" subcommand provides a way
+of manipulating the angle distance cursor while using the mouse. The
+first argument indicates the type of operation to perform (i.e., \fI1\fP
+for angle 1, \fI2\fP for angle 2, \fIt\fP for translate, and \fId\fP for tick
+distance). The \fIx\fP and \fIy\fP arguments are in X screen coordinates and
+are transformed appropriately before being passed to the \fBadc\fP
+command (i.e., not "dm adc").
+.RE
+.sp
+\fBcon\fP [r] [t] [s] [x] [y] [z] \fIxpos\fP \fIypos\fP
+.RS 4
+This form of the
+"con" subcommand provides a way to effect constrained manipulation of
+the view or an object while using the mouse. This simulates the
+behavior of sliders without taking up screen real estate. The first
+argument indicates the type of operation to perform (i.e., \fIr\fP for
+rotation, \fIt\fP for translation, and \fIs\fP for scale). The
+<\fIx\fP|\fIy\fP|\fIz\fP> argument is the axis of rotation, translation, or
+scale. The \fIxpos\fP and \fIypos\fP arguments are in X screen coordinates and
+are transformed appropriately before being passed to the knob command.
+.RE
+.sp
+\fBcon\fP [a] [x] [y] [1] [2] [d] \fIxpos\fP \fIypos\fP
+.RS 4
+This form of the
+"con" subcommand provides a way to effect constrained manipulation of
+the angle distance cursor while using the mouse. This simulates the
+behavior of sliders without taking up screen real estate. The first
+argument indicates that this is to be applied to the angle distance
+cursor. The next argument indicates the type of operation to perform
+(i.e., \fIx\fP for translate in the \fIx\fP direction, \fIy\fP for translate in
+the \fIy\fP direction, \fI1\fP for angle 1, \fI2\fP for angle 2, and \fId_for tick
+distance). The _xpos\fP and \fIypos\fP arguments are in X screen coordinates
+and are transformed appropriately before being passed to the knob
+command.
+.RE
+.sp
+\fBvalid\fP [ogl] [X] [wgl] [rtgl] [...]
+.RS 4
+The "valid" subcommand
+provides a way to determine if a particular type of display manager (X
+Windows, OpenGL, etc.) is available \- if the display manager type is
+supported the string denoting that type (X, ogl, etc.) is returned
+back, otherwise nothing is returned.
+.RE
+.SH "EXAMPLES"
+.sp
+The examples show the use of the \fBdm\fP command with its various
+subcommands as presented in the Description section.
+.sp
+.B Example 1. List the available display manager internal variables.
+.br
+.RS 4
+.sp
+mged> \f(CRdm set\fP
+.sp
+Lists the available display manager internal variables.
+.RE
+.sp
+.B Example 2. Turn on perspective projection in the display using \fIvar\fP and \fIval\fP arguments.
+.br
+.RS 4
+.sp
+mged> \f(CRdm set perspective 1\fP
+.sp
+Turns on perspective projection in the display.
+.RE
+.sp
+.B Example 3. Query the display manager\(cqs window size.
+.br
+.RS 4
+.sp
+mged> \f(CRdm size\fP
+.sp
+The display manager\(cqs window size is returned.
+.RE
+.sp
+.B Example 4. Resize the display manager window.
+.br
+.RS 4
+.sp
+mged> \f(CRdm size 900 900\fP
+.sp
+The display manager window is resized to 900 x 900.
+.RE
+.sp
+.B Example 5. Simulate a button2 press at specific screen coordinates.
+.br
+.RS 4
+.sp
+mged> \f(CRdm m 2 100 200\fP
+.sp
+Simulates a button2 press at (100, 200) in X screen coordinates.
+.RE
+.sp
+.B Example 6. Use the alternate mouse mode to rotate an image.
+.br
+.RS 4
+.sp
+mged> \f(CRdm am r 400 100\fP
+.sp
+Starts an alternate mouse mode rotation at (400, 100).
+.RE
+.sp
+.B Example 7. Start a tick distance manipulation with the mouse.
+.br
+.RS 4
+.sp
+mged> \f(CRdm adc d 300 200\fP
+.sp
+Starts a tick distance manipulation at (300, 200).
+.RE
+.sp
+.B Example 8. Start a constrained translation down the Z axis using the mouse.
+.br
+.RS 4
+.sp
+mged> \f(CRdm con t z 200 200\fP
+.sp
+Starts a constrained translation down the Z axis.
+.RE
+.sp
+.B Example 9. Start a constrained tick distance manipulation using the mouse.
+.br
+.RS 4
+.sp
+mged> \f(CRdm con a d 200 100\fP
+.sp
+Starts a constrained tick distance manipulation.
+.RE
+.sp
+.B Example 10. End the mouse drag.
+.br
+.RS 4
+.sp
+mged> \f(CRdm idle\fP
+.sp
+Ends the drag.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

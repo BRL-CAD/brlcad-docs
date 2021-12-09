@@ -1,0 +1,69 @@
+'\" t
+.\"     Title: g-nff
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "G\-NFF" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+g\-nff \- NFF Translator (BRL\-CAD to NFF)
+.SH "SYNOPSIS"
+.sp
+\fBg\-nff\fP [\-v] [\-i] [\-xX \fIlvl\fP] [\-e \fIerror_file\fP] [\-D \fIcalculation_tolerance\fP] [\-a \fIabs_tol\fP] [\-r \fIrel_tol\fP] [\-n \fInorm_tol\fP] [\-o \fIoutput.nff\fP] \fIdatabase.g\fP \fIobject(s)\fP
+.SH "DESCRIPTION"
+.sp
+\fBg\-nff\fP converts the specified \fIobject(s)\fP from a BRL\-CAD
+\fIdatabase.g\fP file to the \fINFF\fP file format. The \fB\-x\fP option
+specifies an RT debug flag and the \fB\-X\fP option specifies an NMG
+debug flag. The \fB\-a\fP, \fB\-r\fP, and \fB\-n\fP options specify
+tessellation tolerances. The \fB\-D\fP option specifies a
+calculational distance tolerance (mm). Any two vertices that are less
+than this distance apart will be treated as the same vertex. The
+\fB\-v\fP option requests verbose output. The \fB\-i\fP option
+requests the output file units to be inches (the default is mm). The
+\fB\-o\fP option specifies the name of the file to receive the output
+(stdout is the default). The \fB\-e\fP option specifies a file for
+receiving the error messages.
+.SH "EXAMPLE"
+.sp
+.if n .RS 4
+.nf
+$ g\-nff \-o sample.nff sample.g sample_object
+.fi
+.if n .RE
+.SH "DIAGNOSTICS"
+.sp
+Error messages are intended to be self\-explanatory.
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

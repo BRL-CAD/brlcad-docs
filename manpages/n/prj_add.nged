@@ -1,0 +1,61 @@
+'\" t
+.\"     Title: prj_add
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "PRJ_ADD" "nged" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+prj_add \- Appends information to the specified shaderfile.
+.SH "SYNOPSIS"
+.sp
+\fBprj_add\fP [\-t] [\-b] [\-n] {\fIshaderfile\fP} [\fIimage_file\fP] [\fIimage_width\fP] [\fIimage_height\fP]
+.SH "DESCRIPTION"
+.sp
+Appends information to the specified \fIshaderfile\fP. The information
+appended is in the form required by the "projection" shader (\fIprj\fP)
+and includes the \fIimage_file\fP (typically a "pix" file), the
+\fIimage_width\fP and \fIimage_height\fP, and current view parameters from the
+MGED display.  The resulting \fIshaderfile\fP may then be used as the
+parameter to the \fIprj\fP shader.  Before executing this command, the
+region wireframe display in MGED should be aligned with the
+\fIimage_file\fP (underlaid in MGED\(cqs framebuffer) and the \fIimage_file\fP
+should have the same height and width as the MGED display.  The \fI\-t\fP
+option indicates that the image should be projected through the
+object.  The \fI\-n\fP option requests that antialiasing not be done.
+.SH "EXAMPLES"
+.sp
+There are no examples
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

@@ -1,0 +1,70 @@
+'\" t
+.\"     Title: g-egg
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "G\-EGG" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+g\-egg \- Panda3D Translator (BRL\-CAD to EGG)
+.SH "SYNOPSIS"
+.sp
+\fBg\-egg\fP [\-v89] [\-xX \fIlvl\fP] [\-a \fIabs_tol\fP] [\-r \fIrel_tol\fP] [\-n \fInorm_tol\fP] [\-D \fIcalculation_tolerance\fP] [\-o \fIEGG_file\fP] [\-P \fInumber_of_CPUs\fP] \fIdatabase.g\fP \fIobject(s)\fP
+.SH "DESCRIPTION"
+.sp
+\fBg\-egg\fP converts the specified \fIobject(s)\fP from a BRL\-CAD
+\fIdatabase.g\fP file to the \fIpanda3d\fP file format. The \fB\-x\fP option
+specifies an RT debug flag and the \fB\-X\fP option specifies an NMG
+debug flag. The \fB\-a\fP, \fB\-r\fP, and \fB\-n\fP options specify
+tessellation tolerances. The \fB\-D\fP option specifies a
+calculational distance tolerance (mm). Any two vertices that are less
+than this distance apart will be treated as the same vertex. The
+\fB\-v\fP option requests verbose output, which goes to standard
+error. The \fB\-o\fP option specifies the name of the file to receive
+the output (stdout is the default). \fB\-8\fP option tells the
+facetizer to use the marching cubes algorithm. \fB\-9\fP option tells
+the facetizer to use the "bottess" algorithm. The \fB\-P\fP option
+specifies the number of CPU\(cqs to be used.
+.SH "EXAMPLE"
+.sp
+.if n .RS 4
+.nf
+$ g\-egg \-o sample.egg sample.g sample_object
+.fi
+.if n .RE
+.SH "DIAGNOSTICS"
+.sp
+Error messages are intended to be self\-explanatory.
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

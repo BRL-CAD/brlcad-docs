@@ -1,0 +1,86 @@
+'\" t
+.\"     Title: g-vrml
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "G\-VRML" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+g\-vrml \- Perform Boolean evaluations to produce a VRML version 2.0 file
+.SH "SYNOPSIS"
+.sp
+\fBg\-vrml\fP [\-v] [\-d \fIcalc_dist_tol\fP] [\-a \fIabs_tess_tol\fP] [\-n \fInorm_tess_tol\fP] [\-r \fIrel_tess_tol\fP] [\-x \fIlibrt_debug_flag\fP] [\-X \fINMG_debug_flag\fP] [\-u \fIunits_name\fP] [\-o \fIoutfile\fP] \fIinfile.g\fP \fIobject(s)\fP
+.SH "DESCRIPTION"
+.sp
+\fBg\-vrml\fP performs the Boolean operations specified in any regions
+in the specified \fIobject(s)\fP and writes the resulting NMG objects to
+\fIoutfile\fP or to \fIstdout\fP if the \fB\-o\fP option is not used. The
+output is in VRML version 2.0 format. The \fB\-v\fP option requests
+verbose output while the conversion is taking place. The \fB\-d\fP
+option specifies a calculational distance tolerance (in
+millimeters). This tolerance is used to distinguish neighboring
+vertices. Any two vertices less than this tolerance distance apart
+will be considered the same vertex. The default value is
+0.005mm. Prior to performing the Boolean operations for each region,
+the involved primitive solids are converted to a planar facetted
+approximation and stored as NMG solids. This tessellation can be
+controlled using the tessellation tolerances. The \fB\-a\fP option may
+be used to specify an absolute tessellation tolerance (in
+millimeters). This requires that the maximum absolute error from the
+tessellated surface to the actual surface must not be greater than
+\fIabs_tess_tol\fP. The \fB\-n\fP option specifies a surface normal error
+tolerance (in degrees) for the tessellation. The \fB\-r\fP option may
+be used to set a relative error tolerance. This effectively sets an
+absolute tolerance for each primitive solid by multiplying the overall
+size of the solid by \fIrel_tess_tol\fP. The \fB\-x\fP and \fB\-X\fP
+options are used to set debug flags for \fIlibrt\fP and the \fINMG\fP routines
+respectively. The definitions of these flags may be found in
+\fIraytrace.h\fP and \fInmg.h\fP. The \fB\-u\fP option can be used to set the
+units for the resulting VRML file (the default is mm). Any units name
+that MGED accepts will work here.
+.sp
+The \fB\-b\fP option provides BOT dump, and the \fB\-e\fP option
+provides evaluation of all CSG and BOTs.  They are mutually exclusive.
+.SH "EXAMPLE"
+.sp
+.if n .RS 4
+.nf
+$ g\-vrml \-o shell.wrl sample.g sample_object
+.fi
+.if n .RE
+.SH "DIAGNOSTICS"
+.sp
+Error messages are intended to be self\-explanatory.
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

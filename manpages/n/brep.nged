@@ -1,0 +1,324 @@
+'\" t
+.\"     Title: brep
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "BREP" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+brep \- This command does a boundary representation which represents the solid geometry by describing the topology and corresponding geometry.
+.SH "SYNOPSIS"
+.sp
+\fBbrep\fP {\fIobj\fP} [\-\-no\-evaluation] [\fIcommand\fP | \fIbrepname\fP | \fIsuffix\fP]
+.SH "DESCRIPTION"
+.sp
+If \fIobj\fP is not a brep object, then \fBbrep\fP attempts to
+convert it to a brep object. If \fIbrepname\fP is given, then
+\fBbrep\fP defaults to \fIobj\fP_brep; if \-\-no\-evaluation is
+given, then \fBbrep\fP attempts to convert a combination to an
+unevaluated BREP named suffix (again defaulting to
+\fIobj\fP_brep).
+.sp
+Otherwise, the behavior of \fBbrep\fP is determined by which of these
+subcommands is specified:
+.sp
+\fBinfo\fP
+.RS 4
+Return count information (surfaces, curves, etc.) for a BREP.
+.RE
+.sp
+\fBinfo C\fP [\fIindex\fP | \fIindex\fP\-\fIindex\fP]
+.RS 4
+Return information for a
+specific BREP \(aq3D curve\(aq.
+.RE
+.sp
+\fBinfo S\fP [\fIindex\fP | \fIindex\fP\-\fIindex\fP]
+.RS 4
+Return information for a
+specific BREP \(aqsurface\(aq.
+.RE
+.sp
+\fBinfo F\fP [\fIindex\fP | \fIindex\fP\-\fIindex\fP]
+.RS 4
+Return information for a
+specific BREP \(aqface\(aq.
+.RE
+.sp
+\fBinfo T\fP [\fIindex\fP | \fIindex\fP\-\fIindex\fP]
+.RS 4
+Return information for a
+specific BREP \(aqtrim\(aq.
+.RE
+.sp
+\fBinfo E\fP [\fIindex\fP | \fIindex\fP\-\fIindex\fP]
+.RS 4
+Return information for a
+specific BREP \(aqedge\(aq.
+.RE
+.sp
+\fBinfo TB\fP [\fIindex\fP | \fIindex\fP\-\fIindex\fP]
+.RS 4
+Return information for a
+specific BREP \(aqpiecewise bezier trim\(aq.
+.RE
+.sp
+\fBinfo SB\fP [\fIindex\fP | \fIindex\fP\-\fIindex\fP]
+.RS 4
+Return information for a
+specific BREP \(aqpiecewise bezier surface\(aq.
+.RE
+.sp
+\fBplot S\fP [\fIindex\fP | \fIindex\fP\-\fIindex\fP]
+.RS 4
+Plot a specific BREP \(aqsurface\(aq.
+.RE
+.sp
+\fBplot Suv\fP {\fIindex\fP | \fIindex\fP\-\fIindex\fP}{\fIu\fP}{\fIv\fP}
+.RS 4
+Plot a specific
+BREP \(aqsurface\(aq 3d point at specified uv.
+.RE
+.sp
+\fBplot UV\fP {\fIindex\fP | \fIindex\fP\-\fIindex\fP}{\fIu1\fP}{\fIu2\fP}{\fIv1\fP}{\fIv2\fP}
+.RS 4
+Plot a
+specific BREP \(aqsurface\(aq 3d bounds at specified uv bounds.
+.RE
+.sp
+\fBplot F\fP [\fIindex\fP | \fIindex\fP\-\fIindex\fP]
+.RS 4
+Plot a specific BREP \(aqface\(aq.
+.RE
+.sp
+\fBplot I\fP [\fIindex\fP | \fIindex\fP\-\fIindex\fP]
+.RS 4
+Plot a specific BREP
+\(aqisosurface\(aq.
+.RE
+.sp
+\fBplot SN\fP [\fIindex\fP | \fIindex\fP\-\fIindex\fP]
+.RS 4
+Plot a specific BREP \(aqsurface
+normal\(aq.
+.RE
+.sp
+\fBplot KN\fP [\fIindex\fP | \fIindex\fP\-\fIindex\fP]
+.RS 4
+Plot a specific BREP \(aqsurface
+knot\(aq.
+.RE
+.sp
+\fBplot F2d\fP [\fIindex\fP | \fIindex\fP\-\fIindex\fP]
+.RS 4
+Plot a specific BREP \(aqface in
+2d\(aq.
+.RE
+.sp
+\fBplot SBB\fP [\fIindex\fP | \fIindex\fP\-\fIindex\fP]
+.RS 4
+Plot a specific BREP
+\(aqsurfaceleafs\(aq.
+.RE
+.sp
+\fBplot SBB2d\fP [\fIindex\fP | \fIindex\fP\-\fIindex\fP]
+.RS 4
+Plot a specific BREP
+\(aqsurfaceleafs in 2d\(aq.
+.RE
+.sp
+\fBplot TD\fP [\fIindex\fP | \fIindex\fP\-\fIindex\fP]
+.RS 4
+Plot a specific BREP \(aqtrim
+direction\(aq.
+.RE
+.sp
+\fBplot T\fP [\fIindex\fP | \fIindex\fP\-\fIindex\fP]
+.RS 4
+Plot a specific BREP \(aqtrim\(aq.
+.RE
+.sp
+\fBplot T2d\fP [\fIindex\fP | \fIindex\fP\-\fIindex\fP]
+.RS 4
+Plot a specific BREP \(aqtrim in
+2d\(aq.
+.RE
+.sp
+\fBplot TBB\fP [\fIindex\fP | \fIindex\fP\-\fIindex\fP]
+.RS 4
+Plot a specific BREP
+\(aqtrimleafs\(aq.
+.RE
+.sp
+\fBplot TBB2d\fP [\fIindex\fP | \fIindex\fP\-\fIindex\fP]
+.RS 4
+Plot a specific BREP
+\(aqtrimleafs in 2d\(aq.
+.RE
+.sp
+\fBplot E\fP [\fIindex\fP | \fIindex\fP\-\fIindex\fP]
+.RS 4
+Plot a specific BREP \(aqedge3d\(aq.
+.RE
+.sp
+\fBplot SCV\fP [\fIindex\fP | \fIindex\fP\-\fIindex\fP]
+.RS 4
+Plot a specific BREP \(aqnurbs
+control net\(aq.
+.RE
+.sp
+\fBflip\fP
+.RS 4
+Flip all faces in the BREP (turns it \(aqinside out\(aq).
+.RE
+.sp
+\fBtranslate\fP {\fISCV\fP} {\fIindex\fP} {\fIi\fP} {\fIj\fP} {\fIdx\fP} {\fIdy\fP} {\fIdz\fP}
+.RS 4
+Translate a surface control vertex
+.RE
+.sp
+\fBintersect\fP {\fIobj2\fP} {\fIi\fP} {\fIj\fP} [PP | PC | PS | CC | CS | SS]
+.RS 4
+Visualize intersecting two BREP objects.  The last argument specifies
+what portions of each to intersect; if it is not specified, it
+defaults to SS:
+.sp
+PP
+.RS 4
+Intersect a point from the first object with a point from the
+second.
+.RE
+.sp
+PC
+.RS 4
+Intersect a point from the first object with a curve from the
+second.
+.RE
+.sp
+PS
+.RS 4
+Intersect a point from the first object with a surface from the
+second.
+.RE
+.sp
+CC
+.RS 4
+Intersect a curve from the first object with a curve from of the
+second.
+.RE
+.sp
+CS
+.RS 4
+Intersect a curve from the first object with a surface from the
+second
+.RE
+.sp
+SS
+.RS 4
+Intersect a surface from the first object with a surface from
+the second.
+.RE
+.RE
+.sp
+\fBu\fP {\fIobj2\fP} {\fIoutput\fP}
+.RS 4
+Take the union of \fIobj\fP and
+\fIobj2\fP, storing the result in \fIoutput\fP.
+.RE
+.sp
+\fBi\fP {\fIobj2\fP} {\fIoutput\fP}
+.RS 4
+Take the intersection of \fIobj\fP and
+\fIobj2\fP, storing the result in \fIoutput\fP.
+.RE
+.sp
+\fB\-\fP {\fIobj2\fP} {\fIoutput\fP}
+.RS 4
+Take the difference of \fIobj\fP and
+\fIobj2\fP, storing the result in \fIoutput\fP.
+.RE
+.sp
+\fBx\fP {\fIobj2\fP} {\fIoutput\fP}
+.RS 4
+Take the exclusive or of \fIobj\fP and
+\fIobj2\fP, storing the result in \fIoutput\fP.
+.RE
+.sp
+\fBcsg\fP
+.RS 4
+Take the specified B\-Rep and attempt to generate a CSG
+implicit boolean tree that will define the same solid shape.
+.RE
+.SH "EXAMPLES"
+.sp
+.B Example 1. Info
+.br
+.RS 4
+.sp
+mged> \f(CRbrep obj.randomobj info\fP
+.sp
+This outputs general information about obj.randomobj, including counts
+of various entity types such as surfaces, curves, vertices, etc.
+.sp
+mged> \f(CRbrep obj.randomobj info F 2\fP
+.sp
+Output info about the 2nd face of the BREP object obj.randomobj.
+.RE
+.sp
+.B Example 2. Plot
+.br
+.RS 4
+.sp
+mged> \f(CRbrep obj.randomobj plot S 1\-3\fP
+.sp
+This plots the 1st through 3rd surfaces of obj.randomobj in the
+graphics display window.
+.RE
+.sp
+.B Example 3. Intersect
+.br
+.RS 4
+.sp
+mged> \f(CRbrep obj.randomobj intersect sph2.randomobj 2 4\fP
+.sp
+This displays the intersection of obj.randomobj\(cqs 2nd surface with
+sph2.randomobj\(cqs 4th surface.
+.sp
+mged> \f(CRbrep obj.randomobj intersect sph2.randomobj 3 2 PC\fP
+.sp
+This displays the intersection of obj.randomobj\(cqs 3rd point with
+sph2.randomobj\(cqs 2nd curve.
+.RE
+.SH "AUTHOR"
+.sp
+BRLCAD\-TEAM
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""
