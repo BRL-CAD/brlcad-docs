@@ -1,5 +1,8 @@
 #!/bin/bash
 ### Generate man pages.
+###
+### On Ubuntu asciidoctor can be installed with:
+###     apt install asciidoctor
 
 cd $(dirname $0)
 cd ..
