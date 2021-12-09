@@ -1,0 +1,75 @@
+'\" t
+.\"     Title: cad_parea
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "CAD_PAREA" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+cad_parea \- compute area of polygon
+.SH "SYNOPSIS"
+.sp
+\fBcad_parea\fP [\-i \fIinput\fP] [\-o \fIoutput\fP]
+.SH "DESCRIPTION"
+.sp
+\fBcad_parea\fP reads from \fIinput\fP (standard input if not given) a
+series of polygon vertex (\fIx\fP,\fIy\fP) coordinate values and writes to
+\fIoutput\fP (standard output if not given) the polygon\(cqs area. Lines not
+beginning with a number are silently skipped. Vertices are assumed to
+be given in counter\-clockwise cyclic order.
+.SH "HINTS"
+.sp
+A hole can be accommodated as a clockwise section connected to the
+periphery by a line segment traced in both directions.
+.sp
+Disjoint pieces may be connected by a line segment traced in both
+directions.
+.SH "EXAMPLE"
+.sp
+.if n .RS 4
+.nf
+$ cad_parea # _comment_ 1 0 2 0 2 1 3 1 3 2 2 2 1 2 0 2 0 1 1 1 _^D_ 4
+.fi
+.if n .RE
+.SH "SEE ALSO"
+.sp
+\fBcad_boundp\fP(1)
+.SH "DIAGNOSTICS"
+.sp
+Improperly formatted input produces an error message and terminates
+\fBcad_parea\fP with non\-zero exit status.
+.sp
+\fBcad_parea\fP outputs "0" for the area of a degenerate polygon.
+.SH "AUTHOR"
+.sp
+Douglas A. Gwyn, BRL/VLD\-VMB
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

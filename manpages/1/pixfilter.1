@@ -1,0 +1,103 @@
+'\" t
+.\"     Title: pixfilter
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "PIXFILTER" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+pixfilter \- apply a 3x3 filter to a color pix file
+.SH "SYNOPSIS"
+.sp
+\fBpixfilter\fP [\-f \fItype\fP] [\-v] [\-d \fIdiv\fP] [\-o \fIoffset\fP] [\-w \fIwidth\fP] [\-n \fIheight\fP] [\-s \fIsquaresize\fP] [\fIfile.pix\fP] > \fInewfile.pix\fP
+.SH "DESCRIPTION"
+.sp
+\fBpixfilter\fP applies one of several 3x3 kernel filters to a color
+\fBpix\fP(5) format file. It will take a file name or
+else read from standard input. The input file size will be assumed to
+be 512 by 512 pixels unless the \fB\-w\fP, and/or \fB\-n\fP, or the
+\fB\-s\fP flags are used to tell it otherwise. By default a low pass
+filter is used.  The \fB\-f\fP \fItype\fP flag can be used to specify
+a different type of filter.
+.sp
+The \fItype\fP choices include:
+.sp
+\fIlo\fP
+.RS 4
+low pass (the default)
+.RE
+.sp
+\fIhi\fP
+.RS 4
+high pass
+.RE
+.sp
+\fIvg\fP
+.RS 4
+vertical gradient
+.RE
+.sp
+\fIhg\fP
+.RS 4
+horizontal gradient
+.RE
+.sp
+\fIla\fP
+.RS 4
+laplacian
+.RE
+.sp
+\fIb\fP
+.RS 4
+boxcar low pass
+.RE
+.sp
+Most filters divide the result of the kernel multiplication by some
+value in order to scale it back to a 0\(->255 range. For example, the
+boxcar divides by nine.  The \fB\-d\fP flag can be used to change this
+divisor. Some filters also add an offset to their results.  The output
+of a laplacian for example is "centered" about zero, thus it adds 128
+to the answer to yield a difference from neutral grey. The \fB\-o\fP
+flag can be used to change this offset.
+.sp
+The \fB\-v\fP flag displays the kernel values on standard error.
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1),
+\fBpixscale\fP(1), \fBpix\fP(5)
+.SH "BUGS"
+.sp
+This should allow any 3x3 kernel to be specified.
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

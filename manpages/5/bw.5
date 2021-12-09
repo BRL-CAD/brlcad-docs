@@ -1,0 +1,143 @@
+'\" t
+.\"     Title: bw
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "BW" "5" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+bw \- Black and White image file format and utilities
+.SH "FORMAT"
+.sp
+A bw file contains sequences of pixels. Each pixel is stored as one
+unsigned char, and thus ranges in intensity from 0 (black) to 255
+(white). The first pixel in a bw file is the lower left corner of the
+image. The pixels proceed from left\-to\-right across each scanline,
+with scanlines being written from the bottom to the top of the image.
+.sp
+By convention, bw images are usually square, and thus their dimensions
+can be determined by the file size.  If this is not the case, often
+only the file width need be known by a program reading the file.
+History has left us with two "standard" sizes, 512x512 and the
+"higher" 1024x1024. A common practice for other file sizes is to
+include the file width in the filename.
+.sp
+At some time in the future bw files will probably get self\-typing
+headers so that parameters such as their size can be automatically
+determined by programs.
+.SH "UTILITIES"
+.sp
+\fIbw\-fb\fP
+.RS 4
+display a .bw format image on a framebuffer.
+.RE
+.sp
+\fIfb\-bw\fP
+.RS 4
+produce a .bw file from a framebuffer image.
+.RE
+.sp
+\fIbw\-pix\fP
+.RS 4
+convert a .bw file to a color .pix file.
+.RE
+.sp
+\fIpix\-bw\fP
+.RS 4
+convert a color .pix file to a .bw file.
+.RE
+.sp
+\fIbwstat\fP
+.RS 4
+gives statistics concerning a .bw file.
+.RE
+.sp
+\fIbwhist\fP
+.RS 4
+displays a histogram on a framebuffer.
+.RE
+.sp
+\fIbwmod\fP
+.RS 4
+a filter to shift and scale pixel intensities.
+.RE
+.sp
+\fIbwdiff\fP
+.RS 4
+yields the difference between two .bw files.
+.RE
+.sp
+\fIbwrect\fP
+.RS 4
+extracts an arbitrary rectangle from a .bw file.
+.RE
+.sp
+\fIbwcrop\fP
+.RS 4
+maps any quadrilateral in a .bw file into any rectangle.
+.RE
+.sp
+\fIbwrot\fP
+.RS 4
+rotates, reverses, or inverts a .bw file.
+.RE
+.sp
+\fIbwscale\fP
+.RS 4
+scales a .bw file larger or smaller.
+.RE
+.sp
+\fIbwfilter\fP
+.RS 4
+a variety of 3x3 kernel filters for .bw images.
+.RE
+.sp
+\fIbw3\-pix\fP
+.RS 4
+merges three .bw files into one .pix file.
+.RE
+.sp
+\fIpix\-bw3\fP
+.RS 4
+separates .pix file RGB colors into three .bw files.
+.RE
+.SH "FILES"
+.sp
+file.bw
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1), \fBpix\fP(5),
+and above named programs.
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

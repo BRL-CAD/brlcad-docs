@@ -1,0 +1,100 @@
+'\" t
+.\"     Title: bw-fb
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "BW\-FB" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+bw\-fb \- display a black and white bw image on a framebuffer
+.SH "SYNOPSIS"
+.sp
+\fBbw\-fb\fP [\-ahiczRGB] [\-F \fIframebuffer\fP] [\-s \fIsquarefilesize\fP] [\-w \fIfile_width\fP] [\-n \fIfile_height\fP] [\-S \fIsquarescrsize\fP] [\-W \fIscr_width\fP] [\-N \fIscr_height\fP] [\-x \fIfile_xoff\fP] [\-y \fIfile_yoff\fP] [\-X \fIscr_xoff\fP] [\-Y \fIsrc_yoff\fP] [\fIinfile.bw\fP]
+.SH "DESCRIPTION"
+.sp
+\fBbw\-fb\fP reads a \fBbw\fP(5) format file from standard
+input if an input file is not given, and displays the image on the
+currently selected framebuffer. The environment variable \fIFB_FILE\fP
+specifies the current framebuffer; see
+\fBbrlcad\fP(1). Alternatively, the framebuffer
+may be explicitly specified by using the \fB\-F\fP flag.
+.sp
+By default, the \fIbw\fP file (and, automatically, the requested
+framebuffer size) is assumed to be 512x512 pixels. Specifying the
+\fB\-a\fP flag causes the program to attempt to autosize. A table of
+common image sizes is consulted, and if any match the size of the
+input file, then the width and height values associated with that size
+will be used.
+.sp
+If the \fB\-i\fP flag is specified, the image is output from top to
+bottom. Customarily, \fIbw\fP files are stored bottom to top, so this
+inverts the image.
+.sp
+The \fB\-c\fP flag causes the screen to be cleared before the image is
+displayed. The default behavior is to overwrite the current image with
+the new image without clearing the screen.
+.sp
+The \fB\-z\fP flag will zoom and center on the image being displayed
+to make it fill the display area.
+.sp
+The flags \fB\-R\fP, \fB\-G\fP, and \fB\-B\fP select individual color
+planes into which the image will be loaded. One or more can be given.
+By default all three colors are written with the \fIbw\fP pixel value.
+.sp
+The \fB\-w\fP \fIfile_width\fP flag specifies the width of each
+scanline in the input file, in pixels. The \fB\-n\fP
+\fIfile_height\fP flag specifies the height in scanlines of the input
+file. Both are set to to the same value via \fB\-s\fP
+\fIsquarefilesize\fP. (\fB\-W\fP \fIscr_width\fP, \fB\-N\fP
+\fIscr_height\fP, and \fB\-S\fP \fIsquarescrsize\fP perform these
+roles for the display device; if none of these three options are used,
+the display device uses the dimensions of the input file.)
+.sp
+\fB\-x\fP \fIfile_xoff\fP, \fB\-y\fP \fIfile_yoff\fP, \fB\-X\fP
+\fIscr_xoff\fP, and \fB\-y\fP \fIscr_yoff\fP will offset into the
+file or onto the screen by the given amounts. The coordinate system
+for these offsets is first quadrant, with the origin at the lower left
+corner of the image.
+.SH "FORMAT"
+.sp
+A \fBbw\fP(5) file contains sequences of pixels. Each
+pixel is stored as one \fIunsigned char\fP. The first pixel in a \fIbw\fP file
+is the lower left corner of the image. The pixels proceed from
+left\-to\-right across each scanline, with scanlines being written from
+the bottom to the top of the image.
+.SH "SEE ALSO"
+.sp
+\fBfb\-bw\fP(1), \fBbw\fP(5)
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

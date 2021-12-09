@@ -1,0 +1,71 @@
+'\" t
+.\"     Title: random
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "RANDOM" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+random \- generates a random number between two specified values
+.SH "SYNOPSIS"
+.sp
+\fBrandom\fP [\-s \fIseed\fP] [\-g [\-c \fIcenter\fP]] [\-u] [\-v] \fIlow\fP \fIhigh\fP
+.SH "DESCRIPTION"
+.sp
+\fBrandom\fP generates a random number between the two values given
+by \fIlow\fP and \fIhigh\fP, which are required arguments. The
+number can be uniform across the entire range or it can be a gaussian
+distribution around the center of the range (or a named center).
+.sp
+The \fB\-s\fP option specifies what integer seed to use to prime the
+random number generator.
+.sp
+The \fB\-u\fP option specifies that the random number distribution
+should be uniform across the low\-to\-high range. The \fB\-g\fP option
+specifies that the random number distribution should be a gaussian
+distribution around a default or named center, specified with the
+\fB\-c\fP option. If neither \fB\-u\fP nor \fB\-g\fP is specified,
+\fB\-u\fP will be used.
+.sp
+The \fB\-v\fP option specifies verbose diagnostic output.
+.SH "EXAMPLES"
+.sp
+.if n .RS 4
+.nf
+random 0 100
+random \-g 40 2000
+.fi
+.if n .RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

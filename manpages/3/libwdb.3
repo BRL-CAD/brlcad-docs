@@ -1,0 +1,268 @@
+'\" t
+.\"     Title: libwdb
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "LIBWDB" "3" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+libwdb \- library for procedural generation of MGED databases
+.SH "SYNOPSIS"
+.sp
+.if n .RS 4
+.nf
+#include "vmath.h"
+#include "wdb.h"
+
+mk_id (FILE * fp,
+       char * title);
+.fi
+.if n .RE
+.SH "DESCRIPTION"
+.sp
+This library exists to permit writing MGED databases from arbitrary
+procedures. Some of the high\-level structure of MGED databases (e.g.,
+that they start with an ID record, and that COMB records must be
+followed immediately by MEMBER records) is currently implicit in the
+calling routines. This library is by no means complete, and routines
+for writing every type of solid do not yet exist. While it is expected
+that this library will grow and change as experience is gained, it is
+not clear what direction that evolution will take.  Be prepared for
+changes in the interface to some of these routines in future
+releases. All routines take as their first argument the stdio FILE
+pointer (e.g., stdout) on which the generated MGED database record(s)
+will be written with fwrite().
+.sp
+\fImk_id\fP
+.RS 4
+fwrites an IDENT record on the indicated stdio file, with
+the string \fItitle\fP associated.  Note that to have a valid database,
+the the first record written must have been an IDENT record such as
+written by this routine.
+.RE
+.sp
+\fImk_half\fP
+.RS 4
+makes a halfspace with name "name".  It is specified by
+the distance "d" from the origin, and the outward pointing normal
+vector "norm".
+.RE
+.sp
+\fImk_rpp\fP
+.RS 4
+makes an ARB8 called "name" specified as a right
+rectangular parallelepiped in terms of a minimum point "min" and a
+maximum point "max".
+.RE
+.sp
+\fImk_wedge\fP
+.RS 4
+makes a right angular wedge called "name" specified by a
+starting vertex located in the lower left corner of the solid, an
+x\-direction vector, a z\-direction vector, an x\-length, a y\-length, a
+z\-length, and a top x\-length.  The y\-direction vector is the result of
+x\-direction vector cross z\-direction vector. All vertices are make in
+the counterclockwise direction, bottom face first.  The top face is
+made by extruding the bottom face in the z direction.
+.RE
+.sp
+\fImk_arb4\fP
+.RS 4
+makes an ARB8 called "name" described as an ARB4, i.e.,
+by 4 points, the first 3 of which lie on a plane, and the fourth is
+the "peak".
+.RE
+.sp
+\fImk_arb8\fP
+.RS 4
+makes an ARB8 called "name" described by an array of 8
+points in "pts". All plates with 4 points must be co\-planar. If there
+are degeneracies (i.e., all 8 vertices are not distinct), then certain
+requirements must be met. If we think of the ARB8 as having a top and
+a bottom plate, the first four points listed must lie on one plate,
+and the second four points listed must lie on the other plate.
+.RE
+.sp
+\fImk_sph\fP
+.RS 4
+makes a spherical ellipsoid called "name" centered at
+point "center" with radius "radius".
+.RE
+.sp
+\fImk_ell\fP
+.RS 4
+makes an ellipsoid called "name" centered at point
+"center" with three perpendicular radius vectors. The eccentricity of
+the ellipsoid is controlled by the relative lengths of the three
+radius vectors.
+.RE
+.sp
+\fImk_tgc\fP
+.RS 4
+makes a truncated general cone called "name" with the base
+plate centered at "center" and a height vector "height", which is
+perpendicular to the two end plates.  The length of the height vector
+defines the location of the top plate.  The vectors "a" and "b" are
+the base radius vectors, and the vectors "c" and "d" are the nose
+vectors.
+.RE
+.sp
+\fImk_tor\fP
+.RS 4
+makes a torus called "name" centered at point "center",
+with the torus lying in a plane with normal "n". Radius "r1" is the
+distance from the center point of the torus to the center of the solid
+part, and radius "f2" is the radius of the solid part.
+.RE
+.sp
+\fImk_cone\fP
+.RS 4
+makes a right circular cone called "name" specified by
+the center point of the base, a direction or height vector, a height
+scalar, and a radius for each end of the cone. The direction vector is
+unitized and serves to derive a vector "a", which is orthogonal to the
+direction vector and itself.  This vector is scaled by both radii to
+obtain two of four vectors required to make a cone.  It is then
+crossed with the unitized direction vector, and the result thereof is
+scaled by both radii as well to obtain the last of four vectors needed
+to make a cone.
+.RE
+.sp
+\fImk_rcc\fP
+.RS 4
+makes a truncated general cone (TGC) with name "name"
+specified as a right circular cylinder. The base plate of the cylinder
+is centered at "base", with height vector "height" which is
+perpendicular to the two end plates, the length of which defines the
+location of the top plate. The radius given as "radius" defines the
+size of the end plates.
+.RE
+.sp
+\fImk_pipe\fP
+.RS 4
+creates a "pipe" solid with the specified "name" and
+writes it to the file "fp".  The user must provide a linked list of
+"pipe" segments headed by "headp".  Each pipe segment includes fields
+indicating a "control" point for the pipe, an inner diameter, an outer
+diameter and a bend radius. The inner diameter must be less than the
+outer diameter, and a zero inner diameter creates a solid wire rather
+than a hollow pipe.  The pipe is constructed along straight lines
+through successive points, with circular bends (of the indicated
+radius) connecting the straight sections. The bend radius must be
+greater than the outer radius. The user is responsible for freeing the
+memory used by the list of pipe segments (see \f(CRmk_pipe_free()\fP below.
+.RE
+.sp
+\fImk_pipe_free\fP
+.RS 4
+will free the memory used by a linked list of pipe
+segments. This does not free the list head.
+.RE
+.sp
+\fImk_pipe_init\fP
+.RS 4
+initializes a linked list of pipe segments with the
+initial point, inside diameter, outside diameter, and bend radius.
+.RE
+.sp
+\fImk_add_pipe_pt\fP
+.RS 4
+adds another pipe segment to the list with the
+indicated point, outside radius, inside radius, and bend radius.
+.RE
+.sp
+\fImk_comb\fP
+.RS 4
+defines a combination of name "name", with material
+properties information included. "len" indicated the number of
+\fImk_memb\fP calls (MEMB records) that will immediately follow. "region"
+is a boolean that is set to mark this combination as a
+region. "matname" is either a NULL pointer, or a pointer to a string
+containing the material property name. "matparm" is either a NULL
+pointer, or a pointer to a string containing the material property
+parameter information specific to that material. Color is passed as an
+array of three unsigned chars in "rgb". Color "inherit" is a boolean,
+and if true, the color and material properties will be passed from
+upper\-level objects to lower\-level objects. \fImk_fcomb\fP makes a simple
+combination header, with name "name", length "len", and the boolean
+"region".  It functions just like \fImk_comb\fP. "len" \fImk_memb\fP calls
+must immediately follow the call to \fImk_comb\fP or \fImk_fcomb\fP. Each call
+to \fImk_memb\fP adds a reference to object "name" to the combination. It
+is transformed by the 4x4 matrix "mat", and is combined by boolean
+operation "op", chosen from the list of: UNION, INTERSECT, SUBTRACT,
+from <brlcad/db.h>.
+.RE
+.sp
+\fImk_addmember\fP
+.RS 4
+is used to obtain dynamic storage for a new wmember
+structure (see \fIwdb.h\fP ).  Then \fImk_lcomb\fP can be used in the same way
+as \fImk_comb\fP to make a combination of a linked list of wmember
+structures. This is the only recommended way to create combinations,
+because it collects up the details in memory, and produces the
+combination and member records all at once, rather than in multiple
+calls, as in \fImk_comb\fP and \fImk_memb.\fP The "op" argument must be one of
+WMOP_UNION, WMOP_SUBTRACT, or WMOP_INTERSECT. In the future, \fImk_comb\fP
+and \fImk_memb\fP will no longer be supported. \fImk_lfcomb\fP is the linked
+list equivalent of \fImk_fcomb\fP. Note that the linked list heads must be
+initialized by an invocation of BU_LIST_INIT( &head.l );
+.RE
+.sp
+The routine \fImk_bsolid\fP writes the header for a b\-spline solid "name",
+with "nsurf" surfaces, at "res" resolution.  This call must be
+followed by "nsurf" calls to \fImk_bsurf\fP which enters the respective
+surfaces into the combination.  This pair work much like the \fImk_comb\fP
+and \fImk_memb\fP pair.
+.sp
+The global variable \fImk_version\fP may be set to 4 or 5, depending on
+which format BRL\-CAD database you wish to write. By default, the most
+recent version is always created.
+.SH "EXAMPLE(S)"
+.sp
+Several examples of how to use this library can be found in the
+proc\-db directory of the BRL\-CAD source distribution.
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1B),
+\fBmged\fP(1B), \fBrt\fP(1B)
+.SH "DIAGNOSTICS"
+.sp
+None
+.SH "BUGS"
+.sp
+The library is incomplete. The need for the application to know
+higher\-level details is unfortunate, but necessary to keep the library
+simple. We may pay for this later.
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

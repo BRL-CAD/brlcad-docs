@@ -1,0 +1,91 @@
+'\" t
+.\"     Title: iges-g
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "IGES\-G" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+iges\-g \- IGES Translator (IGES CSG to BRL\-CAD)
+.SH "SYNOPSIS"
+.sp
+\fBiges\-g\fP [\-X \fINMG_debug_flag\fP] [\-x \fIrt_debug_flag\fP] [\-N \fIsolid_name\fP] [\-b] [\-n | \fId\fP | \fI3\fP | \fIt\fP] \-o \fIdatabase.g\fP \fIfile.iges\fP
+.SH "DESCRIPTION"
+.sp
+\fBiges\-g\fP converts the specified \fIfile.iges\fP to a BRL\-CAD
+\fIdatabase.g\fP file. The IGES file is expected to conform to IGES
+5.1. The \fB\-n\fP option specifies that all rational B\-spline
+surfaces in the IGES file should be combined into one BRL\-CAD spline
+solid. The \fB\-d\fP option indicates that IGES drawings should be
+converted to BRL\-CAD NMG objects. Theses objects will be
+two\-dimensional drawings, not solids. The \fB\-3\fP option is the same
+as the \fB\-d\fP option except the final projection into 2D is not
+performed. This may produce 3D drawings in cases where the drawings
+have been produced from a 3D model. The \fB\-t\fP option requests all
+the trimmed surfaces in the IGES file be converted to a single BRL\-CAD
+NMG solid. The \fB\-N\fP option provides a name to be used for the
+single solid created under the \fB\-n\fP or \fB\-t\fP options, and is
+ignored for other options. The \fB\-p\fP option indicates that BREP
+objects should be converted to NMG solids rather than the default BOT
+solids. The \fB\-X\fP and \fB\-x\fP options allow the setting of debug
+flags for the NMG routines and the rt library respectively. See
+\fInmg.h\fP and \fIraytrace.h\fP for details. The absence of any of the
+\fB\-n\fP , \fB\-d\fP , or \fB\-t\fP options results in the default
+behavior where all IGES CSG and planar face BREP objects are converted
+to BRL\-CAD equivalents. Most conversions are exact, with the
+exceptions of the solid of revolution and the solid of linear
+extrusion. These solids do not exist in BRL\-CAD and are therefore
+approximated. The solid of revolution is built from a series of
+truncated right cones developed by approximating the curve to be
+revolved with a series of straight line segments. The extrusion is
+similarly handled by approximating the curve to be extruded with
+straight line segments and using that to build a BRL\-CAD
+\fIpolysolid\fP. Planar faced IGES BREP objects are converted to BRL\-CAD
+NMG structures.
+.SH "EXAMPLE"
+.sp
+.if n .RS 4
+.nf
+$ iges\-g \-o \-o sample.g sample.iges
+.fi
+.if n .RE
+.SH "SEE ALSO"
+.sp
+\fIThe Initial Graphics Exchange Specification (IGES) Version 5.1\fP,
+IGES/PDES Organization, September 1991
+.SH "DIAGNOSTICS"
+.sp
+Error messages are intended to be self\-explanatory.
+.SH "AUTHORS"
+.sp
+\fIBRL\-CAD Team\fP
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

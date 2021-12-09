@@ -1,0 +1,205 @@
+'\" t
+.\"     Title: canonize
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "CANONIZE" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+canonize \- queue a pix file to a printer using MDQS
+.SH "SYNOPSIS"
+.sp
+\fBcanonize\fP [\-ah] [\-s \fIsquarefilesize\fP]
+.br
+[\-w \fIfilewidth\fP] [\-n \fIfileheight\fP]
+.br
+[\-g [\fIcg\fP | \fIrgb\fP | \fIscan\fP]]
+.br
+[\-t [\fIu\fP | \fIl\fP | \fIm\fP]] [\-C \fInumcopies\fP][\-q \fIqueue\fP]
+.br
+[\-R \fIdpi\fP] [\-M \fIxmag:ymag\fP] [\-m]
+.br
+[\-X \fIpage_xoff\fP] [\-Y \fIpage_yoff\fP]
+.br
+[\-N \fIprintheight\fP] [\-W \fIprintwidth\fP]
+.br
+[\-v] [\-q \fIqueue\fP] [\fIfile.pix\fP]...
+.SH "DESCRIPTION"
+.sp
+\fBcanonize\fP is a user agent for printing
+\fBpix\fP(5) format files using a Canon(tm) CLC500
+and the MDQS queuing system. It can read the image from the standard
+input, or can send one or more files whose names are specified on the
+command line.
+.sp
+By default, the image is printed using the "cg" gamma map (computer
+graphics), with paper from the "upper" paper tray, and the image
+proportionally scaled to fill the print area on the page.
+.SH "OPTIONS"
+.sp
+\-a
+.RS 4
+Causes \fBcanonize\fP to attempt to determine the size of the
+image to find out the number of bytes in the file.  This option cannot
+be used if the image is provided on the standard input.
+.RE
+.sp
+\-h
+.RS 4
+indicates that the input image is 1024 pixels square.
+.RE
+.sp
+\-s squaresize
+.RS 4
+sets the image width and height to the size given.
+.RE
+.sp
+\-w filewidth
+.RS 4
+sets the image width to be \fIfilewidth\fP pixels.  By
+default the image is assumed to be 512 pixels wide.
+.RE
+.sp
+\-n fileheight
+.RS 4
+sets the image height to be \fIfileheight\fP pixels. By
+default the image is assumed to be 512 pixels high.
+.RE
+.sp
+\-g gammatype
+.RS 4
+Select the gamma correction map to apply to the image
+before printing. There are three gamma compensation maps in the
+CLC500.  Canon recommends the "cg" map for computer graphics images
+which have not been gamma corrected.  The "rgb" gamma map is said to
+be designed for images which have already been gamma corrected.  The
+"scan" gamma map is the one used by the CLC500 when printing images
+obtained from the built in scanner.
+.RE
+.sp
+\-t trayname
+.RS 4
+selects the tray from which paper should be taken to
+produce the print.  The options are "u" for the upper tray, "l" for
+the lower tray, and "m" for manual feed.
+.RE
+.sp
+\-C numcopies
+.RS 4
+Specifies the number of prints of the image
+desired. This number must be in the range 1\-99.
+.RE
+.sp
+\-q queuename
+.RS 4
+queue job to MDQS queue "queuename".  By default, the
+job is queued to the queue "canon".
+.RE
+.sp
+\-R dpi
+.RS 4
+Print image with dpi dots\-per\-inch on the output page.  This
+option disables the automatic scaling of the image.
+.RE
+.sp
+\-M xmag:ymag
+.RS 4
+Print the image with a magnification of "xmag" in the X
+dimension and "ymag" in the y dimension.
+.RE
+.sp
+\-X page_xoff
+.RS 4
+Specifies the offset of left side of the image from the
+left side of the output page. This option is available only when
+\fB\-R\fP or \fB\-M\fP have been specified, and are especially useful
+in conjunction with the \fB\-m\fP option.
+.RE
+.sp
+\-Y page_xoff
+.RS 4
+Specifies the distance from the top of the page to the
+top of the image. This option is available only when \fB\-R\fP or
+\fB\-M\fP have been specified, and are especially useful in
+conjunction with the \fB\-m\fP option.
+.RE
+.sp
+\-N
+.RS 4
+Specifies the height of the image on the output page. This option
+is available only when \fB\-A\fP AutoScaling (on by default). The
+image is scaled equally in the X and Y dimensions to make it fit the
+available print area as closely as possible. \fB\-R\fP or \fB\-M\fP
+have been specified, and are especially useful in conjunction with the
+\fB\-m\fP option.
+.RE
+.sp
+\-W
+.RS 4
+Specifies the width of the image on the output page. This option
+is available only when \fB\-R\fP or \fB\-M\fP have been specified, and
+are especially useful in conjunction with the \fB\-m\fP option.
+.RE
+.sp
+\-m
+.RS 4
+causes the image to be repeated across the page.
+.RE
+.sp
+\-v
+.RS 4
+Turn on debugging output.
+.RE
+.SH "NOTES"
+.sp
+The Canon CLC500(tm) prints at 400dpi on the output page.  This
+results in approximately 2550 by 3300 pixels on an 8.5 inch by 11 inch
+page. Images of less than 1024 by 1024 pixels do not look especially
+pleasing when printed using AutoScaling.  This is because the pixels
+become enlarged enough to be annoying.
+.sp
+Because high resolution images occupy a substantial amount of disk
+space, it is relatively easy to run the MDQS queue server out of disk
+space by queuing many images at once.
+.SH "SEE ALSO"
+.sp
+\fBpix\-fb\fP(1),
+\fBpix\-ipu\fP(1), IPU Programmer\(cqs Manual
+.SH "DIAGNOSTICS"
+.sp
+If the \fB\-a\fP option is specified when the image is being
+redirected from the standard input, \fBcanonize\fP will abort. This
+avoids wasting paper (printing an image using incorrect dimensions).
+.SH "AUTHOR"
+.sp
+Lee A. Butler
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

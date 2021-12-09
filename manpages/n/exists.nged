@@ -1,0 +1,233 @@
+'\" t
+.\"     Title: exists
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "EXISTS" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+exists \- The exists command evaluates an expression and return 1 if true, zero if false.  It serves roughly the same purpose for objects in a BRL\-CAD database that the UNIX test command serves for files on a file system, with additional features specific to geometry and minus some of the filesystem specific options of test.
+.SH "SYNOPSIS"
+.sp
+\fBexists\fP {\fIexpression\fP} [\fIexpression\fP]...
+.SH "DESCRIPTION"
+.sp
+\fBexists\fP works in a fashion similar to Unix\-style test commands
+(internally it is based on NetBSD\(cqs test code) but tests \fIobjects\fP in
+the current open database rather than files in a file system.  If an
+object matching a valid expression or expressions is found 1 is
+returned, otherwise 0 is returned.  Expressions are formed using
+PRIMARIES and OPERATORS.  A simple
+object name with no primaries or operators will return true if
+db_lookup succeeds and the object is non\-null (TODO).
+.SH "PRIMARIES:"
+.sp
+\fB\-c\fP \fIobject\fP
+.RS 4
+Returns TRUE if the object is a combination
+.RE
+.sp
+\fB\-e\fP \fIobject\fP
+.RS 4
+Returns TRUE if the object exists.  This reports only
+the results of db_lookup without doing any further testing to check
+for null objects, and constitutes the most basic existence test
+available for a database object.
+.RE
+.sp
+\fB\-n\fP \fIobject\fP
+.RS 4
+Returns TRUE if the object exists and is a NULL
+database object. \fBTODO\fP
+.RE
+.sp
+\fB\-p\fP \fIobject\fP
+.RS 4
+Returns TRUE if the object exists and is a geometric
+primitive.  (Empty geometric primitives and 2D primitives like sketch
+will pass.)
+.RE
+.sp
+\fB\-v\fP \fIobject\fP
+.RS 4
+Returns TRUE if the object exists and has a bounding
+box with non\-zero volume.  (A sketch primitive would not pass this
+test.)
+.RE
+.sp
+\fIobject1\fP \fB=\fP \fIobject2\fP
+.RS 4
+Returns TRUE if the objects exist and their
+serialized binary contents are equal.
+.RE
+.sp
+\fIobject1\fP \fB!=\fP \fIobject2\fP
+.RS 4
+Returns TRUE if the objects exist and their
+serialized binary contents are not equal.
+.RE
+.sp
+\fIobject1\fP \fB<\fP \fIobject2\fP
+.RS 4
+Returns TRUE if the objects exist and the
+size of the serialized binary representation of object1 is less than
+the size of the serialized binary representation of object 2.
+.RE
+.sp
+\fIobject1\fP \fB>\fP \fIobject2\fP
+.RS 4
+Returns TRUE if the objects exist and the
+size of the serialized binary representation of object1 is greater
+than the size of the serialized binary representation of object 2.
+.RE
+.sp
+\fIobject1\fP \fBbeq\fP \fIobject2\fP
+.RS 4
+Returns TRUE if the objects exist and
+their bounding box volumes are equal.  \fBTODO\fP \- eventually, when the
+right APIs become available, an "\-req" option will be added for a
+more\-expensive\-but\-more\-accurate raytrace based volumetric comparison
+as well.
+.RE
+.sp
+\fIobject1\fP \fBbne\fP \fIobject2\fP
+.RS 4
+Returns TRUE if the objects exist and
+their bounding box volumes are not equal.  \fBTODO\fP \- eventually, when
+the right APIs become available, a "\-rne" option will be added for a
+more\-expensive\-but\-more\-accurate raytrace based volumetric comparison
+as well.
+.RE
+.sp
+\fIobject1\fP \fBbgt\fP \fIobject2\fP
+.RS 4
+Returns TRUE if the objects exist and the
+volume of the bounding box of object1 is greater than the volume of
+the bounding box for object2.  \fBTODO\fP \- eventually, when the right
+APIs become available, an "\-rgt" option will be added for a
+more\-expensive\-but\-more\-accurate raytrace based volumetric comparison
+as well.
+.RE
+.sp
+\fIobject1\fP \fBbge\fP \fIobject2\fP
+.RS 4
+Returns TRUE if the objects exist and the
+volume of the bounding box of object1 is greater than or equal to the
+volume of the bounding box for object2.  \fBTODO\fP \- eventually, when the
+right APIs become available, an "\-rge" option will be added for a
+more\-expensive\-but\-more\-accurate raytrace based volumetric comparison
+as well.
+.RE
+.sp
+\fIobject1\fP \fBblt\fP \fIobject2\fP
+.RS 4
+Returns TRUE if the objects exist and the
+volume of the bounding box of object1 is less than the volume of the
+bounding box for object2.  \fBTODO\fP \- eventually, when the right APIs
+become available, an "\-rlt" option will be added for a
+more\-expensive\-but\-more\-accurate raytrace based volumetric comparison
+as well.
+.RE
+.sp
+\fIobject1\fP \fBble\fP \fIobject2\fP
+.RS 4
+Returns TRUE if the objects exist and the
+volume of the bounding box of object1 is less than or equal to the
+volume of the bounding box for object2.  \fBTODO\fP \- eventually, when the
+right APIs become available, an "\-rle" option will be added for a
+more\-expensive\-but\-more\-accurate raytrace based volumetric comparison
+as well.
+.RE
+.SH "OPERATORS:"
+.sp
+primaries can be combined with the following operators:
+.sp
+\fB!\fP \fIexpression\fP
+.RS 4
+True if \fIexpression\fP is false.
+.RE
+.sp
+\fIexpression\fP \fB\-a\fP \fIexpression\fP
+.RS 4
+The and operator operates like the
+logical AND operator \- TRUE only if both expressions are true.
+.RE
+.sp
+\fIexpression\fP \fB\-o\fP \fIexpression\fP
+.RS 4
+The logical OR operator \- true if
+either expression is true.
+.RE
+.sp
+\fB(\fP \fIexpression\fP \fB)\fP
+.RS 4
+Evaluates to true if the expression inside the
+parentheses evaluates to true. Used to establish order of operations.
+.RE
+.sp
+The \fB\-a\fP operator has higher precedence than the \fB\-o\fP operator.
+.SH "A NOTE ON EXPRESSIONS"
+.sp
+All primaries and operands must be expressed as separate arguments to
+exists. In practice, this means that there must be a space between
+each element in a exists expression.  E.g. \f(CR!(\-c object1.s \-a
+(object1.s \-beq object2.s))\fP must be written as:
+.sp
+.if n .RS 4
+.nf
+! ( \-c object1.s \-a ( object1.s \-beq object2.s ) )
+.fi
+.if n .RE
+.sp
+While this may seem like a rather verbose way of writing the
+expression, it greatly simplifies the parsing of the expression and is
+standard for virtually all \fBtest\fP type commands.
+.SH "EXAMPLES"
+.sp
+The following are run from the MGED command prompt:
+.sp
+.B Example 1. Example1
+.br
+.RS 4
+.sp
+\f(CRexists object1.s\fP
+.RE
+.SH "DIAGNOSTICS"
+.sp
+Errors will be returned if parsing of the arguments fails, or one of
+the primaries\(aq evaluation functions returns an error.
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 2008\-2021 United States Government as
+represented by the U.S. Army Research Laboratory. Portions Copyright
+1990, 1993, 1994 The Regents of the University of California, per
+copyright and license information from OpenBSD and NetBSD.  For more
+details see the copyright statements in exists.c and exists.h .
+.SH "BUGS"
+.sp
+TODO.

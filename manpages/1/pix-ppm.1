@@ -1,0 +1,102 @@
+'\" t
+.\"     Title: pix-ppm
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "PIX\-PPM" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+pix\-ppm \- convert a BRL\-CAD PIX or BW format image to a PPM format image
+.SH "SYNOPSIS"
+.sp
+\fBpix\-ppm\fP [\-a] [\-s \fIsquaresize\fP] [\-w \fIfile_width\fP] [\-n \fIfile_height\fP] [\-# \fIbytes_per_pixel\fP] [\-o \fIPPM_file\fP] [\fIPIX_file\fP] > \fIPPM_file\fP
+.SH "DESCRIPTION"
+.sp
+\fBpix\-ppm\fP converts a \fIBRL PIX(5)\fP format file to a \fIPPM\fP
+(Portable PixMap) format file on the standard output. The PPM file
+created will be either an RGB file with 3 bytes per pixel (default) or
+a B&W file with 1 byte per pixel.
+.sp
+PIX image files do not contain information about their size.  The size
+of the input PIX image file must be specified if the dimensions are
+not the default 512x512 size.
+.SH "OPTIONS"
+.sp
+\fB\-a\fP
+.RS 4
+autosize the input file to determine file image height and
+width
+.RE
+.sp
+\fB\-s squaresize\fP
+.RS 4
+sets both the width and the height for the input to
+be \fIsquaresize\fP
+.RE
+.sp
+\fB\-w file_width\fP
+.RS 4
+tells \fBpix\-ppm\fP that the input is \fIfile_width\fP
+pixels wide
+.RE
+.sp
+\fB\-n file_height\fP
+.RS 4
+tells \fBpix\-ppm\fP that the input is
+\fIfile_height\fP scanlines tall
+.RE
+.sp
+\fB\-# bytes_per_pixel\fP
+.RS 4
+tells \fBpix\-ppm\fP how many bytes there are
+per pixel in the input PIX or BW file
+.RE
+.sp
+\fB\-o PPM_file\fP
+.RS 4
+tells \fBpix\-ppm\fP to write image data to the
+specified \fIPPM_file\fP output file.  The \fBpix\-ppm\fP command will not
+write out binary image data directly to a terminal device as a
+safeguard.
+.RE
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1),
+\fBpix\-png\fP(1),
+\fBpix\-bw\fP(1),
+\fBbw\-pix\fP(1),
+\fBpix\-fb\fP(1), \fBpix\fP(5),
+\fBbw\fP(5)
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

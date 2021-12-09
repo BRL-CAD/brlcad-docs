@@ -1,0 +1,71 @@
+'\" t
+.\"     Title: bwshrink
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "BWSHRINK" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+bwshrink \- shrink a black and white bw file
+.SH "SYNOPSIS"
+.sp
+\fBbwshrink\fP [\-s \fIsquareinsize\fP] [\-w \fIin_width\fP] [\-n \fIin_height\fP] [\-f \fIshrink_factor\fP] [\-u] [\fIinfile.bw\fP] > \fIoutfile.bw\fP
+.SH "DESCRIPTION"
+.sp
+\fBbwshrink\fP will take a black and white
+\fBbw\fP(5) format file of given dimensions and
+produce a smaller scaled version. The \fB\-w\fP and \fB\-n\fP flags
+specify the input file width and number of scan lines in pixels. They
+can both be set to the same value via \fB\-s.\fP Defaults of 512 are
+assumed for unspecified dimensions. The integer scaling factor is set
+with the \fB\-f\fP flag.  By default, the factor is 2.
+.sp
+The program reads the entire image into memory, and then scales the
+image down to 1/factor the original size in both dimensions.
+.sp
+By default, \fBbwshrink\fP uses boxcar averaging to produce the
+output pixels from the input.  The \fB\-u\fP option causes
+\fBbwshrink\fP to use image undersampling instead.
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1),
+\fBbwcrop\fP(1),
+\fBbwrect\fP(1),
+\fBbwscale\fP(1), \fBbw\fP(5)
+.SH "BUGS"
+.sp
+If the dimensions of the input image are not evenly divisible by the
+shrink factor, incorrect and bizarre output is generated.
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

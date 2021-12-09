@@ -1,0 +1,138 @@
+'\" t
+.\"     Title: fbfade
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "FBFADE" "1" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+fbfade \- fade a frame buffer image in or out
+.SH "SYNOPSIS"
+.sp
+\fBfbfade\fP [\-H] [\-f \fIinput_image_name\fP] [\-s \fIinput_square_size\fP] [\-w \fIinput_width\fP]
+.br
+[\-n \fIinput_height\fP] [\-S \fIoutput_square_size\fP] [\-W \fIoutput_width\fP] [\-N \fIoutput_height\fP]
+.br
+[[\-F] \fIoutput_frame_buffer_name\fP]
+.SH "DESCRIPTION"
+.sp
+\fBfbfade\fP gradually displays an image on a frame buffer, one
+randomly chosen pixel at a time.
+.SS "Options"
+.sp
+\-H
+.RS 4
+(high resolution) Assumes 1024 by 1024 pixels for default input
+image size instead of 512 by 512. Explicitly\-specified sizes override
+the default, and if actual input image size is smaller than requested,
+the actual size will be used. If output frame buffer size is not
+specified, the revised input size will be requested for output. If
+actual output frame buffer size is greater than requested, only the
+lower\-left portion of the frame buffer will be used. Actual sizes
+depend on details of specific frame buffers.
+.RE
+.sp
+\-f \fIinput_image_name\fP
+.RS 4
+Inputs the image to be displayed from the
+specified frame buffer or \fBpix\fP(5) file, instead
+of using pure background (which fades out the image already on the
+output frame buffer).
+.RE
+.sp
+\-s \fIinput_square_size\fP
+.RS 4
+Specifies input image width and height.
+.RE
+.sp
+\-w \fIinput_width\fP
+.RS 4
+Specifies input image width.
+.RE
+.sp
+\-n \fIinput_height\fP
+.RS 4
+Specifies input image height.
+.RE
+.sp
+\-S \fIoutput_square_size\fP
+.RS 4
+Specifies output frame buffer width and
+height.
+.RE
+.sp
+\-W \fIoutput_width\fP
+.RS 4
+Specifies output frame buffer width.
+.RE
+.sp
+\-N \fIoutput_height\fP
+.RS 4
+Specifies output frame buffer height.
+.RE
+.sp
+\-F \fIoutput_frame_buffer_name\fP
+.RS 4
+Outputs to the specified frame buffer
+instead of the one specified by the \fIFB_FILE\fP environment variable (or
+the default, if \fIFB_FILE\fP is not set). If this is the last option
+specified, the \fI\-F\fP is optional.
+.RE
+.SH "CAVEAT"
+.sp
+\fBfbfade\fP works best in conjunction with a frame buffer having
+very fast access to pixels.
+.SH "EXAMPLE"
+.sp
+The following shell script can be used to produce a slick slide show:
+.sp
+.if n .RS 4
+.nf
+fbclear
+for i in *.pix
+do
+    fbfade \-f $i
+    sleep 15
+done
+fbfade
+.fi
+.if n .RE
+.SH "SEE ALSO"
+.sp
+\fBlibfb\fP(3), \fBpix\fP(5).
+.SH "DIAGNOSTICS"
+.sp
+Error messages are intended to be self\-explanatory.
+.SH "AUTHORS"
+.sp
+Douglas A. Gwyn, BRL/VLD\-VMB; Gary S. Moss, BRL/VLD\-VMB
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

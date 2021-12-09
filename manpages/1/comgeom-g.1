@@ -1,0 +1,98 @@
+'\" t
+.\"     Title: comgeom-g
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "COMGEOM\-G" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+comgeom\-g \- convert GIFT COMGEOM model into MGED database
+.SH "SYNOPSIS"
+.sp
+\fBcomgeom\-g\fP [\-d \fIdebug_lvl\fP] [\-v \fIversion_num\fP] [\-s \fIname_suffix\fP] \fIfile.cg\fP \fIfile.g\fP
+.SH "DESCRIPTION"
+.sp
+Read a COMGEOM version 4 or version 5 format model from a GIFT\-style
+input file, convert the geometry into the internal form used by the
+BRL\-CAD package, and write an MGED\-style binary database.
+.sp
+Each solid is given the name s###, retaining the COMGEOM solid
+number. Each region is given the name r###, retaining the
+COMGEOM region number. Regions are grouped together into various
+groups g### based on the region\-id numbers.  Group g00 gets all
+regions with region\-id of zero, g0 gets ids one through 99, g1 gets
+ids 100 through 199, etc.
+.sp
+The default input is COMGEOM version 5. Version 4 can be converted by
+specifying the \fB\-v4\fP flag. For the time being, the DoE
+MORSE/RAFFLE format (believed to be the original MAGIC format) can be
+converted by specifying the \fB\-v1\fP flag.
+.sp
+By default, the program \fBcomgeom\-g\fP operates silently. Because
+the program may require a minute or two to convert a large database,
+some users prefer to have various status reports that indicate the
+progress of the conversion. This can be selected by specifying the
+\fB\-d1\fP flag (debug level 1).
+.sp
+In the resulting .g file, high\-level group all.g is created. If the
+\fB\-s\fP option is used, its argument (without automatic supplying of
+leading period) is tacked onto the end of the names of all other items
+in the .g file.
+.sp
+The units used in a COMGEOM file are specified on a header record. The
+units of an MGED database are always millimeters. \fBcomgeom\-g\fP
+performs automatic units conversion using the built\-in units
+conversion feature of \fBlibwdb\fP(3).
+.SH "EXAMPLE"
+.sp
+.if n .RS 4
+.nf
+comgeom\-g \-d1 \-v4 _file.cg file.g_
+.fi
+.if n .RE
+.SH "DIAGNOSTICS"
+.sp
+The diagnostics are intended to be self\-explanatory. Familiarity with
+GIFT COMGEOM terminology will be helpful.
+.SH "BUGS"
+.sp
+It is expected that the input file should be a valid COMGEOM
+model. While quite a bit of input checking is performed, wildly
+incorrect input may produce amusing results.
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1), \fBmged\fP(1),
+\fBlibwdb\fP(3)
+.SH "AUTHOR"
+.sp
+\fIBRL\-CAD Team\fP
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

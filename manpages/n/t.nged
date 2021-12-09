@@ -1,0 +1,150 @@
+'\" t
+.\"     Title: t
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "T" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+t \- Lists the names of specified objects in the database in alphabetical order depending on the argument given.
+.SH "SYNOPSIS"
+.sp
+\fBt\fP [\-a] [\-c] [\-r] [\-s] [\fIobjects\fP]
+.SH "DESCRIPTION"
+.sp
+The \fBt\fP command with no \fIobject\fP argument lists the name of every
+object in the database (in alphabetical order) except those marked as
+hidden with the hide command. If the \fIobject\fP argument is supplied,
+only those \fIobjects\fP are listed. The \fIobject\fP argument may include
+regular expressions for matching. The following options are also
+allowed:
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+a \- list all objects in the database.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+c \- list all nonhidden combinations in the database.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+r \- list all nonhidden regions in the database.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+s \- list all nonhidden shapes in the database.
+.RE
+.sp
+The \fBt\fP command is a synonym for the \fBls\fP command. Note that
+when any of the above options are used, the output is not formatted.
+.SH "EXAMPLES"
+.sp
+The five examples show the use of the \fBt\fP command with different
+arguments to list names of objects, combinations, regions, or shapes.
+.sp
+.B Example 1. List all objects with names beginning with "shape".
+.br
+.RS 4
+.sp
+mged> \f(CRt shape*\fP
+.sp
+Lists all objects with names beginning with "shape". (output is
+formatted)
+.RE
+.sp
+.B Example 2. List all objects with names beginning with "shape".
+.br
+.RS 4
+.sp
+mged> \f(CRt \-a shape*\fP
+.sp
+Lists all objects with names beginning with "shape".
+.RE
+.sp
+.B Example 3. List all shapes with names beginning with "wheel".
+.br
+.RS 4
+.sp
+mged> \f(CRt \-s wheel*\fP
+.sp
+Lists all shapes with names beginning with "wheel".
+.RE
+.sp
+.B Example 4. List all regions with names beginning with "wheel".
+.br
+.RS 4
+.sp
+mged> \f(CRt \-r wheel*\fP
+.sp
+Lists all regions with names beginning with "wheel".
+.RE
+.sp
+.B Example 5. List all combinations with names beginning with "suspension".
+.br
+.RS 4
+.sp
+mged> \f(CRt \-c suspension*\fP
+.sp
+Lists all combinations with names beginning with "suspension".
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

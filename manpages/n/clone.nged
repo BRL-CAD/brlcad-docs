@@ -1,0 +1,131 @@
+'\" t
+.\"     Title: clone
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "CLONE" "nged" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+clone \- The clone command performs a deep copy of an object, optionally duplicating in a geometric pattern.
+.SH "SYNOPSIS"
+.sp
+\fBclone\fP [\fIoptions\fP]... {\fIobject_to_clone\fP}
+.SH "OPTIONS"
+.sp
+\fB\-h\fP
+.RS 4
+Display help.
+.RE
+.sp
+\fB\-n <copies>\fP
+.RS 4
+Specifies the number of copies to make.  Default is 1.
+.RE
+.sp
+\fB\-t <x> <y> <z>\fP
+.RS 4
+Specifies an \fBx\fP, \fBy\fP, and \fBz\fP
+translation distance between each copy.  Default is 0.0, no
+translation.  This option conflicts with \fB\-a\fP which specifies
+total translation distance.
+.RE
+.sp
+\fB\-r <x> <y> <z>\fP
+.RS 4
+Specifies \fBx\fP, \fBy\fP, and \fBz\fP angles
+to rotate around the x, y, and z axes between each copy.  Default is
+0.0, no rotation.  This option conflicts with \fB\-b\fP which
+specifies total rotation angles.
+.RE
+.sp
+\fB\-p <x> <y> <z>\fP
+.RS 4
+Specifies an \fBx\fP, \fBy\fP, and \fBz\fP point
+to rotate around for \fB\-b\fP and \fB\-r\fP.  Default is 0 0 0.
+.RE
+.sp
+\fB\-a <n> <x> <y> <z>\fP
+.RS 4
+Specifies a total \fBx\fP, \fBy\fP, and
+\fBz\fP translation distance split across \fBn\fP copies.  This
+option conflicts with \fB\-t\fP which specifies incremental distances.
+.RE
+.sp
+\fB\-b <n> <x> <y> <z>\fP
+.RS 4
+Specifies a total rotation in degrees about the
+\fBx\fP, \fBy\fP, and \fBz\fP axes, split across \fBn\fP copies.
+This option conflicts with \fB\-r\fP which specifies incremental
+rotation angles.
+.RE
+.sp
+\fB\-m <axis> <distance>\fP
+.RS 4
+Specifies an axis and distance along that
+axis about which to create a mirrored copy.  The \fBaxis\fP must be
+\(aqx\(aq, \(aqy\(aq, or \(aqz\(aq.  The distance may be a positive or negative distance
+along that axis.
+.RE
+.sp
+\fB\-i <increment>\fP
+.RS 4
+This option pertains to the copy naming convention.
+It specifies the increment to use when naming copies.  If a number is
+not found in the name, the increment number is appended to the end of
+the name (e.g., \fBclone box\fP creates a \(aqbox100\(aq object).  Default
+\fBincrement\fP is 100.
+.RE
+.sp
+\fB\-c\fP
+.RS 4
+This option pertains to the copy naming convention.  Increment
+the \fInext\fP number encountered in object names.  You can specify
+\fB\-c\fP multiple times to increment the Nth number.  For example,
+\fBclone \-c \-c \-c\fP will increment the 4th number in object namess.
+Default is to increment the first number encountered.
+.RE
+.SH "DESCRIPTION"
+.sp
+Clone performs a deep copy, traversing the entire hierarchy of the
+object specified and creating a new independent hierarchy.  The
+\fBclone\fP command uses an automatic naming convention as it creates
+copies, incrementing and/or appending to numbers encountered in the
+object specified.  The number convention may be configured with the
+\fB\-i\fP and \fB\-c\fP options.
+.sp
+If you specify different numbers of copies with the \fB\-a\fP,
+\fB\-b\fP, and/or \fB\-n\fP options, the last value of \fBn\fP
+specified will be used for the number of copies.
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

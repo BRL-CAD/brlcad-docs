@@ -1,0 +1,104 @@
+'\" t
+.\"     Title: overlay
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "OVERLAY" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+overlay \- Plots the specified UNIX plot_file in the MGED display.
+.SH "SYNOPSIS"
+.sp
+\fBoverlay\fP [\fI\-s #\fP] {\fIplot_file\fP} [\fIname\fP]
+.sp
+\fBoverlay \-F\fP [\fI\-i\fP] [\fI\-c\fP] [\fI\-z\fP] [\fI\-X #\fP] [\fI\-Y #\fP] [\fI\-w #\fP] [\fI\-n #\fP] [\fI\-S #\fP] [\fI\-\-format fmt\fP] {\fIimg_file\fP}
+.SH "DESCRIPTION"
+.sp
+Plots the specified UNIX \fIplot_file\fP in the current application
+display or the specified \fIimage file\fP in the current application
+embedded framebuffer.  When displaying plot files, multiple files may
+be specified using a pattern match (e.g., \fBoverlay\fP \fI*.plot\fP).
+.sp
+When displaying plot files, phony object names are created for each
+part of the plot file(s) with a unique color.  The names are created
+by adding a color to the specified \fIname\fP, or to \fIPLOT_OVERLAY\fP if no
+name is provided. The color suffix is built by converting the RGB
+color to a six\-digit hex number. Each color corresponds to 2 hex
+digits, so that white becomes "ffffff," red becomes "ff0000," green is
+"00ff00," etc.
+.sp
+Image files will be display in the currently active framebuffer.
+Currently multiple images cannot be specified by a single
+\fBoverlay\fP command (but as the images would overrwrite each other
+this feature would not be terribly useful in any case.)  However,
+mulitiple images can be written in succession to the same framebuffer
+using the \fB\-X\fP and \fB\-Y\fP offset specification options to
+offset their positions for simultaneous display.  Alternately, if the
+user wishes to reset the framebuffer before drawing the new image the
+\fB\-c\fP option may be specified.
+.sp
+The \fB\-w\fP, \fB\-n\fP, and \fB\-S\fP options are used to specify
+image size for formats such as PIX that do not encode the image size
+in their own data.  Similarly, \fB\-\-format\fP may be used to
+explicitly specify an image format if the filename does not make the
+format clear.
+.sp
+By default, images are displayed in the framebuffer using their
+original size. If the users wishes to use all available space in the
+image window to display an image, the \fB\-z\fP may be specified to
+focus the framebuffer on the image.  The \fB\-i\fP option may be used
+to invert an image\(cqs display in the y (vertical) direction.
+.SH "EXAMPLES"
+.sp
+.B Example 1. Plot a UNIX plot file in the MGED display.
+.br
+.RS 4
+.sp
+mged> \f(CRoverlay plot.upl tmp\fP
+.sp
+Plots the UNIX plot file \fIplot.upl\fP in the MGED display, using \fItmp\fP
+as the base for the phony object names.
+.RE
+.sp
+.B Example 2. Plot a PNG file in the MGED framebuffer.
+.br
+.RS 4
+.sp
+mged> \f(CRoverlay \-c \-F image.png\fP
+.sp
+Plots the image file \fIimage.png\fP in the MGED framebuffer, first
+clearing any pre\-existing images in the framebuffer.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

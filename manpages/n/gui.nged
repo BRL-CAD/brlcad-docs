@@ -1,0 +1,107 @@
+'\" t
+.\"     Title: gui
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "GUI" "nged" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+gui \- Creates an instance of MGED\(aqs default Tcl/Tk graphical user interface (GUI).
+.SH "SYNOPSIS"
+.sp
+\fBgui\fP [{\-config} | [b] | [c] | [g]] [{\-d} | {\fIdisplay_string\fP}] [{\-gd} | {\fIgraphics_display_string\fP}] [{\-dt} | {\fIgraphics_type\fP}] [{id} | {\fIname\fP}] [{\-c} | {\-h} | {\-j} | {\-s}]
+.SH "DESCRIPTION"
+.sp
+Creates an instance of MGED\(cqs default Tcl/Tk graphical user interface
+(GUI). The following options are allowed:
+.sp
+\fI\-config b c g\fP
+.RS 4
+Configures the GUI to display the command window,
+the graphics window, or both. This option is useful only when the GUI
+is combining the text and graphics windows. See the \fI\-c\fP option.
+.RE
+.sp
+\fI\-d display_string\fP
+.RS 4
+Displays/draws the GUI on the screen indicated
+by the display_string. Note that this string format is the same as the
+X DISPLAY environment variable.
+.RE
+.sp
+\fI\-gd display_string\fP
+.RS 4
+Displays/draws the graphics window on the
+screen indicated by the display_string. Note that this string format
+is the same as the X DISPLAY environment variable.
+.RE
+.sp
+\fI\-dt graphics_type\fP
+.RS 4
+Indicates the type of graphics windows
+to use. The possible choices are X and ogl (for machines that support
+OpenGL). Defaults to ogl, if supported; otherwise X.
+.RE
+.sp
+\fI\-id name\fP
+.RS 4
+Specifies the id to use when referring to this instance
+of the GUI.
+.RE
+.sp
+\fI\-c\fP
+.RS 4
+Combines text window and display manager windows.
+.RE
+.sp
+\fI\-s\fP
+.RS 4
+Uses separate text window and display manager windows. This is
+the default behavior.
+.RE
+.sp
+\fI\-j\fP
+.RS 4
+Join the collaborative session.
+.RE
+.sp
+\fI\-h\fP
+.RS 4
+Prints the help message.
+.RE
+.SH "EXAMPLES"
+.sp
+There were no examples given for this command.
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

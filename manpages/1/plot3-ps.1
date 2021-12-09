@@ -1,0 +1,73 @@
+'\" t
+.\"     Title: plot3-ps
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "PLOT3\-PS" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+plot3\-ps \- convert UnixPlot to PostScript file
+.SH "SYNOPSIS"
+.sp
+\fBplot3\-ps\fP [\-ec] [\-s|S \fIsquare_output_size\fP] [\-w|W \fIoutput_width\fP] [\-n|N \fIoutput_height\fP] [<] \fIunix_plot\fP
+.SH "DESCRIPTION"
+.sp
+\fBplot3\-ps\fP converts an extended UnixPlot file to a PostScript
+file suitable for embedding in a larger PostScript document. This is
+especially useful for creating figures for inclusion in TeX
+documents. The \fB\-e\fP option will produce an encapsulated
+PostScript file. The \fB\-c\fP option causes the output to be centered
+on an 8.5 x 11 inch page. The \fB\-s\fP , \fB\-w\fP , and \fB\-n\fP
+options (alternatively \fB\-S\fP , \fB\-W\fP , and \fB\-N\fP) specify
+the size of the output image in inches (ignored when used with the
+\fB\-e\fP option).
+.sp
+All UnixPlot line types are supported.
+.sp
+If no UnixPlot \fIspace\fP directive is seen, the default space ranges
+from (0, 0, 0) to (4096, 4096, 4096).
+.SH "BUGS"
+.sp
+This is just the bare bones of a program at the time of this writing.
+.SH "SEE ALSO"
+.sp
+\fBplot3\-fb\fP(1),
+\fBplot3\-plot3\fP(1),
+\fBplot3\-X\fP(1),
+\fBplot3\fP(5)
+.SH "TRADEMARKS"
+.sp
+PostScript is a trademark of Adobe Systems Incorporated.
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

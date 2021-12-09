@@ -1,0 +1,65 @@
+'\" t
+.\"     Title: labelvert
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "LABELVERT" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+labelvert \- Labels the vertices of the indicated objects with their coordinate values in the MGED display window.
+.SH "SYNOPSIS"
+.sp
+\fBlabelvert\fP {\fIobjects\fP}
+.SH "DESCRIPTION"
+.sp
+Labels the vertices of the indicated \fIobjects\fP with their coordinate
+values in the MGED display window. The \fIobjects\fP must have already
+been displayed using \fBe, E, ev, B\fP, or any other command that
+results in the display of an object.
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBlabelvert\fP command to label the
+vertices of a designated shape with their coordinate values.
+.sp
+.B Example 1. Label the vertices of a particular shape with their coordinate values.
+.br
+.RS 4
+.sp
+mged> \f(CRlabelvert shapeb\fP
+.sp
+Places coordinate values in the display near the vertices of
+\fIshapeb\fP.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

@@ -1,0 +1,113 @@
+'\" t
+.\"     Title: pixblend
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "PIXBLEND" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+pixblend \- blend two pix(5) or bw(5) images
+.SH "SYNOPSIS"
+.sp
+\fBpixblend\fP [\-[\fIr\fP | \fIi\fP] \fIvalue\fP] [\-s \fIseedval\fP] [\-S] [\-g \fIgvalue\fP] \fIfile1.pix\fP \fIfile2.pix\fP > \fIout.pix\fP
+.SH "DESCRIPTION"
+.sp
+\fBpixblend\fP, given two streams of data, typically
+\fBpix\fP(5) or \fBbw\fP(5) images,
+generates a "blended" output stream of the same size. This routine
+operates on a pixel\-by\-pixel basis, and thus is independent of the
+resolution of the image. The type of blending performed is determined
+by the following options:
+.SH "OPTIONS"
+.sp
+\fB\-r\fP \fIVALUE\fP
+.RS 4
+This specifies random blending; for each pixel of the
+output stream, a number will be chosen uniformly from the interval [0,
+1]. If this number exceeds VALUE, then the pixel from the first image
+will be output; otherwise, the pixel from the second image will be
+output.  Note that if VALUE is 0, then the output will equal the first
+image; if VALUE is 1, then the output will equal the second image.
+.RE
+.sp
+\fB\-i\fP \fIVALUE\fP
+.RS 4
+This specifies linear interpolation; for each pixel of
+the output stream, the interpolated pixel ((1.0 \- VALUE) * pixel1
+.br
+VALUE * pixel2) will be output (where pixel1 and pixel2 are the
+corresponding pixels from file1 and file2, respectively).  Note that
+if VALUE is 0, then the output will equal the first image; if VALUE is
+1, then the output will equal the second image.
+.RE
+.sp
+\fB\-s\fP \fISEEDVAL\fP
+.RS 4
+Sets the random number seed to SEEDVAL (default is
+0).
+.RE
+.sp
+\fB\-S\fP
+.RS 4
+Instructs \fBpixblend\fP to use bits from the clock as a
+random number seed.
+.RE
+.sp
+\fB\-g\fP \fIGVALUE\fP
+.RS 4
+Tells \fBpixblend\fP to "glitterize" the image; if
+the random draw for a pixel is below GVALUE, then the pixel output is
+white; otherwise, the pixel used is determined by the ratio set with
+the \fB\-r\fP option (see above).
+.RE
+.SH "EXAMPLES"
+.sp
+.if n .RS 4
+.nf
+pixblend \-i .25 source.pix destination.pix > out.pix
+
+pixblend \-r .75 source.pix destination.pix > out.pix
+
+pixblend \-r .5 \-s source.pix destination.pix > out.pix
+
+pixblend \-r .5 \-s 23 source.pix destination.pix > out.pix
+.fi
+.if n .RE
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1),
+\fBgencolor\fP(1),
+\fBpix\fP(5), \fBbw\fP(5)
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

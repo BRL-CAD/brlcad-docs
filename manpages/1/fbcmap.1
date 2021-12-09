@@ -1,0 +1,126 @@
+'\" t
+.\"     Title: fbcmap
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "FBCMAP" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+fbcmap \- change the color map of a frame buffer
+.SH "SYNOPSIS"
+.sp
+\fBfbcmap\fP [\-F \fIframebuffer\fP] [\-w|W \fIscr_width\fP] [\-n|N \fIscr_height\fP] [\-s|S \fIsquarescrsize\fP] [\fImap_number\fP]
+.SH "DESCRIPTION"
+.sp
+\fBfbcmap\fP is used to change the color map of a frame buffer.
+.sp
+\fB\-F\fP \fIframebuffer\fP
+.RS 4
+This option specifies which framebuffer the image
+is to be saved from.  If not given, the environment variable \fIFB_FILE\fP
+is used to select the display device (see
+\fBbrlcad\fP(1)).  If \fIFB_FILE\fP has not been set,
+the default device for your system will be used.
+.RE
+.sp
+The requested framebuffer size will be the default size for the
+selected device (often 512x512 pixels).
+.sp
+The \fB\-w\fP (or \fB\-W\fP) \fIscr_width\fP option specifies the
+width of each scanline for the display device, in pixels.
+.sp
+The \fB\-n\fP (or \fB\-N\fP) \fIscr_height\fP option specifies the
+height of each scanline for the display device.
+.sp
+The \fB\-s\fP (or \fB\-S\fP) \fIsquarescrsize\fP option sets both the
+height and width to the size given. This size distinction is important
+only for devices like the Adage framebuffers which have different
+operating modes based on the display size.
+.sp
+If an optional color \fImap_number\fP is given, that map is used; the
+default is the standard linear map. There are currently six other maps
+supplied numbered 1 through 6 as follows:
+.sp
+1
+.RS 4
+reverse\-linear (negative) map.
+.RE
+.sp
+2
+.RS 4
+one corrected for Polaroid 809/891 film.
+.RE
+.sp
+3
+.RS 4
+a linear mapping in which the first 100 values are black.
+.RE
+.sp
+4
+.RS 4
+a linear map with values 1\(->191 incremented by 64 to boost dim
+pictures. The values at 191 and above are all full on.  Zero remains
+at zero.
+.RE
+.sp
+5
+.RS 4
+a gamma correcting color map used by the University of Utah
+Alpha_1 project. A better source of gamma correction is the
+\fBfbgamma\fP(1) utility.
+.RE
+.sp
+6
+.RS 4
+a map with a series of color deltas. This map is mostly black with
+the following colors, appearing at multiples of 32, having values full
+on: white (0), magenta (32), red (64), yellow (96), green (128), cyan
+(160), blue (192).  This map is most useful in conjunction with
+\fBfbcmrot\fP(1) and will show which pixels have
+the same intensities in one, two, or all three color planes.
+.RE
+.sp
+There are also three special maps used to quickly change the display
+to a solid color for adjusting a camera without losing image memory,
+numbered 10 through 12 for black, white, and 18% neutral grey,
+respectively.
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1),
+\fBfbcmrot\fP(1),
+\fBfbgamma\fP(1),
+\fBcmap\-fb\fP(1),
+\fBfb\-cmap\fP(1), \fBcmap\fP(5)
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

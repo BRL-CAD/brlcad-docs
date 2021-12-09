@@ -1,0 +1,100 @@
+'\" t
+.\"     Title: fbpoint
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "FBPOINT" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+fbpoint \- point at and identify screen coordinates
+.SH "SYNOPSIS"
+.sp
+\fBfbpoint\fP [\-F \fIframebuffer\fP] [\-w \fIwidth\fP] [\-n \fIheight\fP] [\-s \fIsquaresize\fP] [\-x [\fIprefix\fP]] [\-y [\fIprefix\fP]] [\fIinitialx\fP \fIinitialy\fP]
+.SH "DESCRIPTION"
+.sp
+\fBfbpoint\fP allows you to move a non\-destructive cursor around on
+the display. As the cursor is moved around, \fBfbpoint\fP writes the
+coordinates of the pixel pointed at by the cursor, and the red, green,
+and blue values of that pixel, on standard error \fBfbpoint\fP also
+writes the last set of coordinates pointed to on standard out on
+exit. The starting position is center\-screen unless optional
+\fIinitialx initialy\fP is given.
+.sp
+The \fIh\fP, \fIj\fP, \fIk\fP, and \fIl\fP commands step the cursor one pixel left,
+down, up, or right respectively, and the \fIH\fP, \fIJ\fP, \fIK\fP, and \fIL\fP
+commands step the cursor in the corresponding directions in big
+increments. The \fIB\fP, \fIN\fP, \fIP\fP, and \fIL\fP, and \fI^B\fP (control\-B), \fI^N\fP,
+\fI^P\fP, and \fI^F\fP, are also little and big (respectively) cursor movement
+commands.
+.sp
+A \fI?\fP prints a short command summary, and typing \fIq\fP or \fIQ\fP exits the
+program.
+.sp
+Using this program with grave accents in a shell script in order to
+interactively grab a pair of coordinates is one of its main
+intentions.  This is the reason for the feedback on standard error and
+the final coordinate pair on standard out. By default, both the x and
+y coordinates are written.  If the \fB\-x\fP or \fB\-y\fP flags are
+given only those coordinates will be written.  In these cases an
+optional \fIprefix\fP can follow the flag which will be appended to the
+output coordinate. This is to facilitate passing the output of this
+program as arguments to another.
+.SH "EXAMPLES"
+.sp
+\fBfbpoint\fP by itself is used to pick coordinates or pixel values
+from a display.
+.sp
+.if n .RS 4
+.nf
+fbscanplot `fbpoint \-y`
+.fi
+.if n .RE
+.sp
+allows you to choose the scanline to plot using fbpoint.
+.sp
+.if n .RS 4
+.nf
+pix\-fb `fbpoint \-x\-X \-y\-Y` _file.pix_
+.fi
+.if n .RE
+.sp
+allows you to select an x, y screen coordinate location and then place
+the lower left corner of the image \fIfile.pix\fP there.
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1),
+\fBfbgrid\fP(1),
+\fBfbzoom\fP(1)
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

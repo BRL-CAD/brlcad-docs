@@ -1,0 +1,191 @@
+'\" t
+.\"     Title: bb
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "BB" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+bb \- Report dimensional information about objects using Bounding Boxes
+.SH "SYNOPSIS"
+.sp
+\fBbb\fP [\fIoptions\fP]... \fIobjects\fP...
+.SH "DESCRIPTION"
+.sp
+\fIbb\fP calculates a bounding box for an object or set of objects
+supplied as arguments, and reports information about bounding box
+dimensions at the MGED command prompt.  It supports various options,
+most of which control the type of information reported.  It can
+optionally create an ARB8 in a database corresponding to the bounding
+box of the object(s).  By default, an axis\-aligned bounding box (AABB)
+is created, but support for an oriented bounding box (OBB) is
+available as well.
+.sp
+The \fIobjects\fP list consists of one or more geometry objects in the
+current database.
+.sp
+\fB\-c\fP bbox_object_name.s
+.RS 4
+Create an ARB8 primitive in the current
+database with the dimensions of the bounding box of the object(s)
+listed.
+.RE
+.sp
+\fB\-d\fP
+.RS 4
+Report dimensional information (length, width and height.)  On
+by default.
+.RE
+.sp
+\fB\-e\fP
+.RS 4
+Report the extent of the bounding box using the min and max 3D
+points of the bounding box.
+.RE
+.sp
+\fB\-o\fP
+.RS 4
+Calculate an oriented bounding box instead of an axis aligned
+bounding box.  This will produce tighter bounding volumes if the
+geometry is not symmetric to the XYZ grid. Uses the algorithms and
+code from Barequet and Har\-Peled \- see the papers
+\c
+.URL "http://valis.cs.uiuc.edu/~sariel/papers/98/bbox.html" " Efficiently
+Approximating the Minimum\-Volume Bounding Box of a Point Set in Three
+Dimensions " (SODA 99) and
+\c
+.URL "http://valis.cs.uiuc.edu/~sariel/research/papers/00/diam.html" "A
+Practical Approach for Computing the Diameter of a Point\-Set"  for
+details.
+.RE
+.sp
+\fB\-q\fP
+.RS 4
+Quiet mode \- disable printing of the header, which is on by
+default.  Useful when processing output from bb.
+.RE
+.sp
+\fB\-u\fP
+.RS 4
+Ignore air volumes when calculating the bounding box.
+.RE
+.sp
+\fB\-v\fP
+.RS 4
+Print the volume of the bounding box.  On by default.
+.RE
+.SH "EXAMPLES"
+.sp
+.B Example 1. Determine the size of the bounding box for a Havoc helicopter
+.br
+.RS 4
+.sp
+\f(CRbb havoc\fP
+.sp
+.if n .RS 4
+.nf
+Bounding Box Dimensions, Object(s) havoc:
+X Length: 1988.4 cm
+Y Length: 1683.6 cm
+Z Length: 625.0 cm
+Bounding Box Volume: 2092246392.4 cm^3
+.fi
+.if n .RE
+.RE
+.sp
+.B Example 2. Report only the min and max points of a bounding box
+.br
+.RS 4
+.sp
+\f(CRbb \-q \-e havoc\fP
+.sp
+.if n .RS 4
+.nf
+min {\-759.447479 \-8437.866455 \-890.000000} max {19124.621094 8397.693207 5360.000000}
+.fi
+.if n .RE
+.RE
+.sp
+.B Example 3. Bounding Box for multiple components
+.br
+.RS 4
+.sp
+\f(CRbb havoc_front havoc_middle havoc_tail\fP
+.sp
+.if n .RS 4
+.nf
+Bounding Box Dimensions, Object(s) havoc_front,  havoc_middle,  havoc_tail:
+X Length: 1775.9 cm
+Y Length: 358.0 cm
+Z Length: 536.0 cm
+Bounding Box Volume: 340782488.9 cm^3
+.fi
+.if n .RE
+.RE
+.sp
+.B Example 4. Create Bounding Box ARB8 in database
+.br
+.RS 4
+.sp
+\f(CRbb \-c havoc_parts_bbox.s havoc_front havoc_middle havoc_tail\fP
+.sp
+.if n .RS 4
+.nf
+mged> bb \-c havoc_parts_bbox.s havoc_front havoc_middle havoc_tail
+Bounding Box Dimensions, Object(s) havoc_front,  havoc_middle,  havoc_tail:
+X Length: 1775.9 cm
+Y Length: 358.0 cm
+Z Length: 536.0 cm
+Bounding Box Volume: 340782488.9 cm^3
+
+
+havoc havoc_tail havoc_middle havoc_parts_bbox.s havoc_front
+mged> l havoc_parts_bbox.s
+havoc_parts_bbox.s:  ARB8
+        1 (\-75.9447, \-158, \-4.86374e\-06)
+        2 (\-75.9447, \-158, 536)
+        3 (\-75.9447, 200, 536)
+        4 (\-75.9447, 200, \-4.86374e\-06)
+        5 (1700, \-158, \-4.86374e\-06)
+        6 (1700, \-158, 536)
+        7 (1700, 200, 536)
+        8 (1700, 200, \-4.86374e\-06)
+.fi
+.if n .RE
+.RE
+.SH "SEE ALSO"
+.sp
+\fBmake_bb\fP(nged).
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

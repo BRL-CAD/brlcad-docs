@@ -1,0 +1,76 @@
+'\" t
+.\"     Title: c
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "C" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+c \- Creates a BRL\-CAD combination with the name combination_name.
+.SH "SYNOPSIS"
+.sp
+\fBc\fP [\-c] [\-r] {\fIcombination_name\fP} [\fIBoolean_expression\fP]
+.SH "DESCRIPTION"
+.sp
+The \fBc\fP command creates a \fIBRL\-CAD\fP combination with the name
+\fIcombination_name\fP. The \fI\-r\fP option indicates that the combination is
+a \fIBRL\-CAD\fP region. The \fI\-c\fP option is the default and indicates that
+the combination is not a region. The \fIBoolean_expression\fP allows
+parentheses. Where no order is specified, intersections are performed
+before subtractions or unions; then subtractions and unions are
+performed, left to right. Where there is no \fIBoolean_expression\fP and
+\fIcombination_name\fP, a new empty combination will be created. If no
+\fIBoolean_expression\fP is provided, and \fIcombination_name\fP does already
+exist and one of \fI\-c\fP or \fI\-r\fP is specified, then \fIcombination_name\fP is
+flagged to agree with the indicated option. If a new \fIregion\fP is
+created or an existing combination is flagged as a region with this
+command, its region\-specific attributes will be set according to the
+current defaults (see \fBregdef\fP). The \fBcomb\fP and \fBr\fP
+commands may also be used to create combinations.
+.SH "EXAMPLES"
+.sp
+The example shows how to use the \fBc\fP command to create a
+combination according to a given formula.
+.sp
+.B Example 1. Creating a combination according to a formula.
+.br
+.RS 4
+.sp
+mged> \f(CRc \-c abc (a u b)\-(a + d)\fP
+.sp
+Creates a combination named \fIabc\fP according to the formula \f(CR(a u b) \-
+(a + d)\fP.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

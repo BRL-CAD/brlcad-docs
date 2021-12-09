@@ -1,0 +1,95 @@
+'\" t
+.\"     Title: png-bw
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "PNG\-BW" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+png\-bw \- convert a Portable Networks Graphics (PNG) format file to a BW format
+.SH "SYNOPSIS"
+.sp
+\fBpng\-bw\fP [\-ntsc] [\-crt] [\-R [\fInum\fP]] [\-G [\fInum\fP]] [\-B [\fInum\fP]] [\fIin.png\fP] > \fIout.bw\fP
+.SH "DESCRIPTION"
+.sp
+\fBpng\-bw\fP will convert a \fIPNG\fP format file from its standard input
+and produce a black and white \fBbw\fP(5) file on its
+standard output, If the PNG file contains a B/W image the conversion
+is direct, however, if the PNG file contains a color image, then by
+default all three colors are weighted equally.  The \fB\-ntsc\fP uses
+weighting based on the NTSC primaries and the D6500 alignment white.
+The \fB\-crt\fP flag applies weights for "typical" CRT phosphor
+chromaticities and the D6500 white.
+.sp
+Individual color plane(s) can be selected via the \fB\-R \-G\fP and
+\fB\-B\fP flags. If one or more of these flags is followed by a value,
+the value will be treated as a weight to be applied to that color This
+value is implicitly 1.0 divided by the number of colors selected for
+the flags which are not followed by a value.
+.SH "EXAMPLES"
+.sp
+.if n .RS 4
+.nf
+png\-bw \-R \-B < file.png > file.bw
+.fi
+.if n .RE
+.sp
+will equally blend the red and blue color planes.
+.sp
+.if n .RS 4
+.nf
+png\-bw bw_file.png < file.bw
+.fi
+.if n .RE
+.sp
+will convert a b/w PNG file to \fIbw(5)\fP format.
+.sp
+.if n .RS 4
+.nf
+png\-bw \-R0.30 \-G0.59 \-B0.11 < file.png > file.bw
+.fi
+.if n .RE
+.sp
+has the same effect as the \fB\-ntsc\fP flag.
+.sp
+[The [opt]\fB\-crt\fP weights are: 0.26, 0.66, 0.08]
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1),
+\fBpng\-pix\fP(1),
+\fBbw\-png\fP(1),
+\fBpix\-png\fP(1), \fBpix\fP(5),
+\fBbw\fP(5)
+.SH "AUTHOR"
+.sp
+John R. Anderson
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

@@ -1,0 +1,95 @@
+'\" t
+.\"     Title: sca
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "SCA" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+sca \- Used to apply a scaling factor.
+.SH "SYNOPSIS"
+.sp
+\fBsca\fP {[sfactor] | [x\-sfactor y\-sfactor z\-sfactor]}
+.SH "DESCRIPTION"
+.sp
+Applies a scaling factor to an object or view. When passed one
+parameter, an "object or view" is applied a uniform scale factor. When
+passed three parameters, an "object" is applied a unique scale factor
+to each axis. The effect is determined by the Transform option in the
+Settings menu. This is normally affected by the current mode of
+operation in MGED (e.g., matrix edit, primitive edit, or viewing).
+.if n .sp
+.RS 4
+.it 1 an-trap
+.nr an-no-space-flag 1
+.nr an-break-flag 1
+.br
+.ps +1
+.B Note
+.ps -1
+.br
+.sp
+Three parameters can only be applied in "matrix edit" mode. Only
+scale pipe and tori primitives uniformly otherwise raytracer and other
+errors may occur.
+.sp .5v
+.RE
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBsca\fP command to apply a scaling
+factor to an object or view.
+.sp
+.B Example 1. Apply a scaling factor to an object or view.
+.br
+.RS 4
+.sp
+mged> \f(CRsca 2\fP
+.sp
+In matrix edit mode, the object being affected will get twice
+as big. In view mode, the size of the view will be doubled (showing
+twice the volume of space, hence making objects appear half their
+previous size on the display).
+.RE
+.sp
+.B Example 2. Apply a scaling factor to an object.
+.br
+.RS 4
+.sp
+mged> \f(CRsca 2 1 1\fP
+.sp
+In matrix edit mode, the object being affected will get twice as big
+along the x\-axis.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

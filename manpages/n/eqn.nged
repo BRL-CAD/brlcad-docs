@@ -1,0 +1,71 @@
+'\" t
+.\"     Title: eqn
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "EQN" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+eqn \- Allows the user to rotate the face of an ARB shape by providing the coefficients of an equation of the desired plane for the face.
+.SH "SYNOPSIS"
+.sp
+\fBeqn\fP {\fIA B C\fP} []
+.SH "DESCRIPTION"
+.sp
+Allows the user to rotate the face of an ARB shape by providing the
+coefficients of an equation of the desired plane for the face. The
+coefficients \fIA, B,\fP and \fIC\fP are from the plane equation:
+.sp
+\fBAx + By + Cz = D\fP
+.sp
+The user must be editing an \fIARB\fP shape and be rotating a face of the
+\fIARB\fP for this command to have any effect. When entering such a state,
+the user will be asked which of the face vertices should be held
+constant, and from this information the \fID\fP coefficient of the
+equation is determined.
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBeqn\fP command to rotate the face
+of the ARB being edited to be parallel to the \fIxy\fP plane.
+.sp
+.B Example 1. Rotate the face of an \fIARB\fP to be parallel to the \fIxy\fP plane.
+.br
+.RS 4
+.sp
+mged> \f(CReqn 0 0 1\fP
+.sp
+The face of the \fIARB\fP is rotated to be parallel to the \fIxy\fP plane.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

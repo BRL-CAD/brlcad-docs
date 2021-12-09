@@ -1,0 +1,449 @@
+'\" t
+.\"     Title: benchmark
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "BENCHMARK" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+benchmark \- runs the BRL\-CAD benchmark
+.SH "SYNOPSIS"
+.sp
+\fI[OPTION=value] \fBbenchmark\fP [command] [OPTION=value] [RT_OPTIONS]\fP
+.SH "DESCRIPTION"
+.sp
+The \fBbenchmark\fP suite will test the performance of a given system
+by iteratively rendering several well\-known datasets into 512x512
+images where performance metrics are documented and fairly well
+understood. The local machine performance is compared to the base
+system (called VGR) and a numeric "VGR" multiplier of performance is
+computed.  This number is a simplified metric from which one may
+qualitatively compare cpu and cache performance, versions of BRL\-CAD,
+and different compiler characteristics.
+.sp
+Run without any arguments or variables set, the benchmark suite will
+run a series of tests where it renders several image frames.  By
+default, the benchmark suite will attempt to calibrate the intensity
+of the test frames with the performance characteristics of the machine
+running the tests.
+.sp
+There are several \fIOPTION\fP environment variables that will modify how
+the BRL\-CAD benchmark behaves so that it may be run in a stand\-alone
+environment:
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fIRT\fP \- the ray\-trace binary (e.g. ../src/rt/rt or /usr/brlcad/bin/rt)
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fIDB\fP \- the directory containing the reference geometry (e.g. ../db)
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fIPIX\fP \- the directory containing the reference images (e.g. ../pix)
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fILOG\fP \- the directory containing the reference logs (e.g. ../pix)
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fICMP\fP \- the name of a pixel comparison tool (e.g. ./pixcmp or cmp)
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fIELP\fP \- the name of an elapsed time tool (e.g. ../sh/elapsed.sh)
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fITIMEFRAME\fP \- minimum number of seconds each ray\-trace frame should take
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fIMAXTIME\fP \- maximum number of seconds to spend on any test
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fIDEVIATION\fP \- minimum sufficient % deviation from the average
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fIAVERAGE\fP \- how many frames to average together
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fIVERBOSE\fP \- turn on extra debug output (set to yes)
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fIQUIET\fP \- turn off all output (set to yes)
+.RE
+.sp
+The \fITIMEFRAME\fP, \fIMAXTIME\fP, \fIDEVIATION\fP, and \fIAVERAGE\fP options control
+how the benchmark will proceed including how long it should take.
+Each individual benchmark run will consume at least a minimum
+\fITIMEFRAME\fP of wallclock time so that the results can stabilize.
+After consuming at least the minimum \fITIMEFRAME\fP, additional frames
+may be computed until the standard deviation from the last \fIAVERAGE\fP
+count of frames is below the specified \fIDEVIATION\fP.  When a test is
+run and it completes in less than \fITIMEFRAME\fP, the raytrace is
+restarted using double the number of rays from the previous run.  If
+the machine is fast enough, the benchmark may accelerate the number or
+rays being fired.  These additional rays are hypersampled but without
+any jitter, so it is effectively performing a multiplier amount of
+work over the initial frame.
+.sp
+There are various \fIcommand\fPs that may be give to the BRL\-CAD
+benchmark that cause it to perform various actions such as invoking
+the computation tests or filesystem clean\-up:
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fIclean\fP \- remove the test\-specific pix and log files
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fIclobber\fP \- same as clean, also benchmark.log files and user is prompted
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fIhelp\fP \- displays a brief usage statement
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fIinstructions\fP \- displays more detailed usage instructions
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fIquiet\fP \- quell printing output (still logs)
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fIverbose\fP \- remove the test\-specific pix and log files
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fIclean\fP \- remove the test\-specific pix and log files
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fIrun\fP \- initiate the benchmark analysis
+.RE
+.sp
+When the benchmark completes, output should be saved to several log
+files including a \(aqsummary\(aq file containing tabulated results, a
+\(aqbenchmark.log\(aq file containing the output from a given run, and
+multiple log files for each test frame. Use the \fIclean\fP and \fIclobber\fP
+commands during execution to remove the files generated during the
+benchmark.
+.sp
+The \fIclean\fP command removes the test pix and log files.  The \fIclobber\fP
+command removes those same files as well as any *benchmark.log files
+encountered, and prompting the user beforehand. The generated tabular
+\fIsummary\fP file will not be removed automatically regardless of
+invocation command.  The \fIsummary\fP file must always be manually
+deleted.
+.SH "REPORTING RESULTS"
+.sp
+Please send your BRL\-CAD Benchmark results to the developers along
+with detailed system information to \c
+.MTO "devs\(atbrlcad.org" "" " "
+Include
+at least:
+.sp
+.RS 4
+.ie n \{\
+\h'-04' 1.\h'+01'\c
+.\}
+.el \{\
+.  sp -1
+.  IP " 1." 4.2
+.\}
+Compiler name and version (e.g. \f(CRgcc \-\-version\fP)
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04' 2.\h'+01'\c
+.\}
+.el \{\
+.  sp -1
+.  IP " 2." 4.2
+.\}
+CPU configuration (e.g. \f(CRcat /proc/cpuinfo\fP or \f(CRhinv\fP or \f(CRsysctl \-a\fP)
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04' 3.\h'+01'\c
+.\}
+.el \{\
+.  sp -1
+.  IP " 3." 4.2
+.\}
+Cache (data and/or instruction) details for L1/L2/L3 and system
+(e.g. \f(CRcat /proc/cpuinfo\fP or \f(CRhinv\fP or \f(CRsysctl \-a\fP)
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04' 4.\h'+01'\c
+.\}
+.el \{\
+.  sp -1
+.  IP " 4." 4.2
+.\}
+All generated log files (i.e. \fB.log\fP after benchmark completes)
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04' 5.\h'+01'\c
+.\}
+.el \{\
+.  sp -1
+.  IP " 5." 4.2
+.\}
+Anything else you think might be relevant to performance
+.RE
+.SH "EXAMPLES"
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fIbenchmark run\fP \- default run of the suite, taking approximately 10
+minutes
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fIbenchmark run TIMEFRAME=1\fP \- quick test run for testing functionality
+and performance ballpark
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fIbenchmark run DEVIATION=1 TIMEFRAME=60 MAXTIME=600\fP \- excessive
+analysis, attempt to stabilize within 1 percent deviation with each
+frame taking at least 60 seconds but no more than 10 minutes per test
+(the entire analysis will probably take 30 to 60 minutes)
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fIbenchmark run QUIET=1 \-P1\fP \- perform a benchmark analysis only using
+one CPU and only logging results to a file
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fIbenchmark clean\fP \- delete all of the log and pix image files
+generated during a benchmark analysis, leaving only the summary file
+and any *benchmark.log files
+.RE
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1), \fBrt\fP(1),
+\fBpix\-fb\fP(1),
+\fBlibrt\fP(3), \fBpix\fP(5)
+.SH "AUTHOR"
+.sp
+\fIBRL\-CAD Team\fP
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

@@ -1,0 +1,184 @@
+'\" t
+.\"     Title: fbzoom
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "FBZOOM" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+fbzoom \- modify zoom and window parameters of a frame buffer
+.SH "SYNOPSIS"
+.sp
+\fBfbzoom\fP [\-T] [\-F \fIframe_buffer\fP] [\-s|S \fIimage_sqrsize\fP] [\-w|W \fIimage_width\fP] [\-n|N \fIimage_height\fP]
+.SH "DESCRIPTION"
+.sp
+Using \fBvi\fP(1) and/or
+\fBemacs\fP(1) \-like keystrokes, \fBfbzoom\fP
+allows interactive zooming and panning of a frame buffer.  Using the
+optional command line arguments,
+.sp
+\fB\-T\fP
+.RS 4
+toggles the sense of the pan commands.
+.RE
+.sp
+\fB\-F\fP \fIframe_buffer\fP
+.RS 4
+explicitly specifies the frame buffer.
+Otherwise, the environment variable \fIFB_FILE\fP specifies the
+current framebuffer; see \fBbrlcad\fP(1).
+.RE
+.sp
+\fB\-s\fP(or \fB\-S\fP) \fIimage_sqrsize\fP
+.RS 4
+displays the image file as a square,
+\fIimage_sqrsize\fP pixels per side (default is 512x512).
+.RE
+.sp
+\fB\-w\fP(or \fB\-W\fP) \fIimage_width\fP
+.RS 4
+displays the image \fIimage_width\fP
+pixels wide (default is 512).
+.RE
+.sp
+\fB\-n\fP(or \fB\-N\fP) \fIimage_height\fP
+.RS 4
+displays the image \fIimage_height\fP
+pixels high (default is 512).
+.RE
+.sp
+\fBfbzoom\fP will display the image currently in the frame buffer and
+then act on commands entered by the user.  Available commands are:
+.sp
+\fIb ^V\fP
+.RS 4
+zoom Bigger (*2)
+.RE
+.sp
+\fIs\fP
+.RS 4
+zoom Smaller (*0.5)
+.RE
+.sp
+\fI+\fP
+.RS 4
+zoom Bigger (+1)
+.RE
+.sp
+\fI\-\fP
+.RS 4
+zoom Smaller (\-1)
+.RE
+.sp
+\fIh B\fP
+.RS 4
+pan Left (1)
+.RE
+.sp
+\fIj N\fP
+.RS 4
+pan Down (1)
+.RE
+.sp
+\fIk P\fP
+.RS 4
+pan Up (1)
+.RE
+.sp
+\fIl F\fP
+.RS 4
+pan Right (1)
+.RE
+.sp
+\fIH ^B\fP
+.RS 4
+pan Left (many)
+.RE
+.sp
+\fIJ ^N\fP
+.RS 4
+pan Down (many)
+.RE
+.sp
+\fIK ^P\fP
+.RS 4
+pan Up (many)
+.RE
+.sp
+\fIL ^F\fP
+.RS 4
+pan Right (many)
+.RE
+.sp
+\fIT\fP
+.RS 4
+toggle sense of pan commands
+.RE
+.sp
+\fIc\fP
+.RS 4
+goto Center
+.RE
+.sp
+\fIz\fP
+.RS 4
+zoom 1 1
+.RE
+.sp
+\fIr\fP
+.RS 4
+Reset to normal
+.RE
+.sp
+\fIq\fP
+.RS 4
+Exit
+.RE
+.sp
+\fIRETURN\fP
+.RS 4
+Exit
+.RE
+.sp
+Note that these commands change the way the frame buffer is viewed but
+not the image in the frame buffer.
+.SH "SEE ALSO"
+.sp
+\fBbw\-fb\fP(1),
+\fBgif\-fb\fP(1),
+\fBpix\-fb\fP(1),
+\fBplot3\-fb\fP(1),
+\fBrle\-fb\fP(1)
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

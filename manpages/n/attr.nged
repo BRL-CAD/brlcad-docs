@@ -1,0 +1,267 @@
+'\" t
+.\"     Title: attr
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "ATTR" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+attr \- Used to create, change, retrieve, or view attributes of database objects.
+.SH "SYNOPSIS"
+.sp
+\fBattr\fP [get] [set] [rm] [append] [list] [show] [sort] [copy] {\fIobject_name_pattern\fP} [\fIarguments\fP]
+.SH "DESCRIPTION"
+.sp
+Used to create, change, retrieve, or view attributes of database
+objects. Note that the attribute names may not contain embedded white
+space, and if attribute values contain embedded white space, they must
+be surrounded by {} or double quotes.
+.sp
+A newly formed region always has four attributes automatically
+assigned to it:
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+los
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+material_id
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+region
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+region_id
+.RE
+.sp
+The \(aqregion\(aq attribute is the \(aqregion flag\(aq mentioned in the edcomb
+command.
+.SH "SUB\-COMMANDS"
+.sp
+\fBget\fP
+.RS 4
+Retrieve and display the specified attributes from the object
+or objects matched by the pattern.  The arguments for the "get"
+sub\-command are attribute names.  If no arguments are provided all
+attributes are displayed.
+.RE
+.sp
+\fBset\fP
+.RS 4
+Assigned the value provided for the specified attribute to the
+object or objects matched by the pattern. The arguments for "set"
+sub\-command are attribute name/value pairs.
+.RE
+.sp
+\fBrm\fP
+.RS 4
+Removes the specified attribute from the object or objects
+matched by the pattern.  The arguments for the "rm" sub\-command are
+attribute names.
+.RE
+.sp
+\fBappend\fP
+.RS 4
+Adds the attribute and value provied for the specified
+attribute to the object or objects matched by the pattern, or sets the
+value if the attribute already exists. The arguments for the "append"
+sub\-command are attribute name/value pairs.
+.RE
+.sp
+\fBlist\fP object_name_pattern [key_filter_pattern [value_filter_pattern]]
+.RS 4
+Lists the attributes assigned to the object or objects matched by the
+pattern.  If multiple objects are matched, the list returned is a
+consolidated list of all attribute types present on one or more of the
+matched objects.  This option is useful when investigating what
+attributes are present in objects in a database.
+.sp
+Optionally, the \fBlist\fP subcommand will accept filters that are
+used to match key or key/value combinations and report only those
+matches.  If both key and value filters are supplied, the output of
+the list subcommand will be not just the unique matching attribute
+keys but the unique matching key/value pairs.  The latter is
+particularly useful as a way to get an overview of all actively used
+values associated with a particular attribute key.
+.RE
+.sp
+\fBshow\fP
+.RS 4
+Pretty print the specified attributes for the object or
+objects matching the pattern.  If no attributes are listed, all
+attributes are printed for each object.  The arguments for the "rm"
+sub\-command are attribute names.
+.RE
+.sp
+\fBsort\fP
+.RS 4
+Pretty prints all attributes on each object matched by the
+pattern.  Attributes are sorted into alphabetical order before
+printing.  The arguments for the "sort" sub\-command set the sort type
+for the attributes: \(aqcase\(aq (default), \(aqnocase\(aq, \(aqvalue\(aq, and
+\(aqvalue\-nocase\(aq.
+.RE
+.sp
+\fBcopy\fP
+.RS 4
+Takes the value of the first attribute from the specified
+object and set the second attribute on the object to that value.  The
+sequence of "attr copy" and "attr rm" can be used to rename attributes
+on objects.
+.RE
+.SH "EXAMPLES"
+.sp
+The examples demonstrate the use of the \fBattr\fP command and
+subcommands to assign and list attributes of database objects.
+.sp
+.B Example 1. Assigns an attribute to an object.
+.br
+.RS 4
+.sp
+mged> \f(CRattr set region_1 material_id 10\fP
+.sp
+Assigns an attribute name "material_id" to \fIregion_1\fP. Its value
+is 10.
+.RE
+.sp
+.B Example 2. Assigns an attribute (with embedded white space in its value) to an object.
+.br
+.RS 4
+.sp
+mged> \f(CRattr set region_1 comment {This is a comment for region_1}\fP
+.sp
+Assigns an attribute named "comment" to \fIregion_1\fP. Its value is "This
+is a comment for region_1."
+.RE
+.sp
+.B Example 3. List all the attributes for an object
+.br
+.RS 4
+.sp
+mged> \f(CRattr show region_1 comment\fP
+.sp
+Lists all the attributes for \fIregion_1\fP.
+.RE
+.sp
+.B Example 4. List all the attribute types present on one or more objects in a database
+.br
+.RS 4
+.sp
+mged> \f(CRattr list *\fP
+.sp
+.if n .RS 4
+.nf
+aircode
+los
+material_id
+oshader
+region
+region_id
+regionid_colortable
+rgb
+shader
+title
+units
+.fi
+.if n .RE
+.sp
+Generate a list of all attribute keys found one one or more objects in
+the database. It may be necessary to place a \(aq\(rs\(aq character before the
+asterisk to quote it on the MGED tcl prompt so that it reaches the
+attr command unexpanded.  The above output is the attribute list from
+the m35.g sample database.
+.RE
+.sp
+.B Example 5. List all the material_id attribute values in use in a database
+.br
+.RS 4
+.sp
+mged> \f(CRattr list * material_id *\fP
+.sp
+.if n .RS 4
+.nf
+material_id=1
+material_id=2
+material_id=4
+material_id=7
+material_id=8
+material_id=14
+material_id=17
+material_id=18
+material_id=19
+material_id=20
+.fi
+.if n .RE
+.sp
+Produces a list of all material_id values found one or more times in
+the database on an object. It may be necessary to place a \(aq\(rs\(aq
+character before the asterisks to quote them on the MGED tcl prompt so
+that they reaches the attr command correctly.  The above output is the
+attribute list from the m35.g sample database.
+.RE
+.SH "SEE ALSO"
+.sp
+\fBattributes\fP(5).
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

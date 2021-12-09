@@ -1,0 +1,71 @@
+'\" t
+.\"     Title: ill
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "ILL" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+ill \- Performs the function of selecting an object after entering solid (i.e., primitive)illuminate or object illuminate mode.
+.SH "SYNOPSIS"
+.sp
+\fBill\fP {\fIobj_name\fP}
+.SH "DESCRIPTION"
+.sp
+Performs the function of selecting an object after entering \fIsolid\fP
+(i.e., primitive) \fIilluminate\fP or \fIobject illuminate\fP mode. In \fIsolid
+illuminate\fP mode, this command selects the specific shape for
+editing. In \fIobject illuminate\fP mode, this command selects the leaf
+object for the object path, then the user may use the mouse to select
+where along the object path the editing should be applied. In both
+modes,the \fIill\fP command will only succeed if the specified \fIobj_name\fP
+is only referenced once in the displayed objects; otherwise a
+\fImultiply referenced\fP message will be displayed. If the \fBill\fP
+command fails, the user must resort to either using the mouse to make
+the selection, or using aip and M 1 0 0.
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBill\fP command to select a
+specified object for editing.
+.sp
+.B Example 1. Select an object for editing.
+.br
+.RS 4
+.sp
+mged> \f(CRill shapea\fP
+.sp
+\fIShapea>\fP is selected for editing.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

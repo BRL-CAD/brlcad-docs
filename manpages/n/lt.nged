@@ -1,0 +1,78 @@
+'\" t
+.\"     Title: lt
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "LT" "nged" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+lt \- Generates a list of the child objects of a combination.
+.SH "SYNOPSIS"
+.sp
+\fBlt\fP [\fIchar\fP]
+.SH "DESCRIPTION"
+.sp
+The \fBlt\fP command generates a list of the children found in a
+combination object specified by the user.  By default it will print a
+curly bracket bound set of objects and their boolean flags.  If the
+\fB\-c\fP option is specified, it will instead use the character
+supplied to the \fB\-c\fP option as the separator in the list of
+objects.  In the latter mode the boolean flags will not be printed.
+.SH "EXAMPLES"
+.sp
+.B Example 1. Tcl Output
+.br
+.RS 4
+.sp
+.if n .RS 4
+.nf
+mged> lt component
+{u bed} {u frame} {u cab} {u suspension} {u misc} {u power.train}
+.fi
+.if n .RE
+.RE
+.sp
+.B Example 2. CSV Output
+.br
+.RS 4
+.sp
+.if n .RS 4
+.nf
+mged> lt \-c , component
+bed,frame,cab,suspension,misc,power.train
+.fi
+.if n .RE
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

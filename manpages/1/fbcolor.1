@@ -1,0 +1,94 @@
+'\" t
+.\"     Title: fbcolor
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "FBCOLOR" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+fbcolor \- interactively pick colors
+.SH "SYNOPSIS"
+.sp
+\fBfbcolor\fP [\-F \fIframebuffer\fP] [\-s|S \fIscreen_squaresize\fP] [\-w|W \fIscreen_width\fP] [\-n|N \fIscreen_height\fP]
+.SH "DESCRIPTION"
+.sp
+\fBfbcolor\fP is an interactive color picking facility. It allows you
+to pick and display colors, by varying parameters in either RGB (red,
+green, blue) or HSI (hue, saturation, intensity) space.
+.sp
+\fB\-F\fP \fIframebuffer\fP
+.RS 4
+This option specifies which framebuffer the
+image is to be saved from.  If not given, the environment variable
+\fIFB_FILE\fP is used to select the display device (see
+\fBbrlcad\fP(1)).  If \fIFB_FILE\fP has not been set,
+the default device for your system will be used.
+.RE
+.sp
+The \fB\-SWN\fP (or \fB\-swn\fP) options can all be used in the normal
+way to specify the size of the screen (see
+\fBbrlcad\fP(1)).
+.sp
+\fBfbcolor\fP draws a set of color bars in the lower left corner of
+the display, sets the remainder of the display to the current color,
+then starts reading standard input for color editing commands. As you
+change the various parameters which specify the color, the color bars
+grow and shrink to show the relative red, green and blue intensities.
+.sp
+At the same time, \fBfbcolor\fP displays the current RGB and HSI
+values on your terminal.  This allows you to record the RGB or HSI
+values of the colors you select for later use.
+.sp
+\fBfbcolor\fP recognizes two main sets of commands; those which
+select which parameter to edit, and those which vary the value of the
+selected parameter. \fBr\fP, \fBg\fP, and \fBb\fP selects the red, green, or blue
+color for editing, while \fBh\fP, \fBs\fP, and \fBi\fP, (or \fBv\fP) selects the hue,
+saturation, or intensity for editing. There is one other parameter
+selection character, the \fB/\fP, which steps through the list of color
+parameters in the order given above.
+.sp
+\fB+\fP and \fB.\fP both increment the currently selected parameter by
+one; \fB\-\fP and \fB,\fP both decrement by one, and \fB>\fP and \fB<\fP increments and
+decrements by 16. The value of each of the parameters can range from 0
+to 255 and all parameters wrap in both directions.
+.sp
+A \fB?\fP prints a short command summary, and typing \fBq\fP, \fBQ\fP, \fB<CR>\fP, or
+\fB<LF>\fP exits the program.
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1),
+\fBfbclear\fP(1),
+\fBfbcmap\fP(1)
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

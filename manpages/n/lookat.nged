@@ -1,0 +1,67 @@
+'\" t
+.\"     Title: lookat
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "LOOKAT" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+lookat \- Adjusts the current view in MGED such that the eye is looking in the direction of the given coordinates, but does not move the eye point nor change the view size.
+.SH "SYNOPSIS"
+.sp
+\fBlookat\fP {\fIx y z\fP}
+.SH "DESCRIPTION"
+.sp
+Adjusts the current view in MGED such that the eye is looking in the
+direction of the given coordinates, but does not move the eye point
+nor change the view size. This is similar to just rotating the viewers
+head to look at the specified point, putting that point in the center
+of the MGED display. The center command performs a similar function,
+but moves the eye_pt without changing the viewing direction.
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBlookat\fP command to rotate the
+view to place the given coordinates in the center of the display.
+.sp
+.B Example 1. Rotate the view to place specific coordinates in the center of the display.
+.br
+.RS 4
+.sp
+mged> \f(CRlookat 10 20 30\fP
+.sp
+Rotates the view to place the point (10 20 30) (model coordinates) in
+the center of the display.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

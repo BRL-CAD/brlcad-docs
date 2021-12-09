@@ -1,0 +1,1179 @@
+'\" t
+.\"     Title: search
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "SEARCH" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+search \- find and list objects in a BRL\-CAD database
+.SH "SYNOPSIS"
+.sp
+\fBsearch\fP [\fIoptions\fP]... [\fIpath1\fP] [\fIpath2\fP]... [\fIsearch plan\fP]...
+.SH "DESCRIPTION"
+.sp
+\fBsearch\fP works in a fashion similar to Unix\-style find commands
+(internally it is based on OpenBSD\(cqs and NetBSD\(cqs find code) but
+searches \fIobjects\fP in the current open database in MGED rather than
+files in a file system. One or more search paths are specified for
+searching, and a search plan specifies filters through which objects
+in the search paths are tested.  The names of objects satisfying all
+of the filters are returned as the command output.
+.sp
+Search Inputs are specified using PATHS and matching of
+objects is done according to a search plan built using boolean
+expressions constructed using the PRIMITIVES and
+OPERATORS described below. Note that
+OPTIONS are not used to form search plans \- unlike
+the search plan they are specified \fIbefore\fP the paths and are used to
+control settings that apply globally to \fBsearch\fP\(cqs behavior and
+reporting during the execution of the search.
+.sp
+The results of the search command will be sorted according to David
+Koelle\(cqs "alphanum" algorithm, which is basically a human\-intuitive
+ordering for strings with letters and numbers.  For example, a result
+returning d1.r, d10.r and d2.r will be sorted as:
+.sp
+.if n .RS 4
+.nf
+d1.r
+d2.r
+d10.r
+.fi
+.if n .RE
+.sp
+instead of the default ASCII character ordering, which would look
+like:
+.sp
+.if n .RS 4
+.nf
+d1.r
+d10.r
+d2.r
+.fi
+.if n .RE
+.SH "OPTIONS"
+.sp
+\fB\-a\fP
+.RS 4
+Overrides the hidden flag when assembling path lists, if a
+generic toplevel path has been specified.
+.RE
+.sp
+\fB\-Q\fP
+.RS 4
+Exit quietly without printing error messages if the search plan
+contains errors.  Primarily used in situations where programs
+automatically generate search invocations.
+.RE
+.sp
+\fB\-v\fP
+.RS 4
+Prints extra information in full path results.
+.RE
+.SH "PATHS:"
+.sp
+By default, only the "top level" objects in any search are used as
+starting points in the search.  The default mode if no path is
+explicitly specified returns a list of all objects found matching the
+criteria using the top level objects as inputs.  Specifying paths is
+done as follows:
+.sp
+.it 1 an-trap
+.nr an-no-space-flag 1
+.nr an-break-flag 1
+.br
+.B Table 1. Path Specifiers
+.TS
+allbox tab(:);
+lt lt.
+T{
+.sp
+Form
+T}:T{
+.sp
+Results
+T}
+T{
+.sp
+/
+T}:T{
+.sp
+Search using top level objects in database as starting points, return
+list of matching full paths.
+T}
+T{
+.sp
+\&.
+T}:T{
+.sp
+Search using top level objects in database as starting points, return
+list of all matching objects.
+T}
+T{
+.sp
+|
+T}:T{
+.sp
+Iterate over all objects in the database without doing a tree walk,
+return list of all matching objects.
+T}
+T{
+.sp
+|/
+T}:T{
+.sp
+Search using every object in the database as a starting point, return
+list of matching full paths.
+T}
+T{
+.sp
+|.
+T}:T{
+.sp
+Search using every object in the database as a starting point, return
+list of all matching objects.
+T}
+T{
+.sp
+/objname
+T}:T{
+.sp
+Use object \fIobjname\fP as the starting point, return list of matching
+full paths.
+T}
+T{
+.sp
+objname
+T}:T{
+.sp
+Use object \fIobjname\fP as the starting point, return list of all
+matching objects.
+T}
+T{
+.sp
+|/objname
+T}:T{
+.sp
+Use every object below \fIobjname\fP as starting points, return list of
+matching full paths.
+T}
+T{
+.sp
+|objname
+T}:T{
+.sp
+Use every object below \fIobjname\fP as starting points, return list of
+all matching objects.
+T}
+.TE
+.sp
+.sp
+One search command may use multiple paths, each of which can specify
+its own mode \- such a "mixed mode" search will return a list of full
+paths and objects in the order paths were supplied to search.
+.sp
+The "flat" searches that are specified by using \(aq|\(aq as a modifier to
+other paths will use every object in the database as starting points
+for full tree walks and consequently will be significantly more
+expensive for complex tree hierarchies.  The "truly flat" iterative
+search triggered by the the stand\-alone \(aq|\(aq path specifier will be
+faster, but because it does not walk the tree hierarchy depth\-related
+options (\-above, \-below, \-depth, etc.) will not function.
+.SH "PRIMITIVES:"
+.sp
+\fB\-attr\fP \fIattrib[>/</=val]\fP
+.RS 4
+Returns TRUE if the object has attribute
+\fIattrib\fP. If a specific value is also supplied for the attribute with
+an equal condition, TRUE is returned if the object both has the
+attribute and the attribute is set to value \fIval.\fP In the case of >,
+<, >=, and <= there are two possibilities \- if \fIval\fP is
+numerical a numerical comparison is performed, otherwise a string
+comparison is performed. Both \fIattrib\fP and \fIval\fP are treated as
+patterns under shell pattern matching rules when a string comparison
+is performed, but in numerical mode only the attribute name is pattern
+matched.
+.RE
+.sp
+\fB\-bool\fP \fIu/+/\-\fP
+.RS 4
+True if the object in question is being combined
+into the local hierarchy with the specified boolean operation.
+Recognized types are Union (u), Intersection (+), and Subtraction (\-).
+.sp
+Note that by convention, top level objects are implicitly "unioned"
+into the database. To see only objects that have been unioned into a
+comb tree without returning the top level comb object as well, use the
+\fB\-mindepth\fP option to filter for returns deeper in the tree.
+.RE
+.sp
+\fB\-depth\fP \fI[>/</=]depth\fP
+.RS 4
+True if the depth of the object in the tree
+is within the range specified.
+.RE
+.sp
+\fB\-exec\fP \fIexpression arg1 arg2 ... ";"\fP
+.RS 4
+True if the Tcl expression
+returns true. Any pair of curly braces (\(aq{}\(aq) in an arguemt is
+replaced by the name or full path of the object. The semicolon
+terminates the argument list and must not be omitted. Remember to
+quote the parameters properly. The semicolon must stand on its own and
+must be quoted.
+.sp
+When using multiple \-exec filters, keep in mind that filters are
+evaluated lazily, so if you have two \-execs and the first one returns
+false for one node, the second one will not run at all.
+.RE
+.sp
+\fB\-iname\fP \fIpattern\fP
+.RS 4
+Like \fBname\fP except the match is case insensitive.
+.RE
+.sp
+\fB\-iregex\fP \fIpattern\fP
+.RS 4
+Like \fBregex\fP except the match is case
+insensitive.
+.RE
+.sp
+\fB\-maxdepth\fP \fIn\fP
+.RS 4
+True if the depth of the object in the tree is less
+than or equal to \fIn\fP.
+.RE
+.sp
+\fB\-mindepth\fP \fIn\fP
+.RS 4
+True if the depth of the object in the tree is
+greater than or equal to \fIn\fP.
+.RE
+.sp
+\fB\-name\fP \fIpattern\fP
+.RS 4
+True if the object name (not the full path, just
+the name) matches \fIpattern\fP. The evaluation is done according to shell
+pattern matching rules.
+.RE
+.sp
+\fB\-nnodes\fP \fIn\fP
+.RS 4
+True if the object is a combination and has \fIn\fP nodes.
+This option also supports supplying <, >, <=, and >= in front of
+the number to support returning true for objects with node counts less
+than, greater than, less than or equal to, and greater than or equal
+to \fIn\fP.
+.RE
+.sp
+\fB\-param\fP \fIparam[>/</=val]\fP
+.RS 4
+Returns TRUE if the object has parameter
+\fIparam\fP.  Unlike \fB\-attr\fP, which looks only at general attributes
+stored as metadata on objects, the \fB\-param\fP filters based only on
+the internal geometric object\(cqs characteristics. If a specific value
+is also supplied for the parameter with an equal condition, TRUE is
+returned if the object both has the parameter and the parameter is set
+to value \fIval.\fP In the case of >, <, >=, and <= there are two
+possibilities \- if \fIval\fP is numerical a numerical comparison is
+performed, otherwise a string comparison is performed. Both \fIattrib\fP
+and \fIval\fP are treated as patterns under shell pattern matching rules
+when a string comparison is performed, but in numerical mode only the
+parameter name is pattern matched.
+.sp
+The following table outlines what parameters are visible to the
+\fB\-param\fP option.  Because BRL\-CAD uses the same internal
+containers for some types, some parameters will be present even when
+they do not make sense for the specific subtype.  Examples include
+using arb8\(cqs container for arb4 and tgc for rcc.  Note: there are also
+a number of primitives whose parameters are not exposed in a way that
+that \fB\-param\fP can access them: arbn, ars, brep, bspline, dsp,
+metaball, nmg, pipe, pnts, and poly.
+.sp
+.it 1 an-trap
+.nr an-no-space-flag 1
+.nr an-break-flag 1
+.br
+.B Table 2. Primitive Parameters
+.TS
+allbox tab(:);
+lt lt.
+T{
+.sp
+Primitive
+T}:T{
+.sp
+Available Parameters
+T}
+T{
+.sp
+arb8 (arb4, arb5, arb6, arb7)
+T}:T{
+.sp
+V1, V2, V3, V4, V5, V6, V7, V8
+T}
+T{
+.sp
+bot
+T}:T{
+.sp
+mode[surf,volume,plate,plate_nocos], orient[no,lh,rh], V, F, T
+T}
+T{
+.sp
+cline
+T}:T{
+.sp
+V, H, R, T
+T}
+T{
+.sp
+ebm
+T}:T{
+.sp
+F, W, N, H, M
+T}
+T{
+.sp
+ehy
+T}:T{
+.sp
+V, H, A, r_1, r_2, c
+T}
+T{
+.sp
+ell (sph)
+T}:T{
+.sp
+V, A, B, C
+T}
+T{
+.sp
+epa
+T}:T{
+.sp
+V, H, A, r_1, r_2
+T}
+T{
+.sp
+eto
+T}:T{
+.sp
+V, N, C, r, r_d
+T}
+T{
+.sp
+extrude
+T}:T{
+.sp
+V, H, A, B, S, K
+T}
+T{
+.sp
+grip
+T}:T{
+.sp
+V, N, L
+T}
+T{
+.sp
+half
+T}:T{
+.sp
+N, d
+T}
+T{
+.sp
+hf
+T}:T{
+.sp
+cfile, dfile, fmt, w, n, shorts, file2mm, v, x, y, xlen, ylen, zscale
+T}
+T{
+.sp
+hyp
+T}:T{
+.sp
+V, H, A, b, bnr
+T}
+T{
+.sp
+part
+T}:T{
+.sp
+V, H, r_v, r_h
+T}
+T{
+.sp
+revolve
+T}:T{
+.sp
+V, axis, R, ang, sk_name
+T}
+T{
+.sp
+rhc
+T}:T{
+.sp
+V, H, B, r, c
+T}
+T{
+.sp
+rpc
+T}:T{
+.sp
+V, H, B, r
+T}
+T{
+.sp
+sketch
+T}:T{
+.sp
+V, A, B, VL, SL
+T}
+T{
+.sp
+submodel
+T}:T{
+.sp
+file, treetop, meth
+T}
+T{
+.sp
+tgc (rcc, rec, tec, trc)
+T}:T{
+.sp
+V, H, A, B, C, D
+T}
+T{
+.sp
+tor
+T}:T{
+.sp
+V, H, r_a, r_h
+T}
+T{
+.sp
+vol
+T}:T{
+.sp
+file, w, n, d, lo, hi, size, mat
+T}
+.TE
+.sp
+.RE
+.sp
+\fB\-path\fP \fIpattern\fP
+.RS 4
+True if the object path matches \fIpattern.\fP The
+evaluation is done according to shell pattern matching rules.
+.RE
+.sp
+\fB\-print\fP
+.RS 4
+Evaluates to TRUE \- used to print out the path and name of
+the object.
+.RE
+.sp
+\fB\-regex\fP \fIpattern\fP
+.RS 4
+True if the object path matches \fIpattern\fP.
+Pattern evaluation is done using Regular Expression matching.
+.RE
+.sp
+\fB\-size\fP \fI[>/</=]size\fP
+.RS 4
+True if the size of the object is within the
+range specified.  NOTE: for combs, extrudes, and other composite
+objects this filter considers \fIonly\fP the object definition itself, not
+its related elements.
+.RE
+.sp
+\fB\-stdattr\fP
+.RS 4
+Returns TRUE if an object has ONLY standard attributes
+associated with it. Standard attributes in BRL\-CAD are:
+.sp
+.it 1 an-trap
+.nr an-no-space-flag 1
+.nr an-break-flag 1
+.br
+.B Table 3. Standard Attributes
+.TS
+allbox tab(:);
+lt lt.
+T{
+.sp
+GIFTmater
+T}:T{
+.sp
+inherit
+T}
+T{
+.sp
+material_id
+T}:T{
+.sp
+oshader
+T}
+T{
+.sp
+region_id
+T}:T{
+.sp
+rgb
+T}
+.TE
+.sp
+.RE
+.sp
+\fB\-type\fP \fIpattern\fP
+.RS 4
+Returns TRUE if the type of the object matches
+\fIpattern\fP. Pattern evaluation is done using shell pattern matching.
+Types recognized include:
+.sp
+.it 1 an-trap
+.nr an-no-space-flag 1
+.nr an-break-flag 1
+.br
+.B Table 4. Primitives
+.TS
+allbox tab(:);
+lt lt lt lt lt lt.
+T{
+.sp
+arb4
+T}:T{
+.sp
+arb5
+T}:T{
+.sp
+arb6
+T}:T{
+.sp
+arb7
+T}:T{
+.sp
+arb8
+T}:T{
+.sp
+arbn
+T}
+T{
+.sp
+annot
+T}:T{
+.sp
+ars
+T}:T{
+.sp
+binunif
+T}:T{
+.sp
+bot
+T}:T{
+.sp
+brep
+T}:T{
+.sp
+bspline
+T}
+T{
+.sp
+cline
+T}:T{
+.sp
+constrnt
+T}:T{
+.sp
+datum
+T}:T{
+.sp
+dsp
+T}:T{
+.sp
+ebm
+T}:T{
+.sp
+ehy
+T}
+T{
+.sp
+ell
+T}:T{
+.sp
+epa
+T}:T{
+.sp
+eto
+T}:T{
+.sp
+extrude
+T}:T{
+.sp
+grip
+T}:T{
+.sp
+half
+T}
+T{
+.sp
+hf
+T}:T{
+.sp
+hrt
+T}:T{
+.sp
+hyp
+T}:T{
+.sp
+joint
+T}:T{
+.sp
+metaball
+T}:T{
+.sp
+nmg
+T}
+T{
+.sp
+part
+T}:T{
+.sp
+pipe
+T}:T{
+.sp
+pnts
+T}:T{
+.sp
+poly
+T}:T{
+.sp
+rec
+T}:T{
+.sp
+rhc
+T}
+T{
+.sp
+rpc
+T}:T{
+.sp
+script
+T}:T{
+.sp
+sketch
+T}:T{
+.sp
+sph
+T}:T{
+.sp
+submodel
+T}:T{
+.sp
+superell
+T}
+T{
+.sp
+tgc
+T}:T{
+.sp
+tor
+T}:T{
+.sp
+vol
+T}:T{
+.sp
+
+T}:T{
+.sp
+
+T}:T{
+.sp
+
+T}
+.TE
+.sp
+.sp
+.it 1 an-trap
+.nr an-no-space-flag 1
+.nr an-break-flag 1
+.br
+.B Table 5. Combinations
+.TS
+allbox tab(:);
+lt lt.
+T{
+.sp
+Type
+T}:T{
+.sp
+Abbreviations Recognized
+T}
+T{
+.sp
+combination
+T}:T{
+.sp
+c, comb, combination
+T}
+T{
+.sp
+region
+T}:T{
+.sp
+r, reg, region
+T}
+.TE
+.sp
+.sp
+As a convenience, the \fB\-type\fP option will also recognize the
+pattern \fIshape\fP, which will match any object that is \fInot\fP a
+combination, region, annotation, constraint, grip or joint.
+.sp
+In order to identify shapes defined as implicit solids using the
+"plate mode" methodology, the pattern \fIplate\fP will match any object
+whose internal definition indiciates it is of that type.  Currently
+such objects are possible with "bot" and "brep" objects.
+.sp
+The the pattern \fIvolume\fP can be used as a mirror of plate, in that it
+will report objects that clearly define a non\-implicit solid volume.
+Its determination is local \- for example, combs aren\(cqt matched because
+a comb may be made up of non\-volumetric objects.  In particular, plate
+mode objects will not match because their volume is implicit, and (for
+example) surface mode BoTs will not match because they don\(cqt define a
+volume.
+.RE
+.SH "OPERATORS"
+.sp
+\fB(\fP \fIexpression\fP \fB)\fP
+.RS 4
+Evaluates to true if the expression inside the
+parentheses evaluates to true. Used to establish order of operations.
+.RE
+.sp
+\fB\-below[>/</=val]\fP \fIexpression\fP
+.RS 4
+The below operator applies the
+expression to every object below the matching object in the tree
+hierarchy.  E.g. searching with \-below \-name start\(rs* on
+/component/region.r/start_comb.c/prim1.s would return prim1.s, as the
+object below start_comb.c
+.sp
+Optionally, inequality and equality constraints on depth can be
+appended to the operator to limit what relative depths are accepted as
+matches.
+.RE
+.sp
+\fIexpression\fP \fB\-and\fP \fIexpression\fP (a.k.a. \-a)
+.RS 4
+The and operator
+operates like the logical AND operator \- TRUE only if both expressions
+are true.  AND is the default operator assumed if two expressions are
+present with no operator explicitly defined.
+.RE
+.sp
+\fB\-above[>/</=val]\fP \fIexpression\fP
+.RS 4
+The above operator applies the
+expression to every object above the current full path to that object,
+and returns TRUE if one or more of them satisfies the expression.
+E.g., searching with \-above \-name s\(rs* on
+/component/region.r/start_comb.c/prim1.s would return TRUE for
+/component and /component/region.r as start_comb.c is below both of
+them, but would return FALSE for any deeper objects (i.e., prim1.s in
+this example).
+.sp
+Optionally, inequality and equality constraints on depth can be
+appended to the operator to limit what relative depths are accepted as
+matches.
+.RE
+.sp
+\fB\-not\fP \fIexpression\fP (a.k.a. !)
+.RS 4
+The logical NOT operator \- returns
+the opposite of the evaluation result of expression.
+.RE
+.sp
+\fIexpression\fP \fB\-or\fP \fIexpression\fP (a.k.a. \-o)
+.RS 4
+The logical OR
+operator \- true if either expression is true.
+.RE
+.SH "A NOTE ON EXPRESSIONS"
+.sp
+All primaries and operands must be expressed as separate arguments to
+search. In practice, this means that there must be a space between
+each element in a search expression.  E.g. !(\-name [a\-z] \-or \-name
+[0\-9]) must be written as:
+.sp
+.if n .RS 4
+.nf
+! ( \-name [a\-z] \-or \-name [0\-9] )
+.fi
+.if n .RE
+.sp
+While this may seem like a rather verbose way of writing the
+expression, it greatly simplifies the parsing of the expression and is
+standard for virtually all \fBfind\fP type commands. Because [a\-z] and
+[0\-9] are atomic arguments as far as search is concerned, they should
+NOT be expanded in a similar fashion.
+.SH "EXAMPLES"
+.sp
+The following are run from the MGED command prompt:
+.sp
+.B Example 1. Shell Globbing Based Pattern Match of Object Name
+.br
+.RS 4
+.sp
+\f(CRsearch \-name *.s\fP
+.sp
+Find all objects in the database with names ending in ".s".
+.RE
+.sp
+.B Example 2. Full Path Instance Reporting of Search Results
+.br
+.RS 4
+.sp
+\f(CRsearch / \-name *.s\fP
+.sp
+Find all instances of objects in the database with names ending in
+".s".
+.RE
+.sp
+.B Example 3. Name Pattern Matching at Depth >= 3
+.br
+.RS 4
+.sp
+\f(CRsearch / \-name *.s \-mindepth 3\fP
+.sp
+Find all instances of objects in the database with names ending in
+".s" that are 3 or more levels deep in their tree.
+.RE
+.sp
+.B Example 4. Finding all Objects in a Subtree
+.br
+.RS 4
+.sp
+\f(CRsearch group1 \-name *.r\fP
+.sp
+Find all objects within group1 in the database that have names ending
+in ".r" Note that this will return a list of objects, not the full
+path information associated with each instance of the objects matched.
+.RE
+.sp
+.B Example 5. Finding all Instances of Objects in a Subtree
+.br
+.RS 4
+.sp
+\f(CRsearch /group1 \-name *.r\fP
+.sp
+Find all instances of objects within group1 in the database that have
+names ending in ".r" Note that, unlike the previous example, this will
+return the full path information associated with each instance of the
+objects matched.
+.RE
+.sp
+.B Example 6. Finding all Instances of a Sub\-Path
+.br
+.RS 4
+.sp
+\f(CRsearch / \-path \(rs*r245\fP
+.sp
+Find all paths which end with the object r245.  Note that all paths
+generated by objects \fIbelow\fP r245 will not match this pattern.  To
+find all paths with r245 in them, use the following pattern:
+.sp
+\f(CRsearch / \-path *r245\(rs*\fP
+.sp
+If you need to match an object path that is potentially ambiguous
+(say, r1 when there are lots of regions that match the r1* globbing
+rule) add the trailing slash to the expression:
+.sp
+\f(CRsearch / \-path *r1\(rs/\(rs*\fP
+.RE
+.sp
+.B Example 7. Searching by Type
+.br
+.RS 4
+.sp
+\f(CRsearch . \-type eto\fP
+.sp
+Find all objects in the database that are elliptical tori.  Note that
+a path of "." produces the same search behavior as the default
+behavior for an unspecified path.
+.RE
+.sp
+.B Example 8. Finding all Instances of Nested Regions
+.br
+.RS 4
+.sp
+\f(CRsearch / \-type region \-below \-type region\fP
+.sp
+Find all instances of objects of type region that contain a region.
+This searches for regions being used within the subtrees of other
+regions, which is considered bad practice in BRL\-CAD.
+.RE
+.sp
+.B Example 9. Finding all Assemblies
+.br
+.RS 4
+.sp
+\f(CRsearch / \-type comb ! \-below \-type region ! \-type region\fP
+.sp
+Find all instances of objects of type combination that are not below
+regions and are not themselves regions.  These are regarded as
+"assemblies" in BRL\-CAD.
+.RE
+.sp
+.B Example 10. Finding all Combinations below Regions
+.br
+.RS 4
+.sp
+\f(CRsearch / \-type comb \-below \-type region ! \-type region\fP
+.sp
+Find all instances of combinations that are not regions and do not
+contain regions.
+.RE
+.sp
+.B Example 11. Finding all Empty Combinations
+.br
+.RS 4
+.sp
+\f(CRsearch \-nnodes 0\fP
+.sp
+Find all combinations containing zero nodes.
+.RE
+.sp
+.B Example 12. Finding all Combinations With 10 or More Nodes
+.br
+.RS 4
+.sp
+\f(CRsearch \-nnodes >=10\fP
+.sp
+Find all combinations with 10 or more nodes.
+.RE
+.sp
+.B Example 13. Finding all Intersected Objects
+.br
+.RS 4
+.sp
+\f(CRsearch \-bool +\fP
+.sp
+Find all objects that are combined into one or more trees using the
+Intersect boolean operation somewhere in the .g file. This approach
+only identifies which objects are intersected somewhere in the tree,
+not where specifically they are intersected.
+.RE
+.sp
+.B Example 14. Finding all Instances of Object Intersection
+.br
+.RS 4
+.sp
+\f(CRsearch / \-bool +\fP
+.sp
+Find all boolean operations that use the Intersect boolean operation
+and report the full paths to those objects. This approach reports all
+individual cases where an object has been combined into a hierarchy by
+intersection, not just which objects have been included with the
+intersection operator.
+.RE
+.sp
+.B Example 15. Finding all Unions Within a Comb\(cqs Tree
+.br
+.RS 4
+.sp
+\f(CRsearch /all.g \-mindepth 1 \-bool u\fP
+.sp
+Find all unions within the all.g tree hierarchy, excluding all.g
+itself.
+.RE
+.sp
+.B Example 16. Finding all Non\-Subtracted Regions below Regions
+.br
+.RS 4
+.sp
+\f(CRsearch / \-type region \-below \-type region ! \-bool \-\fP
+.sp
+A more nuanced variation on finding nested regions that adds a check
+to make sure that the regions aren\(cqt being subtracted.  While not
+ideal, using a subtraction does avoid the modeling error of two
+volumes claiming the three dimensional space and is arguably
+acceptable \- the below command finds nested region instances that are
+considered errors.
+.RE
+.sp
+.B Example 17. Finding all Regions with RGB color 180 180 180
+.br
+.RS 4
+.sp
+\f(CRsearch \-type region ( \-attr color=180/180/180 \-or \-attr rgb=180/180/180 )\fP
+.sp
+Prints all regions with their color attribute set to 180/180/180.
+Some files may use \fIrgb\fP instead of color, so to be comprehensive an
+\fI\-or\fP option is used to check both possibilities.
+.RE
+.sp
+.B Example 18. Find All Combs Containing At Least One of Two Objects (dbfind)
+.br
+.RS 4
+.sp
+\f(CRsearch |. ( \-depth 0 \-above=1 \-name obj1 ) \-or ( \-depth 0 \-above=1 \-name obj2 )\fP
+.sp
+Prints all combs immediately above either obj1 or obj2.  This more or
+less mimics the results of the dbfind command, although it will be
+somewhat slower (noticably so on large databases.)
+.RE
+.sp
+.B Example 19. Finding all regions containing an intersection of obj2
+.br
+.RS 4
+.sp
+\f(CRsearch |/ \-maxdepth 0 \-type region \-above ( \-name obj2 \-bool + )\fP
+.sp
+Prints all regions immediately above obj2 where obj2 is included using
+an intersection operation.
+.RE
+.sp
+.B Example 20. Finding all Plate\-Mode BoT Objects
+.br
+.RS 4
+.sp
+\f(CRsearch \-type bot \-param mode=plate\fP
+.sp
+Prints all BoT primitives using "plate" mode, instead of the
+closed\-mesh\-requiring "volume" mode.
+.RE
+.sp
+.B Example 21. Verbose Reporting of Search Information
+.br
+.RS 4
+.sp
+mged> \f(CRsearch \-v /all.g ! \-type comb\fP
+.sp
+.if n .RS 4
+.nf
+/u all.g(c)/u platform.r(r)/u platform.s(arb8)
+/u all.g(c)/u box.r(r)/u box.s(arb8)
+/u all.g(c)/u cone.r(r)/u cone.s(tgc)
+/u all.g(c)/u ellipse.r(r)/u ellipse.s(ell)
+/u all.g(c)/u tor.r(r)/u tor(tor)
+/u all.g(c)/u light.r(r)/u LIGHT(ell)
+.fi
+.if n .RE
+.sp
+Report all paths ending in an object that is not a comb using
+"verbose" output style. The verbose form of path reporting reports not
+just the path, but the boolean operator used at each setp along the
+path and the primitive type of each object along the path.
+.RE
+.sp
+.B Example 22. Operating on Sets of \fBsearch\fP Results
+.br
+.RS 4
+.sp
+There are two available methods for working with sets of \fBsearch\fP
+results.  The first is the \fBexec\fP option, which is used in the
+following example to search for all regions below subtractions or
+intersections in the m35.g example model in BRL\-CAD and draw the
+objects\(aq wireframes in the display manager:
+.sp
+.if n .RS 4
+.nf
+mged>search all.g \-type region \-and ( \-below \-bool \- \-or \-below \-bool + ) \-exec draw "{}" ";"
+mged>autoview
+.fi
+.if n .RE
+.sp
+ANOTHER possibility, especially useful for doing multiple sequential
+operations which would be awkward to write out in a single search
+line, is to assign the results of a search command to a Tcl variable.
+To illustrate, let\(cqs randomize the colors of all regions in the "cab"
+assembly of the m35.g example model and then assign a glass shader
+with transparency as a follow\-on step.
+.sp
+First, we collect the set of search results into a Tcl variable:
+.sp
+.if n .RS 4
+.nf
+mged> set glob_compat_mode 0
+mged> set search_results [search cab \-type region]
+.fi
+.if n .RE
+.sp
+Next we randomize the colors using Tcl\(cqs functionality (here we use
+random numbers and avoid any value less than 30 to keep objects more
+visible):
+.sp
+.if n .RS 4
+.nf
+mged> foreach i $search_results {attr set $i color [expr {int(rand()*225)+30}]/[expr {int(rand()*225)+30}]/[expr {int(rand()*225)+30}]}
+.fi
+.if n .RE
+.sp
+Finally, we add transparency to the same regions:
+.sp
+.if n .RS 4
+.nf
+mged> foreach i $search_results {attr set $i shader {glass {tr 0.7 ri 1}}}
+.fi
+.if n .RE
+.RE
+.sp
+Remember when setting region colors to check for the presence of a
+\fIregionid_colortable\fP attribute on the _GLOBAL object \- if such a
+table is present (the m35.g sample model has one, for example) you
+need to remove that table (and for MGED wireframes, re\-open the
+database) before the colors on the individual regions will "take":
+.sp
+.if n .RS 4
+.nf
+mged> attr rm _GLOBAL regionid_colortable
+.fi
+.if n .RE
+.sp
+.RS 4
+
+.RE
+.SH "DIAGNOSTICS"
+.sp
+Errors will be returned if parsing of the arguments fails, or one of
+the primaries\(aq evaluation functions returns an error.
+.SH "AUTHOR"
+.sp
+Clifford Yapp
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 2008\-2021 United States Government as
+represented by the U.S. Army Research Laboratory. Portions Copyright
+1990, 1993, 1994 The Regents of the University of California, per
+copyright and license information from OpenBSD and NetBSD.  For more
+details see the copyright statements in search.c and search.h.
+.SH "BUGS"
+.sp
+Bugs resulting from incorrect parsing of shell pattern expressions are
+the result of libbu\(cqs fnmatch.

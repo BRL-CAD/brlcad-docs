@@ -1,0 +1,178 @@
+'\" t
+.\"     Title: patch-g
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "PATCH\-G" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+patch\-g \- convert FASTGEN ASCII databases into binary MGED databases.
+.SH "SYNOPSIS"
+.sp
+\fBpatch\-g\fP [\fIoptions\fP] \fIoutput.g\fP
+.SH "DESCRIPTION"
+.sp
+This program converts FASTGEN geometry into BRL\-CAD
+\fBmged\fP(1) formats. FASTGEN is a modeling system
+used by the Air Force and Navy to create military target
+descriptions. FASTGEN databases consist of the following primitives
+which can be converted by \fBpatch\-g\fP : polygons, plates, boxes,
+wedges, cylinders, spheres, and rods. It is recommended that
+\fBpatch\-g\fP be run with the \fB\-p\fP option for most uses.
+.sp
+\fBpatch\-g\fP requires that the FASTGEN file be run through the
+pre\-processor \fBrpatch\fP . This is achieved by executing rpatch <
+\fIfastgen_file\fP > \fIfile.rpatch\fP. Once this step is executed,
+\fBpatch\-g\fP can be used to convert the intermediate file into a
+binary \fBbrlcad\fP(1) ".g" file.
+.sp
+\fBpatch\-g\fP will provide messages when encountering problems in the
+conversion of FASTGEN geometry. For further debugging information, the
+\-d flag with levels 1\-3 of debugging can be provided.
+.sp
+The available options are:
+.sp
+\fB\-T tolerance_distance\fP
+.RS 4
+The \fItolerance_distance\fP is specified in
+inches. Any two vertices within this distance from each other will be
+considered the same vertex.
+.RE
+.sp
+\fB\-A perp_tolerance\fP
+.RS 4
+The \fIperp_tolerance\fP is specified as the cosine
+of an angle (0.0 through 1.0). If the cosine of the angle between two
+vectors is less than the specified tolerance, then the vectors are
+considered perpendicular.
+.RE
+.sp
+\fB\-u number_of_unions\fP
+.RS 4
+The \fInumber_of_unions\fP is the number of union
+operations per region, and has a pre\-specified default value.
+.RE
+.sp
+\fB\-x librt_debug_flag\fP
+.RS 4
+Specifies a flag for debugging the \fIlibrt\fP
+package.
+.RE
+.sp
+\fB\-X NMG_debug_flag\fP
+.RS 4
+Specifies a flag for NMG routine debugging.
+.RE
+.sp
+\fB\-p\fP
+.RS 4
+Produce polysolid output rather than the default NMG solids.
+.RE
+.sp
+\fB\-6\fP
+.RS 4
+Convert plate\-mode triangles using ARB6 solids.
+.RE
+.sp
+\fB\-f preprocessed_input_file\fP
+.RS 4
+Use the specified file as the input for
+conversion.
+.RE
+.sp
+\fB\-i labels_file\fP
+.RS 4
+Specifies desired group names to override defaults.
+.RE
+.sp
+\fB\-m materials_file\fP
+.RS 4
+Specifies material properties to be assigned to
+components.
+.RE
+.sp
+\fB\-n\fP
+.RS 4
+Process volume mode as plate mode.
+.RE
+.sp
+\fB\-t title\fP
+.RS 4
+Specifies a title for the output model (default is
+"patch\-g conversion").
+.RE
+.sp
+\fB\-o top_level_name\fP
+.RS 4
+Specifies a name for the top level object
+(default is "all").
+.RE
+.sp
+\fB\-r\fP
+.RS 4
+Reverse normals for plate mode triangles.
+.RE
+.sp
+\fB\-c "X Y Z"\fP
+.RS 4
+Specifies centroid, in inches, for some plate mode
+surface normal calculations. Quotation marks are needed to provide for
+the embedded blanks.
+.RE
+.sp
+\fB\-d debug_level\fP
+.RS 4
+Specifies a debug level (1\-3).
+.RE
+.SH "EXAMPLE"
+.sp
+.if n .RS 4
+.nf
+rpatch < fastgen_file > file.rpatch
+.fi
+.if n .RE
+.sp
+.if n .RS 4
+.nf
+patch\-g \-p \-f file.rpatch  file.g
+.fi
+.if n .RE
+.SH "DIAGNOSTICS"
+.sp
+The diagnostics are intended to be self\-explanatory.
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1), \fBmged\fP(1)
+.SH "AUTHOR"
+.sp
+Bill Mermagen, Jr.
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

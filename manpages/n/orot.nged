@@ -1,0 +1,66 @@
+'\" t
+.\"     Title: orot
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "OROT" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+orot \- Performs a rotation of an object during matrix edit.
+.SH "SYNOPSIS"
+.sp
+\fBorot\fP [\-i] {\fIxdeg ydeg zdeg\fP}
+.SH "DESCRIPTION"
+.sp
+Performs a rotation of an object during matrix edit. The rotation is
+performed, in order: \fIxdeg\fP about the \fIx\fP axis, then \fIydeg\fP about the
+\fIy\fP axis, and finally \fIzdeg\fP about the \fIz\fP axis. If the \fI\-i\fP flag is
+given, then the angles are interpreted as increments to the last
+object rotation. The \fBrotobj\fP command is a synonym for \fIorot.\fP
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBorot\fP command to rotate a
+currently edited object.
+.sp
+.B Example 1. Rotate a currently edited object.
+.br
+.RS 4
+.sp
+mged> \f(CRorot 0 0 35\fP
+.sp
+Rotates currently edited object by 35° about the Z\-axis from the
+original orientation.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

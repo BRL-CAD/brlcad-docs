@@ -1,0 +1,64 @@
+'\" t
+.\"     Title: hide
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "HIDE" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+hide \- Sets the "hidden" flag for the specified objects.
+.SH "SYNOPSIS"
+.sp
+\fBhide\fP {\fIobjects\fP}
+.SH "DESCRIPTION"
+.sp
+Sets the "hidden" flag for the specified objects. When this flag is
+set, the objects do not appear in \fBt\fP or \fBls\fP command
+outputs. The \fI\-a\fP option on the \fBls\fP or \fBt\fP command will
+force hidden objects to appear in its output.
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBhide\fP command to flag a
+specified object as hidden.
+.sp
+.B Example 1. Flag a specific object as hidden.
+.br
+.RS 4
+.sp
+mged> \f(CRhide sol_a\fP
+.sp
+Marks \fIsol_a\fP as hidden.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

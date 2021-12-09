@@ -1,0 +1,155 @@
+'\" t
+.\"     Title: rtshot
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "RTSHOT" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+rtshot \- fire one ray at an mged model, for debugging
+.SH "SYNOPSIS"
+.sp
+\fBrtshot\fP [\fIoptions\fP]... \fImodel.g\fP \fIobjects\fP...
+.SH "DESCRIPTION"
+.sp
+\fBrtshot\fP fires a single ray at the indicated \fIobjects\fP in the
+input \fImodel.g\fP and produces a printed summary of the geometry that
+the ray passes through. The orientation of the ray to be fired is
+specified by giving any two of the three options \fB\-a\fP[opt]\fB\-d\fP
+and \fB\-p.\fP
+.sp
+\fB\-d\fP
+.RS 4
+This option is followed by three numbers specifying the
+direction vector.
+.RE
+.sp
+\fB\-p\fP
+.RS 4
+This option is followed by three numbers specifying the
+start point.
+.RE
+.sp
+\fB\-a\fP
+.RS 4
+This option is followed by three numbers specifying a
+point to be fired "at".
+.RE
+.sp
+\fB\-t #\fP
+.RS 4
+specifies the number of triangles per piece for facetted
+primitives (currently only the BOT). The default value is 4.
+.RE
+.sp
+\fB\-b #\fP
+.RS 4
+specifies the threshold for breaking facetted primitives into
+pieces. The default is 32.
+.RE
+.sp
+\fB\-x #\fP
+.RS 4
+Set debug flags to (hexadecimal) number.
+.RE
+.sp
+\fB\-U #\fP
+.RS 4
+Set use_air flag.
+.RE
+.sp
+\fB\-v attribute_name1 [attribute_name2 ...]\fP
+.RS 4
+This option specifies a
+list of attribute names to be listed (along with the appropriate
+values) for each region hit.
+.RE
+.sp
+\fB\-O # or keyword\fP
+.RS 4
+This option indicates how overlaps should be
+handled. The \fIresolve\fP or \f(CR0\fP argument is the default (normal BRL\-CAD
+mode, all overlaps are resolved and no overlaps appear in the
+output). The \fIrebuild_fastgen\fP or \f(CR1\fP argument mimics FASTGEN4
+raytracing (plate\-mode overlaps appear in the output). The
+\fIrebuild_all\fP or \f(CR2\fP argument rebuilds all overlaps that occurred
+along the ray (all overlaps appear in the output). The \fIretain\fP or \f(CR3\fP
+argument does not resolve any overlaps (each unique combination of
+intersection extent and list of claiming regions produces a single
+partition).
+.RE
+.sp
+\fB\-n #\fP
+.RS 4
+This option specifies the number of rings to use in a ray
+bundle (does not include the central ray).
+.RE
+.sp
+\fB\-c #\fP
+.RS 4
+This option specifies the number of rays in each ring. The
+rays in each ring are not aligned with the rays in the previous ring,
+they make an outward spiral pattern. A central ray is included.
+.RE
+.sp
+\fB\-R #\fP
+.RS 4
+This option specifies the radius of the ray bundle. Each ring
+is evenly spaced with the outermost ring at this radius.
+.RE
+.sp
+The \fBrtshot\fP program is a simple front\-end to
+\fBlibrt\fP(3) which can be invoked directly by the
+user. If a ray bundle is desired, all of the \fB\-n\fP , \fB\-c\fP ,
+and \fB\-R\fP options must be specified. The output from a ray bundle
+is handled as a single ray. Any overlaps between rays in the bundle
+are resolved by favoring rays closer to the central ray. The default
+is to fire a single ray.
+.SH "SEE ALSO"
+.sp
+\fBmged\fP(1), \fBrt\fP(1),
+\fBpix\-fb\fP(1),
+\fBrtray\fP(1), \fBrtpp\fP(1),
+\fBlibrt\fP(3), \fBray\fP(5V),
+\fBpix\fP(5)
+.SH "DIAGNOSTICS"
+.sp
+Numerous error conditions are possible. Descriptive messages are
+printed on standard error.
+.SH "BUGS"
+.sp
+Most deficiencies observed while using the \fBrtshot\fP program are
+usually with the \fBlibrt\fP(3) package instead.
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

@@ -1,0 +1,63 @@
+'\" t
+.\"     Title: rcc-tgc
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "RCC\-TGC" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+rcc\-tgc \- Creates a TGC shape with the specified apex (x y z) at one end (base [b] or top [t]) of the specified RCC.
+.SH "SYNOPSIS"
+.sp
+\fBrcc\-tgc\fP {\fIrccname newname xyz\fP} [b] [t]
+.SH "DESCRIPTION"
+.sp
+Creates a TGC shape with the specified apex (\fIx y z\fP) at one end (base
+[\fIb\fP] or top [\fIt\fP]) of the specified RCC. The default end is the base.
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBrcc\-tgc\fP command to create a
+TGC shape with the specified apex at the base of the specified RCC.
+.sp
+.B Example 1. Create a TGC shape with a specified apex at the base of a specified RCC.
+.br
+.RS 4
+.sp
+mged> \f(CRrcc\-tgc rcc.s tgc.s 0 2 4\fP
+.sp
+Creates a TGC shape named \fItgc.s\fP with an apex at (0 2 4) from the
+base of \fIrcc.s\fP.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

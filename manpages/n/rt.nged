@@ -1,0 +1,91 @@
+'\" t
+.\"     Title: rt
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "RT" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+rt \- Executes the BRL\-CAD rt program with the default options of "\-s50 M".
+.SH "SYNOPSIS"
+.sp
+\fBrt\fP [\fIoptions\fP] [\fI\-\-objects\fP]
+.SH "DESCRIPTION"
+.sp
+Executes the BRL\-CAD \fIrt\fP program with the default options of "\-s50
+M". If perspective is turned on, then the \fI\-p\fP option will be included
+with the value of the perspective angle. The current database name is
+added to the end of the \fBrt\fP command line along with either the
+specified \fIobjects\fP or, if none is specified, the list of currently
+displayed objects. The \fIrt\fP program is written such that options may
+be repeated, and the last occurrence of an option will override any
+earlier occurrences.  This allows the user to specify other \fIsize
+(\-s)\fP options. The \fBrrt\fP command performs a similar function, but
+may be used to execute other programs as well. The \fI\-M\fP option tells
+\fIrt\fP to read the viewing parameters from standard input.  See the
+\fIman\fP page on \fIrt\fP for details.  A related command is \fBsaveview\fP,
+which can be used to create a shell script (batch job) to raytrace
+this view in the background.
+.SH "EXAMPLES"
+.sp
+The first example shows the use of the \fBrt\fP command to run the rt
+program to produce a color\-shaded image of the current view. The
+second example shows the use of the \fBrt\fP command to produce a
+color\-shaded image of an object using MGED\(cqs current viewing
+parameters.
+.sp
+.B Example 1. Run the \fIrt\fP program to produce a color\-shaded image of the current view in MGED.
+.br
+.RS 4
+.sp
+mged> \f(CRrt \-s1024 \-F/dev/Xl\fP
+.sp
+Runs the \fIrt\fP program to produce a color\-shaded image of the current
+view in the MGED display. The image will be 1024 pixels square and
+will be displayed on a lingering \fIX\fP framebuffer.
+.RE
+.sp
+.B Example 2. Run the \fIrt\fP program to produce a color\-shaded image of an object using MGED\(cqs current viewing parameters.
+.br
+.RS 4
+.sp
+mged> \f(CRrt \-C 200/200/255 \(em roof\fP
+.sp
+Runs the \fIrt\fP program to produce a color\-shaded image of the object
+\fIroof\fP using MGED\(cqs current viewing parameters. The image will have a
+sky\-blue background and will be displayed on the framebuffer specified
+by the FB_FILE shell variable.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

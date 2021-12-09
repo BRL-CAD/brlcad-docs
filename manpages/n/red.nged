@@ -1,0 +1,70 @@
+'\" t
+.\"     Title: red
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "RED" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+red \- Creates a file describing the specified combination and starts an editor for the user to modify the combination.
+.SH "SYNOPSIS"
+.sp
+\fBred\fP {\fIcombination\fP}
+.SH "DESCRIPTION"
+.sp
+Creates a file describing the specified combination and starts an
+editor for the user to modify the combination. The environment
+\fIEDITOR\fP variable will be used to select the editor. If \fIEDITOR\fP is
+not set, then \fI/bin/ed\fP will be used. All the attributes of BRL\-CAD
+regions and \fIcombinations\fP may be edited in this way. The
+region\-specific attributes will be ignored if the \fIcombination\fP is not
+a region and is not set to be a \fIregion\fP during editing. It is not
+necessary to be in an editing mode to run this command. The \fBrm,
+r, comb, c,\fP and \fBg\fP commands provide some basic combination
+editing capabilities.
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBred\fP command to edit a
+specified combination with the user\(cqs editor.
+.sp
+.B Example 1. Create a file describing a specified combination and edit the combination.
+.br
+.RS 4
+.sp
+mged> \f(CRred group2\fP
+.sp
+Edits the combination \fIgroup2\fP with the user\(cqs editor of choice.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

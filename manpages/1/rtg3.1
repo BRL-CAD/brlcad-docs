@@ -1,0 +1,283 @@
+'\" t
+.\"     Title: rtg3
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "RTG3" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+rtg3 \- raytrace a model, writing a COVART (GIFT) 3\-component format shotline file
+.SH "SYNOPSIS"
+.sp
+\fBrtg3\fP [\fIoptions\fP]... \fImodel.g\fP \fIobjects\fP... > \fImodel.cov\fP
+.SH "DESCRIPTION"
+.sp
+\fBrtg3\fP operates on the indicated \fIobjects\fP in the input
+\fImodel.g\fP and produces a GIFT/COVART shotline file with three
+components per line, and both entrance and exit obliquity angles on
+standard output. The region ID field of the output file is set to the
+region id of each intersected region (partition). If the ray partition
+is followed by air, the aircode for the air region (and the
+line\-of\-sight thickness of the air) is noted on the shotline header
+line.
+.sp
+The orientation of the rays to be fired may be specified by the
+\fB\-a\fP and \fB\-e\fP options, in which case the model will be
+autosized, and the grid will be centered on the centroid of the model,
+with ray spacing chosen to span the entire set of
+\fIobjects\fP. Alternatively, with the \fB\-M\fP option, a transformation
+matrix may be provided on standard input which maps model\-space to
+view\-space. In this case, the grid ranges from \-1.0 \(lA X,Y \(lA +1.0 in
+view space, with the size of the grid (number of rays fired) specified
+with \fB\-s\fP. This option is most useful when \fBrtg3\fP is being
+invoked from a shell script created by an
+\fBmged\fP(1)\fIsaveview\fP command.  Note that it
+conflicts with \fB\-G#\fP and \fB\-g#\fP; negative hit distances have
+been seen when this conflict was not avoided.
+.sp
+The following options are recognized.
+.sp
+\fB\-s#\fP
+.RS 4
+Number of rays to fire in X and Y directions (square
+grid). Default is 512 (512x512).
+.RE
+.sp
+\fB\-a#\fP
+.RS 4
+Select azimuth in degrees.  Used with \fB\-e\fP and conflicts
+with \fB\-M\fP.
+.RE
+.sp
+\fB\-e#\fP
+.RS 4
+Select elevation in degrees.  Used with \fB\-a\fP and
+conflicts with \fB\-M\fP.
+.RE
+.sp
+\fB\-M\fP
+.RS 4
+Read model2view matrix from standard input. Conflicts with
+\fB\-a\fP and \fB\-e\fP.
+.RE
+.sp
+\fB\-g#\fP
+.RS 4
+Select grid cell width.  Do not use with the \fB\-s#\fP
+option.
+.RE
+.sp
+\fB\-G#\fP
+.RS 4
+Select grid cell height.  If \fInot\fP specified, cell height
+equals cell width.  Do not use with the \fB\-s#\fP option.
+.RE
+.sp
+\fB\-U #\fP
+.RS 4
+sets the Boolean variable \fIuse_air\fP to the given value. The
+default for \fBrtg3\fP(1) is on, i.e. \fB\-U1\fP,
+but the effect of air regions may be disabled with \fB\-U0\fP.
+.RE
+.sp
+\fB\-o\fP
+.RS 4
+\fIoutput.cov\fP specifies a named file for COVART\-format
+output. By default, the shotlines are written to stdout.
+.RE
+.sp
+\fB\-x#\fP
+.RS 4
+Set librt debug flags to (hexadecimal) number.
+.RE
+.sp
+\fB\-c set ray_data_file=ray_file_name\fP
+.RS 4
+specifies a file name for ray
+data output.  This output consists of one line of data for each
+shotline in the shotline output file. Each line contains azimuth,
+elevation; x, y, and z of the ray start point; x, y, and z of the ray
+direction; the corresponding line number in the shotline file; and the
+coordinates of the first hit point along this ray.
+.RE
+.sp
+\fB\-c set rt_cline_radius=#\fP
+.RS 4
+Tells \fBrtg3\fP(1) to
+use the provided number (in millimeters) as the additional radius to
+add to CLINE solids.
+.RE
+.sp
+\fB\-c set save_overlaps=1\fP
+.RS 4
+Tells \fBrtg3\fP(1) to
+act like the \fIFASTGEN4\fP raytracer. Specifically, overlap handling is
+changed to agree with that of \fIFASTGEN4\fP.
+.RE
+.sp
+The \fBrtg3\fP program is a simple front\-end to
+\fBlibrt\fP(3) which is most useful when used with
+\fBmged\fP(1) and
+\fBcovart\fP(1V).
+.sp
+A color vector display of ray\-model intersections can be written to
+\fIrtg3.plot3\fP by specifying the \fB\-X80000000\fP option. The resulting
+plot file can be displayed with \fBplot3\-fb\fP .
+.SH "FORMAT"
+.sp
+The general layout of the output format is:
+.sp
+.if n .RS 4
+.nf
+Overall header line (one per run)
+
+View header line (one per view)
+
+Ray (shotline) header line (one per ray)
+
+Component line (one for each three components in this ray)
+.fi
+.if n .RE
+.sp
+The \fIGIFT\-3\fP shotline format has a different convention for the
+location of the start point (and thus the location of parametric
+distance zero) along the ray.  This difference is handled
+automatically in \fBrtg3\fP by translating the ray\(cqs zero distance to
+the plane containing the model origin, by adding a distance correction
+factor. For each ray, both the cell center coordinates and the
+coordinates actually fired from are output.
+.sp
+Obliquity angles (declensions off the normal) are computed internally
+in \fIradians\fP but output in \fIdegrees\fP to satisfy the \fIGIFT\-3\fP format.
+Note that internally, \fIlibrt\fP normals always point outward, whereas
+\fIGIFT\fP normals point inward.
+.sp
+\fIGIFT\fP zero\-fills the fields of the component card if there are less
+than three components.  Neither COVART II nor COVART III require this
+zero\-filling, so it is omitted by \fBrtg3\fP .
+.SH "EXAMPLE"
+.sp
+This section will acquaint the user with the ordinary usage of
+\fBrtg3\fP . A GIFT\-3 output file is produced by giving the command:
+.sp
+.if n .RS 4
+.nf
+rtg3 \-s32 model.g all.g > file
+.fi
+.if n .RE
+.sp
+This will make a 32 by 32 ray file of the named model.  If a
+bounding\-box plot file is to be made as part of producing visual
+output, use
+.sp
+.if n .RS 4
+.nf
+rtg3 \-s32 \-x80000000 model.g
+.fi
+.if n .RE
+.sp
+The bounding boxes for the objects in the database specified will
+automatically be put into a file called \fIrtrpp.plot3\fP.  Now, to
+compute the color rays use
+.sp
+.if n .RS 4
+.nf
+rtg3 \-s32 \-X80000000 model.g
+.fi
+.if n .RE
+.sp
+The results will be automatically stored in \fIrtg3.plot3\fP.  The rays
+will be colored green where they traverse solids in the model, and
+blue where they traverse air within the model.
+.sp
+The two plot files can now be combined into a single picture and
+displayed:
+.sp
+.if n .RS 4
+.nf
+cat rtrpp.plot3 rtg3.plot3 | plot3\-fb
+.fi
+.if n .RE
+.SH "OVERLAP REPORTING"
+.sp
+\fBrtg3\fP shares overlap handling and reporting with the rest of the
+\fIRT\fP family of applications.  A brief description of the overlap
+reporting follows.
+.sp
+The first one hundred (100) overlaps are individually reported.
+Thereafter, only one out of each additional one hundred overlaps are
+reported, and the user is notified that overlap printouts are being
+omitted.  This alerts the user that more overlaps exist, but that they
+are too numerous to list individually.  The general overlap message
+takes the following form:
+.sp
+.if n .RS 4
+.nf
+OVERLAP1: reg=region_name isol=solid_name
+OVERLAP2: reg=region_name isol=solid_name
+OVERLAP depth #mm at (x, y, z) sx# sy# lvl#
+.fi
+.if n .RE
+.sp
+This means that OVERLAP1 and OVERLAP2 share a common space (depth) of
+#millimeters starting at the point x, y, z in model coordinates, and
+at the ray coordinates (screen coordinates) sx and sy.  Level refers
+to the level of recursion, and will typically be zero unless glass or
+mirror objects are present.
+.SH "SEE ALSO"
+.sp
+\fBcovart\fP(1V),
+\fBgift\fP(1V), \fBmged\fP(1),
+\fBrt\fP(1), \fBrtray\fP(1),
+\fBlibrt\fP(3), \fBplot3\fP(5),
+\fBray\fP(5V); ``\fICOVART II \- A Simulation Program
+for Computation of Vulnerable Areas and Repair Times \- User Manual\fP\(aq\(aq,
+Joint Technical Coordinating Group for Munitions Effectiveness,
+Anti\-Air Aerial Target Vulnerability Working Group, 61\-JTCG/ME\-84\-3
+.SH "DIAGNOSTICS"
+.sp
+Numerous error conditions are possible, usually due to errors in the
+geometry database. Descriptive messages are printed on standard error
+(file descriptor 2).
+.SH "BUGS"
+.sp
+The COVART file format permits multiple views to be stored in one
+file. \fIRtg3\fP presently can only compute a single view.
+.sp
+Most deficiencies observed while using the \fBrtg3\fP program are
+usually with the \fBlibrt\fP(3) package instead.
+If the \fB\-s#\fP option is used together with the \fB\-G#\fP and
+\fB\-g#\fP options, negative hit distances will be seen.
+.SH "AUTHORS"
+.sp
+\fIBRL\-CAD Team\fP
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

@@ -1,0 +1,792 @@
+'\" t
+.\"     Title: nirt
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "NIRT" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+nirt \- interactively ray trace a BRL\-CAD geometric model
+.SH "SYNOPSIS"
+.sp
+\fBnirt\fP [\fIoptions\fP] \fImodel.g\fP \fIobjects\fP...
+.SH "DESCRIPTION"
+.sp
+\fBnirt\fP operates on the specified \fIobjects\fP in the database
+\fImodel.g\fP, using \fBlibrt\fP(3) to trace rays
+according to commands read from the standard input and producing an
+ASCII report of the results. By default, the user can interact with
+\fBnirt\fP, repeatedly specifying origination points and directions
+for rays and the format and destination for the reports. Locations may
+be input and output in either model coordinates (\fIx\fP, \fIy\fP, \fIz\fP)
+or view (a.k.a. grid\-plane) coordinates (\fIh\fP, \fIv\fP,
+\fId\fP). Similarly, direction may be input and output either as vectors
+expressed in model coordinates or as angles of azimuth and elevation.
+.SS "Options"
+.sp
+\fB\-A attribute_name...\fP
+.RS 4
+Adds the names to the list of
+attributes that will be reported when the "attributes" partition
+information value is specified. See also the \fIattr\fP command below.
+.RE
+.sp
+\fB\-M\fP
+.RS 4
+Causes \fBnirt\fP to read the eye point and either the
+orientation quaternion (new format) or the view\-rotation matrix (old
+format) from the standard input, and fire a single ray from the point
+in the specified direction. This option allows \fBnirt\fP to be
+called directly from within \fBmged\fP using the \fBnirt\fP and
+\fIrrt\fP commands.
+.RE
+.sp
+\fB\-b\fP
+.RS 4
+Causes \fBnirt\fP to perform a \fIbackout\fP command before the
+first \fIshoot\fP command (see the description of these two commands
+below). This is probably only useful with the \fB\-M\fP option.
+.RE
+.sp
+\fB\-B\fP \fIrt_bot_minpieces\fP
+.RS 4
+Causes \fBnirt\fP to adjust the setting of
+\fIrt_bot_minpieces\fP to the indicated value. A value of zero here
+indicates that the "pieces" methodology should not be used. A value
+greater than zero indicates that all BOT primitives containing more
+than \fIrt_bot_minpieces\fP triangles should be broken down into a
+separate piece for each triangle. This can result in significant
+improvement in raytrace speed at the cost of more memory use.
+.RE
+.sp
+\fB\-e\fP \fIscript\fP
+.RS 4
+Causes \fBnirt\fP to run the \fIscript\fP string before
+reading the standard input. Multiple commands in \fIscript\fP may be
+separated with a semicolon \(aq;\(aq. Scripts specified with either the
+\fB\-e\fP or \fB\-f\fP options are executed in the order in which they
+are specified on the command line.
+.RE
+.sp
+\fB\-f\fP \fIformat\fP
+.RS 4
+Causes \fBnirt\fP to load the predefined format (see
+\fB\-L\fP) \fIformat\fP or script file before reading standard input.
+Scripts specified with either the \fB\-e\fP or \fB\-f\fP options are
+executed in the order in which they are specified on the command line.
+.RE
+.sp
+\fB\-E\fP
+.RS 4
+Causes \fBnirt\fP to ignore any \fB\-e\fP or \fB\-f\fP options
+specified previously on the command line.
+.RE
+.sp
+\fB\-L\fP
+.RS 4
+List output formatting options.
+.RE
+.sp
+\fB\-s\fP
+.RS 4
+Causes \fBnirt\fP to run in silent (that is, non\-verbose)
+mode. In this mode, which is useful in a pipeline,\fBnirt\fP does not
+print its initial lines of output or the prompt.
+.RE
+.sp
+\fB\-v\fP
+.RS 4
+Causes \fBnirt\fP to run in verbose mode. The default is
+verbose mode, except if standard input has been redirected, in which
+case the default is silent mode.
+.RE
+.sp
+\fB\-H\fP \fIn\fP
+.RS 4
+Set flag (\fIn\fP) for enable/disable informational header
+(\fIn\fP=1 [on] by default, always off in silent mode).
+.RE
+.sp
+\fB\-u\fP \fIn\fP
+.RS 4
+Sets the \fIuseair\fP member of the \fIrt_i\fP structure to
+\fIn\fP. See the discussion of the \fIuseair\fP command below.
+.RE
+.sp
+\fB\-O\fP \fIn\fP
+.RS 4
+Causes \fBnirt\fP to handle multiple regions\(aq claims to
+segments of a ray according to action \fIn\fP. The argument \fIn\fP may be any
+of the values 0, 1, 2, or 3, or their corresponding key words
+"resolve", "rebuild_fastgen", "rebuild_all", or "retain". See the
+discussion of the \fIoverlap_claims\fP command below.
+.RE
+.sp
+\fB\-x\fP \fIv\fP
+.RS 4
+Sets the \fBlibrt\fP(3) debug flags to
+the hexadecimal bit vector \fIv\fP. See the discussion of the \fIlibdebug\fP
+command below.
+.RE
+.sp
+\fB\-X\fP \fIv\fP
+.RS 4
+Sets \fBnirt\fP\(cqs own debug flags to the hexadecimal bit
+vector \fIv\fP. See the discussion of the \fIdebug\fP command below.
+.RE
+.sp
+\fBnirt\fP will check in two places for a \fI.nirtrc\fP file \-
+first in the current directory, and if it is not found there, in the
+user\(cqs home directory. If found, \fBnirt\fP begins by reading
+from it.  This start\-up file may contain any \fBnirt\fP commands and
+is useful for loading predefined states or initializing actions for
+output statements.
+.SS "Commands"
+.sp
+\fBxyz [x y z]\fP
+.RS 4
+Sets the ray origination point to (\fIx\fP, \fIy\fP, \fIz\fP). If
+this command is invoked with no arguments, \fBnirt\fP prints the
+current ray origination point in model coordinates. Default is (0, 0,
+0). Changing (\fIx\fP, \fIy\fP, \fIz\fP) will change (\fIh\fP, \fIv\fP, \fId\fP), according to
+the current direction vector.
+.RE
+.sp
+\fBhv [h v[d]]\fP
+.RS 4
+Sets the ray origination point to (\fIh\fP, \fIv\fP, \fId\fP). If
+this command is invoked with only two arguments, \fBnirt\fP
+interprets them as \fIh\fP and \fIv\fP, and \fId\fP retains its previous value. If
+invoked with no argument, the command causes \fBnirt\fP to print the
+current ray origination point in view coordinates. Default is (0, 0,
+0).  Changing (\fIh\fP, \fIv\fP, \fId\fP) will change (\fIx\fP, \fIy\fP, \fIz\fP), according
+to the current direction vector.
+.RE
+.sp
+\fBdir [dx dy dz]\fP
+.RS 4
+Sets the direction vector to the unit vector in
+direction (\fIdx\fP, \fIdy\fP, \fIdz\fP). If this command is invoked with no
+arguments, \fBnirt\fP prints the current direction vector.  Default
+is (\-1, 0, 0).  Changing (\fIdx\fP, \fIdy\fP, \fIdz\fP) will change the azimuth
+and elevation angles.
+.RE
+.sp
+\fBae [az el]\fP
+.RS 4
+Sets the direction vector to point \fIfrom\fP azimuth =
+\fIaz\fP and elevation = \fIel\fP. If this command is invoked with no
+arguments, \fBnirt\fP prints the current values of the azimuth and
+elevation angles. Default is (0, 0).  Changing azimuth and elevation
+will change the direction vector.
+.RE
+.sp
+\fBs\fP
+.RS 4
+Fires a ray from the current origination point in the current
+direction.
+.RE
+.sp
+\fBbot_minpieces [n]\fP
+.RS 4
+Sets "rt_bot_minpieces" to the new value
+\fIn\fP. If \fIn\fP is not provided, the current value of "rt_bot_minpieces"
+is displayed.  See the discussion of the \fB\-B\fP option above for
+more details.
+.RE
+.sp
+\fBbackout [n]\fP
+.RS 4
+Command to set the backout flag.  With no option,
+prints the current value. When activated, backs the ray origination
+point out of the geometry: \fIh\fP and \fIv\fP retain their previous values
+and \fId\fP is set to \fIDmax\fP, the largest value of \fId\fP anywhere in the
+geometry.  Default is 0 (deactivated), 1 is active.
+.RE
+.sp
+\fBuseair [n]\fP
+.RS 4
+Sets the \fIuseair\fP member of the \fIrt_i\fP structure to the
+integer \fIn\fP.  If \fIn\fP is 0, then \fBnirt\fP ignores any air in the
+geometry.  If this command is invoked with no arguments, \fBnirt\fP
+prints the current value of \fIuseair\fP. Default is 0.
+.RE
+.sp
+\fBoverlap_claims [n]\fP
+.RS 4
+Specifies how to handle multiple regions\(aq
+claims to segments of a ray. If \fIn\fP is 0 or "resolve", then all
+overlaps are resolved in favor of a single region and any other
+claimants are ignored.  If \fIn\fP is 2 or "rebuild_all", then all
+overlaps are rebuilt, so any overlapping regions along the ray create
+individual (geometrically intersecting) partitions.  If \fIn\fP is 3 or
+"retain", then all overlaps are retained. In this case, the resulting
+partitions are always geometrically disjoint, each one is owned by a
+single region according to the current overlap resolution strategy,
+but every claimant is recorded. If \fIn\fP is 1 or "rebuild_fastgen", then
+\fBnirt\fP takes on \fIFASTGEN\fP behavior, so overlaps of plate\-mode
+primitives are rebuilt, but other overlaps are retained. This command
+is useful with the \fIclaimant_count\fP, \fIclaimant_list\fP, and
+\fIclaimant_listn\fP output items.  Default is "resolve".
+.RE
+.sp
+\fBattr {\-f|\-p|attr_names...}\fP
+.RS 4
+When used with one or more names, adds
+the names to the list of attributes that will be printed when the
+"attributes" value is requested in the output format string.
+.sp
+The \fB\-p\fP option to the \fBattr\fP command causes it to print the
+list of attributes that will be reported.
+.sp
+The \fB\-f\fP option clears the attributes table.
+.RE
+.sp
+\fBunits [u]\fP
+.RS 4
+Causes \fBnirt\fP to read and write all distances and
+locations in units of \fIu\fP.  Valid choices for \fIu\fP are "mm"; "cm"; "m";
+"in"; and "ft".  If this command is invoked with no arguments,
+\fBnirt\fP prints the current choice of I/O units.  Default is the
+units of \fImodel.g\fP.
+.RE
+.sp
+\fBfmt [t format item item ...]\fP
+.RS 4
+Sets the action for output
+statements of type \fIt\fP. If this command is invoked with only one
+argument, a valid statement type, \fBnirt\fP prints the current
+format and items for the specified type. See the discussion of output
+statements below.
+.RE
+.sp
+\fBdest [d]\fP
+.RS 4
+Sets the destination for subsequent output actions to
+\fId\fP. If the first character of \fId\fP is \(aq|\(aq, then \fId\fP is interpreted as
+a pipeline to which to write its output. Otherwise, if \fId\fP is the
+string "default", \fBnirt\fP sets the destination to the standard
+output. Otherwise, \fId\fP is interpreted as a file. In any event, \fId\fP is
+not closed until the user quits \fBnirt\fP or resets the destination
+by another invocation of the \fIdest\fP command. If this command is
+invoked with no arguments, \fBnirt\fP prints the current value of
+\fId\fP. Default is "default", that is, the standard output.
+.RE
+.sp
+\fBstatefile [f]\fP
+.RS 4
+Sets the name of the state file to which to dump
+and from which to load state information. See the discussion of the
+\fIdump\fP and \fIload\fP commands below.  If this command is invoked with no
+arguments, \fBnirt\fP prints the current name of the state file.
+Default is "nirt_state".
+.RE
+.sp
+\fBdump\fP
+.RS 4
+Writes state information to the state file.  The ray
+origination point and direction vector, useair, units, destination,
+and all the output actions are dumped.
+.RE
+.sp
+\fBload\fP
+.RS 4
+Reads state information from the state file.  The state file
+loaded may contain any \fBnirt\fP commands.
+.RE
+.sp
+\fBprint item\fP
+.RS 4
+Prints the current value of the output item \fIitem\fP. See
+the discussion of output statements below.
+.RE
+.sp
+\fBlibdebug v\fP
+.RS 4
+Sets the \fBlibrt\fP(3) debug flags
+(the \fIdebug\fP member of the \fIrt_g\fP structure) to the hexadecimal bit
+vector \fIv\fP. These flags control the amount and kind of diagnostic
+print statements \fBlibrt\fP(3) executes.  If \fIv\fP
+is 0, then no diagnostics are produced. If this command is invoked
+with no arguments, \fBnirt\fP prints the current value of \fIv\fP and the
+names of any of its bits that are set.  Default is 0.
+.RE
+.sp
+\fBdebug v\fP
+.RS 4
+Sets \fBnirt\fP\(cqs internal debug flags to the
+hexadecimal bit vector \fIv\fP.  These flags control the amount and kind
+of diagnostic print statements \fBnirt\fP executes.  If \fIv\fP is 0,
+then no diagnostics are produced.  If this command is invoked with no
+arguments, \fBnirt\fP prints the current value of \fIv\fP and the names
+of any of its bits that are set.  Default is 0.
+.RE
+.sp
+\fB?\fP
+.RS 4
+Prints a help menu to the standard output.
+.RE
+.sp
+\fBq\fP
+.RS 4
+Quits \fBnirt\fP.
+.RE
+.SS "Output Statements"
+.sp
+\fBnirt\fP allows the user a high degree of control, via the \fIfmt\fP
+command, over what information gets printed out for each ray and in
+what format. There are six types of output statements, each of which
+is executed under appropriate circumstances. The types and their use
+are:
+.sp
+\fBr\fP
+.RS 4
+Ray. The first output statement executed whenever the \fIs\fP command is invoked.
+.RE
+.sp
+\fBh\fP
+.RS 4
+Head.  Executed immediately after the ray statement if the ray
+hits anything.
+.RE
+.sp
+\fBp\fP
+.RS 4
+Partition.  Executed once for each partition along the ray if
+the ray hits anything.
+.RE
+.sp
+\fBf\fP
+.RS 4
+Foot. The last output statement executed if the ray hits
+anything.
+.RE
+.sp
+\fBm\fP
+.RS 4
+Miss.  Executed immediately after the ray statement if the ray
+hits nothing.
+.RE
+.sp
+\fBo\fP
+.RS 4
+Overlap.  Executed once for each overlap along the ray if the
+ray hits anything.
+.RE
+.sp
+\fBg\fP
+.RS 4
+Gap.  Executed once for each gap along the ray if the ray
+encounters any gaps.
+.RE
+.sp
+The action associated with each output statement type is essentially a
+\fBprintf\fP(3) statement, with a format string
+and a list of output items. The items may be chosen from a set of
+values that \fBnirt\fP updates according to user commands and
+location along the ray. These values may be categorized as pertaining
+to the entire ray, partitions along the ray, or overlaps.  The values
+are explained in the following table.
+.SS "Ray Information"
+.sp
+\fBx_orig\fP
+.RS 4
+\fIx\fP coordinate of ray origination point.
+.RE
+.sp
+\fBy_orig\fP
+.RS 4
+\fIy\fP coordinate of ray origination point.
+.RE
+.sp
+\fBz_orig\fP
+.RS 4
+\fIz\fP coordinate of ray origination point.
+.RE
+.sp
+\fBd_orig\fP
+.RS 4
+\fId\fP coordinate of ray origination point.
+.RE
+.sp
+\fBh\fP
+.RS 4
+\fIh\fP coordinate for the entire ray.
+.RE
+.sp
+\fBv\fP
+.RS 4
+\fIv\fP coordinate for the entire ray.
+.RE
+.sp
+\fBx_dir\fP
+.RS 4
+\fIx\fP component of direction vector.
+.RE
+.sp
+\fBy_dir\fP
+.RS 4
+\fIy\fP component of direction vector.
+.RE
+.sp
+\fBz_dir\fP
+.RS 4
+\fIz\fP component of direction vector.
+.RE
+.sp
+\fBa\fP
+.RS 4
+azimuth of view (i.e., of ray direction).
+.RE
+.sp
+\fBe\fP
+.RS 4
+elevation of view (i.e., of ray direction).
+.RE
+.SS "Partition Information"
+.sp
+\fBattributes\fP
+.RS 4
+A string variable consisting of the names and values
+of the attributes requested by the \fIattr\fP command or the \fB\-A\fP
+command line option.
+.RE
+.sp
+\fBx_in\fP
+.RS 4
+\fIx\fP coordinate of entry into current region.
+.RE
+.sp
+\fBy_in\fP
+.RS 4
+\fIy\fP coordinate of entry into current region.
+.RE
+.sp
+\fBz_in\fP
+.RS 4
+\fIz\fP coordinate of entry into current region.
+.RE
+.sp
+\fBd_in\fP
+.RS 4
+\fId\fP coordinate of entry into current region.
+.RE
+.sp
+\fBx_out\fP
+.RS 4
+\fIx\fP coordinate of exit from current region.
+.RE
+.sp
+\fBy_out\fP
+.RS 4
+\fIy\fP coordinate of exit from current region.
+.RE
+.sp
+\fBz_out\fP
+.RS 4
+\fIz\fP coordinate of exit from current region.
+.RE
+.sp
+\fBd_out\fP
+.RS 4
+\fId\fP coordinate of exit from current region.
+.RE
+.sp
+\fBlos\fP
+.RS 4
+line\-of\-sight distance through current region.
+.RE
+.sp
+\fBscaled_los\fP
+.RS 4
+scaled line of sight: product of line\-of\-sight
+distance through current region and region solidity (sometimes called
+"percent LOS").
+.RE
+.sp
+\fBpath_name\fP
+.RS 4
+full path name of current region.
+.RE
+.sp
+\fBreg_name\fP
+.RS 4
+name of current region, as might be obtained by passing
+\fIpath_name\fP to \fBbasename\fP(1).
+.RE
+.sp
+\fBreg_id\fP
+.RS 4
+region ID of current region.
+.RE
+.sp
+\fBclaimant_count\fP
+.RS 4
+number of regions claiming this partition (that
+is, participating in a retained overlap).
+.RE
+.sp
+\fBclaimant_list\fP
+.RS 4
+space\-separated list of names of regions claiming
+this partition (that is, participating in a retained overlap).
+.RE
+.sp
+\fBclaimant_listn\fP
+.RS 4
+Same as \fIclaimant_list\fP, except that it is
+newline\-, rather than space\-separated.
+.RE
+.sp
+\fBobliq_in\fP
+.RS 4
+entry obliquity for current region.
+.RE
+.sp
+\fBobliq_out\fP
+.RS 4
+exit obliquity for current region.
+.RE
+.sp
+\fBnm_x_in\fP
+.RS 4
+\fIx\fP component of entry normal vector
+.RE
+.sp
+\fBnm_y_in\fP
+.RS 4
+\fIy\fP component of entry normal vector
+.RE
+.sp
+\fBnm_z_in\fP
+.RS 4
+\fIz\fP component of entry normal vector
+.RE
+.sp
+\fBnm_h_in\fP
+.RS 4
+\fIh\fP component of entry normal vector
+.RE
+.sp
+\fBnm_v_in\fP
+.RS 4
+\fIv\fP component of entry normal vector
+.RE
+.sp
+\fBnm_d_in\fP
+.RS 4
+\fId\fP component of entry normal vector
+.RE
+.sp
+\fBnm_x_out\fP
+.RS 4
+\fIx\fP component of exit normal vector
+.RE
+.sp
+\fBnm_y_out\fP
+.RS 4
+\fIy\fP component of exit normal vector
+.RE
+.sp
+\fBnm_z_out\fP
+.RS 4
+\fIz\fP component of exit normal vector
+.RE
+.sp
+\fBnm_h_out\fP
+.RS 4
+\fIh\fP component of exit normal vector
+.RE
+.sp
+\fBnm_v_out\fP
+.RS 4
+\fIv\fP component of exit normal vector
+.RE
+.sp
+\fBnm_d_out\fP
+.RS 4
+\fId\fP component of exit normal vector
+.RE
+.sp
+\fBsurf_num_in\fP
+.RS 4
+entry\-surface ID of entry solid.
+.RE
+.sp
+\fBsurf_num_out\fP
+.RS 4
+exit\-surface ID of exit solid.
+.RE
+.sp
+\fBap Informat\fP on
+.sp
+\fBx_gap_in\fP
+.RS 4
+\fIx\fP coordinate of entry into gap.
+.RE
+.sp
+\fBy_gap_in\fP
+.RS 4
+\fIy\fP coordinate of entry into gap.
+.RE
+.sp
+\fBz_gap_in\fP
+.RS 4
+\fIz\fP coordinate of entry into gap.
+.RE
+.sp
+\fBgap_los\fP
+.RS 4
+line\-of\-sight distance through gap.
+.RE
+.SS "Overlap Information"
+.sp
+\fBov_reg1_name\fP
+.RS 4
+name of one of the overlapping regions.
+.RE
+.sp
+\fBov_reg2_name\fP
+.RS 4
+name of the other overlapping region.
+.RE
+.sp
+\fBov_reg1_id\fP
+.RS 4
+region ID of one of the overlapping regions.
+.RE
+.sp
+\fBov_reg2_id\fP
+.RS 4
+region ID of the other overlapping region.
+.RE
+.sp
+\fBov_sol_in\fP
+.RS 4
+name of one of the overlapping solids.
+.RE
+.sp
+\fBov_sol_out\fP
+.RS 4
+name of the other overlapping solid.
+.RE
+.sp
+\fBov_los\fP
+.RS 4
+line\-of\-sight distance through the overlap.
+.RE
+.sp
+\fBov_x_in\fP
+.RS 4
+\fIx\fP coordinate of entry into overlap.
+.RE
+.sp
+\fBov_y_in\fP
+.RS 4
+\fIy\fP coordinate of entry into overlap.
+.RE
+.sp
+\fBov_z_in\fP
+.RS 4
+\fIz\fP coordinate of entry into overlap.
+.RE
+.sp
+\fBov_d_in\fP
+.RS 4
+\fId\fP coordinate of entry into overlap.
+.RE
+.sp
+\fBov_x_out\fP
+.RS 4
+\fIx\fP coordinate of exit from overlap.
+.RE
+.sp
+\fBov_y_out\fP
+.RS 4
+\fIy\fP coordinate of exit from overlap.
+.RE
+.sp
+\fBov_z_out\fP
+.RS 4
+\fIz\fP coordinate of exit from overlap.
+.RE
+.sp
+\fBov_d_out\fP
+.RS 4
+\fId\fP coordinate of exit from overlap.
+.RE
+.SH "HINTS"
+.sp
+Ray origination coordinates specified with the \fIhv\fP command are
+immediately converted for internal use to model coordinates, according
+to the current direction vector.  If you want to change the ray
+direction and origination point, and you\(cqre using view coordinates,
+you probably want to change the ray direction \fIbefore\fP you use the
+\fIhv\fP command.
+.sp
+The name "nirt" stands for "Natalie\(cqs interactive ray tracer".
+.SH "DEFINITIONS"
+.sp
+The usage in \fBnirt\fP of the following terms corresponds to that
+found in \fBmged\fP(1) and elsewhere throughout
+BRL\-CAD. We provide the definitions here for reference.
+.SS "View Coordinates"
+.sp
+We define the view coordinate system (more precisely its basis vectors
+\fIm\fP, \fIn\fP, and \fIo\fP) in terms of the basis vectors \fIi\fP, \fIj\fP, and \fIk\fP of
+the model coordinate system as follows:
+.sp
+\fIm\fP is the opposite of the direction vector and corresponds to \fId\fP,
+\fIn\fP = \fIk\fP × \fIm\fP corresponds to \fIh\fP, and \fIo\fP = \fIm\fP × \fIn\fP corresponds to
+\fIv\fP.
+.sp
+Thus if the direction vector is (\-1, 0, 0), then (\fId\fP, \fIh\fP, \fIv\fP) =
+(\fIx\fP, \fIy\fP, \fIz\fP).
+.SS "Azimuth and Elevation"
+.sp
+Azimuth is the angle measured around \fIk\fP (right\-hand rule) from the
+\fIxz\fP plane to \fIm\fP. Elevation is the angle measured toward \fIk\fP from the
+\fIxy\fP plane to \fIm\fP.
+.SH "FILES"
+.sp
+\fI~/.nirtrc\fP
+.RS 4
+run\-time configuration file
+.RE
+.SH "SEE ALSO"
+.sp
+\fBmged\fP(1), \fBlibrt\fP(3),
+\fBprintf\fP(3)
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

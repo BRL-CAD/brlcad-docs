@@ -1,0 +1,228 @@
+'\" t
+.\"     Title: edit translate
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "EDIT TRANSLATE" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+edit translate \- Translates the positions of objects, using coordinates, offsets, and objects as reference points.
+.SH "SYNOPSIS"
+.sp
+\fBedit translate\fP [(1)from] (2)to \fIobject\fP...
+.sp
+(1)from:
+.RS 4
+[\-n] \-k {(3)from_object (4)from_position}
+.RE
+.sp
+(2)to:
+.RS 4
+[\-n] [\-a \-r] {(3)to_object (4)to_position}
+.RE
+.sp
+(3)obj:
+.RS 4
+[\fIpath/\fP] \fIobject\fP [(5)offset_distance]
+.RE
+.sp
+(4)pos:
+.RS 4
+{(5)coords} {[\-x {\fIx\fP (3)x\-obj}] [\-y {\fIy\fP (3)y\-obj}] [\-z {\fIz\fP (3)z\-obj}]}
+.RE
+.sp
+(5)coord:
+.RS 4
+\fIx\fP [\fIy\fP [\fIz\fP]]
+.RE
+.SH "DESCRIPTION"
+.sp
+Used to move one or more instances of primitive or combination
+objects. The positions of \fIobject\fPs are translated from \fIfrom\fP to
+\fIto\fP.
+.sp
+See the \fBedit\fP command\(cqs manual for more information.
+.SH "EXAMPLES"
+.sp
+.B Example 1. A not particularly useful demonstration of the command\(cqscapabilities.
+.br
+.RS 4
+.sp
+> \f(CRedit translate \-k 0 0 0 \-a . obj1 obj2 obj3 obj4 obj5\fP
+.sp
+Moves every instance of each obj[1\-5] in the same direction and by the
+same distance it is from the origin. The result is a (rather
+inflexible) "explosion" of the objects from the origin.
+.RE
+.sp
+.B Example 2. Move several objects together.
+.br
+.RS 4
+.sp
+> \f(CRedit translate \-a \-z obj1 obj2 obj3 obj4 obj5\fP
+.sp
+The \fIfrom\fP point defaults to the bounding box center of the first
+target \fIobject\fP, which is obj2. Every instance of objects obj2 \- obj5
+is moved \fIfrom\fP obj2 \fIto\fP the z\-axis of obj1. If the z\-coordinate of
+\fIfrom\fP was 7, and the z\-coordinate of \fIto\fP was 5, then each object
+would move \-2 units in the z\-axis.
+.RE
+.sp
+.B Example 3. Align several objects to the same point on an axis.
+.br
+.RS 4
+.sp
+> \f(CRedit translate \-k . \-a \-z obj1 obj2 obj3 obj4 obj5\fP
+.sp
+Sets the elevation of obj[2\-5] to the elevation of obj1. Each object
+uses its own bounding box center as the \fIfrom\fP point in an operation
+that moves \fIto\fP the bounding box center of obj1.
+.RE
+.sp
+.B Example 4. Move several objects to the same point.
+.br
+.RS 4
+.sp
+> \f(CRedit translate \-k . \-a obj1 obj2 obj3 obj4 obj5\fP
+.sp
+Each object uses its own bounding box center as the \fIfrom\fP point in an
+operation that moves \fIto\fP the bounding box center of obj1. All
+\fIobject\fPs end up centered on obj2.
+.RE
+.sp
+.B Example 5. Explicitly set the z\-axis of an obj.
+.br
+.RS 4
+.sp
+> \f(CRedit translate \-a \-z 7.8 obj\fP
+.sp
+Moves obj \fIfrom\fP its bounding box center \fIto\fP 7.8 on the z\-axis.
+.RE
+.sp
+.B Example 6. Move several objects from their own natural origins totheir own bounding box centers.
+.br
+.RS 4
+.sp
+> \f(CRedit translate \-n \-k . \-a . obj1 obj2 obj3\fP
+.sp
+The \fIobject\fPs are moved from their own natural origins to their own
+bounding box centers.
+.RE
+.sp
+.B Example 7. Set the z\-axis of the center of one object to the z\-axis ofthe natural origin of another object.
+.br
+.RS 4
+.sp
+> \f(CRedit translate \-n \-a \-z obj2/obj3 obj1\fP
+.sp
+Moves obj1 up or down \fIfrom\fP the elevation of its bounding box center
+\fIto\fP the apparent elevation of the natural origin of the instance of
+obj3 in obj2.
+.RE
+.sp
+.B Example 8. Same result as above, but moving \fIfrom\fP thenatural origin of obj1 rather than its bounding boxcenter.
+.br
+.RS 4
+.sp
+> \f(CRedit translate \-n \-k obj1 \-n \-a \-z obj2/obj3 obj1\fP
+.sp
+> \f(CRedit translate \-n \-k . \-n \-a \-z obj2/obj3 obj1\fP
+.RE
+.sp
+.B Example 9. The use of \fIobject\fP paths andindividual coordinate specifiers.
+.br
+.RS 4
+.sp
+> \f(CRedit translate \-a \-x 8 \-z 42 obj1/obj2/obj3\fP
+.sp
+Moves the instance of ob3 in obj2 \fIfrom\fP the apparent bounding box
+center of obj3 \fIas offset by\fP obj1/obj2, \fIto\fP x=8, z=42, without
+moving in the y\-axis. Note that this is not the same as \fB\-a 8 0
+42\fP. Also note that only the matrix of obj2 is modified. No matter the
+length of the path, only the combination containing the actual object
+being translated will be modified. If the only component of the path
+were obj3, then if obj3 were a primitive it would be modified or if
+obj3 were a combination the matrices of all objects it holds would be
+modified.
+.RE
+.sp
+.B Example 10. Translations using relative positions.
+.br
+.RS 4
+.sp
+> \f(CRedit translate \-k obj1 \-r \-z 5 obj2\fP
+.sp
+> \f(CRedit translate \-a \-z obj1 0 0 5 obj2\fP
+.sp
+These commands perform the same function. The z\-coordinate of the
+bounding box center of obj2 is moved to the z\-coordinate of the
+bounding box center of obj1 \fIplus 5 units\fP.
+.RE
+.sp
+.B Example 11. This example breaks down a particularly complex translation.
+.br
+.RS 4
+.sp
+> \f(CRedit translate \-k \-x c/obj1 1.5 \-y c/obj2 0 3 \-z c/obj3 0 0 10 \-a \-x b/c/obj4 2 \-y b/c/obj5 0 4 \-z b/c/obj6 0 0 20 obj7 obj8\fP
+.sp
+Every use of \fBtranslate\fP involves a \fIfrom\fP point and a \fIto\fP
+point.  One of the more flexible features of the edit commands is the
+capability to use an object and an offset to specify each axis of
+these points individually. The command in this example can be broken
+down to three simpler commands, in order to ease comprehension:
+.sp
+> \f(CRedit translate \-k \-x c/obj1 1.5 \-a \-x b/c/obj4 2 obj7 obj8\fP
+.sp
+> \f(CRedit translate \-k \-y c/obj2 0 3 \-a \-y b/c/obj5 0 4 obj7 obj8\fP
+.sp
+> \f(CRedit translate \-k \-z c/obj3 0 0 10 \-a \-z b/c/obj6 0 0 20 obj7 obj8\fP
+.sp
+In the first shortened command, the \fIfrom\fP point is set to the
+x\-coordinate of the apparent point of the bounding box center of the
+instance of obj1 in combination c, \fIplus 1.5\fP. The \fIto\fP point is set
+to the x\-coordinate of the apparent point of the bounding box center
+of the specific instance of obj4 in combination c in combination b,
+\fIplus 2\fP. Both obj7 and obj8 move from \fIfrom\fP to \fIto\fP, ending up the
+same relative distance from each other.The other shortened commands
+are similar.
+.sp
+By splitting the larger command, an interesting detail was
+revealed. In the larger command, every point was set explicitly, so
+none defaulted. In the first shortened command, the \fIy\fP and \fIz\fP \fIfrom\fP
+values default to the bounding box center of obj7.  Since the \fIy\fP and
+\fIz\fP \fIto\fP values default to the values set by \fIfrom\fP, neither obj7 nor
+obj8 will move in the \fIy\fP or \fIz\fP axes.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

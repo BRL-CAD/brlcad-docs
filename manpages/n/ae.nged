@@ -1,0 +1,98 @@
+'\" t
+.\"     Title: ae
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "AE" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+ae \- Sets the view orientation for the mged display by rotating the eye position about the center of the viewing cube.
+.SH "SYNOPSIS"
+.sp
+\fBae\fP [\-i] {\fIazimuth\fP} {\fIelevation\fP} [\fItwist\fP]
+.SH "DESCRIPTION"
+.sp
+Set the view orientation for the \fImged\fP display by rotating the eye
+position about the center of the viewing cube. The eye position is
+determined by the supplied azimuth and elevation angles (degrees). The
+\fIazimuth\fP angle is measured in the \fIxy\fP plane with the positive \fIx\fP
+direction corresponding to an azimuth of 0°. Positive azimuth angles
+are measured counter\-clockwise about the positive \fIz\fP axis. Elevation
+angles are measured from the \fIxy\fP plane with +90° corresponding to the
+positive \fIz\fP direction and \-90 corresponding to the negative \fIz\fP
+direction. If an optional \fItwist\fP angle is included, the view will be
+rotated about the viewing direction by the specified \fItwist\fP
+angle. The \fI\-i\fP option results in the angles supplied being
+interpreted as increments.
+.SH "EXAMPLES"
+.sp
+The examples show how to change views by entering azimuth and
+elevation angles, adding a twist angle, and having the angles supplied
+being treated as increments.
+.sp
+.B Example 1. Top view
+.br
+.RS 4
+.sp
+mged> \f(CRae \-90 90\fP
+.RE
+.sp
+.B Example 2. Right\-hand side view
+.br
+.RS 4
+.sp
+mged> \f(CRae 270 0\fP
+.sp
+The view is from the right\-hand side.
+.RE
+.sp
+.B Example 3. View from a specific azimuth and elevation with a twist angle.
+.br
+.RS 4
+.sp
+mged> \f(CRae 35 25 10\fP
+.sp
+The view is from azimuth 35, elevation 25, with a view rotated by 10 degrees.
+.RE
+.sp
+.B Example 4. The azimuth and elevation angles supplied are treated as increments.
+.br
+.RS 4
+.sp
+mged> \f(CRae \-i 0 0 5\fP
+.sp
+Rotates the current view through 5 degrees about the viewing direction.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

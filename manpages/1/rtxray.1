@@ -1,0 +1,136 @@
+'\" t
+.\"     Title: rtxray
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "RTXRAY" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+rtxray \- compute a pseudo X\-Ray image of a model.
+.SH "SYNOPSIS"
+.sp
+\fBrtxray\fP [\fIoptions\fP]... \fImodel.g\fP \fIobjects\fP...
+.SH "DESCRIPTION"
+.sp
+\fBrtxray\fP operates on the indicated \fIobjects\fP in the input
+\fImodel.g\fP and produces a simulated X\-Ray image. At present, all
+materials are treated as having the same density. The total path
+length of each ray through solid material is computed and the result
+is divided by the "viewsize" (the length of the diagonal of the
+bounding box of the model, which represents the longest possible
+path).  This relative thickness is then converted to gray scale where
+black (1) is the greatest possible thickness, through white (255)
+which represents a very thin region.  The color 0 is reserved for rays
+which pass through no material at all.  This provides good contrast
+for the object (which would not usually be the case if 255 were
+chosen) and allows the background to be easily replaced.
+.sp
+Most models do not fill their bounding volume (a box which just
+encloses the model) so the "safe" scaling described above usually
+results in very low contrast (mostly white) objects.  Because of this,
+a default contrast boost of 2.0 is applied before the path lengths are
+converted to gray scale.  This value can be changed with the
+\fB\-A#\fP flag.  This value must 1.0 or greater.  Larger values
+provide higher contrast but may result in clipping values to black
+(actually 1).
+.sp
+The orientation of the rays to be fired may be specified by the
+\fB\-a\fP and \fB\-e\fP options, in which case the model will be
+autosized, and the grid will be centered on the centroid of the model,
+with ray spacing chosen to span the entire set of
+\fIobjects\fP. Alternatively, with the \fB\-M\fP option, a transformation
+matrix may be provided on standard input which maps model\-space to
+view\-space. In this case, the grid ranges from \-1.0 \(lA X,Y \(lA +1.0 in
+view space, with the size of the grid (number of rays fired) specified
+with \fB\-s\fP. This option is most useful when \fBrtxray\fP is being
+invoked from a shell script created by an
+\fBmged\fP(1) \fIsaveview\fP command.
+.sp
+The following options are recognized.
+.sp
+\fB\-s#\fP
+.RS 4
+Number of rays to fire in X and Y directions (square
+grid). Default is 512 (512x512).
+.RE
+.sp
+\fB\-a#\fP
+.RS 4
+Select azimuth in degrees.  Used with \fB\-e\fP and conflicts
+with \fB\-M\fP
+.RE
+.sp
+\fB\-e#\fP
+.RS 4
+Select elevation in degrees.  Used with \fB\-a\fP and
+conflicts with \fB\-M\fP
+.RE
+.sp
+\fB\-M\fP
+.RS 4
+Read model2view matrix from standard input. Conflicts with
+\fB\-a\fP and \fB\-e\fP
+.RE
+.sp
+\fB\-A#\fP
+.RS 4
+Contrast enhance the output image by the given factor.
+Default value is 2.0.  See discussion above.
+.RE
+.sp
+\fB\-o\fP
+.RS 4
+\fIoutput.bw\fP specifies a named BW(5) file for output. By
+default, the output is displayed on a frame buffer.
+.RE
+.sp
+\fB\-l1\fP
+.RS 4
+use the alternate "lighting model".  In this mode, double
+precision floating point numbers are written (\fB\-o\fP must be used).
+Each number is the actual solid material path length for that ray.
+This allows for post processing and scaling.
+.RE
+.sp
+See the \fIrt\fP manual page for additional arguments that can be used
+with this program.
+.SH "SEE ALSO"
+.sp
+\fBrt\fP(1), \fBrtray\fP(1)
+.SH "BUGS"
+.sp
+This program should do something about material properties (X\-Ray
+density) in order to provide a more realistic result.
+.SH "AUTHOR"
+.sp
+Phillip Dykstra
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

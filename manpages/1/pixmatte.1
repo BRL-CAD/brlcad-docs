@@ -1,0 +1,144 @@
+'\" t
+.\"     Title: pixmatte
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "PIXMATTE" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+pixmatte \- matte (merge) two pix(5) or bw(5) images by a formula
+.SH "SYNOPSIS"
+.sp
+\fBpixmatte\fP [\-a] [\-w \fIbytes_wide\fP] [\-glen] \fIin1\fP \fIin2\fP \fItrue_out\fP \fIfalse_out\fP > \fIoutput\fP
+.SH "DESCRIPTION"
+.sp
+Given four streams of data elements, where element is of arbitrary
+width, typically \fBpix\fP(5) or
+\fBbw\fP(5) images, \fBpixmatte\fP outputs a stream
+of the same number of data elements. The value of the output stream is
+determined element\-by\-element, by comparing the first (foreground)
+input stream with the second (background, or matte) input stream. If
+the formula holds true, the element from the true\-output stream is
+written, otherwise, the element from the false\-output stream is
+written. Each of these streams comes from a file, or is given as a
+constant. A particular file may be used to feed more than one stream,
+and the name \(aq\-\(aq specifies stdin. For example, the foreground file may
+also be the true\-output file. This routine operates on an
+element\-by\-element basis, and thus is independent of the resolution of
+the image.
+.sp
+A constant value is specified instead of a filename if the first
+character of what would be the filename is an equal sign (=). The
+value is specified as a slash\-separated string of \fIbytes_wide\fP
+decimal numbers, with no separating white space. If in1 and in2 are
+both specified as constant values, the output file will be 512 x 512.
+.sp
+The formula can be any combination of \fB\-g\fP (in1 greater than
+in2), \fB\-l\fP (in1 less than in2), \fB\-e\fP (in1 equal to in2),
+\fB\-n\fP (in1 not equal to in2). For example: \fB\-ge\fP specifies
+in1 greater than or equal to in2; that is, when each byte of the in1
+element is greater than or equal to the corresponding byte of the in2
+element.
+.sp
+The \fB\-a\fP flag can be used with \fB\-n\fP or \fB\-e\fP to specify
+approximately equal or approximately not equal to match dithered
+backgrounds. (Approximate equality exists when all bytes in the
+elements match to within plus or minus one.)  It can also be used in
+combination with \fB\-g\fP and/or \fB\-l\fP; the effect of this usage
+is to exclude those elements which meet the approximately\-equal
+criterion. If \fB\-a\fP is used, at least one of \fB\-g\fP, \fB\-l\fP,
+\fB\-e\fP, \fB\-n\fP must be used.
+.sp
+The \fB\-w#\fP flag specifies the width (in bytes) of each element;
+the default is 3, \fIi.e.\fP \fBpix\fP(5) file format.  A
+width of 1 is used for processing \fBbw\fP(5) files.
+It is unclear if other widths are useful.
+.SH "EXAMPLES"
+.sp
+To compare all foreground pixels to black (all bytes zero), selecting
+the foreground pixels when true and a background elsewhere, specify:
+.sp
+.if n .RS 4
+.nf
+pixmatte \-g fg.pix =0/0/0 fg.pix bg.pix
+.fi
+.if n .RE
+.sp
+To keep all foreground pixels greater than 20/20/20, and replace all
+those less than or equal to it with 200/0/200, use:
+.sp
+.if n .RS 4
+.nf
+pixmatte \-g fg.pix =20/20/20 fg.pix =200/0/200
+.fi
+.if n .RE
+.sp
+To keep all foreground pixels which are not equal to 63/0/127, and to
+replace those which are equal with a generated background from stdin,
+use the following commands (can be useful when compositing an
+\fBrt\fP(1) generated image on top of a nicer
+background):
+.sp
+.if n .RS 4
+.nf
+pixbackgnd \-t0 160 200 | pixmatte \-n fg.pix =63/0/127 fg.pix \- | pix\-fb
+.fi
+.if n .RE
+.sp
+To produce a black\-and\-white stencil matte file for further
+processing, use:
+.sp
+.if n .RS 4
+.nf
+pixmatte \-n fg.pix bg.pix =255/255/255 =0/0/0
+.fi
+.if n .RE
+.sp
+To set to black all pixels that approximately match (by +/\- 1) a given
+background file, use:
+.sp
+.if n .RS 4
+.nf
+pixmatte \-a \-e fg.pix bg.pix =0/0/0 fg.pix
+.fi
+.if n .RE
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1),
+\fBgencolor\fP(1),
+\fBpixbackgnd\fP(1),
+\fBpixmerge\fP(1),
+\fBpix\fP(5), \fBbw\fP(5)
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

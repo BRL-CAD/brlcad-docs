@@ -1,0 +1,90 @@
+'\" t
+.\"     Title: pixbgstrip
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "PIXBGSTRIP" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+pixbgstrip \- strip smooth shaded background from a pix(5) file
+.SH "SYNOPSIS"
+.sp
+\fBpixbgstrip\fP [\-a] [\-t \fIthresh\fP] [\-x \fIx_offset_for_bg_pixel\fP] [\-s \fIsquarefilesize\fP] [\-w \fIfile_width\fP] [\-n \fIfile_height\fP] [\fIfile.pix\fP]
+.SH "DESCRIPTION"
+.sp
+\fBpixbgstrip\fP reads a \fBpix\fP(5) format file
+from the named file, or from standard input if no file is
+specified. For each scanline read, all pixels that match the color of
+the background pixel are converted to black (0/0/0), and then the new
+scanline is written on stdout.
+.sp
+The default X offset for the background pixel is zero (i.e. \fB\-x\fP
+\f(CR0\fP), but if the pixel at X offset zero is not the desired background
+(for example, if a border exists around the actual image), then
+another offset can be specified.
+.sp
+By default, a pixel will be replaced with black only if it exactly
+matches the value of the background pixel (i.e., the matching
+threshold is zero; \fB\-t\fP \f(CR0\fP). However, if the background is
+slightly noisy, it may be necessary to perform a slightly looser
+matching.  The threshold variable specifies how large a difference
+between an input pixel and the background pixel will still result in
+black being output.
+.sp
+By default, the \fIpix\fP file is assumed to be 512x512 pixels. Specifying
+the \fB\-a\fP flag causes the program to attempt to autosize. A table
+of common image sizes is consulted, and if any match the size of the
+input file, then the width and height values associated with that size
+will be used.
+.sp
+The \fB\-w\fP \fIfile_width\fP flag specifies the width of each
+scanline in the input file, in pixels.
+.sp
+The \fB\-n\fP \fIfile_height\fP flag specifies the height in
+scanlines of the input file.
+.sp
+\fB\-s\fP \fIsquarefilesize\fP sets both the height and width to the
+size given.
+.SH "SEE ALSO"
+.sp
+\fBpixbackgnd\fP(1),
+\fBpix\-fb\fP(1),
+\fBfb\-pix\fP(1),
+\fBlibfb\fP(3), \fBpix\fP(5)
+.SH "DIAGNOSTICS"
+.sp
+If the \fIpix\fP file is shorter than expected, the program exits
+silently.
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

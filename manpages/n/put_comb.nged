@@ -1,0 +1,100 @@
+'\" t
+.\"     Title: put_comb
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "PUT_COMB" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+put_comb \- Insert combinations and regions \- allows definition of both boolean expressions and standard attribute values.
+.SH "SYNOPSIS"
+.sp
+\fBput_comb\fP {\fIcomb_name\fP} [is_Region [[id] | [air] | [material] | [los]]] {\fIcolor\fP} {\fIshader\fP} {\fIinherit\fP} {\fIboolean_expr\fP}
+.SH "DESCRIPTION"
+.sp
+Command for inserting regions and combinations with attributes set
+using a single line command \- useful in scripting situations.
+.SH "EXAMPLES"
+.sp
+The \fBput_comb\fP expects one of two particular forms of input \-
+combination or region.
+.sp
+.B Example 1. Specifying a combination using \fBput_comb\fP
+.br
+.RS 4
+.sp
+mged> \f(CRput_comb test.c n 255/255/255 plastic n "u sph.s u arb8.s"\fP
+.sp
+Creates a combination that is not a region, using the plastic shader,
+consisting of the union of sph.s and arb8.s".
+.sp
+.if n .RS 4
+.nf
+mged> l test.c
+test.c:  \-\-
+Shader \(aqplastic\(aq
+   u sph.s
+   u arb8.s
+mged> attr get test.c
+oshader {plastic}
+.fi
+.if n .RE
+.RE
+.sp
+.B Example 2. Specifying a region using \fBput_comb\fP
+.br
+.RS 4
+.sp
+mged> \f(CRput_comb test.r y 1001 0 32 1 255/255/255 plastic y "u sph.s u arb8.s"\fP
+.sp
+Creates a combination that is a region, with region id 1001, air flag
+off, material 32, los 1, white in color, using the plastic shader,
+inheriting, consisting of the union of sph.s and arb8.s"
+.sp
+.if n .RS 4
+.nf
+mged> l test.r
+test.r:  REGION id=1001 (air=0, los=1, GIFTmater=32) \-\-
+Shader \(aqplastic\(aq
+(These material properties override all lower ones in the tree)
+   u sph.s
+   u arb8.s
+mged> attr get test.r
+region {R} inherit {1} oshader {plastic} region_id {1001}
+material_id {32} los {1}
+.fi
+.if n .RE
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

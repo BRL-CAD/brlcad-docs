@@ -1,0 +1,202 @@
+'\" t
+.\"     Title: edit
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "EDIT" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+edit \- Edits objects, using subcommands.
+.SH "SYNOPSIS"
+.sp
+\fBedit\fP [(1)subcommand [(2)args] \fIobject\fP...]
+.sp
+(1)subcommands:
+.RS 4
+help translate rotate scale ...
+.RE
+.sp
+(2)args:
+.RS 4
+[(3)from] (4)to [(2)more_args]...
+.RE
+.sp
+(3)from:
+.RS 4
+[\-n] \-k {(5)from_object (6)from_position}
+.RE
+.sp
+(4)to:
+.RS 4
+[\-n] [\-a \-r] {(5)to_object (6)to_position}
+.RE
+.sp
+(5)obj:
+.RS 4
+[\fIpath/\fP] \fIobject\fP [(7)offset_distance]
+.RE
+.sp
+(6)pos:
+.RS 4
+{(7)coords} {[\-x {\fIx\fP (5)x\-obj}] [\-y {\fIy\fP (5)y\-obj}] [\-z {\fIz\fP (5)z\-obj}]}
+.RE
+.sp
+(7)coord:
+.RS 4
+\fIx\fP [\fIy\fP [\fIz\fP]]
+.RE
+.SH "DESCRIPTION"
+.sp
+Operates on objects in the database, solely through the use of
+\fIsubcommand\fPs. The flexibility of the \fBedit\fP \fIsubcommand\fPs
+lies in their utilization of a common style of syntax. Coordinates in
+model space, offsets, and objects are all accepted interchangeably as
+reference points. A single reference point is equivalent to an
+absolute point in model space. A pair of reference points specifies a
+distance or an angle, and is supplied as a set of \fIfrom\fP \- \fIto\fP
+arguments (a \fIfrom\fP argument is similar to the concept of a
+keypoint). Reference points may be incomplete, and specify only one or
+two coordinates.
+.sp
+The format of the standard options accepted by subcommands, \fB\-n\fP,
+\fB\-k\fP, \fB\-a\fP/\fB\-r\fP, and \fB\-x\fP/\fB\-y\fP/\fB\-z\fP, is
+defined here. The interpretation of these options, however, is left up
+to the implementation of a given subcommand.
+.sp
+All edit commands interpret a lone point (\fB.\fP) as a special
+operator, called the batch operator. The batch operator is accepted as
+an argument to the options \fB\-k\fP, \fB\-a\fP, and \fB\-r\fP. In a
+batch operation, each individual \fIobject\fP is operated on using the
+bounding box center of itself in place of the batch operator. While
+all \fIobject\fPs move together in a non\-batch operation, in batch
+operations, each \fIobject\fP may move independently of all other
+\fIobject\fPs.
+.sp
+If any \fIfrom\fP coordinates are omitted, they default to the bounding
+box center of the first \fIobject\fP is used as \fIfrom\fP. To use the natural
+origin of the first \fIobject\fP as \fIfrom\fP, \fIfrom_object\fP must be manually
+set to whatever \fIobject\fP is set to. If any \fIto\fP coordinates are
+omitted, they default to the values set in \fIfrom\fP.
+.sp
+The quantity and arrangement of standard \fBedit\fP arguments as well
+as their interpretation depends upon the subcommand. See the manual
+page for a given subcommand for more information on its usage:
+.sp
+.if n .RS 4
+.nf
+>  man edit_subcommandName
+.fi
+.if n .RE
+.SH "OPTIONS"
+.sp
+\fB\-n\fP
+.RS 4
+Use the natural origin of the object specified as an argument
+to \fB\-k\fP, \fB\-a\fP, or \fB\-r\fP rather than its bounding box
+center.
+.RE
+.sp
+\fB\-k\fP
+.RS 4
+Sets the keypoint \fIfrom\fP to either \fIfrom_object\fP\(cqs bounding
+box center or \fIfrom_position\fP.
+.RE
+.sp
+\fB\-a\fP
+.RS 4
+Sets the destination point \fIto\fP to either \fIto_object\fP\(cqs
+bounding box center or \fIto_position\fP.
+.RE
+.sp
+\fB\-r\fP
+.RS 4
+Sets the destination point \fIto\fP to a point offset by
+\fIto_position\fP from the \fIfrom\fP point.
+.RE
+.sp
+\fB\-x\fP \fB\-y\fP \fB\-z\fP
+.RS 4
+Sets the coordinate of a particular axis.
+.RE
+.SH "EXAMPLES"
+.sp
+.B Example 1. Get the authoritative list of available subcommands.
+.br
+.RS 4
+.sp
+> \f(CRedit\fP
+.sp
+> \f(CRedit help\fP
+.sp
+Prints usage and a list of available subcommands.
+.RE
+.sp
+.B Example 2. Get the usage of a subcommand.
+.br
+.RS 4
+.sp
+> \f(CRedit translate\fP
+.sp
+Print usage of the translate subcommand
+.RE
+.sp
+.B Example 3. Use the help subcommand to print extended usage of subcommands.
+.br
+.RS 4
+.sp
+> \f(CRedit translate help\fP
+.sp
+> \f(CRedit help translate\fP
+.sp
+Print extended usage of the translate subcommand. Each subcommand also
+accepts \fIhelp\fP as an argument, so that the extended usage is still
+available if \fBedit translate\fP is aliased to something else.
+.RE
+.sp
+.B Example 4. A fake subcommand is used to show how standard \fBedit\fP arguments and nonstandard \fBedit\fP arguments are used.
+.br
+.RS 4
+.sp
+> \f(CRedit fake_subcmd \-B 12 \-k sph.s 1.5 7 \-a 0 0 0 cube.s\fP
+.sp
+The nonstandard \fB\-B\fP option is unique to \fBfake_subcmd\fP. An
+explanation of how it is used would be found in the manual for
+fake_subcmd, if there were one. The remaining options and arguments
+are standardized. The \fB\-k\fP and \fB\-a\fP options are used to
+specify a \fIfrom\fP \- \fIto\fP pair, as defined in this manual for
+\fBedit\fP. The interpretation of the vector created by these points
+would be defined in the \fBfake_subcmd\fP manual.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

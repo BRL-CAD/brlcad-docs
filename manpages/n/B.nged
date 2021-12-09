@@ -1,0 +1,81 @@
+'\" t
+.\"     Title: b
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "B" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+B \- Clears the mged display of any currently displayed objects, then displays the list of objects provided in the parameter list.
+.SH "SYNOPSIS"
+.sp
+\fBB\fP [[\-A \-o] | \fIattribute name\fP {\fIvalue\fP}...] [\-s] [\-C #/#/#] [\-R] [\fIobjects\fP]
+.SH "DESCRIPTION"
+.sp
+Clears the mged display of any currently displayed objects, then
+displays the list of objects provided in the parameter
+list. Equivalent to the \fBZ\fP command followed by the command
+\fBdraw\fP \fI<objects>\fP. The \fI\-C\fP option provides the user a way to
+specify a color that overrides all other color specifications
+including combination colors and region id\-based colors. The \fI\-A\fP and
+\fI\-o\fP options allow the user to select objects by attribute. The \fI\-s\fP
+option specifies that subtracted and intersected objects should be
+drawn with solid lines rather than dot\-dash lines. The \-R option means
+do not automatically resize the view if no other objects are
+displayed. See the \fBdraw\fP command for a detailed description of
+the options.
+.SH "EXAMPLES"
+.sp
+The following are run from the MGED command prompt.
+.sp
+.B Example 1. Display a named object
+.br
+.RS 4
+.sp
+mged> \f(CRB some_object\fP
+.sp
+The display clears, and the object named \fIsome_object\fP is displayed.
+.RE
+.sp
+.B Example 2. Draw objects having an attribute with a value
+.br
+.RS 4
+.sp
+mged> \f(CRB \-A \-o Comment {First comment} Comment {Second comment}\fP
+.sp
+The display clears, then draws objects that have a "Comment" attribute
+with a value of either "First comment" or "Second comment."
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

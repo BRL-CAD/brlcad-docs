@@ -1,0 +1,65 @@
+'\" t
+.\"     Title: zoom
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "ZOOM" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+zoom \- Changes the size of the viewing cube for the MGED display, resulting in a "zoom in" or "zoom out" effect.
+.SH "SYNOPSIS"
+.sp
+\fBzoom\fP {\fIscale_factor\fP}
+.SH "DESCRIPTION"
+.sp
+Changes the size of the viewing cube for the MGED display, resulting
+in a "zoom in" or "zoom out" effect. A \fIscale_factor\fP greater than one
+reduces the size of the viewing cube ("zoom in"). A \fIscale_factor\fP of
+less than one increases the size of the viewing cube ("zoom out").
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBzoom\fP command to reduce the
+size of the viewing cube by half.
+.sp
+.B Example 1. Reduce the size of the viewing cube by half.
+.br
+.RS 4
+.sp
+mged> \f(CRzoom 2\fP
+.sp
+Reduces the size of the current viewing cube by half (effectively
+doubling the size of objects in the display).
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

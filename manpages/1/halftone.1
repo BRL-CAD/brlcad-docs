@@ -1,0 +1,108 @@
+'\" t
+.\"     Title: halftone
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "HALFTONE" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+halftone \- Translate a bw file to a halftoned bw file
+.SH "SYNOPSIS"
+.sp
+\fBhalftone\fP [\-RSa] [\-s \fIsquarefilesize\fP] [\-w \fIfile_width\fP] [\-n \fIfile_height\fP] [\-B \fIcontrast\fP] [\-I \fINumber_Intensity_Levels\fP] [\-M \fIMethod\fP] [\-T \fITone_Scale_Curve_Points\fP] [\-D \fIdebug_level\fP] < \fIfile.bw\fP
+.SH "DESCRIPTION"
+.sp
+\fBhalftone\fP reads a \fBbw\fP(5) format file from
+the named file, or from standard input if no file is specified, and
+reduces the number of intensity levels from 256 to a default
+of 2. \fBhalftone\fP tries to preserve as much information as
+possible by applying dither.
+.sp
+By default, the \fIbw\fP file is assumed to be 512x512 pixels.
+.sp
+If the \fB\-R\fP flag is specified, random noise is added to the
+dither, and this can sometimes improve the results.
+.sp
+The \fB\-S\fP flag causes a surpentine raster to be used rather than a
+left to right scan.
+.sp
+The \fB\-a\fP flag is used when automatic file sizing is wanted.  This
+does not work on pipes.
+.sp
+The \fB\-w\fP \fIfile_width\fP flag specifies the width of each
+scanline in the input file, in pixels.
+.sp
+The \fB\-n\fP \fIfile_height\fP flag specifies the height in
+scanlines of the input file.
+.sp
+\fB\-s\fP \fIsquarefilesize\fP sets both the height and width to the
+size given.
+.sp
+\fB\-B\fP \fIcontrast\fP will define a floating point value to be
+used as the Beta portion of a edge sharpening algorithm.  The default
+is 0.0, which is no sharpening.
+.sp
+\fB\-I\fP \fILevels\fP defines the number of different intensity
+levels to use on output.  The default is 2 (1 bit) and the max is 256
+(8 bits).
+.sp
+\fB\-M\fP \fImethod\fP allows a choice of dither methods.  The
+default is 0 a Floyd\-Steinberg diffused error dither, 1 is a 45 degree
+classical clustered halftone screen, 2 is a simple threshold dither, 3
+is a 0 degree dispersed halftone screen.
+.sp
+The \fB\-T\fP \fIx1 y1 x2 y2 ...\fP parameter is used to define a
+curve to be used as a tone scale.  The resulting curve is used to map
+input pixels to output pixels.  The default curve is \-T 0 0 128 128
+255 255; a curve suggested by Robert Ulichney in Digital Halftoning is
+\-T 0 0 15 0 128 100 200 200 240 255 255 255.
+.sp
+\fB\-D\fP \fIdebug_level\fP supplies the debug level; setting the
+argument to 9 provides all debugging.
+.SH "FORMAT"
+.sp
+A \fBbw\fP(5) file contains sequences of pixels. Each
+pixel is stored as one \fIunsigned char.\fP The first pixel in a \fIbw\fP file
+is the lower left corner of the image. The pixels proceed from
+left\-to\-right across each scanline, with scanlines being written from
+the bottom to the top of the image.
+.sp
+The output from \fBhalftone\fP is scaled so that each intensity level
+is output as 255/Levels*value.
+.SH "SEE ALSO"
+.sp
+\fBrt\fP(1), \fBpix\-bw\fP(1),
+\fBbw\fP(5), \fBbw\-fb\fP(1)
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

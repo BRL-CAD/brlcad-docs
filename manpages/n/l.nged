@@ -1,0 +1,110 @@
+'\" t
+.\"     Title: l
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "L" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+l \- Displays a verbose description about the specified list of objects.
+.SH "SYNOPSIS"
+.sp
+\fBl\fP [\-t] [\-r] {\fIobjects\fP}
+.SH "DESCRIPTION"
+.sp
+Displays a verbose description about the specified list of objects. If
+a specified \fIobject\fP is a path, then any transformation matrices along
+that \fIpath\fP are applied. If the final \fIpath\fP component is a
+combination, the command will list the Boolean formula for the
+\fIcombination\fP and will indicate any accumulated transformations
+(including any in that \fIcombination\fP). If a shader and/or color has
+been assigned to the \fIcombination\fP, the details will be listed. For a
+region, its ident, air code, material code, and LOS will also be
+listed. For primitive shapes, detailed \fIshape\fP parameters will be
+displayed with the accumulated transformation applied.
+.SH "OPTIONS"
+.sp
+\fB\-t\fP
+.RS 4
+The \fI\-t\fP (terse) option forces a shorter list of primitive
+shape parameters. This option is useful for primitives with
+potentially long parameter lists, such as BOTs.
+.RE
+.sp
+\fB\-r\fP
+.RS 4
+If the \fI\-r\fP (recursive) option is used, then each \fIobject\fP on
+the command line will be treated as a \fIpath\fP. If the \fIpath\fP does not
+end at a primitive \fIshape\fP, then all possible \fIpaths\fP from that point
+down to individual \fIshapes\fP will be considered. The \fIshape\fP at the end
+of each possible \fIpath\fP will be listed with its parameters adjusted by
+the accumulated transformation.
+.RE
+.SH "EXAMPLES"
+.sp
+The three examples show the use of the \fBl\fP command to display
+details about a region, shape parameters, and all possible paths
+starting with a particular designation.
+.sp
+.B Example 1. Display details about a particular region.
+.br
+.RS 4
+.sp
+mged> \f(CRl region1\fP
+.sp
+Displays details about region1.
+.RE
+.sp
+.B Example 2. Display shape parameters for a particular shape.
+.br
+.RS 4
+.sp
+mged> \f(CRl group1/group2/region1/shape3\fP
+.sp
+Displays shape parameters for \fIshape3\fP with matrices applied from the
+\fIpath\fP.
+.RE
+.sp
+.B Example 3. Display all paths that start with a particular designation and end in a primitive shape.
+.br
+.RS 4
+.sp
+mged> \f(CRl \-r a/b\fP
+.sp
+Displays all paths that start with a particular designation and end in
+a primitive shape. Also, the shape parameters with the accumulated
+transformation applied will be displayed.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

@@ -1,0 +1,378 @@
+'\" t
+.\"     Title: burst point library file format
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "BURST_POINT_LIBRARY" "5" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+burst_point_library \- Data output by the burst\-file command from the burst tool.
+.SH "FORMAT"
+.sp
+Burst point library files are composed of single\-line records. Each
+line begins with a digit that identifies the type of record it
+represents. The file is composed of one or more runs that begin with a
+run header. Each shotline that intersects the target will result in a
+shotline header that is followed by one or more shotline intersection
+records. If a burst point occurs along a shotline, the burst ray
+header will immediately follow that shotline\(cqs last intersection
+record. Each burst ray header records will be immediately followed by
+burst ray intersection records, one for each ray that strikes a
+critical component.
+.sp
+.it 1 an-trap
+.nr an-no-space-flag 1
+.nr an-break-flag 1
+.br
+.B Table 1. Burst Point Library File Format
+.TS
+allbox tab(:);
+lt lt lt.
+T{
+.sp
+Record Description
+T}:T{
+.sp
+Field Format
+T}:T{
+.sp
+Field Description
+T}
+T{
+.sp
+run header
+T}:T{
+.sp
+\(aq1\(aq
+T}:T{
+.sp
+record number 1
+T}
+T{
+.sp
+
+T}:T{
+.sp
+1x,f9.4
+T}:T{
+.sp
+attack azimuth (degrees)
+T}
+T{
+.sp
+
+T}:T{
+.sp
+1x,f8.4
+T}:T{
+.sp
+attack elevation (degrees)
+T}
+T{
+.sp
+
+T}:T{
+.sp
+1x,f5.2
+T}:T{
+.sp
+burst distance
+T}
+T{
+.sp
+
+T}:T{
+.sp
+1x,f10.2
+T}:T{
+.sp
+projected area associated with burst point
+T}
+T{
+.sp
+
+T}:T{
+.sp
+1x,6a
+T}:T{
+.sp
+units (mm,cm,inches,feet,meters)
+T}
+T{
+.sp
+
+T}:T{
+.sp
+1x,f9.6
+T}:T{
+.sp
+ray solid angle (steradians)
+T}
+T{
+.sp
+shotline header
+T}:T{
+.sp
+\(aq2\(aq
+T}:T{
+.sp
+record number 2
+T}
+T{
+.sp
+
+T}:T{
+.sp
+1x,f8.3
+T}:T{
+.sp
+Y\(aq coordinate of shotline
+T}
+T{
+.sp
+
+T}:T{
+.sp
+1x,f8.3
+T}:T{
+.sp
+Z\(aq coordinate of shotline
+T}
+T{
+.sp
+shotline intersections
+T}:T{
+.sp
+\(aq3\(aq
+T}:T{
+.sp
+record number 3
+T}
+T{
+.sp
+
+T}:T{
+.sp
+1x,f8.2
+T}:T{
+.sp
+X\(aq coordinate of component intersection
+T}
+T{
+.sp
+
+T}:T{
+.sp
+1x,f8.2
+T}:T{
+.sp
+line\-of\-sight thickness of component
+T}
+T{
+.sp
+
+T}:T{
+.sp
+1x,i4
+T}:T{
+.sp
+component code number
+T}
+T{
+.sp
+
+T}:T{
+.sp
+1x,i2
+T}:T{
+.sp
+space code
+T}
+T{
+.sp
+
+T}:T{
+.sp
+1x,f7.3
+T}:T{
+.sp
+sine of fallback angle of exit normal
+T}
+T{
+.sp
+
+T}:T{
+.sp
+1x,f7.2
+T}:T{
+.sp
+rotation angle of exit normal (degrees)
+T}
+T{
+.sp
+
+T}:T{
+.sp
+1x,f7.3
+T}:T{
+.sp
+cosine of obliquity angle at entry
+T}
+T{
+.sp
+
+T}:T{
+.sp
+1x,a1
+T}:T{
+.sp
+burst flag (\(aq1\(aq for yes, \(aq0\(aq for no)
+T}
+T{
+.sp
+burst ray header
+T}:T{
+.sp
+\(aq4\(aq
+T}:T{
+.sp
+record number 4
+T}
+T{
+.sp
+
+T}:T{
+.sp
+1x,f8.3
+T}:T{
+.sp
+azimuth angle WRT shotline (radians)
+T}
+T{
+.sp
+
+T}:T{
+.sp
+1x,f8.3
+T}:T{
+.sp
+sine of elevation angle WRT shotline
+T}
+T{
+.sp
+
+T}:T{
+.sp
+1x,i6
+T}:T{
+.sp
+sequential ray number for this burst point
+T}
+T{
+.sp
+burst ray intersections
+T}:T{
+.sp
+\(aq5\(aq
+T}:T{
+.sp
+record number 5
+T}
+T{
+.sp
+
+T}:T{
+.sp
+1x,f10.3
+T}:T{
+.sp
+distance to first contact with component
+T}
+T{
+.sp
+
+T}:T{
+.sp
+1x,f9.3
+T}:T{
+.sp
+line\-of\-sight thickness of component
+T}
+T{
+.sp
+
+T}:T{
+.sp
+1x,f9.3
+T}:T{
+.sp
+normal thickness of component
+T}
+T{
+.sp
+
+T}:T{
+.sp
+1x,i4
+T}:T{
+.sp
+space code
+T}
+T{
+.sp
+
+T}:T{
+.sp
+ix,i4
+T}:T{
+.sp
+component code number
+T}
+T{
+.sp
+
+T}:T{
+.sp
+ix,f6.3
+T}:T{
+.sp
+cosine of obliquity angle at entry
+T}
+.TE
+.sp
+.SH "SEE ALSO"
+.sp
+\fBburst\fP(1)
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

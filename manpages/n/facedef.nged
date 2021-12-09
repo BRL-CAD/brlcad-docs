@@ -1,0 +1,107 @@
+'\" t
+.\"     Title: facedef
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "FACEDEF" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+facedef \- Allows the user to redefine any face of an ARB8 shape.
+.SH "SYNOPSIS"
+.sp
+\fBfacedef\fP {\fI####\fP} [[a] | [b] | [c] | [d] | [\fIparameters\fP]]
+.SH "DESCRIPTION"
+.sp
+Allows the user to redefine any face of an ARB8 shape.  The user must
+be in Primitive Edit Mode with an \fIARB\fP selected for editing. The
+optional parameters may be omitted, and MGED will prompt for the
+missing values. The options are as follows:
+.sp
+\fIa\fP
+.RS 4
+Specify the new location of this face by providing coefficients
+for its plane equation:
+.sp
+\fBAx + By + Cz = D\fP
+.RE
+.sp
+\fIb\fP
+.RS 4
+Specify the new location of this face using three points.
+.RE
+.sp
+\fIc\fP
+.RS 4
+Specify the new location of this face using rotation and
+fallback angles.
+.RE
+.sp
+\fId\fP
+.RS 4
+Specify the new location of this face by changing the \fID\fP value
+in the plane equation.
+.RE
+.sp
+\fIq\fP
+.RS 4
+Return to MGED prompt.
+.RE
+.SH "EXAMPLES"
+.sp
+The first example shows the use of the \fBfacedef\fP command with the
+\fIa\fP option to redefine a specified face so that it is in another
+plane.  The second example shows the use of the \fBfacedef\fP command
+with the \fIb\fP option to redefine a face so that it is in another plane
+formed by three points.
+.sp
+.B Example 1. Moving a specified face so that it is in another plane.
+.br
+.RS 4
+.sp
+mged> \f(CRfacedef 1234 a 1 0 0 20\fP
+.sp
+Moves face 1234 such that it is in the \fIyz\fP plane at \fIx\fP = 20.
+.RE
+.sp
+.B Example 2. Moving a specified face so that it is in another plane formed by three points.
+.br
+.RS 4
+.sp
+mged \f(CRfacedef 5678 b 0 0 10 10 0 10 10 10 10\fP
+.sp
+Moves face 5678 such that it is in the plane formed by the three
+points (0 0 10), (10 0 10), and (10 10 10).
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

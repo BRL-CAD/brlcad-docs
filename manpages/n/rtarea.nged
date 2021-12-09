@@ -1,0 +1,342 @@
+'\" t
+.\"     Title: rtarea
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "RTAREA" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+rtarea \- Calculate exposed, presented and centers of surface areas (MGED Command)
+.SH "SYNOPSIS"
+.sp
+\fBrtarea\fP [\fIoptions\fP]...
+.SH "DESCRIPTION"
+.sp
+For displayed objects, the \fIrtarea\fP command calculates the exposed,
+presented and centers of surface areas. The summary output includes
+details for individual regions, assemblies (combinations that contain
+regions), and summarized totals. By default current display azimuth
+and elevation are used for computations. Summary units are current
+MGED editing units.
+.sp
+The \fIexposed\fP area corresponds to what a human observer would see
+looking at the object(s) in question, if all the objects were
+non\-transparent. For example, say rays were cast towards two cubes,
+each one of which is a region, one in front of the other, grouped into
+an assembly, with the ray direction pointed into the page:
+.sp
+.if n .RS 4
+.nf
+|\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-| Rear Cube
+|                |
+|                |
+|        |\-\-\-\-\-\-\-\-\-\-\-\-\-\-| Front Cube
+|        |       |      |
+|        |       |      |
+|\-\-\-\-\-\-\-\-|\-\-\-\-\-\-\-|      |
+         |              |
+         |              |
+         |\-\-\-\-\-\-\-\-\-\-\-\-\-\-|
+.fi
+.if n .RE
+.sp
+The exposed area of the Front Cube corresponds to the total area of
+the sheet, since it is not occluded by any other object:
+.sp
+.if n .RS 4
+.nf
+|\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-| Rear Cube
+|                |
+|                |
+|        |\-\-\-\-\-\-\-\-\-\-\-\-\-\-| Front Cube
+|        |**************|
+|        |**************|
+|\-\-\-\-\-\-\-\-|**************|
+         |**************|
+         |**************|
+         |\-\-\-\-\-\-\-\-\-\-\-\-\-\-|
+.fi
+.if n .RE
+.sp
+The Rear Cube, on the other hand, IS occluded by the Front Cube and
+would thus report only a fraction of its area as exposed:
+.sp
+.if n .RS 4
+.nf
+|\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-| Rear Cube
+|****************|
+|****************|
+|********|\-\-\-\-\-\-\-\-\-\-\-\-\-\-| Front Cube
+|********|       |      |
+|********|       |      |
+|\-\-\-\-\-\-\-\-|\-\-\-\-\-\-\-|      |
+         |              |
+         |              |
+         |\-\-\-\-\-\-\-\-\-\-\-\-\-\-|
+.fi
+.if n .RE
+.sp
+An object that combines both of these sheets would thus report as its
+exposed area the sum of the exposed areas of the individual sheets:
+.sp
+.if n .RS 4
+.nf
+|\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-| Rear Cube
+|****************|
+|****************|
+|****************|\-\-\-\-\-\-| Front Cube
+|***********************|
+|***********************|
+|\-\-\-\-\-\-\-\-|**************|
+         |**************|
+         |**************|
+         |\-\-\-\-\-\-\-\-\-\-\-\-\-\-|
+.fi
+.if n .RE
+.sp
+\fIPresented\fP area, unlike exposed area, does not take occlusion into
+account. It is the equivalent of taking each object and considering it
+in isolation. So for the previous case of two sheets of metal, the
+Front Cube would report the same area:
+.sp
+.if n .RS 4
+.nf
+|\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-| Rear Cube
+|                |
+|                |
+|        |\-\-\-\-\-\-\-\-\-\-\-\-\-\-| Front Cube
+|        |**************|
+|        |**************|
+|\-\-\-\-\-\-\-\-|**************|
+         |**************|
+         |**************|
+         |\-\-\-\-\-\-\-\-\-\-\-\-\-\-|
+.fi
+.if n .RE
+.sp
+The Rear Cube, on the other hand, ALSO reports its full area:
+.sp
+.if n .RS 4
+.nf
+|\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-| Rear Cube
+|****************|
+|****************|
+|****************\-\-\-\-\-\-\-| Front Cube
+|****************|      |
+|****************|      |
+|\-\-\-\-\-\-\-\-|\-\-\-\-\-\-\-|      |
+         |              |
+         |              |
+         |\-\-\-\-\-\-\-\-\-\-\-\-\-\-|
+.fi
+.if n .RE
+.sp
+When reporting the presented area of the group, there is a subtle
+point \- rtarea does not count area covered by multiple regions
+multiple times when totaling the presented area. So for the group
+containing both cubes, the presented area is NOT the cumulative area
+of both regions\(aq presented areas but the area of the union of those
+two areas. In this case, that works out to be the same as the exposed
+area.
+.sp
+.if n .RS 4
+.nf
+|\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-| Rear Cube
+|****************|
+|****************|
+|****************|\-\-\-\-\-\-| Front Cube
+|***********************|
+|***********************|
+|\-\-\-\-\-\-\-\-|**************|
+         |**************|
+         |**************|
+         |\-\-\-\-\-\-\-\-\-\-\-\-\-\-|
+.fi
+.if n .RE
+.sp
+It should be noted that rtarea only counts surfaces with a surface
+normal that has a component looking back in the direction of the ray.
+So, for example, a cube with only one face looking "back toward" the
+ray will not report area from other faces as "presented", since their
+surface normals will indicate they are not surfaces being presented to
+the ray.
+.if n .sp
+.RS 4
+.it 1 an-trap
+.nr an-no-space-flag 1
+.nr an-break-flag 1
+.br
+.ps +1
+.B Warning
+.ps -1
+.br
+.sp
+\fIRtarea\fP may not correctly report area or center when
+instancing is done at the group level. Using \fBxpush\fP can be a
+workaround for this problem.
+.sp .5v
+.RE
+.SH "OPTIONS"
+.sp
+\fB\-s#\fP
+.RS 4
+Specifies the number of rays to fire in the X and Y directions
+on a square grid. The default size is 512 pixels.
+.RE
+.sp
+\fB\-a#\fP
+.RS 4
+Selects auto\-sizing, and gives the view azimuth in
+degrees. Used with \-e option. The default is the current display
+azimuth.
+.RE
+.sp
+\fB\-e#\fP
+.RS 4
+Selects auto\-sizing, and gives the view elevation in
+degrees. Used with \-a option. The default is the current display
+elevation.
+.RE
+.sp
+\fB\-g#\fP
+.RS 4
+Is used to set the grid cell width, in
+millimeters. Ordinarily, the cell width is computed by dividing the
+view size by the number of pixels of width, so this option need not be
+used. To obtain exactly 1 inch ray spacing, specify \-g25.4.  If the
+grid cell width is specified and the grid cell height is not
+specified, the grid cell height defaults to be the same as the width.
+.RE
+.sp
+\fB\-G#\fP
+.RS 4
+Sets the grid cell height, in millimeters.
+.RE
+.sp
+\fB\-J#\fP
+.RS 4
+The "jitter" flag is a bit vector. If one (\-J1), it randomizes
+the point from which each ray is fired by +/\- one half of the pixel
+size. If two (\-J2), it shifts the origin of the output frame once for
+each frame. The shift is along a circular path in the plane of the
+frame, with a period of ten seconds, and a radius of +/\- 1/4 pixel
+width. If three (\-J3), it performs both operations.
+.RE
+.sp
+\fB\-U#\fP
+.RS 4
+Sets the "use_air" value. The default is 1, meaning "air"
+solids (i.e. regions with a non\-zero aircode attribute value) will be
+retained. If this value is zero, "air" solids in the model will be
+ignored.
+.RE
+.sp
+\fB\-c "set cc=1"\fP
+.RS 4
+Compute and report area centers. The default is off.
+.RE
+.sp
+\fB\-X#\fP
+.RS 4
+Turns on the rt(1) program debugging flags. See raytrace.h for
+the meaning of these bits.
+.RE
+.sp
+\fB\-x#\fP
+.RS 4
+Sets the librt(3) debug flags to the given hexadecimal bit
+vector. See raytrace.h for the bit definitions.
+.RE
+.SH "EXAMPLES"
+.sp
+.B Example 1. Calculate exposed and presented surface areas
+.br
+.RS 4
+.sp
+mged> \f(CRrtarea\fP
+.sp
+Calculate exposed and presented surface areas of the displayed objects
+using current azimuth, elevation and size. Results are reported in
+current editing units.
+.RE
+.sp
+.B Example 2. Calculate exposed, presented and centers of surface areas
+.br
+.RS 4
+.sp
+mged> \f(CRrtarea \-c "set cc=1"\fP
+.sp
+Calculate exposed, presented and centers of surface areas of the
+displayed objects using current azimuth, elevation and size. Results
+are reported in current editing units.
+.RE
+.sp
+.B Example 3. Calculate exposed and presented surface areas (results in inches)
+.br
+.RS 4
+.sp
+mged> \f(CRunits in\fP
+.sp
+Set current editing units to inches.
+.sp
+mged> \f(CRrtarea\fP
+.sp
+Calculate exposed and presented surface areas of the displayed objects
+using current azimuth, elevation and size. Results reported in inches.
+.RE
+.sp
+.B Example 4. Calculate exposed and presented surface areas (az=35, el=25, auto\-size)
+.br
+.RS 4
+.sp
+mged> \f(CRrtarea \-a35 \-e25\fP
+.sp
+Calculate exposed and presented surface areas of the displayed objects
+using azimuth 35, elevation 25 and size auto\-set for best fit. Results
+reported in current editing units.
+.RE
+.sp
+.B Example 5. Calculate exposed and presented surface areas (1x1 inch grid cells)
+.br
+.RS 4
+.sp
+mged> \f(CRrtarea \-g25.4\fP
+.sp
+Calculate exposed and presented surface areas of the displayed objects
+using current azimuth, elevation and size. The grid cell width and
+height is 25.4 millimeters (i.e. 1 inch). Results reported in current
+editing units.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

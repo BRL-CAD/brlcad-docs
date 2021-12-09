@@ -1,0 +1,107 @@
+'\" t
+.\"     Title: attach
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "ATTACH" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+attach \- Opens a display window.
+.SH "SYNOPSIS"
+.sp
+\fBattach\fP [\-d \fIdisplay_string\fP] [\-i \fIinit_script\fP] [\-n \fIname\fP] [\-t \fIis_toplevel\fP] [\-W \fIwidth\fP] [\-N \fIheight\fP] [\-S \fIsquare_size\fP] [\fIwin_type\fP]
+.SH "DESCRIPTION"
+.sp
+This command is used to open a display window. The set of supported
+window types includes X and ogl. It should be noted that \fBattach\fP
+no longer releases previously attached display windows (i.e., multiple
+attaches are supported). To destroy a display window, use the
+\fBrelease\fP command.
+.SH "EXAMPLES"
+.sp
+These examples demonstrate the use of the \fBattach\fP command to
+open ogl and X display windows.
+.sp
+.B Example 1. Opening an ogl display window
+.br
+.RS 4
+.sp
+mged> \f(CRattach ogl\fP
+.sp
+Opens an ogl display window named .dm_ogl0 (assuming this is the first
+ogl display window opened using the default naming scheme)
+.sp
+mged \f(CRattach ogl\fP
+.sp
+Opens an ogl display window named .dm_ogl1.
+.sp
+mged> \f(CRattach \-n myOgl \-W 720 \-N 486 ogl\fP
+.sp
+Opens a 720 x 486 OpenGL display window named myOgl.
+.sp
+mged> \f(CRattach \-n myX \-d remote_host:0 \-i myInitX\fP
+.sp
+Open an X display window named myX on remote_host that is initialized
+by myInit.
+.sp
+myInit might contain user\-specified bindings like those found in the
+default bindings.
+.sp
+mged> \f(CRtoplevel.t\fP
+.sp
+A top\-level window named .t was created.
+.sp
+mged> \f(CRattach \-t 0 \-S 800 \-n .t.ogl ogl\fP
+.sp
+Opens a 800 x 800 OpenGL display window named .t.ogl that is not a
+top\-level window.
+.sp
+mged> \f(CRbutton .t.dismiss \-text Dismiss \-command "release .t.ogl; destroy .t"\fP
+.sp
+Creates a button that dismisses the display manager, etc.
+.sp
+mged> \f(CRpack .t.ogl \-expand 1 \-fill both\fP
+.sp
+Packs the display manager inside .t.
+.sp
+mged> \f(CRpack .t.dismiss\fP
+.sp
+Packs the Dismiss button inside .t.
+.sp
+mged> \f(CRattach\fP
+.sp
+Lists the help message that includes the valid display types.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

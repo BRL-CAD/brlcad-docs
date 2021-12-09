@@ -1,0 +1,76 @@
+'\" t
+.\"     Title: imgdims
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "IMGDIMS" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+imgdims \- guess the width and height of an image file
+.SH "SYNOPSIS"
+.sp
+\fBimgdims\fP [\-ns] [\-# \fIbytes_per_pixel\fP] \fIfile_name\fP
+.sp
+or
+.sp
+\fBimgdims\fP [\-# \fIbytes_per_pixel\fP] \fInum_bytes\fP
+.SH "DESCRIPTION"
+.sp
+\fBimgdims\fP uses the autosizing capability of
+\fBlibbn\fP(5) to guess the dimensions (in pixels)
+of an image. The image size may be expressed either implicitly, by
+specifying the name of the file; or explicitly, by specifying a number
+of bytes.
+.sp
+The \fB\-n\fP option specifies that the dimensions should be extracted
+directly from \fIfile_name\fP, in the form of any of the standard BRL\-CAD
+command\-line options. Given the \fB\-s\fP option, \fBimgdims\fP
+ignores any dimensions encoded in \fIfile_name\fP and uses the size of the
+file in bytes to compute the number of pixels in the image and then
+guess the image\(cqs width and height. The \fB\-#\fP option specifies the
+size of each pixel (in bytes).
+.sp
+If \fIfile_name\fP is specified with neither of the \fB\-s\fP and
+\fB\-n\fP options, \fBimgdims\fP tries to extract the dimensions from
+\fIfile_name\fP, and if that fails it computes the image size and guesses
+the width and height. If the \fB\-#\fP option is not specified,
+\fBimgdims\fP determines the pixel size based on the extension on
+\fIfile_name\fP. If, additionally, \fInum_bytes\fP was specified or
+\fIfile_name\fP contains none of the recognized extensions, \fBimgdims\fP
+assumes that there are 3\-byte\-wide pixels.
+.SH "SEE ALSO"
+.sp
+\fBlibbn\fP(3)
+.SH "AUTHOR"
+.sp
+Paul Tanenbaum
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

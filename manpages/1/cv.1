@@ -1,0 +1,83 @@
+'\" t
+.\"     Title: cv
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "CV" "1" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+cv \- convert binary data files between representation formats
+.SH "SYNOPSIS"
+.sp
+\fBcv\fP \fIin_pat\fP \fIout_pat\fP [[\fIinfile\fP] \fIoutfile\fP ]
+.SH "DESCRIPTION"
+.sp
+Convert a binary data file from one representation (format) to
+another. The particular representation desired is expressed as a set
+of choices from the pattern: [h|n][s|u] c|s|i|l|d|8|16|32|64. For
+example, "hui" is host unsigned int, "nl" is network (signed)
+long. The default is NETWORK format.
+.sp
+Host specific format is the native internal number representation used
+inside the computer that \fBcv\fP is running on. There is great
+variation between vendors in the host\-specific formats that
+they use. Especially for double\-precision floating point, DEC, Cray,
+and IBM have peculiar formats and byte orderings. The
+network\-independent byte orderings used within BRL\-CAD is big\-endian
+(most significant bit first, on the left side of the word), twos
+complement. The network\-independent double\-precision floating point
+format used within BRL\-CAD is 64\-bit IEEE 754, transmitted in
+big\-endian order.
+.sp
+Signed or unsigned integer formats can be selected. This has no effect
+on the double\-precision format.
+.sp
+"char", "short", "int", "long", and "double" provide their C language
+equivalent on this processor when used in "h" host\-specific mode. "8",
+"16", "32", and "64" allow more precise specification of datum sizes
+for "n" network\-independent mode.
+.sp
+For example, to change a file of host\-specific (machine\-specific)
+signed shorts to a file of network\-independent 32\-bit integers, the
+input format would be "hss", and the output format would be "n32".
+.SH "SEE ALSO"
+.sp
+\fBpix\-bw\fP(1),
+\fBdpix\-pix\fP(1),
+\fBbw\-pix\fP(1); M. J. Muuss, \fIWorkstations,
+Networking, Distributed Graphics, and Parallel Processing\fP in Computer
+Graphics Techniques: Theory and Practice, edited
+by D. F. Rogers, R. A. Earnshaw, Springer\-Verlag, 1990
+.SH "AUTHOR"
+.sp
+\fIBRL\-CAD Team\fP
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

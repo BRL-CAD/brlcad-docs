@@ -1,0 +1,67 @@
+'\" t
+.\"     Title: cat
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "CAT" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+cat \- Displays a brief description of each item in the list of objects.
+.SH "SYNOPSIS"
+.sp
+\fBcat\fP {\fIobjects\fP}
+.SH "DESCRIPTION"
+.sp
+Displays a brief description of each item in the list of \fIobjects\fP. If
+the item is a primitive shape, the type of shape and its vertex are
+displayed. If the item is a combination, the Boolean formula for that
+combination \- including operands, operators, and parentheses \- is
+displayed. If the combination is flagged as a region, then that fact
+is also displayed along with the region\(cqs ident code, air code, los,
+and GIFT material code.
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBcat\fP command to display Boolean
+formulas for two regions.
+.sp
+.B Example 1. Displaying Boolean formulas for two regions.
+.br
+.RS 4
+.sp
+mged> \f(CRcat region_1 region_2\fP
+.sp
+Displays the Boolean formulas for region_1 and region_2.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

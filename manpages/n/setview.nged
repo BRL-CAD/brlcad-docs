@@ -1,0 +1,64 @@
+'\" t
+.\"     Title: setview
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "SETVIEW" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+setview \- Sets the current view in MGED by specifying rotation angles (in degrees) about the x, y, and z axes.
+.SH "SYNOPSIS"
+.sp
+\fBsetview\fP {\fIx\-angle y\-angle z\-angle\fP}
+.SH "DESCRIPTION"
+.sp
+Sets the current view in MGED by specifying rotation angles (in
+degrees) about the \fIx, y,\fP and \fIz\fP axes. The rotations are performed
+about the \fIz\fP axis first, then the \fIy\fP axis, then the \fIx\fP axis. The
+\fBsetview 0 0 0\fP command is a synonym for \fBpress top.\fP
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBsetview\fP command to set the
+current view according to specified rotation angles.
+.sp
+.B Example 1. Set the current view in MGED.
+.br
+.RS 4
+.sp
+mged> \f(CRsetview 90 180 90\fP
+.sp
+Sets the current view to that set by \fBae 0 0\fP.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

@@ -1,0 +1,319 @@
+'\" t
+.\"     Title: redblack
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "REDBLACK" "3" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+redblack \- red\-black tree operations
+.SH "SYNOPSIS"
+.sp
+.if n .RS 4
+.nf
+#include "common.h"
+
+#include <stdio.h>
+
+#include "bu.h"
+
+struct bu_rb_tree *bu_rb_create (description,
+                                 nm_orders,
+                                 order_funcs);
+.fi
+.if n .RE
+.SH "DESCRIPTION"
+.sp
+These routines implement red\-black trees, a form of balanced binary
+trees, in such a way that all the basic dynamic set operations (e.g.,
+insertion, deletion, search, minimum, maximum, predecessor, and
+successor) and order\-statistic operations (i.e., select and rank)
+require no more than \fIO(log n)\fP time, where \fIn\fP is the number of
+nodes. They allow storage of arbitrary data structures at tree nodes
+and also support multiple simultaneous orders (trees) on the same
+nodes. The trees are based on comparison functions like those used by
+\fIqsort(3)\fP. The routines are available only in \fIlibbu(3B)\fP.
+.sp
+\fIbu_rb_create\fP
+.RS 4
+allocates storage for and initializes the tree
+header. \fIDescription\fP is an explanatory comment that the red\-black
+tree package prints in its diagnostics, \fInm_orders\fP is the number of
+simultaneous orders, and \fIorder_funcs\fP points to the table of
+comparison functions (one for each order). These are called with two
+arguments that point to the application data blocks being
+compared. Each function must return an integer less than, equal to, or
+greater than zero according as the first argument is to be considered
+less than, equal to, or greater than the second. \fIbu_rb_create\fP
+returns a pointer to a \fIbu_rb_tree\fP structure. This pointer must be
+saved, as it is a required argument to all the other
+routines. \fIbu_rb_create1\fP is similar, except that it creates a tree
+that supports only the single order specified by \fIorder_func\fP.
+.sp
+The application can specify that the red\-black tree package may not
+insert new nodes that compare equal in any of the orders to an
+existing node. Such uniqueness enforcement is switch selectable and
+may be controlled independently for each order and modified
+dynamically. The default behavior is not to enforce any uniqueness.
+.RE
+.sp
+\fIbu_rb_free\fP
+.RS 4
+relinquishes the storage used by \fItree\fP, calling
+\fIfree_data\fP to dispose of the application data in the nodes. If
+\fIfree_data\fP equals \fIBU_RB_RETAIN_DATA\fP (defined in \fI"bu.h"\fP), then the
+application data blocks are left unaffected. Otherwise, \fIbu_rb_free\fP
+calls \fIfree_data\fP once for each block of application data, passing a
+pointer to the data. Since \fIbu_rb_create1\fP allocates its own table of
+comparison functions, a memory leak will result if a tree returned by
+\fIbu_rb_create1\fP is freed before this table is freed. For this reason,
+\fIbu.h\fP provides the macro \fIbu_rb_free1(tree, free_data)\fP, which should
+be used instead of \fIbu_rb_free\fP when relinquishing a tree created by
+\fIbu_rb_create1\fP.
+.RE
+.sp
+\fIbu_rb_insert\fP
+.RS 4
+creates a new node containing \fIdata\fP and adds it to
+\fItree\fP, provided that doing so would not violate current uniqueness
+requirements. If a uniqueness requirement would be violated,
+\fIbu_rb_insert\fP does nothing but return a negative integer, the
+absolute value of which is the first order for which a violation
+exists. Otherwise, the node is inserted in the appropriate place in
+each order, as determined by the comparison functions, and
+\fIbu_rb_insert\fP returns the number of orders for which the new node
+compared equal to an existing node in the tree.
+.RE
+.sp
+\fIbu_rb_uniq_on\fP
+.RS 4
+specifies that subsequent insertion of nodes into
+\fItree\fP should enforce uniqueness on \fIorder\fP, and returns the previous
+setting of the switch. \fIbu_rb_uniq_off\fP specifies that subsequent
+insertion of nodes into \fItree\fP should proceed without regard for
+uniqueness on \fIorder\fP, and returns the previous setting of the
+switch. The macros \fIbu_rb_uniq_on1(tree)\fP and \fIbu_rb_uniq_off1(tree)\fP
+available in \fI"bu.h"\fP, are similar, except that they control the first
+(perhaps only) order. \fIbu_rb_is_uniq\fP returns 1 if uniqueness is
+currently enforced for \fIorder\fP in \fItree\fP, and 0 otherwise. The macro
+\fIbu_rb_is_uniq1(tree)\fP available in \fI"bu.h"\fP, is similar, except that
+it queries the first (perhaps only) order. \fIbu_rb_uniq_all_on\fP and
+\fIbu_rb_uniq_all_off\fP set all \fInm_orders\fP orders identically on or off,
+and \fIbu_rb_set_uniqv\fP sets the orders according to the bit vector
+\fIvec\fP.
+.RE
+.sp
+\fIbu_rb_extreme\fP
+.RS 4
+searches through \fItree\fP to find a minimum or
+maximum node in one of the orders as determined by the corresponding
+comparison function. \fISense\fP is either \fISENSE_MIN\fP or \fISENSE_MAX\fP, and
+\fIorder\fP specifies which order to search. \fIbu_rb_extreme\fP returns a
+pointer to the extreme data. The macros \fIbu_rb_min(tree, order)\fP and
+\fIbu_rb_max(tree, order)\fP, available in \fI"bu.h"\fP, are implemented in
+terms of \fIbu_rb_extreme\fP in the obvious way.
+.RE
+.sp
+\fIbu_rb_search\fP
+.RS 4
+traverses \fItree\fP searching for a node of which the
+contents equals \fIdata\fP according to the comparison function specified
+by \fIorder\fP. On success, \fIbu_rb_search\fP returns a pointer to the data
+in the matching node. Otherwise, it returns \fINULL\fP. The macro
+\fIbu_rb_search1(tree, data)\fP, available in \fI"bu.h"\fP, is similar, except
+that it searches the first (perhaps only) order.
+.RE
+.sp
+\fIbu_rb_select\fP
+.RS 4
+traverses \fItree\fP to retrieve the \fIk\fPth order
+statistic (i.e., the data block of rank \fIk\fP, the \fIk\fPth\-smallest data
+block) according to the comparison function specified by \fIorder\fP,
+where \fIk\fP is between 1 and the number of nodes in \fItree\fP,
+inclusive. On success, \fIbu_rb_select\fP returns a pointer to the block
+of data of rank \fIk\fP. Otherwise, it returns \fINULL\fP. The macro
+\fIbu_rb_select1(tree, k)\fP, available in \fI"bu.h"\fP, is similar, except
+that it uses the first (perhaps only) order.
+.RE
+.sp
+\fIbu_rb_walk\fP
+.RS 4
+traverses \fItree\fP according to the comparison function
+specified by \fIorder\fP. The function \fIvisit\fP is called for each node in
+turn, being passed two arguments: a pointer to the data at that node
+and the depth of the node in the tree for the specified order. The
+type of tree traversal to perform, specified by \fItrav_type\fP, may be
+any one of \fIPREORDER\fP, \fIINORDER\fP, and \fIPOSTORDER\fP. The macro
+\fIbu_rb_walk1(tree, visit, trav_type)\fP, available in \fI"bu.h"\fP, is
+similar, except that it walks the first (perhaps only) order.
+.RE
+.sp
+\fIbu_rb_diagnose_tree\fP
+.RS 4
+traverses \fItree\fP according to the comparison
+function specified by \fIorder\fP, printing information about the various
+structures. The application may optionally store in the \fIrbt_print\fP
+member of the \fIbu_rb_tree\fP structure the address of an
+application\-specific print routine. If this pointer is nonzero,
+\fIbu_rb_diagnose_tree\fP dereferences it to print information for the
+data at each node. The type of tree traversal to perform, specified by
+\fItrav_type\fP, may be any one of \fIPREORDER\fP, \fIINORDER\fP, and \fIPOSTORDER\fP.
+.RE
+.sp
+The \fIbu_rb_tree\fP structure contains a pointer to the node most
+recently accessed (e.g., inserted, discovered in a search, or selected
+by rank). When the most recent access failed, this current node is
+undefined. The following commands make use of the current node:
+.sp
+\fIbu_rb_curr\fP
+.RS 4
+returns a pointer to the data in the current node in
+\fIorder\fP, or \fINULL\fP if the current node is undefined. The macro
+\fIbu_rb_curr1(tree)\fP, available in \fI"bu.h"\fP, is similar, except that it
+returns a pointer to the data in the current node in the first
+(perhaps only) order.
+.RE
+.sp
+\fIbu_rb_delete\fP
+.RS 4
+removes a block of application data from
+\fItree\fP. Because the algorithms sometimes cause a single block of data
+to be stored in different nodes for the different orders, the
+application specifies \fIorder\fP, which indicates the block of data (in
+the current node) to be removed. If the current node is defined,
+\fIbu_rb_delete\fP removes this block of data from every order. Otherwise,
+it prints a warning and returns. The macro \fIbu_rb_delete1(tree)\fP,
+available in \fI"bu.h"\fP, is similar, except that it removes the block of
+data in the first (perhaps only) order.
+.RE
+.sp
+\fIbu_rb_neighbor\fP
+.RS 4
+returns a pointer to the data in the node adjacent
+(in \fIorder\fP) to the current node, or \fINULL\fP if the current node is
+undefined. \fIsense\fP, which may be one of \fISENSE_MIN\fP and \fISENSE_MAX\fP,
+specifies either predecessor or successor, respectively. The macros
+\fIbu_rb_pred(tree, order)\fP and \fIbu_rb_succ(tree, order)\fP, available in
+\fI"bu.h"\fP, are implemented in terms of \fIbu_rb_neighbor\fP in the
+obvious way.
+.RE
+.sp
+\fIbu_rb_rank\fP
+.RS 4
+returns the rank (i.e., position expressed as an
+integer between 1 and the number of nodes in \fItree\fP, inclusive) of the
+current node in \fIorder\fP, or \fINULL\fP if the current node is
+undefined. The macro \fIbu_rb_rank1(tree)\fP, available in \fI"bu.h"\fP, is
+similar, except that it uses the first (perhaps only) order.
+.RE
+.sp
+The members of the \fIbu_rb_tree\fP structure, as defined in \fI"bu.h"\fP, are
+classified into three classes based on their suitability for direct
+manipulation by applications.
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+Class I, members that applications may read directly, includes
+.sp
+.if n .RS 4
+.nf
+uint32_t rbt_magic; /* Magic no. for integrity check */
+int  rbt_nm_nodes;  /* Number of nodes */
+.fi
+.if n .RE
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+Class II, members that applications may read or write directly as
+necessary, includes
+.sp
+.if n .RS 4
+.nf
+void (*rbt_print)();   /* Data pretty\-print function */
+int  rbt_debug;        /* Debug bits */
+char *rbt_description; /* Comment for diagnostics */
+.fi
+.if n .RE
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+Class III comprises members that applications should not manipulate directly; any access should be through the routines provided by the red\-black tree package. They include
+.sp
+.if n .RS 4
+.nf
+int               rbt_nm_orders;   /* Number of orders */
+int               (**rbt_order)(); /* Comparison funcs */
+struct bu_rb_node **rbt_root;      /* The actual trees */
+char              *rbt_unique;     /* Uniqueness flags */
+struct bu_rb_node *rbt_current;    /* Current node */
+struct bu_rb_list rbt_nodes;       /* All nodes */
+struct bu_rb_list rbt_packages;    /* All packages */
+struct bu_rb_node *rbt_empty_node; /* Sentinel for nil */
+.fi
+.if n .RE
+.RE
+.sp
+The distinction between classes I and III is not critical, but any
+direct modification of members in either class will result in
+unpredictable (probably dire) results. The order of the members within
+the \fIbu_rb_tree\fP structure is subject to change in future releases.
+.sp
+Diagnostic output may be requested by setting the debug bits in the
+\fIbu_rb_tree\fP structure using the debug bit flags defined in \fI"bu.h"\fP.
+.SH "SEE ALSO"
+.sp
+\fBlibbu\fP(3B),
+\fBqsort\fP(3).
+.SH "AUTHOR"
+.sp
+Paul Tanenbaum
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

@@ -1,0 +1,156 @@
+'\" t
+.\"     Title: g-iges
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "G\-IGES" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+g\-iges \- IGES Translator (BRL\-CAD to IGES)
+.SH "SYNOPSIS"
+.sp
+\fBg\-iges\fP [\-f | \fIt\fP | \fIm\fP] [\-v] [\-s] [\-x \fIflag1\fP] [\-X \fIflag2\fP] [\-a \fIabs_tol\fP] [\-r \fIrel_tol\fP] [\-n \fInorm_tol\fP] [\-o \fIoutput_file_or_directory\fP] \fIdatabase.g\fP \fIobject(s)\fP
+.SH "DESCRIPTION"
+.sp
+\fBg\-iges\fP converts the specified objects of the BRL\-CAD database, \fIdatabase.g\fP, to an IGES version 5.1 file, \fIfile.iges\fP.
+.sp
+The following options are recognized
+.sp
+\fB\-f\fP
+.RS 4
+selects a BREP IGES file consisting of only Manifold Solid
+BREP Objects.  All CSG solids in the specified objects are tessellated
+to produce facetted BREP objects, then the indicated Boolean
+operations are performed for each region. Individual regions are
+written to the IGES file as individual BREP objects.  This procedure
+results in some approximations since curved surface solids, such as
+TGCs or ellipsoids, are approximated by flat facets.  The accuracy of
+the tessellation may be controlled through the use of the \fB\-a,
+\-r, \-n\fP options.
+.RE
+.sp
+\fB\-a\fP \fIabs_tol\fP
+.RS 4
+Sets the absolute tolerance (floating point value)
+for tessellation.
+.RE
+.sp
+\fB\-r\fP \fIrel_tol\fP
+.RS 4
+Sets the relative (to the size of the object)
+tolerance (floating point value) for tessellation.
+.RE
+.sp
+\fB\-n\fP \fInorm_tol\fP
+.RS 4
+Sets the normal tolerance (floating point value
+0..1) for tessellation. This value is compared to the dot product of
+the normals to determine if the surfaces are within tolerance
+.RE
+.sp
+\fB\-t\fP
+.RS 4
+indicates that an IGES file consisting of only trimmed NURBs
+should be created. The trimmed NURBs will all be planar NURBs, and
+they are the facets derived from the tessellation and Boolean
+evaluation as in the \-f option. The file produced in this way is
+acceptable to the Pro/Engineer IGES import routine.
+.RE
+.sp
+\fB\-m\fP
+.RS 4
+implies the \-t option, and is used to produce multiple IGES
+files (one for each region converted). In this case the argument to
+the \-o option should be a directory where the IGES files will
+accumulate.
+.RE
+.sp
+\fB\-v\fP
+.RS 4
+requests debugging information
+.RE
+.sp
+\fB\-s\fP
+.RS 4
+all facets in BREP objects should be output in the form of
+planar NURBs (Intergraph likes their IGES files this way).
+.RE
+.sp
+\fB\-x\fP \fIflag1\fP
+.RS 4
+set the librt debug flag (see raytrace.h for values)
+.RE
+.sp
+\fB\-X\fP \fIflag2\fP
+.RS 4
+set the librt debug flag (see nmg.h for values)
+.RE
+.sp
+\fB\-o\fP \fIoutput_file_or_directory\fP
+.RS 4
+Specifies the output file (or in
+the case of the \-m) the output directory for the iges file(s).
+.RE
+.sp
+\fB\-P\fP \fInum_cpus\fP
+.RS 4
+Specifies the number of processors to use.
+.RE
+.sp
+If neither the \-f , \-t , nor the \-m options are selected, the default
+is a CSG IGES file. In this situation, all regions will be written to
+the IGES file as Boolean trees with all possible solids represented by
+their IGES CSG equivalent. In cases where there is no IGES CSG
+equivalent, the BRL\-CAD solid is tesellated (using the provided
+tolerances), and a BREP object is written for that solid.
+.SH "EXAMPLE"
+.sp
+.if n .RS 4
+.nf
+g\-iges \-f \-o gsample.iges sample.g object1
+.fi
+.if n .RE
+.sp
+This command will produce an IGES BREP output file, \fIsample.iges\fP,
+from \fIobject1\fP of the BRL\-CAD database file \fIsample.g\fP.
+.SH "SEE ALSO"
+.sp
+\fBiges\-g\fP(1) \fIThe Initial Graphics Exchange
+Specification (IGES) Version 5.1\fP, IGES/PDES Organization, September
+1991
+.SH "DIAGNOSTICS"
+.sp
+Error messages are intended to be self\-explanatory.
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

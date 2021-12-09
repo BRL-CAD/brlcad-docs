@@ -1,0 +1,123 @@
+'\" t
+.\"     Title: center
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "CENTER" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+center \- Positions the center of the mged viewing cube at the specified model coordinates.
+.SH "SYNOPSIS"
+.sp
+\fBcenter\fP [\fIx y z\fP]
+.SH "DESCRIPTION"
+.sp
+Positions the center of the \fImged\fP viewing cube at the specified model
+coordinates. This is accomplished by moving the eye position while not
+changing the viewing direction. (The \fBlookat\fP command performs a
+related function by changing the viewing direction, but not moving the
+eye location.) The coordinates are expected in the current editing
+units. In case the coordinates are the result of evaluating a formula,
+they are echoed back. If no coordinates are provided, the current
+center coordinates (in current editing units, not mm) are printed and
+can be used in subsequent calculations.
+.sp
+It is often convenient to use the center of the view when visually
+selecting key locations in the model for construction or animation
+because of (1) the visible centering dot on the screen, (2) the fact
+that zoom and rotation are performed with respect to the view center,
+(3) the default center\-mouse behavior is to move the indicated point
+to the view center, and (4) the angle/distance cursors are centered by
+default. This command provides the means to set and retrieve those
+values numerically.
+.SH "EXAMPLES"
+.sp
+The examples show the use of the \fBcenter\fP command to print
+coordinates of the center of the mged display, move the center of the
+\fImged\fP display to a given point, set a Tcl variable to the display
+center coordinates, move the center point a given distance in a given
+direction, and update a vertex in the database to be located at the
+current center of view.
+.sp
+.B Example 1. Printing the coordinates of the center of the \fImged\fP display.
+.br
+.RS 4
+.sp
+mged> \f(CRcenter\fP
+.sp
+Prints out the coordinates of the center of the mged display.
+.RE
+.sp
+.B Example 2. Moving the center of the \fImged\fP display to a specified point.
+.br
+.RS 4
+.sp
+mged> \f(CRcenter 12.5 5.6 8.7>\fP
+.sp
+The center of the \fImged\fP display is moved to the point (12.5, 5.6,
+8.7).
+.RE
+.sp
+.B Example 3. Set Tcl variable $oldcent to the display center coordinates.
+.br
+.RS 4
+.sp
+mged> \f(CRset oldcent [center]\fP
+.sp
+Sets the Tcl variable $oldcent to the display center coordinates.
+.RE
+.sp
+.B Example 4. Move the center point a given distance in a given direction.
+.br
+.RS 4
+.sp
+mged> \f(CRset glob_compat_mode 0\fP
+.sp
+mged \f(CRunits mm\fP
+.sp
+mged \f(CReval center [vadd2[center] {2 0 0}]\fP
+.sp
+Moves the center point 2 mm in the model + x direction.
+.RE
+.sp
+.B Example 5. Update the vertex of a shape in the database to be located at the currentview center.
+.br
+.RS 4
+.sp
+mged> \f(CRunits mm\fP
+.sp
+mged \f(CRdb adjust sphere.s  V [center]\fP
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

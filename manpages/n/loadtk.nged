@@ -1,0 +1,64 @@
+'\" t
+.\"     Title: loadtk
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "LOADTK" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+loadtk \- Loads the initialization for the Tk window library.
+.SH "SYNOPSIS"
+.sp
+\fBloadtk\fP
+.SH "DESCRIPTION"
+.sp
+Loads the initialization for the Tk window library. This is normally
+done automatically when the user attaches any display manager for
+MGED. If no display manager is attached, then the user must execute
+\fIloadtk\fP prior to using any Tk facilities.
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBloadtk\fP command to load the
+initialization for the Tk window library.
+.sp
+.B Example 1. Load the initialization of the Tk library.
+.br
+.RS 4
+.sp
+mged> \f(CRloadtk\fP
+.sp
+Initializes the Tk window library.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

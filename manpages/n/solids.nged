@@ -1,0 +1,72 @@
+'\" t
+.\"     Title: solids
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "SOLIDS" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+solids \- Lists a summary of all the primitive shapes used in regions referenced by the list of objects.
+.SH "SYNOPSIS"
+.sp
+\fBsolids\fP {\fIfile\fP} {\fIobjects\fP}
+.SH "DESCRIPTION"
+.sp
+Lists a summary of all the primitive shapes used in regions referenced
+by the list of \fIobjects\fP. The summary is written to the specified
+\fIfile\fP. The summary is similar to that produced by the \fBregions\fP
+command, but with the addition of primitive shape parameters. The
+shape parameters listed will have the accumulated transformation
+matrices along the path from the listed \fIobjects\fP to the primitive
+shape applied (as would be listed by the \fBlisteval\fP command). The
+\fBshowmats\fP command may be used to see the actual transformation
+matrices.
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBsolids\fP command to list a
+summary of all the primitive shapes used in regions referenced by a
+list of objects.
+.sp
+.B Example 1. List a summary of all the regions in a group.
+.br
+.RS 4
+.sp
+mged> \f(CRsolids shapes_summary group1 regiona\fP
+.sp
+Writes a summary of all the regions in \fIgroup1\fP and includes the
+region named \fIregiona\fP. The summary includes detailed shape parameters
+for the shapes used in the regions.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

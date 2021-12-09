@@ -1,0 +1,73 @@
+'\" t
+.\"     Title: pixrect
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "PIXRECT" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+pixrect \- extract a rectangle from a color pix file
+.SH "SYNOPSIS"
+.sp
+\fBpixrect\fP [\-s \fIsquaresize\fP] [\-w \fIwidth\fP] [\-n \fIheight\fP] [\-S \fIout_squaresize\fP] [\-W \fIout_width\fP] [\-N \fIout_height\fP] [\-x \fIxorig\fP] [\-y \fIyorig\fP] [\-o \fIout_file.pix\fP] \fIfile.pix\fP > [\fIout_file.pix\fP]
+.SH "DESCRIPTION"
+.sp
+\fBpixrect\fP extracts a rectangular region from a colored
+\fBpix\fP(5) format file. The default input image
+size is 512x512. The x,y coordinates of the origin (the default
+xorig=0, yorig=0 corresponds to the lower left corner) are passed as
+command line arguments.
+.sp
+The \fB\-w\fP \fIfile_width\fP flag specifies the width of each
+scanline in the input file, in pixels. \fB\-W\fP \fIscr_width\fP does
+the same for the display device.
+.sp
+The \fB\-n\fP \fIfile_height\fP and \fB\-N\fP \fIscr_height\fP flags
+specifies the height in scanlines of the input file or display device
+respectively.
+.sp
+\fB\-s\fP \fIsquarefilesize\fP and \fB\-S\fP \fIsquarescrsize\fP set
+both the height and width to the size given (for input file and
+display device respectively).
+.sp
+\fB\-o\fP \fIout_file.pix\fP is a way of specifying output file name.
+.sp
+This utility supports redirected input/output images.
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1),
+\fBbwrect\fP(1), \fBpix\fP(5),
+\fBbw\fP(5)
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

@@ -1,0 +1,66 @@
+'\" t
+.\"     Title: pixhist3d-plot3
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "PIXHIST3D\-PLOT3" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+pixhist3d\-plot3 \- output RGB color space utilization in 3D unix\-plot form
+.SH "SYNOPSIS"
+.sp
+\fBpixhist3d\-plot3\fP [\fIfile.pix\fP] | \fIplot\fP
+.SH "DESCRIPTION"
+.sp
+\fBpixhist3d\-plot3\fP takes a color \fBpix\fP(5) format
+file and outputs points for each RGB color occurring in the image. The
+format of these points is the BRL extended three dimensional UNIX plot
+(see \fBlibplot3\fP(3)). A red, green, and blue
+line is drawn along the edges of the color space indicating the
+coordinate axis.  The resolution of the color space is 128x128x128,
+i.e. the least significant bit of each color plane is ignored.
+.sp
+These plots are best viewed on an interactive 3D UNIX plot display
+program, so that the color cube can be viewed from all
+angles. Anomalies in the colors of an image can often be seen,
+e.g. oversaturation resulting in intensity clipping.
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1),
+\fBpixhist3d\fP(1),
+\fBpixhist\fP(1),
+\fBlibplot3\fP(3),
+\fBplot3\-fb\fP(1), \fBpix\fP(5)
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

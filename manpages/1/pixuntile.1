@@ -1,0 +1,85 @@
+'\" t
+.\"     Title: pixuntile
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "PIXUNTILE" "1" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+pixuntile \- break image up into separate files
+.SH "SYNOPSIS"
+.sp
+\fBpixuntile\fP [\-s \fIsquareinsize\fP] [\-w \fIin_width\fP] [\-n \fIin_height\fP] [\-S \fIsquareoutsize\fP] [\-W \fIout_width\fP] [\-N \fIout_height\fP] [\-o \fIstartframe\fP] \fIbasename\fP < \fIfile.pix\fP
+.sp
+\fBpixuntile\fP [\-s \fIsquareinsize\fP] [\-w \fIin_width\fP] [\-n \fIin_height\fP] [\-S \fIsquareoutsize\fP] [\-W \fIout_width\fP] [\-N \fIout_height\fP] \fIfile1\fP \fIfile2\fP ... \fIfileN\fP < \fIfile.pix\fP
+.SH "DESCRIPTION"
+.sp
+\fBpixuntile\fP performs the inverse operation of
+\fBpixtile\fP(1). It takes a large image composed
+of a collection of small images and places each of them in a separate
+file. The input and output files are assumed to be in
+\fBpix\fP(5) format. By default, the input file is
+assumed to be 512x512 pixels in size.
+.sp
+The output files have a default width of 64 pixels and are usually
+square, i.e. have the same height as width. Specifying the \fB\-S\fP
+flag changes the default size to \fIsquareoutsize\fP pixels in width and
+height. (The \fB\-W\fP and \fB\-N\fP flags are used for width and
+height, respectively.  For the input file, these functions are
+available through the \fB\-s\fP, \fB\-w\fP, and \fB\-n\fP flags.)
+.sp
+The files being produced as output will have names of the form
+\fIbasename.num\fP, where \fIbasename\fP is given on the command line, and
+\fInum\fP is a consecutive series of integers.  By default the first image
+is assumed to be number " 0 ", but an alternate \fIstartframe\fP can be
+given by using the \fB\-o\fP \fIstartframe\fP flag and specifying the
+starting output frame number, where \fIstartframe\fP is substituted for
+\fInum\fP in \fIbasename.num\fP.
+.sp
+Alternatively, if more than one \fIbasename\fP (filename) argument is
+supplied on the command line, the names of the files are used as the
+output file names.
+.SH "EXAMPLE"
+.sp
+\f(CRpixuntile \-s 1024 \-S 128 out < in.pix\fP
+.sp
+will read the 1024x1024 file \fIin.pix\fP and place the 128x128 chunks of
+that file from lower left to upper right in the files \fIout.0\fP through
+\fIout.63\fP.
+.SH "SEE ALSO"
+.sp
+\fBpixtile\fP(1),
+\fBbrlcad\fP(1), \fBpix\fP(5)
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

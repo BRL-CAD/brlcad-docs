@@ -1,0 +1,86 @@
+'\" t
+.\"     Title: dbclean
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "DBCLEAN" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+dbclean \- a shell script for compacting mged databases.
+.SH "SYNOPSIS"
+.sp
+\fBdbclean\fP \fIin_model.g\fP \fIout_model.g\fP
+.SH "DESCRIPTION"
+.sp
+\fBdbclean\fP operates on the indicated input database \fIin_model.g\fP
+and produces a compacter version of the same as \fIout_model.g\fP.
+.sp
+The objective is to remove "holes" in the original database which
+resulted from use of the \fIkill\fP/\fIkillall\fP commands in
+\fBmged\fP(1). Note that when a database is
+compacted in this manner, the compacting is dependent on the
+successful completion of the converters
+\fBg2asc\fP(1) and
+\fBasc2g\fP(1). The compacting will only be aborted
+if one of the conversions fails.  Thus, when either converter "skips"
+solids, \fBdbclean\fP will continue, and \fIout_model.g\fP will be
+written, albeit without the skipped solids.  This will also result in
+a smaller database.
+.SH "EXAMPLE"
+.sp
+This section will acquaint the user with the ordinary usage of
+\fBdbclean\fP.
+.sp
+.if n .RS 4
+.nf
+dbclean in_model.g out_model.g
+.fi
+.if n .RE
+.sp
+This will result in a compacted version of the input.
+.SH "SEE ALSO"
+.sp
+\fBmged\fP(1)
+.SH "DIAGNOSTICS"
+.sp
+Numerous error conditions are possible, usually due to errors in the
+geometry database. Descriptive messages are printed on standard error
+(file descriptor 2).
+.SH "BUGS"
+.sp
+Most deficiencies observed while using the \fBdbclean\fP program are
+usually with the \fBg2asc\fP(1) and
+\fBasc2g\fP(1) packages instead.
+.SH "AUTHOR"
+.sp
+\fIBRL\-CAD Team\fP
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

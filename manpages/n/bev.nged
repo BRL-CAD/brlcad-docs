@@ -1,0 +1,73 @@
+'\" t
+.\"     Title: bev
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "BEV" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+bev \- Performs the operations indicated in the Boolean_formula and stores the result in new_obj.
+.SH "SYNOPSIS"
+.sp
+\fBbev\fP [\-t] [\-P#] {\fInew_obj\fP} {\fIBoolean_formula\fP}
+.SH "DESCRIPTION"
+.sp
+Performs the operations indicated in the \fIBoolean_formula\fP and stores
+the result in \fInew_obj\fP. The \fInew_obj\fP will be stored as an NMG shape
+(it may be converted to a polysolid by using the \fBnmg_simplify\fP
+command). If the \-t option is specified, then the resulting object
+will consist entirely of triangular facets. The default is to allow
+facets of any complexity, including holes. The \fI\-P\fP option specifies
+the number of CPUs to use for the calculation (however, this is
+currently ignored). Only simple \fIBoolean_formulas\fP are allowed. No
+parentheses are allowed and the operations are performed from left to
+right with no precedence. More complex expressions must be expressed
+as BRL\-CAD objects using the \fBr\fP, \fBg\fP, or \fBc\fP commands
+and evaluated using the \fBfacetize\fP or \fBev\fP commands.
+.SH "EXAMPLES"
+.sp
+The example demonstrates the use of the \fBbev\fP command with the
+\fI\-t\fP option to create a triangulated object.
+.sp
+.B Example 1. Creating a triangulated object by intersecting two objects
+.br
+.RS 4
+.sp
+mged> \f(CRbev \-t triangulated_lens sphere1 + sphere2\fP
+.sp
+Creates a triangulated object by intersecting objects \fIsphere1\fP and
+\fIsphere2\fP
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

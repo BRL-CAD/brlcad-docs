@@ -1,0 +1,167 @@
+'\" t
+.\"     Title: make_pnts
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "MAKE_PNTS" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+make_pnts \- Creates a "pnts" (i.e. point cloud) primitive by importing coordinate data (in ascii format) from a file.
+.SH "SYNOPSIS"
+.sp
+\fBmake_pnts\fP {\fIObjectName\fP} {\fIFileName\fP} {\fIFileDataFormat\fP} {[\fIUnits\fP | \fIConversionFactor\fP]} {\fIDefaultPointSize\fP}
+.SH "DESCRIPTION"
+.sp
+Creates a "pnts" primitive by importing, from a file, coordinate data
+and optionally color, normal or point\-size data. Data must be in text
+(i.e. ascii) format but the data file does not need to contain only
+text. Any byte value in the data file not representing one of the
+ascii characters "0123456789.+\-eE" will be considered a
+delimiter. This includes carriage\-returns, line\-feeds, commas, spaces
+and non\-printable characters. Consecutive delimiters are treated as
+one delimiter. Text files can be used from Windows or Unix systems
+without conversion. Numerical values can be listed in any order but
+ordering must be consistent. Numerical values can optionally be
+ignored.
+.SH "OPTIONS"
+.sp
+\fBObjectName\fP
+.RS 4
+Name of the \(aqpnts\(aq primitive to be created.
+.RE
+.sp
+\fBFileName\fP
+.RS 4
+The path and filename of the data file.
+.RE
+.sp
+\fBFileDataFormat {xyz}[rgb][s][ijk][?]\fP
+.RS 4
+The file data format
+represents the order of numerical data within the data file. The "xyz"
+represent the x, y, z coordinates of a point. The "rgb" represents the
+color of a point in (red, green, blue) format. Color values must be in
+the range (0\-255). The "ijk" represents the x, y, z values of a
+point\-normal. The "s" represents the size of the point. The "?"
+indicates the numerical value is ignored. The file data format can
+contain any ordering of characters "xyzrgbsijk?". The format must
+always contain "xyz". Although any ordering is allowed, sets of
+characters must be used. The optional sets are "rgb" and "ijk". If any
+character from a set is used, then all characters from the set must be
+used.
+.RE
+.sp
+\fBUnits\fP
+.RS 4
+If a numerical value is specified for this parameter, it is
+assumed to be a conversion factor from the units of the point data to
+millimeters. Any non\-numerical value will be assumed to be a standard
+BRL\-CAD unit string, such as one of the following "um, mm, cm, m, km,
+in, ft, yd, mi".
+.RE
+.sp
+\fBDefaultPointSize\fP
+.RS 4
+The default point size. This is used if the point
+size is not included in the data file.
+.RE
+.SH "EXAMPLES"
+.sp
+.B Example 1. Create basic point cloud
+.br
+.RS 4
+.sp
+mged> \f(CRmake_pnts cloud1.s /home/user/cloud1_data.txt xyz mm 1.0\fP
+.sp
+Creates a "pnts" primitive named "cloud1.s" using the data file
+"/home/user/cloud1_data.txt" where the data file only contains the
+point coordinates listed in the order "xyz". The units of the file
+data is "mm" and the default point size is set to "1.0".
+.RE
+.sp
+.B Example 2. Create basic point cloud from data file with reversed coordinate ordering
+.br
+.RS 4
+.sp
+mged> \f(CRmake_pnts cloud1.s /home/user/cloud1_data.txt zyx in 1.0\fP
+.sp
+Creates a "pnts" primitive named "cloud1.s" using the data file
+"/home/user/cloud1_data.txt" where the data file only contains the
+point coordinates listed in the order "zyx". The units of the file
+data is "in" and the default point size is set to "1.0".
+.RE
+.sp
+.B Example 3. Create point cloud with color
+.br
+.RS 4
+.sp
+mged> \f(CRmake_pnts cloud1.s /home/user/cloud1_data.txt xyzrgb 2 1.0\fP
+.sp
+Creates a "pnts" primitive named "cloud1.s" using the data file
+"/home/user/cloud1_data.txt" which contains point and point\-color
+data. The data for each point in the file is ordered as "xyz" followed
+by "rgb". An arbitrary conversion factor of "2" is used and the
+default point size is set to "1.0".
+.RE
+.sp
+.B Example 4. Create point cloud with color and normals
+.br
+.RS 4
+.sp
+mged> \f(CRmake_pnts cloud1.s /home/user/cloud1_data.txt xyzrgbijk m 1.0\fP
+.sp
+Creates a "pnts" primitive named "cloud1.s" using the data file
+"/home/user/cloud1_data.txt" which contains point, point\-color and
+point\-normal data. The data for each point in the file is ordered as
+"xyz" followed by "rgb" then "ijk". The units of the file data is "m"
+and the default point size is set to "1.0".
+.RE
+.sp
+.B Example 5. Create point cloud with only normals from data file containing normals and colors
+.br
+.RS 4
+.sp
+mged> \f(CRmake_pnts cloud1.s /home/user/cloud1_data.txt xyz???ijk cm 1.0\fP
+.sp
+Creates a "pnts" primitive named "cloud1.s" using the data file
+"/home/user/cloud1_data.txt" which contains point, point\-color and
+point\-normal data. In this case we want to ignore the point\-color
+data. The data for each point in the file is ordered as "xyz" followed
+by "rgb" then "ijk". In the file data format we use "xyz???ijk" to
+indicate we want to ignore the three numerical values following the
+point coordinates and then use the point\-normal data. The units of the
+file data is "cm" and the default point size is set to "1.0".
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

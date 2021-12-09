@@ -1,0 +1,114 @@
+'\" t
+.\"     Title: g-ply
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "G\-PLY" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+g\-ply \- Stanford PLY exporter (BRL\-CAD to PLY)
+.SH "SYNOPSIS"
+.sp
+\fBg\-ply\fP [\-v] [\-xX \fIlvl\fP] [\-a \fIabs_tess_tol\fP] [\-r \fIrel_tess_tol\fP] [\-n \fInorm_tess_tol\fP] [\-t \fItype\fP] [\-s] [\-D \fIdist_calc_tol\fP] \-o \fIoutput_file_name\fP \fIdatabase.g\fP \fIobject(s)\fP...
+.SH "DESCRIPTION"
+.sp
+\fBg\-ply\fP converts the specified \fIobject(s)\fP from a BRL\-CAD
+\fIdatabase.g\fP file to the \fIStanfort PLY\fP file format.
+.sp
+The following options are recognized.
+.sp
+\fB\-o filename\fP
+.RS 4
+Specify output file name.
+.RE
+.sp
+\fB\-s\fP
+.RS 4
+Write out one object per file, instead of merging individual
+objects into a single ply file.
+.RE
+.sp
+\fB\-t\fP type (asc: ascii), (le: little endian), (be: big endian)
+.RS 4
+Specify the type of PLY file to write.
+.RE
+.sp
+\fB\-D#\fP
+.RS 4
+Specify a calculational distance tolerance (mm). Any two
+vertices that are less than this distance apart will be treated as the
+same vertex.
+.RE
+.sp
+\fB\-a#\fP
+.RS 4
+Specify the absolute tesselation tolerance.
+.RE
+.sp
+\fB\-r#\fP
+.RS 4
+Specify the relative tesselation tolerance.
+.RE
+.sp
+\fB\-n#\fP
+.RS 4
+Specify the surface\-normal tesselation tolerance.
+.RE
+.sp
+\fB\-x#\fP
+.RS 4
+Specify an RT debug flag.
+.RE
+.sp
+\fB\-X#\fP
+.RS 4
+Specify an NMG debug flag.
+.RE
+.sp
+\fB\-v\fP
+.RS 4
+Enable verbose output.
+.RE
+.SH "EXAMPLE"
+.sp
+.if n .RS 4
+.nf
+$ g\-ply \-o sample.ply sample.g sample_object
+.fi
+.if n .RE
+.SH "DIAGNOSTICS"
+.sp
+Error messages are intended to be self\-explanatory.
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

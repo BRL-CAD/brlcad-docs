@@ -1,0 +1,63 @@
+'\" t
+.\"     Title: decimate
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "DECIMATE" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+decimate \- Reduce image or data file of MxN tuples to one of size IxJ
+.SH "SYNOPSIS"
+.sp
+\fBdecimate\fP \fInbytes/pixel\fP \fIwidth\fP \fIheight\fP [\fIoutwidth\fP \fIoutheight\fP]
+.SH "DESCRIPTION"
+.sp
+\fBdecimate\fP reads a file of \fIwidth\fP by \fIheight\fP data items (each
+of which may be of arbitrary size as given by \fInbytes/pixel\fP ), and
+discards enough of them to result in an output file of \fIoutwidth\fP by
+\fIoutheight\fP items, both of which default to 512. If the input image
+size is not an integer multiple of the output image size, then the
+decimated result will be padded with zero elements (pixels) on the
+right and top to achieve an output image of exactly the specified
+size.
+.sp
+To process a \fBbw\fP(5) format file, use a value of 1
+for \fInbytes/pixel\fP. To process a \fBpix\fP(5) format
+file, use a value of 3 for \fInbytes/pixel\fP.
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1), \fBpix\fP(5),
+\fBbw\fP(5)
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

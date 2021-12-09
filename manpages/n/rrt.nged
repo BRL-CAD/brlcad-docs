@@ -1,0 +1,79 @@
+'\" t
+.\"     Title: rrt
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "RRT" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+rrt \- Executes the specified program with the provided options and includes the current database name and the list of currently displayed objects on the command line.
+.SH "SYNOPSIS"
+.sp
+\fBrrt\fP {\fIprogram\fP} [\fIoptions\fP]
+.SH "DESCRIPTION"
+.sp
+Executes the specified \fIprogram\fP with the provided \fIoptions\fP and
+includes the current database name and the list of currently displayed
+objects on the command line. This command effectively executes:
+.sp
+\fIprogram options database_name objects.\fP
+.sp
+The \fBrrt\fP command also provides the current MGED viewing
+parameters to the \fIprogram\fP on standard input.  Many BRL\-CAD programs
+use the \fI\-M\fP option to indicate that viewing parameters will be
+provided on standard input. The \fBrt\fP command can be simulated
+with \fBrrt\fP as:
+.sp
+\fIrrt /usr/brlcad/bin/rt \-M \-s50\fP
+.sp
+provided that perspective is not currently being used. Any executable
+routine may be run using \fBrrt\fP; however, it will always be run
+with the provided options followed by the current database name and
+the list of currently displayed objects.
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBrrt\fP command to execute the
+specified program and list the current database name and currently
+displayed objects.
+.sp
+.B Example 1. Execute a specified program and list the current database name and currently displayed objects.
+.br
+.RS 4
+.sp
+mged> \f(CRrrt echo\fP
+.sp
+Lists the current database name and currently displayed objects.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

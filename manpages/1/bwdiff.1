@@ -1,0 +1,95 @@
+'\" t
+.\"     Title: bwdiff
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "BWDIFF" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+bwdiff \- compare two black and white files
+.SH "SYNOPSIS"
+.sp
+\fBbwdiff\fP [ \- [\fImglen\fP]] [\-b] \fIfile1\fP \fIfile2\fP
+.SH "DESCRIPTION"
+.sp
+\fBbwdiff\fP compares two black and white \fBbw\fP(5)
+format files in one of several ways, and writes the results on
+standard out. The default method of comparison is to record the
+differences as offsets from neutral, half\-intensity grey (128). The
+value written will be brighter than this neutral grey by an amount
+proportional to the signed difference between the pixels in \fIfile1\fP
+and \fIfile2\fP. That is, pixels which are brighter in \fIfile1\fP than in
+\fIfile2\fP will be brighter than the neutral grey, while pixels which are
+dimmer in \fIfile1\fP than in \fIfile2\fP will be dimmer. This difference is
+divided by two so that the results will fit in the 0\(->255 output
+range.
+.sp
+The \fB\-m\fP flag takes the magnitude of the difference, thus no
+offset or divide is necessary.  Brighter pixels indicate larger
+differences in value.  Black indicates no difference in value.
+.sp
+The flags \fB\-g \-l \-e\fP and \fB\-n\fP are relational operations,
+standing for greater\-than, less\-than, equal\-to, and not\-equal\-to
+respectively.  Only one of these flags may be used at a time.  In this
+mode the value of a pixel in the first file is compared to the
+corresponding pixel in the second, and if the relation is true, a
+full\-white (255) pixel is output. This mode is useful for producing
+masks showing pixels which satisfy the given condition. The default
+background is black, unless the \fB\-b\fP option is specified, is
+which case the background is \fIfile1\fP, with a lowered intensity.
+.sp
+\fBbwdiff\fP accepts \fB\-\fP as a synonym for stdin, and \fB.\fP as a
+synonym for /dev/null.
+.sp
+Note that this program also produces useful results on color
+\fBpix\fP(5) files.
+.SH "EXAMPLE"
+.sp
+Suppose you ran \fBpixstat\fP(1) on a file and
+found the modes to be red=107, green=93, blue=70. You could display
+those pixels whose colors are at these values by:
+.sp
+.if n .RS 4
+.nf
+gencolor 107 93 70 | bwdiff \-e _file.pix_ \- | pix\-fb
+.fi
+.if n .RE
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1),
+\fBpixdiff\fP(1),
+\fBbwstat\fP(1), \fBbw\fP(5),
+\fBpix\fP(5)
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

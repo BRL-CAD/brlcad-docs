@@ -1,0 +1,68 @@
+'\" t
+.\"     Title: dsp
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "DSP" "5" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+dsp \- DSP binary file format
+.SH "FORMAT"
+.sp
+A \fIdsp\fP (displacement map) file contains sequences of cells (points)
+comprising a rectangular grid of network unsigned short ints defined
+in the X\-Y plane with each cell\(cqs value defining the cell\(cqs height
+above Z = 0. Each cell value ranges from 0 to 65535.  The first cell
+in a \fIdsp\fP file is the lower left corner of the grid of cells.  The
+cells proceed from left to right across each row, with rows being
+written from the bottom to the top of the grid. Grid dimensions are
+width (number of cells in the X direction) and length (number of cells
+in the Y direction).
+.sp
+\fIDsp\fP grids are rectangular but the dimensions cannot be determined by
+the file size.  A common practice is to include grid dimensions in the
+filename (e.g., dsp\-1\-20W30L.dsp).
+.sp
+At some time in the future \fIdsp\fP files may get self\-typing headers so
+that parameters such as their dimensions can be automatically
+determined by using programs.
+.SH "FILES"
+.sp
+file.dsp
+.SH "SEE ALSO"
+.sp
+\fBasc2dsp\fP(1), \fBpix\fP(5),
+and above named programs.
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

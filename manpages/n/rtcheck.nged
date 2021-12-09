@@ -1,0 +1,85 @@
+'\" t
+.\"     Title: rtcheck
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "RTCHECK" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+rtcheck \- Executes the BRL\-CAD rtcheck program with the default options of "\-s50 M".
+.SH "SYNOPSIS"
+.sp
+\fBrtcheck\fP [\fIoptions\fP]
+.SH "DESCRIPTION"
+.sp
+Executes the BRL\-CAD \fIrtcheck\fP program with the default options of
+"\-s50 M". The \-M option tells \fIrtcheck\fP to read the viewing parameters
+from standard input so that rays are only fired from the current
+view. The current database name and the list of currently displayed
+objects are added to the end of the \fIrtcheck\fP command line. The
+\fIrtcheck\fP program is written such that options may be repeated, and
+the last occurrence of an option will override any earlier
+occurrences.  This allows the user to specify other \fIsize (\-s)\fP
+options. The \fBrrt\fP command performs a similar function, but may
+be used to execute other programs as well. The \fIrtcheck\fP program uses
+raytracing to check for overlapping regions in the list of objects
+passed on the command line. When invoked from within MGED, any
+discovered overlaps along a ray are represented as yellow lines that
+extend only in the areas of overlap. Details and a count of overlaps
+are also reported. Note that overlaps of less than 0.1 mm are
+currently ignored by \fIrtcheck\fP. The default option of \fI\-s50\fP indicates
+that the checking rays should be fired from a uniform square grid with
+50 rays on a side. This is very coarse and may miss significant
+overlaps. It is recommended that the user select appropriate options
+for the \fIrtcheck\fP program and execute it for a variety viewing aspects
+to perform a thorough check. The granularity of the grid may be
+controlled with the \fI\-s, \-w, \-n, \-g,\fP and \fI\-G\fP options. See the \fIman\fP
+page on \fIrtcheck\fP for details.
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBrtcheck\fP command to run the
+\fIrtcheck\fP program with rays fired from a uniform grid with the rays
+spaced every 10 mm.
+.sp
+.B Example 1. Run the \fIrtcheck\fP program to fire rays from a uniform grid with the rays spaced a specified distance apart.
+.br
+.RS 4
+.sp
+mged> \f(CRrtcheck \-g10 \-G10\fP
+.sp
+Runs the \fIrtcheck\fP program with rays fired from a uniform grid with
+the rays spaced every 10 mm.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

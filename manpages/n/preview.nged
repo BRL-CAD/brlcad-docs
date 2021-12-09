@@ -1,0 +1,69 @@
+'\" t
+.\"     Title: preview
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "PREVIEW" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+preview \- Allows the user to preview animation scripts in MGED.
+.SH "SYNOPSIS"
+.sp
+\fBpreview\fP [\-v] [\-d \fIdelay\fP] [\-D \fIstart_frame_number\fP] [K \fIend_frame_number\fP] {\fIrt_script_file\fP}
+.SH "DESCRIPTION"
+.sp
+Allows the user to \fIpreview\fP animation scripts in MGED. The \fI\-d\fP
+option provides a delay in seconds to be applied between each frame
+(the default is no delay). The \fI\-D\fP option allows the user to specify
+a starting frame number, and the \fI\-K\fP option allows the specification
+of an ending frame number. The \fI\-v\fP flag indicates that the objects
+displayed in the MGED graphics window should be displayed in
+"evaluated" mode, as would be the result of the \fBev\fP
+command. Note that this may significantly slow the \fIpreview\fP.
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBpreview\fP command to preview
+specified frames of an animation script.
+.sp
+.B Example 1. Preview an animation script.
+.br
+.RS 4
+.sp
+mged> \f(CRpreview \-D 101 \-K 237 script.rt\fP
+.sp
+Displays the animation script stored in the file named \fIscript.rt\fP
+from frame number 101 through frame number 237.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

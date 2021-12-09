@@ -1,0 +1,72 @@
+'\" t
+.\"     Title: enf-g
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "ENF\-G" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+enf\-g \- Elysium Neutral Format Translator (ENF to BRL\-CAD)
+.SH "SYNOPSIS"
+.sp
+\fBenf\-g\fP [\-t \fItolerance\fP] [\-i \fIstarting_ident_number\fP] [\-l \fIname_length_limit\fP] [\-n \fIpart_number_to_name_mapping\fP] [\-v] \fIinput_enf_facet_file\fP \fIdatabase.g\fP
+.SH "DESCRIPTION"
+.sp
+\fBenf\-g\fP converts the specified \fIinput_enf_facet_file\fP to a
+BRL\-CAD \fIdatabase.g\fP file. This input file is expected to be the ASCII
+output from the Elysium enf2mxp tessellator. The \fItolerance\fP provided
+is the maximum distance (in mm) between two vertices at which they
+will be considered to be the same vertex. The \fIstarting_ident_number\fP
+is the ident number to use for the first region created, each
+succeeding region will have their ident numbers incremented by one. If
+a \fIname_length_limit\fP is provided, then the resulting names in the
+BRL\-CAD model will not be longer than that limit. If a
+\fIpart_number_to_name_mapping\fP file is provided, then that file will be
+read and used to convert part numbers in the \fIinput_enf_facet_file\fP to
+the corresponding names in the mapping, and is expected to consist of
+a series of lines of text with each line having a part number and a
+legal BRL\-CAD object name separated by a tab. (\fI\-v\fP option is provided
+for verbose mode.)
+.SH "EXAMPLE"
+.sp
+.if n .RS 4
+.nf
+$ enf\-g sample.enf sample.g
+.fi
+.if n .RE
+.SH "DIAGNOSTICS"
+.sp
+Error messages are intended to be self\-explanatory.
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

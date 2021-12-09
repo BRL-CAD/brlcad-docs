@@ -1,0 +1,227 @@
+'\" t
+.\"     Title: ls
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "LS" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+ls \- The command with no object argument lists the name of every object in the database (in alphabetical order) except for those marked as hidden with the hide command.  If the object argument is supplied, only those objects are listed.
+.SH "SYNOPSIS"
+.sp
+\fBls\fP [\-A \-o \-a \-c \-r \-s \-p \-l \-q \-H \-S] [\fIobjects\fP]
+.SH "DESCRIPTION"
+.sp
+The command with no \fIobject\fP argument lists the name of every object
+in the database (in alphabetical order) except for those marked as
+hidden with the \fBhide\fP command.  If the \fIobject\fP argument is
+supplied, only those \fIobjects\fP are listed.  The \fIobject\fP argument may
+include regular expressions. If the \fI\-A\fP option is used, then the
+arguments are expected to be a list of attribute name/value pairs, and
+objects having attributes that match the provided list are listed. By
+default, an object must match all the specified attributes in order to
+be listed; however, the \fI\-o\fP flag indicates that an object matching at
+least one attribute name/value pair should be listed. See the
+\fBattr\fP command for information on how to set or get
+attributes. Regular expressions are not supported for attributes. The
+following options are also allowed:
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+a \(em List all objects in the database.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+c \(em List all non\-hidden combinations in the database.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+r \(em List all non\-hidden regions in the database.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+s \(em List all non\-hidden primitives in the database.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+p \(em List all non\-hidden primitives in the database.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+l \(em Use long format showing object name, object type, major type,
+minor type, and length.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+H \(em When printing using long format, use human readable sizes for
+object size.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+S \(em Sort using object size rather than object name.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+q \(em Suppress informational output messages during database lookup
+process
+.RE
+.sp
+The \fBls\fP command is a synonym for the \fBt\fP command.  Note
+that when any of the above options are used, the output is not
+formatted.
+.SH "EXAMPLES"
+.sp
+The examples show the use of the \fBls\fP command and its options to
+list objects, primitives, regions, or combinations having a specific
+object.
+.sp
+.B Example 1. List all objects beginning with a particular name.
+.br
+.RS 4
+.sp
+mged> \f(CRls shape*\fP
+.sp
+Lists all objects with names beginning with "shape" (output is
+formatted).
+.RE
+.sp
+.B Example 2. List all objects beginning with a particular name.
+.br
+.RS 4
+.sp
+mged> \f(CRls \-a shape*\fP
+.sp
+Lists all objects with names beginning with "shape".
+.RE
+.sp
+.B Example 3. List all primitives beginning with a particular name.
+.br
+.RS 4
+.sp
+mged> \f(CRls \-p wheel*\fP
+.sp
+Lists all primitives with names beginning with "wheel".
+.RE
+.sp
+.B Example 4. List all regions beginning with a particular name.
+.br
+.RS 4
+.sp
+mged> \f(CRls \-r wheel*\fP
+.sp
+Lists all regions with names beginning with "wheel".
+.RE
+.sp
+.B Example 5. List all combinations beginning with a particular name.
+.br
+.RS 4
+.sp
+mged> \f(CRls \-c suspension*\fP
+.sp
+Lists all combinations with names beginning with "suspension".
+.RE
+.sp
+.B Example 6. List all regions having particular attributes.
+.br
+.RS 4
+.sp
+mged> \f(CRls \-A \-o \-r Comment{First comment} Comment{Second comment}\fP
+.sp
+Lists all regions that have a "Comment" attribute that is set to
+either "First comment" or "Second comment".
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

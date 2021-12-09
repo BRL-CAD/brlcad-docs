@@ -1,0 +1,64 @@
+'\" t
+.\"     Title: mv
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "MV" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+mv \- Changes the name of old_name to new_name.
+.SH "SYNOPSIS"
+.sp
+\fBmv\fP {\fIold_name new_name\fP}
+.SH "DESCRIPTION"
+.sp
+Changes the name of \fIold_name\fP to \fInew_name\fP. Note that this does not
+change any references to \fIold_name\fP that may appear in other
+combinations in the database. The \fBmvall\fP command will change an
+object\(cqs name everywhere.
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBmv\fP command to change an
+object\(cqs \fIold_name\fP to a \fInew_name\fP.
+.sp
+.B Example 1. Change an object\(cqs name.
+.br
+.RS 4
+.sp
+mged> \f(CRmv shapea shapeb\fP
+.sp
+Changes the name of \fIshapea\fP to \fIshapeb\fP.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

@@ -1,0 +1,172 @@
+'\" t
+.\"     Title: icv
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "ICV" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+icv \- Convert images to and from various formats
+.SH "SYNOPSIS"
+.sp
+\fBicv\fP [\-h] [\-i \fIfile\fP] [\-\-input\-format \fIfmt\fP] [\-o \fIfile\fP] [\-\-output\-format \fIfmt\fP] [\-w \fIwidth\fP] [\fIinput_file\fP] [\fIoutput_file\fP]
+.SH "DESCRIPTION"
+.sp
+\fBicv\fP is a tool to convert images to and from a variety of image
+formats.  Currently support formats include:
+.sp
+.it 1 an-trap
+.nr an-no-space-flag 1
+.nr an-break-flag 1
+.br
+.B Table 1. Supported ICV Image Formats
+.TS
+allbox tab(:);
+lt lt.
+T{
+.sp
+Format
+T}:T{
+.sp
+Extension
+T}
+T{
+.sp
+PIX \- pixel sequence of R/G/B values stored as unsigned chars.
+T}:T{
+.sp
+pix
+T}
+T{
+.sp
+Double PIX \- double precision pixel sequence
+T}:T{
+.sp
+dpix
+T}
+T{
+.sp
+Portable Network Graphics
+T}:T{
+.sp
+png
+T}
+T{
+.sp
+PPM \- "lowest common denominator" Netbpm color iamge format
+T}:T{
+.sp
+ppm
+T}
+T{
+.sp
+BW \- black and white image data
+T}:T{
+.sp
+bw
+T}
+T{
+.sp
+(TODO) Utah Raster Toolkit Run\-Length Encoded (RLE)
+T}:T{
+.sp
+rle
+T}
+.TE
+.sp
+.SH "OPTIONS"
+.sp
+File types will be deduced unless explicitly specfied with the
+\fBinput\-format\fP and/or \fBoutput\-format\fP options.  For file
+types like PIX that do not encode dimensional information, \fBicv\fP
+will attempt to guess the image size based on various assumptions (a
+square image, known sizes for image displays, paper sizes at various
+dots\-per\-inch, etc.).  If the users does know the correct image width
+and height, they may be specified with the \fBw\fP and \fBn\fP
+options.
+.sp
+\fB\-h\fP, \fB\-\-help\fP
+.RS 4
+Print help and exit.
+.RE
+.sp
+\fB\-i\fP \fIfile\fP, \fB\-\-input\fP \fIfile\fP
+.RS 4
+Specify an input file.  If none is
+specified, the first non\-option\-related argument will be used as the
+input file name.
+.RE
+.sp
+\fB\-o\fP \fIfile\fP, \fB\-\-output\fP \fIfile\fP
+.RS 4
+Specify an input file.  If none is
+specified, the second non\-option\-related argument will be used as the
+output file name.
+.RE
+.sp
+\fB\-w\fP \fI\fP, \fB\-\-width\fP \fI\fP
+.RS 4
+Specify the width of the input image.
+Useful for file types such as PIX that do not encode explicit size
+information.
+.RE
+.sp
+\fB\-n\fP \fI\fP, \fB\-\-height\fP \fI\fP
+.RS 4
+Specify the height of the input image.
+Useful for file types such as PIX that do not encode explicit size
+information.
+.RE
+.sp
+\fB\-\-input\-format\fP \fIfmt\fP
+.RS 4
+Explicitly specify input file format.
+.RE
+.sp
+\fB\-\-output\-format\fP \fIfmt\fP
+.RS 4
+Explicitly specify output file format.
+.RE
+.SH "EXAMPLE"
+.sp
+.if n .RS 4
+.nf
+icv \-w 1024 \-n 512 tank.pix tank.png
+.fi
+.if n .RE
+.SH "SEE ALSO"
+.sp
+\fBpix\fP(5)\fBbw\fP(5)
+.SH "AUTHOR"
+.sp
+Clifford Yapp
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

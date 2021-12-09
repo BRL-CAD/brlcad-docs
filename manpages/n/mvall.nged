@@ -1,0 +1,80 @@
+'\" t
+.\"     Title: mvall
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "MVALL" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+mvall \- Changes the name of old_name to new_name wherever it occurs in the database.
+.SH "SYNOPSIS"
+.sp
+\fBmvall\fP [\fI\-n\fP] [\fI(\-f mapping_file) | (old_name new_name)\fP]
+.SH "DESCRIPTION"
+.sp
+Changes the name of \fIold_name\fP to \fInew_name\fP. This will also change
+any references to \fIold_name\fP that may occur in other combinations in
+the database. If the \fI\-f\fP variation of the command is used, all
+\fIold_name\fP \fInew_name\fP pairings are read from the \fImapping_file\fP and
+processed as previously stated.
+.SH "EXAMPLES"
+.sp
+.B Example 1. Change the name of an object everywhere it occurs in the database.
+.br
+.RS 4
+.sp
+mged> \f(CRmvall shapea shapeb\fP
+.sp
+Changes the name of \fIshapea\fP to \fIshapeb\fP everywhere it occurs in the
+database.
+.RE
+.sp
+.B Example 2. This example shows a simple mapping file.
+.br
+.RS 4
+.sp
+.if n .RS 4
+.nf
+# this line is a comment
+old_name new_name
+foo bar # another comment, replacing foo with bar
+bad_name good_name
+.fi
+.if n .RE
+.RE
+.SH "SEE ALSO"
+.sp
+mv prefix
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

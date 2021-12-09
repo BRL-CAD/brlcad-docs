@@ -1,0 +1,118 @@
+'\" t
+.\"     Title: fbserv
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "FBSERV" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+fbserv \- Frame\-buffer Server
+.SH "SYNOPSIS"
+.sp
+\fBfbserv\fP [\-s | \fIS\fP | \fIsquare_size\fP] [\-w | \fIW\fP | \fIwidth\fP] [\-n | \fIN\fP | \fIheight\fP] [\-p \fIport_number\fP] [\-F \fIframe_buffer\fP] [\-v] [\fIport_number\fP] [\fIframe_buffer\fP]
+.SH "DESCRIPTION"
+.sp
+\fBfbserv\fP opens a framebuffer that may be used by any BRL\-CAD
+routine accessing a framebuffer. The \fB\-s\fP (or \fB\-S\fP) option
+specifies that a square framebuffer of the specified size (in pixels)
+is desired. The \fB\-n\fP (or \fB\-N\fP) option indicates the
+framebuffer height. The \fB\-w\fP (or \fB\-W\fP) option indicates the
+framebuffer width. The \fB\-v\fP option (verbosity) yields more
+information about the current process. The \fB\-p\fP option supplies a
+port number and the \fB\-F\fP option indicates what framebuffer device
+to use. The framebuffer device may be included on the command line
+without the \fB\-F\fP option if it is the last token on the command
+line. The port number may also be specified without the \fB\-p\fP
+option. If options \fB\-F\fP and \fB\-p\fP are both omitted, the port
+number must be followed by the framebuffer device on the command
+line. While \fBfbserv\fP is running, its port number may then be used
+in other commands that access a framebuffer by supplying that port
+number with the \fB\-F\fP option for that command. The \fBfbserv\fP
+command may be executed by users at a shell prompt, or it may be used
+as an inetd remote framebuffer server by specifying \fBfbserv\fP as a
+server program in \fIinetd.conf\fP.
+.SH "EXAMPLES"
+.sp
+.if n .RS 4
+.nf
+fbserv 0 &
+.fi
+.if n .RE
+.sp
+This command will start a standalone fbserv daemon. Any access of a
+framebuffer specifying port 0 will result in opening a new
+framebuffer.
+.sp
+.if n .RS 4
+.nf
+fbserv \-s 1024 0 /dev/sgil &
+.fi
+.if n .RE
+.sp
+The above command will open a 1024 X 1024 \(aq/dev/sgil\(aq framebuffer and
+associate port number 0 with it. Any access of a framebuffer
+specifying port 0 will use the already opened \(aq/dev/sgil\(aq framebuffer.
+.SH "SEE ALSO"
+.sp
+\fBbw\-fb\fP(1),
+\fBcell\-fb\fP(1),
+\fBcmap\-fb\fP(1),
+\fBgif\-fb\fP(1),
+\fBpix\-fb\fP(1),
+\fBplot3\-fb\fP(1),
+\fBpolar\-fb\fP(1),
+\fBrle\-fb\fP(1),
+\fBfbcmap\fP(1),
+\fBfbcmrot\fP(1),
+\fBfbclear\fP(1),
+\fBfbcbars\fP(1),
+\fBfbanin\fP(1),
+\fBfbcolor\fP(1),
+\fBfbfade\fP(1),
+\fBfbframe\fP(1),
+\fBfbfree\fP(1),
+\fBfbgamma\fP(1),
+\fBfbgrid\fP(1),
+\fBfbhelp\fP(1),
+\fBfblabel\fP(1),
+\fBfbline\fP(1),
+\fBfbpoint\fP(1),
+\fBfbscanplot\fP(1),
+\fBfbstretch\fP(1),
+\fBfbzoom\fP(1)
+.SH "DIAGNOSTICS"
+.sp
+Error messages are intended to be self\-explanatory.
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

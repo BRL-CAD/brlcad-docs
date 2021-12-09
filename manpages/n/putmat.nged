@@ -1,0 +1,68 @@
+'\" t
+.\"     Title: putmat
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "PUTMAT" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+putmat \- Replaces the existing transformation matrix in the combination specified that corresponds to the member specified.
+.SH "SYNOPSIS"
+.sp
+\fBputmat\fP {\fIcomb_name/member_name\fP} {[I] | [m0 m1 m2 m3 ... m16]}
+.SH "DESCRIPTION"
+.sp
+Replaces the existing transformation matrix in the combination
+specified that corresponds to the member specified. The transformation
+matrix may be specified with an "I" to indicate the identity matrix,
+or it may be specified as 16 elements listed row\-by\-row. The
+\fBcopymat\fP command allows the user to copy an existing
+transformation matrix.
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBputmat\fP command to set the
+transformation matrix for a specified region in a specified group to
+the identity matrix.
+.sp
+.B Example 1. Set the transformation matrix for a specified region in a specified group to the identity matrix.
+.br
+.RS 4
+.sp
+mged> \f(CRputmat group1/regiona I\fP
+.sp
+Sets the transformation matrix for \fIregiona\fP in \fIgroup1\fP to the
+identity matrix.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

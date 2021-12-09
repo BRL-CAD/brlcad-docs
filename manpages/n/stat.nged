@@ -1,0 +1,282 @@
+'\" t
+.\"     Title: stat
+.\"    Author: BRL-CAD Team
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "STAT" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+stat \- report information about objects in a BRL\-CAD database
+.SH "SYNOPSIS"
+.sp
+\fBstat\fP [\-h] [\-?] [\-r] [\-F \fIstring\fP] [\-C \fItype1[,type2]...\fP] [\-S \fItype1[,type2]...\fP] [\-o \fIfilename\fP] {glob pattern}
+.SH "OVERVIEW"
+.sp
+The GED \fBstat\fP command reports information about objects in a
+BRL\-CAD .g file.  It produces a tabular output, with options for user
+configurability and sorting.
+.sp
+Available types reflect geometry object data:
+.sp
+.it 1 an-trap
+.nr an-no-space-flag 1
+.nr an-break-flag 1
+.br
+.B Table 1. STAT Information Keys \- Core Object Info
+.TS
+allbox tab(:);
+lt lt.
+T{
+.sp
+name
+T}:T{
+.sp
+Object database name (for example, "primitive.s")
+T}
+T{
+.sp
+uses
+T}:T{
+.sp
+Number of uses, from instancing
+T}
+T{
+.sp
+size
+T}:T{
+.sp
+Size of database object
+T}
+T{
+.sp
+refs
+T}:T{
+.sp
+Number of times object is referenced by COMBs
+T}
+T{
+.sp
+flags
+T}:T{
+.sp
+Flags
+T}
+T{
+.sp
+major_type
+T}:T{
+.sp
+Object major type
+T}
+T{
+.sp
+minor_type
+T}:T{
+.sp
+Object minor type
+T}
+T{
+.sp
+type
+T}:T{
+.sp
+Object type (short name)
+T}
+.TE
+.sp
+.sp
+In addition to the above standard keys, attributes may also be
+specified.  If the desired attribute happens to have the same name as
+one of the above standard keys, the prefix "attr:" may be added to
+denote an attribute.
+.SH "OPTIONS"
+.sp
+\fB\-h or \-?\fP
+.RS 4
+Print help and exit.
+.RE
+.sp
+\fB\-r\fP
+.RS 4
+Print raw values, instead of human friendly strings (for
+example, 5195952 for a size instead of 5.0M).
+.RE
+.sp
+\fB\-F\fP
+.RS 4
+Specify \fBsearch\fP style filters to trim down what is
+reported in \fBstat\fP output.
+.RE
+.sp
+\fB\-C\fP
+.RS 4
+Supply a comma separated list of column specifiers or attribute
+keys to define the table layout for \fBstat\fP.
+.RE
+.sp
+\fB\-S\fP
+.RS 4
+Supply a comma separated list of column specifiers or attribute
+keys to specify a sorting priority for \fBstat\fP. Priority is left
+to right \- sorting will be performed first based on the leftmost
+specifier, and subsequent specifiers will be used to resolve any ties.
+To reverse the ordering decisions for a given column, prefix the
+specifier with a "!" character.
+.RE
+.sp
+\fB\-o\fP
+.RS 4
+Write output to \fIfilename\fP instead of the command prompt.
+.RE
+.SH "EXAMPLES"
+.sp
+.B Example 1. Default Output
+.br
+.RS 4
+.sp
+\f(CRstat *\fP
+.sp
+.if n .RS 4
+.nf
+ Object Name             uses   References   Flags   Type     Size
+\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\- \-\-\-\-\-\- \-\-\-\-\-\-\-\-\-\-\-\- \-\-\-\-\-\-\- \-\-\-\-\-\-\-\- \-\-\-\-\-\-
+ Default                 0      1            2       comb     288B
+ NIST_MBE_PMI_7\-10.3dm   0      0            2       comb     264B
+ Solid1.r                0      1            6       region   280B
+ Solid1.r.s              0      1            1       brep     859K
+ Solid1_2.r              0      1            6       region   280B
+ Solid1_2.r.s            0      1            1       brep     672K
+ Solid1_3.r              0      1            6       region   280B
+ Solid1_3.r.s            0      1            1       brep     431K
+ Solid1_4.r              0      1            6       region   280B
+ Solid1_4.r.s            0      1            1       brep     771K
+ _GLOBAL                 0      0            8                96B
+.fi
+.if n .RE
+.RE
+.sp
+.B Example 2. Sorting by Size
+.br
+.RS 4
+.sp
+\f(CRstat \-S "size" *\fP
+.sp
+.if n .RS 4
+.nf
+ Object Name             uses   References   Flags   Type     Size
+\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\- \-\-\-\-\-\- \-\-\-\-\-\-\-\-\-\-\-\- \-\-\-\-\-\-\- \-\-\-\-\-\-\-\- \-\-\-\-\-\-
+ _GLOBAL                 0      0            8                96B
+ NIST_MBE_PMI_7\-10.3dm   0      0            2       comb     264B
+ Solid1_2.r              0      1            6       region   280B
+ Solid1_3.r              0      1            6       region   280B
+ Solid1.r                0      1            6       region   280B
+ Solid1_4.r              0      1            6       region   280B
+ Default                 0      1            2       comb     288B
+ Solid1_3.r.s            0      1            1       brep     431K
+ Solid1_2.r.s            0      1            1       brep     672K
+ Solid1_4.r.s            0      1            1       brep     771K
+ Solid1.r.s              0      1            1       brep     859K
+.fi
+.if n .RE
+.RE
+.sp
+.B Example 3. Sorting by Size, Reversed Order
+.br
+.RS 4
+.sp
+\f(CRstat \-S "!size" *\fP
+.sp
+.if n .RS 4
+.nf
+ Object Name             uses   References   Flags   Type     Size
+\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\- \-\-\-\-\-\- \-\-\-\-\-\-\-\-\-\-\-\- \-\-\-\-\-\-\- \-\-\-\-\-\-\-\- \-\-\-\-\-\-
+ Solid1.r.s              0      1            1       brep     859K
+ Solid1_4.r.s            0      1            1       brep     771K
+ Solid1_2.r.s            0      1            1       brep     672K
+ Solid1_3.r.s            0      1            1       brep     431K
+ Default                 0      1            2       comb     288B
+ Solid1_3.r              0      1            6       region   280B
+ Solid1.r                0      1            6       region   280B
+ Solid1_2.r              0      1            6       region   280B
+ Solid1_4.r              0      1            6       region   280B
+ NIST_MBE_PMI_7\-10.3dm   0      0            2       comb     264B
+ _GLOBAL                 0      0            8                96B
+.fi
+.if n .RE
+.RE
+.sp
+.B Example 4. Filtering by Type
+.br
+.RS 4
+.sp
+\f(CRstat \-F "\-type brep" *\fP
+.sp
+.if n .RS 4
+.nf
+ Object Name    uses   References   Flags   Type   Size
+\-\-\-\-\-\-\-\-\-\-\-\-\-\- \-\-\-\-\-\- \-\-\-\-\-\-\-\-\-\-\-\- \-\-\-\-\-\-\- \-\-\-\-\-\- \-\-\-\-\-\-
+ Solid1.r.s     0      1            1       brep   859K
+ Solid1_2.r.s   0      1            1       brep   672K
+ Solid1_3.r.s   0      1            1       brep   431K
+ Solid1_4.r.s   0      1            1       brep   771K
+.fi
+.if n .RE
+.RE
+.sp
+.B Example 5. Custom Columns
+.br
+.RS 4
+.sp
+\f(CRstat \-C "name,type,size,color" *\fP
+.sp
+.if n .RS 4
+.nf
+ Object Name             Type     Size   color
+\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\- \-\-\-\-\-\-\-\- \-\-\-\-\-\- \-\-\-\-\-\-\-\-\-\-\-\-\-
+ Default                 comb     288B   0/0/0
+ NIST_MBE_PMI_7\-10.3dm   comb     264B   0/0/0
+ Solid1.r                region   280B   153/231/254
+ Solid1.r.s              brep     859K
+ Solid1_2.r              region   280B   255/206/142
+ Solid1_2.r.s            brep     672K
+ Solid1_3.r              region   280B   237/255/168
+ Solid1_3.r.s            brep     431K
+ Solid1_4.r              region   280B   178/178/178
+ Solid1_4.r.s            brep     771K
+ _GLOBAL                          96B
+.fi
+.if n .RE
+.RE
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""
+.SH "AUTHOR"
+.sp
+BRL-CAD Team

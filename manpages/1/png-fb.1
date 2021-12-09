@@ -1,0 +1,107 @@
+'\" t
+.\"     Title: png-fb
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "PNG\-FB" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+png\-fb \- display a Portable Network Graphics (PNG) image file on a framebuffer
+.SH "SYNOPSIS"
+.sp
+\fBpng\-fb\fP [\-Hicvz1] [\-g screen_gamma] [\-F framebuffer] [\-m #lines] [\-S squarescrsize] [\-W scr_width] [\-N scr_height] [\-x file_xoff] [\-y file_yoff] [\-X scr_xoff] [\-Y scr_yoff] [\fIfile.png\fP]
+.SH "DESCRIPTION"
+.sp
+\fBpng\-fb\fP reads a \fIPNG\fP format file from the named file, or from
+standard in if no file is specified, and displays the image on the
+currently selected framebuffer. The environment variable FB_FILE may
+be used to specify the current framebuffer, see
+\fBbrlcad\fP(1). Alternatively, the framebuffer
+may be explicitly specified by using the \fB\-F\fP flag.
+.sp
+By default, the requested framebuffer size is assumed to be 512x512
+pixels.
+.sp
+The \fB\-g\fP option specifies the gamma value for the screen where
+the image is to be displayed. Larger values will produce lighter
+colored display.
+.sp
+If the \fB\-i\fP flag is specified, the image is inverted.
+.sp
+The \fB\-c\fP flag causes the screen to be cleared before the image is
+displayed. The default behavior is to overwrite the current image with
+the new image without clearing the screen.
+.sp
+The \fB\-v\fP option will print verbose information about the PNG
+file.
+.sp
+The \fB\-H\fP option will print a single line on standard output
+providing the dimensions of the image in a format readily usable in
+shell scripts, e.g. WIDTH=42 HEIGHT=17.
+.sp
+The \fB\-z\fP flag will zoom and center on the image being displayed
+to make it fill the display area, using the libfb fb_zoom()
+routine. fb_zoom only offers integer zoom factors, so displays with
+non\-square screens (such as the SGI 3D machines) may find this option
+of limited usefulness.
+.sp
+The \fB\-W scr_width\fP flag specifies the width of each scanline in
+the display device, in pixels.
+.sp
+The \fB\-N scr_height\fP flag specifies the height in scanlines of the
+display device.
+.sp
+\fB\-S squarescrsize\fP set both the height and width to the size
+given.
+.sp
+\fB\-x file_xoff \-y file_yoff\fP and \fB\-X scr_xoff \-Y scr_yoff\fP
+will offset into the file or onto the screen by the given amounts. The
+coordinate system for these offsets is first quadrant, with the origin
+at the lower left corner of the image.
+.sp
+The \fB\-1\fP flag causes the image to be written to the framebuffer
+one line at a time, using the \fBfb_write\fP(3)
+routine.  This is the default behavior. The \fB\-m #lines\fP flag can
+be used to specify the number of lines to be written to the
+framebuffer in rectangular blocks of scanlines, using the
+\fBfb_writerect\fP(3) routine. In some
+circumstances, this can result in significantly faster image display,
+at the expense of the image being written less smoothly. If both
+\fB\-m\fP and \fB\-1\fP are specified, \fB\-1\fP wins.
+.SH "SEE ALSO"
+.sp
+\fBrt\fP(1), \fBfb\-png\fP(1),
+\fBlibfb\fP(3), \fBpix\fP(5)
+.SH "AUTHOR"
+.sp
+John R. Anderson
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

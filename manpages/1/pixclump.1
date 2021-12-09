@@ -1,0 +1,70 @@
+'\" t
+.\"     Title: pixclump
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "PIXCLUMP" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+pixclump \- quantize the colors in a pix(5) stream
+.SH "SYNOPSIS"
+.sp
+\fBpixclump\fP [\-c \fIR/G/B\fP] [\-f \fIcolor_file\fP] [\-x \fIdebug_flags\fP] [\fIinfile.pix\fP [\fIoutfile.pix\fP]]
+.SH "DESCRIPTION"
+.sp
+\fBpixclump\fP reads an input stream of \fIpix\fP data, converts each
+pixel to one of a set of specified colors, and writes out these
+quantized pixels.
+.sp
+The colors may be specified either on the command line, with one
+\fB\-c\fP option per color, or in a file specified with the \fB\-f\fP
+option.
+.sp
+Each pixel in the input stream is compared to all of the specified
+colors and replaced on the output by the specified color most
+resembling it. \fBpixclump\fP computes the difference between an
+input pixel and a specified color as the sum of the squares of the
+differences in their respective red, green, and blue channels.
+.sp
+The \fB\-x\fP option may be used to selectively enable various
+diagnostic print statements.
+.SH "HINT"
+.sp
+A typical use for \fBpixclump\fP is in renormalizing an image. For
+example, if a tool such as \fBpixscale\fP has been used to transform
+an image containing a relatively small number of colors,
+\fBpixclump\fP will change pixels whose colors have been interpolated
+back to one of the original colors.
+.SH "AUTHOR"
+.sp
+Paul Tanenbaum
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

@@ -1,0 +1,138 @@
+'\" t
+.\"     Title: fbgamma
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "FBGAMMA" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+fbgamma \- load a gamma correcting colormap
+.SH "SYNOPSIS"
+.sp
+\fBfbgamma\fP [\-H] [\-o] [\-i] [\-F \fIframebuffer\fP] \fIval\fP [\fIgval\fP \fIbval\fP]
+.SH "DESCRIPTION"
+.sp
+\fBfbgamma\fP loads a gamma correcting colormap into a
+framebuffer. If a single value is given, that number is used for all
+three color channels.  If three values are specified, they will be
+applied to the red, green, and blue channels respectively.
+.sp
+Gamma values larger than one will boost dim pixels with respect to
+bright ones.  Values less than one will exaggerate the difference in
+brightness.  The former has the effect of desaturating the displayed
+colors ("washing them out"), the latter will saturate the colors.  An
+uncorrected monitor is usually too saturated.
+.sp
+Note that since this program is intended for gamma \fIcorrection\fP, the
+exponent to which pixel values are raised is the inverse of the given
+value.  To linearize a display then, the given value will be equal to
+the gamma of the display (typically 2.0\-3.0, see below).  If you wish
+to directly apply an exponent to a picture (rather than its inverse),
+this can be done by giving a negative value (which means reciprocal in
+the usual mathematical sense).
+.sp
+By default, this program will "correct to linear", that is to say, it
+will apply correction to a standard linear ramp.  If you wish to
+"correct" some other colormap, e.g. an inverse video map, the
+\fB\-o\fP overlay option can be used.  This will read whatever
+colormap is currently in the framebuffer and operate on it.  One
+useful result of this is the ability saturate or desaturate an
+arbitrary colormap.
+.sp
+By default, the display is assumed to be 512x512 pixels; if the
+\fB\-H\fP flag is specified, the size is changed to 1024x1024. This
+size distinction is important for devices like the Adage framebuffers
+which have different operating modes based on the display size. In
+general, \fBfbgamma\fP manipulates the RGB color maps in the graphics
+hardware, and has an effect on the entire screen, not just the portion
+containing the current framebuffer display. As such, there is no need
+to match the display size on the command line.
+.sp
+A framebuffer may be explicitly selected with the \fB\-F\fP option,
+followed by the name of the desired framebuffer.
+.sp
+The \fB\-i\fP option requests that a standard gamma calibration image
+be displayed on the framebuffer. This image consists of intensity
+ramps with patches of solid color, and vertically adjacent patches
+containing alternating black and colored scanlines. When using gamma
+to compensate for non\-linearity of a display, the gamma values should
+be adjusted until vertically adjacent ramps of the same color appear
+equal in intensity for all patches.
+.SH "THEORY"
+.sp
+The response of a typical monitor is non\-linear with respect to input
+voltage.  To a fairly high degree of accuracy, the response can be
+expressed as:
+.sp
+.if n .RS 4
+.nf
+display_intensity = input_voltage ^ gamma,
+.fi
+.if n .RE
+.sp
+where gamma will usually lie in the 2.0 to 3.0 range (2.2 is the
+\fINTSC\fP standard gamma, 2.5 is a commonly used "typical" value). Most
+of the time, pixel values of images have been computed assuming a
+linear mapping between pixel value and displayed intensity.  This
+linear mapping can be approximated by loading a colormap into the
+display which raises the pixel values to the inverse gamma power.
+.sp
+It should be noted that getting the gamma values "right" involves
+careful calibration and measurement or your display device. The values
+are likely to be different for each color channel, and will depend on
+the brightness setting, etc. (increasing the monitor brightness often
+lowers the gammas, due to overdriving the high end of the display).
+Also note that getting the correct colors from a display requires
+knowledge of the phosphor chromaticities.
+.sp
+If possible one should gamma correct a picture before loading it into
+a display or saving it as eight bit linear data.  This is because the
+response of the human visual system to brightness is also exponential
+in nature, and thus having "smaller steps" at the dark end of the
+display, and larger ones near full bright (as an uncorrected display
+will have), fits this response well. Gamma correction via the colormap
+cannot exploit this.
+.sp
+A gamma value greater than unity will saturate colors by pushing them
+away from the white point and closer to the primaries (as viewed on a
+chromaticity diagram).  A gamma less than unity will desaturate colors
+by moving them closer to the white point.
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1),
+\fBfbcmap\fP(1),
+\fBcmap\-fb\fP(1),
+\fBfb\-cmap\fP(1)
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

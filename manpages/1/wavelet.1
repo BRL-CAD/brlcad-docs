@@ -1,0 +1,107 @@
+'\" t
+.\"     Title: wavelet
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "WAVELET" "1" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+wavelet \- perform a haar wavelet decomposition/reconstruction
+.SH "SYNOPSIS"
+.sp
+\fBwavelet\fP [\-1] [\-2] [\-d] [\-r] [\-# \fIchannels\fP] [\-t [\fIc\fP | \fId\fP | \fIf\fP | \fIi\fP | \fIl\fP | \fIs\fP]] [\-w \fIwidth\fP] [\-n \fIscanlines\fP] [\-s \fIsquaresize\fP] [\-S \fIsquare_out_size\fP] [\-W \fIwidth_out\fP] < \fIfile\fP > \fIwavelet\fP
+.SH "DESCRIPTION"
+.sp
+The \fBwavelet\fP command will perform Haar wavelet decomposition or
+reconstruction transforms on the input dataset. The command line
+options are:
+.sp
+\fB\-d\fP perform decomposition.
+.sp
+\fB\-r\fP perform reconstruction.
+.sp
+\fB\-1\fP perform a 1\-dimensional (horizontal) transform.
+.sp
+\fB\-2\fP perform a 1\-dimensional (interleaved horizontal and
+vertical) transform.
+.sp
+\fB\-# channels\fP Indicates the number of values in each sample
+point.  For example, to perform a transform on a
+\fBpix\fP(5) file properly, specify "\-# 3".  This
+causes the red, green and blue channels to be transformed
+individually.
+.sp
+\fB\-t {cdfils}\fP specifies the data type of the input, and hence the
+data type in which the wavelet calculations will be performed. The
+letters each stand for the first character of the C programming
+language data type: \fIc\fPharacter, \fId\fPouble, \fIf\fPloat, \fIi\fPnt,
+\fIl\fPong, \fIs\fPhort. Note that if lossless decomposition and
+reconstruction are desired, then data sets should be converted to the
+next larger data type before being processed.
+.sp
+\fB\-w width\fP Specify the number of samples per scanline.
+.sp
+\fB\-n scanline\fP Specify the number of scanlines in the dataset
+.sp
+\fB\-s squaresize\fP Specify both width and scanlines simultaneously
+(square image).
+.sp
+\fB\-W width_out\fP Specifies the width of the output image.  Normally
+this is 1 for a full decomposition/reconstruction.  You may specify a
+width at which decomposition or reconstruction should stop. This
+number should be a power of 2.  The result will be an "average" image
+of the specified size, with the remainder of the original data width
+converted to "detail" coefficients.  See also: \-R
+.sp
+\fB\-R avg_size\fP Resumes a transform that left off with an average
+image of avg_size.
+.sp
+\fB\-S square_out_size\fP This is the same as the \fB\-W\fP option.
+It implies the square size for a 2D decomposition limit.
+.SH "EXAMPLES"
+.sp
+The command \f(CRdecompose \-# 3 < img.pix | pix\-fb\fP will display the
+horizontal decomposition of the file img.pix.
+.sp
+The command \f(CRdecompose \-# 3 \-s 1024 \-l 64 < img.pix >\fP will
+decompose a 1024x1024 image.  The decomposition will stop when the
+image has been decomposed to 64x64.  The output image will thus have a
+64x64 version of the original in the lower left corner of the image,
+with detail terms in the remainder.
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1), \fBpix\fP(5),
+\fBbw\fP(5)
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

@@ -1,0 +1,195 @@
+'\" t
+.\"     Title: bolt
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "BOLT" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+bolt \- Creates a BRL\-CAD .g file containing bolts.
+.SH "SYNOPSIS"
+.sp
+\fBbolt\fP [\fIoptions\fP]...
+.SH "DESCRIPTION"
+.sp
+\fBbolt\fP is a program to create a BRL\-CAD data base of one of four
+different kinds of bolts.  Up to twenty\-six bolts of one type and size
+may be created. \fBbolt\fP uses libwdb to create a database file.
+This program may be run interactively or the user may specify options
+on a command line.  If the user chooses to run the program
+interactively he answers the questions as the program prompts him.
+Below are the options that can be used on the command line.
+.SH "OPTIONS"
+.sp
+\fB\-o#\fP
+.RS 4
+Type of bolt to be created:
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+1 \(rA bolt head
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+2 \(rA bolt head and washer
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+3 \(rA bolt head, washer, and bolt stem
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+4 \(rA bolt head and bolt stem
+.RE
+.RE
+.sp
+\fB\-f\fP \fIname.g\fP
+.RS 4
+BRL\-CAD file name.
+.RE
+.sp
+\fB\-n #\fP
+.RS 4
+The number of bolts to be created.  This number must be less
+than or equal to 26 (or it will be set to 26).
+.RE
+.sp
+\fB\-hd #\fP
+.RS 4
+Diameter of bolt head, flat edge to flat edge, in
+millimeters.
+.RE
+.sp
+\fB\-hh #\fP
+.RS 4
+Height of bolt head in millimeters.
+.RE
+.sp
+\fB\-wd #\fP
+.RS 4
+Diameter of washer in millimeters.
+.RE
+.sp
+\fB\-wh #\fP
+.RS 4
+Height of washer in millimeters.
+.RE
+.sp
+\fB\-sd #\fP
+.RS 4
+Diameter of bolt stem in millimeters.
+.RE
+.sp
+\fB\-sh #\fP
+.RS 4
+Height of bolt stem in millimeters.
+.RE
+.SH "EXAMPLES"
+.sp
+.B Example 1. Interactive \fBbolt\fP Session
+.br
+.RS 4
+.sp
+.if n .RS 4
+.nf
+$ bolt
+Enter option:
+     1 \- bolt head
+     2 \- bolt head & washer
+     3 \- bolt head, washer, & stem
+     4 \- bolt head & stem
+1
+Enter name of mged file to be created (25 char max).
+     bolt.g
+Enter the number of bolts to be created (26 max).
+     3
+Enter diameter (flat edge to flat edge) & height of bolt head.
+     30 10
+
+option:  1 \- bolt head
+file:  bolt.g
+head diameter:  30.000000, & height:  10.000000
+washer diameter:  0.000000, & height:  0.000000
+stem diameter:  0.000000, & height:  0.000000
+number of bolts:  3
+.fi
+.if n .RE
+.RE
+.sp
+.B Example 2. Single\-Line \fBbolt\fP Command
+.br
+.RS 4
+.sp
+.if n .RS 4
+.nf
+bolt \-o1 \-fbolt.g \-n3 \-hd30 \-hh10
+.fi
+.if n .RE
+.RE
+.sp
+Both examples produce the same output \- the bolt heads (option 1) are
+created with a diameter of 30mm and a height of 10mm in a database
+file called bolt.g.
+.SH "AUTHOR"
+.sp
+Susan A. Coates
+.SH "SEE ALSO"
+.sp
+handle(1), window(1), window_frame(1), gastank(1)
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

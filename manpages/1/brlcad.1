@@ -1,0 +1,368 @@
+'\" t
+.\"     Title: brlcad
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "BRLCAD" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+brlcad \- BRL\-CAD programs for solid modeling, raytracing, graphics, and image processing
+.SH "DESCRIPTION"
+.sp
+The BRL\-CAD Distribution contains many directories of materials
+(programs, man pages, documents, libraries, etc.). The major
+categories of programs are:
+.sp
+\fImged\fP
+.RS 4
+A multi\-device interactive editor for constructing and
+updating combinatorial solid geometry (CSG) models. See
+\fBmged\fP(1), and see also \fIUnderstanding the
+Preparation and Analysis of Solid Models\fP by Michael John Muuss
+(enclosed, in the "paper" directory).
+.RE
+.sp
+\fIlibrt\fP
+.RS 4
+A library of functions suitable for interrogation of a CSG
+solid model, utilizing ray\-tracing techniques. See
+\fBlibrt\fP(3).
+.RE
+.sp
+\fIrt\fP
+.RS 4
+A ray\-tracing lighting model, for rendering pictures of
+\fBmged\fP(1) CSG models. See
+\fBrt\fP(1), \fBrtray\fP(1),
+\fBrtpp\fP(1).
+.RE
+.sp
+\fIconv\fP
+.RS 4
+Programs to convert \fBmged\fP(1) and
+\fBpix\fP(3) format binary files to a portable ASCII
+form, and back again. See \fBasc2g\fP(1),
+\fBasc2pix\fP(1),
+\fBconv\-vg2g\fP(1),
+\fBg2asc\fP(1),
+\fBpix2asc\fP(1).
+.RE
+.sp
+\fIlibpkg\fP
+.RS 4
+A "message\-passing" interface layered on top of TCP
+network links, to ease construction of network\-distributed
+applications.
+.RE
+.sp
+\fIlibfb\fP
+.RS 4
+A generic frame\-buffer library which includes support for a
+number of display devices, as well as file, network, and debugging
+interfaces. Most programs which use this library have the letters "fb"
+in their names.  To override your system default frame\-buffer, the
+environment variable \f(CRFB_FILE\fP can be set.  In addition, some
+commands also support a \fB\-F\fP \fIframebuffer\fP option. Note that
+the disk file format of \fIlibfb\fP is that of
+\fBpix\fP(5), allowing "framebuffer" files to be
+later processed by any of the "pix" family of programs. See
+\fBlibfb\fP(3),
+\fBpix\-fb\fP(3),
+\fBpix\fP(5), etc.
+.RE
+.sp
+\fIfbserv\fP
+.RS 4
+TCP\-based network server which implements remote
+frame\-buffer services.
+.RE
+.sp
+\fIlibtermio\fP
+.RS 4
+A library to handle terminal mode setting on both
+Berkeley or SystemV machines.
+.RE
+.sp
+\fIlibplot3\fP
+.RS 4
+A public\-domain version of the UNIX\-Plot library which
+differs from that of the standard
+\fBlibplot\fP(3), by the addition of 3\-D
+primitives, color, floating point coordinate routines, and the use of
+a file pointer parameter. See \fBlibplot3\fP(3),
+\fBplot3\fP(5).
+.RE
+.sp
+\fIlibrle\fP
+.RS 4
+A Run\-Length\-Encoding (RLE) library, providing functions
+originally from the University of Utah in a library package. Note that
+the current version of this library reads Edition\-3 RLE files. See
+\fBrle\-fb\fP(1),
+\fBfb\-rle\fP(1),
+\fBrle\-pix\fP(1),
+\fBpix\-rle\fP(1),
+\fBlibrle\fP(3).
+.RE
+.sp
+\fIutil\fP
+.RS 4
+A collection of image\-handling utilities, each constructed
+as individual tools intended to be used in combination. See
+\fBap\-pix\fP(1),
+\fBbw\-fb\fP(1),
+\fBbw\-imp\fP(1),
+\fBbw\-pix\fP(1),
+\fBbw3\-pix\fP(1),
+\fBbwcrop\fP(1),
+\fBbwdiff\fP(1),
+\fBbwfilter\fP(1),
+\fBbwhist\fP(1),
+\fBbwmod\fP(1),
+\fBbwrect\fP(1),
+\fBbwrot\fP(1),
+\fBbwscale\fP(1),
+\fBbwstat\fP(1),
+\fBdunncolor\fP(1),
+\fBdunnsnap\fP(1),
+\fBfb\-bw\fP(1),
+\fBfb\-pix\fP(1),
+\fBfb\-rle\fP(1),
+\fBfbanim\fP(1),
+\fBfbclear\fP(1),
+\fBfbcmap\fP(1),
+\fBfbcmrot\fP(1),
+\fBfbcolor\fP(1),
+\fBfbframe\fP(1),
+\fBfbgrid\fP(1),
+\fBfbpoint\fP(1),
+\fBfbzoom\fP(1),
+\fBgencolor\fP(1),
+\fBloop\fP(1),
+\fBpix\-bw\fP(1),
+\fBpix\-bw3\fP(1),
+\fBpix\-fb\fP(1),
+\fBpixbackgnd\fP(1),
+\fBpixbustup\fP(1),
+\fBpixdiff\fP(1),
+\fBpixfilter\fP(1),
+\fBpixhist\fP(1),
+\fBpixhist3d\-plot3\fP(1),
+\fBpixhist3d\fP(1),
+\fBpixinterp2x\fP(1),
+\fBpixrect\fP(1),
+\fBpixrot\fP(1),
+\fBpixscale\fP(1),
+\fBpixstat\fP(1),
+\fBpixtile\fP(1),
+\fBplot3\-fb\fP(1),
+\fBpp\-fb\fP(1),
+\fBrle\-fb\fP(1),
+\fBrle\-pix\fP(1),
+\fBwavelet\fP(1),
+\fBbw\fP(5),
+\fBpix\fP(5),
+\fBplot3\fP(5).
+.RE
+.sp
+\fIfbed\fP
+.RS 4
+An interactive, termcap\-based frame\-buffer image editor. See
+\fBfbed\fP(1).
+.RE
+.sp
+\fIvdeck\fP
+.RS 4
+A program to convert \fImged(1)\fP models to \fIgift(1)\fP format
+card deck files. See \fBvdeck\fP(1).
+.RE
+.SH "FB_FILE"
+.sp
+Whenever a framebuffer is needed, and the \fB\-F\fP option has not
+been specified, the environment variable \f(CRFB_FILE\fP is checked for
+the device to use.  The format of this variable is either
+\fI[hostname:]/dev/device_name[num]\fP or \fIUNIX_path\fP, the pathname of a
+disk file to be used as a "virtual framebuffer". \fIHostname\fP is the
+name of a remote machine if the remote framebuffer interface is being
+used. When a local display device is being specified, the \fIhostname\fP
+should not be specified, for performance reasons; just the special
+string \fIdevice_name\fP is used to select a particular type of
+framebuffer. \fINum\fP is type dependent and can either mean a display
+number or select some options for that type. Note that for security
+reasons, it is not permitted to access a disk file via the remote
+interface.
+.sp
+If \f(CRFB_FILE\fP is not set, the default for your system will be
+used.
+.sp
+The use of \fI/dev/\fP before the \fIdevice_name\fP is simply to
+distinguish them from filenames.  See the end of the
+\fBlibfb\fP(3) manual page for a list of the device
+names and the meanings of any \fInum\fP parameters they may take, and for
+a more detailed discussion.
+.SH "OPTIONS"
+.sp
+A convention exists for the options used on most of the utilities
+provided. Random options are usually lower case. Options which could
+specify either a screen or file size are, by convention, lower case
+for file information, and upper case for screen information. Here\(cqs a
+list of some of the common options you may encounter:
+.sp
+\fB\-i\fP
+.RS 4
+Inverse flag.  Pretend origin is in upper left corner of
+screen, for that good old\-fashioned fourth\-quadrant behavior.
+.RE
+.sp
+\fB\-c\fP
+.RS 4
+Various.  Typically means clear the screen first.
+.RE
+.sp
+\fB\-z\fP
+.RS 4
+Various.  Typically means zoom\-in on current area of display.
+.RE
+.sp
+\fB\-s\fP \fIsquare_file_size\fP
+.RS 4
+\fIWARNING:\fP Behavior is undefined when the
+\fB\-s\fP flag is used in conjunction with the \fB\-w\fP or \fB\-n\fP
+flags.
+.RE
+.sp
+\fB\-w\fP \fIfile_width\fP
+.RS 4
+\fIWARNING:\fP Behavior is undefined when the
+\fB\-S\fP flag is used in conjunction with the \fB\-W\fP or \fB\-N\fP
+flags.
+.RE
+.sp
+\fB\-W\fP \fIscreen_width\fP
+.RS 4
+specifies the number of bytes per sample, where
+the flag, where the \fI\(rs#\fP character is a literal "pound" or "sharp"
+sign character, typically found over the numeral "3" on ANSI
+keyboards. Several programs (like pixrect) can operate on data samples
+of arbitrary width. For example, a \fBpix\fP(5)
+format file can often be treated like a \fBbw\fP(5)
+format file with a width of three bytes per sample.
+.RE
+.SH "TAPE FORMAT"
+.sp
+When dealing with large collections of images, as might be needed for
+making a movie, it frequently becomes desirable to deal with magnetic
+tapes. Some of the early \fBpix\fP(5) tools contained
+built\-in knowledge of the tape format. While this aberrant early
+design has been corrected in favor of using tape\-oriented programs
+such as \fBdd\fP(1) in pipelines with the image tools,
+our "standard" image format remains.
+.sp
+Regardless of image resolution, all tape records are 24k bytes
+long. If an image does not occupy an integral number of tape records,
+the last record is padded out. For example, NTSC images in 640x480
+format use 37.5 records per image. The
+\fBfiles\-tape\fP(1) utility is helpful in
+performing this function.
+.sp
+The capacity of an average 2400 foot reel of tape at 6250 is 6144
+records of 24k bytes each. For the various combinations of density and
+image resolution, a convention for the number of frames/reel exists:
+.TS
+allbox tab(:);
+lt lt lt.
+T{
+.sp
+\fBDensity\fP
+T}:T{
+.sp
+\fBResolution\fP
+T}:T{
+.sp
+\fBFrames/reel\fP
+T}
+T{
+.sp
+6250
+T}:T{
+.sp
+1k
+T}:T{
+.sp
+48
+T}
+T{
+.sp
+6250
+T}:T{
+.sp
+640x480
+T}:T{
+.sp
+160
+T}
+T{
+.sp
+6250
+T}:T{
+.sp
+512
+T}:T{
+.sp
+192
+T}
+T{
+.sp
+1600
+T}:T{
+.sp
+1k
+T}:T{
+.sp
+12
+T}
+T{
+.sp
+1600
+T}:T{
+.sp
+512
+T}:T{
+.sp
+48
+T}
+.TE
+.sp
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

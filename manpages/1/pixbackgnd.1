@@ -1,0 +1,97 @@
+'\" t
+.\"     Title: pixbackgnd
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "PIXBACKGND" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+pixbackgnd \- generate a pix(5) shaded background
+.SH "SYNOPSIS"
+.sp
+\fBpixbackgnd\fP [\-H] [\-i] [\-s \fIsquaresize\fP] [\-w \fIwidth\fP] [\-n \fIheight\fP] [\-t \fItitle_height\fP] [\-a \fItop_inten\fP] [\-b \fIbottom_inten\fP] \fIhue\fP \fIsaturation\fP > \fIfile.pix\fP
+.sp
+\fBpixbackgnd\fP [\-H] [\-i] [\-s \fIsquaresize\fP] [\-w \fIwidth\fP] [\-n \fIheight\fP] [\-t \fItitle_height\fP] \fIred\fP \fIgreen\fP \fIblue\fP > \fIfile.pix\fP
+.SH "DESCRIPTION"
+.sp
+\fBpixbackgnd\fP generates a \fBpix\fP(5) format
+shaded background on stdout suitable for making slides for a
+presentation on. The upper portion of the screen is reserved for a
+title area, and is drawn at constant intensity 240, followed by a 4
+scanline white bar, after which the intensity smoothly decreases from
+240 to 50. The values of \fIhue\fP and \fIsaturation\fP range from 0 to 255
+inclusive and can be selected via
+\fBfbcolor\fP(1). A hue of 160 is a pleasing
+blue.
+.sp
+The \fB\-a\fP and \fB\-b\fP options can be used to set the top and
+bottom intensity, in the range of 0 to 255. By default, the top
+intensity is 240, and the bottom is 50 (these values are used above).
+.sp
+\fB\-w\fP and \fB\-n\fP options set the width and height,
+respectively; \fB\-s\fP sets them to the same value. By default, the
+display is assumed to be 512x512 pixels; specifying the \fB\-H\fP
+flag, in addition to changing the title height to 90 scanlines (see
+below), changes the output size to 1024x1024.
+.sp
+By default, the title height is 80 scanlines, or 90 scanlines if the
+\fB\-H\fP flag is set, but the \fB\-t\fP \fItitle_height\fP option
+may be used to specify another value. If \fItitle_height\fP is set to
+zero, then the white bar is omitted as well, and the entire display is
+smoothly shaded.
+.sp
+If the \fB\-i\fP flag is specified, the scanlines will be written out
+in inverted order (i.e., top to bottom).
+.SH "EXAMPLES"
+.sp
+.if n .RS 4
+.nf
+pixbackgnd 160 200  |   pixmerge fg.pix \- | pix\-fb
+
+pixbackgnd \-t120 160 250
+
+pixbackgnd \-i \-t0 160 200   |   pix\-fb
+.fi
+.if n .RE
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1),
+\fBfbcolor\fP(1),
+\fBpix\-fb\fP(1),
+\fBpixmerge\fP(1)
+.SH "BUGS"
+.sp
+The starting and ending intensities should probably be an option.
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

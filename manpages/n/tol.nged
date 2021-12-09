@@ -1,0 +1,149 @@
+'\" t
+.\"     Title: tol
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "TOL" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+tol \- Used with no arguments, tol lists the current tolerance settings.
+.SH "SYNOPSIS"
+.sp
+\fBtol\fP [abs\fI#\fP] [rel\fI#\fP] [norm\fI#\fP] [dist\fI#\fP] [perp\fI#\fP] []
+.SH "DESCRIPTION"
+.sp
+The \fBtol\fP command, with no arguments, lists the current tolerance
+settings. If the command line includes any of the keywords followed by
+a number, then that tolerance setting will be modified. The keywords
+are as follows:
+.sp
+\fITessellation tolerances:\fP The tessellation tolerances are used to
+control the facetization of primitive shapes. If more than one
+tolerance value is specified, the tessellation is performed to meet
+the most stringent.
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+abs \(em This \fIabsolute\fP tolerance is specified in model units and
+represents the maximum allowable error in the distance from the
+actual shape surface to the tessellated surface.  An \fIabsolute\fP
+tolerance of 0 means that the \fIabsolute\fP tolerance should be
+ignored.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+rel \(em This \fIrelative\fP tolerance is specified in terms of a fraction
+of the shape size. The value is multiplied by the size of the shape
+to determine another bound on the maximum allowable error in the
+distance from the actual shape surface to the tessellated surface. A
+\fIrelative\fP tolerance of 0 means that the \fIrelative\fP tolerance should
+be ignored.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+norm \(em This \fInormal\fP tolerance is specified in degrees and
+represents the maximum angle between the actual shape surface normal
+and the tessellated surface normal. A \fInormal\fP tolerance of 0 means
+that the \fInormal\fP tolerance should be ignored.
+.RE
+.sp
+\fICalculational tolerances:\fP The calculational tolerances are used in
+evaluating the Boolean operations specified in a combination. This is
+used, for example, in the \fBev, facetize,\fP and \fBbev\fP
+commands.
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+dist \(em The \fIdistance\fP tolerance is specified in model units and
+represents the minimum distance required between two vertices to
+consider them distinct.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+perp \(em The \fIperpendicularity\fP tolerance is specified as the cosine
+of an angle. Two objects will be considered perpendicular if the
+cosine of the angle between them is less than the \fIperpendicularity\fP
+tolerance. Similarly, two objects will be considered parallel if the
+cosine of the angle between them is greater than 1.0, the
+\fIperpendicularity\fP tolerance.
+.RE
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBtol\fP command to set the
+relative and perpendicularity tolerances.
+.sp
+.B Example 1. Set the relative and perpendicularity tolerances.
+.br
+.RS 4
+.sp
+mged> \f(CRtol rel .05 perp 1e\-6\fP
+.sp
+Sets the \fIrelative\fP tolerance to 5% and the \fIperpendicularity\fP
+tolerance to 1e\-06 (cosine of 89.9999°).
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

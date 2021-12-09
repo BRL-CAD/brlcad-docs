@@ -1,0 +1,65 @@
+'\" t
+.\"     Title: prefix
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "PREFIX" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+prefix \- Changes the name of all the objects listed by adding the specified new_ prefix.
+.SH "SYNOPSIS"
+.sp
+\fBprefix\fP {\fInew_prefix objects>\fP}
+.SH "DESCRIPTION"
+.sp
+Changes the name of all the \fIobjects\fP listed by adding the specified
+\fInew_prefix\fP. All references to the \fIobjects\fP will also be
+changed. The \fBmvall\fP command performs a similar function.
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBprefix\fP command to change the
+names of specified objects and all references to them.
+.sp
+.B Example 1. Change the names of specified objects and references to them.
+.br
+.RS 4
+.sp
+mged \f(CRprefix test_ group1 regiona shapeb\fP
+.sp
+Changes the names of objects \fIgroup1, regiona,\fP and \fIshapeb\fP to
+"test_group1", "test_regiona", and "test_shapeb".  All references to
+these objects will reflect the new names.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

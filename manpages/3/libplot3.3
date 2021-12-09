@@ -1,0 +1,105 @@
+'\" t
+.\"     Title: libplot3
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "LIBPLOT3" "3" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+libplot3 \- graphics interface subroutines
+.SH "SYNOPSIS"
+.sp
+.if n .RS 4
+.nf
+void pl_3box (FILE *fp,
+              int x0,
+              int y0,
+              int z0,
+              int x1,
+              int y1,
+              int z1);
+.fi
+.if n .RE
+.SH "DESCRIPTION"
+.sp
+These subroutines generate graphic output commands for processing with
+the \fIplot(1)\fP plotting filters. They are slightly more general than
+those in \fIlibplot\fP as these take a file pointer.  They also include
+the BRL 3\-D extensions to the plot intermediate code.
+.sp
+\fIPl_space\fP or \fIpl_3space\fP must be used before any of the graphic
+primitives to declare the amount of space necessary. See \fIplot3(5)\fP.
+.sp
+\fIPl_box\fP or \fIpl_3box\fP draws a box between the two given opposite
+points. The \(aqpen\(aq will be left at the second point.
+.sp
+\fIPl_circle\fP draws a circle of radius \fIr\fP with center at the point
+(\fIx\fP, \fIy\fP). Note that \fIcircle\fP and \fIarc\fP cannot be transformed in
+three space if one is using a filter to do that.
+.sp
+\fIPl_arc\fP draws an arc of a circle with center at the point (\fIx\fP, \fIy\fP)
+between the points (\fIx0\fP, \fIy0\fP) and (\fIx1\fP, \fIy1\fP).
+.sp
+String arguments to \fIpl_label\fP and \fIpl_linmod\fP are terminated by nulls
+and do not contain new\-lines.
+.sp
+There are also 2\-D and 3_D double\-precision versions, with arguments
+identical to their counterparts above.  The naming conventions are to
+change the prefix to "pd"; examples are thus \fIpd_point\fP and
+\fIpd_3point\fP. Vector versions for 3_D (also double\-precision) are
+prefixed "pdv", as in \fIpdv_3point\fP.
+.sp
+See \fIplot3(5)\fP and \fIplot(5)\fP for a description of the effect of the
+remaining functions.
+.SH "FILES"
+.sp
+/usr/brlcad/lib/libplot3.a
+.RS 4
+produces output for
+\fBplot\fP(1G) filters
+.RE
+.SH "WARNINGS"
+.sp
+In order to compile a program containing these functions in \fIfile.c\fP
+it is necessary to use: \f(CRcc \fIfile.c\fP \-lplot3\fP
+.sp
+\fIColor\fP specification and three\-dimensional primitives are BRL
+extensions to the "unix plot" language that are not generally found on
+other systems.
+.SH "SEE ALSO"
+.sp
+\fBplot\fP(1), \fBpl\-fb\fP(1),
+\fBplot3\fP(5), \fBplot\fP(5)
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

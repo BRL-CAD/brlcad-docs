@@ -1,0 +1,104 @@
+'\" t
+.\"     Title: cmap
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "CMAP" "5" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+cmap \- Framebuffer colormap file format and utilities
+.SH "FORMAT"
+.sp
+A cmap file is a storage format for framebuffer colormaps. It is an
+ascii file with one line per colormap entry. In order to accommodate
+colormaps of any "depth" (number of bits per entry), 16 bit unsigned
+integers were selected (see \fBlibfb\fP(3) for a
+discussion of the C program interface to colormaps). A value of zero
+corresponds to full off, or black, a value of 65535 decimal or ffff
+hexadecimal corresponds to full on, or white.  A given device will use
+as many of the "leftmost" bits as it can support.
+.sp
+Each line of the file has a decimal colormap index, followed by a tab
+character, and then three 4 digit hexadecimal values, separated by
+spaces, which correspond to the red, green, and blue, channels.  Any
+blank lines or lines beginning with non\-numeric characters are
+ignored, and can thus be used for comments.
+.sp
+There is no requirement for all 256 entries to be specified. What is
+done with any unspecified entries is up to the individual programs
+using the colormap.
+.SH "EXAMPLE"
+.sp
+The beginning of an eight bit inverse video colormap might look as
+follows:
+.sp
+.if n .RS 4
+.nf
+  # Inverse video colormap
+  0       ff00 ff00 ff00
+  1       fe00 fe00 fe00
+  2       fd00 fd00 fd00
+  3       fc00 fc00 fc00
+  4       fb00 fb00 fb00
+.fi
+.if n .RE
+.SH "UTILITIES"
+.sp
+\fIfb\-cmap\fP
+.RS 4
+save a colormap from a framebuffer.
+.RE
+.sp
+\fIcmap\-fb\fP
+.RS 4
+load a saved colormap into a framebuffer.
+.RE
+.sp
+\fIfbcmap\fP
+.RS 4
+loads one of several "standard" colormaps.
+.RE
+.sp
+\fIfbgamma\fP
+.RS 4
+loads gamma correcting colormaps.
+.RE
+.SH "FILES"
+.sp
+file.cm
+.SH "SEE ALSO"
+.sp
+\fBbrlcad\fP(1), and above named programs.
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

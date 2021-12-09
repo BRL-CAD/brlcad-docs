@@ -1,0 +1,66 @@
+'\" t
+.\"     Title: shader
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "SHADER" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+shader \- Assigns shader parameters to the specified combination.
+.SH "SYNOPSIS"
+.sp
+\fBshader\fP {\fIcombination\fP} {\fIshader_name\fP} [\fI"{shader_args}"\fP]
+.SH "DESCRIPTION"
+.sp
+Assigns shader parameters to the specified combination. The
+\fIshader_name\fP indicates which shader should be assigned. If
+\fIshader_args\fP are supplied, they will be assigned to parameters of the
+indicated shader. This performs a similar function as the \fBmater\fP
+command.
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBshader\fP command to assign
+shader parameters to a specified combination.
+.sp
+.B Example 1. Assign shader parameters to a specified combination.
+.br
+.RS 4
+.sp
+mged> \f(CRshader group1 checker "{a 0,255,0 b 0,0,255}"\fP
+.sp
+Assigns the checkerboard shader to \fIgroup1\fP using green and blue
+colors for the squares.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

@@ -1,0 +1,82 @@
+'\" t
+.\"     Title: postscript
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "POSTSCRIPT" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+postscript \- Temporarily attaches the Postscript display manager and outputs the current MGED display to the specified output_file in PostScript format.
+.SH "SYNOPSIS"
+.sp
+\fBpostscript\fP [\-f \fIfont\fP] [\-t \fItitle\fP] [\-c \fIcreator\fP] [\-s \fIsize_in_inches\fP] [\-l \fIline_width\fP] {\fIoutput_file\fP}
+.SH "DESCRIPTION"
+.sp
+Temporarily attaches the \fIPostscript\fP display manager and outputs the
+current MGED display to the specified \fIoutput_file\fP in \fIPostScript\fP
+format. The \fI\-f\fP option allows the \fIfont\fP to be user\- specified. The
+\fI\-t\fP option allows the user to provide a title (the default is "No
+Title"). The \fI\-c\fP option allows the user to specify the creator of the
+file (the default is "LIBDM dm\-ps"). The \fI\-s\fP specifies the size of
+the drawing in inches. The \fI\-l\fP specifies the width of the lines
+drawn.
+.SH "EXAMPLES"
+.sp
+The first example shows the use of the \fBpostscript\fP command to
+place a \fIPostScript\fP version of the current MGED display in a
+specified file and give it a particular title.  The second example is
+much like the first except that a line width is specified and the
+title and output file names are different.
+.sp
+.B Example 1. Place a \fIPostScript\fP version of the current MGED display in a specified file.
+.br
+.RS 4
+.sp
+mged> \f(CRpostscript \-t "Test Title" test.ps\fP
+.sp
+Places a \fIPostScript\fP version of the current MGED display in a file
+named \fItest.ps\fP and titles it "Test Title".
+.RE
+.sp
+.B Example 2. Specify the line width of a \fIPostScript\fP version of the current MGED display in a specified file.
+.br
+.RS 4
+.sp
+mged> \f(CRpostscript \-l 10 \-t "Test Fat Lines" fat_lines.ps\fP
+.sp
+Places a \fIPostScript\fP version of the current MGED display with fat
+lines in a file named \fIfat_lines.ps\fP and titles it "Test Fat Lines".
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

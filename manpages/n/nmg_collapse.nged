@@ -1,0 +1,73 @@
+'\" t
+.\"     Title: nmg_collapse
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "NMG_COLLAPSE" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+nmg_collapse \- Simplifies an existing nmg_shape by a process of edge decimation.
+.SH "SYNOPSIS"
+.sp
+\fBnmg_collapse\fP {\fIold_nmg_shape new_nmg_shape maximum_error_dist\fP} [\fIminimum_angle\fP]
+.SH "DESCRIPTION"
+.sp
+Simplifies an existing \fInmg_shape\fP by a process of edge
+decimation. Each edge in the \fIold_nmg_shape\fP is considered; if it can
+be deleted without creating an error greater than the specified
+\fImaximum_error_dist,\fP then that edge is deleted. If a \fIminimum_angle\fP
+is specified (degrees), then the edge will not be deleted if it would
+create a triangle with an angle less than \fIminimum_angle\fP. The
+resulting shape is saved in \fInew_nmg_shape\fP. The \fIold_nmg_shape\fP must
+have been triangulated previous to using the \fBnmg_collapse\fP
+command. The resulting shape consists of all triangular faces.
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBnmg_collapse\fP command to
+simplify an existing nmg shape by decimating its edges. The new nmg
+shape will be within a maximum error distribution and will not have
+any triangles with angles less than a given minimum.
+.sp
+.B Example 1. Create a new nmg shape by decimating the edges of an existing nmg shape.
+.br
+.RS 4
+.sp
+mged> \f(CRnmg_collapse nmg_old nmg_new 1.0 10.0\fP
+.sp
+Decimates edges in \fInmg_old\fP to produce an NMG with an error no
+greater than 1.0 units. The process will not create any triangles with
+an angle less than 10°. The new NMG shape will be named \fInmg_new\fP.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

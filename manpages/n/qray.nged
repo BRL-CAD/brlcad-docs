@@ -1,0 +1,157 @@
+'\" t
+.\"     Title: qray
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "QRAY" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+qray \- Gets/sets query ray characteristics.
+.SH "SYNOPSIS"
+.sp
+\fBqray\fP [\fIsubcommand\fP]
+.SH "DESCRIPTION"
+.sp
+Gets/sets \fIquery ray\fP characteristics. Without a subcommand, the usage
+message is printed. The \fIqray\fP command accepts the following
+subcommands:
+.sp
+\fBvars\fP
+.RS 4
+Prints a list of all query ray variables.
+.RE
+.sp
+\fBbasename\fP [\fIstr\fP]
+.RS 4
+If \fIstr\fP is specified, then set basename to
+\fIstr\fP.  Otherwise, return the basename. Note that the basename is the
+name used to create the fake shape names corresponding to the
+query ray. There will be one fake shape for every color used along
+the ray.
+.RE
+.sp
+\fBeffects\fP [\fIt|g|b\fP]
+.RS 4
+Set or get the type of \fIeffects\fP that will
+occur when firing a query ray. The effects of firing a ray can be
+either \fIt\fP for textual output, \fIg\fP for graphical output, or \fIb\fP for
+both textual and graphical.
+.RE
+.sp
+\fBecho\fP [\fI0|1\fP]
+.RS 4
+Sets or gets the value of \fIecho\fP.  If set to 1,
+the actual \fBnirt\fP command used will be echoed to the screen.
+.RE
+.sp
+\fBoddcolor\fP [\fIr g b\fP]
+.RS 4
+Sets or gets the color of odd partitions.
+.RE
+.sp
+\fBevencolor\fP [\fIr g b\fP]
+.RS 4
+Sets or gets the color of even
+partitions.
+.RE
+.sp
+\fBvoidcolor\fP [\fIr g b\fP]
+.RS 4
+Sets or gets the color of areas where the
+ray passes through nothing.
+.RE
+.sp
+\fBoverlapcolor\fP [\fIr g b\fP]
+.RS 4
+Sets or gets the color of areas that
+overlap.
+.RE
+.sp
+\fBfmt\fP [\fIr|h|p|f|m|o\fP [\fIstr\fP]]
+.RS 4
+Sets or gets the format
+string(s). See the \fIman\fP page of \fBnirt\fP for more details.
+.RE
+.sp
+\fBscript\fP [\fIstr\fP]
+.RS 4
+Sets or gets the \fBnirt\fP script string.
+.RE
+.sp
+\fBhelp\fP
+.RS 4
+Prints the usage message.
+.RE
+.SH "EXAMPLES"
+.sp
+The four examples show the use of the \fBqray\fP command without a
+subcommand and with three of the listed subcommands.
+.sp
+.B Example 1. Print the usage message.
+.br
+.RS 4
+.sp
+mged> \f(CRqray\fP
+.sp
+Prints the usage message.
+.RE
+.sp
+.B Example 2. Return the overlap format string.
+.br
+.RS 4
+.sp
+mged> \f(CRqray fmt o\fP
+.sp
+Returns the overlap format string.
+.RE
+.sp
+.B Example 3. Return the rgb color used to color odd partitions.
+.br
+.RS 4
+.sp
+mged> \f(CRqray oddcolor\fP
+.sp
+Returns the rgb color used to color odd partitions.
+.RE
+.sp
+.B Example 4. Set the odd partition color to red.
+.br
+.RS 4
+.sp
+mged> \f(CRqray oddcolor 255 0 0\fP
+.sp
+Sets the odd partition color to red.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

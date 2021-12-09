@@ -1,0 +1,79 @@
+'\" t
+.\"     Title: debugbu
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "DEBUGBU" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+debugbu \- Allows the user to set or check the debug flags used by libbu.
+.SH "SYNOPSIS"
+.sp
+\fBdebugbu\fP [\fIhex_code\fP]
+.SH "DESCRIPTION"
+.sp
+Allows the user to set or check the debug flags used by \fIlibbu\fP. With
+no arguments, the \fBdebugbu\fP command displays all the possible
+settings for the \fIbu_debug\fP flag and the current value. When a
+\fIhex_code\fP is supplied, that value is used as the new value for
+\fIbu_debug\fP. Similar debug commands for other \fIBRL\-CAD\fP libraries are
+\fBdebuglib\fP for \fIlibrt\fP and \fBdebugnmg\fP for the NMG portion of
+\fIlibrt\fP.
+.SH "EXAMPLES"
+.sp
+The first example shows the use of the \fBdebugbu\fP command (without
+an argument) to display all possible settings for the \fIbu_debug\fP flag
+and the current value. The second example shows the use of the
+\fBdebugbu\fP command with a hex code, which is used as the new value
+for \fIbu_debug\fP.
+.sp
+.B Example 1. Display a list of available \fIbu_debug\fP values andthe current value.
+.br
+.RS 4
+.sp
+mged> \f(CRdebugbu\fP
+.sp
+Lists available \fIbu_debug\fP values and the current value.
+.RE
+.sp
+.B Example 2. Set a new value for \fIbu_debug\fP.
+.br
+.RS 4
+.sp
+mged> \f(CRdebugbu 2\fP
+.sp
+Sets \fIbu_debug\fP to <MEM_CHECK>.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

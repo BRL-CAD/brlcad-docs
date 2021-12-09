@@ -1,0 +1,69 @@
+'\" t
+.\"     Title: decompose
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "DECOMPOSE" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+decompose \- Processes an NMG shape and produces a series of new NMG shapes consisting of each maximally connected shell in the original NMG shape.
+.SH "SYNOPSIS"
+.sp
+\fBdecompose\fP {\fINMG_shape\fP} [\fIprefix\fP]
+.SH "DESCRIPTION"
+.sp
+Processes an NMG shape and produces a series of new \fINMG\fP shapes
+consisting of each maximally connected shell in the original \fINMG\fP
+shape. If an optional prefix is supplied, the resulting \fINMG\fP shapes
+will be named by using the prefix and adding an underscore character
+and a number to make the name unique. If no prefix is supplied, the
+default prefix "sh" will be used.
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBdecompose\fP command (with an
+optional prefix) to decompose an NMG shape into shells, which are then
+put into separate, uniquely named NMG shapes.
+.sp
+.B Example 1. Decompose an NMG shape into shells, which are then put into separate,uniquely named NMG shapes.
+.br
+.RS 4
+.sp
+mged> \f(CRdecompose shape.nmg part\fP
+.sp
+Decomposes the \fINMG\fP shape named \fIshape.nmg\fP into maximally connected
+shells and puts each resulting shell into a separate \fINMG\fP shape named
+\fIpart_1, part_2, ....\fP
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

@@ -1,0 +1,67 @@
+'\" t
+.\"     Title: shell
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "SHELLS" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+shells \- Separates the specified NMG shape into its constituent shells.
+.SH "SYNOPSIS"
+.sp
+\fBshells\fP [\fINMG_shape\fP]
+.SH "DESCRIPTION"
+.sp
+Separates the specified NMG shape into its constituent shells. Each
+shell is written to the database as a separate NMG object with a name
+of the form "shell" with a number appended to make the name unique. If
+the \fINMG\fP has only one shell, then only one new object will be
+created. This differs from the \fBdecompose\fP command in that
+\fBdecompose\fP will actually break the object into a number of
+separate shells if possible.
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBshells\fP command to break an NMG
+shape into its constituent shells.
+.sp
+.B Example 1. Break an NMG shape into its constituent shells.
+.br
+.RS 4
+.sp
+mged> \f(CRobject.nmg\fP
+.sp
+Breaks the NMG shape named \fIobject.nmg\fP into its constituent shells.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

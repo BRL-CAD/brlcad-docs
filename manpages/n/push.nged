@@ -1,0 +1,72 @@
+'\" t
+.\"     Title: push
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "PUSH" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+push \- Forces the effects of all transformation matrices that appear in any combinations in the trees from the specified objects down to the primitive shapes.
+.SH "SYNOPSIS"
+.sp
+\fBpush\fP [\fIobjects\fP]
+.SH "DESCRIPTION"
+.sp
+Forces the effects of all transformation matrices that appear in any
+combinations in the trees from the specified \fIobjects\fP down to the
+primitive shapes. This will change the parameters of the \fIprimitive
+shapes\fP if any of the transformation matrices are not identity
+matrices. All the transformation matrices visited will be set to
+identity matrices. This command will fail, and no changes will be
+made, if any primitive shape referenced by the list of \fIobjects\fP is
+positioned differently in two or more \fIcombinations\fP. The \fBxpush\fP
+command will perform a similar function, even if some shapes are
+multiply referenced.
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBpush\fP command to push the
+effects of any transformation matrices in the trees headed by two
+specified objects down to the primitive shapes.
+.sp
+.B Example 1. Push the effects of any transformation matrices in trees headed by two specified objects down to the primitive shapes.
+.br
+.RS 4
+.sp
+mged> \f(CRpush group1 regiona\fP
+.sp
+Pushes the effects of any transformation matrices in the trees headed
+by \fIgroup1\fP and \fIregiona\fP down to the primitive shapes.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

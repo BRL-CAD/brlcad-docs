@@ -1,0 +1,75 @@
+'\" t
+.\"     Title: rtexample
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "RTEXAMPLE" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+rtexample \- shoots a single ray at objects in a geometry database
+.SH "SYNOPSIS"
+.sp
+\fBrtexample\fP \fImodel.g\fP \fIobjects\fP...
+.SH "DESCRIPTION"
+.sp
+.if n .RS 4
+.nf
+This is an example of a program that uses librt to shoot a single ray at some
+geometry in a geometry (.g) database.
+
+librt is a big library with lots of code, but basically all that the programmer
+needs to do is include `raytrace.h` and specify the following:
+  a_rt_i    a raytrace instance, from \(aqrt_dirbuild()\(aq
+  a_ray     ray origin and direction
+  a_hit     function to be called if ray hits something
+  a_miss    function to be called if ray misses everything
+
+rtexample defines simple functions for a_hit and a_miss which simply
+output information about hit region (if hit) and log misses. Applications will
+typically define more complex tasks to fo if the ray hits, such as describing a
+reflected ray.
+.fi
+.if n .RE
+.SH "EXAMPLE"
+.sp
+\fBrtexample\fP \fIcar.g\fP wheel door
+.sp
+Here, a single ray will be shot at the geometry database \fIcar.g\fP and
+hit reports generated if the ray hits the specified objects.
+.SH "SEE ALSO"
+.sp
+\fBmged\fP(1), \fBrt\fP(1),
+\fBlibrt\fP(3)
+.SH "AUTHORS"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

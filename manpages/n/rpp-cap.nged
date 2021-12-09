@@ -1,0 +1,82 @@
+'\" t
+.\"     Title: rpp-cap
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "RPP\-CAP" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+rpp\-cap \- Creates an ARB6 with the specified height at a particular face of the given RPP.
+.SH "SYNOPSIS"
+.sp
+\fBrpp\-cap\fP {\fIrppname newname face height\fP} [0] [1]
+.SH "DESCRIPTION"
+.sp
+Creates an ARB6 with the specified height at a particular face of the
+given RPP. The optional "0" and "1" refer to the orientation of the
+ARB6. If "0" is chosen, the peaks of the ARB6 are positioned at the
+midpoint between the first and second points and at the midpoint
+between the third and fourth points of the specified face. If "1" is
+chosen, the peaks of the ARB6 are positioned at the midpoint between
+the first and fourth points and at the midpoint between the second and
+third points of the specified face. The default is 0.
+.SH "EXAMPLES"
+.sp
+The two examples show the use of the \fBrpp\-cap\fP command to create
+an ARB6 with the specified height at a particular face of a given RPP.
+The second example shows the use of the "1" option.
+.sp
+.B Example 1. Create an ARB6 shape with a specified height from a given RPP face.
+.br
+.RS 4
+.sp
+mged> \f(CRrpp\-cap rpp.s cap.s 1234 20\fP
+.sp
+Creates an ARB6 shape named \fIcap.s\fP that extends 20 units from the
+1234 face of the RPP. The peaks of the ARB6 will be at the midpoint
+between points 1 and 2 and at the midpoint between points 3 and 4.
+.RE
+.sp
+.B Example 2. Create an ARB6 shape with a specified height from a given RPP face and having peaks between points 1 and 4 and between 2 and 3.
+.br
+.RS 4
+.sp
+mged> \f(CRrcc\-cap rcc.s cap.s 1234 20 1\fP
+.sp
+Creates an ARB6 shape named \fIcap.s\fP that extends 20 units from the
+1234 face of the RPP. The peaks of the ARB6 will be at the midpoint
+between point 1 and 4 and at the midpoint between points 2 and 3.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

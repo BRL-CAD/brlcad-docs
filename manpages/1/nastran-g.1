@@ -1,0 +1,69 @@
+'\" t
+.\"     Title: nastran-g
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-07-14
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "NASTRAN\-G" "1" "2021-07-14" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+nastran\-g \- NASTRAN Translator (NASTRAN to BRL\-CAD)
+.SH "SYNOPSIS"
+.sp
+\fBnastran\-g\fP [\-xX \fIlvl\fP] [\-t \fItolerance_distance\fP] [\-n] [\-m] \-i \fInastran_input_file\fP \-o \fIdatabase.g\fP
+.SH "DESCRIPTION"
+.sp
+\fBnastran\-g\fP converts the specified \fInastran_input_file\fP to a
+BRL\-CAD \fIdatabase.g\fP file. The \fItolerance_distance\fP provided is the
+maximum distance (in mm) between two vertices at which they will be
+considered to be the same vertex. The \fB\-n\fP option requests that
+the output solids created from \fINASTRAN CQUAD4\fP or \fICTRIA3\fP elements
+be stored in the BRL\-CAD file as NMG solids rather than as the default
+BOT solids. The \fB\-m\fP option indicates that the units of the
+NASTRAN file are millimeters, rather than the default inches. The
+converter currently only handles the \fICROD, CBAR, CTRIA3,\fP and
+\fICQUAD4\fP elements.
+.sp
+The \fB\-x\fP and \fB\-X\fP options are for debug levels.
+.SH "EXAMPLE"
+.sp
+.if n .RS 4
+.nf
+$ nastran\-g \-i nastran.file \-o sample.g
+.fi
+.if n .RE
+.SH "DIAGNOSTICS"
+.sp
+Error messages are intended to be self\-explanatory.
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

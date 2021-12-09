@@ -1,0 +1,66 @@
+'\" t
+.\"     Title: fracture
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "FRACTURE" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+fracture \- Creates a new NMG shape for every "face" in the specified NMG_shape.
+.SH "SYNOPSIS"
+.sp
+\fBfracture\fP {\fINMG_shape\fP} [\fIprefix\fP]
+.SH "DESCRIPTION"
+.sp
+Creates a new NMG shape for every "face" in the specified
+\fINMG_shape\fP. The new shapes will be named by adding an underscore and
+a number to the \fIprefix\fP. If no \fIprefix\fP is specified, then the
+\fINMG_shape\fP name provided is used in place of the \fIprefix\fP.
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBfracture\fP command to create a
+new NMG shape with a given prefix for every face in the specified
+\fINMG_shape\fP.
+.sp
+.B Example 1. Create an NMG shape with a specific prefix for every face in a specified NMG shape.
+.br
+.RS 4
+.sp
+mged> \f(CRfracture shape1.nmg f\fP
+.sp
+Creates a series of NMG shapes named "f_#", one for each face in
+\fIshape1.nmg\fP.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

@@ -1,0 +1,305 @@
+'\" t
+.\"     Title: knob
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "KNOB" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+knob \- Provides a method for simulating knob input. With no options, it will display the current values for the knobs.
+.SH "SYNOPSIS"
+.sp
+\fBknob\fP [\-e \-i \-m \-v] [[\-o] | [v] | [m] | [e] | [k]] [[zap] | [zero] | [\fIid\fP [\fIval\fP]]]
+.SH "DESCRIPTION"
+.if n .sp
+.RS 4
+.it 1 an-trap
+.nr an-no-space-flag 1
+.nr an-break-flag 1
+.br
+.ps +1
+.B Caution
+.ps -1
+.br
+.sp
+The \fIknob\fP command is used internally by MGED in the
+processing of knob input devices and is not recommended for users.
+.sp .5v
+.RE
+.sp
+The \fBknob\fP command provides a method for simulating knob
+input. With no options, it will display the current values for the
+knobs. With the \fBzap or zero\fP command provided, all the knob
+values will be reset to zero. If an \fIid\fP and \fIvalue\fP are provided, the
+specified knob setting will be simulated. If the \fI\-i\fP option is
+specified, then the value provided will be used as an increment to be
+applied to the indicated knob. The knobs have different functions
+depending on the current mode. For example, if in primitive or matrix
+edit mode and a rotation or translation function is selected, the knob
+effects are applied to the edited object by default. However, the
+\fI\-v\fP(view coordinates) and \fI\-m\fP (model coordinates) options may be
+used to adjust the view without modifying primitives or matrices.  The
+\fI\-e\fP option allows the knob effects to be applied to the edited object
+when they would normally be applied to the view. The \fI\-o\fP option
+allows the origin of rotation to be specified with \fIv, m, e,\fP and \fIk\fP,
+indicating view, model, eye, and keypoint, respectively. The units for
+\fIvalue\fP are degrees for rotation and local units for translation. The
+available \fIknob ids\fP are:
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fBx\fP \(em rate\-based rotation about horizontal axis.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fBy\fP \(em rate\-based rotation about vertical axis.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fBz\fP \(em rate\-based rotation about axis normal to screen.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fBX\fP \(em rate\-based translation in horizontal direction.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fBY\fP \(em rate\-based translation in vertical direction.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fBZ\fP \(em rate\-based translation in direction normal to screen.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fBS\fP \(em rate\-based Scale or Zoom.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fBax\fP \(em absolute rotation about horizontal axis.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fBay\fP \(em absolute rotation about vertical axis.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fBaz\fP \(em absolute rotation about axis normal to screen.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fBaX\fP \(em absolute translation in horizontal direction.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fBaY\fP \(em absolute translation in vertical direction.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fBaZ\fP \(em absolute translation in direction normal to screen.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fBaS\fP \(em absolute Scale or Zoom.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fBxadc\fP \(em absolute translation of adc in horizontal direction
+(screen coordinates \-2048 to +2048).
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fByadc\fP \(em absolute translation of adc in vertical direction (screen
+coordinates \-2048 to +2048).
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fBang1\fP \(em absolute rotation of adc angle1 (degrees).
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fBang2\fP \(em absolute rotation of adc angle2 (degrees).
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+\fBdistadc\fP \(em distance setting of the adc (screen coordinates \-2048
+to +2048).
+.RE
+.SH "EXAMPLES"
+.sp
+The example shows the use of the \fBknob\fP command with the \fIy\fP
+option to rotate a view about the vertical axis.
+.sp
+.B Example 1. Rotate a view about the vertical axis.
+.br
+.RS 4
+.sp
+mged> \f(CRknob y 1\fP
+.sp
+Starts the view rotating about the vertical axis.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

@@ -1,0 +1,256 @@
+'\" t
+.\"     Title: obj-g
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "OBJ\-G" "1" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+obj\-g \- Convert a Wavefront Object (obj) file to a BRL\-CAD .g database.
+.SH "SYNOPSIS"
+.sp
+\fBobj\-g\fP [\-c] [\-d] [\-f] [\-g \fIgrouping_option\fP] [\-H \fIplate_thickness\fP] [\-i] [\-m \fImode\fP] [\-o \fIopen_bot_type\fP] [\-p] [\-r \fIbot_orientation\fP] [\-t \fIdistance_tolerance\fP] [\-u \fIunits_str\fP] [\-v]... [\-x \fIrt_debug_flag\fP] [\-X \fINMG_debug_flag\fP] \fIinput.obj\fP \fIoutput.g\fP
+.SH "DESCRIPTION"
+.sp
+\fBobj\-g\fP converts a Wavefront Object file to BRL\-CAD\(cqs .g format.
+.sp
+Only face elements are supported. Materials and textures associated
+with face elements are unsupported. Faces associated with materials
+and/or textures will convert but material properties and textures are
+ignored. Face groupings convert to BRL\-CAD primitives. Any
+hierarchical structure (i.e. assembly structure) defined in the obj
+file is not maintained in the conversion. If a face is a member of
+more than one \(aqgroup\(aq grouping, a copy of the face will exist in each
+group in the resulting model. Primitives are named based on the
+grouping names and have appended to each name a string which
+guarantees uniqueness. This unique string includes the obj file
+grouping index number, face type number (1\-4), internal conversion
+mode (b=native\-bot|n=nmg|v=bot\-via\-nmg) and surface closure status
+(o=open|c=closed|u=untested). Characters in the original grouping name
+which may cause problems are replaced with the underscore character.
+.SH "OPTIONS"
+.sp
+\fB\-c\fP
+.RS 4
+Continue processing on nmg\-bomb. If this option is set and an
+nmg\-bomb occurs (i.e., fatal error during processing nmg or
+bot\-via\-nmg) conversion will fall back to outputting the grouping to
+\(aqnative\-bot\(aq and then continue processing the next grouping. If this
+option is not set and an nmg\-bomb occurs then all processing will stop
+and the converter will exit.
+.RE
+.sp
+\fB\-d\fP
+.RS 4
+Output debug information to standard error. Because \fB\-d\fP
+results in an extremely large amount of information, it is strongly
+suggested that standard error be redirected to a file.
+.RE
+.sp
+\fB\-f\fP
+.RS 4
+Fuse vertices that are within \fIdistance_tolerance\fP of each
+other. This can make the solidity detection more reliable, but may
+significantly increase processing time during conversion.
+.RE
+.sp
+\fB\-g grouping_option\fP
+.RS 4
+Choose which face grouping, as defined
+in the obj file, to use to create the BRL\-CAD primitives. The
+grouping_option may be one of (g|o|m|t|n) where g = group (default),
+o = object, m = material, t = texture, n = none. Choose a grouping
+option which will produce the appropriate primitives for the intended
+use of the resulting model. Typically not all groupings exist in every
+obj file. Do not choose \(aqnone\(aq as the grouping option unless you have
+a specific need for no grouping. Choosing \(aqnone\(aq for a large
+conversion will significantly increase the time and system memory
+required for a conversion to complete. Choosing a grouping which does
+not exist in the obj file has the same effect as choosing
+\(aqnone\(aq. Note: It is possible for a single grouping to produce up to
+four primitives due to the four possible face types that can exist in
+an obj file. The values of the index numbers appended to the end of
+the primitive names will give an indication if this has occurred.
+.RE
+.sp
+\fB\-H plate_thickness\fP
+.RS 4
+Plate thickness in mm units of plate or
+plate\-nocos bots created when the bot is not a closed volume. This
+option is ignored unless the open_bot_type is set to \(aqplate\(aq or \(aqplate
+nocos\(aq (see \-o option).
+.RE
+.sp
+\fB\-i\fP
+.RS 4
+Ignore normals defined in the obj file when the conversion mode
+is \(aqnative\-bots\(aq. This option has no effect when the conversion mode
+is set to \(aqnmg\(aq or \(aqbot\-via\-nmg\(aq, where provided normals are always
+ignored (see \-m option).
+.RE
+.sp
+\fB\-m mode_option\fP
+.RS 4
+Choose the conversion mode. The mode_option
+may be one of (b|n|v) where b = native\-bot (default), n = nmg, v =
+bot\-via\-nmg. The \(aqnative\-bot\(aq mode is best for a relatively quick
+conversion where creating solids is not the highest priority. It
+attempts to identify surface closure (solids) but is not as robust as
+\(aqbot\-via\-nmg\(aq. It is the only mode that supports use of the obj file
+normals. The \(aqbot\-via\-nmg\(aq mode is the best option for creating solids
+(i.e. volume\-mode\-bots).
+.RE
+.sp
+\fB\-o open_bot_type\fP
+.RS 4
+Type of bot to create when the primitive
+is not a closed volume. open_bot_type can be (s|p|n) where s = surface
+bot (default), p = plate bot, n = plate\-nocos bot. Generally use
+\(aqsurface bot\(aq if open surface thickness is irrelevant or the purpose
+of the resulting model is strictly visualization. Use \(aqplate bot\(aq or
+\(aqplate\-nocos bot\(aq when open surfaces must have a defined
+thickness. Note: An incorrect plate thickness can create geometry
+overlaps. Use the \(aq\-H\(aq option to define plate thickness.
+.RE
+.sp
+\fB\-p\fP
+.RS 4
+Plot open edges when creating bots which are not a closed
+volume. A plot/overlay (.plot3) file will be created with the same
+name as the bot primitive and be placed in the current directory. If a
+plot file already exists, it will be overwritten. Closed edges are
+closed but open edges are not necessarily open. This is due to
+limitations of the algorithm for identifying open edges.
+.RE
+.sp
+\fB\-r bot_orientation\fP
+.RS 4
+Orientation type to use for bot
+primitives. bot_orientation can be (1|2|3), where 1 = unoriented, 2 =
+ccw, and 3 = cw; 1 is default.
+.RE
+.sp
+\fB\-t distance_tolerance\fP
+.RS 4
+Maximum distance, in mm units, where
+two vertices are considered the same. The default is 0.0005mm, which
+matches the default raytracer distance tolerance. Do not change this
+value unless you also change the raytracer distance tolerance.
+.RE
+.sp
+\fB\-u units_str\fP
+.RS 4
+Units of obj file, where units_str can be any
+valid BRL\-CAD unit such as (m|cm|mm|ft|in) or a custom conversion
+factor from obj file units to mm.
+.RE
+.sp
+\fB\-v\fP
+.RS 4
+Output verbose user information to standard error (stderr)
+stream. There are different levels of verbose output where higher
+levels increase the amount of output information. Each occurrence of
+this option in the parameter list increases the verbosity level (two
+levels currently). A large amount of information will be output so
+redirecting stderr to a file is highly recommended. Verbose messages
+add warning and detailed conversion status messages to the default
+status and error messages. \fB\-v\fP must be enabled for warning
+messages to be reported.
+.RE
+.sp
+\fB\-x rt_debug_flag\fP
+.RS 4
+Specifies debug bits (see raytrace.h).
+.RE
+.sp
+\fB\-X NMG_debug_flag\fP
+.RS 4
+Specifies debug bits for NMG\(cqs (see
+nmg.h).
+.RE
+.sp
+\fBinput.obj\fP
+.RS 4
+The path and file name of the input WaveFront
+Object file.
+.RE
+.sp
+\fBoutput.g\fP
+.RS 4
+The path and file name of the output BRL\-CAD
+database file. If this file already exists, it will be overwritten.
+.RE
+.SH "EXAMPLES"
+.sp
+The following will convert the obj file \fIinput.obj\fP to the BRL\-CAD
+database \fIoutput.g\fP.
+.sp
+.B Example 1. BOT Conversion
+.br
+.RS 4
+.sp
+\f(CRobj\-g \-u mm \-i input.obj output.g\fP
+.sp
+Convert obj file \(aqinput.obj\(aq to BRL\-CAD database file \(aqoutput.g\(aq using
+native\-bot conversion mode. Non\-closed surfaces will be output as
+surface\-mode bots; closed surfaces will be output as volume\-mode
+bots. BRL\-CAD primitives will be created based on the obj file \(aqgroup\(aq
+grouping. The obj file units are set to millimeters (implies
+conversion factor of 1.0). Any normals specified in the obj file are
+ignored. All messages will be sent to the display.
+.RE
+.sp
+.B Example 2. BOT via NMG Conversion
+.br
+.RS 4
+.sp
+\f(CRobj\-g \-m v \-o p \-H 5 \-g o \-v \-v input.obj output.g 2> output.log\fP
+.sp
+Convert obj file \(aqinput.obj\(aq to BRL\-CAD database file \(aqoutput.g\(aq using
+bot\-via\-nmg conversion mode. Non\-closed surfaces will be output as
+plate\-mode bots, with plate thickness of 5mm. Closed surfaces will be
+output as volume\-mode bots.  BRL\-CAD primitives will be created based
+on the obj file \(aqobject\(aq grouping. The obj file units are assumed to
+be meters (implies conversion factor of 1000.0). Level two verbose
+messages are enabled. All standard\-error messages are sent to the log
+file \(aqoutput.log\(aq.
+.RE
+.SH "DIAGNOSTICS"
+.sp
+Numerous warning and error conditions are possible, usually due to
+invalid source geometry. Descriptive messages are printed on standard
+error (file descriptor 2). \fB\-v\fP must be enabled for warning
+messages to be printed.
+.SH "AUTHOR"
+.sp
+Richard Weiss
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

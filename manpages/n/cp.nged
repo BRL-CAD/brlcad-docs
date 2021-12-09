@@ -1,0 +1,65 @@
+'\" t
+.\"     Title: cp
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "CP" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+cp \- copy object
+.SH "SYNOPSIS"
+.sp
+\fBcp\fP {\fIfrom_object to_object\fP}
+.SH "DESCRIPTION"
+.sp
+Makes a duplicate of an object (shape or combination). If
+\fIfrom_object\fP is a shape, then it is simply copied to a new shape
+named_to_object_. If \fIfrom_object\fP is a combination, then a new
+combination is created that contains exactly the same members,
+transformation matrices, etc., and it is named \fIto_object\fP.
+.SH "EXAMPLES"
+.sp
+The example shows the use of the command \fBcp\fP to duplicate a
+combination.
+.sp
+.B Example 1. Duplicate a combination.
+.br
+.RS 4
+.sp
+mged> \f(CRcp comb1 comb2\fP
+.sp
+Duplicate combination comb1 and call it comb2.
+.RE
+.SH "AUTHOR"
+.sp
+BRL\-CAD Team
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

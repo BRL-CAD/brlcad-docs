@@ -1,0 +1,134 @@
+'\" t
+.\"     Title: handle
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "HANDLE" "1" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+handle \- Creates a BRL\-CAD .g file containing handles.
+.SH "SYNOPSIS"
+.sp
+\fBhandle\fP [\fIoptions\fP]...
+.SH "DESCRIPTION"
+.sp
+\fBhandle\fP is a program to create a BRL\-CAD database of handles.
+Up to twenty\-six handles of the same dimensions may be
+created. \fBhandle\fP uses libwdb to create a BRL\-CAD database
+file. The handles are composed of three cylinders, two tori, and two
+arb8s.  This program may be run interactively or the user may specify
+options on a command line.  If the user chooses to run the program
+interactively, he answers the questions as the program prompts him.
+Below are the options that can be used on the command line.
+.SH "OPTIONS"
+.sp
+\fB\-f\fP \fIname.g\fP
+.RS 4
+BRL\-CAD file name.
+.RE
+.sp
+\fB\-n #\fP
+.RS 4
+The number of handles to be creates (must be less than or
+equal to 26).
+.RE
+.sp
+\fB\-l #\fP
+.RS 4
+Length of handle in millimeters.
+.RE
+.sp
+\fB\-H #\fP
+.RS 4
+Height of handle in millimeters.
+.RE
+.sp
+\fB\-r1 #\fP
+.RS 4
+Radius, r1, of the tori in millimeters.
+.RE
+.sp
+\fB\-r2 #\fP
+.RS 4
+Radius, r2, of the tori in millimeters.
+.RE
+.SH "EXAMPLES"
+.sp
+.B Example 1. Interactive \fBhandle\fP Session
+.br
+.RS 4
+.sp
+.if n .RS 4
+.nf
+This program constructs a handle with the base centered
+at (0, 0, 0) and the height extending in the positive z\-
+direction.  The handle will be composed of 3 cylinders,
+2 tori, and 2 arb8s.
+
+Enter the name of the mged file to be created (25 char max).
+        handle.g
+Enter number of handles to create (26 max).
+        3
+Enter the length and height of handle in mm.
+        200 100
+Enter the radius of the tori in mm.
+        20
+Enter the radius of the cylinders in mm.
+        10
+
+mged file name:  handle.g
+length:  200.000000 mm
+height:  100.000000 mm
+radius of tori:  20.000000 mm
+radius of cylinders:  10.000000 mm
+number of handles:  3
+.fi
+.if n .RE
+.RE
+.sp
+.B Example 2. Single\-Line \fBhandle\fP Command
+.br
+.RS 4
+.sp
+\f(CRhandle \-fhandle.g \-n3 \-l200 \-H100 \-r120 \-r210\fP
+.RE
+.sp
+Both of these examples produce the same result \- a database called
+handle.g containing three handles of length 200mm, height 100mm,
+radius 20mm for the rounding, and radius 10mm for the cylinders.
+.SH "AUTHOR"
+.sp
+Susan A. Coates
+.SH "SEE ALSO"
+.sp
+bolt(1), window(1), window_frame(1), gastank(1)
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""

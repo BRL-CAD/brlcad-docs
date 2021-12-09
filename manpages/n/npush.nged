@@ -1,0 +1,470 @@
+'\" t
+.\"     Title: npush
+.\"    Author: BRL-CAD Team
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2021-09-13
+.\"    Manual: BRL-CAD
+.\"    Source: BRL-CAD
+.\"  Language: English
+.\"
+.TH "NPUSH" "nged" "2021-09-13" "BRL\-CAD" "BRL\-CAD"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+npush \- push matrices down a tree hierarchy
+.SH "SYNOPSIS"
+.sp
+\fBnpush\fP [\-h] [\-?] [\-v] [\-f] [\-x] [\-r] [\-s] [\-d \fImax_depth\fP] {arg1 [arg2]...}
+.SH "BACKGROUND: MATRICES IN BRL\-CAD"
+.sp
+BRL\-CAD uses a global coordinate system in which all objects are
+placed.  This means each region must uniquely occupy its own portion
+of that space in order to avoid overlapping with another region.
+Naively, this means that all objects defined in a .g file need to
+individually describe distinct volumes using unique primitives.  While
+possible, such an approach is quite wasteful if different regions
+define the same shape and vary only in the positioning of that
+shape. A classic example is as a standard bolt used hundereds of times
+in assembling a machine \- ideally such a shape should only need to be
+described once, and then \fIinstances\fP of that shape are positioned to
+identify individual bolts in the overall model.
+.sp
+COMB trees, which describe organized hierarchies of individual shapes
+(or other COMB trees) in BRL\-CAD, are the standard mechanism used
+in .g files to reusing otherwise identical object definitions in
+\fIdifferent\fP positions and orientations. Matrices associated with
+instances of objects listed in COMB trees position those individual
+parts, and matrices at different portions of the COMB tree hierarchy
+can position smaller or large components of the whole. For example,
+the tree:
+.sp
+.if n .RS 4
+.nf
+    sph3/
+        u sph3_1.r/R
+                u sph3.s
+        u sph3_2.r/R
+                u sph3.s
+.fi
+.if n .RE
+.sp
+appears at first glance to define an overlap, since it includes two
+different regions both of which are defined using the same sphere
+object: sph3.s.  However, if we inspect sph3_1.r and sph3_2.r more
+closely, we see that their definitions incorporate matrices over the
+instances of sph3.s:
+.sp
+.if n .RS 4
+.nf
+sph3_1.r:  REGION id=1002 (air=0, los=100, GIFTmater=1) \-\-
+   u sph3.s [10, 0, 0] scale 1
+sph3_2.r:  REGION id=1003 (air=0, los=100, GIFTmater=1) \-\-
+   u sph3.s [20, 0, 0] scale 1
+.fi
+.if n .RE
+.sp
+The instance of sph3.s in sph3_1.r is offset in the X direction by
+10mm, and the sph3_2.r instance is offset by 20mm.  In addition, if we
+inspect sph3\(cqs tree:
+.sp
+.if n .RS 4
+.nf
+sph3:  \-\-
+   u sph3_1.r
+   u sph3_2.r [100, 0, 0] scale 1
+.fi
+.if n .RE
+.sp
+we see that the instance of sph3_2.r in sph3 also has a matrix
+offsetting its position.  So the instance of sph.s defined by
+sph3/sph3_2.r/sph.s is offset in total by 120mm in the positive X
+direction relative to the global definition of sph.s
+.sp
+As useful as these matrices are, users frequently need to consolidate
+multiple levels of positioning within a COMB tree, or even eliminate
+them completely if a client\(cqs code is not able to properly interpret
+the matrix information of a COMB hierarchy for its own processing.
+Thus, specific logic is available in BRL\-CAD to accomplish these
+tasks.
+.SH "OVERVIEW"
+.sp
+The GED command \fBnpush\fP defines logic for "moving" matrix
+operations within a COMB tree, without changing the position of
+individual object instances in the tree definition.
+.SH "A NOTE ON DEPTH"
+.sp
+It is worth taking a little time to define what we are referring to
+when we discuss the concept of depth when it comes to applying matrix
+pushing operations.  Consider the hierarchy:
+.sp
+.if n .RS 4
+.nf
+sph_009/
+        u [M1] sph9_g1/
+                u [M2] sph9_g2/
+                        u [M3] sph9_g3/
+                                u [M4] sph9_g4/
+                                        u [M5] sph9.r/R
+                                                u [M6] sph9.s
+.fi
+.if n .RE
+.sp
+M1, M2, etc. are matrices applied at each level of the hierarchy.
+When discussing M1, we would refer to that matrix as being at "depth
+1" in the hierarchy, as it is defined at one level below the top of
+the tree.  Similarly, M2 would be defined as being at depth 2, and
+so on.
+.sp
+When discussing depth in push operations, pushing a matrix to a depth
+means we propagate the matrices down the tree to define a matrix at
+the specified depth.  For example, in the above example, a push of the
+matrices to depth 4 would result in:
+.sp
+.if n .RS 4
+.nf
+sph_009/
+        u sph9_g1/
+                u sph9_g2/
+                        u sph9_g3/
+                                u [M1234] sph9_g4/
+                                        u [M5] sph9.r/R
+                                                u [M6] sph9.s
+.fi
+.if n .RE
+.sp
+where M1234 is the accumulated application of M1, M2, M3 and M4.  Note
+the new matrix is applied at depth 4, the depth specified as the depth
+limit in the push.  Similarly, a depth limit of 6 would result in:
+.sp
+.if n .RS 4
+.nf
+sph_009/
+        u sph9_g1/
+                u sph9_g2/
+                        u sph9_g3/
+                                u sph9_g4/
+                                        u sph9.r/R
+                                                u [M123456] sph9.s
+.fi
+.if n .RE
+.sp
+where M123456 is the accumulated application of M1, M2, M3, M4, M5 and
+M6.  Note that the final step of eliminating the matrix by updating
+the parameters of sph.s was not taken.  That operation is defined
+conceptually as being at one depth lower than the matrix applied to
+the object.  Thus, it would require a depth limit of 7 to completely
+eliminate all the matrices in the example and update sph.s:
+.sp
+.if n .RS 4
+.nf
+sph_009/
+        u sph9_g1/
+                u sph9_g2/
+                        u sph9_g3/
+                                u sph9_g4/
+                                        u sph9.r/R
+                                                u sph9.s (updated)
+.fi
+.if n .RE
+.sp
+Note that if an object or comb exists at different levels of the
+hierarchy, depth limits may produce copies of an object even if there
+wouldn\(cqt otherwise be a need for those copies.  Take the following
+example:
+.sp
+.if n .RS 4
+.nf
+sph_010/
+        u [M1] sph10_f/
+                u [M1] sph10_g/
+                        u [M1] sph10.r/R
+                                u [M2] sph10.s
+        u [M3] sph10_a.r/R
+                u [M3] sph10.s
+.fi
+.if n .RE
+.sp
+where 3*M1+M2 = 2*M3 (i.e., the matricies on each branch of sph_010\(cqs
+tree individually evaluate out to the same result).  Since sph10.s
+ends up in the same place in both branches of sph_010, a full push of
+all matrices in this tree shouldn\(cqt need to create a copy of sph10.s
+with new paramenters.  However, if a push is limited to depth 3, we
+get a different outcome in that respect:
+.sp
+.if n .RS 4
+.nf
+sph_010/
+        u sph10_f/
+                u sph10_g/
+                        u [M1*3] sph10.r/R
+                                u [M2] sph10.s
+        u sph10_a.r/R
+                u sph10.s_01 (updated sph10.s copy)
+.fi
+.if n .RE
+.sp
+Depth 3 is deep enough that the parameters of sph10.s in the second
+branch should be updated.  However, in the first branch, there is an
+instance of sph10.s that will remain unmodified with a depth limit of
+three.  Thus, the database needs to contain both the modified and
+unmodified sph10.s in order to define the requested comb tree.  A
+subsequent full push would result in sph10.s being identical to
+sph10.s_01, but (at least for now) logic to automatically recognize
+this case and simplify it is not built in to the push logic.
+.sp
+The same phenomena can occur with comb trees.  Consider the following
+example:
+.sp
+.if n .RS 4
+.nf
+sph_011/
+        u sph11_f/
+                u [M1] sph11_g/
+                        u sph11.s
+        u sph11_h/
+                u [M2] sph11_g/
+                        u sph11.s
+.fi
+.if n .RE
+.sp
+If sph_011 is pushed to depth 3, the matrices will be pushed to the
+level of sph11_g\(cqs instance references (sph11.s, in this case.)
+However, if M1 != M2, sph11_g would need to have two different
+matrices in its tree for the same instance.  Since a depth limit of 3
+does not push the matrices down to parameter setting of sph11.s, a new
+comb must be created:
+.sp
+.if n .RS 4
+.nf
+sph_011/
+        u sph11_f/
+                u sph11_g/
+                        u [M1] sph11.s
+        u sph11_h/
+                u sph11_g_01/ (updated sph11_g copy)
+                        u [M2] sph11.s
+.fi
+.if n .RE
+.SH "PUSHING RELATIVE TO REGIONS AND SHAPES"
+.sp
+In addition to numerical depth limits, \fBnpush\fP offers two
+additional specifiers that are more aware of specific types of objects
+in trees.  The \fBr\fP option will push matrices down to a level just
+above region references, and the \fBs\fP option will push matrices to
+a level just above primitive shapes.  For example, using the following
+hierarchy:
+.sp
+.if n .RS 4
+.nf
+sph_010/
+        u [M1] sph10_f/
+                u [M1] sph10_g/
+                        u [M1] sph10.r/R
+                                u [M2] sph10.s
+        u [M3] sph10_a.r/R
+                u [M3] sph10.s
+.fi
+.if n .RE
+.sp
+a \fBr\fP push would result in the following:
+.sp
+.if n .RS 4
+.nf
+sph_010/
+        u sph10_f/
+                u sph10_g/
+                        u [M1*3] sph10.r/R
+                                u [M2] sph10.s
+        u [M3] sph10_a.r/R
+                u [M3] sph10.s
+.fi
+.if n .RE
+.sp
+A \fBs\fP push, on the other hand, will take the matrices in both
+branches deeper:
+.sp
+.if n .RS 4
+.nf
+sph_010/
+        u sph10_f/
+                u sph10_g/
+                        u sph10.r/R
+                                u [M1*3+M2] sph10.s
+        u sph10_a.r/R
+                u [M3*2] sph10.s
+.fi
+.if n .RE
+.sp
+Note that neither option alters the parameters of primitive shapes.
+.sp
+Worse still is a case where multiple copies of identical objects are
+referenced at multiple levels. Consider the following example:
+.sp
+.if n .RS 4
+.nf
+sph_016/
+        u [M1] sph16a/R
+                u [M2] sph16_1/
+                        u sph16.c/
+                                u sph16.s
+                u sph16_1/
+                        u sph16.c/
+                                u sph16.s
+        u [M3] sph16a/R
+                u [M4] sph16_1/
+                        u sph16.c/
+                                u sph16.s
+                u sph16_1/
+                        u sph16.c/
+                                u sph16.s
+.fi
+.if n .RE
+.sp
+If we push to depth 3, we end up with four different versions of the
+sph16.c tree:
+.sp
+.if n .RS 4
+.nf
+sph_016/
+        u sph16a/R
+                u sph16_1/
+                        u [M12] sph16.c/
+                                u sph16.s
+                u sph16_1/
+                        u [M1] sph16.c/
+                                u sph16.s
+        u sph16a/R
+                u sph16_1/
+                        u [M34] sph16.c/
+                                u sph16.s
+                u sph16_1/
+                        u [M3] sph16.c/
+                                u sph16.s
+.fi
+.if n .RE
+.sp
+The first stage of the answer is to create three new combinations and
+redefine the sph16a tree:
+.sp
+.if n .RS 4
+.nf
+sph_016/
+        u sph16a/R
+                u sph16_1_01/
+                        u [M12] sph16.c/
+                                u sph16.s
+                u sph16_1/
+                        u [M1] sph16.c/
+                                u sph16.s
+        u sph16a/R
+                u sph16_1_02/
+                        u [M34] sph16.c/
+                                u sph16.s
+                u sph16_1_03/
+                        u [M3] sph16.c/
+                                u sph16.s
+.fi
+.if n .RE
+.sp
+That addresses sph16_1, but the tree updates to sph16a created a new
+problem: now we have two different versions of the sph16a tree.  To
+resolve that problem, we must create a new comb to replace one of the
+conflicting sph16a instances and redefine the sph_016 tree:
+.sp
+.if n .RS 4
+.nf
+sph_016/
+        u sph16a/R
+                u sph16_1_01/
+                        u [M12] sph16.c/
+                                u sph16.s
+                u sph16_1/
+                        u [M1] sph16.c/
+                                u sph16.s
+        u sph16a_01/R
+                u sph16_1_02/
+                        u [M34] sph16.c/
+                                u sph16.s
+                u sph16_1_03/
+                        u [M3] sph16.c/
+                                u sph16.s
+.fi
+.if n .RE
+.sp
+Unlike sph16a and sph16_1, sph_016 has not seen any changes to its
+volumetric definition.  sph_016 is the "top level" object specified
+for this push, and as such constitutes a reliable termination point
+for any need to propagate tree changes.  Even if any combs elsewhere
+in the database reference sph_016, they will not see any volumetric
+changes as a consequence of the operation and do not need to redefine
+their trees to preserve original sph_016 trees for external use in
+copies of sph_016.
+.SH "OPTIONS"
+.sp
+\fB\-h or \-?\fP
+.RS 4
+Print help and exit.
+.RE
+.sp
+\fB\-v\fP
+.RS 4
+Verbose processing output (primarily used for debugging).
+.RE
+.sp
+\fB\-f or \-x\fP
+.RS 4
+Force creation of new objects if necessary to avoid
+conflicts while fully pushing matrices. (A.k.a "xpush" mode).
+.RE
+.sp
+\fB\-r\fP
+.RS 4
+Halt push operations at the hierarchy level above regions.
+.RE
+.sp
+\fB\-s\fP
+.RS 4
+Halt push operations at the hierarchy level above solids.
+.RE
+.sp
+\fB\-d max_depth\fP
+.RS 4
+Halt push operations at the hierarchy level specified
+by \fImax_depth\fP.
+.RE
+.SH "EXAMPLES"
+.sp
+.B Example 1. Default
+.br
+.RS 4
+.sp
+\f(CRpush sph1\fP
+.RE
+.SH "COPYRIGHT"
+.sp
+This software is Copyright (c) 1989\-2021 by the United States
+Government as represented by U.S. Army Research Laboratory.
+.SH "BUG REPORTS"
+.sp
+Reports of bugs or problems should be submitted via electronic mail to
+.MTO "devs\(atbrlcad.org" "" ""
+.SH "AUTHOR"
+.sp
+BRL-CAD Team
