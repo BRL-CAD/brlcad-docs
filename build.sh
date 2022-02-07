@@ -17,15 +17,10 @@ EOF
 destination=${2:-$(pwd)}
 cd $(dirname $0)
 
-# enable lunr search
-export DOCSEARCH_ENABLED=true
-export DOCSEARCH_ENGINE=lunr
-export NODE_PATH="$(npm -g root)"
-antora='antora --generator antora-site-generator-lunr'
 
 case $1 in
     online)
-        $antora build.yml
+        npx antora build.yml
         ;;
     offline)
         cp build.yml build-offline.yml
@@ -34,7 +29,7 @@ case $1 in
             -e "/^content:/,+1 s!edit_url:.*!edit_url: ~!" \
             -e "/^output:/,+1 s!dir:.*!dir: $destination/html!"
         rm -rf $destination/html/
-        $antora build-offline.yml
+        npx antora build-offline.yml
         rm build-offline.yml
         ;;
     *)

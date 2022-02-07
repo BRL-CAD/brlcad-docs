@@ -6,7 +6,7 @@
 +
 [source,bash]
 ....
-wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 source ~/.bashrc
 command -v nvm
 ....
@@ -17,27 +17,24 @@ command -v nvm
 ....
 nvm install --lts
 node --version
-nvm alias default 14
+nvm alias default 16
 ....
 
-. Install Antora:
+. Get the code of the docs and install antora packages:
 +
 [source,bash]
 ....
-npm i -g @antora/cli @antora/site-generator-default
-antora -v
+git clone https://github.com/BRL-CAD/brlcad-docs
+cd brlcad-docs/
+npm install
+npx antora -v
 ....
 
-. Install https://github.com/Mogztter/antora-site-generator-lunr[Antora site generator with Lunr]:
-+
-....
-npm i -g antora-site-generator-lunr
-....
 
 == Build the docs
 
 - For development: +
-  `antora build-dev.yml`
+  `npx antora build-dev.yml`
 
 - For the online site: +
   `./build.sh online`
@@ -47,23 +44,3 @@ npm i -g antora-site-generator-lunr
 
 - To (re)generate the man pages: +
   `utils/manpages.sh`
-
-== Upgrade Antora and the Lunr site generator
-
-These commands ensure you have the latest version of both the site generator and Antora:
-
-[source,bash]
-....
-npm uninstall -g \
-    antora-site-generator-lunr \
-    @antora/cli \
-    @antora/site-generator-default
-
-npm i -g \
-    antora-site-generator-lunr \
-    @antora/cli \
-    @antora/site-generator-default
-....
-
-For more details see: https://github.com/Mogztter/antora-site-generator-lunr#upgrading
-
