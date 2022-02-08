@@ -25,8 +25,8 @@ case $1 in
     offline)
         rm -rf $destination/html/
         npx antora build.yml \
-	    --url $destination/html/docs \
-	    --to-dir $destination/html
+	    --to-dir $destination/html \
+	    --url    $destination/html
         ;;
     *)
         usage
