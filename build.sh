@@ -23,14 +23,10 @@ case $1 in
         npx antora build.yml
         ;;
     offline)
-        cp build.yml build-offline.yml
-        sed -i build-offline.yml \
-            -e "/^site:/,+2 s!url:.*!url: $destination/html/docs!" \
-            -e "/^content:/,+1 s!edit_url:.*!edit_url: ~!" \
-            -e "/^output:/,+1 s!dir:.*!dir: $destination/html!"
         rm -rf $destination/html/
-        npx antora build-offline.yml
-        rm build-offline.yml
+        npx antora build.yml \
+	    --url $destination/html/docs \
+	    --to-dir $destination/html
         ;;
     *)
         usage
