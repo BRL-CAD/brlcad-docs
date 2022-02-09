@@ -1,0 +1,21 @@
+# The idea of this action is to be executed on a pull request,
+# in order to check automatically that the proposed changes
+# do not break anything.
+# However we don't have a way for testing antora files yet.
+#
+name: Build GitHub Pages
+on:
+  pull_request:
+    branches: [ main-disabled ]    # disabled for the time being because it does not do what it should
+    types: [ opened, edited, synchronize, reopened, ready_for_review ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.3.1
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - run: npm i -g @antora/cli @antora/site-generator-default antora-site-generator-lunr
+      - run: ./build.sh # This is supposed to be a command that fails if there are any errors on the asciidoc pages
