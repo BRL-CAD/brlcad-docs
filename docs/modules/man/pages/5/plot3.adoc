@@ -13,7 +13,7 @@ Files of this format are produced by programs such as
 xref:man:1/pixhist3d-plot3.adoc[*pixhist3d-plot3*(1)], using the
 routines described in xref:man:3/libplot3.adoc[*libplot3*(3)] and are
 interpreted for various devices by standard programs described in
-xref:man:1G/plot.adoc[*plot*(1G)], as well as additional programs such
+-*plot*(1G)-, as well as additional programs such
 as xref:man:1/plot3-fb.adoc[*plot3-fb*(1)]. The format of output from
 _libplot3_ differs from that of _libplot_ only in the addition of 3-D
 primitives and color. A graphics file is a stream of plotting
@@ -33,7 +33,7 @@ corresponding routine in xref:man:3/libplot3.adoc[*libplot3*(3)].
 _m_ :: move: The next four bytes give a new current point.
 
 _n_ :: cont: Draw a line from the current point to the point given by
-the next four bytes. See xref:man:1G/plot.adoc[*plot*(1G)].
+the next four bytes. See -*plot*(1G)-.
 
 _p_ :: point: Plot the point given by the next four bytes.
 
@@ -60,7 +60,7 @@ _f_ :: linmod: Take the following string, up to a new-line, as the
 style for drawing further lines. The styles are "dotted", "solid",
 "longdashed", "shortdashed", and "dotdashed". Effective only for the
 [opt]*-T4014* and [opt]*-Tver* options of
-xref:man:1G/plot.adoc[*plot*(1G)] (TEKTRONIX 4014 terminal and
+-*plot*(1G)- (TEKTRONIX 4014 terminal and
 Versatec plotter).
 
 _s_ :: space: The next four bytes give the lower left corner of the
@@ -82,7 +82,7 @@ devices.
 _M_ :: 3move: The next six bytes give a new current point.
 
 _N_ :: 3cont: Draw a line from the current point to the point given by
-the next six bytes. See xref:man:1G/plot.adoc[*plot*(1G)].
+the next six bytes. See -*plot*(1G)-.
 
 _P_ :: 3point: Plot the point given by the next six bytes.
 
@@ -121,7 +121,7 @@ _V_ :: double_3line: The double-precision, 3_D version of line.
 
 Space settings that exactly fill the plotting area with unity scaling
 appear below for devices supported by the filters of
-xref:man:1G/plot.adoc[*plot*(1G)]. The upper limit is just outside the
+-*plot*(1G)-. The upper limit is just outside the
 plotting area, except for the Megatek which displays the entire range
 of possible coordinates. In every case the plotting area is taken to
 be square; points outside may be displayable on devices whose face is
@@ -143,7 +143,7 @@ Megatek display :: space(-32768, -32768, 32767, 32767);
 
 xref:man:3/libplot3.adoc[*libplot3*(3)], xref:man:n/plot.adoc[*plot*(n)].
 
-xref:man:1G/graph.adoc[*graph*(1G)], xref:man:1G/plot.adoc[*plot*(1G)] in the _UNIX System User Reference Manual_.
+-*graph*(1G)-, -*plot*(1G)- in the _UNIX System User Reference Manual_.
 
 == AUTHOR
 

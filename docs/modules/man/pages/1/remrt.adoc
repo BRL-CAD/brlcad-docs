@@ -17,7 +17,7 @@ for the xref:man:1/rt.adoc[*rt*(1)] program.  While _rt_ can operate
 on more than one processor of a shared memory MIMD style
 multi-processor, it can not spread the work out across the
 network. [cmd]*remrt* and its companion program
-xref:man:1/rtsrv.adoc[*rtsrv*(1)] implement a
+-*rtsrv*(1)- implement a
 xref:man:3/libpkg.adoc[*libpkg*(3)]-based protocol for distributing
 the task of ray-traced rendering out to an arbitrary number of
 processors on the network. Those processors can be from an arbitrary
@@ -72,8 +72,8 @@ computation. Here is a sample ".remrt" file:
 
 The first argument to the "host" command is the name of the server
 machine. It will be converted to a fully qualified name by calling
-xref:man:3/gethostbyname.adoc[*gethostbyname*(3)] and
-xref:man:3/gethostbyaddr.adoc[*gethostbyaddr*(3)].
+-*gethostbyname*(3)- and
+-*gethostbyaddr*(3)-.
 
 The second argument to the "host" command describes "when" this
 machine should be used.
@@ -112,7 +112,7 @@ which indicates where the BRL-CAD ".g" file (and any related texture
 maps) can be found.
 
 _cd_:: indicates that the _rtsrv_ program should change directory
-xref:man:2/cd.adoc[*cd*(2)] to the indicated directory path, and
+-*cd*(2)- to the indicated directory path, and
 should just read the data files in that directory as _rt_ normally
 would. This can be used to specify NFS or RFS mounted remote
 directories, or static copies of the binary database file(s) needed to
@@ -164,7 +164,7 @@ the overhead of prepping the frame, and tends to maximize overall
 throughput, at the price of making you wait a long time for the first
 frame to finish.  This mode is best used when crunching out large
 numbers of frames for an animation. (See also the
-xref:man:1/scriptsort.adoc[*scriptsort*(1)] command for a clever
+-*scriptsort*(1)- command for a clever
 power-of-two script rearrangement technique first proposed by Jim
 Blinn).
 
@@ -197,7 +197,7 @@ continues to run, it will be assigned port 4447.  One is added to the
 port number repeatedly until an available port is found. Normally you
 do not need to worry about which port is being used, unless you wish
 to send commands there directly. The
-xref:man:1/netstat.adoc[*netstat*(1)] command can sometimes be useful
+-*netstat*(1)- command can sometimes be useful
 to track down which ports are being used.
 
 == Unknown Title!
@@ -343,12 +343,12 @@ results.  To save those results to a file, the [cmd]*fb-png* is used:
 
 == SEE ALSO
 
-xref:man:1/rtsrv.adoc[*rtsrv*(1)], xref:man:1/rt.adoc[*rt*(1)],
-xref:man:1/scriptsort.adoc[*scriptsort*(1)],
+-*rtsrv*(1)-, xref:man:1/rt.adoc[*rt*(1)],
+-*scriptsort*(1)-,
 xref:man:1/brlcad.adoc[*brlcad*(1)], xref:man:1/mged.adoc[*mged*(1)],
-xref:man:1/lgt.adoc[*lgt*(1)], xref:man:1/pix-fb.adoc[*pix-fb*(1)],
-xref:man:1/rtray.adoc[*rtray*(1)], xref:man:1/rtpp.adoc[*rtpp*(1)],
-xref:man:3/librt.adoc[*librt*(3)], xref:man:5V/ray.adoc[*ray*(5V)],
+-*lgt*(1)-, xref:man:1/pix-fb.adoc[*pix-fb*(1)],
+-*rtray*(1)-, -*rtpp*(1)-,
+xref:man:3/librt.adoc[*librt*(3)], -*ray*(5V)-,
 xref:man:5/pix.adoc[*pix*(5)]
 
 == DIAGNOSTICS

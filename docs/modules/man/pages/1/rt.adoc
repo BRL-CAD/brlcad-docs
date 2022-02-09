@@ -44,7 +44,7 @@ Used with [opt]*-e* and conflicts with [opt]*-M*.
 *-b "+# #+"*:: is sometimes useful for debugging.  A single ray is
 fired at the pixel coordinates specified. This is best when
 accompanied by debugging options. Note that the standard
-xref:man:3/getopt.adoc[*getopt*(3)] routine only allows options to
+-*getopt*(3)- routine only allows options to
 have one parameter, so the X and Y pixel coordinates need to be
 combined into one string parameter by enclosing them in double quotes.
 This option must follow any viewing parameters.
@@ -177,7 +177,7 @@ turn on specific message categories (e.g., -v 0xFF010030) of output.
 *-x #*:: sets the xref:man:3/librt.adoc[*librt*(3)] debug flags to the
 given hexadecimal bit vector. See raytrace.h for the bit
 definitions. (Notice that [opt]*-! #* sets the
-xref:man:3/libbu.adoc[*libbu*(3)] debug flags to the given hexadecimal
+-*libbu*(3)- debug flags to the given hexadecimal
 bit vector. See bu.h for the bit definitions.)
 
 *-z*:: Enables OpenCL accelerated raytracing (OpenCL must be enabled
@@ -297,13 +297,13 @@ This is equivalent to setting -c "set background=255/255/254".
 *-X #*:: turns on the xref:man:1/rt.adoc[*rt*(1)] program debugging
 flags.  See raytrace.h for the meaning of these bits.
 
-*-! #*:: turns on the xref:man:3/libbu.adoc[*libbu*(3)] library
+*-! #*:: turns on the -*libbu*(3)- library
 debugging flags.  See bu.h for the meaning of these bits. In
 particular, specifying [opt]*-!1* will cause `bu_bomb()` to dump core,
 rather than logging the error and exiting. This is useful with
-xref:man:1/dbx.adoc[*dbx*(1)] or xref:man:1/gdb.adoc[*gdb*(1)] for
+-*dbx*(1)- or -*gdb*(1)- for
 debugging. (Notice that [opt]*-x #* sets the
-xref:man:3/libbt.adoc[*libbt*(3)] debug flags to the given hexadecimal
+-*libbt*(3)- debug flags to the given hexadecimal
 bit vector. See raytrace.h for the bit definitions.)
 
 *-+ #*:: specifies (setting argument to "t") that output is NOT binary
@@ -325,9 +325,9 @@ to: frame 0, xy=1516,2466 on cpu 0, samp=0
 
 For information on the animation script language accepted by
 [cmd]*rt*, please refer to the manual pages for
-xref:man:1/tabinterp.adoc[*tabinterp*(1)],
-xref:man:1/tabsub.adoc[*tabsub*(1)], and
-xref:man:1/anim_script.adoc[*anim_script*(1)]. Also please consult the
+-*tabinterp*(1)-,
+-*tabsub*(1)-, and
+-*anim_script*(1)-. Also please consult the
 HTML documentation for a complete animation tutorial.
 
 == NTSC ANIMATION TIPS
@@ -345,10 +345,10 @@ the image, and retains the maximum amount of image detail.
 == SEE ALSO
 
 xref:man:1/brlcad.adoc[*brlcad*(1)], xref:man:1/mged.adoc[*mged*(1)],
-xref:man:1/lgt.adoc[*lgt*(1)], xref:man:1/pix-fb.adoc[*pix-fb*(1)],
+-*lgt*(1)-, xref:man:1/pix-fb.adoc[*pix-fb*(1)],
 xref:man:1/png-fb.adoc[*png-fb*(1)],
-xref:man:1/rtray.adoc[*rtray*(1)], xref:man:1/rtpp.adoc[*rtpp*(1)],
-xref:man:3/librt.adoc[*librt*(3)], xref:man:5V/ray.adoc[*ray*(5V)],
+-*rtray*(1)-, -*rtpp*(1)-,
+xref:man:3/librt.adoc[*librt*(3)], -*ray*(5V)-,
 xref:man:5/pix.adoc[*pix*(5)]
 
 == DIAGNOSTICS

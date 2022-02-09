@@ -17,7 +17,7 @@ image size
 sizes used in the BRL-CAD package, _i.e._ one of the sizes recognized
 by the [opt]*-a* option on xref:man:1/pix-fb.adoc[*pix-fb*(1)]. If the
 dimensions are recognized, it prints a string suitable for use in a
-Bourne shell xref:man:1/sh.adoc[*sh*(1)] script to set the variables
+Bourne shell -*sh*(1)- script to set the variables
 WIDTH and HEIGHT, _e.g._
 
   WIDTH=512; HEIGHT=512
@@ -31,9 +31,9 @@ bytes which are used for each sample (pixel) in the file. The default
 value is three (3), which is appropriate for use with
 xref:man:5/pix.adoc[*pix*(5)] files. This should be changed to one
 with [opt]*-b* `1` when processing a xref:man:5/bw.adoc[*bw*(5)]
-file. Similarly, the proper value for a xref:man:5/dbw.adoc[*dbw*(5)]
+file. Similarly, the proper value for a -*dbw*(5)-
 file is 8 (1 channel of 8 byte samples), and the value for
-xref:man:5/dpix.adoc[*dpix*(5)] files is 24 (3 channels of 8 byte
+-*dpix*(5)- files is 24 (3 channels of 8 byte
 samples).
 
 == EXAMPLES
@@ -64,11 +64,11 @@ this:
   eval `pixautosize -b 3 -f $FILE`	# sets WIDTH, HEIGHT
 
 For a major shell script which uses this program, examine
-xref:man:1/pixinfo.sh.adoc[*pixinfo.sh*(1)] .
+-*pixinfo.sh*(1)- .
 
 == SEE ALSO
 
-pixinfo.xref:man:1/sh.adoc[*sh*(1)],
+pixinfo.-*sh*(1)-,
 xref:man:1/pix-fb.adoc[*pix-fb*(1)],
 xref:man:3/libfb.adoc[*libfb*(3)], xref:man:5/bw.adoc[*bw*(5)],
 xref:man:5/pix.adoc[*pix*(5)]
