@@ -37,10 +37,16 @@ npx antora -v
   `npx antora build-dev.yml`
 
 - For the online site: +
-  `./build.sh online`
+  `npx antora build.yml`
 
-- For the offline site: +
-  `./build.sh offline /usr/local/share/doc/brlcad`
+- For the offline site:
++
+[source,bash]
+....
+dest=/usr/local/share/doc/brlcad
+rm -rf $dest
+npx antora build.yml --to-dir=$dest --url=$dest
+....
 
 - To (re)generate the man pages: +
   `utils/manpages.sh`
