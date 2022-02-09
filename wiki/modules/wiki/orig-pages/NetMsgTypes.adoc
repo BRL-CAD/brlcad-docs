@@ -1,0 +1,135 @@
+:doctype: book
+
+'''
+
+= NetMsg Generic Templates
+
+'''
+
+The GSNet API provides several Template classes to be used or extended
+from.
+
+* link:GenericOneByteMsg[Generic One Byte Msg]
+* link:GenericTwoBytesMsg[Generic Two Byte Msg]
+* link:GenericFourBytesMsg[Generic Four Byte Msg]
+* link:GenericEightByteMsg[Generic Eight Byte Msg]
+* link:GenericMultiByteMsg[Generic Multi Byte Msg]
+* link:GenericOneStringMsg[Generic One String Msg]
+* link:GenericMultiStringMsg[Generic Multi-String Msg]
+
+'''
+
+= NetMsg MsgTypes
+
+'''
+
+Some NetMsgs will need to have custom bodies. Here is a list of NetMsgs,
+their related MsgTypes, and links to details on that specific NetMsg:
+
+*NOTE:* This list is *NOT* up-to-date as of 3.25.11
+
+*TODO:* Replace this with Doxy files
+
+|===
+|  |  |  |
+
+| *MsgType ID*
+| *Name*
+| *Parent Class*
+| *Additional Info*
+
+| 0x0042
+| RUALIVE
+| link:TypeOnlyMsg[TypeOnlyMsg]
+| Ping without time info (necessary?)
+
+| 0x0043
+| IMALIVE
+| link:TypeOnlyMsg[TypeOnlyMsg]
+| Pong without time info (necessary?)
+
+| 0x0050
+| Failure
+| link:GenericOneByteMsg[GenericOneByteMsg]
+| 1 byte 'error code'
+
+| 0x0051
+| Success
+| link:GenericOneByteMsg[GenericOneByteMsg]
+| 1 byte 'success code'
+
+| 0x0060
+| PING
+| link:GenericEightByteMsg[GenericEightByteMsg]
+| 8 byte time stamp for start time
+
+| 0x0062
+| PONG
+| link:GenericEightByteMsg[GenericEightByteMsg]
+| 8 byte time stamp for start time, dup of the ping value
+
+| 0x0100
+| GS Remote Nodename Set
+| link:GenericOneStringMsg[GenericOneStringMsg]
+| String is the Nodename
+
+| 0x0150
+| Disconnect Request
+| link:TypeOnlyMsg[TypeOnlyMsg]
+|
+
+| 0x0200
+| New Node on Network
+| link:GenericOneStringMsg[GenericOneStringMsg]
+| String is the Nodename
+
+| 0x0250
+| Full Nodename List Request
+|
+| '*'Not Implemented Yet*
+
+| 0x0255
+| Full Nodename List
+|
+| '*'Not Implemented Yet*
+
+| 0x0300
+| link:NewSessionReqMsg[New Session Request]
+| link:NetMsg[NetMsg]
+| Two strings, username and password
+
+| 0x0305
+| link:SessionInfoMsg[Session Information]
+| link:NetMsg[NetMsg]
+| One string, the session UUID
+
+| 0x0400
+| link:GeometryReqMsg[Geometry Request]
+| link:GenericOneStringMsg[GenericOneStringMsg]
+| Has additional custom fields.
+
+| 0x0401
+| link:GeometryBoTReqMsg[BoT Geometry Request]
+| link:GenericOneStringMsg[GenericOneStringMsg]
+| Requests geometry in BoT format, with exactly one BoT per region.
+
+| 0x0402
+| link:GeometryListReqMsg[Geometry List Request]
+| link:GenericOneStringMsg[GenericOneStringMsg]
+| Requests a list of geometry artifacts at given location.
+
+| 0x0403
+| link:GeometryListResMsg[Geometry List Results]
+| link:GenericMultiStringMsg[GenericMultiStringMsg]
+| Display a list of geometry artifact names.
+
+| 0x0405
+| link:GeometryManifestMsg[Geometry Manifest]
+| link:GenericMultiStringMsg[GenericMultiStringMsg]
+| List of 'object' names about to be received as chunks. ReUUID is the associated GeometryReqMsg UUID.
+
+| 0x0410
+| link:GeometryChunkMsg[Geometry Chunk]
+| link:GenericMultiByteMsg[GenericMultiByteMsg]
+| Raw .g information. Chunks can be written to a file to produce a viable V5 .g db. ReUUID is the associated GeometryReqMsg UUID.
+|===
