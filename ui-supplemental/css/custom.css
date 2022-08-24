@@ -172,3 +172,133 @@ img.medium-zoom-image {
   background: transparent !important;
   color: var(--medium-grey) !important;
 }
+
+.nav-toggle {
+  display: none;
+}
+
+footer {
+  background-color: var(--white);
+  padding: 60px 0
+}
+
+footer .footer-link-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-primary);
+  padding: 0 36px 12px;
+  margin: 0 24px 36px
+}
+
+@media only screen and (max-width:768px) {
+  footer .footer-link-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr
+  }
+}
+
+footer .footer-link-section .footer-logo {
+  display: flex;
+  margin: 0 auto
+}
+
+@media only screen and (max-width:768px) {
+  footer .footer-link-section .footer-logo {
+    order: -1;
+    grid-column: 1/3;
+    margin-bottom: 12px
+  }
+}
+
+footer .footer-link-section ul {
+  display: flex;
+  margin: 0;
+  padding: 0
+}
+
+@media only screen and (max-width:768px) {
+  footer .footer-link-section ul {
+    flex-direction: column
+  }
+}
+
+footer .footer-link-section ul li {
+  list-style: none;
+  margin-right: 60px;
+}
+
+
+footer .footer-link-section ul li a {
+  color: var(--dark-grey);
+  font-size: 16px;
+}
+
+footer .footer-link-section ul li a:hover {
+  text-decoration: none;
+}
+
+@media only screen and (max-width:768px) {
+  footer .footer-link-section ul li {
+    margin: 0 0 12px
+  }
+}
+
+footer .footer-link-section ul li:last-child {
+  margin-right: 0;
+  margin-bottom: 0
+}
+
+footer .footer-social {
+  display: flex;
+  margin: 0 auto 12px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content
+}
+
+footer .footer-social a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--medium-grey);
+  border-radius: 1000px;
+  height: 36px;
+  width: 36px;
+  margin-right: 24px
+}
+
+footer .footer-social a:last-child {
+  margin-right: 0
+}
+
+footer .footer-social a svg {
+  fill: var(--medium-grey);
+  height: 18px;
+  width: 18px
+}
+
+footer .footer-practices {
+  display: flex;
+  margin: 0 auto 36px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content
+}
+
+footer .footer-copyright {
+  padding: 0 36px;
+  text-align: center;
+  margin: auto
+}
+
+footer .footer-copyright h2 {
+  font-size: 16px;
+  color: var(--dark-grey)
+}
+
+footer .footer-copyright p {
+  font-size: 14px;
+  color: var(--light-grey)
+}
