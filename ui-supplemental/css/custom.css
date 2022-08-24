@@ -1,3 +1,41 @@
+:root {
+  --white: #fff;
+  --primary-color: #d0245e;
+  --secondary-color: #888;
+  --button-gradient: linear-gradient(82.8deg, #d0245e 5%, #df487b 95%);
+  --main-gradient: linear-gradient(135deg, #0b365b, #6b1011);
+  --black-10: rgba(0, 0, 0, .1);
+  --black-20: rgba(0, 0, 0, .2);
+  --black-30: rgba(0, 0, 0, .3);
+  --black-40: rgba(0, 0, 0, .4);
+  --black-50: rgba(0, 0, 0, .5);
+  --black-60: rgba(0, 0, 0, .6);
+  --black-70: rgba(0, 0, 0, .7);
+  --black-80: rgba(0, 0, 0, .8);
+  --black-90: rgba(0, 0, 0, .9);
+  --black-100: #000;
+  --bg-grad-1: #f3f3f3;
+  --bg-grad-2: #f8f3f3;
+  --dialog-bg: #f6f6f6;
+  --border-primary: #eaeaea;
+  --light-grey: #999;
+  --medium-grey: #666;
+  --dark-grey: #333;
+}
+
+body {
+  background: linear-gradient(180deg, var(--bg-grad-1) 0%, var(--bg-grad-2) 100%);
+  padding-top: 4rem;
+}
+
+.toolbar {
+  top: 4rem;
+}
+
+.doc {
+  width: 100%;
+  max-width: 100%;
+}
 
 .doc .prompt {
   color: blue;
@@ -88,7 +126,7 @@ kbd {
   font-family: "Roboto Mono", monospace;
 }
 
-.manpage .doc > h1.page:first-child {
+.manpage .doc>h1.page:first-child {
   font-size: 1.4em;
 }
 
@@ -107,4 +145,30 @@ kbd {
 .medium-zoom-overlay,
 img.medium-zoom-image {
   z-index: 1000;
+}
+
+.navbar-burger span {
+  background: var(--medium-grey);
+  border-radius: 2px;
+  width: 18px;
+}
+
+.navbar {
+  background: transparent;
+  height: 4rem;
+  background: linear-gradient(180deg, var(--bg-grad-1) 0%, var(--bg-grad-2) 100%);
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.navbar .navbar-item,
+.navbar .navbar-link {
+  font-size: 16px;
+  color: var(--medium-grey);
+}
+
+.navbar-end .navbar-item.has-dropdown:hover .navbar-link,
+.navbar-end .navbar-link:hover,
+.navbar-end>a.navbar-item:hover {
+  background: transparent !important;
+  color: var(--medium-grey) !important;
 }

@@ -1,4 +1,4 @@
-<div class="nav-container"{{#if page.component}} data-component="{{page.component.name}}" data-version="{{page.version}}"{{/if}}>
+<div class="nav-container" style="display: none;" {{#if page.component}} data-component="{{page.component.name}}" data-version="{{page.version}}"{{/if}}>
   <aside class="nav">
     <div class="panels">
 {{> nav-menu}}
@@ -8,7 +8,7 @@
     But if we just remove nav-explore, the right menu (toc) disappears as well.
     So, we enclose it in another div, and make it invisible.
 --}}
-<div style="display: none;">
+<div>
 {{> nav-explore}}
 </div>
     </div>
