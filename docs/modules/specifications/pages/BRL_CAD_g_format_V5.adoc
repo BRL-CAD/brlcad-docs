@@ -69,7 +69,7 @@ Object Footer.
 The Object Header consists of: 
 
 * An 8-bit Magic1 element that holds a specific magic number value
-  used for database integrity checking.
+  used for database integrity checking. The value of Magic1 is 0x76.
 * A 16-bit Flags element consisting of three 8-bit fields: HFlags,
   AFlags, and BFlags, described later.
 * A 16-bit Object_Type element organized into two 8-bit-wide fields:
@@ -90,7 +90,7 @@ The Object Footer consists of:
 * Any padding bytes necessary to bring the total size of the object in
   bytes to an integral multiple of 8.
 * An 8-bit Magic2 element that holds a specific magic number value
-  used for database integrity checking.
+  used for database integrity checking. The value of Magic2 is 0x35
 
 Objects may store application-specific information in an Object
 Interior.
@@ -346,7 +346,8 @@ In order to support direct concatenation of two existing databases
 into one new database, additional header objects may appear elsewhere
 in the database The header object has no object name, object
 attributes, or object body (e.g., NP=0, AP=0,
-BP=0). Major_Type=RESERVED, Minor_Type=0.
+BP=0). Major_Type=RESERVED, Minor_Type=0. OWid, NWid, AWid, and BWid 
+must all have the value 00. AZ and BZ must have value 000.
 
 |10
 | Database Layer Internal, Free Storage.
